@@ -77,12 +77,26 @@ function ChangeView({ center, zoom }: { center: [number, number]; zoom: number }
   return null;
 }
 
+// Helper function to resolve era-coded colors for map pin hover glow
+const getEraColor = (eraName: string) => {
+  if (['Cambrian', 'Devonian', 'Carboniferous', 'Permian'].includes(eraName)) {
+    return '#4A6FA5'; // Paleozoic
+  }
+  if (eraName === 'Triassic') return '#B5602E';
+  if (eraName === 'Jurassic') return '#3E7A4F';
+  if (eraName === 'Cretaceous') return '#8B3A3A';
+  if (['Eocene', 'Neogene', 'Pleistocene'].includes(eraName)) {
+    return '#B58B2E'; // Cenozoic
+  }
+  return '#D98E4A'; // Default Accent Primary
+};
+
 // Custom Leaflet DivIcon factory for continents
-const createMapMarkerIcon = (name: string, isSelected: boolean) => {
+const createMapMarkerIcon = (name: string, isSelected: boolean, eraColor: string) => {
   return L.divIcon({
     className: 'custom-leaflet-marker',
     html: `
-      <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border shadow-lg font-bold text-xs transition-all duration-200 uppercase tracking-wide whitespace-nowrap min-w-[80px] justify-center ${
+      <div style="--era-color: ${eraColor};" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border shadow-lg font-bold text-xs transition-all duration-200 uppercase tracking-wide whitespace-nowrap min-w-[80px] justify-center hover:shadow-[0_0_15px_var(--era-color)] hover:scale-105 ${
         isSelected
           ? 'bg-blue-600 border-blue-400 text-white ring-4 ring-blue-500/30 scale-105'
           : 'bg-slate-900/90 border-slate-700 text-slate-200 hover:bg-slate-800 hover:text-white'
@@ -97,11 +111,11 @@ const createMapMarkerIcon = (name: string, isSelected: boolean) => {
 };
 
 // Custom Leaflet DivIcon factory for fossil formations
-const createFormationMarkerIcon = (name: string, isSelected: boolean) => {
+const createFormationMarkerIcon = (name: string, isSelected: boolean, eraColor: string) => {
   return L.divIcon({
     className: 'custom-leaflet-marker-formation',
     html: `
-      <div class="flex items-center gap-1 px-2.5 py-1 rounded-lg border shadow-md font-bold text-[10px] transition-all duration-200 whitespace-nowrap justify-center ${
+      <div style="--era-color: ${eraColor};" class="flex items-center gap-1 px-2.5 py-1 rounded-lg border shadow-md font-bold text-[10px] transition-all duration-200 whitespace-nowrap justify-center hover:shadow-[0_0_15px_var(--era-color)] hover:scale-105 ${
         isSelected
           ? 'bg-indigo-600 border-indigo-400 text-white ring-4 ring-indigo-500/30 scale-105'
           : 'bg-slate-950/90 border-slate-800 text-indigo-400 hover:bg-slate-900 hover:text-indigo-300'
@@ -128,6 +142,7 @@ export default function TimeMap() {
   const [mapZoom, setMapZoom] = useState<number>(2);
 
   const activeEra = ERAS[eraIndex];
+  const activeEraColor = getEraColor(activeEra.name);
 
   // Adjust center/zoom when selected continent changes
   useEffect(() => {
@@ -276,7 +291,7 @@ export default function TimeMap() {
               <Marker
                 key={region.name}
                 position={region.coords}
-                icon={createMapMarkerIcon(region.name, selectedContinent === region.name)}
+                icon={createMapMarkerIcon(region.name, selectedContinent === region.name, activeEraColor)}
                 eventHandlers={{
                   click: () => {
                     setSelectedContinent(region.name);
@@ -292,7 +307,7 @@ export default function TimeMap() {
               <Marker
                 key={form.name}
                 position={form.coords}
-                icon={createFormationMarkerIcon(form.name, selectedFormation === form.name)}
+                icon={createFormationMarkerIcon(form.name, selectedFormation === form.name, activeEraColor)}
                 eventHandlers={{
                   click: () => {
                     setSelectedFormation(form.name);

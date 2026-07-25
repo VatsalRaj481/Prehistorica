@@ -1,7 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
 
-/* Custom utility styles if needed, e.g. custom scrollbars or styling overrides */
+@theme {
+  --color-slate-950: #12151A;
+  --color-slate-900: #1E2228;
+  --color-slate-800: #262B33;
+  --color-slate-850: #2C3038;
+  --color-slate-700: #2C3038;
+  --color-slate-600: #2C3038;
+  --color-slate-550: #9CA3AD;
+  --color-slate-500: #9CA3AD;
+  --color-slate-400: #9CA3AD;
+  --color-slate-350: #9CA3AD;
+  --color-slate-300: #9CA3AD;
+  --color-slate-200: #EDE7DC;
+  --color-slate-100: #EDE7DC;
+
+  --color-blue-950: #12151A;
+  --color-blue-900: #1E2228;
+  --color-blue-800: #262B33;
+  --color-blue-700: #2C3038;
+  --color-blue-600: #D98E4A;
+  --color-blue-500: #D98E4A;
+  --color-blue-400: #D98E4A;
+  --color-blue-300: #EDE7DC;
+  
+  --color-indigo-600: #2E7A6E;
+  --color-indigo-500: #2E7A6E;
+  --color-indigo-400: #2E7A6E;
+  
+  --color-white: #EDE7DC;
+  --color-zinc-950: #12151A;
+  --color-zinc-900: #1E2228;
+  --color-zinc-800: #262B33;
+  --color-zinc-700: #2C3038;
+
+  --font-sans: "Inter", sans-serif;
+  --radius-xl: 12px;
+  --radius-lg: 8px;
+  --radius-md: 8px;
+}
+
 :root {
   --map-height: 500px;
 }
@@ -9,58 +49,90 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Outfit', 'Inter', system-ui, sans-serif;
-  background-color: #0b0f19; /* premium dark slate color */
-  color: #f3f4f6;
+  font-family: 'Inter', sans-serif;
+  background-color: #12151A;
+  color: #9CA3AD;
   overflow-x: hidden;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 3rem; /* 48px */
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #EDE7DC !important;
+}
+
+h2 {
+  font-size: 2rem; /* 32px */
+  font-weight: 700;
+  color: #EDE7DC !important;
+}
+
+/* Card components shadow & border & border-radius override */
+.bg-gradient-to-br, .bg-slate-900, .bg-slate-950, .bg-slate-900\/60, .bg-slate-950\/90 {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
+  border-radius: 12px !important;
+  border-color: #2C3038 !important;
+}
+
+/* Image container radius */
+img {
+  border-radius: 8px !important;
+}
+
+/* Button components radius */
+button, .button, a.px-6, a.px-4 {
+  border-radius: 8px !important;
 }
 
 /* Custom styles for Leaflet to fit our theme */
 .leaflet-container {
-  background-color: #111827 !important;
+  background-color: #1E2228 !important;
   font-family: inherit;
-  border-radius: 0.75rem;
+  border-radius: 12px !important;
 }
 
 .leaflet-bar {
   border: none !important;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
 }
 
 .leaflet-bar a {
-  background-color: #1f2937 !important;
-  color: #f3f4f6 !important;
-  border-bottom: 1px solid #374151 !important;
+  background-color: #262B33 !important;
+  color: #EDE7DC !important;
+  border-bottom: 1px solid #2C3038 !important;
   transition: all 0.2s ease;
 }
 
 .leaflet-bar a:hover {
-  background-color: #374151 !important;
-  color: #3b82f6 !important;
+  background-color: #1E2228 !important;
+  color: #D98E4A !important;
 }
 
 .leaflet-popup-content-wrapper {
-  background-color: #1f2937 !important;
-  color: #f3f4f6 !important;
-  border-radius: 0.5rem !important;
-  border: 1px solid #374151;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3) !important;
+  background-color: #1E2228 !important;
+  color: #EDE7DC !important;
+  border-radius: 12px !important;
+  border: 1px solid #2C3038;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
 }
 
 .leaflet-popup-tip {
-  background-color: #1f2937 !important;
-  border: 1px solid #374151;
+  background-color: #1E2228 !important;
+  border: 1px solid #2C3038;
 }
 
 /* Custom styling for timeline slider tracks */
 input[type="range"]::-webkit-slider-runnable-track {
-  background: #1f2937;
+  background: #262B33;
   border-radius: 9999px;
   height: 8px;
 }
 
 input[type="range"]::-webkit-slider-thumb {
-  background: #3b82f6;
+  background: #D98E4A;
   border-radius: 9999px;
   width: 20px;
   height: 20px;
@@ -70,5 +142,5 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
-  background: #60a5fa;
+  background: #2E7A6E;
 }
