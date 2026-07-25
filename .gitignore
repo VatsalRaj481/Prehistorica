@@ -1,0 +1,63 @@
+# Dependency directories
+node_modules/
+**/node_modules/
+
+# Build and distribution directories
+dist/
+**/dist/
+build/
+**/build/
+out/
+**/out/
+
+# Environment variables / Credentials (CRITICAL to ignore to prevent leaks)
+.env
+.env*.local
+**/.env
+**/.env*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Editors & IDEs
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Temporary / diagnostic / expansion helper scripts in backend
+backend/audit_fields.js
+backend/backfill_creature_type.js
+backend/check_creature_types.js
+backend/check_raja_isi.js
+backend/correct_data.js
+backend/count_all.js
+backend/download_wiki.js
+backend/export_db_creature_types.js
+backend/find_tyranno.js
+backend/fix_images.js
+backend/generate_silhouettes.js
+backend/generate_updates.py
+backend/insert_indian_species.js
+backend/merge_duplicates.js
+backend/merge_updates.js
+backend/test_api.js
+backend/test_wiki.js
+backend/update_isisaurus.js
+backend/verify_formations.js
+backend/verify_indian_data.js
+backend/species_names_audit.txt

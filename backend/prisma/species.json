@@ -1,0 +1,1337 @@
+[
+  {
+    "name": "Anomalocaris canadensis",
+    "scientificName": "Anomalocaris canadensis",
+    "nameMeaning": "Abnormal shrimp from Canada",
+    "timePeriod": "Middle Cambrian",
+    "myaStart": 508,
+    "myaEnd": 505,
+    "dietType": "Carnivore",
+    "dietDetails": "Preyed upon soft-bodied marine organisms, trilobites, and other Cambrian animals.",
+    "locations": [
+      "North America",
+      "Asia"
+    ],
+    "taxonomicClassification": "Radiodonta -> Anomalocarididae -> Anomalocaris",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Anomalocaris_canadensis.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Geological_magazine_%28IA_geologicalmagazi491902wood%29.pdf",
+    "discoveryHistory": "First discovered in the Burgess Shale of British Columbia by Joseph Whiteaves in 1892. Parts of its body were initially mistaken for three separate creatures (shrimp-like appendages, jellyfish-like mouth cone, and sponge-like torso).",
+    "interestingFacts": [
+      "Considered one of the earliest apex predators in Earth's history.",
+      "Had highly advanced compound eyes with up to 16,000 lenses, providing keen vision in Cambrian seas.",
+      "Propelled itself through the water by undulating flexible lobes along the sides of its body."
+    ],
+    "lengthM": 1,
+    "heightM": 0.1,
+    "weightKg": 1.5,
+    "sizeNotes": "Estimated at 1 to 2 kg body mass; length excludes tail filaments.",
+    "relatedSpeciesNames": [
+      "Hallucigenia sparsa",
+      "Opabinia regalis"
+    ]
+  },
+  {
+    "name": "Hallucigenia sparsa",
+    "scientificName": "Hallucigenia sparsa",
+    "nameMeaning": "Bizarre, dream-like creature",
+    "timePeriod": "Middle Cambrian",
+    "myaStart": 508,
+    "myaEnd": 505,
+    "dietType": "Omnivore",
+    "dietDetails": "Likely fed on organic detritus, sponges, or small animals on the seafloor.",
+    "locations": [
+      "North America",
+      "Asia"
+    ],
+    "taxonomicClassification": "Lobopodia -> Xenusiidae -> Hallucigeniidae -> Hallucigenia",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Hallucigenia_sparsa_2025.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4a/USNM_PAL_83935_Hallucigenia_sparsa_Image_1.jpg",
+    "discoveryHistory": "First described by Charles Walcott in 1911 as a worm. Simon Conway Morris redescribed it in 1977, reconstructuring it upside down and backward, mistaking its tentacles for legs and its spines for support struts.",
+    "interestingFacts": [
+      "For decades, paleontologists argued about which end was the head and which was the tail.",
+      "It had 7 pairs of long, rigid spines on its back and 7 pairs of delicate, clawed tentacles on its underside.",
+      "It is now recognized as a relative of modern velvet worms (Onychophorans)."
+    ],
+    "lengthM": 0.05,
+    "heightM": 0.02,
+    "weightKg": 0.005,
+    "sizeNotes": "Extremely small, ranging from 0.5 to 5.5 cm in length.",
+    "relatedSpeciesNames": [
+      "Anomalocaris canadensis",
+      "Opabinia regalis"
+    ]
+  },
+  {
+    "name": "Opabinia regalis",
+    "scientificName": "Opabinia regalis",
+    "nameMeaning": "Named after Opabin Pass, British Columbia",
+    "timePeriod": "Middle Cambrian",
+    "myaStart": 508,
+    "myaEnd": 505,
+    "dietType": "Carnivore",
+    "dietDetails": "Soft-bodied bottom dwellers and organic debris.",
+    "locations": [
+      "North America"
+    ],
+    "taxonomicClassification": "Lobopodia -> Opabiniidae -> Opabinia",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/02/20191108_Opabinia_regalis_with_lobopods.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/USNM_PAL_57683_Opabinia_regalis_Image_3.jpg",
+    "discoveryHistory": "Discovered by Charles Walcott in 1912 in the Burgess Shale. Harry Whittington redescribed it in 1975, and its bizarre features initially drew laughter at a scientific conference.",
+    "interestingFacts": [
+      "Possessed five stalked eyes that likely provided a 360-degree field of view.",
+      "Had a long, flexible nozzle-like snout (proboscis) with a clawed tip, used to grab food and transfer it to its backward-facing mouth.",
+      "It had 15 segments with lobed gills along its sides, but lacked legs."
+    ],
+    "lengthM": 0.07,
+    "heightM": 0.02,
+    "weightKg": 0.01,
+    "sizeNotes": "Typically 4 to 7 cm in length, excluding the proboscis.",
+    "relatedSpeciesNames": [
+      "Anomalocaris canadensis",
+      "Hallucigenia sparsa"
+    ]
+  },
+  {
+    "name": "Dunkleosteus terrelli",
+    "scientificName": "Dunkleosteus terrelli",
+    "nameMeaning": "Dunkle's bone (named after David Dunkle)",
+    "timePeriod": "Late Devonian",
+    "myaStart": 382,
+    "myaEnd": 358,
+    "dietType": "Carnivore",
+    "dietDetails": "Fish, sharks, and even smaller Dunkleosteus individuals (cannibalism).",
+    "locations": [
+      "North America",
+      "Europe",
+      "Africa"
+    ],
+    "taxonomicClassification": "Placodermi -> Arthrodira -> Dunkleosteidae -> Dunkleosteus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Dunkleosteus_terrelli_skeletal_reconstruction_1.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Dunkleosteus_terrelli_skeletal_reconstruction_1.jpg",
+    "discoveryHistory": "First discovered in 1867 by Jay Terrell in Ohio. Named Dunkleosteus in 1956 to honor David Dunkle, curator of vertebrate paleontology at the Cleveland Museum.",
+    "interestingFacts": [
+      "Instead of teeth, it had massive, self-sharpening bony plates (gnathal plates) that acted like shears.",
+      "Could open its mouth in one-fiftieth of a second, creating a powerful vacuum to suck in prey.",
+      "Its bite force is estimated to have been around 6,000 to 7,400 Newtons at the tip of the blade."
+    ],
+    "lengthM": 8.79,
+    "heightM": 1.5,
+    "weightKg": 1000,
+    "sizeNotes": "Recent studies suggest length estimates might be shorter (around 4.1 meters) due to placoderm body ratios.",
+    "relatedSpeciesNames": [
+      "Tiktaalik roseae",
+      "Ichthyostega stensioei"
+    ]
+  },
+  {
+    "name": "Tiktaalik roseae",
+    "scientificName": "Tiktaalik roseae",
+    "nameMeaning": "Burbot (freshwater fish) in Inuktitut",
+    "timePeriod": "Late Devonian",
+    "myaStart": 385,
+    "myaEnd": 375,
+    "dietType": "Carnivore",
+    "dietDetails": "Small fish and invertebrates in shallow freshwater streams.",
+    "locations": [
+      "North America"
+    ],
+    "taxonomicClassification": "Sarcopterygii -> Elpistostegalia -> Tiktaalik",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Reconstruction_of_Tiktaalik_roseae.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Tiktaalik_roseae_life_restor.jpg",
+    "discoveryHistory": "Discovered in 2004 on Ellesmere Island in Nunavut, Canada, by a team led by Edward Daeschler, Neil Shubin, and Farish Jenkins.",
+    "interestingFacts": [
+      "Represents a key evolutionary transition (a 'fishapod') between lobe-finned fish and early tetrapods.",
+      "Had a flat head and eyes on top, similar to a crocodile, and a flexible neck (unlike fish, which have fused neck bones).",
+      "Its wrist bones and primitive ribs were strong enough to support its body weight in shallow water or on land."
+    ],
+    "lengthM": 2.75,
+    "heightM": 0.3,
+    "weightKg": 30,
+    "sizeNotes": "Ranged from 1.25 to 2.75 meters (4 to 9 feet) in length.",
+    "relatedSpeciesNames": [
+      "Dunkleosteus terrelli",
+      "Ichthyostega stensioei"
+    ]
+  },
+  {
+    "name": "Ichthyostega stensioei",
+    "scientificName": "Ichthyostega stensioei",
+    "nameMeaning": "Fish roof (referring to the skull structure)",
+    "timePeriod": "Late Devonian",
+    "myaStart": 365,
+    "myaEnd": 360,
+    "dietType": "Carnivore",
+    "dietDetails": "Fish and large invertebrates found in swampy river deltas.",
+    "locations": [
+      "Europe"
+    ],
+    "taxonomicClassification": "Tetrapodomorpha -> Ichthyostegalia -> Ichthyostegidae -> Ichthyostega",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Ichthyostega_skeletal_reconstruction_2018.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f6/202003_Ichthyostega.png",
+    "discoveryHistory": "Discovered in East Greenland by Lauge Koch's expedition in 1929. Described by Gunnar Säve-Söderbergh in 1932.",
+    "interestingFacts": [
+      "One of the first Devonian tetrapods discovered and described.",
+      "Had seven toes on its hind feet rather than the standard five, showing early tetrapods experimented with digit numbers.",
+      "Probably moved on land like a mudskipper or elephant seal, pulling itself forward with its forelimbs."
+    ],
+    "lengthM": 1.5,
+    "heightM": 0.4,
+    "weightKg": 25,
+    "sizeNotes": "Estimated length of 1.5 meters (5 feet). Highly robust body skeleton.",
+    "relatedSpeciesNames": [
+      "Tiktaalik roseae",
+      "Arthropleura armata"
+    ]
+  },
+  {
+    "name": "Arthropleura armata",
+    "scientificName": "Arthropleura armata",
+    "nameMeaning": "Jointed ribs",
+    "timePeriod": "Carboniferous",
+    "myaStart": 346,
+    "myaEnd": 290,
+    "dietType": "Herbivore",
+    "dietDetails": "Decaying vegetation, spores, and lycopsid leaf litter in carboniferous rainforests.",
+    "locations": [
+      "North America",
+      "Europe"
+    ],
+    "taxonomicClassification": "Diplopoda -> Arthropleurida -> Arthropleuridae -> Arthropleura",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/20211224_Arthropleura_armata_diagrammatic_reconstruction.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Geological_magazine_%28IA_geologicalmagazi11018wood%29.pdf",
+    "discoveryHistory": "First described in 1854 by Jordan and von Meyer based on partial fossils in Germany. A massive, near-complete fossil was found in Northumberland, England in 2018.",
+    "interestingFacts": [
+      "The largest known terrestrial invertebrate of all time.",
+      "Grew to its massive size due to high atmospheric oxygen levels (up to 35%) and a lack of large vertebrate predators.",
+      "Had between 30 and 60 body segments and dozens of jointed legs."
+    ],
+    "lengthM": 2.5,
+    "heightM": 0.2,
+    "weightKg": 50,
+    "sizeNotes": "Ranged from 0.3 to 2.6 meters long; estimated weight up to 50 kg.",
+    "relatedSpeciesNames": [
+      "Meganeura monyi",
+      "Dimetrodon grandis"
+    ]
+  },
+  {
+    "name": "Meganeura monyi",
+    "scientificName": "Meganeura monyi",
+    "nameMeaning": "Large-nerved (referring to the wing veins)",
+    "timePeriod": "Carboniferous",
+    "myaStart": 305,
+    "myaEnd": 299,
+    "dietType": "Carnivore",
+    "dietDetails": "Other flying insects, small amphibians, and early reptiles.",
+    "locations": [
+      "Europe"
+    ],
+    "taxonomicClassification": "Insecta -> Meganisoptera -> Meganeuridae -> Meganeura",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/08/Meganeura_monyi_wings_Brongniart_1893.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Meganeura_monyi_au_Museum_de_Toulouse.jpg",
+    "discoveryHistory": "Found in Commentry, France, in 1880. Described by French paleontologist Charles Brongniart in 1885.",
+    "interestingFacts": [
+      "Often described as a giant prehistoric dragonfly, though it belongs to a distinct related group (griffinflies).",
+      "Wingspan reached up to 70 centimeters, making it one of the largest known flying insect species.",
+      "Like modern dragonflies, it likely had huge compound eyes and hunted primarily by sight."
+    ],
+    "lengthM": 0.43,
+    "heightM": 0.1,
+    "weightKg": 0.15,
+    "sizeNotes": "Wingspan: 65 to 71 cm; body length: ~43 cm. Weight estimates range from 100 to 200 grams.",
+    "relatedSpeciesNames": [
+      "Arthropleura armata",
+      "Dimetrodon grandis"
+    ]
+  },
+  {
+    "name": "Dimetrodon grandis",
+    "scientificName": "Dimetrodon grandis",
+    "nameMeaning": "Two measures of teeth",
+    "timePeriod": "Early Permian",
+    "myaStart": 295,
+    "myaEnd": 272,
+    "dietType": "Carnivore",
+    "dietDetails": "Fish, amphibians, and other reptiles like Eryops and Edaphosaurus.",
+    "locations": [
+      "North America",
+      "Europe"
+    ],
+    "taxonomicClassification": "Synapsida -> Sphenacodontidae -> Dimetrodontinae -> Dimetrodon",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Dimetrodon_grandis_in_%22high_walk%22_pose.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Dimetrodon.jpg",
+    "discoveryHistory": "First named by Edward Drinker Cope in 1878. Numerous skeletons have been discovered in the Red Beds of Texas.",
+    "interestingFacts": [
+      "Often mistaken for a dinosaur, but it is actually a synapsid (a stem-mammal), making it more closely related to humans than to dinosaurs.",
+      "The massive sail on its back was formed by elongated neural spines and likely used for thermoregulation or display.",
+      "It had two distinct types of teeth (shearing and stabbing), a feature not seen in reptiles."
+    ],
+    "lengthM": 3.5,
+    "heightM": 1.7,
+    "weightKg": 200,
+    "sizeNotes": "Ranged from 1.7 to 4.6 meters long across various species; D. grandis was one of the largest.",
+    "relatedSpeciesNames": [
+      "Edaphosaurus pogonias",
+      "Helicoprion bessonowi",
+      "Scutosaurus karpinskii"
+    ]
+  },
+  {
+    "name": "Edaphosaurus pogonias",
+    "scientificName": "Edaphosaurus pogonias",
+    "nameMeaning": "Pavement lizard",
+    "timePeriod": "Early Permian",
+    "myaStart": 300,
+    "myaEnd": 272,
+    "dietType": "Herbivore",
+    "dietDetails": "Tough terrestrial plants, horsetails, and ferns, crushed with its specialized tooth plates.",
+    "locations": [
+      "North America",
+      "Europe"
+    ],
+    "taxonomicClassification": "Synapsida -> Edaphosauridae -> Edaphosaurus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Edaphosaurus_pogonias.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/33/Edaphosaurus.jpg",
+    "discoveryHistory": "Described by Edward Drinker Cope in 1882 from Texas. It was one of the earliest known dominant land herbivores.",
+    "interestingFacts": [
+      "Like Dimetrodon, it possessed a large sail, but its sail had horizontal crossbars resembling crossbeams.",
+      "Had tooth plates on the roof of its mouth and inner jaws, forming a grinding battery to crush vegetation.",
+      "It had a remarkably small skull relative to its massive, barrel-shaped body."
+    ],
+    "lengthM": 3,
+    "heightM": 1.4,
+    "weightKg": 300,
+    "sizeNotes": "Ranged from 1 to 3.5 meters in length. Weight reached up to 300 kg.",
+    "relatedSpeciesNames": [
+      "Dimetrodon grandis",
+      "Helicoprion bessonowi"
+    ]
+  },
+  {
+    "name": "Helicoprion bessonowi",
+    "scientificName": "Helicoprion bessonowi",
+    "nameMeaning": "Spiral saw",
+    "timePeriod": "Early Permian",
+    "myaStart": 290,
+    "myaEnd": 270,
+    "dietType": "Carnivore",
+    "dietDetails": "Soft-bodied cephalopods like ammonites and belemnites.",
+    "locations": [
+      "North America",
+      "Asia",
+      "Europe",
+      "Oceania"
+    ],
+    "taxonomicClassification": "Chondrichthyes -> Eugenodontida -> Helicoprionidae -> Helicoprion",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/79/Karpinsky_1899_Helicoprion_bessonowi_Fig._73.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/be/Helicoprion_tooth_whorl.jpg",
+    "discoveryHistory": "First described by Alexander Karpinsky in 1899 from fossils found in the Ural Mountains. For over a century, the position of the 'tooth whorl' was debated.",
+    "interestingFacts": [
+      "The tooth whorl was located inside the lower jaw, acting like a circular saw blade to slice soft prey.",
+      "It is a stem-ratfish, closer to modern chimaeras than to modern sharks.",
+      "As new teeth grew, the older teeth were pushed inward, creating the spiral whorl rather than shedding."
+    ],
+    "lengthM": 6,
+    "heightM": 1.2,
+    "weightKg": 450,
+    "sizeNotes": "Estimates range from 5 to 8 meters (16 to 26 feet) based on tooth whorl proportions.",
+    "relatedSpeciesNames": [
+      "Dimetrodon grandis",
+      "Edaphosaurus pogonias"
+    ]
+  },
+  {
+    "name": "Scutosaurus karpinskii",
+    "scientificName": "Scutosaurus karpinskii",
+    "nameMeaning": "Shield lizard",
+    "timePeriod": "Late Permian",
+    "myaStart": 254,
+    "myaEnd": 252,
+    "dietType": "Herbivore",
+    "dietDetails": "Low-lying plants, shrubs, and roots in dry, arid environments.",
+    "locations": [
+      "Europe"
+    ],
+    "taxonomicClassification": "Anapsida -> Pareiasauria -> Pareiasauridae -> Scutosaurus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/42/Scutosaurus_restoration.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/db/Scutosaurus_AMNH.jpg",
+    "discoveryHistory": "Discovered in the Sokolki assembly on the Northern Dvina River in Russia by Vladimir Amalitsky. Described posthumously in 1921.",
+    "interestingFacts": [
+      "Its skin was covered in bony plates (osteoderms) that acted as heavy armor against predators.",
+      "Its limbs were positioned directly beneath its body, a relatively advanced feature for Permian reptiles.",
+      "Likely had a large, complex digestive tract to break down fibrous plant material."
+    ],
+    "lengthM": 3,
+    "heightM": 1.5,
+    "weightKg": 1000,
+    "sizeNotes": "Grew up to 3 meters (10 feet) long, weighing around 1 metric ton.",
+    "relatedSpeciesNames": [
+      "Inostrancevia alexandri",
+      "Dimetrodon grandis"
+    ]
+  },
+  {
+    "name": "Inostrancevia alexandri",
+    "scientificName": "Inostrancevia alexandri",
+    "nameMeaning": "Named after Russian geologist Aleksandr Inostrantsev",
+    "timePeriod": "Late Permian",
+    "myaStart": 255,
+    "myaEnd": 252,
+    "dietType": "Carnivore",
+    "dietDetails": "Large herbivores like Scutosaurus and dicynodonts.",
+    "locations": [
+      "Europe",
+      "Africa"
+    ],
+    "taxonomicClassification": "Synapsida -> Gorgonopsia -> Gorgonopsidae -> Inostrancevia",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/13/Inostrancevia_A6_digital.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Inostrancevia_alexandri_-_MUSE.jpg",
+    "discoveryHistory": "First fossils found by Vladimir Amalitsky in northern Russia in the late 1890s. Described in 1922.",
+    "interestingFacts": [
+      "The largest known gorgonopsian, a group of saber-toothed mammal-like synapsids.",
+      "Possessed enormous, flattened saber canines up to 15 centimeters (5.9 inches) long.",
+      "Fossils of a related species were discovered in South Africa in 2023, showing the genus migrated across continents."
+    ],
+    "lengthM": 3.5,
+    "heightM": 1.2,
+    "weightKg": 300,
+    "sizeNotes": "Total length reached up to 3.5 meters (11.5 feet), with a skull length of 50 cm.",
+    "relatedSpeciesNames": [
+      "Scutosaurus karpinskii",
+      "Postosuchus kirkpatricki"
+    ]
+  },
+  {
+    "name": "Coelophysis bauri",
+    "scientificName": "Coelophysis bauri",
+    "nameMeaning": "Hollow form",
+    "timePeriod": "Late Triassic",
+    "myaStart": 228,
+    "myaEnd": 201,
+    "dietType": "Carnivore",
+    "dietDetails": "Insects, small reptiles, fish, and early mammals.",
+    "locations": [
+      "North America"
+    ],
+    "taxonomicClassification": "Dinosauria -> Theropoda -> Coelophysoidea -> Coelophysidae -> Coelophysis",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/New_dinosaur_%28Theropoda%2C_stem-Averostra%29_from_the_earliest_Jurassic_of_the_La_Quinta_formation%2C_Venezuelan_Andes.pdf",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/57/Coelophysis_bauri_mount.jpg",
+    "discoveryHistory": "First discovered by David Baldwin in 1881 in New Mexico. Described by Edward Drinker Cope in 1889. Thousands of complete skeletons were found at Ghost Ranch, NM, in 1947.",
+    "interestingFacts": [
+      "One of the earliest known dinosaurs, exhibiting a highly successful, agile body plan.",
+      "Early claims of cannibalism (based on baby bones inside rib cages) were later disproved; the bones belonged to small crocodylomorphs.",
+      "Its bones were hollow and thin-walled, similar to those of modern birds."
+    ],
+    "lengthM": 3,
+    "heightM": 0.9,
+    "weightKg": 20,
+    "sizeNotes": "Slender build, typical specimens were 2 to 3 meters long and weighed around 15 to 25 kg.",
+    "relatedSpeciesNames": [
+      "Plateosaurus trossingensis",
+      "Postosuchus kirkpatricki",
+      "Dilophosaurus wetherilli"
+    ]
+  },
+  {
+    "name": "Plateosaurus trossingensis",
+    "scientificName": "Plateosaurus trossingensis",
+    "nameMeaning": "Broad lizard",
+    "timePeriod": "Late Triassic",
+    "myaStart": 214,
+    "myaEnd": 204,
+    "dietType": "Herbivore",
+    "dietDetails": "High foliage, cycads, and conifers, processed with leaf-shaped teeth.",
+    "locations": [
+      "Europe"
+    ],
+    "taxonomicClassification": "Dinosauria -> Saurischia -> Sauropodomorpha -> Plateosauridae -> Plateosaurus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Plateosaurus_Scale.svg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/49/Plateosaurus_trossingensis_holotype_ribs.jpg",
+    "discoveryHistory": "Discovered in 1834 near Nuremberg, Germany, by Johann Engelhardt. Described by Hermann von Meyer in 1837.",
+    "interestingFacts": [
+      "An early sauropodomorph, a group that would eventually evolve into the giant, long-necked sauropods.",
+      "Strictly bipedal; its hands were unable to rotate, making quadrupedal walking anatomically impossible.",
+      "Fossil mass graves in Europe suggest they traveled in herds or became trapped in mud flats."
+    ],
+    "lengthM": 7,
+    "heightM": 2.5,
+    "weightKg": 2000,
+    "sizeNotes": "Highly variable adult sizes, ranging from 4.8 to 10 meters in length and 600 to 4,000 kg.",
+    "relatedSpeciesNames": [
+      "Coelophysis bauri",
+      "Postosuchus kirkpatricki",
+      "Brachiosaurus altithorax"
+    ]
+  },
+  {
+    "name": "Postosuchus kirkpatricki",
+    "scientificName": "Postosuchus kirkpatricki",
+    "nameMeaning": "Crocodile from Post, Texas",
+    "timePeriod": "Late Triassic",
+    "myaStart": 220,
+    "myaEnd": 201,
+    "dietType": "Carnivore",
+    "dietDetails": "Small dinosaurs, dicynodonts, and other armored reptiles.",
+    "locations": [
+      "North America"
+    ],
+    "taxonomicClassification": "Pseudosuchia -> Rauisuchia -> Rauisuchidae -> Postosuchus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Postosuchus_kirkpatricki_skeleton.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Postosuchus_kirkpatricki_skeleton.jpg",
+    "discoveryHistory": "Discovered in Garza County, Texas, by Sankar Chatterjee in 1980. Named in 1985 after the Kirkpatrick family, who owned the ranch where the fossils were found.",
+    "interestingFacts": [
+      "Not a dinosaur, but a rauisuchian (an archosaur closer to crocodiles) that was the apex predator of Triassic North America.",
+      "Walked primarily on two legs (bipedal) based on limb proportions, though older reconstructions showed it on all fours.",
+      "Had a deep, powerful skull containing long, serrated dagger-like teeth."
+    ],
+    "lengthM": 4,
+    "heightM": 1.2,
+    "weightKg": 300,
+    "sizeNotes": "Ranged from 3.5 to 4 meters in length, with weight estimated up to 300 kg.",
+    "relatedSpeciesNames": [
+      "Coelophysis bauri",
+      "Plateosaurus trossingensis",
+      "Dilophosaurus wetherilli"
+    ]
+  },
+  {
+    "name": "Dilophosaurus wetherilli",
+    "scientificName": "Dilophosaurus wetherilli",
+    "nameMeaning": "Two-crested lizard",
+    "timePeriod": "Early Jurassic",
+    "myaStart": 193,
+    "myaEnd": 189,
+    "dietType": "Carnivore",
+    "dietDetails": "Preyed upon fish, small dinosaurs, and early herbivorous reptiles.",
+    "locations": [
+      "North America"
+    ],
+    "taxonomicClassification": "Dinosauria -> Theropoda -> Dilophosauridae -> Dilophosaurus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/35/Life_reconstruction_of_Dilophosaurus_wetherilli.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Anatomy_and_systematics_of_the_sauropodomorph_Sarahsaurus_aurifontanalis_from_the_Early_Jurassic_Kayenta_Formation.pdf",
+    "discoveryHistory": "Discovered in Northern Arizona by Jesse Williams in 1942. Named Dilophosaurus in 1970 by Samuel Paul Welles.",
+    "interestingFacts": [
+      "Made famous by Jurassic Park, but the real animal was much larger, did not spit venom, and lacked a neck frill.",
+      "The twin crests on its skull were paper-thin and likely used for species recognition and courtship displays.",
+      "Its jaw was loosely connected near the front, which may have allowed it to catch fish or hook prey."
+    ],
+    "lengthM": 6,
+    "heightM": 1.8,
+    "weightKg": 400,
+    "sizeNotes": "Grew up to 6 meters (20 feet) long, weighing about 400 kg.",
+    "relatedSpeciesNames": [
+      "Coelophysis bauri",
+      "Allosaurus fragilis",
+      "Stegosaurus stenops"
+    ]
+  },
+  {
+    "name": "Stegosaurus stenops",
+    "scientificName": "Stegosaurus stenops",
+    "nameMeaning": "Roof lizard with a narrow face",
+    "timePeriod": "Late Jurassic",
+    "myaStart": 155,
+    "myaEnd": 150,
+    "dietType": "Herbivore",
+    "dietDetails": "Low-lying plants, mosses, ferns, horsetails, and cycads.",
+    "locations": [
+      "North America",
+      "Europe"
+    ],
+    "taxonomicClassification": "Dinosauria -> Ornithischia -> Stegosauria -> Stegosauridae -> Stegosaurus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Stegosaurus_stenops_Life_Reconstruction_%28flipped%29.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Stegosaurus_stenops_mounted_skeleton.jpg",
+    "discoveryHistory": "First found in Colorado in 1877 by M.P. Felch. Described by Othniel Charles Marsh during the famous Bone Wars.",
+    "interestingFacts": [
+      "Had 17 flat bony plates on its back that were not used for armor but likely for display or temperature regulation.",
+      "Its tail weapon, consisting of 4 long spikes, is formally called a 'thagomizer' (a term coined in a Far Side cartoon).",
+      "Its brain was famously tiny, about the size of a walnut, weighing only 80 grams."
+    ],
+    "lengthM": 9,
+    "heightM": 4,
+    "weightKg": 5000,
+    "sizeNotes": "Large individuals reached up to 9 meters in length and up to 7 metric tons.",
+    "relatedSpeciesNames": [
+      "Allosaurus fragilis",
+      "Brachiosaurus altithorax",
+      "Archaeopteryx lithographica"
+    ]
+  },
+  {
+    "name": "Brachiosaurus altithorax",
+    "scientificName": "Brachiosaurus altithorax",
+    "nameMeaning": "Arm lizard with a deep chest",
+    "timePeriod": "Late Jurassic",
+    "myaStart": 154,
+    "myaEnd": 150,
+    "dietType": "Herbivore",
+    "dietDetails": "High canopy conifers, ginkgos, and tree ferns.",
+    "locations": [
+      "North America"
+    ],
+    "taxonomicClassification": "Dinosauria -> Sauropoda -> Macronaria -> Brachiosauridae -> Brachiosaurus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Brachiosaurus_altithorax_Skeletal.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Brachiosaurus_altithorax_Skeletal.png",
+    "discoveryHistory": "First discovered in the Grand River Valley, Colorado, by Elmer Riggs in 1900. Described in 1903.",
+    "interestingFacts": [
+      "Its front legs were longer than its hind legs, giving its back a sloping profile similar to a giraffe.",
+      "Unlike other sauropods, it held its neck nearly vertically to reach high-altitude vegetation.",
+      "Had massive, chisel-like teeth to crop leaves from tall branches without chewing them."
+    ],
+    "lengthM": 22,
+    "heightM": 12,
+    "weightKg": 35000,
+    "sizeNotes": "Length estimates range from 18 to 22 meters; weight ranges from 28 to 58 metric tons.",
+    "relatedSpeciesNames": [
+      "Stegosaurus stenops",
+      "Allosaurus fragilis",
+      "Archaeopteryx lithographica"
+    ]
+  },
+  {
+    "name": "Allosaurus fragilis",
+    "scientificName": "Allosaurus fragilis",
+    "nameMeaning": "Different lizard",
+    "timePeriod": "Late Jurassic",
+    "myaStart": 155,
+    "myaEnd": 145,
+    "dietType": "Carnivore",
+    "dietDetails": "Medium to large herbivorous dinosaurs like Stegosaurus and sauropods.",
+    "locations": [
+      "North America",
+      "Europe"
+    ],
+    "taxonomicClassification": "Dinosauria -> Theropoda -> Allosauridae -> Allosaurinae -> Allosaurus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Allosaurus_Revised.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Allosaurus_fragilis_skeleton.jpg",
+    "discoveryHistory": "First described by Othniel Charles Marsh in 1877 based on fragmentary remains from Colorado. Dozens of individuals were later found at the Cleveland-Lloyd Dinosaur Quarry in Utah.",
+    "interestingFacts": [
+      "The most common large predator of Late Jurassic North America, accounting for a vast majority of theropod fossils found.",
+      "Its skull was highly flexible and could expand laterally, allowing it to swallow large chunks of meat.",
+      "Had a lower bite force than modern lions, suggesting it used its skull like an axe to slash at prey."
+    ],
+    "lengthM": 8.5,
+    "heightM": 3,
+    "weightKg": 2000,
+    "sizeNotes": "Average length was 8.5 meters (28 feet), but rare large specimens (like Saurophaganax) reached 11-12 meters.",
+    "relatedSpeciesNames": [
+      "Stegosaurus stenops",
+      "Brachiosaurus altithorax",
+      "Archaeopteryx lithographica"
+    ]
+  },
+  {
+    "name": "Archaeopteryx lithographica",
+    "scientificName": "Archaeopteryx lithographica",
+    "nameMeaning": "Ancient wing from the lithographic limestone",
+    "timePeriod": "Late Jurassic",
+    "myaStart": 150,
+    "myaEnd": 148,
+    "dietType": "Carnivore",
+    "dietDetails": "Insects, small lizards, and early mammals.",
+    "locations": [
+      "Europe"
+    ],
+    "taxonomicClassification": "Dinosauria -> Theropoda -> Avialae -> Archaeopterygidae -> Archaeopteryx",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Sinornithosaurus_millenii_reconstruction.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/98/Archaeopteryx_lithographica_fossil.jpg",
+    "discoveryHistory": "First fossil (a single feather) discovered in 1860 in the Solnhofen limestone of Bavaria, Germany. The famous London Specimen was found in 1861.",
+    "interestingFacts": [
+      "Famous transitional fossil representing the link between non-avian theropod dinosaurs and modern birds.",
+      "Had flight feathers like a bird, but retained reptilian features: a long bony tail, three clawed fingers, and a jaw with teeth.",
+      "Its discovery occurred just two years after Charles Darwin published 'On the Origin of Species', serving as key evidence."
+    ],
+    "lengthM": 0.5,
+    "heightM": 0.25,
+    "weightKg": 0.75,
+    "sizeNotes": "Roughly the size of a modern common raven or magpie, weighing 0.5 to 1.0 kg.",
+    "relatedSpeciesNames": [
+      "Allosaurus fragilis",
+      "Stegosaurus stenops",
+      "Yi qi"
+    ]
+  },
+  {
+    "name": "Yi qi",
+    "scientificName": "Yi qi",
+    "nameMeaning": "Strange wing",
+    "timePeriod": "Late Jurassic",
+    "myaStart": 160,
+    "myaEnd": 159,
+    "dietType": "Omnivore",
+    "dietDetails": "Small vertebrates, insects, and soft plant matter in forest canopies.",
+    "locations": [
+      "Asia"
+    ],
+    "taxonomicClassification": "Dinosauria -> Theropoda -> Scansoriopterygidae -> Yi",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/64/Speculative_mating_display_of_Yi_qi.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Yi_qi_fossil.jpg",
+    "discoveryHistory": "Discovered by a farmer in Hebei Province, China. Described in 2015 by Xu Xing and colleagues.",
+    "interestingFacts": [
+      "Had bat-like wings made of a membranous skin stretched between long fingers and a unique bony rod (styliform element).",
+      "One of the smallest known non-avian dinosaurs, adapting to an arboreal, gliding lifestyle.",
+      "Its plumage preserved melanosomes, suggesting it had black and brown coloration."
+    ],
+    "lengthM": 0.38,
+    "heightM": 0.15,
+    "weightKg": 0.38,
+    "sizeNotes": "Wingspan was around 60 cm; weighed roughly 380 grams.",
+    "relatedSpeciesNames": [
+      "Archaeopteryx lithographica",
+      "Velociraptor mongoliensis"
+    ]
+  },
+  {
+    "name": "Spinosaurus aegyptiacus",
+    "scientificName": "Spinosaurus aegyptiacus",
+    "nameMeaning": "Spine lizard from Egypt",
+    "timePeriod": "Late Cretaceous",
+    "myaStart": 99,
+    "myaEnd": 93.5,
+    "dietType": "Carnivore",
+    "dietDetails": "Large fish (e.g. Mawsonia), sharks, sawfish, and occasionally land animals.",
+    "locations": [
+      "Africa"
+    ],
+    "taxonomicClassification": "Dinosauria -> Theropoda -> Spinosauridae -> Spinosaurinae -> Spinosaurus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Spinosaurus_aegyptiacus_life_reconstruction.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Spinosaurus_aegyptiacus_skeletal.jpg",
+    "discoveryHistory": "First described by Ernst Stromer in 1915 from Egyptian fossils. Those holotype fossils were destroyed in a Munich bombing raid during WWII. New specimens were described in 2014.",
+    "interestingFacts": [
+      "The longest known carnivorous dinosaur, exceeding even Tyrannosaurus rex in length.",
+      "Adapted for a semi-aquatic lifestyle, featuring dense bones for buoyancy, a paddle-like tail, and nostrils located high on its snout.",
+      "The massive sail on its back was formed by neural spines up to 1.65 meters long."
+    ],
+    "lengthM": 14,
+    "heightM": 4.5,
+    "weightKg": 7400,
+    "sizeNotes": "Length estimates range from 14 to 15.6 meters; weight ranges from 6.4 to 8.7 metric tons.",
+    "relatedSpeciesNames": [
+      "Tyrannosaurus rex",
+      "Triceratops horridus",
+      "Velociraptor mongoliensis"
+    ]
+  },
+  {
+    "name": "Tyrannosaurus rex",
+    "scientificName": "Tyrannosaurus rex",
+    "nameMeaning": "Tyrant lizard king",
+    "timePeriod": "Late Cretaceous",
+    "myaStart": 68,
+    "myaEnd": 66,
+    "dietType": "Carnivore",
+    "dietDetails": "Apex predator preying on large herbivores like Triceratops and Edmontosaurus.",
+    "locations": [
+      "North America"
+    ],
+    "taxonomicClassification": "Dinosauria -> Theropoda -> Tyrannosauridae -> Tyrannosaurinae -> Tyrannosaurus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Tyrannosaurus_rex_head_reconstruction.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/94/Tyrannosaurus_Rex_Holotype.jpg",
+    "discoveryHistory": "First discovered by Arthur Lakes in Colorado (1874), later named and described by Henry Fairfield Osborn in 1905.",
+    "interestingFacts": [
+      "Had one of the strongest bite forces among all terrestrial animals, estimated at 35,000 to 57,000 Newtons.",
+      "Its tiny two-clawed arms were surprisingly strong, capable of lifting around 200 kilograms each.",
+      "Whether it had feathers is still debated, though direct fossil impressions show predominantly scaly skin."
+    ],
+    "lengthM": 12.3,
+    "heightM": 3.66,
+    "weightKg": 11200,
+    "sizeNotes": "Estimates range from 8,400 to 14,000 kg depending on study.",
+    "relatedSpeciesNames": [
+      "Spinosaurus aegyptiacus",
+      "Triceratops horridus",
+      "Velociraptor mongoliensis"
+    ]
+  },
+  {
+    "name": "Triceratops horridus",
+    "scientificName": "Triceratops horridus",
+    "nameMeaning": "Three-horned face",
+    "timePeriod": "Late Cretaceous",
+    "myaStart": 68,
+    "myaEnd": 66,
+    "dietType": "Herbivore",
+    "dietDetails": "Low-growing vegetation like ferns, cycads, and palms, cropped with its powerful beak.",
+    "locations": [
+      "North America"
+    ],
+    "taxonomicClassification": "Dinosauria -> Ornithischia -> Ceratopsidae -> Chasmosaurinae -> Triceratops",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/08/Triceratops_horridus.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Triceratops_horridus_skull_-_MUSE.jpg",
+    "discoveryHistory": "First found near Denver, Colorado, in 1887 by George Lyman Cannon. Described by Othniel Charles Marsh.",
+    "interestingFacts": [
+      "The large frill and three horns were likely used for defense against predators and in courtship or dominance displays.",
+      "Its skull was one of the largest of any land animal, reaching up to 2.5 meters in length.",
+      "Lived alongside Tyrannosaurus rex, and fossil bones show healed T. rex bite marks, proving they clashed."
+    ],
+    "lengthM": 8.5,
+    "heightM": 3,
+    "weightKg": 9000,
+    "sizeNotes": "Estimates range from 6,000 to 12,000 kg depending on body mass calculations.",
+    "relatedSpeciesNames": [
+      "Tyrannosaurus rex",
+      "Ankylosaurus magniventris",
+      "Spinosaurus aegyptiacus"
+    ]
+  },
+  {
+    "name": "Velociraptor mongoliensis",
+    "scientificName": "Velociraptor mongoliensis",
+    "nameMeaning": "Swift seizer from Mongolia",
+    "timePeriod": "Late Cretaceous",
+    "myaStart": 75,
+    "myaEnd": 71,
+    "dietType": "Carnivore",
+    "dietDetails": "Small dinosaurs, reptiles, and mammals; famous for preying on Protoceratops.",
+    "locations": [
+      "Asia"
+    ],
+    "taxonomicClassification": "Dinosauria -> Theropoda -> Dromaeosauridae -> Velociraptorinae -> Velociraptor",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Velociraptor_mongoliensis_line_diagram_skull_%282%29.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/98/Velociraptor_Mongoliensis_Painting.jpg",
+    "discoveryHistory": "Discovered in the Gobi Desert of Mongolia in 1923 by Peter Kaisen. Named by Henry Fairfield Osborn in 1924.",
+    "interestingFacts": [
+      "In reality, it was about the size of a turkey, and was fully covered in feathers (quill knobs were found on its forearm bones).",
+      "Possessed a large, curved sickle claw on each second toe, which it likely used to pin down and puncture prey.",
+      "A famous 'Fighting Dinosaurs' fossil preserves a Velociraptor locked in combat with a Protoceratops, buried instantly by a collapsing sand dune."
+    ],
+    "lengthM": 2,
+    "heightM": 0.5,
+    "weightKg": 15,
+    "sizeNotes": "About 2 meters long, 0.5 meters high at the hip. Weighed around 15 kg.",
+    "relatedSpeciesNames": [
+      "Tyrannosaurus rex",
+      "Spinosaurus aegyptiacus",
+      "Yi qi"
+    ]
+  },
+  {
+    "name": "Parasaurolophus walkeri",
+    "scientificName": "Parasaurolophus walkeri",
+    "nameMeaning": "Near crested lizard",
+    "timePeriod": "Late Cretaceous",
+    "myaStart": 76.5,
+    "myaEnd": 73,
+    "dietType": "Herbivore",
+    "dietDetails": "High and low vegetation, conifers, leaves, and twigs, processed with grinding dental batteries.",
+    "locations": [
+      "North America"
+    ],
+    "taxonomicClassification": "Dinosauria -> Ornithischia -> Hadrosauridae -> Lambeosaurinae -> Parasaurolophus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Life_reconstruction_of_Parasaurolophus_walkeri.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Parasaurolophus_walkeri%2C_a_new_genus_and_species_of_trachodont_dinosaur_-_PLATE_II.png",
+    "discoveryHistory": "Discovered in Alberta, Canada, in 1920 by William Parks. Described in 1922.",
+    "interestingFacts": [
+      "The hollow, curved crest on its head functioned as a resonating chamber to produce low-frequency vocalizations.",
+      "Could walk on both two legs (when running or browsing) and four legs (when slow walking or grazing).",
+      "Its crest was also likely used for visual display and species identification."
+    ],
+    "lengthM": 9.5,
+    "heightM": 3.2,
+    "weightKg": 2500,
+    "sizeNotes": "Grew to about 9.5 meters long; weight estimated at 2.5 metric tons.",
+    "relatedSpeciesNames": [
+      "Triceratops horridus",
+      "Ankylosaurus magniventris"
+    ]
+  },
+  {
+    "name": "Ankylosaurus magniventris",
+    "scientificName": "Ankylosaurus magniventris",
+    "nameMeaning": "Fused lizard with a great belly",
+    "timePeriod": "Late Cretaceous",
+    "myaStart": 68,
+    "myaEnd": 66,
+    "dietType": "Herbivore",
+    "dietDetails": "Low-growing plants, ferns, and shrubs, cropped with its broad beak.",
+    "locations": [
+      "North America"
+    ],
+    "taxonomicClassification": "Dinosauria -> Ornithischia -> Ankylosauria -> Ankylosauridae -> Ankylosaurus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/00/Mirrored_Ankylosaurus_magniventris_reconstruction.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/eb/A_new_ankylosaurine_dinosaur_from_the_Judith_River_Formation_of_Montana%2C_USA%2C_based_on_an_exceptional_skeleton_with_soft_tissue_preservation.pdf",
+    "discoveryHistory": "Discovered in the Hell Creek Formation of Montana by Barnum Brown in 1906. Described in 1908.",
+    "interestingFacts": [
+      "Had a heavy armor of bony osteoderms and a massive bony club at the end of its tail, used for self-defense.",
+      "The tail club was supported by fused vertebrae, allowing it to deliver bone-shattering blows to attackers.",
+      "Lived in the same environments as Tyrannosaurus rex, serving as one of its most heavily fortified prey."
+    ],
+    "lengthM": 8,
+    "heightM": 1.7,
+    "weightKg": 6000,
+    "sizeNotes": "Ranged from 6 to 8 meters long; weighed roughly 5 to 8 metric tons.",
+    "relatedSpeciesNames": [
+      "Triceratops horridus",
+      "Parasaurolophus walkeri"
+    ]
+  },
+  {
+    "name": "Carnotaurus sastrei",
+    "scientificName": "Carnotaurus sastrei",
+    "nameMeaning": "Meat-eating bull",
+    "timePeriod": "Late Cretaceous",
+    "myaStart": 72,
+    "myaEnd": 69.9,
+    "dietType": "Carnivore",
+    "dietDetails": "Medium-sized herbivores and small dinosaurs in open dry landscapes.",
+    "locations": [
+      "South America"
+    ],
+    "taxonomicClassification": "Dinosauria -> Theropoda -> Abelisauridae -> Carnotaurus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/10/Carnotaurus_sastrei_Reconstruction.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/85/Carnotaurus_sastrei_skeleton.jpg",
+    "discoveryHistory": "Found in Chubut Province, Argentina, by Anselmo Sastre in 1984 during an expedition led by José Bonaparte.",
+    "interestingFacts": [
+      "Possessed two distinct, thick horns above its eyes, unique among carnivorous dinosaurs.",
+      "Its forelimbs were vestigial, even smaller than those of T. rex, and lacked claws entirely.",
+      "Had extremely fast leg muscles, making it one of the fastest running large theropods known."
+    ],
+    "lengthM": 7.8,
+    "heightM": 2.5,
+    "weightKg": 1350,
+    "sizeNotes": "Ranged from 7.5 to 9 meters in length; weight is estimated around 1.35 metric tons.",
+    "relatedSpeciesNames": [
+      "Tyrannosaurus rex",
+      "Velociraptor mongoliensis"
+    ]
+  },
+  {
+    "name": "Quetzalcoatlus northropi",
+    "scientificName": "Quetzalcoatlus northropi",
+    "nameMeaning": "Named after the Aztec feathered serpent god Quetzalcoatl",
+    "timePeriod": "Late Cretaceous",
+    "myaStart": 68,
+    "myaEnd": 66,
+    "dietType": "Carnivore",
+    "dietDetails": "Small vertebrates, carrion, and terrestrial prey.",
+    "locations": [
+      "North America"
+    ],
+    "taxonomicClassification": "Pterosauria -> Pterodactyloidea -> Azhdarchidae -> Quetzalcoatlus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Quetzalcoatlus_northropi.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b1/A_small_azhdarchoid_pterosaur_from_the_latest_Cretaceous%2C_the_age_of_flying_giants.pdf",
+    "discoveryHistory": "Discovered in Big Bend National Park, Texas, by Douglas A. Lawson in 1971. Described in 1975.",
+    "interestingFacts": [
+      "The largest known flying animal in Earth's history, with a wingspan comparable to a small private airplane.",
+      "When standing on the ground, it was as tall as a modern giraffe (around 5.5 meters).",
+      "Likely hunted on land by stalking prey on all fours, similar to modern marabou storks."
+    ],
+    "lengthM": 5,
+    "heightM": 5.5,
+    "weightKg": 200,
+    "sizeNotes": "Wingspan: 10 to 11 meters; weight estimates range from 70 to 250 kg due to light, air-filled bones.",
+    "relatedSpeciesNames": [
+      "Pteranodon longiceps",
+      "Mosasaurus hoffmannii"
+    ]
+  },
+  {
+    "name": "Pteranodon longiceps",
+    "scientificName": "Pteranodon longiceps",
+    "nameMeaning": "Wing without teeth, long head",
+    "timePeriod": "Late Cretaceous",
+    "myaStart": 88,
+    "myaEnd": 80.5,
+    "dietType": "Carnivore",
+    "dietDetails": "Fishes, squids, and small marine organisms caught by diving.",
+    "locations": [
+      "North America"
+    ],
+    "taxonomicClassification": "Pterosauria -> Pterodactyloidea -> Pteranodontidae -> Pteranodon",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Pteranodon_longiceps_-_1.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Pteranodon_longiceps_skeleton.jpg",
+    "discoveryHistory": "Discovered by Othniel Charles Marsh in 1870 in the Smoky Hill Chalk of Kansas. It was the first pterosaur found outside Europe.",
+    "interestingFacts": [
+      "Unlike earlier pterosaurs, it lacked teeth and had a bird-like beak.",
+      "Males had a large, backward-pointing crest on their skull, likely used for display and steering.",
+      "Fossils suggest they spent most of their time gliding over the Western Interior Seaway."
+    ],
+    "lengthM": 2,
+    "heightM": 1.5,
+    "weightKg": 50,
+    "sizeNotes": "Wingspan: 5.6 meters for females, up to 7.2 meters for males. Weight: ~30 to 90 kg.",
+    "relatedSpeciesNames": [
+      "Quetzalcoatlus northropi",
+      "Mosasaurus hoffmannii"
+    ]
+  },
+  {
+    "name": "Mosasaurus hoffmannii",
+    "scientificName": "Mosasaurus hoffmannii",
+    "nameMeaning": "Meuse River lizard",
+    "timePeriod": "Late Cretaceous",
+    "myaStart": 82.7,
+    "myaEnd": 66,
+    "dietType": "Carnivore",
+    "dietDetails": "Fish, ammonites, sharks, plesiosaurs, sea turtles, and even smaller mosasaurs.",
+    "locations": [
+      "Europe",
+      "North America",
+      "Africa",
+      "South America"
+    ],
+    "taxonomicClassification": "Squamata -> Mosasauridae -> Mosasaurinae -> Mosasaurus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Mosasaurus_hoffmannii_-_skeleton.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Mosasaurus_hoffmannii_-_skeleton.jpg",
+    "discoveryHistory": "First found in a chalk quarry near Maastricht, Netherlands, in 1764. The skull became famous when French revolutionary forces confiscated it in 1794.",
+    "interestingFacts": [
+      "Not a dinosaur, but a giant marine reptile closely related to modern monitor lizards and snakes.",
+      "Had a second row of teeth (pterygoid teeth) on the roof of its mouth, preventing prey from escaping down its throat.",
+      "Propelled itself through water with a powerful, shark-like tail fin, using its flippers only for steering."
+    ],
+    "lengthM": 15,
+    "heightM": 2.5,
+    "weightKg": 14000,
+    "sizeNotes": "Large specimens reached up to 15 to 17 meters in length; weight is estimated at 10 to 15 metric tons.",
+    "relatedSpeciesNames": [
+      "Elasmosaurus platyurus",
+      "Quetzalcoatlus northropi",
+      "Pteranodon longiceps"
+    ]
+  },
+  {
+    "name": "Elasmosaurus platyurus",
+    "scientificName": "Elasmosaurus platyurus",
+    "nameMeaning": "Thin-plate lizard with a flat tail",
+    "timePeriod": "Late Cretaceous",
+    "myaStart": 80.5,
+    "myaEnd": 80,
+    "dietType": "Carnivore",
+    "dietDetails": "Small bony fish, squids, and shelled cephalopods.",
+    "locations": [
+      "North America"
+    ],
+    "taxonomicClassification": "Plesiosauria -> Elasmosauridae -> Elasmosaurus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Elasmosaurus_platyurus.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/North_American_Plesiosaurs-_Elasmosaurus%2C_Cimoliasaurus%2C_and_Polycotylus.pdf",
+    "discoveryHistory": "Discovered in Kansas in 1867 by Theophilus Turner. Described by Edward Drinker Cope, who notoriously reconstructed the fossil with the head on the tail end.",
+    "interestingFacts": [
+      "Had an extremely long neck consisting of 72 neck vertebrae, more than any other known animal.",
+      "Its neck was relatively rigid and could not be bent like a snake; it likely swam slowly beneath fish schools and darted its head up.",
+      "Swallowed small pebbles (gastroliths) to help grind food and control its buoyancy."
+    ],
+    "lengthM": 10.3,
+    "heightM": 1.2,
+    "weightKg": 2000,
+    "sizeNotes": "Total length was 10.3 meters (34 feet), of which 7.1 meters was the neck.",
+    "relatedSpeciesNames": [
+      "Mosasaurus hoffmannii",
+      "Pteranodon longiceps"
+    ]
+  },
+  {
+    "name": "Gastornis parisiensis",
+    "scientificName": "Gastornis parisiensis",
+    "nameMeaning": "Gaston's bird from Paris",
+    "timePeriod": "Eocene",
+    "myaStart": 56,
+    "myaEnd": 45,
+    "dietType": "Herbivore",
+    "dietDetails": "Tough plant material, nuts, seeds, and fruit, crushed using its massive bill.",
+    "locations": [
+      "Europe",
+      "North America",
+      "Asia"
+    ],
+    "taxonomicClassification": "Aves -> Gastornithiformes -> Gastornithidae -> Gastornis",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e7/The_evolution_of_giant_flightless_birds_and_novel_phylogenetic_relationships_for_extinct_fowl_%28Aves%2C_Galloanseres%29.pdf",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/39/PSM_V21_D483_Skeleton_of_a_gastornis_eduardsii.jpg",
+    "discoveryHistory": "First discovered near Paris in 1855 by Gaston Planté. For over a century, it was known under the synonym Diatryma in North America.",
+    "interestingFacts": [
+      "For a long time, it was reconstructed as a terrifying carnivore preying on early horses, but chemical analysis of calcium isotopes in its bones proved it was a herbivore.",
+      "It was a flightless bird with tiny vestigial wings but possessed massive, muscular legs.",
+      "Its beak was extremely deep and strong, designed to crack open hard shells and seeds."
+    ],
+    "lengthM": 2,
+    "heightM": 2,
+    "weightKg": 175,
+    "sizeNotes": "Grew up to 2 meters (6.6 feet) tall; weight ranged from 150 to 200 kg.",
+    "relatedSpeciesNames": [
+      "Basilosaurus cetoides",
+      "Megatherium americanum"
+    ]
+  },
+  {
+    "name": "Basilosaurus cetoides",
+    "scientificName": "Basilosaurus cetoides",
+    "nameMeaning": "King lizard (named before its whale nature was known)",
+    "timePeriod": "Late Eocene",
+    "myaStart": 41.3,
+    "myaEnd": 33.9,
+    "dietType": "Carnivore",
+    "dietDetails": "Fish, sharks, and smaller marine mammals like Dorudon.",
+    "locations": [
+      "North America",
+      "Africa"
+    ],
+    "taxonomicClassification": "Mammalia -> Cetartiodactyla -> Basilosauridae -> Basilosaurinae -> Basilosaurus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Basilosaurus_cetoides_recon.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/83/Basilosaurus_cetoides_%281%29.jpg",
+    "discoveryHistory": "Fossils were common in the southeastern US, where they were used as fireplace irons. Richard Harlan described it as a reptile in 1834, but Richard Owen identified it as a whale in 1839.",
+    "interestingFacts": [
+      "One of the earliest fully aquatic whales, though it looked more like a giant sea serpent.",
+      "Retained tiny, vestigial hind limbs with feet and toes, a remnant of its land-dwelling ancestors.",
+      "Its jaw had teeth of different shapes (heterodonty), allowing it to grasp and slice prey."
+    ],
+    "lengthM": 18,
+    "heightM": 2,
+    "weightKg": 6000,
+    "sizeNotes": "Elongated body shape. Length: 15 to 20 meters. Weight: ~5 to 7 metric tons.",
+    "relatedSpeciesNames": [
+      "Gastornis parisiensis",
+      "Megalodon"
+    ]
+  },
+  {
+    "name": "Megalodon",
+    "scientificName": "Otodus megalodon",
+    "nameMeaning": "Giant tooth",
+    "timePeriod": "Neogene",
+    "myaStart": 23,
+    "myaEnd": 3.6,
+    "dietType": "Carnivore",
+    "dietDetails": "Large marine mammals, baleen whales, seals, sirenians, and sea turtles.",
+    "locations": [
+      "Europe",
+      "North America",
+      "South America",
+      "Africa",
+      "Asia",
+      "Oceania"
+    ],
+    "taxonomicClassification": "Chondrichthyes -> Lamniformes -> Otodontidae -> Otodus -> O. megalodon",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/49/O._megalodon_reconstruction_2025.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/67/Megalodon_skeleton.jpg",
+    "discoveryHistory": "Fossil teeth were historically regarded as petrified tongues of dragons. Nicolas Steno identified them as shark teeth in 1667. Named Otodus megalodon in 1843.",
+    "interestingFacts": [
+      "The largest predatory shark to have ever lived, with teeth reaching up to 18 centimeters (7 inches) in length.",
+      "Its skeleton was made of cartilage, which rarely fossilizes, leaving only teeth and rare vertebrae for study.",
+      "Extinction was likely driven by global cooling and competition with ancestors of the great white shark and killer whale."
+    ],
+    "lengthM": 16,
+    "heightM": 3,
+    "weightKg": 48000,
+    "sizeNotes": "Estimates range from 15 to 20 meters (50 to 65 feet); weight estimates range from 30 to 65 metric tons.",
+    "relatedSpeciesNames": [
+      "Basilosaurus cetoides",
+      "Smilodon fatalis"
+    ]
+  },
+  {
+    "name": "Smilodon fatalis",
+    "scientificName": "Smilodon fatalis",
+    "nameMeaning": "Chisel tooth that causes death",
+    "timePeriod": "Pleistocene",
+    "myaStart": 1.6,
+    "myaEnd": 0.01,
+    "dietType": "Carnivore",
+    "dietDetails": "Large herbivores like bison, camels, horses, and ground sloths.",
+    "locations": [
+      "North America",
+      "South America"
+    ],
+    "taxonomicClassification": "Mammalia -> Carnivora -> Felidae -> Machairodontinae -> Smilodon",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Saber-toothed_cat_%28Smilodon_fatalis%29_reconstruction%2C_Natural_History_Museum%2C_London%2C_Mammals_Gallery.JPG",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Smilodon_fatalis_skeleton.jpg",
+    "discoveryHistory": "First described by Joseph Leidy in 1869 from Texas. Over 3,500 individual skeletons have been recovered from the La Brea Tar Pits in Los Angeles.",
+    "interestingFacts": [
+      "The most famous 'saber-toothed cat', possessing canine teeth up to 18 centimeters (7 inches) long.",
+      "Much more robustly built than modern big cats, with extremely powerful forelimbs used to pin down prey.",
+      "Its jaw could open to a wide 120-degree angle, but its bite force was weaker than that of a modern lion."
+    ],
+    "lengthM": 1.75,
+    "heightM": 1,
+    "weightKg": 220,
+    "sizeNotes": "Length: 1.75 meters (excluding short tail); height: 1.0 meter at shoulder. Weight: 160 to 280 kg.",
+    "relatedSpeciesNames": [
+      "Mammuthus primigenius",
+      "Megatherium americanum",
+      "Megalodon"
+    ]
+  },
+  {
+    "name": "Mammuthus primigenius",
+    "scientificName": "Mammuthus primigenius",
+    "nameMeaning": "Woolly mammoth",
+    "timePeriod": "Pleistocene",
+    "myaStart": 0.35,
+    "myaEnd": 0.004,
+    "dietType": "Herbivore",
+    "dietDetails": "Grasses, sedges, shrubs, and herbaceous plants in the mammoth steppe.",
+    "locations": [
+      "Europe",
+      "Asia",
+      "North America"
+    ],
+    "taxonomicClassification": "Mammalia -> Proboscidea -> Elephantidae -> Mammuthus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Reconstruction_of_The_Skeleton_of_a_Mammuthus_Primigenius_-_1.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Squelette_de_mammouth_laineux_%28Mammuthus_primigenius%29_en_plastique_phosphorescent.jpg",
+    "discoveryHistory": "First scientifically described by Johann Friedrich Blumenbach in 1799. Mummified remains with intact skin, hair, and muscle have been found in Siberian permafrost.",
+    "interestingFacts": [
+      "Coexisted with early humans, who hunted them and depicted them in cave paintings (e.g. Rouffignac Cave, France).",
+      "Had a thick double coat of brown hair, small ears, and a short tail to minimize heat loss in freezing climates.",
+      "Its massive, curved tusks could grow up to 4.2 meters long and were likely used to shovel snow off vegetation."
+    ],
+    "lengthM": 4.5,
+    "heightM": 3,
+    "weightKg": 5000,
+    "sizeNotes": "Males stood 2.7 to 3.4 meters tall at the shoulder; females were smaller. Weight: 4 to 6 metric tons.",
+    "relatedSpeciesNames": [
+      "Smilodon fatalis",
+      "Coelodonta antiquitatis",
+      "Megatherium americanum"
+    ]
+  },
+  {
+    "name": "Megatherium americanum",
+    "scientificName": "Megatherium americanum",
+    "nameMeaning": "Great beast from America",
+    "timePeriod": "Pleistocene",
+    "myaStart": 1.8,
+    "myaEnd": 0.008,
+    "dietType": "Herbivore",
+    "dietDetails": "Leaves, twigs, and shrubs; could stand on hind legs to reach high branches.",
+    "locations": [
+      "South America"
+    ],
+    "taxonomicClassification": "Mammalia -> Pilosa -> Megatheriidae -> Megatheriinae -> Megatherium",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/20/Megatherium_americanum_by_sphenaphinae.png",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/11/Megatherium_americanum_skeleton_at_the_Natural_History_Museum%2C_London.jpg",
+    "discoveryHistory": "First fossil discovered in 1788 on the banks of the Luján River in Argentina by Manuel Torres. Described by Georges Cuvier in 1796.",
+    "interestingFacts": [
+      "One of the largest land mammals to have ever lived, comparable in size and weight to modern elephants.",
+      "Possessed enormous claws on its hands, likely used to pull down tree branches and strip them of foliage.",
+      "Capable of standing and walking bipedally on its hind legs to browse high vegetation."
+    ],
+    "lengthM": 6,
+    "heightM": 2.1,
+    "weightKg": 4000,
+    "sizeNotes": "Total length reached up to 6 meters (20 feet) from head to tail; weighed around 4 metric tons.",
+    "relatedSpeciesNames": [
+      "Smilodon fatalis",
+      "Doedicurus clavicaudatus",
+      "Mammuthus primigenius"
+    ]
+  },
+  {
+    "name": "Coelodonta antiquitatis",
+    "scientificName": "Coelodonta antiquitatis",
+    "nameMeaning": "Cavity tooth of antiquity (Woolly Rhinoceros)",
+    "timePeriod": "Pleistocene",
+    "myaStart": 0.35,
+    "myaEnd": 0.01,
+    "dietType": "Herbivore",
+    "dietDetails": "Grasses, sedges, and woody tundra vegetation.",
+    "locations": [
+      "Europe",
+      "Asia"
+    ],
+    "taxonomicClassification": "Mammalia -> Perissodactyla -> Rhinocerotidae -> Coelodonta",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/77/Coelodonta%2C_from_Osborn%2C_H._F._%281917%29._The_origin_and_evolution_of_life%2C_on_the_theory_of_action%2C_reaction_and_interaction_of_energy.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/87/Coelodonta_antiquitatis_.jpg",
+    "discoveryHistory": "First described in 1799 by Johann Friedrich Blumenbach. Well-preserved specimens have been found frozen in Siberia and oil-soaked in Poland.",
+    "interestingFacts": [
+      "Possessed a massive, flat horn up to 1.3 meters long, which it used to sweep snow away to find plants.",
+      "Covered in thick, shaggy reddish-brown hair to withstand the freezing temperatures of Ice Age Europe.",
+      "Frequently depicted in Palaeolithic cave art alongside woolly mammoths."
+    ],
+    "lengthM": 3.8,
+    "heightM": 2,
+    "weightKg": 2300,
+    "sizeNotes": "Grew up to 3.8 meters (12 feet) in length; stood 2.0 meters tall. Weight: ~1.8 to 2.7 metric tons.",
+    "relatedSpeciesNames": [
+      "Mammuthus primigenius",
+      "Smilodon fatalis"
+    ]
+  },
+  {
+    "name": "Doedicurus clavicaudatus",
+    "scientificName": "Doedicurus clavicaudatus",
+    "nameMeaning": "Pestle tail (referring to the tail club)",
+    "timePeriod": "Pleistocene",
+    "myaStart": 2,
+    "myaEnd": 0.01,
+    "dietType": "Herbivore",
+    "dietDetails": "Low-growing grasses, herbs, and wetland plants.",
+    "locations": [
+      "South America"
+    ],
+    "taxonomicClassification": "Mammalia -> Cingulata -> Chlamyphoridae -> Doedicurus",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Doedicurus_and_Glyptodon.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Glyptodontidae-_Sclerocalyptus_ornatus%2C_Glyptodon_clavipes%2C_Panochthus_intermedius%2C_Doedicurus_clavicaudatus.jpg",
+    "discoveryHistory": "Described in 1874 by Richard Owen from fossils found in Argentina. It was one of the largest glyptodonts.",
+    "interestingFacts": [
+      "A giant prehistoric relative of armadillos with a huge, dome-shaped carapace made of fused bony studs.",
+      "The end of its tail featured a large, spiked bony club that resembled a medieval morning star.",
+      "Its armor was so solid that early human settlers in South America reportedly used the shells as shelters."
+    ],
+    "lengthM": 4,
+    "heightM": 1.5,
+    "weightKg": 1400,
+    "sizeNotes": "Total length was 4.0 meters; shell height was 1.5 meters. Weighed about 1.4 metric tons.",
+    "relatedSpeciesNames": [
+      "Megatherium americanum",
+      "Smilodon fatalis"
+    ]
+  },
+  {
+    "name": "Thylacoleo carnifex",
+    "scientificName": "Thylacoleo carnifex",
+    "nameMeaning": "Marsupial lion butcher",
+    "timePeriod": "Pleistocene",
+    "myaStart": 1.6,
+    "myaEnd": 0.03,
+    "dietType": "Carnivore",
+    "dietDetails": "Large marsupials like Diprotodon and giant kangaroos.",
+    "locations": [
+      "Oceania"
+    ],
+    "taxonomicClassification": "Mammalia -> Diprotodontia -> Thylacoleonidae -> Thylacoleo",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/06/Thylacoleo_skeleton_diagram.tiff",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/06/Thylacoleo_skeleton_diagram.tiff",
+    "discoveryHistory": "First described by Richard Owen in 1859 from fossil fragments. A near-complete skeleton was discovered in Flight Star Cave, Western Australia in 2002.",
+    "interestingFacts": [
+      "The largest carnivorous mammal known to have lived in Australia.",
+      "Possessed enormous, bolt-cutter-like premolar teeth that could easily crush bone and slice flesh.",
+      "Had retractable claws, including a huge semi-opposable thumb claw used to grasp and dispatch prey."
+    ],
+    "lengthM": 1.5,
+    "heightM": 0.75,
+    "weightKg": 110,
+    "sizeNotes": "Stood 75 cm at shoulder; length 1.5 meters. Weighed 90 to 130 kg, comparable to a small female lion.",
+    "relatedSpeciesNames": [
+      "Diprotodon optatum",
+      "Smilodon fatalis"
+    ]
+  },
+  {
+    "name": "Diprotodon optatum",
+    "scientificName": "Diprotodon optatum",
+    "nameMeaning": "Two forward teeth",
+    "timePeriod": "Pleistocene",
+    "myaStart": 1.6,
+    "myaEnd": 0.046,
+    "dietType": "Herbivore",
+    "dietDetails": "Shrubs, twigs, leaves, and saltbush in dry, open woodlands.",
+    "locations": [
+      "Oceania"
+    ],
+    "taxonomicClassification": "Mammalia -> Diprotodontia -> Diprotodontidae -> Diprotodon",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/42/Dirpotodon_optatum.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Diprotodon_optatum_skeleton.jpg",
+    "discoveryHistory": "First found in the early 1830s in Wellington Caves, New South Wales. Described by Richard Owen in 1838.",
+    "interestingFacts": [
+      "The largest known marsupial of all time, standing as tall as a modern rhinoceros.",
+      "Related to modern wombats and koalas, featuring a backward-facing pouch to prevent dirt entry while digging.",
+      "Fossil footprints show they traveled in herds, migrating across Australia's interior to find water."
+    ],
+    "lengthM": 3.8,
+    "heightM": 2,
+    "weightKg": 2800,
+    "sizeNotes": "Length: ~3.8 meters; height at shoulder: 2.0 meters. Weighed up to 2.8 metric tons.",
+    "relatedSpeciesNames": [
+      "Thylacoleo carnifex",
+      "Megatherium americanum"
+    ]
+  }
+]

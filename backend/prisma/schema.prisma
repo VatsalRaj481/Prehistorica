@@ -1,0 +1,53 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Species {
+  id                      Int               @id @default(autoincrement())
+  name                    String            @unique
+  scientificName          String
+  nameMeaning             String
+  timePeriod              String            // e.g., "Late Cretaceous"
+  myaStart                Float             // Millions of years ago start (e.g., 68.0)
+  myaEnd                  Float             // Millions of years ago end (e.g., 66.0)
+  dietType                String            // "Carnivore" | "Herbivore" | "Omnivore"
+  dietDetails             String
+  locations               String[]          // e.g. ["North America"]
+  taxonomicClassification String            // e.g., "Dinosauria -> Theropoda -> Tyrannosauridae"
+  genus                   String?           // e.g., "Tyrannosaurus"
+  family                  String?           // e.g., "Tyrannosauridae"
+  fossilFormation         String?           // e.g., "Hell Creek Formation"
+  country                 String?           // e.g., "United States"
+  creatureType            String?           // e.g., "Dinosaur" | "Pterosaur" | "Marine Reptile" etc.
+  reconstructionImageUrl  String?           // primary illustration URL
+  fossilImageUrl          String?           // secondary skeleton/fossil photo URL
+  discoveryHistory        String
+  interestingFacts        String[]          // List of bullet points
+  lengthM                 Float?            // Structured length in meters
+  heightM                 Float?            // Structured height in meters
+  weightKg                Float?            // Midpoint of scientific estimates in kg
+  sizeNotes               String            // Range context or notes
+
+  // Self-relations to model related species
+  relatedFrom             SpeciesRelation[] @relation("RelatedFrom")
+  relatedTo               SpeciesRelation[] @relation("RelatedTo")
+
+  createdAt               DateTime          @default(now())
+  updatedAt               DateTime          @updatedAt
+}
+
+model SpeciesRelation {
+  id               Int     @id @default(autoincrement())
+  speciesId        Int
+  relatedSpeciesId Int
+
+  species          Species @relation("RelatedFrom", fields: [speciesId], references: [id], onDelete: Cascade)
+  relatedSpecies   Species @relation("RelatedTo", fields: [relatedSpeciesId], references: [id], onDelete: Cascade)
+
+  @@unique([speciesId, relatedSpeciesId])
+}

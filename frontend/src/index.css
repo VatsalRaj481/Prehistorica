@@ -1,0 +1,74 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+/* Custom utility styles if needed, e.g. custom scrollbars or styling overrides */
+:root {
+  --map-height: 500px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+  background-color: #0b0f19; /* premium dark slate color */
+  color: #f3f4f6;
+  overflow-x: hidden;
+}
+
+/* Custom styles for Leaflet to fit our theme */
+.leaflet-container {
+  background-color: #111827 !important;
+  font-family: inherit;
+  border-radius: 0.75rem;
+}
+
+.leaflet-bar {
+  border: none !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+}
+
+.leaflet-bar a {
+  background-color: #1f2937 !important;
+  color: #f3f4f6 !important;
+  border-bottom: 1px solid #374151 !important;
+  transition: all 0.2s ease;
+}
+
+.leaflet-bar a:hover {
+  background-color: #374151 !important;
+  color: #3b82f6 !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background-color: #1f2937 !important;
+  color: #f3f4f6 !important;
+  border-radius: 0.5rem !important;
+  border: 1px solid #374151;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3) !important;
+}
+
+.leaflet-popup-tip {
+  background-color: #1f2937 !important;
+  border: 1px solid #374151;
+}
+
+/* Custom styling for timeline slider tracks */
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #1f2937;
+  border-radius: 9999px;
+  height: 8px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  background: #3b82f6;
+  border-radius: 9999px;
+  width: 20px;
+  height: 20px;
+  margin-top: -6px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: #60a5fa;
+}

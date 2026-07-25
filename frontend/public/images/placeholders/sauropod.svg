@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <rect width="100" height="100" fill="#0f172a" rx="12" stroke="#1e293b" stroke-width="2"/>
+  <g transform="translate(0, 5)">
+    <path d="M30,35 C15,35 10,45 10,55 C10,65 25,65 35,65 C45,65 80,60 90,45 C90,30 75,30 65,35 Z" fill="#334155" />
+  </g>
+  <text x="50%" y="82%" font-family="sans-serif" font-size="7" fill="#64748b" text-anchor="middle" font-weight="bold" letter-spacing="1">SILHOUETTE PLACEHOLDER</text>
+  <text x="50%" y="90%" font-family="sans-serif" font-size="6" fill="#475569" text-anchor="middle" font-weight="bold" letter-spacing="0.5">DINOSAUR (SAUROPOD)</text>
+</svg>
