@@ -1,48 +1,63 @@
-import { Link, useLocation } from 'react-router-dom';
-import { Compass, Search, Map } from 'lucide-react';
+import { Link } from "wouter";
+import { Compass, Search, Map } from "lucide-react";
 
+/**
+ * Navigation Bar Component
+ * Design: Minimal, elegant top navigation with Playfair Display branding
+ * - Warm terracotta accent for the logo
+ * - Clean, readable links with hover states
+ * - Responsive mobile menu support
+ */
 export default function Navbar() {
-  const location = useLocation();
-
-  const isActive = (path: string) => {
-    return location.pathname === path
-      ? 'text-blue-400 border-b-2 border-blue-400 font-semibold'
-      : 'text-slate-300 hover:text-white transition-colors';
-  };
-
   return (
-    <nav className="bg-slate-900/85 border-b border-slate-850 sticky top-0 z-50 backdrop-blur-md">
+    <nav className="sticky top-0 z-50 bg-background border-b border-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <Link to="/" className="flex items-center gap-2">
-              <Compass className="h-8 w-8 text-blue-500 animate-pulse" />
-              <span className="text-xl font-extrabold tracking-wider bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <div className="flex items-center gap-1.5">
+              <img 
+                src="/manus-storage/trilobite-logo_f0a5af50.png" 
+                alt="Prehistorica" 
+                className="h-7 w-7"
+              />
+              <span className="text-xl font-bold text-foreground" style={{ fontFamily: "'Playfair Display', serif" }}>
                 PREHISTORICA
               </span>
-            </Link>
-          </div>
-          
-          <div className="flex space-x-8 items-center">
+            </div>
+          </Link>
+
+          {/* Navigation Links */}
+          <div className="hidden md:flex items-center gap-8">
             <Link
               to="/"
-              className={`flex items-center gap-1.5 px-1 py-5 text-sm font-medium ${isActive('/')}`}
+              className="text-sm font-medium text-foreground hover:text-accent transition-colors"
             >
               Home
             </Link>
             <Link
               to="/browse"
-              className={`flex items-center gap-1.5 px-1 py-5 text-sm font-medium ${isActive('/browse')}`}
+              className="text-sm font-medium text-foreground hover:text-accent transition-colors flex items-center gap-1.5"
             >
               <Search className="h-4 w-4" />
               Browse
             </Link>
             <Link
               to="/map"
-              className={`flex items-center gap-1.5 px-1 py-5 text-sm font-medium ${isActive('/map')}`}
+              className="text-sm font-medium text-foreground hover:text-accent transition-colors flex items-center gap-1.5"
             >
               <Map className="h-4 w-4" />
-              Interactive Map
+              Map
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center gap-4">
+            <Link to="/browse" className="text-foreground hover:text-accent">
+              <Search className="h-5 w-5" />
+            </Link>
+            <Link to="/map" className="text-foreground hover:text-accent">
+              <Map className="h-5 w-5" />
             </Link>
           </div>
         </div>
