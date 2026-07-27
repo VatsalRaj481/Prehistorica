@@ -1,198 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
-@import "tw-animate-css";
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap');
+@import "leaflet/dist/leaflet.css";
 
-@custom-variant dark (&:is(.dark *));
+@theme {
+  --color-slate-950: #12151A;
+  --color-slate-900: #1E2228;
+  --color-slate-800: #262B33;
+  --color-slate-850: #2C3038;
+  --color-slate-700: #2C3038;
+  --color-slate-600: #2C3038;
+  --color-slate-550: #9CA3AD;
+  --color-slate-500: #9CA3AD;
+  --color-slate-400: #9CA3AD;
+  --color-slate-350: #9CA3AD;
+  --color-slate-300: #9CA3AD;
+  --color-slate-200: #EDE7DC;
+  --color-slate-100: #EDE7DC;
 
-@theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --color-blue-950: #12151A;
+  --color-blue-900: #1E2228;
+  --color-blue-800: #262B33;
+  --color-blue-700: #2C3038;
+  --color-blue-600: #D98E4A;
+  --color-blue-500: #D98E4A;
+  --color-blue-400: #D98E4A;
+  --color-blue-300: #EDE7DC;
+  
+  --color-indigo-600: #2E7A6E;
+  --color-indigo-500: #2E7A6E;
+  --color-indigo-400: #2E7A6E;
+  
+  --color-white: #EDE7DC;
+  --color-zinc-950: #12151A;
+  --color-zinc-900: #1E2228;
+  --color-zinc-800: #262B33;
+  --color-zinc-700: #2C3038;
+
+  --font-sans: "Inter", sans-serif;
+  --radius-xl: 12px;
+  --radius-lg: 8px;
+  --radius-md: 8px;
 }
 
 :root {
-  /* Warm Earth Tone Palette */
-  --color-cream: oklch(0.975 0.002 60);
-  --color-terracotta: oklch(0.565 0.18 35);
-  --color-sage: oklch(0.92 0.01 150);
-  --color-forest: oklch(0.35 0.08 150);
-  --color-charcoal: oklch(0.15 0.01 65);
-  --color-amber: oklch(0.7 0.15 50);
-  
-  --primary: oklch(0.565 0.18 35);
-  --primary-foreground: oklch(1 0 0);
-  --sidebar-primary: oklch(0.565 0.18 35);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --chart-1: oklch(0.565 0.18 35);
-  --chart-2: oklch(0.35 0.08 150);
-  --chart-3: oklch(0.7 0.15 50);
-  --chart-4: oklch(0.6 0.12 40);
-  --chart-5: oklch(0.4 0.1 155);
-  --radius: 0.65rem;
-  --background: oklch(0.975 0.002 60);
-  --foreground: oklch(0.15 0.01 65);
-  --card: oklch(0.98 0.001 60);
-  --card-foreground: oklch(0.15 0.01 65);
-  --popover: oklch(0.98 0.001 60);
-  --popover-foreground: oklch(0.15 0.01 65);
-  --secondary: oklch(0.92 0.01 150);
-  --secondary-foreground: oklch(0.25 0.01 65);
-  --muted: oklch(0.92 0.01 150);
-  --muted-foreground: oklch(0.45 0.02 65);
-  --accent: oklch(0.565 0.18 35);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.01 150);
-  --input: oklch(0.92 0.01 150);
-  --ring: oklch(0.565 0.18 35);
-  --sidebar: oklch(0.98 0.001 60);
-  --sidebar-foreground: oklch(0.15 0.01 65);
-  --sidebar-accent: oklch(0.565 0.18 35);
-  --sidebar-accent-foreground: oklch(1 0 0);
-  --sidebar-border: oklch(0.92 0.01 150);
-  --sidebar-ring: oklch(0.565 0.18 35);
+  --map-height: 500px;
 }
 
-.dark {
-  /* Dark mode not used for Prehistorica — keeping light theme */
-  --primary: oklch(0.565 0.18 35);
-  --primary-foreground: oklch(1 0 0);
-  --sidebar-primary: oklch(0.565 0.18 35);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --background: oklch(0.975 0.002 60);
-  --foreground: oklch(0.15 0.01 65);
-  --card: oklch(0.98 0.001 60);
-  --card-foreground: oklch(0.15 0.01 65);
-  --popover: oklch(0.98 0.001 60);
-  --popover-foreground: oklch(0.15 0.01 65);
-  --secondary: oklch(0.92 0.01 150);
-  --secondary-foreground: oklch(0.25 0.01 65);
-  --muted: oklch(0.92 0.01 150);
-  --muted-foreground: oklch(0.45 0.02 65);
-  --accent: oklch(0.565 0.18 35);
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.01 150);
-  --input: oklch(0.92 0.01 150);
-  --ring: oklch(0.565 0.18 35);
-  --sidebar: oklch(0.98 0.001 60);
-  --sidebar-foreground: oklch(0.15 0.01 65);
-  --sidebar-accent: oklch(0.565 0.18 35);
-  --sidebar-accent-foreground: oklch(1 0 0);
-  --sidebar-border: oklch(0.92 0.01 150);
-  --sidebar-ring: oklch(0.565 0.18 35);
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #12151A;
+  color: #9CA3AD;
+  overflow-x: hidden;
+  font-size: 16px;
+  font-weight: 400;
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground font-sans;
-    font-family: 'Inter', sans-serif;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-  }
-  h1 {
-    @apply text-4xl sm:text-5xl tracking-tight;
-    letter-spacing: 0.5px;
-  }
-  h2 {
-    @apply text-3xl sm:text-4xl tracking-tight;
-    letter-spacing: 0.5px;
-  }
-  h3 {
-    @apply text-xl sm:text-2xl font-semibold;
-  }
-  button:not(:disabled),
-  [role="button"]:not([aria-disabled="true"]),
-  [type="button"]:not(:disabled),
-  [type="submit"]:not(:disabled),
-  [type="reset"]:not(:disabled),
-  a[href],
-  select:not(:disabled),
-  input[type="checkbox"]:not(:disabled),
-  input[type="radio"]:not(:disabled) {
-    @apply cursor-pointer;
-  }
+h1 {
+  font-size: 3rem; /* 48px */
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #EDE7DC !important;
 }
 
-@layer components {
-  /**
-   * Custom container utility that centers content and adds responsive padding.
-   *
-   * This overrides Tailwind's default container behavior to:
-   * - Auto-center content (mx-auto)
-   * - Add responsive horizontal padding
-   * - Set max-width for large screens
-   *
-   * Usage: <div className="container">...</div>
-   *
-   * For custom widths, use max-w-* utilities directly:
-   * <div className="max-w-6xl mx-auto px-4">...</div>
-   */
-  .container {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem; /* 16px - mobile padding */
-    padding-right: 1rem;
-  }
+h2 {
+  font-size: 2rem; /* 32px */
+  font-weight: 700;
+  color: #EDE7DC !important;
+}
 
-  .flex {
-    min-height: 0;
-    min-width: 0;
-  }
+/* Card components shadow & border & border-radius override */
+.bg-gradient-to-br, .bg-slate-900, .bg-slate-950, .bg-slate-900\/60, .bg-slate-950\/90 {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
+  border-radius: 12px !important;
+  border-color: #2C3038 !important;
+}
 
-  @media (min-width: 640px) {
-    .container {
-      padding-left: 1.5rem; /* 24px - tablet padding */
-      padding-right: 1.5rem;
-    }
-  }
+/* Image container radius */
+img {
+  border-radius: 8px !important;
+}
 
-  @media (min-width: 1024px) {
-    .container {
-      padding-left: 2rem; /* 32px - desktop padding */
-      padding-right: 2rem;
-      max-width: 1280px; /* Standard content width */
-    }
-  }
+/* Button components radius */
+button, .button, a.px-6, a.px-4 {
+  border-radius: 8px !important;
+}
+
+/* Custom styles for Leaflet to fit our theme */
+.leaflet-container {
+  background-color: #1E2228 !important;
+  font-family: inherit;
+  border-radius: 12px !important;
+}
+
+.leaflet-bar {
+  border: none !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
+}
+
+.leaflet-bar a {
+  background-color: #262B33 !important;
+  color: #EDE7DC !important;
+  border-bottom: 1px solid #2C3038 !important;
+  transition: all 0.2s ease;
+}
+
+.leaflet-bar a:hover {
+  background-color: #1E2228 !important;
+  color: #D98E4A !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background-color: #1E2228 !important;
+  color: #EDE7DC !important;
+  border-radius: 12px !important;
+  border: 1px solid #2C3038;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
+}
+
+.leaflet-popup-tip {
+  background-color: #1E2228 !important;
+  border: 1px solid #2C3038;
+}
+
+/* Custom styling for timeline slider tracks */
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #262B33;
+  border-radius: 9999px;
+  height: 8px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  background: #D98E4A;
+  border-radius: 9999px;
+  width: 20px;
+  height: 20px;
+  margin-top: -6px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: #2E7A6E;
 }

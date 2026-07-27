@@ -1,47 +1,24 @@
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
-import ErrorBoundary from "./components/ErrorBoundary";
-import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
-import Browse from "./pages/Browse";
-import SpeciesDetail from "./pages/SpeciesDetail";
-import TimeMap from "./pages/TimeMap";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar.js';
+import Footer from './components/Footer.js';
+import Home from './pages/Home.js';
+import Browse from './pages/Browse.js';
+import SpeciesDetail from './pages/SpeciesDetail.js';
+import TimeMap from './pages/TimeMap.js';
 
-function Router() {
+export default function App() {
   return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/browse"} component={Browse} />
-      <Route path={"/species/:id"} component={SpeciesDetail} />
-      <Route path={"/map"} component={TimeMap} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
+    <Router>
+      <Navbar />
+      <main className="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/browse" element={<Browse />} />
+          <Route path="/species/:id" element={<SpeciesDetail />} />
+          <Route path="/map" element={<TimeMap />} />
+        </Routes>
+      </main>
+      <Footer />
+    </Router>
   );
 }
-
-function App() {
-  return (
-    <ErrorBoundary>
-      <ThemeProvider defaultTheme="light">
-        <TooltipProvider>
-          <Toaster />
-          <Navbar />
-          <main className="min-h-screen bg-background text-foreground">
-            <div className="container max-w-7xl mx-auto px-4 py-8 sm:py-12">
-              <Router />
-            </div>
-          </main>
-          <Footer />
-        </TooltipProvider>
-      </ThemeProvider>
-    </ErrorBoundary>
-  );
-}
-
-export default App;
