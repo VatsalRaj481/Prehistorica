@@ -186,24 +186,11 @@ export default function Browse() {
           </p>
         </div>
 
-        {/* Search bar & Mobile filter button */}
-        <div className="flex items-center gap-2 w-full md:w-auto">
-          <div className="relative flex-grow md:w-72">
-            <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <Search className="h-4 w-4 text-slate-500" />
-            </span>
-            <input
-              type="text"
-              value={search}
-              onChange={(e) => updateParams({ search: e.target.value })}
-              placeholder="Search by name, clade, formation..."
-              className="block w-full pl-9 pr-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-sm placeholder-slate-500 text-slate-200 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-            />
-          </div>
-          
+        {/* Mobile filter button */}
+        <div className="flex items-center gap-2 md:hidden">
           <button
             onClick={() => setShowMobileFilters(!showMobileFilters)}
-            className="md:hidden p-2 bg-slate-900 border border-slate-800 rounded-xl text-slate-400 hover:text-white flex items-center justify-center cursor-pointer"
+            className="p-2 bg-slate-900 border border-slate-800 rounded-xl text-slate-400 hover:text-white flex items-center justify-center cursor-pointer"
             title="Toggle Filters"
           >
             <SlidersHorizontal className="h-5 w-5" />
@@ -214,14 +201,15 @@ export default function Browse() {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Left Filter Sidebar - Desktop */}
         <aside className="hidden md:block bg-slate-900/50 border border-slate-855 p-5 rounded-2xl h-fit space-y-6">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-              <SlidersHorizontal className="h-4 w-4 text-blue-400" /> Combinable Filters
+          <div className="flex items-center justify-between border-b border-slate-800 pb-3 gap-2">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5 min-w-0">
+              <SlidersHorizontal className="h-4 w-4 text-blue-400 shrink-0" />
+              <span className="truncate">Combinable Filters</span>
             </h2>
             {hasActiveFilters && (
               <button
                 onClick={clearFilters}
-                className="text-xs text-blue-400 hover:text-blue-300 font-semibold cursor-pointer"
+                className="text-xs text-blue-400 hover:text-blue-300 font-semibold shrink-0 cursor-pointer whitespace-nowrap"
               >
                 Reset All
               </button>
@@ -398,6 +386,12 @@ export default function Browse() {
           {hasActiveFilters && (
             <div className="flex flex-wrap items-center gap-2 p-3 bg-slate-900/40 rounded-xl border border-slate-855 text-xs">
               <span className="text-slate-500 font-bold uppercase tracking-wider text-[10px]">Active Filters:</span>
+              {search && (
+                <span className="px-2.5 py-0.5 rounded bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center gap-1 font-semibold">
+                  Search: "{search}"
+                  <button onClick={() => updateParams({ search: null })} className="hover:text-white"><X className="h-3 w-3" /></button>
+                </span>
+              )}
               {selectedClades.map(c => (
                 <span key={c} className="px-2.5 py-0.5 rounded bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center gap-1 font-semibold">
                   Clade: {c}

@@ -113,14 +113,16 @@ export async function getSpecies(req: Request, res: Response, next: NextFunction
       const targetStr = country as string || cleanFormation;
       if (targetStr) {
         where.geographicRange = {
-          contains: targetStr
+          contains: targetStr,
+          mode: 'insensitive'
         };
       }
     }
 
     if (time_period) {
       where.timePeriod = {
-        contains: time_period as string
+        contains: time_period as string,
+        mode: 'insensitive'
       };
     }
 
@@ -133,14 +135,14 @@ export async function getSpecies(req: Request, res: Response, next: NextFunction
     }
 
     if (search) {
-      const searchStr = search as string;
+      const searchStr = (search as string).trim();
       where.OR = [
-        { name: { contains: searchStr } },
-        { scientificName: { contains: searchStr } },
-        { nameMeaning: { contains: searchStr } },
-        { geographicRange: { contains: searchStr } },
-        { taxonomy: { contains: searchStr } },
-        { discoveryHistory: { contains: searchStr } }
+        { name: { contains: searchStr, mode: 'insensitive' } },
+        { scientificName: { contains: searchStr, mode: 'insensitive' } },
+        { nameMeaning: { contains: searchStr, mode: 'insensitive' } },
+        { geographicRange: { contains: searchStr, mode: 'insensitive' } },
+        { taxonomy: { contains: searchStr, mode: 'insensitive' } },
+        { discoveryHistory: { contains: searchStr, mode: 'insensitive' } }
       ];
     }
 
@@ -211,9 +213,9 @@ export async function searchAutocomplete(req: Request, res: Response, next: Next
     const matches = await prisma.species.findMany({
       where: {
         OR: [
-          { name: { contains: searchStr } },
-          { scientificName: { contains: searchStr } },
-          { geographicRange: { contains: searchStr } }
+          { name: { contains: searchStr, mode: 'insensitive' } },
+          { scientificName: { contains: searchStr, mode: 'insensitive' } },
+          { geographicRange: { contains: searchStr, mode: 'insensitive' } }
         ]
       },
       select: {
