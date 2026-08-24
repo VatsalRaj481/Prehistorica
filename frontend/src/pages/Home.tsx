@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchCreatureOfTheDay, Species } from '../services/api.js';
-import { Calendar, ArrowRight, Dna, Map, ShieldAlert, Sparkles, Scale, Compass } from 'lucide-react';
+import { Calendar, ArrowRight, Dna, Map, ShieldAlert, Sparkles, Scale, Compass, FileText } from 'lucide-react';
 
 export default function Home() {
   const [creature, setCreature] = useState<Species | null>(null);
@@ -9,6 +9,7 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    document.title = 'Prehistorica | Deep Time Prehistoric Fauna Encyclopedia';
     fetchCreatureOfTheDay()
       .then((data) => {
         setCreature(data);
@@ -55,7 +56,7 @@ export default function Home() {
         <div className="flex items-center gap-2 border-b border-slate-800 pb-3">
           <Calendar className="h-5 w-5 text-blue-400" />
           <h2 className="text-2xl font-bold tracking-tight text-slate-100">
-            Creature of the Day
+            Random Creature of the Day
           </h2>
           <span className="text-xs text-slate-500 ml-auto bg-slate-900 px-3 py-1 rounded-full border border-slate-800">
             Determined Daily (UTC)
@@ -75,12 +76,13 @@ export default function Home() {
           <div className="relative bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800/80 rounded-2xl overflow-hidden shadow-2xl hover:border-slate-700/60 transition-all group">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 p-6 sm:p-8">
               {/* Image Hero Container */}
-              <div className="lg:col-span-7 relative h-64 sm:h-96 rounded-xl overflow-hidden bg-slate-950 border border-slate-850 group-hover:border-slate-800 transition-all">
+              <div className="lg:col-span-7 relative h-64 sm:h-96 rounded-xl overflow-hidden bg-slate-950 border border-slate-850 group-hover:border-slate-800 transition-all flex items-center justify-center p-4 sm:p-6">
+                <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
                 {creature.reconstructionImageUrl ? (
                   <img
                     src={creature.reconstructionImageUrl}
                     alt={creature.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
+                    className="max-w-full max-h-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-102 drop-shadow-md z-10"
                   />
                 ) : (
                   <div className="w-full h-full flex flex-col items-center justify-center text-slate-500 text-sm bg-slate-950">
@@ -89,7 +91,7 @@ export default function Home() {
                   </div>
                 )}
                 {/* Geologic Era Badge overlay */}
-                <div className="absolute top-4 left-4 bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-800 text-xs font-semibold text-blue-400 shadow-md">
+                <div className="absolute top-4 left-4 bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-800 text-xs font-semibold text-blue-400 shadow-md z-20">
                   {creature.timePeriod} ({creature.myaStart}–{creature.myaEnd} MYA)
                 </div>
               </div>
@@ -106,8 +108,18 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <p className="text-sm text-slate-300 leading-relaxed line-clamp-4">
-                    {creature.dietDetails} {creature.discoveryHistory}
+                  {/* Distinctive Fun Fact */}
+                  {creature.interestingFacts && creature.interestingFacts.length > 0 && (
+                    <div className="p-3 bg-indigo-500/10 border border-indigo-500/20 rounded-xl text-xs text-indigo-300 space-y-1">
+                      <div className="font-bold flex items-center gap-1 uppercase tracking-wider text-[10px]">
+                        <FileText className="h-3 w-3" /> Distinctive Key Fact
+                      </div>
+                      <p className="leading-relaxed">{creature.interestingFacts[0]}</p>
+                    </div>
+                  )}
+
+                  <p className="text-xs text-slate-300 leading-relaxed line-clamp-3">
+                    {creature.dietDetails}
                   </p>
 
                   {/* Size Stat Block */}
@@ -136,11 +148,11 @@ export default function Home() {
                 <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
                   <div className="flex items-center gap-1.5 text-xs text-slate-400">
                     <Scale className="h-4 w-4 text-indigo-400" />
-                    <span>{creature.dietType}</span>
+                    <span>{creature.dietType} &bull; {creature.clade}</span>
                   </div>
                   <Link
                     to={`/species/${creature.id}`}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-lg transition-colors border border-slate-750 text-xs font-semibold"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors border border-blue-500 text-xs font-semibold shadow-md"
                   >
                     View Full Profile <ArrowRight className="h-3 w-3" />
                   </Link>
@@ -188,3 +200,4 @@ export default function Home() {
     </div>
   );
 }
+

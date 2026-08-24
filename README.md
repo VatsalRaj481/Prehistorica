@@ -108,5 +108,17 @@ Prehistorica/
 
 ---
 
+## 🎨 Image Sourcing & Media Standards
+
+When contributing new species entries or updating existing records:
+* **Primary Artwork Entry (`type: "art"`)**: Must be clean digital life-reconstruction artwork — a full-body illustration on a plain, transparent, or natural background.
+* **Prohibited as Primary Art**: Skeletal diagrams, academic figure scans from paper journals, anatomical line drawings, or images with baked-in text, labels, numbers, scale bars, or citation watermarks are **NOT** acceptable as the primary `type: "art"` media entry.
+* **Diagrams & Photos**: Skeletal diagrams, muscle reconstructions, and technical paper scans must be categorized under `type: "diagram"` or `type: "scale_diagram"`. Fossil specimen photos belong under `type: "photo"`.
+* **Licensing**: Never hotlink or scrape images without confirming open licenses (CC-BY, CC-BY-SA, Public Domain) or obtaining explicit attribution rights.
+* **Reference Template**: A standard JSON template for contributing species is located at [`backend/scripts/species-template.json`](file:///d:/My%20folders/AI%201.0/Prehistoric%20encylcopedia/backend/scripts/species-template.json).
+
+---
+
 ## 📝 License
 This project is open-source. All paleontological data and reconstructions belong to their respective discoverers and illustrators cited within.
+

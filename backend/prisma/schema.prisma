@@ -7,31 +7,85 @@ generator client {
   provider = "prisma-client-js"
 }
 
+enum Diet {
+  carnivore
+  herbivore
+  omnivore
+  piscivore
+  filter_feeder
+}
+
+enum Habitat {
+  terrestrial
+  semi_aquatic
+  freshwater
+  aerial
+  marine
+}
+
+enum Clade {
+  Theropod
+  Sauropod
+  Ornithischian
+  Pterosaur
+  Marine_Reptile            @map("Marine Reptile")
+  Early_Mammal_Synapsid     @map("Early Mammal/Synapsid")
+  Early_Tetrapod_Amphibian  @map("Early Tetrapod/Amphibian")
+  Invertebrate
+  Sauropodomorph
+  Aetosaur
+  Phytosaur
+  Rauisuchian
+  Poposauroid
+  Crocodylomorph
+  Silesaurid
+  Archosauriform
+  Protorosaur
+  Other
+}
+
+
+enum TaxonomicStatus {
+  valid
+  nomen_dubium
+  synonym
+  disputed
+}
+
 model Species {
   id                      Int               @id @default(autoincrement())
   name                    String            @unique
   scientificName          String
   nameMeaning             String
   timePeriod              String            // e.g., "Late Cretaceous"
+  epoch                   String?           // e.g., "Late Cretaceous Epoch"
   myaStart                Float             // Millions of years ago start (e.g., 68.0)
   myaEnd                  Float             // Millions of years ago end (e.g., 66.0)
-  dietType                String            // "Carnivore" | "Herbivore" | "Omnivore"
+  
+  diet                    Diet              @default(carnivore)
   dietDetails             String
-  locations               String[]          // e.g. ["North America"]
-  taxonomicClassification String            // e.g., "Dinosauria -> Theropoda -> Tyrannosauridae"
-  genus                   String?           // e.g., "Tyrannosaurus"
-  family                  String?           // e.g., "Tyrannosauridae"
-  fossilFormation         String?           // e.g., "Hell Creek Formation"
-  country                 String?           // e.g., "United States"
-  creatureType            String?           // e.g., "Dinosaur" | "Pterosaur" | "Marine Reptile" etc.
-  reconstructionImageUrl  String?           // primary illustration URL
-  fossilImageUrl          String?           // secondary skeleton/fossil photo URL
+  habitat                 Habitat           @default(terrestrial)
+  clade                   Clade             @default(Theropod)
+
+  geographicRange         String?           // Stored as JSON string: { region, country, fossilFormation, coordinates }
+  taxonomy                String?           // Stored as JSON string object: { domain, kingdom, phylum, class, order, family, genus, species }
+  taxonomicStatus         TaxonomicStatus   @default(valid)
+
+  media                   String?           // Stored as JSON string Array of { url, type: "photo"|"art"|"scale_diagram", credit, sourceUrl }
+
   discoveryHistory        String
-  interestingFacts        String[]          // List of bullet points
-  lengthM                 Float?            // Structured length in meters
-  heightM                 Float?            // Structured height in meters
-  weightKg                Float?            // Midpoint of scientific estimates in kg
+  interestingFacts        String            // Stored as JSON string array of bullet points
+
   sizeNotes               String            // Range context or notes
+  sizeEstimate            String?           // Stored as JSON string: { length: { value, unit, confidence }, height: { value, unit, confidence }, weight: { value, unit, confidence } }
+  sizeComparisonToHuman   Boolean           @default(true)
+
+  extinctionEvent         String?           // e.g., "K-Pg extinction"
+  closestLivingRelatives  String            @default("[]") // Stored as JSON string array
+
+  sources                 String?           // Stored as JSON string Array of { citation, url }
+  placeholder             Boolean           @default(false)
+
 
   // Self-relations to model related species
   relatedFrom             SpeciesRelation[] @relation("RelatedFrom")
@@ -39,6 +93,11 @@ model Species {
 
   createdAt               DateTime          @default(now())
   updatedAt               DateTime          @updatedAt
+
+  @@index([clade])
+  @@index([diet])
+  @@index([habitat])
+  @@index([myaStart, myaEnd])
 }
 
 model SpeciesRelation {
@@ -51,3 +110,5 @@ model SpeciesRelation {
 
   @@unique([speciesId, relatedSpeciesId])
 }
+
+

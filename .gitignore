@@ -39,25 +39,9 @@ Thumbs.db
 *.sln
 *.sw?
 
-# Temporary / diagnostic / expansion helper scripts in backend
-backend/audit_fields.js
-backend/backfill_creature_type.js
-backend/check_creature_types.js
-backend/check_raja_isi.js
-backend/correct_data.js
-backend/count_all.js
-backend/download_wiki.js
-backend/export_db_creature_types.js
-backend/find_tyranno.js
-backend/fix_images.js
-backend/generate_silhouettes.js
-backend/generate_updates.py
-backend/insert_indian_species.js
-backend/merge_duplicates.js
-backend/merge_updates.js
-backend/test_api.js
-backend/test_wiki.js
-backend/update_isisaurus.js
-backend/verify_formations.js
-backend/verify_indian_data.js
+# Temporary / diagnostic / expansion helper scripts and dumps in backend
+backend/*.js
+backend/*.json
+backend/backups/
+!backend/scripts/species-template.json
 backend/species_names_audit.txt

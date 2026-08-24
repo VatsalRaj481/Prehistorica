@@ -7,16 +7,16 @@ import { Compass, Dna, Info, ArrowRight, MapPin, Loader2 } from 'lucide-react';
 
 // Geologic Eras config
 const ERAS = [
-  { name: 'Cambrian', range: '541–485 MYA', desc: 'Explosion of marine life forms' },
-  { name: 'Devonian', range: '419–359 MYA', desc: 'Dominance of placoderm fishes & land walkers' },
-  { name: 'Carboniferous', range: '359–299 MYA', desc: 'Giant terrestrial arthropods & moss forests' },
-  { name: 'Permian', range: '299–251 MYA', desc: 'Rise of synapsids & major mass extinction' },
-  { name: 'Triassic', range: '251–201 MYA', desc: 'Dawn of early dinosaurs & archosaurs' },
-  { name: 'Jurassic', range: '201–145 MYA', desc: 'Golden age of sauropods & first birds' },
-  { name: 'Cretaceous', range: '145–66 MYA', desc: 'Apex of theropods, ceratopsians & marine reptiles' },
-  { name: 'Eocene', range: '56–34 MYA', desc: 'Rise of modern mammal groups & giant birds' },
-  { name: 'Neogene', range: '23–2.6 MYA', desc: 'Era of megalodon, hominids & grasslands' },
-  { name: 'Pleistocene', range: '2.6–0.01 MYA', desc: 'Quaternary Ice Age megafauna' }
+  { name: 'Cambrian', myaStart: 541, myaEnd: 485, range: '541–485 MYA', desc: 'Explosion of marine life forms' },
+  { name: 'Devonian', myaStart: 419, myaEnd: 359, range: '419–359 MYA', desc: 'Dominance of placoderm fishes & land walkers' },
+  { name: 'Carboniferous', myaStart: 359, myaEnd: 299, range: '359–299 MYA', desc: 'Giant terrestrial arthropods & moss forests' },
+  { name: 'Permian', myaStart: 299, myaEnd: 251, range: '299–251 MYA', desc: 'Rise of synapsids & major mass extinction' },
+  { name: 'Triassic', myaStart: 251, myaEnd: 201, range: '251–201 MYA', desc: 'Dawn of early dinosaurs & archosaurs' },
+  { name: 'Jurassic', myaStart: 201, myaEnd: 145, range: '201–145 MYA', desc: 'Golden age of sauropods & first birds' },
+  { name: 'Cretaceous', myaStart: 145, myaEnd: 66, range: '145–66 MYA', desc: 'Apex of theropods, ceratopsians & marine reptiles' },
+  { name: 'Eocene', myaStart: 56, myaEnd: 34, range: '56–34 MYA', desc: 'Rise of modern mammal groups & giant birds' },
+  { name: 'Neogene', myaStart: 23, myaEnd: 2.6, range: '23–2.6 MYA', desc: 'Era of megalodon, hominids & grasslands' },
+  { name: 'Pleistocene', myaStart: 2.6, myaEnd: 0.01, range: '2.6–0.01 MYA', desc: 'Quaternary Ice Age megafauna' }
 ];
 
 // Continent coordinate centers and zoom levels
@@ -144,6 +144,10 @@ export default function TimeMap() {
   const activeEra = ERAS[eraIndex];
   const activeEraColor = getEraColor(activeEra.name);
 
+  useEffect(() => {
+    document.title = 'Interactive Geologic Time-Map | Prehistorica Encyclopedia';
+  }, []);
+
   // Adjust center/zoom when selected continent changes
   useEffect(() => {
     if (selectedContinent) {
@@ -180,8 +184,9 @@ export default function TimeMap() {
     }
 
     fetchSpecies(queryParams)
-      .then((data) => {
-        setSpeciesList(data);
+      .then((res: any) => {
+        const list = Array.isArray(res) ? res : res.data || [];
+        setSpeciesList(list);
         setLoading(false);
       })
       .catch((err) => {
@@ -190,6 +195,7 @@ export default function TimeMap() {
         setLoading(false);
       });
   }, [selectedContinent, selectedFormation, selectedCountry, eraIndex]);
+
 
   // Filter formations belonging to selected continent
   const visibleFormations = selectedContinent

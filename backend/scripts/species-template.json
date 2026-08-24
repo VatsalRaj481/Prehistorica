@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Prehistorica Species Entry Template & Sourcing Guidelines",
+  "_imageSourcingStandard": {
+    "primaryArtMedia": {
+      "type": "art",
+      "requirement": "Must be clean digital life-reconstruction artwork — a full-body illustration on a plain/transparent or natural backdrop.",
+      "prohibitedForPrimaryArt": [
+        "Skeletal diagrams or anatomical line art",
+        "Scans or figures from academic papers / journals",
+        "Images with baked-in text, labels, numbers, scale bars, or citation watermarks",
+        "Museum exhibit photographs or fossil displays"
+      ],
+      "classificationRules": {
+        "primaryArt": "Clean life reconstruction illustration ONLY -> type: 'art'",
+        "skeletalOrTechnicalDiagram": "Skeletal drawing, muscle reconstruction, or technical anatomical diagram -> type: 'diagram' or 'scale_diagram'",
+        "fossilSpecimenPhoto": "Actual fossil bone photo, museum specimen photograph -> type: 'photo'"
+      }
+    }
+  },
+  "speciesTemplate": {
+    "name": "Exampleosaurus",
+    "scientificName": "Exampleosaurus prehistorica",
+    "nameMeaning": "Example lizard",
+    "timePeriod": "Late Cretaceous",
+    "myaStart": 75.0,
+    "myaEnd": 70.0,
+    "clade": "Theropod",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "dietDetails": "Apex predator feeding on herbivorous dinosaurs in floodplains.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "K-Pg Extinction Event",
+    "closestLivingRelatives": [
+      "Modern Birds (Aves)"
+    ],
+    "media": [
+      {
+        "url": "https://example.org/images/exampleosaurus-art.jpg",
+        "type": "art",
+        "credit": "Life reconstruction by Jane Doe (CC-BY-4.0)",
+        "sourceUrl": "https://example.org/art/exampleosaurus"
+      },
+      {
+        "url": "https://example.org/images/exampleosaurus-skeletal.jpg",
+        "type": "scale_diagram",
+        "credit": "Skeletal diagram by John Smith",
+        "sourceUrl": "https://example.org/diagrams/exampleosaurus"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "clade": "Dinosauria",
+      "order": "Saurischia",
+      "suborder": "Theropoda",
+      "family": "Tyrannosauridae",
+      "genus": "Exampleosaurus",
+      "species": "Exampleosaurus prehistorica"
+    },
+    "geographicRange": {
+      "continent": "North America",
+      "region": "Western Interior Basin",
+      "country": "United States",
+      "fossilFormation": "Hell Creek Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 12.0,
+        "unit": "meters",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 3.8,
+        "unit": "meters",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 7000.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Length based on complete holotype specimen FMNH PR2081.",
+    "discoveryHistory": "• First discovered in 1902 by Barnum Brown in Montana.\n• Named in 1905 by Henry Fairfield Osborn.\n• Multiple well-preserved skeletons recovered across North America.",
+    "interestingFacts": [
+      "Possessed one of the strongest bite forces of any terrestrial carnivore.",
+      "Had highly developed olfactory bulbs for smelling prey across vast distances.",
+      "Reached full adult size in approximately 20 years."
+    ],
+    "sources": [
+      {
+        "citation": "Osborn, H. F. (1905). Tyrannosaurus and other Cretaceous carnivorous dinosaurs. Bulletin of the AMNH.",
+        "url": "https://doi.org/10.5962/bhl.title.68936"
+      }
+    ]
+  }
+}

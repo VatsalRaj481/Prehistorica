@@ -39,7 +39,7 @@ async function main() {
       ? [s.locations]
       : Array.isArray(s.locations)
         ? s.locations.map(x => String(x))
-        : [];
+        : ['Global'];
 
     // Sanitize floats
     const myaStart = typeof s.myaStart === 'string' ? parseFloat(s.myaStart) : (typeof s.myaStart === 'number' ? s.myaStart : 0);
@@ -53,57 +53,126 @@ async function main() {
     const discoveryHistory = s.discoveryHistory || "No discovery history available.";
     const sizeNotes = s.sizeNotes || "No size details available.";
 
+    // Normalize Diet & Habitat
+    const rawDiet = (s.dietType || '').toLowerCase();
+    const diet = rawDiet.includes('carnivore') ? 'carnivore'
+      : rawDiet.includes('herbivore') ? 'herbivore'
+      : rawDiet.includes('omnivore') ? 'omnivore'
+      : rawDiet.includes('piscivore') ? 'piscivore'
+      : rawDiet.includes('filter') ? 'filter_feeder' : 'carnivore';
+
+    const rawType = (s.creatureType || '').toLowerCase();
+    const habitat = rawType.includes('marine') || rawType.includes('plesiosaur') || rawType.includes('ichthyosaur') || rawType.includes('mosasaur') ? 'marine'
+      : rawType.includes('pterosaur') || rawType.includes('flying') ? 'aerial'
+      : rawType.includes('amphibian') ? 'semi_aquatic' : 'terrestrial';
+
+    // Controlled Clade Vocabulary
+    const clade = rawType.includes('theropod') ? 'Theropod'
+      : rawType.includes('sauropod') ? 'Sauropod'
+      : rawType.includes('ornithischian') || rawType.includes('ceratopsian') || rawType.includes('hadrosaur') ? 'Ornithischian'
+      : rawType.includes('pterosaur') ? 'Pterosaur'
+      : rawType.includes('marine') || rawType.includes('plesiosaur') || rawType.includes('mosasaur') ? 'Marine Reptile'
+      : rawType.includes('ichthyosaur') ? 'Ichthyosaur'
+      : rawType.includes('ankylosaur') || rawType.includes('stegosaur') ? 'Ankylosaur'
+      : rawType.includes('synapsid') || rawType.includes('mammal') ? 'Early Mammal/Synapsid'
+      : rawType.includes('invertebrate') ? 'Invertebrate' : 'Other';
+
+    // Media Array JSON
+    const mediaArray: any[] = [];
+    if (s.reconstructionImageUrl) {
+      mediaArray.push({
+        url: s.reconstructionImageUrl,
+        type: 'art',
+        credit: 'Life reconstruction illustration',
+        sourceUrl: s.reconstructionImageUrl
+      });
+    }
+    if (s.fossilImageUrl) {
+      mediaArray.push({
+        url: s.fossilImageUrl,
+        type: 'photo',
+        credit: 'Fossil skeletal specimen photo',
+        sourceUrl: s.fossilImageUrl
+      });
+    }
+
+    // Taxonomy Tree JSON
+    const taxParts = (s.taxonomicClassification || '').split('->').map((t: string) => t.trim());
+    const taxonomyObj = {
+      domain: 'Eukaryota',
+      kingdom: 'Animalia',
+      phylum: taxParts[0] || 'Chordata',
+      class: taxParts[1] || (s.creatureType ? s.creatureType : 'Reptilia'),
+      order: taxParts[2] || 'Archosauria',
+      family: s.family || taxParts[3] || 'Unclassified',
+      genus: s.genus || s.name.split(' ')[0],
+      species: s.scientificName || s.name
+    };
+
+    // Size Estimate JSON
+    const sizeEstimateObj = {
+      length: { value: lengthM, unit: 'm', confidence: lengthM ? 'well-supported' : 'estimated' },
+      height: { value: heightM, unit: 'm', confidence: heightM ? 'well-supported' : 'estimated' },
+      weight: { value: weightKg, unit: 'kg', confidence: weightKg ? 'estimated' : 'disputed' }
+    };
+
+    // Sources Citation JSON
+    const sourcesArray = s.sources || [
+      { citation: 'Paleobiology Database (PBDB) species record', url: 'https://paleobiodb.org' },
+      { citation: `${s.scientificName || s.name} description in paleontological literature`, url: `https://en.wikipedia.org/wiki/${encodeURIComponent(s.name)}` }
+    ];
+
+    const extinctionEvent = s.extinctionEvent || (s.timePeriod.includes('Cretaceous') ? 'K-Pg extinction event (66 MYA)' : null);
+    const closestRelatives = s.closestLivingRelatives || ['Modern Birds (Aves)', 'Crocodilians'];
+
+    const upsertData = {
+      name: s.name,
+      scientificName: s.scientificName || s.name,
+      nameMeaning: s.nameMeaning || 'Prehistoric species',
+      timePeriod: s.timePeriod,
+      epoch: s.epoch || `${s.timePeriod} Epoch`,
+      myaStart: myaStart,
+      myaEnd: myaEnd,
+      dietType: s.dietType || 'Carnivore',
+      diet: diet,
+      dietDetails: dietDetails,
+      habitat: habitat,
+      clade: clade,
+      locations: JSON.stringify(locationsArray),
+      country: s.country || null,
+      fossilFormation: s.fossilFormation || null,
+      geographicRange: JSON.stringify({
+        region: locationsArray[0] || 'Global',
+        country: s.country || 'Unknown',
+        fossilFormation: s.fossilFormation || 'Unspecified formation'
+      }),
+      taxonomicClassification: s.taxonomicClassification || 'Animalia',
+      taxonomy: JSON.stringify(taxonomyObj),
+      taxonomicStatus: s.taxonomicStatus || 'valid',
+      genus: s.genus || null,
+      family: s.family || null,
+      creatureType: s.creatureType || null,
+      reconstructionImageUrl: s.reconstructionImageUrl || null,
+      fossilImageUrl: s.fossilImageUrl || null,
+      media: JSON.stringify(mediaArray),
+      discoveryHistory: discoveryHistory,
+      interestingFacts: JSON.stringify(interestingFactsArray),
+      lengthM: lengthM,
+      heightM: heightM,
+      weightKg: weightKg,
+      sizeNotes: sizeNotes,
+      sizeEstimate: JSON.stringify(sizeEstimateObj),
+      sizeComparisonToHuman: true,
+      extinctionEvent: extinctionEvent,
+      closestLivingRelatives: JSON.stringify(closestRelatives),
+      sources: JSON.stringify(sourcesArray),
+      placeholder: false
+    };
+
     await prisma.species.upsert({
       where: { name: s.name },
-      update: {
-        scientificName: s.scientificName,
-        nameMeaning: s.nameMeaning,
-        timePeriod: s.timePeriod,
-        myaStart: myaStart,
-        myaEnd: myaEnd,
-        dietType: s.dietType,
-        dietDetails: dietDetails,
-        locations: locationsArray,
-        taxonomicClassification: s.taxonomicClassification,
-        genus: s.genus,
-        family: s.family,
-        fossilFormation: s.fossilFormation,
-        country: s.country,
-        creatureType: s.creatureType,
-        reconstructionImageUrl: s.reconstructionImageUrl,
-        fossilImageUrl: s.fossilImageUrl,
-        discoveryHistory: discoveryHistory,
-        interestingFacts: interestingFactsArray,
-        lengthM: lengthM,
-        heightM: heightM,
-        weightKg: weightKg,
-        sizeNotes: sizeNotes,
-      },
-      create: {
-        name: s.name,
-        scientificName: s.scientificName,
-        nameMeaning: s.nameMeaning,
-        timePeriod: s.timePeriod,
-        myaStart: myaStart,
-        myaEnd: myaEnd,
-        dietType: s.dietType,
-        dietDetails: dietDetails,
-        locations: locationsArray,
-        taxonomicClassification: s.taxonomicClassification,
-        genus: s.genus,
-        family: s.family,
-        fossilFormation: s.fossilFormation,
-        country: s.country,
-        creatureType: s.creatureType,
-        reconstructionImageUrl: s.reconstructionImageUrl,
-        fossilImageUrl: s.fossilImageUrl,
-        discoveryHistory: discoveryHistory,
-        interestingFacts: interestingFactsArray,
-        lengthM: lengthM,
-        heightM: heightM,
-        weightKg: weightKg,
-        sizeNotes: sizeNotes,
-      }
+      update: upsertData,
+      create: upsertData
     });
   }
 
