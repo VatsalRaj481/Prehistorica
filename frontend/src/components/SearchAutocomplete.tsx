@@ -1,15 +1,28 @@
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { fetchSpeciesAutocomplete, AutocompleteItem } from '../services/api.js';
 import { Search, Loader2, Dna, ArrowRight } from 'lucide-react';
 
 export default function SearchAutocomplete() {
-  const [query, setQuery] = useState('');
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
+  const urlSearch = searchParams.get('search') || '';
+
+  const [query, setQuery] = useState(location.pathname === '/browse' ? urlSearch : '');
   const [suggestions, setSuggestions] = useState<AutocompleteItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const wrapperRef = useRef<HTMLDivElement>(null);
+
+  // Sync search input state with URL search parameter
+  useEffect(() => {
+    if (location.pathname === '/browse') {
+      setQuery(urlSearch);
+    } else {
+      setQuery('');
+    }
+  }, [location.pathname, urlSearch]);
 
   // Close dropdown on click outside
   useEffect(() => {
