@@ -97,7 +97,9 @@ export interface AutocompleteItem {
   reconstructionImageUrl?: string | null;
 }
 
-const API_BASE = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5000/api' : 'https://prehistorica.onrender.com/api');
+const rawApiUrl = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5000/api' : 'https://prehistorica.onrender.com/api');
+const cleanApiUrl = rawApiUrl.replace(/\/$/, '');
+const API_BASE = cleanApiUrl.endsWith('/api') ? cleanApiUrl : `${cleanApiUrl}/api`;
 
 export async function fetchSpecies(filters?: {
   diet?: string | string[];

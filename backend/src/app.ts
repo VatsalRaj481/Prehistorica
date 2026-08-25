@@ -32,6 +32,7 @@ app.use(express.json());
 
 // Register API routes
 app.use('/api', apiRouter);
+app.use('/', apiRouter);
 
 // Basic health check route
 app.get('/health', (req: Request, res: Response) => {
