@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { MediaItem } from '../services/api.js';
-import { Image, ExternalLink, Layers, Palette } from 'lucide-react';
+import { Image, ExternalLink, Palette } from 'lucide-react';
 
 interface MediaGalleryProps {
   media?: MediaItem[];
@@ -15,7 +16,8 @@ export default function MediaGallery({
   fossilImageUrl,
   speciesName
 }: MediaGalleryProps) {
-  // Construct normalized items list
+  const shouldReduceMotion = useReducedMotion();
+
   let items: MediaItem[] = media && media.length > 0 ? media : [];
 
   if (items.length === 0) {
@@ -41,7 +43,7 @@ export default function MediaGallery({
 
   if (items.length === 0) {
     return (
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-12 text-center text-slate-400 flex flex-col items-center justify-center space-y-3 aspect-[16/9] w-full shadow-xl">
+      <div className="bg-slate-900/80 backdrop-blur-md border border-slate-800 rounded-2xl p-8 sm:p-12 text-center text-slate-400 flex flex-col items-center justify-center space-y-3 aspect-[16/9] w-full shadow-xl">
         <div className="h-14 w-14 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center text-slate-500 shadow-inner">
           <Palette className="h-7 w-7 text-blue-400/70" />
         </div>
@@ -72,61 +74,64 @@ export default function MediaGallery({
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl space-y-0">
-      {/* Active Main Image Container */}
+    <div className="bg-slate-900/90 backdrop-blur-md border border-slate-800/80 rounded-2xl overflow-hidden shadow-2xl space-y-0">
       <div className="relative w-full aspect-[16/9] bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 flex items-center justify-center p-4 sm:p-6 overflow-hidden">
-        {/* Subtle grid pattern for clean transparent & white background image display */}
         <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
-        <img
-          src={activeItem.url}
-          alt={`${speciesName} - ${getTypeLabel(activeItem.type)}`}
-          className="max-w-full max-h-full object-contain rounded-lg transition-all duration-300 drop-shadow-md z-10"
-        />
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={activeItem.url}
+            initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+            src={activeItem.url}
+            alt={`${speciesName} - ${getTypeLabel(activeItem.type)}`}
+            className="max-w-full max-h-full object-contain rounded-lg drop-shadow-xl z-10"
+          />
+        </AnimatePresence>
 
-        {/* Overlay Badges */}
         <div className="absolute top-4 left-4 flex gap-2 z-20">
-          <span className="bg-slate-950/80 backdrop-blur-md border border-slate-800 text-blue-400 font-semibold px-3 py-1 rounded-lg text-xs flex items-center gap-1.5 shadow-md">
+          <span className="bg-slate-950/85 backdrop-blur-md border border-slate-800 text-blue-400 font-semibold px-3 py-1 rounded-lg text-xs flex items-center gap-1.5 shadow-md">
             <Image className="h-3.5 w-3.5" />
             {getTypeLabel(activeItem.type)}
           </span>
         </div>
 
         {activeItem.sourceUrl && (
-          <a
+          <motion.a
+            whileTap={{ scale: 0.92 }}
             href={activeItem.sourceUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="absolute bottom-4 right-4 bg-slate-950/90 hover:bg-slate-900 border border-slate-800 text-slate-300 hover:text-white px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1 shadow-lg transition-colors z-20"
           >
             Source <ExternalLink className="h-3 w-3" />
-          </a>
+          </motion.a>
         )}
       </div>
 
-      {/* Credit Footer Bar */}
-      <div className="p-3 bg-slate-950 border-t border-slate-850 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs text-slate-400">
-        <div className="flex items-center gap-1.5 min-w-0">
-          <Layers className="h-4 w-4 text-indigo-400 shrink-0" />
-          <span className="truncate">Credit: <strong className="text-slate-200">{activeItem.credit}</strong></span>
+      <div className="p-4 border-t border-slate-850 bg-slate-950/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="text-xs text-slate-400 space-y-0.5 max-w-md">
+          <div className="text-slate-500 font-bold uppercase tracking-wider text-[10px]">Attribution & Credit:</div>
+          <p className="italic text-slate-300 leading-relaxed truncate">{activeItem.credit}</p>
         </div>
 
-        {/* Thumbnail Tabs */}
         {items.length > 1 && (
           <div className="flex gap-2 shrink-0">
             {items.map((item, idx) => (
-              <button
+              <motion.button
                 key={idx}
+                whileTap={{ scale: 0.9 }}
                 onClick={() => setActiveIndex(idx)}
-                className={`w-12 h-10 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
-                  idx === activeIndex
-                    ? 'border-blue-500 scale-105 shadow-md'
-                    : 'border-slate-800 opacity-60 hover:opacity-100'
+                className={`relative h-12 w-12 rounded-lg border overflow-hidden transition-all cursor-pointer ${
+                  activeIndex === idx
+                    ? 'border-blue-500 shadow-md shadow-blue-500/20 ring-1 ring-blue-500'
+                    : 'border-slate-800 opacity-60 hover:opacity-100 hover:border-slate-700'
                 }`}
-                title={getTypeLabel(item.type)}
               >
-                <img src={item.url} alt="" className="w-full h-full object-cover" />
-              </button>
+                <img src={item.url} alt={`Thumbnail ${idx + 1}`} className="w-full h-full object-cover" />
+              </motion.button>
             ))}
           </div>
         )}
