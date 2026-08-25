@@ -112,15 +112,30 @@ async function searchBestCandidate(scientificName, genus) {
   }
 }
 
-async function uploadToStorage(buffer, mimeType, objectName) {
-  const objectId = crypto.randomUUID();
-  await prisma.$executeRawUnsafe(`
-    INSERT INTO storage.objects (id, bucket_id, name, owner, created_at, updated_at, last_accessed_at, metadata)
-    VALUES ($1::uuid, $2, $3, null, NOW(), NOW(), NOW(), $4::jsonb)
-    ON CONFLICT (bucket_id, name) DO UPDATE SET updated_at = NOW(), metadata = $4::jsonb;
-  `, objectId, BUCKET_ID, objectName, JSON.stringify({ mimetype: mimeType, size: buffer.length }));
+const { createClient } = require('@supabase/supabase-js');
 
-  return `${SUPABASE_PROJECT_URL}/storage/v1/object/public/${BUCKET_ID}/${objectName}`;
+const supabaseUrl = process.env.SUPABASE_URL || 'https://bbsmxcoywionsvmfznah.supabase.co';
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY || '';
+const supabase = supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
+
+async function uploadToStorage(buffer, mimeType, objectName) {
+  if (!supabase) {
+    throw new Error('Supabase client requires valid SUPABASE_SERVICE_ROLE_KEY or SUPABASE_ANON_KEY in environment to store binary file bytes.');
+  }
+
+  const { data, error } = await supabase.storage
+    .from(BUCKET_ID)
+    .upload(objectName, buffer, {
+      contentType: mimeType,
+      upsert: true
+    });
+
+  if (error) {
+    throw new Error(`Supabase Storage upload failed: ${error.message}`);
+  }
+
+  const { data: publicData } = supabase.storage.from(BUCKET_ID).getPublicUrl(objectName);
+  return publicData.publicUrl;
 }
 
 async function runBatch(batchOffset = 0, batchSize = 20) {
