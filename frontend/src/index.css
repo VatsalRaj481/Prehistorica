@@ -1,45 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
 
 @theme {
-  --color-slate-950: #12151A;
-  --color-slate-900: #1E2228;
-  --color-slate-800: #262B33;
-  --color-slate-850: #2C3038;
-  --color-slate-700: #2C3038;
-  --color-slate-600: #2C3038;
-  --color-slate-550: #9CA3AD;
-  --color-slate-500: #9CA3AD;
-  --color-slate-400: #9CA3AD;
-  --color-slate-350: #9CA3AD;
-  --color-slate-300: #9CA3AD;
-  --color-slate-200: #EDE7DC;
-  --color-slate-100: #EDE7DC;
+  --color-slate-950: #090D16;
+  --color-slate-900: #0F172A;
+  --color-slate-850: #1E293B;
+  --color-slate-800: #1E293B;
+  --color-slate-700: #334155;
+  --color-slate-600: #475569;
+  --color-slate-500: #64748B;
+  --color-slate-400: #94A3B8;
+  --color-slate-300: #CBD5E1;
+  --color-slate-200: #E2E8F0;
+  --color-slate-100: #F8FAFC;
 
-  --color-blue-950: #12151A;
-  --color-blue-900: #1E2228;
-  --color-blue-800: #262B33;
-  --color-blue-700: #2C3038;
-  --color-blue-600: #D98E4A;
-  --color-blue-500: #D98E4A;
-  --color-blue-400: #D98E4A;
-  --color-blue-300: #EDE7DC;
-  
-  --color-indigo-600: #2E7A6E;
-  --color-indigo-500: #2E7A6E;
-  --color-indigo-400: #2E7A6E;
-  
-  --color-white: #EDE7DC;
-  --color-zinc-950: #12151A;
-  --color-zinc-900: #1E2228;
-  --color-zinc-800: #262B33;
-  --color-zinc-700: #2C3038;
+  --color-amber-600: #D97706;
+  --color-amber-500: #F59E0B;
+  --color-amber-400: #FBBF24;
+  --color-amber-300: #FDE68A;
 
-  --font-sans: "Inter", sans-serif;
-  --radius-xl: 12px;
-  --radius-lg: 8px;
-  --radius-md: 8px;
+  --font-sans: "Outfit", "Inter", sans-serif;
+  --font-mono: "Space Grotesk", monospace;
+  --font-serif: "Cinzel", Georgia, serif;
 }
 
 :root {
@@ -49,96 +32,81 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: #12151A;
-  color: #9CA3AD;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  background-color: #090D16;
+  color: #CBD5E1;
   overflow-x: hidden;
   font-size: 16px;
   font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', 'Inter', sans-serif;
   font-weight: 800;
+  color: #F8FAFC;
   letter-spacing: -0.02em;
-  color: #EDE7DC !important;
+  -webkit-font-smoothing: antialiased;
 }
 
-h2 {
-  font-weight: 700;
-  color: #EDE7DC !important;
-}
-
-/* Card components shadow & border & border-radius override */
-.bg-gradient-to-br, .bg-slate-900, .bg-slate-950, .bg-slate-900\/60, .bg-slate-950\/90 {
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
-  border-radius: 12px !important;
-  border-color: #2C3038 !important;
-}
-
-/* Image container radius */
-img {
-  border-radius: 8px !important;
-}
-
-/* Button components radius */
-button, .button, a.px-6, a.px-4 {
-  border-radius: 8px !important;
-}
-
-/* Custom styles for Leaflet to fit our theme */
+/* Custom styles for Leaflet to fit Museum Pavilion theme */
 .leaflet-container {
-  background-color: #1E2228 !important;
-  font-family: inherit;
-  border-radius: 12px !important;
+  background-color: #090D16 !important;
+  font-family: 'Space Grotesk', monospace !important;
+  border-radius: 0px !important;
 }
 
 .leaflet-bar {
-  border: none !important;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
+  border: 1px solid #1E293B !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.8) !important;
+  border-radius: 0px !important;
 }
 
 .leaflet-bar a {
-  background-color: #262B33 !important;
-  color: #EDE7DC !important;
-  border-bottom: 1px solid #2C3038 !important;
+  background-color: #0F172A !important;
+  color: #F8FAFC !important;
+  border-bottom: 1px solid #1E293B !important;
   transition: all 0.2s ease;
+  border-radius: 0px !important;
 }
 
 .leaflet-bar a:hover {
-  background-color: #1E2228 !important;
-  color: #D98E4A !important;
+  background-color: #1E293B !important;
+  color: #FBBF24 !important;
 }
 
 .leaflet-popup-content-wrapper {
-  background-color: #1E2228 !important;
-  color: #EDE7DC !important;
-  border-radius: 12px !important;
-  border: 1px solid #2C3038;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5) !important;
+  background-color: #0F172A !important;
+  color: #F8FAFC !important;
+  border-radius: 0px !important;
+  border: 1px solid #1E293B;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.8) !important;
+  font-family: 'Space Grotesk', monospace !important;
 }
 
 .leaflet-popup-tip {
-  background-color: #1E2228 !important;
-  border: 1px solid #2C3038;
+  background-color: #0F172A !important;
+  border: 1px solid #1E293B;
 }
 
 /* Custom styling for timeline slider tracks */
 input[type="range"]::-webkit-slider-runnable-track {
-  background: #262B33;
-  border-radius: 9999px;
-  height: 8px;
+  background: #1E293B;
+  border-radius: 0px;
+  height: 6px;
 }
 
 input[type="range"]::-webkit-slider-thumb {
-  background: #D98E4A;
-  border-radius: 9999px;
-  width: 20px;
-  height: 20px;
+  background: #F59E0B;
+  border-radius: 0px;
+  width: 18px;
+  height: 18px;
   margin-top: -6px;
   cursor: pointer;
   transition: background 0.15s ease;
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
-  background: #2E7A6E;
+  background: #FBBF24;
 }
