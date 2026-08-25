@@ -5,6 +5,7 @@ const router = Router();
 
 router.get('/species', getSpecies);
 router.get('/species/creature-of-the-day', getCreatureOfTheDay);
+router.get('/species/feature/creature-of-the-day', getCreatureOfTheDay);
 router.get('/species/search/autocomplete', searchAutocomplete);
 router.get('/species/compare', compareSpecies);
 router.get('/species/:id', getSpeciesById);
