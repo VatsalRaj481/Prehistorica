@@ -5,9 +5,26 @@ import apiRouter from './routes/api.js';
 
 const app = express();
 
+const allowedOrigins = [
+  'https://prehistorica.vercel.app',
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'http://localhost:5000'
+];
+
 // Configure CORS
 app.use(cors({
-  origin: '*', // For development simplicity, allow all. In production, we'd limit this.
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    const cleanOrigin = origin.replace(/\/$/, '');
+    if (allowedOrigins.includes(cleanOrigin) || cleanOrigin.endsWith('.vercel.app')) {
+      return callback(null, true);
+    }
+    return callback(null, true);
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
 
 // Body parser
