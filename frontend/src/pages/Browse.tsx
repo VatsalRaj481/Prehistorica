@@ -202,10 +202,10 @@ export default function Browse() {
         {/* Left Filter Sidebar - Desktop */}
         <aside className="hidden md:block bg-slate-900/50 border border-slate-855 p-5 rounded-2xl h-fit space-y-6">
           <div className="flex items-center justify-between border-b border-slate-800 pb-3 gap-2">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5 shrink-0">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5 shrink-0">
               <SlidersHorizontal className="h-4 w-4 text-blue-400 shrink-0" />
               <span>Combinable Filters</span>
-            </h2>
+            </h3>
             {hasActiveFilters && (
               <button
                 onClick={clearFilters}
