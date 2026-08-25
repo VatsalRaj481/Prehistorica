@@ -3,10 +3,9 @@ import { useParams, Link } from 'react-router-dom';
 import { motion, useReducedMotion, Variants } from 'framer-motion';
 import { fetchSpeciesById, Species } from '../services/api.js';
 import TaxonomyBreadcrumbs from '../components/TaxonomyBreadcrumbs.js';
-import SizeComparisonSilhouette from '../components/SizeComparisonSilhouette.js';
-import ConfidenceBadge from '../components/ConfidenceBadge.js';
+import ThreeDScaleViewer from '../components/ThreeDScaleViewer.js';
 import MediaGallery from '../components/MediaGallery.js';
-import { Calendar, Compass, ArrowLeft, Dna, FileText, Scale, BookOpen, AlertCircle, Bookmark, BookmarkCheck, ExternalLink, Globe, Zap } from 'lucide-react';
+import { Calendar, Compass, ArrowLeft, Dna, FileText, Scale, BookOpen, AlertCircle, Bookmark, BookmarkCheck, ExternalLink, Globe, Zap, Layers } from 'lucide-react';
 
 export default function SpeciesDetail() {
   const { id } = useParams<{ id: string }>();
@@ -22,7 +21,7 @@ export default function SpeciesDetail() {
     fetchSpeciesById(parseInt(id, 10))
       .then((data) => {
         setSpecies(data);
-        document.title = `${data.name} (${data.scientificName}) | Prehistorica Encyclopedia`;
+        document.title = `${data.name} (${data.scientificName}) | Prehistorica Museum Exhibit`;
 
         try {
           const favs = JSON.parse(localStorage.getItem('prehistorica_favorites') || '[]');
@@ -35,7 +34,7 @@ export default function SpeciesDetail() {
       })
       .catch((err) => {
         console.error(err);
-        setError('Failed to load species profile details.');
+        setError('Failed to load species exhibit profile.');
         setLoading(false);
       });
   }, [id]);
@@ -70,10 +69,11 @@ export default function SpeciesDetail() {
   if (loading) {
     return (
       <div className="animate-pulse space-y-8 py-6">
-        <div className="h-6 w-32 bg-slate-900 rounded" />
+        <div className="h-6 w-48 bg-slate-900 rounded-none border border-slate-800" />
+        <div className="h-[450px] bg-slate-950 rounded-none border border-slate-800" />
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-6 h-96 bg-slate-900 rounded-2xl" />
-          <div className="lg:col-span-6 h-96 bg-slate-900 rounded-2xl" />
+          <div className="lg:col-span-6 h-96 bg-slate-900 rounded-none border border-slate-800" />
+          <div className="lg:col-span-6 h-96 bg-slate-900 rounded-none border border-slate-800" />
         </div>
       </div>
     );
@@ -81,193 +81,237 @@ export default function SpeciesDetail() {
 
   if (error || !species) {
     return (
-      <div className="bg-red-500/5 border border-red-500/10 rounded-2xl p-12 text-center text-red-400 flex flex-col items-center gap-4">
+      <div className="bg-slate-950 border border-red-500/20 rounded-none p-12 text-center text-red-400 flex flex-col items-center gap-4 shadow-2xl">
         <AlertCircle className="h-12 w-12 text-red-500" />
-        <h2 className="text-xl font-bold">Profile Unavailable</h2>
-        <p className="text-sm max-w-md">{error || 'The requested prehistoric species could not be found.'}</p>
+        <h2 className="text-xl font-bold font-mono uppercase tracking-widest">Specimen Record Unavailable</h2>
+        <p className="text-sm max-w-md text-slate-400">{error || 'The requested prehistoric species exhibit could not be located.'}</p>
         <Link
           to="/browse"
-          className="mt-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg border border-slate-750 transition-colors flex items-center gap-1.5"
+          className="mt-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-amber-400 text-xs font-mono font-bold uppercase tracking-wider rounded-none border border-slate-700 transition-colors flex items-center gap-2"
         >
-          <ArrowLeft className="h-4 w-4" /> Back to Catalog
+          <ArrowLeft className="h-4 w-4" /> Return to Catalog Index
         </Link>
       </div>
     );
   }
-
-  const lengthConf = species.sizeEstimate?.length?.confidence || (species.lengthM ? 'well-supported' : 'estimated');
-  const heightConf = species.sizeEstimate?.height?.confidence || (species.heightM ? 'well-supported' : 'estimated');
-  const weightConf = species.sizeEstimate?.weight?.confidence || (species.weightKg ? 'estimated' : 'disputed');
 
   return (
     <motion.div
       variants={pageVariants}
       initial="hidden"
       animate="show"
-      className="space-y-12"
+      className="space-y-10"
     >
-      <div className="flex justify-between items-center border-b border-slate-800/80 pb-4">
-        <motion.div whileTap={{ scale: 0.94 }}>
-          <Link
-            to="/browse"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="h-4 w-4" /> Back to Browse Catalog
-          </Link>
-        </motion.div>
+      {/* Top Museum Navigation & Catalog Reference Header */}
+      <div className="flex flex-wrap justify-between items-center border-b border-slate-800/80 pb-4 gap-4">
+        <div className="flex items-center gap-4 text-xs font-mono text-slate-400">
+          <motion.div whileTap={{ scale: 0.94 }}>
+            <Link
+              to="/browse"
+              className="inline-flex items-center gap-2 text-slate-400 hover:text-amber-400 transition-colors font-bold uppercase tracking-wider"
+            >
+              <ArrowLeft className="h-4 w-4 text-amber-500" /> Back to Catalog Index
+            </Link>
+          </motion.div>
+          <span className="text-slate-700">|</span>
+          <span className="text-amber-500/80 font-bold uppercase tracking-widest">
+            Specimen #{species.id.toString().padStart(4, '0')}
+          </span>
+        </div>
 
         <motion.button
           whileTap={{ scale: 0.92 }}
           onClick={toggleBookmark}
-          className={`px-3 py-1.5 rounded-xl border text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer shadow-sm ${
+          className={`px-4 py-2 rounded-none border text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shadow-md ${
             isBookmarked
-              ? 'bg-amber-500/10 border-amber-500/30 text-amber-400'
-              : 'bg-slate-900/80 backdrop-blur-md border-slate-800 text-slate-300 hover:text-white'
+              ? 'bg-amber-500/10 border-amber-500/50 text-amber-400'
+              : 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white hover:border-slate-700'
           }`}
         >
           {isBookmarked ? (
             <>
-              <BookmarkCheck className="h-4 w-4 text-amber-400" /> Bookmarked in Favorites
+              <BookmarkCheck className="h-4 w-4 text-amber-400" /> Archival Bookmarked
             </>
           ) : (
             <>
-              <Bookmark className="h-4 w-4 text-slate-400" /> Bookmark Species
+              <Bookmark className="h-4 w-4 text-slate-400" /> Bookmark Specimen
             </>
           )}
         </motion.button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12">
-        <div className="lg:col-span-6 space-y-6">
-          <MediaGallery
-            media={species.media}
-            reconstructionImageUrl={species.reconstructionImageUrl}
-            fossilImageUrl={species.fossilImageUrl}
-            speciesName={species.name}
-          />
-
-          <SizeComparisonSilhouette
-            speciesName={species.name}
-            lengthM={species.lengthM}
-            heightM={species.heightM}
-            weightKg={species.weightKg}
-            clade={species.clade}
-          />
+      {/* Main Specimen Title & Classification Headline */}
+      <div className="space-y-4 border-l-2 border-amber-500 pl-6">
+        <div className="flex flex-wrap items-center gap-3 text-xs font-mono">
+          <span className="px-2.5 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 font-bold uppercase tracking-widest flex items-center gap-1.5">
+            <Calendar className="h-3.5 w-3.5" />
+            {species.timePeriod} &bull; {species.myaStart}–{species.myaEnd} MYA
+          </span>
+          <span className="px-2.5 py-1 bg-slate-900 border border-slate-800 text-slate-300 font-bold uppercase tracking-widest">
+            Clade: {species.clade}
+          </span>
+          <span className="px-2.5 py-1 bg-slate-900 border border-slate-800 text-amber-400/90 font-bold uppercase tracking-widest">
+            Status: {species.taxonomicStatus}
+          </span>
         </div>
 
-        <div className="lg:col-span-6 space-y-8">
-          <div className="space-y-3 border-b border-slate-800 pb-5">
-            <div className="flex flex-wrap items-center gap-2">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold">
-                <Calendar className="h-3.5 w-3.5" />
-                {species.timePeriod} &bull; {species.myaStart}–{species.myaEnd} MYA
-              </div>
-              <span className="px-2.5 py-1 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold">
-                {species.clade}
-              </span>
-              <ConfidenceBadge status={species.taxonomicStatus} type="taxonomic" />
-            </div>
+        <h1 className="text-5xl sm:text-6xl font-black tracking-tight text-slate-100 uppercase">
+          {species.name}
+        </h1>
+        <p className="text-xl italic font-serif text-amber-200/90">
+          {species.scientificName}
+        </p>
 
-            <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-100 mt-2">
-              {species.name}
-            </h1>
-            <p className="text-base italic text-slate-300">
-              {species.scientificName}
-            </p>
-            <p className="text-xs text-slate-400 pt-1 leading-relaxed">
-              <strong className="font-bold text-slate-300 uppercase tracking-wider text-[10px]">Etymology:</strong> "{species.nameMeaning}"
-            </p>
+        {species.nameMeaning && (
+          <p className="text-xs font-mono text-slate-400 pt-1 leading-relaxed border-t border-slate-850 pt-3">
+            <strong className="font-bold text-amber-400 uppercase tracking-widest">Etymology & Translation:</strong> "{species.nameMeaning}"
+          </p>
+        )}
+      </div>
+
+      {/* Modern Museum Pavilion Exhibit Hero 3D Stage */}
+      <div className="space-y-2">
+        <div className="flex items-center justify-between text-xs font-mono text-slate-400 pb-1">
+          <span className="flex items-center gap-2 text-slate-300 font-bold uppercase tracking-wider">
+            <Layers className="h-4 w-4 text-amber-500" /> Interactive Scale Specimen Stage
+          </span>
+          <span className="text-amber-500/80 font-bold uppercase tracking-widest text-[10px]">
+            Rendered at 1:1 Scale
+          </span>
+        </div>
+
+        <ThreeDScaleViewer
+          speciesName={species.name}
+          lengthM={species.lengthM}
+          heightM={species.heightM}
+          weightKg={species.weightKg}
+          clade={species.clade}
+        />
+      </div>
+
+      {/* Stark Architectural Metrics Banner */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-slate-800 border border-slate-800 p-px shadow-2xl">
+        <div className="bg-slate-950 p-6 space-y-2 text-center">
+          <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
+            <Scale className="h-3.5 w-3.5 text-amber-500" /> Total Length
+          </span>
+          <p className="text-3xl font-mono font-black text-amber-400">
+            {species.lengthM ? `${species.lengthM} Meters` : 'Unverified'}
+          </p>
+        </div>
+
+        <div className="bg-slate-950 p-6 space-y-2 text-center">
+          <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
+            <Scale className="h-3.5 w-3.5 text-amber-500" /> Standing Height
+          </span>
+          <p className="text-3xl font-mono font-black text-amber-400">
+            {species.heightM ? `${species.heightM} Meters` : 'Unverified'}
+          </p>
+        </div>
+
+        <div className="bg-slate-950 p-6 space-y-2 text-center">
+          <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
+            <Scale className="h-3.5 w-3.5 text-amber-500" /> Estimated Mass
+          </span>
+          <p className="text-3xl font-mono font-black text-amber-400">
+            {species.weightKg ? `${species.weightKg.toLocaleString()} KG` : 'Disputed'}
+          </p>
+        </div>
+      </div>
+
+      {/* Specimen Deep Dive Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10">
+        {/* Left Column: Media Reconstruction & Visual Archive */}
+        <div className="lg:col-span-6 space-y-6">
+          <div className="border border-slate-800 bg-slate-950 p-4 space-y-3 shadow-xl">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-slate-850 pb-3">
+              <FileText className="h-4 w-4 text-amber-500" /> Specimen Visual Reconstruction
+            </h3>
+
+            <MediaGallery
+              media={species.media}
+              reconstructionImageUrl={species.reconstructionImageUrl}
+              fossilImageUrl={species.fossilImageUrl}
+              speciesName={species.name}
+            />
           </div>
 
-          <div className="space-y-2">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-              <Dna className="h-4 w-4 text-indigo-400" /> Full Classification Rank
+          {/* Discovery & Geographic Range Panel */}
+          <div className="border border-slate-800 bg-slate-950 p-6 space-y-4 shadow-xl">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-slate-850 pb-3">
+              <Compass className="h-4 w-4 text-amber-500" /> Field Discovery & Provenance
             </h3>
+
+            <div className="space-y-4 text-xs font-mono">
+              <div className="space-y-1">
+                <span className="text-slate-400 uppercase font-bold text-[10px] tracking-widest flex items-center gap-1.5">
+                  <Globe className="h-3.5 w-3.5 text-emerald-400" /> Geological Range & Formation
+                </span>
+                <p className="text-slate-200 leading-relaxed bg-slate-900 p-3 border border-slate-800">
+                  {species.geographicRange?.region || species.country || 'Global distribution'} &bull; Formation:{' '}
+                  <span className="text-amber-400 font-bold">{species.fossilFormation || 'Unspecified'}</span>
+                </p>
+              </div>
+
+              <div className="space-y-1">
+                <span className="text-slate-400 uppercase font-bold text-[10px] tracking-widest flex items-center gap-1.5">
+                  <Compass className="h-3.5 w-3.5 text-amber-400" /> Excavation Log Notes
+                </span>
+                <p className="text-slate-300 leading-relaxed bg-slate-900 p-3 border border-slate-800 font-serif italic text-sm">
+                  "{species.discoveryHistory || 'Fossilized specimens cataloged in official paleontology archives.'}"
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: Taxonomy Rank, Scientific Facts & Literature */}
+        <div className="lg:col-span-6 space-y-6">
+          {/* Architectural Taxonomic Hierarchy */}
+          <div className="border border-slate-800 bg-slate-950 p-6 space-y-4 shadow-xl">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-slate-850 pb-3">
+              <Dna className="h-4 w-4 text-amber-500" /> Structural Taxonomic Hierarchy
+            </h3>
+
             <TaxonomyBreadcrumbs
               taxonomy={species.taxonomy}
               taxonomicClassification={species.taxonomicClassification}
             />
           </div>
 
-          <div className="bg-gradient-to-br from-slate-900/90 to-slate-950/90 backdrop-blur-md border border-slate-800/80 rounded-2xl p-5 shadow-xl space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-              <Scale className="h-4 w-4 text-blue-400" /> Physical Measurements & Confidence Ratings
-            </h3>
-            
-            <div className="grid grid-cols-3 gap-3 border-b border-slate-800 pb-4 text-center">
-              <div className="p-3 bg-slate-950/60 rounded-xl border border-slate-850 space-y-1">
-                <span className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Length</span>
-                <p className="text-xl font-extrabold text-blue-400">
-                  {species.lengthM ? `${species.lengthM} m` : 'Unknown'}
-                </p>
-                <ConfidenceBadge confidence={lengthConf} />
-              </div>
-              <div className="p-3 bg-slate-950/60 rounded-xl border border-slate-850 space-y-1">
-                <span className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Height</span>
-                <p className="text-xl font-extrabold text-blue-400">
-                  {species.heightM ? `${species.heightM} m` : 'Unknown'}
-                </p>
-                <ConfidenceBadge confidence={heightConf} />
-              </div>
-              <div className="p-3 bg-slate-950/60 rounded-xl border border-slate-850 space-y-1">
-                <span className="text-[10px] text-slate-500 uppercase tracking-wider font-bold">Weight</span>
-                <p className="text-xl font-extrabold text-blue-400">
-                  {species.weightKg ? `${species.weightKg.toLocaleString()} kg` : 'Unknown'}
-                </p>
-                <ConfidenceBadge confidence={weightConf} />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-              <div className="space-y-1">
-                <span className="text-slate-400 font-bold uppercase tracking-wider text-[10px] flex items-center gap-1">
-                  <Globe className="h-3 w-3 text-emerald-400" /> Geographic Range
-                </span>
-                <p className="text-slate-200 leading-relaxed">
-                  {species.geographicRange?.region || species.country || 'Global distribution'} &bull; {species.fossilFormation || 'Various Formations'}
-                </p>
-              </div>
-
-              <div className="space-y-1">
-                <span className="text-slate-400 font-bold uppercase tracking-wider text-[10px] flex items-center gap-1">
-                  <Compass className="h-3 w-3 text-amber-400" /> Discovery Details
-                </span>
-                <p className="text-slate-200 leading-relaxed">
-                  {species.discoveryHistory || 'Fossilized remains documented in paleontology catalog.'}
-                </p>
-              </div>
-            </div>
-          </div>
-
+          {/* Scientific Key Facts Monograph */}
           {species.interestingFacts && species.interestingFacts.length > 0 && (
-            <div className="space-y-3">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                <FileText className="h-4 w-4 text-indigo-400" /> Distinctive Key Scientific Facts
+            <div className="border border-slate-800 bg-slate-950 p-6 space-y-4 shadow-xl">
+              <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-slate-850 pb-3">
+                <Zap className="h-4 w-4 text-amber-500" /> Key Scientific Diagnostic Features
               </h3>
-              <ul className="space-y-2">
+
+              <div className="space-y-2.5">
                 {species.interestingFacts.map((fact, i) => (
-                  <li
+                  <div
                     key={i}
-                    className="p-3 bg-slate-900/60 backdrop-blur-md border border-slate-800/80 rounded-xl text-xs text-slate-300 leading-relaxed flex items-start gap-2.5 shadow-sm"
+                    className="p-3.5 bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300 leading-relaxed flex items-start gap-3 shadow-sm"
                   >
-                    <Zap className="h-4 w-4 text-indigo-400 shrink-0 mt-0.5" />
+                    <span className="text-amber-500 font-bold font-mono text-sm shrink-0">#{i + 1}</span>
                     <span>{fact}</span>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           )}
 
+          {/* Academic Citations & Literature */}
           {species.sources && species.sources.length > 0 && (
-            <div className="space-y-3 border-t border-slate-800/80 pt-5">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                <BookOpen className="h-4 w-4 text-emerald-400" /> Academic & Literature Sources
+            <div className="border border-slate-800 bg-slate-950 p-6 space-y-4 shadow-xl">
+              <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-slate-850 pb-3">
+                <BookOpen className="h-4 w-4 text-emerald-500" /> Verified Academic Citations
               </h3>
+
               <div className="space-y-2">
                 {species.sources.map((src, i) => (
                   <div
                     key={i}
-                    className="p-3 bg-slate-950/60 border border-slate-855 rounded-xl text-xs text-slate-400 flex items-center justify-between gap-3 shadow-inner"
+                    className="p-3 bg-slate-900 border border-slate-800 text-xs font-mono text-slate-400 flex items-center justify-between gap-3"
                   >
                     <span className="truncate">{src.citation}</span>
                     {src.url && (
@@ -276,7 +320,7 @@ export default function SpeciesDetail() {
                         href={src.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-400 hover:text-blue-300 flex items-center gap-1 font-semibold shrink-0"
+                        className="text-amber-400 hover:text-amber-300 flex items-center gap-1 font-bold uppercase tracking-wider shrink-0 text-[10px]"
                       >
                         View Source <ExternalLink className="h-3 w-3" />
                       </motion.a>

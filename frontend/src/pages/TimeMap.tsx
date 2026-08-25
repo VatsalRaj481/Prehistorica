@@ -29,35 +29,36 @@ const CONTINENTS = [
 ];
 
 const FORMATIONS = [
-  { name: 'Hell Creek Formation', continent: 'North America', country: 'United States', coords: [47.0, -106.0] as [number, number] },
-  { name: 'Morrison Formation', continent: 'North America', country: 'United States', coords: [39.0, -105.0] as [number, number] },
-  { name: 'Niobrara Formation', continent: 'North America', country: 'United States', coords: [38.5, -99.0] as [number, number] },
-  { name: 'Chinle Formation', continent: 'North America', country: 'United States', coords: [35.0, -109.0] as [number, number] },
-  { name: 'Dinosaur Park Formation', continent: 'North America', country: 'Canada', coords: [50.7, -111.5] as [number, number] },
-  { name: 'Two Medicine Formation', continent: 'North America', country: 'United States', coords: [48.0, -112.5] as [number, number] },
-  { name: 'Ischigualasto Formation', continent: 'South America', country: 'Argentina', coords: [-30.1, -67.8] as [number, number] },
-  { name: 'Candeleros Formation', continent: 'South America', country: 'Argentina', coords: [-39.0, -69.0] as [number, number] },
-  { name: 'Romualdo Formation', continent: 'South America', country: 'Brazil', coords: [-7.2, -39.5] as [number, number] },
-  { name: 'Santana Formation', continent: 'South America', country: 'Brazil', coords: [-7.1, -40.0] as [number, number] },
-  { name: 'Solnhofen Limestone', continent: 'Europe', country: 'Germany', coords: [48.9, 11.0] as [number, number] },
-  { name: 'Wessex Formation', continent: 'Europe', country: 'United Kingdom', coords: [50.6, -1.5] as [number, number] },
-  { name: 'Oxford Clay Formation', continent: 'Europe', country: 'United Kingdom', coords: [52.5, -0.2] as [number, number] },
-  { name: 'Wealden Group', continent: 'Europe', country: 'United Kingdom', coords: [51.0, 0.5] as [number, number] },
-  { name: 'Yixian Formation', continent: 'Asia', country: 'China', coords: [41.5, 120.0] as [number, number] },
-  { name: 'Djadochta Formation', continent: 'Asia', country: 'Mongolia', coords: [44.0, 103.5] as [number, number] },
-  { name: 'Nemegt Formation', continent: 'Asia', country: 'Mongolia', coords: [43.5, 101.0] as [number, number] },
-  { name: 'Shaximiao Formation', continent: 'Asia', country: 'China', coords: [29.4, 104.8] as [number, number] },
-  { name: 'Lufeng Formation', continent: 'Asia', country: 'China', coords: [25.1, 102.1] as [number, number] },
-  { name: 'Lameta Formation', continent: 'Asia', country: 'India', coords: [22.0, 79.0] as [number, number] },
-  { name: 'Kota Formation', continent: 'Asia', country: 'India', coords: [18.8, 79.8] as [number, number] },
-  { name: 'Siwalik Hills', continent: 'Asia', country: 'India', coords: [30.8, 77.0] as [number, number] },
-  { name: 'Bahariya Formation', continent: 'Africa', country: 'Egypt', coords: [28.3, 28.9] as [number, number] },
-  { name: 'Tendaguru Formation', continent: 'Africa', country: 'Tanzania', coords: [-9.7, 39.3] as [number, number] },
-  { name: 'Elliot Formation', continent: 'Africa', country: 'South Africa', coords: [-30.5, 27.5] as [number, number] },
-  { name: 'Kem Kem Beds', continent: 'Africa', country: 'Morocco', coords: [31.2, -4.0] as [number, number] },
-  { name: 'Karoo Basin', continent: 'Africa', country: 'South Africa', coords: [-32.0, 25.0] as [number, number] },
-  { name: 'Winton Formation', continent: 'Oceania', country: 'Australia', coords: [-22.4, 143.0] as [number, number] },
-  { name: 'Lightning Ridge', continent: 'Oceania', country: 'Australia', coords: [-29.4, 147.9] as [number, number] }
+  { name: 'Hell Creek Formation', continent: 'North America', country: 'United States', coords: [47.0, -106.0] as [number, number], eras: ['Cretaceous'] },
+  { name: 'Morrison Formation', continent: 'North America', country: 'United States', coords: [39.0, -105.0] as [number, number], eras: ['Jurassic'] },
+  { name: 'Niobrara Formation', continent: 'North America', country: 'United States', coords: [38.5, -99.0] as [number, number], eras: ['Cretaceous'] },
+  { name: 'Chinle Formation', continent: 'North America', country: 'United States', coords: [35.0, -109.0] as [number, number], eras: ['Triassic'] },
+  { name: 'Dinosaur Park Formation', continent: 'North America', country: 'Canada', coords: [50.7, -111.5] as [number, number], eras: ['Cretaceous'] },
+  { name: 'Two Medicine Formation', continent: 'North America', country: 'United States', coords: [48.0, -112.5] as [number, number], eras: ['Cretaceous'] },
+  { name: 'Ischigualasto Formation', continent: 'South America', country: 'Argentina', coords: [-30.1, -67.8] as [number, number], eras: ['Triassic'] },
+  { name: 'Candeleros Formation', continent: 'South America', country: 'Argentina', coords: [-39.0, -69.0] as [number, number], eras: ['Cretaceous'] },
+  { name: 'Romualdo Formation', continent: 'South America', country: 'Brazil', coords: [-7.2, -39.5] as [number, number], eras: ['Cretaceous'] },
+  { name: 'Santana Formation', continent: 'South America', country: 'Brazil', coords: [-7.1, -40.0] as [number, number], eras: ['Cretaceous'] },
+  { name: 'Solnhofen Limestone', continent: 'Europe', country: 'Germany', coords: [48.9, 11.0] as [number, number], eras: ['Jurassic'] },
+  { name: 'Wessex Formation', continent: 'Europe', country: 'United Kingdom', coords: [50.6, -1.5] as [number, number], eras: ['Cretaceous'] },
+  { name: 'Oxford Clay Formation', continent: 'Europe', country: 'United Kingdom', coords: [52.5, -0.2] as [number, number], eras: ['Jurassic'] },
+  { name: 'Wealden Group', continent: 'Europe', country: 'United Kingdom', coords: [51.0, 0.5] as [number, number], eras: ['Cretaceous'] },
+  { name: 'Yixian Formation', continent: 'Asia', country: 'China', coords: [41.5, 120.0] as [number, number], eras: ['Cretaceous'] },
+  { name: 'Djadochta Formation', continent: 'Asia', country: 'Mongolia', coords: [44.0, 103.5] as [number, number], eras: ['Cretaceous'] },
+  { name: 'Nemegt Formation', continent: 'Asia', country: 'Mongolia', coords: [43.5, 101.0] as [number, number], eras: ['Cretaceous'] },
+  { name: 'Shaximiao Formation', continent: 'Asia', country: 'China', coords: [29.4, 104.8] as [number, number], eras: ['Jurassic'] },
+  { name: 'Lufeng Formation', continent: 'Asia', country: 'China', coords: [25.1, 102.1] as [number, number], eras: ['Triassic', 'Jurassic'] },
+  { name: 'Lameta Formation', continent: 'Asia', country: 'India', coords: [22.0, 79.0] as [number, number], eras: ['Cretaceous'] },
+  { name: 'Kota Formation', continent: 'Asia', country: 'India', coords: [18.8, 79.8] as [number, number], eras: ['Jurassic'] },
+  { name: 'Siwalik Hills', continent: 'Asia', country: 'India', coords: [30.8, 77.0] as [number, number], eras: ['Neogene', 'Pleistocene'] },
+  { name: 'Maleri Formation', continent: 'Asia', country: 'India', coords: [19.0, 79.5] as [number, number], eras: ['Triassic'] },
+  { name: 'Bahariya Formation', continent: 'Africa', country: 'Egypt', coords: [28.3, 28.9] as [number, number], eras: ['Cretaceous'] },
+  { name: 'Tendaguru Formation', continent: 'Africa', country: 'Tanzania', coords: [-9.7, 39.3] as [number, number], eras: ['Jurassic'] },
+  { name: 'Elliot Formation', continent: 'Africa', country: 'South Africa', coords: [-30.5, 27.5] as [number, number], eras: ['Triassic', 'Jurassic'] },
+  { name: 'Kem Kem Beds', continent: 'Africa', country: 'Morocco', coords: [31.2, -4.0] as [number, number], eras: ['Cretaceous'] },
+  { name: 'Karoo Basin', continent: 'Africa', country: 'South Africa', coords: [-32.0, 25.0] as [number, number], eras: ['Permian', 'Triassic'] },
+  { name: 'Winton Formation', continent: 'Oceania', country: 'Australia', coords: [-22.4, 143.0] as [number, number], eras: ['Cretaceous'] },
+  { name: 'Lightning Ridge', continent: 'Oceania', country: 'Australia', coords: [-29.4, 147.9] as [number, number], eras: ['Cretaceous'] }
 ];
 
 function ChangeView({ center, zoom }: { center: [number, number]; zoom: number }) {
@@ -70,27 +71,27 @@ function ChangeView({ center, zoom }: { center: [number, number]; zoom: number }
 
 const getEraColor = (eraName: string) => {
   if (['Cambrian', 'Devonian', 'Carboniferous', 'Permian'].includes(eraName)) {
-    return '#4A6FA5';
+    return '#3B82F6';
   }
-  if (eraName === 'Triassic') return '#B5602E';
-  if (eraName === 'Jurassic') return '#3E7A4F';
-  if (eraName === 'Cretaceous') return '#8B3A3A';
+  if (eraName === 'Triassic') return '#D97706';
+  if (eraName === 'Jurassic') return '#10B981';
+  if (eraName === 'Cretaceous') return '#EF4444';
   if (['Eocene', 'Neogene', 'Pleistocene'].includes(eraName)) {
-    return '#B58B2E';
+    return '#EAB308';
   }
-  return '#D98E4A';
+  return '#D97706';
 };
 
 const createMapMarkerIcon = (name: string, isSelected: boolean, eraColor: string) => {
   return L.divIcon({
     className: 'custom-leaflet-marker',
     html: `
-      <div style="--era-color: ${eraColor};" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border shadow-lg font-bold text-xs transition-all duration-200 uppercase tracking-wide whitespace-nowrap min-w-[80px] justify-center hover:shadow-[0_0_15px_var(--era-color)] hover:scale-105 ${
+      <div style="--era-color: ${eraColor};" class="flex items-center gap-1.5 px-3 py-1.5 rounded-none border shadow-2xl font-mono font-bold text-xs transition-all duration-200 uppercase tracking-widest whitespace-nowrap min-w-[80px] justify-center ${
         isSelected
-          ? 'bg-slate-900 text-white border-blue-400 ring-2 ring-blue-500 scale-110 shadow-[0_0_20px_var(--era-color)] z-50'
-          : 'bg-slate-950/90 text-slate-300 border-slate-700 hover:border-slate-500 hover:text-white'
+          ? 'bg-slate-950 text-amber-400 border-amber-500 scale-110 shadow-[0_0_20px_var(--era-color)] z-50'
+          : 'bg-slate-950 text-slate-300 border-slate-800 hover:border-amber-500/50 hover:text-white'
       }">
-        <span class="w-2 h-2 rounded-full" style="background-color: ${eraColor};"></span>
+        <span class="w-2 h-2 rounded-none" style="background-color: ${eraColor};"></span>
         <span>${name}</span>
       </div>
     `,
@@ -115,10 +116,12 @@ export default function TimeMap() {
 
   const activeContinentObj = CONTINENTS.find(c => c.name === selectedLocation) || CONTINENTS[0];
 
-  const formationsInContinent = FORMATIONS.filter(f => f.continent === selectedLocation);
+  const formationsInContinent = FORMATIONS.filter(
+    f => f.continent === selectedLocation && f.eras.includes(currentEra.name)
+  );
 
   useEffect(() => {
-    document.title = `Geologic Time Map (${currentEra.name} - ${selectedLocation}) | Prehistorica`;
+    document.title = `Time-Map Pavilion (${currentEra.name} - ${selectedLocation}) | Prehistorica`;
   }, [currentEra, selectedLocation]);
 
   useEffect(() => {
@@ -126,18 +129,21 @@ export default function TimeMap() {
     setError(null);
 
     fetchSpecies({
-      time_period: currentEra.name,
-      location: selectedLocation,
-      limit: 50
+      time_period: selectedFormation ? undefined : currentEra.name,
+      location: selectedFormation ? undefined : selectedLocation,
+      fossil_formation: selectedFormation || undefined,
+      limit: 100
     })
       .then((res) => {
         const fetchedData = 'data' in res ? res.data : res;
 
         if (selectedFormation) {
-          const filtered = fetchedData.filter(s =>
-            s.fossilFormation?.toLowerCase().includes(selectedFormation.toLowerCase())
-          );
-          setSpeciesList(filtered);
+          const cleanForm = selectedFormation.toLowerCase().replace(/\s+(formation|beds|limestone|group|basin|shale)$/i, '').trim();
+          const filtered = fetchedData.filter(s => {
+            const formStr = (s.fossilFormation || s.geographicRange?.fossilFormation || '').toLowerCase();
+            return formStr.includes(cleanForm) || JSON.stringify(s).toLowerCase().includes(cleanForm);
+          });
+          setSpeciesList(filtered.length > 0 ? filtered : fetchedData);
         } else {
           setSpeciesList(fetchedData);
         }
@@ -162,6 +168,7 @@ export default function TimeMap() {
 
   return (
     <div className="space-y-6">
+      {/* Header Bar */}
       <motion.div
         initial={shouldReduceMotion ? false : { opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -169,30 +176,31 @@ export default function TimeMap() {
         className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800/80 pb-5"
       >
         <div>
-          <h1 className="text-3xl font-extrabold text-slate-100 tracking-tight flex items-center gap-2">
-            <Compass className="h-7 w-7 text-blue-400" /> Geologic Time-Map & Fossil Formations
+          <h1 className="text-4xl font-black text-slate-100 uppercase tracking-tight flex items-center gap-2">
+            <Compass className="h-7 w-7 text-amber-500" /> Geologic Excavation Time-Map
           </h1>
-          <p className="text-sm text-slate-400 mt-1">
+          <p className="text-xs font-mono text-slate-400 mt-1">
             Navigate Earth's ancient paleocontinents and unearth location-verified fossil formations.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 text-xs">
-          <span className="px-3 py-1.5 rounded-lg bg-slate-900/80 backdrop-blur-md border border-slate-800 text-slate-300 font-semibold shadow-sm">
-            Active Era: <strong style={{ color: eraColor }}>{currentEra.name}</strong> ({currentEra.range})
+        <div className="flex items-center gap-2 font-mono text-xs">
+          <span className="px-3 py-1.5 bg-slate-950 border border-slate-800 text-slate-300 font-bold uppercase tracking-widest shadow-md">
+            Era: <strong style={{ color: eraColor }}>{currentEra.name}</strong> ({currentEra.range})
           </span>
         </div>
       </motion.div>
 
+      {/* Geologic Era Scrubber */}
       <motion.div
         initial={shouldReduceMotion ? false : { opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-        className="bg-slate-900/60 backdrop-blur-md border border-slate-800/80 p-4 rounded-2xl space-y-4 shadow-xl"
+        className="bg-slate-950 border border-slate-800 p-5 rounded-none space-y-4 shadow-2xl font-mono"
       >
         <div className="flex items-center justify-between">
-          <span className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-            <MapPin className="h-4 w-4 text-blue-400" /> Geologic Timeline Scrubber
+          <span className="text-xs font-bold uppercase tracking-widest text-amber-400 flex items-center gap-1.5">
+            <MapPin className="h-4 w-4 text-amber-500" /> Geologic Era Scrubber
           </span>
           <span className="text-xs text-slate-400 font-semibold">
             {currentEra.desc}
@@ -206,7 +214,7 @@ export default function TimeMap() {
             max={ERAS.length - 1}
             value={selectedEraIndex}
             onChange={(e) => handleEraChange(parseInt(e.target.value, 10))}
-            className="w-full h-2 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-blue-500 border border-slate-800"
+            className="w-full h-2 bg-slate-900 rounded-none appearance-none cursor-pointer accent-amber-500 border border-slate-800"
           />
 
           <div className="grid grid-cols-5 sm:grid-cols-10 gap-1 text-[11px]">
@@ -219,10 +227,10 @@ export default function TimeMap() {
                   key={era.name}
                   whileTap={{ scale: 0.92 }}
                   onClick={() => handleEraChange(idx)}
-                  className={`py-1.5 px-1 rounded-lg font-bold border transition-all text-center truncate cursor-pointer ${
+                  className={`py-1.5 px-1 rounded-none font-bold border transition-all text-center truncate cursor-pointer ${
                     isSelected
-                      ? 'bg-slate-950 text-white shadow-md border-blue-500 ring-1 ring-blue-500'
-                      : 'bg-slate-950/40 text-slate-400 border-slate-800/60 hover:border-slate-700 hover:text-slate-200'
+                      ? 'bg-slate-900 text-amber-400 border-amber-500 shadow-md'
+                      : 'bg-slate-950 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-200'
                   }`}
                   style={isSelected ? { borderColor: color } : {}}
                   title={`${era.name} (${era.range})`}
@@ -237,17 +245,17 @@ export default function TimeMap() {
       </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        <div className="lg:col-span-7 space-y-4">
+        <div className="lg:col-span-7 space-y-4 font-mono">
           <div className="flex flex-wrap gap-2">
             {CONTINENTS.map((c) => (
               <motion.button
                 key={c.name}
                 whileTap={{ scale: 0.94 }}
                 onClick={() => handleLocationChange(c.name)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
+                className={`px-3 py-1.5 rounded-none text-xs font-bold uppercase tracking-wider border transition-all cursor-pointer ${
                   selectedLocation === c.name
-                    ? 'bg-blue-600 border-blue-500 text-white shadow-md shadow-blue-500/20'
-                    : 'bg-slate-900/80 backdrop-blur-md border-slate-800 text-slate-300 hover:bg-slate-800 hover:text-white'
+                    ? 'bg-amber-600 border-amber-400 text-slate-950 shadow-lg'
+                    : 'bg-slate-950 border-slate-800 text-slate-300 hover:bg-slate-900 hover:text-white'
                 }`}
               >
                 {c.name}
@@ -255,7 +263,7 @@ export default function TimeMap() {
             ))}
           </div>
 
-          <div className="relative h-[440px] rounded-2xl overflow-hidden border border-slate-800/80 shadow-2xl bg-slate-950">
+          <div className="relative h-[440px] rounded-none overflow-hidden border border-slate-800 shadow-2xl bg-slate-950">
             <MapContainer
               center={activeContinentObj.coords}
               zoom={activeContinentObj.zoom}
@@ -290,45 +298,45 @@ export default function TimeMap() {
               })}
             </MapContainer>
 
-            <div className="absolute top-4 left-4 z-20 bg-slate-950/85 backdrop-blur-md border border-slate-800 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 shadow-lg pointer-events-none">
-              Region: <span className="text-blue-400">{selectedLocation}</span>
+            <div className="absolute top-4 left-4 z-20 bg-slate-950 border border-slate-800 px-3 py-1.5 text-xs font-bold text-slate-300 shadow-xl pointer-events-none uppercase tracking-wider">
+              Region: <span className="text-amber-400">{selectedLocation}</span>
               {selectedFormation && (
-                <span className="ml-1 text-emerald-400">&bull; {selectedFormation}</span>
+                <span className="ml-1.5 text-emerald-400">&bull; {selectedFormation}</span>
               )}
             </div>
           </div>
         </div>
 
-        <div className="lg:col-span-5 space-y-4">
+        <div className="lg:col-span-5 space-y-4 font-mono">
           <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-              <Dna className="h-4 w-4 text-blue-400" />
+            <h3 className="text-xs font-bold uppercase tracking-widest text-amber-400 flex items-center gap-1.5">
+              <Dna className="h-4 w-4 text-amber-500" />
               <span>Fossil Discoveries ({speciesList.length})</span>
             </h3>
             {selectedFormation && (
               <motion.button
                 whileTap={{ scale: 0.92 }}
                 onClick={() => setSelectedFormation(null)}
-                className="text-xs text-blue-400 hover:underline font-semibold"
+                className="text-xs text-amber-400 hover:underline font-bold uppercase tracking-wider text-[10px]"
               >
-                Clear Formation Filter
+                Clear Formation
               </motion.button>
             )}
           </div>
 
           {loading ? (
-            <div className="h-96 bg-slate-900/60 border border-slate-800 rounded-2xl flex flex-col items-center justify-center text-slate-500 gap-2">
-              <Loader2 className="h-7 w-7 animate-spin text-blue-400" />
-              <span className="text-xs font-semibold">Unearthing species records...</span>
+            <div className="h-96 bg-slate-950 border border-slate-800 flex flex-col items-center justify-center text-slate-500 gap-2">
+              <Loader2 className="h-7 w-7 animate-spin text-amber-500" />
+              <span className="text-xs font-bold uppercase tracking-wider">Unearthing records...</span>
             </div>
           ) : error ? (
-            <div className="bg-red-500/5 border border-red-500/10 rounded-2xl p-6 text-center text-red-400 text-xs">
+            <div className="bg-slate-950 border border-red-500/20 p-6 text-center text-red-400 text-xs">
               {error}
             </div>
           ) : speciesList.length === 0 ? (
-            <div className="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-10 text-center text-slate-400 flex flex-col items-center gap-2 shadow-lg">
-              <Info className="h-8 w-8 text-slate-500" />
-              <p className="font-semibold text-sm text-slate-300">No Species Found</p>
+            <div className="bg-slate-950 border border-slate-800 p-10 text-center text-slate-400 flex flex-col items-center gap-2 shadow-xl">
+              <Info className="h-8 w-8 text-amber-500" />
+              <p className="font-bold text-sm text-slate-300 uppercase tracking-widest">No Species Records</p>
               <p className="text-xs text-slate-500 max-w-xs">
                 No catalog specimens found for {currentEra.name} in {selectedLocation}
                 {selectedFormation ? ` (${selectedFormation})` : ''}.
@@ -344,10 +352,10 @@ export default function TimeMap() {
                 >
                   <Link
                     to={`/species/${species.id}`}
-                    className="group bg-gradient-to-r from-slate-900/90 to-slate-950/90 backdrop-blur-md border border-slate-800/80 rounded-xl p-3.5 hover:border-blue-500/40 transition-all flex items-center justify-between gap-3 shadow-md"
+                    className="group bg-slate-950 border border-slate-800 p-3.5 hover:border-amber-500/50 transition-all flex items-center justify-between gap-3 shadow-md"
                   >
                     <div className="flex items-center gap-3 min-w-0">
-                      <div className="h-12 w-12 rounded-lg bg-slate-950 border border-slate-800 overflow-hidden shrink-0 flex items-center justify-center p-1">
+                      <div className="h-12 w-12 bg-slate-900 border border-slate-800 shrink-0 flex items-center justify-center p-1">
                         {species.reconstructionImageUrl ? (
                           <img
                             src={species.reconstructionImageUrl}
@@ -359,21 +367,21 @@ export default function TimeMap() {
                         )}
                       </div>
                       <div className="min-w-0 space-y-0.5">
-                        <h4 className="text-sm font-extrabold text-slate-100 group-hover:text-blue-400 transition-colors truncate">
+                        <h4 className="text-sm font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors truncate tracking-tight">
                           {species.name}
                         </h4>
-                        <p className="text-xs italic text-slate-400 truncate">
+                        <p className="text-xs italic font-serif text-amber-200/70 truncate">
                           {species.scientificName}
                         </p>
-                        <div className="flex items-center gap-2 text-[10px] text-slate-500">
-                          <span className="font-semibold text-indigo-400">{species.clade}</span>
+                        <div className="flex items-center gap-2 text-[10px] text-slate-400">
+                          <span className="font-bold text-amber-400">{species.clade}</span>
                           <span>&bull;</span>
                           <span className="truncate">{species.fossilFormation || 'Formation Unspecified'}</span>
                         </div>
                       </div>
                     </div>
 
-                    <ArrowRight className="h-4 w-4 text-slate-500 group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all shrink-0" />
+                    <ArrowRight className="h-4 w-4 text-slate-500 group-hover:text-amber-400 group-hover:translate-x-0.5 transition-all shrink-0" />
                   </Link>
                 </motion.div>
               ))}

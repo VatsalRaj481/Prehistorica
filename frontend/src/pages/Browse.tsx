@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion, Variants } from 'framer-motion';
 import { fetchSpecies, Species } from '../services/api.js';
-
+import ThreeDFossilStarfield from '../components/ThreeDFossilStarfield.js';
 import { SlidersHorizontal, ArrowRight, Dna, Info, X, ChevronLeft, ChevronRight, Filter } from 'lucide-react';
 
 export default function Browse() {
@@ -28,7 +28,7 @@ export default function Browse() {
   const [showMobileFilters, setShowMobileFilters] = useState(false);
 
   useEffect(() => {
-    document.title = 'Browse Prehistoric Paleocatalog | Prehistorica Encyclopedia';
+    document.title = 'Catalog Pavilion | Prehistorica Museum Index';
   }, []);
 
   // Fetch species whenever search parameters shift
@@ -198,20 +198,23 @@ export default function Browse() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 relative">
+      {/* 3D Particle Fossil Background */}
+      <ThreeDFossilStarfield />
+
       {/* Header Bar */}
       <motion.div
         initial={shouldReduceMotion ? false : { opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-        className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800/80 pb-5"
+        className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800/80 pb-5"
       >
         <div>
-          <h1 className="text-3xl font-extrabold text-slate-100 tracking-tight flex items-center gap-2">
-            <Filter className="h-7 w-7 text-blue-400" /> Explore the Paleocatalog
+          <h1 className="text-4xl font-black text-slate-100 uppercase tracking-tight flex items-center gap-2">
+            <Filter className="h-7 w-7 text-amber-500" /> Catalog Pavilion Index
           </h1>
-          <p className="text-sm text-slate-400 mt-1">
-            Combinable multi-select filters across millions of years of evolutionary history.
+          <p className="text-xs font-mono text-slate-400 mt-1">
+            Combinable architectural search across 450+ cataloged prehistoric specimens.
           </p>
         </div>
 
@@ -220,41 +223,41 @@ export default function Browse() {
           <motion.button
             whileTap={{ scale: 0.94 }}
             onClick={() => setShowMobileFilters(!showMobileFilters)}
-            className="p-2 bg-slate-900 border border-slate-800 rounded-xl text-slate-400 hover:text-white flex items-center justify-center cursor-pointer active:bg-slate-800 transition-colors"
+            className="p-2 bg-slate-950 border border-slate-800 rounded-none text-slate-400 hover:text-white flex items-center justify-center cursor-pointer font-mono text-xs uppercase"
             title="Toggle Filters"
           >
-            <SlidersHorizontal className="h-5 w-5" />
+            <SlidersHorizontal className="h-5 w-5 mr-1 text-amber-500" /> Filters
           </motion.button>
         </div>
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Left Filter Sidebar - Desktop */}
         <motion.aside
           initial={shouldReduceMotion ? false : { opacity: 0, x: -15 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-          className="hidden md:block bg-slate-900/60 backdrop-blur-md border border-slate-800/80 p-5 rounded-2xl h-fit space-y-6 shadow-xl"
+          className="hidden md:block bg-slate-950 border border-slate-800 p-5 rounded-none h-fit space-y-6 shadow-2xl font-mono text-xs"
         >
           <div className="flex items-center justify-between border-b border-slate-800 pb-3 gap-2">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5 shrink-0">
-              <SlidersHorizontal className="h-4 w-4 text-blue-400 shrink-0" />
-              <span>Combinable Filters</span>
+            <h3 className="text-xs font-bold uppercase tracking-widest text-amber-400 flex items-center gap-1.5 shrink-0">
+              <SlidersHorizontal className="h-4 w-4 text-amber-500 shrink-0" />
+              <span>Catalog Filters</span>
             </h3>
             {hasActiveFilters && (
               <motion.button
                 whileTap={{ scale: 0.92 }}
                 onClick={clearFilters}
-                className="text-xs text-blue-400 hover:text-blue-300 font-semibold shrink-0 cursor-pointer whitespace-nowrap ml-auto"
+                className="text-[10px] text-amber-400 hover:underline font-bold uppercase tracking-wider shrink-0 cursor-pointer ml-auto"
               >
-                Reset All
+                Reset
               </motion.button>
             )}
           </div>
 
           {/* Clade Multi-Select Checkboxes */}
           <div className="space-y-2">
-            <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">Taxonomic Clade</label>
+            <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Taxonomic Clade</label>
             <div className="space-y-1 max-h-48 overflow-y-auto pr-1">
               {cladeOptions.map((c) => {
                 const isSelected = selectedClades.includes(c);
@@ -262,15 +265,15 @@ export default function Browse() {
                   <motion.label
                     key={c}
                     whileTap={{ scale: 0.98 }}
-                    className={`flex items-center gap-2 text-xs cursor-pointer py-1 px-2 rounded-lg transition-colors select-none ${
-                      isSelected ? 'bg-blue-500/10 text-blue-400 font-semibold border border-blue-500/20' : 'text-slate-300 hover:bg-slate-800/50 hover:text-white'
+                    className={`flex items-center gap-2 text-xs cursor-pointer py-1.5 px-2 rounded-none transition-colors select-none ${
+                      isSelected ? 'bg-amber-500/10 text-amber-300 font-bold border border-amber-500/30' : 'text-slate-300 hover:bg-slate-900 hover:text-white'
                     }`}
                   >
                     <input
                       type="checkbox"
                       checked={isSelected}
                       onChange={() => toggleArrayFilter('clade', c)}
-                      className="rounded border-slate-700 bg-slate-950 text-blue-500 focus:ring-blue-500"
+                      className="border-slate-700 bg-slate-950 text-amber-500 focus:ring-amber-500"
                     />
                     <span>{c}</span>
                   </motion.label>
@@ -280,8 +283,8 @@ export default function Browse() {
           </div>
 
           {/* Diet Multi-Select Checkboxes */}
-          <div className="space-y-2 pt-2 border-t border-slate-800/80">
-            <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">Diet</label>
+          <div className="space-y-2 pt-3 border-t border-slate-850">
+            <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Dietary Type</label>
             <div className="space-y-1">
               {dietOptions.map((d) => {
                 const isSelected = selectedDiets.includes(d.val);
@@ -289,15 +292,15 @@ export default function Browse() {
                   <motion.label
                     key={d.val}
                     whileTap={{ scale: 0.98 }}
-                    className={`flex items-center gap-2 text-xs cursor-pointer py-1 px-2 rounded-lg transition-colors select-none ${
-                      isSelected ? 'bg-indigo-500/10 text-indigo-300 font-semibold border border-indigo-500/20' : 'text-slate-300 hover:bg-slate-800/50 hover:text-white'
+                    className={`flex items-center gap-2 text-xs cursor-pointer py-1.5 px-2 rounded-none transition-colors select-none ${
+                      isSelected ? 'bg-amber-500/10 text-amber-300 font-bold border border-amber-500/30' : 'text-slate-300 hover:bg-slate-900 hover:text-white'
                     }`}
                   >
                     <input
                       type="checkbox"
                       checked={isSelected}
                       onChange={() => toggleArrayFilter('diet', d.val)}
-                      className="rounded border-slate-700 bg-slate-950 text-indigo-500 focus:ring-indigo-500"
+                      className="border-slate-700 bg-slate-950 text-amber-500 focus:ring-amber-500"
                     />
                     <span>{d.label}</span>
                   </motion.label>
@@ -307,8 +310,8 @@ export default function Browse() {
           </div>
 
           {/* Habitat Multi-Select Checkboxes */}
-          <div className="space-y-2 pt-2 border-t border-slate-800/80">
-            <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">Habitat</label>
+          <div className="space-y-2 pt-3 border-t border-slate-850">
+            <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Habitat</label>
             <div className="space-y-1">
               {habitatOptions.map((h) => {
                 const isSelected = selectedHabitats.includes(h.val);
@@ -316,15 +319,15 @@ export default function Browse() {
                   <motion.label
                     key={h.val}
                     whileTap={{ scale: 0.98 }}
-                    className={`flex items-center gap-2 text-xs cursor-pointer py-1 px-2 rounded-lg transition-colors select-none ${
-                      isSelected ? 'bg-emerald-500/10 text-emerald-400 font-semibold border border-emerald-500/20' : 'text-slate-300 hover:bg-slate-800/50 hover:text-white'
+                    className={`flex items-center gap-2 text-xs cursor-pointer py-1.5 px-2 rounded-none transition-colors select-none ${
+                      isSelected ? 'bg-amber-500/10 text-amber-300 font-bold border border-amber-500/30' : 'text-slate-300 hover:bg-slate-900 hover:text-white'
                     }`}
                   >
                     <input
                       type="checkbox"
                       checked={isSelected}
                       onChange={() => toggleArrayFilter('habitat', h.val)}
-                      className="rounded border-slate-700 bg-slate-950 text-emerald-500 focus:ring-emerald-500"
+                      className="border-slate-700 bg-slate-950 text-amber-500 focus:ring-amber-500"
                     />
                     <span>{h.label}</span>
                   </motion.label>
@@ -334,12 +337,12 @@ export default function Browse() {
           </div>
 
           {/* Geologic Era Dropdown */}
-          <div className="space-y-2 pt-2 border-t border-slate-800/80">
-            <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">Geologic Era</label>
+          <div className="space-y-2 pt-3 border-t border-slate-850">
+            <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Geologic Era</label>
             <select
               value={selectedEra}
               onChange={(e) => updateParams({ era: e.target.value })}
-              className="block w-full p-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-300 focus:outline-none focus:border-blue-500 transition-colors"
+              className="block w-full p-2 bg-slate-900 border border-slate-800 rounded-none text-xs text-slate-300 focus:outline-none focus:border-amber-500 font-mono"
             >
               <option value="">All Geologic Eras</option>
               {eraOptions.map((opt) => (
@@ -349,12 +352,12 @@ export default function Browse() {
           </div>
 
           {/* Location Continent Dropdown */}
-          <div className="space-y-2 pt-2 border-t border-slate-800/80">
-            <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">Geographic Region</label>
+          <div className="space-y-2 pt-3 border-t border-slate-850">
+            <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Geographic Region</label>
             <select
               value={selectedLocation}
               onChange={(e) => updateParams({ location: e.target.value })}
-              className="block w-full p-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-300 focus:outline-none focus:border-blue-500 transition-colors"
+              className="block w-full p-2 bg-slate-900 border border-slate-800 rounded-none text-xs text-slate-300 focus:outline-none focus:border-amber-500 font-mono"
             >
               <option value="">All Regions</option>
               {locationOptions.map((opt) => (
@@ -364,12 +367,12 @@ export default function Browse() {
           </div>
 
           {/* Size Class Dropdown */}
-          <div className="space-y-2 pt-2 border-t border-slate-800/80">
-            <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">Length Size Class</label>
+          <div className="space-y-2 pt-3 border-t border-slate-850">
+            <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Length Scale Class</label>
             <select
               value={sizeRange}
               onChange={(e) => updateParams({ size: e.target.value })}
-              className="block w-full p-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-300 focus:outline-none focus:border-blue-500 transition-colors"
+              className="block w-full p-2 bg-slate-900 border border-slate-800 rounded-none text-xs text-slate-300 focus:outline-none focus:border-amber-500 font-mono"
             >
               <option value="">All Sizes</option>
               <option value="small">Small (&lt; 2m)</option>
@@ -378,86 +381,6 @@ export default function Browse() {
             </select>
           </div>
         </motion.aside>
-
-        {/* Mobile Filters Drawer Overlay */}
-        <AnimatePresence>
-          {showMobileFilters && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm md:hidden flex justify-end"
-            >
-              <motion.div
-                initial={{ x: '100%' }}
-                animate={{ x: 0 }}
-                exit={{ x: '100%' }}
-                transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                className="bg-slate-900 w-80 h-full p-6 shadow-2xl flex flex-col justify-between border-l border-slate-800 overflow-y-auto"
-              >
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                    <h2 className="text-lg font-bold text-slate-200">Combinable Filters</h2>
-                    <motion.button
-                      whileTap={{ scale: 0.9 }}
-                      onClick={() => setShowMobileFilters(false)}
-                      className="p-1 text-slate-400 hover:text-white"
-                    >
-                      <X className="h-5 w-5" />
-                    </motion.button>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold text-slate-300">Geologic Era</label>
-                    <select
-                      value={selectedEra}
-                      onChange={(e) => updateParams({ era: e.target.value })}
-                      className="block w-full p-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-300"
-                    >
-                      <option value="">All Eras</option>
-                      {eraOptions.map((opt) => (
-                        <option key={opt} value={opt}>{opt}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold text-slate-300">Geographic Region</label>
-                    <select
-                      value={selectedLocation}
-                      onChange={(e) => updateParams({ location: e.target.value })}
-                      className="block w-full p-2 bg-slate-950 border border-slate-800 rounded-lg text-xs text-slate-300"
-                    >
-                      <option value="">All Regions</option>
-                      {locationOptions.map((opt) => (
-                        <option key={opt} value={opt}>{opt}</option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                <div className="flex gap-4 border-t border-slate-800 pt-4 mt-6">
-                  {hasActiveFilters && (
-                    <motion.button
-                      whileTap={{ scale: 0.95 }}
-                      onClick={clearFilters}
-                      className="flex-1 py-2 text-center text-xs border border-slate-800 rounded-lg text-slate-400 font-semibold"
-                    >
-                      Reset All
-                    </motion.button>
-                  )}
-                  <motion.button
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setShowMobileFilters(false)}
-                    className="flex-1 py-2 bg-blue-600 rounded-lg text-xs font-semibold text-white text-center"
-                  >
-                    Apply Filters
-                  </motion.button>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         {/* Right Species Grid & Pagination */}
         <div className="lg:col-span-3 space-y-6">
@@ -468,16 +391,16 @@ export default function Browse() {
                 initial={shouldReduceMotion ? false : { opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                className="flex flex-wrap items-center gap-2 p-3 bg-slate-900/60 backdrop-blur-md rounded-xl border border-slate-800/80 text-xs overflow-hidden shadow-sm"
+                className="flex flex-wrap items-center gap-2 p-3 bg-slate-950 rounded-none border border-slate-800 text-xs font-mono overflow-hidden shadow-md"
               >
-                <span className="text-slate-500 font-bold uppercase tracking-wider text-[10px]">Active Filters:</span>
+                <span className="text-slate-400 font-bold uppercase tracking-widest text-[10px]">Active Filters:</span>
                 {search && (
                   <motion.span
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className="px-2.5 py-0.5 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center gap-1 font-semibold"
+                    className="px-2.5 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-300 flex items-center gap-1 font-bold"
                   >
-                    Search: "{search}"
+                    Query: "{search}"
                     <button onClick={() => updateParams({ search: null })} className="hover:text-white"><X className="h-3 w-3" /></button>
                   </motion.span>
                 )}
@@ -486,7 +409,7 @@ export default function Browse() {
                     key={c}
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className="px-2.5 py-0.5 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center gap-1 font-semibold"
+                    className="px-2.5 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-300 flex items-center gap-1 font-bold"
                   >
                     Clade: {c}
                     <button onClick={() => toggleArrayFilter('clade', c)} className="hover:text-white"><X className="h-3 w-3" /></button>
@@ -497,49 +420,28 @@ export default function Browse() {
                     key={d}
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className="px-2.5 py-0.5 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 flex items-center gap-1 font-semibold capitalize"
+                    className="px-2.5 py-1 bg-slate-900 border border-slate-800 text-slate-300 flex items-center gap-1 font-bold capitalize"
                   >
                     Diet: {d}
                     <button onClick={() => toggleArrayFilter('diet', d)} className="hover:text-white"><X className="h-3 w-3" /></button>
-                  </motion.span>
-                ))}
-                {selectedHabitats.map(h => (
-                  <motion.span
-                    key={h}
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    className="px-2.5 py-0.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center gap-1 font-semibold capitalize"
-                  >
-                    Habitat: {h}
-                    <button onClick={() => toggleArrayFilter('habitat', h)} className="hover:text-white"><X className="h-3 w-3" /></button>
                   </motion.span>
                 ))}
                 {selectedEra && (
                   <motion.span
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className="px-2.5 py-0.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center gap-1 font-semibold"
+                    className="px-2.5 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center gap-1 font-bold"
                   >
                     Era: {selectedEra}
                     <button onClick={() => updateParams({ era: null })} className="hover:text-white"><X className="h-3 w-3" /></button>
                   </motion.span>
                 )}
-                {selectedLocation && (
-                  <motion.span
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    className="px-2.5 py-0.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 flex items-center gap-1 font-semibold"
-                  >
-                    Region: {selectedLocation}
-                    <button onClick={() => updateParams({ location: null })} className="hover:text-white"><X className="h-3 w-3" /></button>
-                  </motion.span>
-                )}
                 <motion.button
                   whileTap={{ scale: 0.95 }}
                   onClick={clearFilters}
-                  className="text-blue-400 hover:underline font-semibold ml-auto text-xs"
+                  className="text-amber-400 hover:underline font-bold uppercase tracking-wider ml-auto text-[10px]"
                 >
-                  Clear All
+                  Reset All
                 </motion.button>
               </motion.div>
             )}
@@ -548,11 +450,11 @@ export default function Browse() {
           {loading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {[...Array(6)].map((_, i) => (
-                <div key={i} className="animate-pulse bg-slate-900 border border-slate-800 rounded-xl h-80 shadow-lg" />
+                <div key={i} className="animate-pulse bg-slate-950 border border-slate-800 h-80" />
               ))}
             </div>
           ) : error ? (
-            <div className="bg-red-500/5 border border-red-500/10 rounded-xl p-8 text-center text-red-400 text-sm">
+            <div className="bg-slate-950 border border-red-500/20 p-8 text-center text-red-400 text-xs font-mono">
               {error}
             </div>
           ) : speciesList.length === 0 ? (
@@ -560,18 +462,18 @@ export default function Browse() {
               initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-              className="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-16 text-center text-slate-400 flex flex-col items-center gap-3 shadow-xl"
+              className="bg-slate-950 border border-slate-800 p-16 text-center text-slate-400 flex flex-col items-center gap-3 font-mono shadow-2xl"
             >
-              <Info className="h-10 w-10 text-slate-500" />
-              <p className="font-semibold text-slate-300">No Prehistoric Species Found</p>
+              <Info className="h-10 w-10 text-amber-500" />
+              <p className="font-bold text-slate-200 uppercase tracking-widest text-sm">No Specimen Records Found</p>
               <p className="text-xs text-slate-500 max-w-sm">
-                No catalog entries match your combination of filters. Try broadening your criteria.
+                No catalog entries match your combination of filters. Try broadening your search criteria.
               </p>
               {hasActiveFilters && (
                 <motion.button
                   whileTap={{ scale: 0.95 }}
                   onClick={clearFilters}
-                  className="mt-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-lg border border-slate-700 transition-colors"
+                  className="mt-2 px-5 py-2.5 bg-amber-600 hover:bg-amber-500 text-slate-950 text-xs font-bold uppercase tracking-wider border border-amber-400 transition-colors"
                 >
                   Reset Filters
                 </motion.button>
@@ -590,61 +492,60 @@ export default function Browse() {
                   <motion.div
                     key={species.id}
                     variants={cardVariants}
-                    whileHover={shouldReduceMotion ? {} : { y: -5, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
+                    whileHover={shouldReduceMotion ? {} : { y: -4, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
                     whileTap={{ scale: 0.97 }}
                   >
                     <Link
                       to={`/species/${species.id}`}
-                      className="group bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800/80 rounded-xl overflow-hidden hover:border-blue-500/40 hover:shadow-2xl hover:shadow-blue-500/5 transition-all duration-300 flex flex-col justify-between h-full"
+                      className="group bg-slate-950 border border-slate-800 hover:border-amber-500/50 transition-all duration-300 flex flex-col justify-between h-full shadow-xl"
                     >
                       <div>
                         {/* Thumbnail Image */}
-                        <div className="relative h-44 bg-slate-950 border-b border-slate-900 overflow-hidden flex items-center justify-center p-3">
-                          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:12px_12px] pointer-events-none" />
+                        <div className="relative h-48 bg-slate-900 border-b border-slate-800 overflow-hidden flex items-center justify-center p-4">
                           {species.reconstructionImageUrl ? (
                             <img
                               src={species.reconstructionImageUrl}
                               alt={species.name}
-                              className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-md z-10"
+                              className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-xl z-10"
                               loading="lazy"
                             />
                           ) : (
-                            <div className="w-full h-full flex flex-col items-center justify-center text-slate-600 text-xs bg-slate-950">
+                            <div className="w-full h-full flex flex-col items-center justify-center text-slate-600 text-xs font-mono bg-slate-950">
                               <Dna className="h-8 w-8 text-slate-700 mb-1" />
-                              No Illustration Available
+                              Illustration Uncataloged
                             </div>
                           )}
                           {/* Era label */}
-                          <span className="absolute top-2 left-2 bg-slate-950/80 backdrop-blur-md px-2 py-0.5 rounded-md text-[10px] font-semibold text-blue-400 border border-slate-800 z-20 shadow-sm">
+                          <span className="absolute top-2 left-2 bg-slate-950 border border-slate-800 px-2 py-0.5 text-[10px] font-mono font-bold text-amber-400 tracking-wider uppercase z-20 shadow-md">
                             {species.timePeriod.split(' ').pop()}
                           </span>
                         </div>
 
                         <div className="p-4 space-y-2">
-                          <div className="space-y-0.5">
-                            <h3 className="text-base font-extrabold text-slate-100 group-hover:text-blue-400 transition-colors">
+                          <div className="space-y-0.5 border-l-2 border-amber-500 pl-3">
+                            <h3 className="text-base font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight">
                               {species.name}
                             </h3>
-                            <p className="text-xs italic text-slate-400">
+                            <p className="text-xs italic font-serif text-amber-200/80">
                               {species.scientificName}
                             </p>
                           </div>
-                          <p className="text-xs text-slate-400 line-clamp-3 leading-relaxed">
+                          <p className="text-xs font-mono text-slate-400 line-clamp-3 leading-relaxed">
                             {species.dietDetails}
                           </p>
                         </div>
                       </div>
 
-                      <div className="px-4 py-3 border-t border-slate-900/80 bg-slate-900/30 flex items-center justify-between text-[11px] text-slate-400">
-                        <div className="flex gap-1.5 items-center min-w-0">
-                          <span className="font-semibold text-indigo-400 shrink-0">{species.clade || species.dietType}</span>
+                      <div className="px-4 py-3 border-t border-slate-900 bg-slate-950 flex items-center justify-between font-mono text-[11px] text-slate-400">
+                        <div className="flex gap-2 items-center min-w-0">
+                          <span className="font-bold text-amber-400 shrink-0 uppercase text-[10px] tracking-wider">{species.clade || species.dietType}</span>
                           <span className="text-slate-700 font-bold shrink-0">|</span>
-                          <span className="font-semibold text-blue-400 truncate">
+                          <span className="font-bold text-slate-300 truncate">
                             {species.lengthM ? `${species.lengthM}m` : 'Unspecified'}
                           </span>
                         </div>
-                        <span className="flex items-center gap-1 group-hover:text-blue-300 transition-colors shrink-0 font-semibold">
-                          View Profile <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
+                        <span className="flex items-center gap-1 group-hover:text-amber-400 transition-colors shrink-0 font-bold uppercase tracking-wider text-[10px]">
+                          Inspect 3D <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
                         </span>
                       </div>
                     </Link>
@@ -654,9 +555,9 @@ export default function Browse() {
 
               {/* Pagination Controls */}
               {pagination.totalPages > 1 && (
-                <div className="flex items-center justify-between border-t border-slate-800/80 pt-6">
-                  <span className="text-xs text-slate-400">
-                    Showing Page <strong className="text-slate-200">{page}</strong> of <strong className="text-slate-200">{pagination.totalPages}</strong> ({pagination.total} total species)
+                <div className="flex items-center justify-between border-t border-slate-800 pt-6 font-mono text-xs">
+                  <span className="text-slate-400">
+                    Page <strong className="text-amber-400">{page}</strong> / <strong className="text-slate-200">{pagination.totalPages}</strong> ({pagination.total} total specimens)
                   </span>
 
                   <div className="flex items-center gap-2">
@@ -664,15 +565,15 @@ export default function Browse() {
                       whileTap={{ scale: 0.93 }}
                       disabled={page <= 1}
                       onClick={() => updateParams({ page: (page - 1).toString() })}
-                      className="p-2 bg-slate-900 hover:bg-slate-800 disabled:opacity-40 border border-slate-800 rounded-lg text-slate-300 text-xs font-semibold flex items-center gap-1 cursor-pointer transition-colors"
+                      className="px-3 py-1.5 bg-slate-950 hover:bg-slate-900 disabled:opacity-40 border border-slate-800 text-slate-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-colors"
                     >
-                      <ChevronLeft className="h-4 w-4" /> Previous
+                      <ChevronLeft className="h-4 w-4" /> Prev
                     </motion.button>
                     <motion.button
                       whileTap={{ scale: 0.93 }}
                       disabled={page >= pagination.totalPages}
                       onClick={() => updateParams({ page: (page + 1).toString() })}
-                      className="p-2 bg-slate-900 hover:bg-slate-800 disabled:opacity-40 border border-slate-800 rounded-lg text-slate-300 text-xs font-semibold flex items-center gap-1 cursor-pointer transition-colors"
+                      className="px-3 py-1.5 bg-slate-950 hover:bg-slate-900 disabled:opacity-40 border border-slate-800 text-slate-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-colors"
                     >
                       Next <ChevronRight className="h-4 w-4" />
                     </motion.button>
