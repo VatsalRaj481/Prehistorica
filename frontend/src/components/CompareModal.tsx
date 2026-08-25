@@ -13,7 +13,6 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
   const [species1, setSpecies1] = useState<Species | null>(initialSpecies || null);
   const [species2, setSpecies2] = useState<Species | null>(null);
   const [availableList, setAvailableList] = useState<Species[]>([]);
-  const [selectedId2, setSelectedId2] = useState<number | ''>('');
   const [loading, setLoading] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
@@ -25,37 +24,62 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
 
   useEffect(() => {
     if (isOpen) {
-      fetchSpecies({ limit: 100 })
+      setLoading(true);
+      fetchSpecies({ limit: 350 })
         .then((res: any) => {
-          const list = Array.isArray(res) ? res : res.data || [];
+          const list: Species[] = Array.isArray(res) ? res : res.data || [];
           setAvailableList(list);
-          if (list.length > 1 && !species2) {
-            const second = list.find((s: Species) => s.id !== species1?.id) || list[1];
-            setSpecies2(second);
-            setSelectedId2(second.id);
-          }
+
+          const firstId = species1?.id || (list.length > 0 ? list[0].id : 1);
+          const secondCandidate = list.find((s: Species) => s.id !== firstId) || list[1] || list[0];
+          const secondId = secondCandidate ? secondCandidate.id : 2;
+
+          fetchSpeciesCompare([firstId, secondId])
+            .then((compRes) => {
+              if (compRes.length >= 1) setSpecies1(compRes[0]);
+              if (compRes.length >= 2) setSpecies2(compRes[1]);
+              setLoading(false);
+            })
+            .catch(() => setLoading(false));
         })
-        .catch(console.error);
+        .catch(() => setLoading(false));
     }
   }, [isOpen]);
 
+  const handleSelectFirst = (idStr: string) => {
+    const id1 = parseInt(idStr, 10);
+    if (isNaN(id1)) return;
+
+    const id2 = species2?.id || availableList.find(s => s.id !== id1)?.id || 2;
+    setLoading(true);
+    fetchSpeciesCompare([id1, id2])
+      .then((res) => {
+        if (res.length >= 1) setSpecies1(res[0]);
+        if (res.length >= 2) setSpecies2(res[1]);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
+  };
+
   const handleSelectSecond = (idStr: string) => {
-    const id = parseInt(idStr, 10);
-    setSelectedId2(id);
-    if (!isNaN(id)) {
-      setLoading(true);
-      fetchSpeciesCompare([species1?.id || 1, id])
-        .then((res) => {
-          if (res.length >= 2) {
-            setSpecies2(res[1]);
-          }
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.error(err);
-          setLoading(false);
-        });
-    }
+    const id2 = parseInt(idStr, 10);
+    if (isNaN(id2)) return;
+
+    const id1 = species1?.id || 1;
+    setLoading(true);
+    fetchSpeciesCompare([id1, id2])
+      .then((res) => {
+        if (res.length >= 1) setSpecies1(res[0]);
+        if (res.length >= 2) setSpecies2(res[1]);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
   };
 
   const formatClade = (cladeStr?: string | null) => {
@@ -97,32 +121,52 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
               </motion.button>
             </div>
 
-            {/* Picker for Species #2 */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 bg-slate-950/60 p-4 rounded-xl border border-slate-800">
-              <span className="text-xs font-bold text-slate-300 uppercase tracking-wider shrink-0">
-                Comparing: <strong className="text-blue-400">{species1?.name || 'Species 1'}</strong> vs
-              </span>
-              <select
-                value={selectedId2}
-                onChange={(e) => handleSelectSecond(e.target.value)}
-                disabled={loading}
-                className="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-xs font-medium text-slate-200 focus:outline-none focus:border-blue-500 w-full sm:w-auto flex-1 disabled:opacity-50 transition-colors"
-              >
-                <option value="">{loading ? 'Loading comparison...' : '-- Pick Species to Compare --'}</option>
-                {availableList
-                  .filter(s => s.id !== species1?.id)
-                  .map(s => (
+            {/* Dual Pickers for Species #1 and Species #2 */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-950/60 p-4 rounded-xl border border-slate-800 shadow-inner">
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-slate-300 uppercase tracking-wider block">
+                  Select Species 1:
+                </label>
+                <select
+                  value={species1?.id || ''}
+                  onChange={(e) => handleSelectFirst(e.target.value)}
+                  disabled={loading}
+                  className="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-xs font-medium text-slate-200 focus:outline-none focus:border-blue-500 w-full disabled:opacity-50 transition-colors"
+                >
+                  {availableList.map(s => (
                     <option key={s.id} value={s.id}>
                       {s.name} ({formatClade(s.clade)} &bull; {s.timePeriod})
                     </option>
                   ))}
-              </select>
+                </select>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-slate-300 uppercase tracking-wider block">
+                  Select Species 2:
+                </label>
+                <select
+                  value={species2?.id || ''}
+                  onChange={(e) => handleSelectSecond(e.target.value)}
+                  disabled={loading}
+                  className="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-xs font-medium text-slate-200 focus:outline-none focus:border-blue-500 w-full disabled:opacity-50 transition-colors"
+                >
+                  <option value="">-- Pick Second Species --</option>
+                  {availableList
+                    .filter(s => s.id !== species1?.id)
+                    .map(s => (
+                      <option key={s.id} value={s.id}>
+                        {s.name} ({formatClade(s.clade)} &bull; {s.timePeriod})
+                      </option>
+                    ))}
+                </select>
+              </div>
             </div>
 
             {/* Comparison Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-2">
               {/* Species 1 Column */}
-              {species1 && (
+              {species1 ? (
                 <div className="space-y-4 bg-slate-950/40 p-4 rounded-xl border border-slate-800 shadow-inner">
                   <div className="relative h-44 bg-slate-950 rounded-lg overflow-hidden border border-slate-850 flex items-center justify-center p-3">
                     <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#38bdf8_1px,transparent_1px)] [background-size:12px_12px] pointer-events-none" />
@@ -164,6 +208,10 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
                       <span className="font-bold text-slate-200">{species1.fossilFormation || 'N/A'}</span>
                     </div>
                   </div>
+                </div>
+              ) : (
+                <div className="bg-slate-950/40 border border-slate-800 rounded-xl p-8 flex flex-col items-center justify-center text-center text-slate-500">
+                  <p className="text-xs font-semibold">Select Species 1 above.</p>
                 </div>
               )}
 
@@ -212,8 +260,8 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
                   </div>
                 </div>
               ) : (
-                <div className="bg-slate-950/40 border border-slate-800 rounded-xl p-8 flex flex-col items-center justify-center text-center text-slate-500 space-y-2">
-                  <p className="text-sm font-semibold">Select a second species above to compare side-by-side.</p>
+                <div className="bg-slate-950/40 border border-slate-800 rounded-xl p-8 flex flex-col items-center justify-center text-center text-slate-500">
+                  <p className="text-xs font-semibold">Select Species 2 above to compare side-by-side.</p>
                 </div>
               )}
             </div>
