@@ -214,7 +214,7 @@ export default function Browse() {
             <Filter className="h-7 w-7 text-amber-500" /> Catalog Pavilion Index
           </h1>
           <p className="text-xs font-mono text-slate-400 mt-1">
-            Combinable architectural search across 450+ cataloged prehistoric specimens.
+            Combinable architectural search across {pagination.total > 0 ? `${pagination.total}+` : '460+'} cataloged prehistoric specimens.
           </p>
         </div>
 
