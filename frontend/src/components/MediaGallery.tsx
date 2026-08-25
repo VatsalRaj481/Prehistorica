@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MediaItem } from '../services/api.js';
-import { Image, ExternalLink, Dna, Layers } from 'lucide-react';
+import { Image, ExternalLink, Dna, Palette } from 'lucide-react';
 
 interface MediaGalleryProps {
   media?: MediaItem[];
@@ -41,9 +41,16 @@ export default function MediaGallery({
 
   if (items.length === 0) {
     return (
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-12 text-center text-slate-500 flex flex-col items-center justify-center space-y-2 h-80">
-        <Dna className="h-12 w-12 text-slate-700" />
-        <p className="text-sm font-semibold text-slate-400">No Reconstructions or Specimen Photos Available</p>
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-12 text-center text-slate-400 flex flex-col items-center justify-center space-y-3 aspect-[16/9] w-full shadow-xl">
+        <div className="h-14 w-14 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center text-slate-500 shadow-inner">
+          <Palette className="h-7 w-7 text-blue-400/70" />
+        </div>
+        <div className="space-y-1">
+          <h3 className="text-base font-bold text-slate-200">Life reconstruction artwork pending</h3>
+          <p className="text-xs text-slate-500 max-w-sm mx-auto">
+            No open-licensed life reconstruction artwork is currently available for {speciesName}. Skeletal diagrams or commissioned art will appear here once verified.
+          </p>
+        </div>
       </div>
     );
   }
@@ -56,6 +63,7 @@ export default function MediaGallery({
         return 'Life Reconstruction';
       case 'photo':
         return 'Fossil Specimen';
+      case 'diagram':
       case 'scale_diagram':
         return 'Skeletal Diagram';
       default:

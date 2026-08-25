@@ -2,7 +2,7 @@
 
 **Project Name**: Prehistorica (Prehistoric Fauna Encyclopedia)  
 **Database**: PostgreSQL Database (Prisma ORM)  
-**Total Database Roster**: **361 Unique Species** (0 gaps, 0 duplicate rows)
+**Total Database Roster**: **360 Unique Species** (0 gaps, 0 duplicate rows)
 
 ---
 
@@ -24,12 +24,12 @@ Over recent development passes, the project underwent major database taxonomy au
    - Expanded Prisma `Clade` enum with 9 new paleontological clades: `Sauropodomorph`, `Aetosaur`, `Phytosaur`, `Rauisuchian`, `Poposauroid`, `Crocodylomorph`, `Silesaurid`, `Archosauriform`, `Protorosaur`.
    - Synchronized schema changes cleanly with the PostgreSQL database.
 3. **Duplicate Detection & Merging**:
-   - Merged extra media items and citations from duplicate pairs before row deletion:
+   - Merged extra media items and citations from duplicate pairs before row deletion (4 duplicate rows removed in total):
      - `#581` -> `#14` (*Coelophysis bauri*)
      - `#582` -> `#15` (*Plateosaurus trossingensis*)
      - `#583` -> `#16` (*Postosuchus kirkpatricki*)
      - `#784` -> `#23` (*Spinosaurus aegyptiacus*)
-   - Total database count stabilized at **361 unique species**.
+   - Total database count stabilized at **360 unique species** (364 initial rows - 4 deleted duplicates).
 4. **Spinosaurus Record Cleanup**:
    - Standardized heading to `Spinosaurus` (Genus), restored 8-level taxonomy breadcrumbs, deduplicated discovery history, and fixed broken JSON syntax in `interestingFacts` to populate the *Distinctive Key Scientific Facts* UI component.
 
