@@ -1,6 +1,4 @@
-import dns from 'dns';
-dns.setDefaultResultOrder('ipv4first');
-
+import './dns-init.js';
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import apiRouter from './routes/api.js';

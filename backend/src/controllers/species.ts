@@ -1,3 +1,4 @@
+import '../dns-init.js';
 import { Request, Response, NextFunction } from 'express';
 import { PrismaClient } from '@prisma/client';
 
