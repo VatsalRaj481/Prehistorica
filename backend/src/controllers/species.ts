@@ -323,9 +323,17 @@ export async function getSpeciesById(req: Request, res: Response, next: NextFunc
   }
 }
 
+let cachedDailyCreature: { dateStr: string; data: any } | null = null;
+
 // 5. GET /api/species/creature-of-the-day
 export async function getCreatureOfTheDay(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
+    const todayStr = new Date().toISOString().split('T')[0];
+    if (cachedDailyCreature && cachedDailyCreature.dateStr === todayStr) {
+      res.json(cachedDailyCreature.data);
+      return;
+    }
+
     const allSpecies = await prisma.species.findMany({
       select: { id: true },
       orderBy: { id: 'asc' },
@@ -352,7 +360,9 @@ export async function getCreatureOfTheDay(req: Request, res: Response, next: Nex
       where: { id: dailyId },
     });
 
-    res.json(formatSpeciesRecord(dailyCreature));
+    const formatted = formatSpeciesRecord(dailyCreature);
+    cachedDailyCreature = { dateStr: todayStr, data: formatted };
+    res.json(formatted);
   } catch (error) {
     next(error);
   }
