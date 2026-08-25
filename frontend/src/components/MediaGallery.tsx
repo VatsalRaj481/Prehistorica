@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MediaItem } from '../services/api.js';
-import { Image, ExternalLink, Dna, Palette } from 'lucide-react';
+import { Image, ExternalLink, Layers, Palette } from 'lucide-react';
 
 interface MediaGalleryProps {
   media?: MediaItem[];
