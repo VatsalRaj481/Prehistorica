@@ -7,9 +7,7 @@
 
 ## 🌟 Modern Museum Pavilion Highlights
 
-### 🏛️ The Prehistoric Fauna Exhibit Pavilion
-
-### 🏛️ Explicit Art Direction — Rejecting Generic SaaS Aesthetics
+### 🎨 Explicit Art Direction — Rejecting Generic SaaS Aesthetics
 Built around **The Modern Museum Pavilion** visual language. **Prehistorica** explicitly rejects generic AI-generated dark dashboards, blurred frosted glass, and uniform grid boxes:
 - **Editorial Typographic Hierarchy**: Monospaced exhibit tags, serif scientific nomenclature, and high-contrast amber headers.
 - **Asymmetric Spatial Focus**: 1–2 dominant architectural elements per screen with varied scale and broken grid rhythm.
