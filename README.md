@@ -7,16 +7,7 @@
 
 ## 🌟 Modern Museum Pavilion Highlights
 
-```text
- ╔═════════════════════════════════════════════════════════════════════════════════════╗
- ║   ___  ___  ___ _  _ ___ ___ _____ ___  ___ ___  ___   _                            ║
- ║  | _ \| _ \ __| || |_ _/ __|_   _/ _ \| _ \_ _|/ __| /_\                           ║
- ║  |  _/|   / _|| __ || |\__ \ | || (_) |   /| | | (__ / _ \                          ║
- ║  |_|  |_|_\___|_||_|___|___/ |_| \___/|_|_|___|\___/_/ \_\                         ║
- ║                                                                                     ║
- ║                  🏛️  THE PREHISTORIC FAUNA EXHIBIT PAVILION  🏛️                      ║
- ╚═════════════════════════════════════════════════════════════════════════════════════╝
-```
+### 🏛️ The Prehistoric Fauna Exhibit Pavilion
 
 ### 🏛️ Explicit Art Direction — Rejecting Generic SaaS Aesthetics
 Built around **The Modern Museum Pavilion** visual language. **Prehistorica** explicitly rejects generic AI-generated dark dashboards, blurred frosted glass, and uniform grid boxes:
