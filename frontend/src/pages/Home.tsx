@@ -4,6 +4,7 @@ import { motion, useReducedMotion, Variants } from 'framer-motion';
 import { fetchCreatureOfTheDay, fetchSpecies, Species } from '../services/api.js';
 import ThreeDFossilStarfield from '../components/ThreeDFossilStarfield.js';
 import { Calendar, ArrowRight, Dna, Map, ShieldAlert, Sparkles, FileText, Layers } from 'lucide-react';
+import { formatMass } from '../utils/formatMass.js';
 
 export default function Home() {
   const [creature, setCreature] = useState<Species | null>(null);
@@ -201,7 +202,7 @@ export default function Home() {
                         <span className="h-1.5 w-1.5 bg-amber-500 shrink-0" /> Mass
                       </div>
                       <div className="text-xl font-black text-amber-400">
-                        {creature.weightKg ? `${(creature.weightKg / 1000).toFixed(1)}t` : 'N/A'}
+                        {formatMass(creature.weightKg)}
                       </div>
                     </div>
                   </div>

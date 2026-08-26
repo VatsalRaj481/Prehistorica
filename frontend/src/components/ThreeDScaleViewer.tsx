@@ -3,6 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Grid, Html } from '@react-three/drei';
 import * as THREE from 'three';
 import { RotateCcw, Box, Eye } from 'lucide-react';
+import { formatMass } from '../utils/formatMass.js';
 
 interface ThreeDScaleViewerProps {
   speciesName: string;
@@ -274,7 +275,7 @@ export default function ThreeDScaleViewer({
           <p className="text-[10px] sm:text-[11px] font-mono text-slate-400">
             L: <span className="text-amber-400 font-bold">{safeLength}m</span> &bull; H:{' '}
             <span className="text-amber-400 font-bold">{safeHeight}m</span>
-            {weightKg ? ` • ${(weightKg / 1000).toFixed(1)}t` : ''}
+            {weightKg ? ` • ${formatMass(weightKg)}` : ''}
           </p>
         </div>
 
