@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Compass, Search, Map, ArrowRightLeft, Menu, X } from 'lucide-react';
+import { Search, Map, ArrowRightLeft, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SearchAutocomplete from './SearchAutocomplete.js';
 import CompareModal from './CompareModal.js';
+import DinoLogoMark from './DinoLogoMark.js';
 
 export default function Navbar() {
   const location = useLocation();
@@ -33,8 +34,8 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 gap-4">
             <div className="flex items-center gap-6">
-              <Link to="/" className="flex items-center gap-2 shrink-0">
-                <Compass className="h-7 w-7 text-amber-500 animate-pulse shrink-0" />
+              <Link to="/" className="flex items-center gap-2.5 shrink-0 group">
+                <DinoLogoMark className="h-8 w-8 shrink-0 group-hover:scale-105 transition-transform" />
                 <span className="text-lg sm:text-xl font-black tracking-wider bg-gradient-to-r from-amber-400 via-amber-200 to-yellow-400 bg-clip-text text-transparent uppercase font-mono">
                   PREHISTORICA
                 </span>

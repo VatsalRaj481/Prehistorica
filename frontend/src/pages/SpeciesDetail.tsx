@@ -330,6 +330,58 @@ export default function SpeciesDetail() {
               </div>
             </div>
           )}
+
+          {/* Lived Alongside / Coexisting Species Section */}
+          {species.relatedSpecies && species.relatedSpecies.length > 0 && (
+            <div className="border border-slate-800 bg-slate-950 p-6 space-y-4 shadow-xl">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-850 pb-3">
+                <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">
+                  <Compass className="h-4 w-4 text-amber-500" /> Lived Alongside / Coexisting Species
+                </h3>
+                <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">
+                  Same Formation / Era &amp; Region
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
+                {species.relatedSpecies.map((rel: any) => {
+                  const imgUrl = rel.reconstructionImageUrl || rel.media?.[0]?.url || 'https://images.unsplash.com/photo-1551085254-e96b210df58a?q=80&w=1200&auto=format&fit=crop';
+                  return (
+                    <Link
+                      key={rel.id}
+                      to={`/species/${rel.id}`}
+                      className="group border border-slate-800 bg-slate-900 hover:border-amber-500/50 transition-all p-3 flex flex-col justify-between"
+                    >
+                      <div className="relative h-32 w-full bg-slate-950 overflow-hidden mb-3">
+                        <img
+                          src={imgUrl}
+                          alt={rel.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                        <div className="absolute top-2 right-2 px-2 py-0.5 bg-slate-950/80 backdrop-blur-md text-[9px] font-mono font-bold uppercase tracking-widest text-amber-400 border border-slate-800">
+                          {rel.clade || 'Prehistoric'}
+                        </div>
+                      </div>
+                      <div className="space-y-1">
+                        <h4 className="text-xs font-bold font-mono text-slate-200 group-hover:text-amber-300 transition-colors uppercase truncate">
+                          {rel.name}
+                        </h4>
+                        <p className="text-[10px] font-mono italic text-slate-400 truncate">
+                          {rel.scientificName}
+                        </p>
+                        <div className="flex items-center justify-between text-[9px] font-mono text-slate-500 pt-2 border-t border-slate-800/60">
+                          <span className="truncate">{rel.timePeriod || 'Prehistoric'}</span>
+                          <span className="text-amber-500/80 uppercase tracking-wider font-bold">
+                            {rel.fossilFormation ? rel.fossilFormation.split(' ')[0] : 'Coexisted'}
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </motion.div>

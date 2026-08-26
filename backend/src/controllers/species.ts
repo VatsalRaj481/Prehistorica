@@ -282,35 +282,54 @@ export async function getSpeciesById(req: Request, res: Response, next: NextFunc
 
     const species = formatSpeciesRecord(rawSpecies);
 
-    // Query related species based on clade or taxonomy genus/family
-    let relatedList: any[] = [];
-    const taxObj = species.taxonomy || {};
-    const targetGenus = taxObj.genus;
-    const targetFamily = taxObj.family;
+    // Query coexisting species prioritizing exact formation match first, then era/country, then clade
+    const targetFormation = species.fossilFormation || species.geographicRange?.fossilFormation || null;
+    const targetCountry = species.country || species.geographicRange?.country || null;
+    const targetPeriod = rawSpecies.timePeriod;
 
-    const relatedMatches = await prisma.species.findMany({
-      where: {
-        id: { not: speciesId },
-        clade: rawSpecies.clade
-      },
-      take: 12
+    const coexistingCandidates = await prisma.species.findMany({
+      where: { id: { not: speciesId } },
+      orderBy: { name: 'asc' }
     });
 
-    const formattedRelated = relatedMatches.map(formatSpeciesRecord);
+    const formattedCandidates = coexistingCandidates.map(formatSpeciesRecord);
 
-    // Rank genus/family matches higher
-    formattedRelated.sort((a, b) => {
-      const aGenus = a.taxonomy?.genus;
-      const bGenus = b.taxonomy?.genus;
-      const aIsGenus = aGenus && targetGenus && aGenus.toLowerCase() === targetGenus.toLowerCase();
-      const bIsGenus = bGenus && targetGenus && bGenus.toLowerCase() === targetGenus.toLowerCase();
-      if (aIsGenus && !bIsGenus) return -1;
-      if (!aIsGenus && bIsGenus) return 1;
-      return 0;
+    const formationMatches: any[] = [];
+    const eraRegionMatches: any[] = [];
+    const cladeMatches: any[] = [];
+    const seenIds = new Set<number>();
+
+    formattedCandidates.forEach(cand => {
+      const candForm = cand.fossilFormation || cand.geographicRange?.fossilFormation || '';
+      const candCountry = cand.country || cand.geographicRange?.country || '';
+
+      // Clean formation matching
+      let isSameFormation = false;
+      if (targetFormation && candForm) {
+        const cleanT = targetFormation.toLowerCase().replace(/\s+(formation|beds|group|shale|limestone)$/i, '').trim();
+        const cleanC = candForm.toLowerCase().replace(/\s+(formation|beds|group|shale|limestone)$/i, '').trim();
+        if (cleanT && cleanC && (cleanT.includes(cleanC) || cleanC.includes(cleanT))) {
+          isSameFormation = true;
+        }
+      }
+
+      if (isSameFormation) {
+        formationMatches.push({ ...cand, coexistSignal: 'formation' });
+        seenIds.add(cand.id);
+      } else if (targetPeriod && cand.timePeriod && cand.timePeriod === targetPeriod && (candCountry && targetCountry && candCountry.toLowerCase() === targetCountry.toLowerCase())) {
+        if (!seenIds.has(cand.id)) {
+          eraRegionMatches.push({ ...cand, coexistSignal: 'era_region' });
+          seenIds.add(cand.id);
+        }
+      } else if (cand.clade === rawSpecies.clade) {
+        if (!seenIds.has(cand.id)) {
+          cladeMatches.push({ ...cand, coexistSignal: 'clade' });
+          seenIds.add(cand.id);
+        }
+      }
     });
 
-    relatedList = formattedRelated.slice(0, 6);
-
+    const relatedList = [...formationMatches, ...eraRegionMatches, ...cladeMatches].slice(0, 6);
 
     const responseData = {
       ...species,
