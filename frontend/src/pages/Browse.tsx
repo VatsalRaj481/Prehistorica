@@ -223,13 +223,179 @@ export default function Browse() {
           <motion.button
             whileTap={{ scale: 0.94 }}
             onClick={() => setShowMobileFilters(!showMobileFilters)}
-            className="p-2 bg-slate-950 border border-slate-800 rounded-none text-slate-400 hover:text-white flex items-center justify-center cursor-pointer font-mono text-xs uppercase"
+            className="px-4 py-2.5 bg-slate-950 border border-amber-500/40 text-amber-400 font-bold hover:text-white flex items-center justify-center cursor-pointer font-mono text-xs uppercase tracking-wider shadow-lg"
             title="Toggle Filters"
           >
-            <SlidersHorizontal className="h-5 w-5 mr-1 text-amber-500" /> Filters
+            <SlidersHorizontal className="h-4 w-4 mr-2 text-amber-500" /> Catalog Filters
           </motion.button>
         </div>
       </motion.div>
+
+      {/* Mobile Filter Drawer Overlay */}
+      <AnimatePresence>
+        {showMobileFilters && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex flex-col p-4 sm:p-6 overflow-y-auto md:hidden font-mono"
+          >
+            <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+              <h2 className="text-sm font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">
+                <SlidersHorizontal className="h-5 w-5 text-amber-500" /> Catalog Filters
+              </h2>
+              <div className="flex items-center gap-3">
+                {hasActiveFilters && (
+                  <button
+                    onClick={clearFilters}
+                    className="text-xs text-amber-400 hover:underline font-bold uppercase tracking-wider"
+                  >
+                    Reset
+                  </button>
+                )}
+                <button
+                  onClick={() => setShowMobileFilters(false)}
+                  className="p-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+            </div>
+
+            <div className="space-y-6 text-xs flex-1 pb-6">
+              {/* Clade Multi-Select */}
+              <div className="space-y-2">
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Taxonomic Clade</label>
+                <div className="grid grid-cols-2 gap-1.5 max-h-56 overflow-y-auto pr-1">
+                  {cladeOptions.map((c) => {
+                    const isSelected = selectedClades.includes(c);
+                    return (
+                      <label
+                        key={c}
+                        className={`flex items-center gap-2 text-xs cursor-pointer py-1.5 px-2 rounded-none border transition-colors select-none ${
+                          isSelected ? 'bg-amber-500/10 text-amber-300 font-bold border-amber-500/40' : 'bg-slate-900 border-slate-800 text-slate-300'
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={isSelected}
+                          onChange={() => toggleArrayFilter('clade', c)}
+                          className="border-slate-700 bg-slate-950 text-amber-500"
+                        />
+                        <span className="truncate">{c}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Diet Multi-Select */}
+              <div className="space-y-2 pt-3 border-t border-slate-850">
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Dietary Type</label>
+                <div className="grid grid-cols-2 gap-1.5">
+                  {dietOptions.map((d) => {
+                    const isSelected = selectedDiets.includes(d.val);
+                    return (
+                      <label
+                        key={d.val}
+                        className={`flex items-center gap-2 text-xs cursor-pointer py-1.5 px-2 rounded-none border transition-colors select-none ${
+                          isSelected ? 'bg-amber-500/10 text-amber-300 font-bold border-amber-500/40' : 'bg-slate-900 border-slate-800 text-slate-300'
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={isSelected}
+                          onChange={() => toggleArrayFilter('diet', d.val)}
+                          className="border-slate-700 bg-slate-950 text-amber-500"
+                        />
+                        <span>{d.label}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Habitat Multi-Select */}
+              <div className="space-y-2 pt-3 border-t border-slate-850">
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Habitat</label>
+                <div className="grid grid-cols-2 gap-1.5">
+                  {habitatOptions.map((h) => {
+                    const isSelected = selectedHabitats.includes(h.val);
+                    return (
+                      <label
+                        key={h.val}
+                        className={`flex items-center gap-2 text-xs cursor-pointer py-1.5 px-2 rounded-none border transition-colors select-none ${
+                          isSelected ? 'bg-amber-500/10 text-amber-300 font-bold border-amber-500/40' : 'bg-slate-900 border-slate-800 text-slate-300'
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={isSelected}
+                          onChange={() => toggleArrayFilter('habitat', h.val)}
+                          className="border-slate-700 bg-slate-950 text-amber-500"
+                        />
+                        <span>{h.label}</span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Geologic Era */}
+              <div className="space-y-2 pt-3 border-t border-slate-850">
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Geologic Era</label>
+                <select
+                  value={selectedEra}
+                  onChange={(e) => updateParams({ era: e.target.value })}
+                  className="block w-full p-2.5 bg-slate-900 border border-slate-800 rounded-none text-xs text-slate-300"
+                >
+                  <option value="">All Geologic Eras</option>
+                  {eraOptions.map((opt) => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Location Continent */}
+              <div className="space-y-2 pt-3 border-t border-slate-850">
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Geographic Region</label>
+                <select
+                  value={selectedLocation}
+                  onChange={(e) => updateParams({ location: e.target.value })}
+                  className="block w-full p-2.5 bg-slate-900 border border-slate-800 rounded-none text-xs text-slate-300"
+                >
+                  <option value="">All Regions</option>
+                  {locationOptions.map((opt) => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Size Range */}
+              <div className="space-y-2 pt-3 border-t border-slate-850">
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Size Scale</label>
+                <select
+                  value={sizeRange}
+                  onChange={(e) => updateParams({ size: e.target.value })}
+                  className="block w-full p-2.5 bg-slate-900 border border-slate-800 rounded-none text-xs text-slate-300"
+                >
+                  <option value="">All Sizes</option>
+                  <option value="small">Small (&lt; 2m)</option>
+                  <option value="medium">Medium (2m - 10m)</option>
+                  <option value="large">Giant (&gt; 10m)</option>
+                </select>
+              </div>
+            </div>
+
+            <button
+              onClick={() => setShowMobileFilters(false)}
+              className="w-full py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold uppercase tracking-wider text-xs border border-amber-400 sticky bottom-0"
+            >
+              Apply & Close Filters
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Left Filter Sidebar - Desktop */}

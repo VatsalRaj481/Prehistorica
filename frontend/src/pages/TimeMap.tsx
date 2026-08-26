@@ -217,7 +217,7 @@ export default function TimeMap() {
             className="w-full h-2 bg-slate-900 rounded-none appearance-none cursor-pointer accent-amber-500 border border-slate-800"
           />
 
-          <div className="grid grid-cols-5 sm:grid-cols-10 gap-1 text-[11px]">
+          <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-10 gap-1 text-[10px] sm:text-[11px]">
             {ERAS.map((era, idx) => {
               const isSelected = idx === selectedEraIndex;
               const color = getEraColor(era.name);

@@ -155,7 +155,7 @@ export default function SpeciesDetail() {
           </span>
         </div>
 
-        <h1 className="text-5xl sm:text-6xl font-black tracking-tight text-slate-100 uppercase">
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-100 uppercase break-words leading-none">
           {species.name}
         </h1>
         <p className="text-xl italic font-serif text-amber-200/90">

@@ -258,67 +258,69 @@ export default function ThreeDScaleViewer({
   };
 
   return (
-    <div className="relative w-full h-[420px] sm:h-[480px] bg-slate-950 border border-slate-800 rounded-none overflow-hidden group shadow-2xl">
+    <div className="relative w-full h-[360px] sm:h-[480px] bg-slate-950 border border-slate-800 rounded-none overflow-hidden group shadow-2xl touch-none">
       {/* Museum Exhibit Stage Header */}
-      <div className="absolute top-4 left-4 z-10 space-y-1 bg-slate-950/90 backdrop-blur-md p-3 border border-slate-800">
-        <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-none bg-amber-500 animate-pulse" />
-          <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-amber-400">
-            3D Specimen Pavilion Exhibit
-          </span>
+      <div className="absolute top-3 left-3 right-3 sm:right-auto z-10 flex flex-wrap items-start justify-between sm:justify-start gap-2 max-w-full pointer-events-none">
+        <div className="space-y-0.5 bg-slate-950/90 backdrop-blur-md p-2.5 sm:p-3 border border-slate-800 pointer-events-auto max-w-[65%] sm:max-w-xs">
+          <div className="flex items-center gap-1.5">
+            <span className="h-2 w-2 rounded-none bg-amber-500 animate-pulse shrink-0" />
+            <span className="text-[9px] sm:text-[10px] font-mono font-bold tracking-widest uppercase text-amber-400 truncate">
+              3D Specimen Pavilion
+            </span>
+          </div>
+          <h4 className="text-xs sm:text-sm font-black text-slate-100 uppercase tracking-tight font-mono truncate">
+            {speciesName}
+          </h4>
+          <p className="text-[10px] sm:text-[11px] font-mono text-slate-400">
+            L: <span className="text-amber-400 font-bold">{safeLength}m</span> &bull; H:{' '}
+            <span className="text-amber-400 font-bold">{safeHeight}m</span>
+            {weightKg ? ` • ${(weightKg / 1000).toFixed(1)}t` : ''}
+          </p>
         </div>
-        <h4 className="text-sm font-black text-slate-100 uppercase tracking-tight font-mono">
-          {speciesName} Scale Viewport
-        </h4>
-        <p className="text-[11px] font-mono text-slate-400">
-          Length: <span className="text-amber-400 font-bold">{safeLength}m</span> &bull; Height:{' '}
-          <span className="text-amber-400 font-bold">{safeHeight}m</span>
-          {weightKg ? ` • Mass: ${(weightKg / 1000).toFixed(1)}t` : ''}
-        </p>
-      </div>
 
-      {/* Exhibit Viewport Control Actions */}
-      <div className="absolute top-4 right-4 z-10 flex items-center gap-2">
-        <button
-          onClick={() => setWireframe(!wireframe)}
-          className={`p-2 text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 border transition-all cursor-pointer ${
-            wireframe
-              ? 'bg-amber-500/20 border-amber-500 text-amber-300'
-              : 'bg-slate-900/90 border-slate-800 text-slate-300 hover:text-white'
-          }`}
-          title="Toggle Mesh Shading"
-        >
-          <Box className="h-3.5 w-3.5" />
-          <span className="hidden sm:inline">{wireframe ? 'Shaded' : 'Low-Poly Mesh'}</span>
-        </button>
+        {/* Exhibit Viewport Control Actions */}
+        <div className="flex items-center gap-1.5 pointer-events-auto">
+          <button
+            onClick={() => setWireframe(!wireframe)}
+            className={`p-1.5 sm:p-2 text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 border transition-all cursor-pointer ${
+              wireframe
+                ? 'bg-amber-500/20 border-amber-500 text-amber-300'
+                : 'bg-slate-900/90 border-slate-800 text-slate-300 hover:text-white'
+            }`}
+            title="Toggle Mesh Shading"
+          >
+            <Box className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">{wireframe ? 'Shaded' : 'Low-Poly Mesh'}</span>
+          </button>
 
-        <button
-          onClick={() => setAutoRotate(!autoRotate)}
-          className={`p-2 text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 border transition-all cursor-pointer ${
-            autoRotate
-              ? 'bg-amber-500/20 border-amber-500 text-amber-300'
-              : 'bg-slate-900/90 border-slate-800 text-slate-300 hover:text-white'
-          }`}
-          title="Toggle Orbit Rotation"
-        >
-          <Eye className="h-3.5 w-3.5" />
-          <span className="hidden sm:inline">{autoRotate ? 'Orbit On' : 'Paused'}</span>
-        </button>
+          <button
+            onClick={() => setAutoRotate(!autoRotate)}
+            className={`p-1.5 sm:p-2 text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 border transition-all cursor-pointer ${
+              autoRotate
+                ? 'bg-amber-500/20 border-amber-500 text-amber-300'
+                : 'bg-slate-900/90 border-slate-800 text-slate-300 hover:text-white'
+            }`}
+            title="Toggle Orbit Rotation"
+          >
+            <Eye className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">{autoRotate ? 'Orbit On' : 'Paused'}</span>
+          </button>
 
-        <button
-          onClick={handleResetView}
-          className="p-2 bg-slate-900/90 border border-slate-800 text-slate-300 hover:text-white text-xs font-mono font-bold flex items-center gap-1.5 transition-all cursor-pointer"
-          title="Reset Viewpoint"
-        >
-          <RotateCcw className="h-3.5 w-3.5" />
-        </button>
+          <button
+            onClick={handleResetView}
+            className="p-1.5 sm:p-2 bg-slate-900/90 border border-slate-800 text-slate-300 hover:text-white text-xs font-mono font-bold flex items-center gap-1.5 transition-all cursor-pointer"
+            title="Reset Viewpoint"
+          >
+            <RotateCcw className="h-3.5 w-3.5" />
+          </button>
+        </div>
       </div>
 
       {/* 3D Canvas Stage */}
       <Canvas
         camera={{ position: [cameraDistance * 0.75, safeHeight * 0.8 + 1.8, cameraDistance * 0.85], fov: 45 }}
         gl={{ antialias: true, alpha: false }}
-        className="w-full h-full cursor-grab active:cursor-grabbing"
+        className="w-full h-full cursor-grab active:cursor-grabbing touch-none"
       >
         <color attach="background" args={['#090D16']} />
 
