@@ -101,6 +101,47 @@ const rawApiUrl = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http:/
 const cleanApiUrl = rawApiUrl.replace(/\/$/, '');
 const API_BASE = cleanApiUrl.endsWith('/api') ? cleanApiUrl : `${cleanApiUrl}/api`;
 
+/**
+ * Fire-and-forget wake ping to wake up a sleeping backend immediately upon app load.
+ * Does not block rendering and silently ignores errors.
+ */
+export function wakePing(): void {
+  const healthUrl = `${API_BASE}/health`;
+  fetch(healthUrl, { method: 'GET' }).catch(() => {
+    // Silently ignore errors
+  });
+}
+
+/**
+ * Fetch wrapper with retry-with-backoff for handling cold starts / temporary gateway timeouts.
+ */
+export async function fetchWithRetry(
+  url: string,
+  options?: RequestInit,
+  retries = 3,
+  delayMs = 3000
+): Promise<Response> {
+  let lastError: any = null;
+
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok && [502, 503, 504].includes(response.status) && attempt < retries) {
+        await new Promise((resolve) => setTimeout(resolve, delayMs));
+        continue;
+      }
+      return response;
+    } catch (err) {
+      lastError = err;
+      if (attempt < retries) {
+        await new Promise((resolve) => setTimeout(resolve, delayMs));
+      }
+    }
+  }
+
+  throw lastError || new Error(`Request failed after ${retries} retries`);
+}
+
 export async function fetchSpecies(filters?: {
   diet?: string | string[];
   habitat?: string | string[];
@@ -147,7 +188,7 @@ export async function fetchSpecies(filters?: {
   if (filters?.limit) params.append('limit', filters.limit.toString());
 
   const url = `${API_BASE}/species?${params.toString()}`;
-  const response = await fetch(url);
+  const response = await fetchWithRetry(url);
   if (!response.ok) {
     throw new Error('Failed to fetch species');
   }
@@ -155,7 +196,7 @@ export async function fetchSpecies(filters?: {
 }
 
 export async function fetchSpeciesById(id: number): Promise<Species> {
-  const response = await fetch(`${API_BASE}/species/${id}`);
+  const response = await fetchWithRetry(`${API_BASE}/species/${id}`);
   if (!response.ok) {
     throw new Error(`Failed to fetch species with id ${id}`);
   }
@@ -163,7 +204,7 @@ export async function fetchSpeciesById(id: number): Promise<Species> {
 }
 
 export async function fetchCreatureOfTheDay(): Promise<Species> {
-  const response = await fetch(`${API_BASE}/species/creature-of-the-day`);
+  const response = await fetchWithRetry(`${API_BASE}/species/creature-of-the-day`);
   if (!response.ok) {
     throw new Error('Failed to fetch creature of the day');
   }
@@ -172,7 +213,7 @@ export async function fetchCreatureOfTheDay(): Promise<Species> {
 
 export async function fetchSpeciesAutocomplete(q: string): Promise<AutocompleteItem[]> {
   if (!q || q.trim().length < 2) return [];
-  const response = await fetch(`${API_BASE}/species/search/autocomplete?q=${encodeURIComponent(q.trim())}`);
+  const response = await fetchWithRetry(`${API_BASE}/species/search/autocomplete?q=${encodeURIComponent(q.trim())}`);
   if (!response.ok) {
     throw new Error('Failed to fetch search autocomplete suggestions');
   }
@@ -181,10 +222,11 @@ export async function fetchSpeciesAutocomplete(q: string): Promise<AutocompleteI
 
 export async function fetchSpeciesCompare(ids: number[]): Promise<Species[]> {
   if (!ids || ids.length === 0) return [];
-  const response = await fetch(`${API_BASE}/species/compare?ids=${ids.join(',')}`);
+  const response = await fetchWithRetry(`${API_BASE}/species/compare?ids=${ids.join(',')}`);
   if (!response.ok) {
     throw new Error('Failed to fetch species comparison data');
   }
   return response.json();
 }
+
 

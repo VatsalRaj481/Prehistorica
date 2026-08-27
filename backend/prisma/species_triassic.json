@@ -112,7 +112,7 @@
     "family": "Postosuchusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Postosuchus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/92/Postosuchus_kirkpatricki.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Postosuchus_kirkpatricki_skeleton.jpg",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": [
@@ -125,7 +125,15 @@
     "heightM": 2.6,
     "weightKg": 2231,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/92/Postosuchus_kirkpatricki.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Petrified Forest from Petrified Forest, USA (Public domain)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Postosuchus%20kirkpatricki.jpg"
+      }
+    ]
   },
   {
     "name": "Desmatosuchus",
@@ -304,7 +312,7 @@
     "family": "Shonisaurusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/07/Shonisaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Life_restoration_of_Shonisaurus_popularis.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Shonisaurus-LasVegas.jpg",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": [
@@ -317,7 +325,15 @@
     "heightM": 2.1,
     "weightKg": 2488,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Life_restoration_of_Shonisaurus_popularis.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Tetori66ma (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Life%20restoration%20of%20Shonisaurus%20popularis.png"
+      }
+    ]
   },
   {
     "name": "Cymbospondylus",
@@ -496,7 +512,7 @@
     "family": "Pisanosaurusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Pisanosaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Isanosaurus_attavipachi_NT.jpg",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Pisanosaurus.jpg",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": [
@@ -509,7 +525,15 @@
     "heightM": 0.6,
     "weightKg": 2528,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Isanosaurus_attavipachi_NT.jpg",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Isanosaurus_attavipachi_NT.jpg"
+      }
+    ]
   },
   {
     "name": "Eodromaeus",
@@ -848,7 +872,7 @@
     "family": "Isanosaurusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Jura_Park_Krasiej%C3%B3w_-_Widok_z_parku_-_panoramio_-_Kazimierz_Mendlik_%2814%29.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Isanosaurus_attavipachi_NT.jpg",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/98/Isanosaurus_attavipachi_femur.JPG",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": [
@@ -861,7 +885,15 @@
     "heightM": 4.7,
     "weightKg": 2882,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c5/Isanosaurus_attavipachi_NT.jpg",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Isanosaurus_attavipachi_NT.jpg"
+      }
+    ]
   },
   {
     "name": "Blikanasaurus",
@@ -944,7 +976,7 @@
     "family": "Lessemsaurusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/26/Lessemsaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/26/Lessemsaurus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/db/Lessemsaurus_Senckenberg.jpg",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": [
@@ -957,7 +989,15 @@
     "heightM": 4.6,
     "weightKg": 1727,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/26/Lessemsaurus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Ornitholestes (Public domain)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lessemsaurus.jpg"
+      }
+    ]
   },
   {
     "name": "Mussaurus",
@@ -1008,7 +1048,7 @@
     "family": "Coloradisaurusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/47/Coloradisaurus_skull_reconstruction.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/46/Plateosaurus_Scale.svg",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/47/Coloradisaurus_skull_reconstruction.png",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": [
@@ -1021,7 +1061,15 @@
     "heightM": 3.6,
     "weightKg": 1195,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/4/46/Plateosaurus_Scale.svg",
+        "type": "art",
+        "credit": "Conty (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plateosaurus_Scale.svg"
+      }
+    ]
   },
   {
     "name": "Lufengosaurus",
@@ -1584,7 +1632,7 @@
     "family": "Fasolasuchusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Fasolasuchus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Fasolasuchus.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/00/Fasolasuchus_skeletal_merged.png",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": [
@@ -1597,7 +1645,15 @@
     "heightM": 4.6,
     "weightKg": 3236,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Fasolasuchus.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Ornitholestes (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fasolasuchus.png"
+      }
+    ]
   },
   {
     "name": "Prestosuchus",
@@ -1647,7 +1703,7 @@
     "family": "Batrachotomusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Batrachotomus_skull_diagram.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Batrachotomus1DB.jpg",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Batrachotomus_scale_diagram.png",
     "discoveryHistory": "• Remains found in the Kupferzell fossil site in Germany.\n• Described in 1999.\n• Name means 'frog slicer'.",
     "interestingFacts": [
@@ -1659,7 +1715,15 @@
     "heightM": 4.5,
     "weightKg": 2863,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Batrachotomus1DB.jpg",
+        "type": "art",
+        "credit": "Dmitry Bogdanov (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Batrachotomus1DB.jpg"
+      }
+    ]
   },
   {
     "name": "Ornithosuchus",
@@ -1771,7 +1835,7 @@
     "family": "Phytosaurusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Parasuchidae_skull_drawing%2C_from_Abel%2C_O._%281919%29._Die_St%C3%A4mme_der_Wirbeltiere.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/06/Parasuchus_DB.jpg",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/be/Phytosaurus_cylindricodon_23-removebg-preview.png",
     "discoveryHistory": "• First described by Georg Friedrich Jaeger in 1828.\n• The first phytosaur ever named.\n• Based on fragmentary remains, often considered a nomen dubium.",
     "interestingFacts": [
@@ -1783,7 +1847,15 @@
     "heightM": 2.7,
     "weightKg": 1768,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Parasuchus_DB.jpg",
+        "type": "art",
+        "credit": "Dmitry Bogdanov (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Parasuchus_DB.jpg"
+      }
+    ]
   },
   {
     "name": "Machaeroprosopus",
@@ -1802,7 +1874,7 @@
     "family": "Machaeroprosopusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/72/Machaeroprosopus_%28Redondasaurus%29_gregorii_skeletal.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/91/Redondasaurus_gregorii.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/72/Machaeroprosopus_%28Redondasaurus%29_gregorii_skeletal.png",
     "discoveryHistory": "• Discovered in the southwestern United States.\n• Described by Maurice Mehl in 1916.\n• Subject to complex taxonomic debates with other phytosaurs.",
     "interestingFacts": [
@@ -1814,7 +1886,15 @@
     "heightM": 3.4,
     "weightKg": 4056,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/91/Redondasaurus_gregorii.png",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Redondasaurus_gregorii.png"
+      }
+    ]
   },
   {
     "name": "Leptosuchus",
@@ -2019,7 +2099,7 @@
     "family": "Neoaetosauroidesidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Neoaetosauroides.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Neoaetosauroides.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Neoaetosauroides.jpg",
     "discoveryHistory": "• Fossils recovered from the Los Colorados Formation, Argentina.\n• Described by Bonaparte in 1969.\n• One of the first aetosaurs known from South America.",
     "interestingFacts": [
@@ -2031,7 +2111,15 @@
     "heightM": 4.5,
     "weightKg": 3966,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Neoaetosauroides.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Smokeybjb (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Neoaetosauroides.jpg"
+      }
+    ]
   },
   {
     "name": "Longosuchus",
@@ -2050,7 +2138,7 @@
     "family": "Longosuchusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Longosuchus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/39/Longosuchus_BW_cropped.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Longosuchus_life_restoration.JPG",
     "discoveryHistory": "• Found in the southwestern US.\n• Originally assigned to Typothorax.\n• Reassigned and named after paleontologist Robert Long.",
     "interestingFacts": [
@@ -2062,7 +2150,15 @@
     "heightM": 3.6,
     "weightKg": 3968,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Longosuchus_BW_cropped.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Remove \"cropped\" from file name and see original file (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Longosuchus%20BW%20cropped.png"
+      }
+    ]
   },
   {
     "name": "Gracilisuchus",
@@ -2081,7 +2177,7 @@
     "family": "Gracilisuchusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/de/Gracilisuchus_Composite_Skeletal.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Gracilisuchus_stipanicicorum.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/19/Breviora_%281971-1973%29_%2820406119102%29.jpg",
     "discoveryHistory": "• Discovered in the Chañares Formation of Argentina.\n• Described by Alfred Romer in 1972.\n• Initially considered an early dinosaur or ornithosuchid.",
     "interestingFacts": [
@@ -2093,7 +2189,15 @@
     "heightM": 2.7,
     "weightKg": 3650,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Gracilisuchus_stipanicicorum.png",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gracilisuchus_stipanicicorum.png"
+      }
+    ]
   },
   {
     "name": "Erpetosuchus",
@@ -2112,7 +2216,7 @@
     "family": "Erpetosuchusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Erpetosuchus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/df/Erpetosuchus_granti.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5b/Erpetosuchus_fossils.jpg",
     "discoveryHistory": "• Discovered in Scotland in the 19th century.\n• Later found in the eastern United States.\n• Described by E.T. Newton in 1894.",
     "interestingFacts": [
@@ -2124,7 +2228,15 @@
     "heightM": 0.6,
     "weightKg": 454,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/df/Erpetosuchus_granti.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "SeismicShrimp (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Erpetosuchus%20granti.png"
+      }
+    ]
   },
   {
     "name": "Saltoposuchus",
@@ -2143,7 +2255,7 @@
     "family": "Saltoposuchusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/25/Saltoposuchus_skeletal.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Saltoposuchus_connectens.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Saltoposuchus_connectens_%28holotype%2C_SMNS_12597a%29.jpg",
     "discoveryHistory": "• Found in the Stubensandstein of Germany.\n• Described by Friedrich von Huene in 1921.\n• Often cited in early theories of dinosaur origins.",
     "interestingFacts": [
@@ -2155,7 +2267,15 @@
     "heightM": 4.3,
     "weightKg": 2880,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Saltoposuchus_connectens.png",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Saltoposuchus_connectens.png"
+      }
+    ]
   },
   {
     "name": "Terrestrisuchus",
@@ -2236,7 +2356,7 @@
     "family": "Sphenosuchusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/12/UCMP_129470_skeletal.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Sphenosuchus_acutus.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Sphenosuchus_skull.png",
     "discoveryHistory": "• Found in the Elliot Formation of South Africa.\n• Described by Sidney Haughton in 1915.\n• Holotype skull is exceptionally well-preserved.",
     "interestingFacts": [
@@ -2248,7 +2368,15 @@
     "heightM": 2.4,
     "weightKg": 416,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Sphenosuchus_acutus.png",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sphenosuchus_acutus.png"
+      }
+    ]
   },
   {
     "name": "Protosuchus",
@@ -2267,7 +2395,7 @@
     "family": "Protosuchusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Protosuchus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/50/Protosuchus_BW.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Protosuchus_richardsoni.JPG",
     "discoveryHistory": "• First discovered in Arizona in the 1930s.\n• Named by Barnum Brown in 1934.\n• Material also found in South Africa and Lesotho.",
     "interestingFacts": [
@@ -2279,7 +2407,15 @@
     "heightM": 4.6,
     "weightKg": 3990,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/50/Protosuchus_BW.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Nobu Tamura (http://spinops.blogspot.com) (CC BY 2.5)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Protosuchus%20BW.jpg"
+      }
+    ]
   },
   {
     "name": "Effigia",
@@ -2298,7 +2434,7 @@
     "family": "Effigiaidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/04/Effigia_skeletal.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Effigia_okeeffeae.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/04/Effigia_skeletal.png",
     "discoveryHistory": "• Found at the Ghost Ranch quarry in New Mexico.\n• Discovered by Sterling Nesbitt in 2006 from decades-old unprepared blocks.\n• Named after Georgia O'Keeffe.",
     "interestingFacts": [
@@ -2310,7 +2446,15 @@
     "heightM": 0.4,
     "weightKg": 837,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Effigia_okeeffeae.png",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Effigia_okeeffeae.png"
+      }
+    ]
   },
   {
     "name": "Shuvosaurus",
@@ -2360,7 +2504,7 @@
     "family": "Poposaurusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Poposaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/53/Poposaurus_gracilis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Poposaurus.jpg",
     "discoveryHistory": "• Found in the Popo Agie Formation, Wyoming.\n• Described by M.G. Mehl in 1915.\n• Complete skeleton discovered in 2011 confirmed its bipedalism.",
     "interestingFacts": [
@@ -2372,7 +2516,15 @@
     "heightM": 3.4,
     "weightKg": 2081,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/53/Poposaurus_gracilis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Smokeybjb (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Poposaurus%20gracilis.jpg"
+      }
+    ]
   },
   {
     "name": "Lotosaurus",
@@ -2391,7 +2543,7 @@
     "family": "Lotosaurusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Lomphosaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/31/Lotosaurus_BW.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Lotosaurus_adentus_IMG_5133_Beijing_Museum_of_Natural_History.jpg",
     "discoveryHistory": "• Discovered in Hunan, China in the 1970s.\n• Described by Zhang in 1975.\n• Distinctive due to its heavy build and neural spine sail.",
     "interestingFacts": [
@@ -2403,7 +2555,15 @@
     "heightM": 1,
     "weightKg": 1263,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/31/Lotosaurus_BW.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Nobu Tamura (https://spinops.blogspot.com) (CC BY 2.5)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lotosaurus%20BW.jpg"
+      }
+    ]
   },
   {
     "name": "Arizonasaurus",
@@ -2422,7 +2582,7 @@
     "family": "Arizonasaurusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Arizonasaurus_skeletal.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/46/Arizonasaurus_babbitti.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Arizonasaurus_skeletal.png",
     "discoveryHistory": "• Found in the Moenkopi Formation, Arizona.\n• Described by Samuel Paul Welles in 1947.\n• A complete skeleton was later described by Sterling Nesbitt.",
     "interestingFacts": [
@@ -2434,7 +2594,15 @@
     "heightM": 2,
     "weightKg": 2512,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/4/46/Arizonasaurus_babbitti.png",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Arizonasaurus_babbitti.png"
+      }
+    ]
   },
   {
     "name": "Sillosuchus",
@@ -2577,7 +2745,7 @@
     "family": "Macrocnemusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/Macrocnemus_bassanii_3D_printed_skull.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Nothosaur_and_Macrocnemus_B._Scheffold.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Macrocnemus_bassanii_skeleton.JPG",
     "discoveryHistory": "• Discovered in the Besano Formation, Italy.\n• Described by Nopcsa in 1930.\n• Later found in Switzerland and China.",
     "interestingFacts": [
@@ -2589,7 +2757,15 @@
     "heightM": 3.5,
     "weightKg": 1526,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Nothosaur_and_Macrocnemus_B._Scheffold.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Ghedoghedo (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nothosaur%20and%20Macrocnemus%20B.%20Scheffold.jpg"
+      }
+    ]
   },
   {
     "name": "Dinocephalosaurus",
@@ -2608,7 +2784,7 @@
     "family": "Dinocephalosaurusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Dinocephalosaurus_%28Skeletal_reconstruction%29.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/15/Dinocephalosaurus_orientalis.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Dinocephalosaurus-embryo-3.jpg",
     "discoveryHistory": "• Found in the Guanling Formation, China.\n• Described in 2004 by Li.\n• A remarkable complete specimen with an embryo was described in 2017.",
     "interestingFacts": [
@@ -2620,7 +2796,15 @@
     "heightM": 3,
     "weightKg": 1319,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/15/Dinocephalosaurus_orientalis.png",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dinocephalosaurus_orientalis.png"
+      }
+    ]
   },
   {
     "name": "Placodus",
@@ -2670,7 +2854,7 @@
     "family": "Cyamodusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/13/Cyamodus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Cyamodus_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/10/Cyamodus_hildegardis_skeleton.JPG",
     "discoveryHistory": "• Fossils found in Germany.\n• Described by Hermann von Meyer in 1863.\n• One of the first heavily armored placodonts known.",
     "interestingFacts": [
@@ -2682,7 +2866,15 @@
     "heightM": 0.9,
     "weightKg": 4426,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d8/Cyamodus_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "DiBgd (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cyamodus%203.jpg"
+      }
+    ]
   },
   {
     "name": "Henodus",
@@ -2887,7 +3079,7 @@
     "family": "Mixosaurusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/60/Mixosaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Mixosaurus_Life_Restoration.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/10/Mixosaurus_cornalianus_Fins.png",
     "discoveryHistory": "• Found in marine deposits worldwide.\n• Described by George H. Baur in 1887.\n• Represents one of the most common early ichthyosaurs.",
     "interestingFacts": [
@@ -2899,7 +3091,15 @@
     "heightM": 2.1,
     "weightKg": 3631,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Mixosaurus_Life_Restoration.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "SpinoDragon145 (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mixosaurus%20Life%20Restoration.jpg"
+      }
+    ]
   },
   {
     "name": "Besanosaurus",
@@ -2918,7 +3118,7 @@
     "family": "Besanosaurusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Besanosaurus_Forefin_Reconstruction.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Besanosaurus_Environment.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Besanosaurus_BES_SC_999.png",
     "discoveryHistory": "• Discovered at the Besano formation in Italy in 1993.\n• Described by Dal Sasso and Pinna in 1996.\n• The holotype specimen was pregnant.",
     "interestingFacts": [
@@ -2930,7 +3130,15 @@
     "heightM": 4.3,
     "weightKg": 4697,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Besanosaurus_Environment.png",
+        "type": "art",
+        "credit": "Alessio Ciaffi (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Besanosaurus_Environment.png"
+      }
+    ]
   },
   {
     "name": "Shastasaurus",
@@ -2949,7 +3157,7 @@
     "family": "Shastasaurusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Shastasaurus_sikanniensis.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Species_of_Shastasaurus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Shastasaurus_sikanniensis_RTMP.jpg",
     "discoveryHistory": "• First discovered in Mount Shasta, California.\n• Described by Merriam in 1895.\n• Later found in China and Canada.",
     "interestingFacts": [
@@ -2961,7 +3169,15 @@
     "heightM": 0.7,
     "weightKg": 2111,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Species_of_Shastasaurus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "DiBgd (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Species%20of%20Shastasaurus.jpg"
+      }
+    ]
   },
   {
     "name": "Guanlingsaurus",
@@ -3073,7 +3289,7 @@
     "family": "Austriadactylusidae",
     "fossilFormation": "Triassic Beds",
     "country": "Various",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/94/Austriadactylus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Austriadactylus_restoration.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/94/Austriadactylus.jpg",
     "discoveryHistory": "Discovered in the 20th century.",
     "interestingFacts": [
@@ -3084,7 +3300,15 @@
     "heightM": 4.6,
     "weightKg": 2647,
     "sizeNotes": "Size estimated from fossil remains.",
-    "creatureType": "Synapsid/Early Mammal"
+    "creatureType": "Synapsid/Early Mammal",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Austriadactylus_restoration.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "ABelov2014 (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Austriadactylus%20restoration.jpg"
+      }
+    ]
   },
   {
     "name": "Caviramus",

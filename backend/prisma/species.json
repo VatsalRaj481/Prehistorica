@@ -13,7 +13,7 @@
       "Asia"
     ],
     "taxonomicClassification": "Radiodonta -> Anomalocarididae -> Anomalocaris",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Anomalocaris_canadensis.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5c/20191203_Anomalocaris_canadensis.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Geological_magazine_%28IA_geologicalmagazi491902wood%29.pdf",
     "discoveryHistory": "First discovered in the Burgess Shale of British Columbia by Joseph Whiteaves in 1892. Parts of its body were initially mistaken for three separate creatures (shrimp-like appendages, jellyfish-like mouth cone, and sponge-like torso).",
     "interestingFacts": [
@@ -28,6 +28,14 @@
     "relatedSpeciesNames": [
       "Hallucigenia sparsa",
       "Opabinia regalis"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/5c/20191203_Anomalocaris_canadensis.png",
+        "type": "art",
+        "credit": "DBCLS (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:20191203_Anomalocaris_canadensis.png"
+      }
     ]
   },
   {
@@ -106,7 +114,7 @@
       "Africa"
     ],
     "taxonomicClassification": "Placodermi -> Arthrodira -> Dunkleosteidae -> Dunkleosteus",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Dunkleosteus_terrelli_skeletal_reconstruction_1.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/52/Dunkleosteus_terrelli_life_restoration.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Dunkleosteus_terrelli_skeletal_reconstruction_1.jpg",
     "discoveryHistory": "First discovered in 1867 by Jay Terrell in Ohio. Named Dunkleosteus in 1956 to honor David Dunkle, curator of vertebrate paleontology at the Cleveland Museum.",
     "interestingFacts": [
@@ -121,6 +129,14 @@
     "relatedSpeciesNames": [
       "Tiktaalik roseae",
       "Ichthyostega stensioei"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/52/Dunkleosteus_terrelli_life_restoration.png",
+        "type": "art",
+        "credit": "Wikimedia Commons Contributor (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dunkleosteus_terrelli_life_restoration.png"
+      }
     ]
   },
   {
@@ -166,7 +182,7 @@
       "Europe"
     ],
     "taxonomicClassification": "Tetrapodomorpha -> Ichthyostegalia -> Ichthyostegidae -> Ichthyostega",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Ichthyostega_skeletal_reconstruction_2018.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/da/Ichthyostega_BW.jpg",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f6/202003_Ichthyostega.png",
     "discoveryHistory": "Discovered in East Greenland by Lauge Koch's expedition in 1929. Described by Gunnar Säve-Söderbergh in 1932.",
     "interestingFacts": [
@@ -181,6 +197,14 @@
     "relatedSpeciesNames": [
       "Tiktaalik roseae",
       "Arthropleura armata"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/da/Ichthyostega_BW.jpg",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ichthyostega_BW.jpg"
+      }
     ]
   },
   {
@@ -227,7 +251,7 @@
       "Europe"
     ],
     "taxonomicClassification": "Insecta -> Meganisoptera -> Meganeuridae -> Meganeura",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/08/Meganeura_monyi_wings_Brongniart_1893.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/da/Meganeura_restoration_56.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Meganeura_monyi_au_Museum_de_Toulouse.jpg",
     "discoveryHistory": "Found in Commentry, France, in 1880. Described by French paleontologist Charles Brongniart in 1885.",
     "interestingFacts": [
@@ -242,6 +266,14 @@
     "relatedSpeciesNames": [
       "Arthropleura armata",
       "Dimetrodon grandis"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/da/Meganeura_restoration_56.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Ghedoghedo (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Meganeura%20restoration%2056.JPG"
+      }
     ]
   },
   {
@@ -290,7 +322,7 @@
       "Europe"
     ],
     "taxonomicClassification": "Synapsida -> Edaphosauridae -> Edaphosaurus",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Edaphosaurus_pogonias.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Edaphosaurus_pogonias.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/33/Edaphosaurus.jpg",
     "discoveryHistory": "Described by Edward Drinker Cope in 1882 from Texas. It was one of the earliest known dominant land herbivores.",
     "interestingFacts": [
@@ -305,6 +337,14 @@
     "relatedSpeciesNames": [
       "Dimetrodon grandis",
       "Helicoprion bessonowi"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Edaphosaurus_pogonias.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "ДиБгд at Russian Wikipedia (Public domain)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Edaphosaurus%20pogonias.jpg"
+      }
     ]
   },
   {
@@ -476,7 +516,7 @@
       "North America"
     ],
     "taxonomicClassification": "Pseudosuchia -> Rauisuchia -> Rauisuchidae -> Postosuchus",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Postosuchus_kirkpatricki_skeleton.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/92/Postosuchus_kirkpatricki.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Postosuchus_kirkpatricki_skeleton.jpg",
     "discoveryHistory": "Discovered in Garza County, Texas, by Sankar Chatterjee in 1980. Named in 1985 after the Kirkpatrick family, who owned the ranch where the fossils were found.",
     "interestingFacts": [
@@ -492,6 +532,14 @@
       "Coelophysis bauri",
       "Plateosaurus trossingensis",
       "Dilophosaurus wetherilli"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/92/Postosuchus_kirkpatricki.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Petrified Forest from Petrified Forest, USA (Public domain)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Postosuchus%20kirkpatricki.jpg"
+      }
     ]
   },
   {
@@ -602,7 +650,7 @@
       "Europe"
     ],
     "taxonomicClassification": "Dinosauria -> Theropoda -> Allosauridae -> Allosaurinae -> Allosaurus",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Allosaurus_Revised.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Allosaurus_Jaws_Steveoc86.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Allosaurus_fragilis_skeleton.jpg",
     "discoveryHistory": "First described by Othniel Charles Marsh in 1877 based on fragmentary remains from Colorado. Dozens of individuals were later found at the Cleveland-Lloyd Dinosaur Quarry in Utah.",
     "interestingFacts": [
@@ -618,6 +666,14 @@
       "Stegosaurus stenops",
       "Brachiosaurus altithorax",
       "Archaeopteryx lithographica"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Allosaurus_Jaws_Steveoc86.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Steveoc 86 (CC BY 2.5)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Allosaurus%20Jaws%20Steveoc86.jpg"
+      }
     ]
   },
   {
@@ -633,7 +689,7 @@
       "Europe"
     ],
     "taxonomicClassification": "Dinosauria -> Theropoda -> Avialae -> Archaeopterygidae -> Archaeopteryx",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Sinornithosaurus_millenii_reconstruction.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/00/202010_Archaeopteryx_lithographica.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/98/Archaeopteryx_lithographica_fossil.jpg",
     "discoveryHistory": "First fossil (a single feather) discovered in 1860 in the Solnhofen limestone of Bavaria, Germany. The famous London Specimen was found in 1861.",
     "interestingFacts": [
@@ -649,6 +705,14 @@
       "Allosaurus fragilis",
       "Stegosaurus stenops",
       "Yi qi"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/00/202010_Archaeopteryx_lithographica.png",
+        "type": "art",
+        "credit": "DBCLS (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:202010_Archaeopteryx_lithographica.png"
+      }
     ]
   },
   {
@@ -694,7 +758,7 @@
       "Africa"
     ],
     "taxonomicClassification": "Dinosauria -> Theropoda -> Spinosauridae -> Spinosaurinae -> Spinosaurus",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Spinosaurus_aegyptiacus_life_reconstruction.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/86/Spinosaurus_life_restoration_with_Onchopristis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Spinosaurus_aegyptiacus_skeletal.jpg",
     "discoveryHistory": "First described by Ernst Stromer in 1915 from Egyptian fossils. Those holotype fossils were destroyed in a Munich bombing raid during WWII. New specimens were described in 2014.",
     "interestingFacts": [
@@ -710,6 +774,14 @@
       "Tyrannosaurus rex",
       "Triceratops horridus",
       "Velociraptor mongoliensis"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/86/Spinosaurus_life_restoration_with_Onchopristis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spinosaurus%20life%20restoration%20with%20Onchopristis.jpg"
+      }
     ]
   },
   {
@@ -725,7 +797,7 @@
       "North America"
     ],
     "taxonomicClassification": "Dinosauria -> Theropoda -> Tyrannosauridae -> Tyrannosaurinae -> Tyrannosaurus",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Tyrannosaurus_rex_head_reconstruction.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/98/Tyrannosaurus_BW.jpg",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/94/Tyrannosaurus_Rex_Holotype.jpg",
     "discoveryHistory": "First discovered by Arthur Lakes in Colorado (1874), later named and described by Henry Fairfield Osborn in 1905.",
     "interestingFacts": [
@@ -741,6 +813,14 @@
       "Spinosaurus aegyptiacus",
       "Triceratops horridus",
       "Velociraptor mongoliensis"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/98/Tyrannosaurus_BW.jpg",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tyrannosaurus_BW.jpg"
+      }
     ]
   },
   {
@@ -787,7 +867,7 @@
       "Asia"
     ],
     "taxonomicClassification": "Dinosauria -> Theropoda -> Dromaeosauridae -> Velociraptorinae -> Velociraptor",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Velociraptor_mongoliensis_line_diagram_skull_%282%29.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Velociraptor_TD.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/98/Velociraptor_Mongoliensis_Painting.jpg",
     "discoveryHistory": "Discovered in the Gobi Desert of Mongolia in 1923 by Peter Kaisen. Named by Henry Fairfield Osborn in 1924.",
     "interestingFacts": [
@@ -803,6 +883,14 @@
       "Tyrannosaurus rex",
       "Spinosaurus aegyptiacus",
       "Yi qi"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Velociraptor_TD.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "TotalDino (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Velociraptor%20TD.png"
+      }
     ]
   },
   {
@@ -818,7 +906,7 @@
       "North America"
     ],
     "taxonomicClassification": "Dinosauria -> Ornithischia -> Hadrosauridae -> Lambeosaurinae -> Parasaurolophus",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Life_reconstruction_of_Parasaurolophus_walkeri.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Life_reconstruction_of_Parasaurolophus_walkeri.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Parasaurolophus_walkeri%2C_a_new_genus_and_species_of_trachodont_dinosaur_-_PLATE_II.png",
     "discoveryHistory": "Discovered in Alberta, Canada, in 1920 by William Parks. Described in 1922.",
     "interestingFacts": [
@@ -833,6 +921,14 @@
     "relatedSpeciesNames": [
       "Triceratops horridus",
       "Ankylosaurus magniventris"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Life_reconstruction_of_Parasaurolophus_walkeri.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Connor Ashbridge (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Life%20reconstruction%20of%20Parasaurolophus%20walkeri.png"
+      }
     ]
   },
   {
@@ -848,7 +944,7 @@
       "North America"
     ],
     "taxonomicClassification": "Dinosauria -> Ornithischia -> Ankylosauria -> Ankylosauridae -> Ankylosaurus",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/00/Mirrored_Ankylosaurus_magniventris_reconstruction.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Ankylosaurus_TD.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/eb/A_new_ankylosaurine_dinosaur_from_the_Judith_River_Formation_of_Montana%2C_USA%2C_based_on_an_exceptional_skeleton_with_soft_tissue_preservation.pdf",
     "discoveryHistory": "Discovered in the Hell Creek Formation of Montana by Barnum Brown in 1906. Described in 1908.",
     "interestingFacts": [
@@ -863,6 +959,14 @@
     "relatedSpeciesNames": [
       "Triceratops horridus",
       "Parasaurolophus walkeri"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Ankylosaurus_TD.png",
+        "type": "art",
+        "credit": "TotalDino (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ankylosaurus_TD.png"
+      }
     ]
   },
   {
@@ -878,7 +982,7 @@
       "South America"
     ],
     "taxonomicClassification": "Dinosauria -> Theropoda -> Abelisauridae -> Carnotaurus",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/10/Carnotaurus_sastrei_Reconstruction.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Carnotaurus_life_restoration_%28mirrored%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/85/Carnotaurus_sastrei_skeleton.jpg",
     "discoveryHistory": "Found in Chubut Province, Argentina, by Anselmo Sastre in 1984 during an expedition led by José Bonaparte.",
     "interestingFacts": [
@@ -893,6 +997,14 @@
     "relatedSpeciesNames": [
       "Tyrannosaurus rex",
       "Velociraptor mongoliensis"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Carnotaurus_life_restoration_%28mirrored%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Lida Xing and Yi Liu (CC BY 2.5)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Carnotaurus%20life%20restoration%20(mirrored).jpg"
+      }
     ]
   },
   {
@@ -1034,7 +1146,7 @@
       "Asia"
     ],
     "taxonomicClassification": "Aves -> Gastornithiformes -> Gastornithidae -> Gastornis",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e7/The_evolution_of_giant_flightless_birds_and_novel_phylogenetic_relationships_for_extinct_fowl_%28Aves%2C_Galloanseres%29.pdf",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/07/Gastornis_giganteus_DB.jpg",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/39/PSM_V21_D483_Skeleton_of_a_gastornis_eduardsii.jpg",
     "discoveryHistory": "First discovered near Paris in 1855 by Gaston Planté. For over a century, it was known under the synonym Diatryma in North America.",
     "interestingFacts": [
@@ -1049,6 +1161,14 @@
     "relatedSpeciesNames": [
       "Basilosaurus cetoides",
       "Megatherium americanum"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/07/Gastornis_giganteus_DB.jpg",
+        "type": "art",
+        "credit": "Dmitry Bogdanov (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gastornis_giganteus_DB.jpg"
+      }
     ]
   },
   {
@@ -1131,7 +1251,7 @@
       "South America"
     ],
     "taxonomicClassification": "Mammalia -> Carnivora -> Felidae -> Machairodontinae -> Smilodon",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Saber-toothed_cat_%28Smilodon_fatalis%29_reconstruction%2C_Natural_History_Museum%2C_London%2C_Mammals_Gallery.JPG",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Smilodon_fatalis_Sergiodlarosa.jpg",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Smilodon_fatalis_skeleton.jpg",
     "discoveryHistory": "First described by Joseph Leidy in 1869 from Texas. Over 3,500 individual skeletons have been recovered from the La Brea Tar Pits in Los Angeles.",
     "interestingFacts": [
@@ -1147,6 +1267,14 @@
       "Mammuthus primigenius",
       "Megatherium americanum",
       "Megalodon"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Smilodon_fatalis_Sergiodlarosa.jpg",
+        "type": "art",
+        "credit": "Sergio de la Rosa (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Smilodon_fatalis_Sergiodlarosa.jpg"
+      }
     ]
   },
   {
@@ -1164,7 +1292,7 @@
       "North America"
     ],
     "taxonomicClassification": "Mammalia -> Proboscidea -> Elephantidae -> Mammuthus",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Reconstruction_of_The_Skeleton_of_a_Mammuthus_Primigenius_-_1.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/06/Mammuthus_primigenius_DB.jpg",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Squelette_de_mammouth_laineux_%28Mammuthus_primigenius%29_en_plastique_phosphorescent.jpg",
     "discoveryHistory": "First scientifically described by Johann Friedrich Blumenbach in 1799. Mummified remains with intact skin, hair, and muscle have been found in Siberian permafrost.",
     "interestingFacts": [
@@ -1180,6 +1308,14 @@
       "Smilodon fatalis",
       "Coelodonta antiquitatis",
       "Megatherium americanum"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Mammuthus_primigenius_DB.jpg",
+        "type": "art",
+        "credit": "Dmitry Bogdanov (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mammuthus_primigenius_DB.jpg"
+      }
     ]
   },
   {
@@ -1287,7 +1423,7 @@
       "Oceania"
     ],
     "taxonomicClassification": "Mammalia -> Diprotodontia -> Thylacoleonidae -> Thylacoleo",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/06/Thylacoleo_skeleton_diagram.tiff",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/83/Thylacoleo_vs_Diprotodon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/06/Thylacoleo_skeleton_diagram.tiff",
     "discoveryHistory": "First described by Richard Owen in 1859 from fossil fragments. A near-complete skeleton was discovered in Flight Star Cave, Western Australia in 2002.",
     "interestingFacts": [
@@ -1302,6 +1438,14 @@
     "relatedSpeciesNames": [
       "Diprotodon optatum",
       "Smilodon fatalis"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/83/Thylacoleo_vs_Diprotodon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Original uploader was roman uchytel, Rom-diz at Russian Wikipedia (Public domain)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thylacoleo%20vs%20Diprotodon.jpg"
+      }
     ]
   },
   {

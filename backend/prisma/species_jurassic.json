@@ -16,7 +16,7 @@
     "family": "Allosaurusidae",
     "fossilFormation": "Morrison Formation",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Allosaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Allosaurus_Jaws_Steveoc86.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Allosaurus_fragilis_moulage_MNHN_paleontologie_1.JPG",
     "discoveryHistory": "• First described by Othniel Charles Marsh in 1877 during the Bone Wars.\n• The first nearly complete skeleton was discovered in 1883 by M. P. Felch in Colorado.\n• The Cleveland-Lloyd Dinosaur Quarry in Utah has yielded thousands of Allosaurus bones since the 1920s.",
     "interestingFacts": [
@@ -28,7 +28,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Dinosaur (Theropod)"
+    "creatureType": "Dinosaur (Theropod)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Allosaurus_Jaws_Steveoc86.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Steveoc 86 (CC BY 2.5)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Allosaurus%20Jaws%20Steveoc86.jpg"
+      }
+    ]
   },
   {
     "name": "Ceratosaurus",
@@ -357,7 +365,7 @@
     "family": "Metriacanthosaurusidae",
     "fossilFormation": "Oxford Clay Formation",
     "country": "UK",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Metriacanthosaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Metriacanthosaurus_life_restauration.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Metriacanthosaurus.jpg",
     "discoveryHistory": "• Discovered in the 19th century in the Oxford Clay of England.\n• Originally classified as a species of Megalosaurus in 1923.\n• Alick Walker established the genus Metriacanthosaurus in 1964.",
     "interestingFacts": [
@@ -369,7 +377,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Dinosaur (Theropod)"
+    "creatureType": "Dinosaur (Theropod)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/16/Metriacanthosaurus_life_restauration.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Gallimimus wikipedista. (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Metriacanthosaurus%20life%20restauration.png"
+      }
+    ]
   },
   {
     "name": "Yangchuanosaurus",
@@ -698,7 +714,7 @@
     "family": "Apatosaurusidae",
     "fossilFormation": "Morrison Formation",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Apatosaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Apatosaurus_louisae.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Apatosaurus_skeleton_Field_Columbian_Museum.jpg",
     "discoveryHistory": "• Discovered and named by O.C. Marsh in 1877 in Colorado.\n• For over a century, its skeleton was mounted with the wrong skull (that of a Camarasaurus).\n• A correct skull was finally mounted on skeletons in the late 1970s.",
     "interestingFacts": [
@@ -710,7 +726,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Dinosaur (Sauropod)"
+    "creatureType": "Dinosaur (Sauropod)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Apatosaurus_louisae.png",
+        "type": "art",
+        "credit": "Connor Ashbridge (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Apatosaurus_louisae.png"
+      }
+    ]
   },
   {
     "name": "Brontosaurus",
@@ -760,7 +784,7 @@
     "family": "Camarasaurusidae",
     "fossilFormation": "Morrison Formation",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Camarasaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Holder_camarasaurus_life_reco_1885.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/86/Camarasaurus_%2810436555424%29_tweaked.jpg",
     "discoveryHistory": "• First discovered in 1877 in Colorado by Oramel W. Lucas.\n• Named by Edward Drinker Cope in 1877.\n• It is the most common sauropod found in the Morrison Formation.",
     "interestingFacts": [
@@ -772,7 +796,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Dinosaur (Sauropod)"
+    "creatureType": "Dinosaur (Sauropod)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Holder_camarasaurus_life_reco_1885.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Charles Frederick Holder (Public domain)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Holder%20camarasaurus%20life%20reco%201885.jpg"
+      }
+    ]
   },
   {
     "name": "Giraffatitan",
@@ -915,7 +947,7 @@
     "family": "Mamenchisaurusidae",
     "fossilFormation": "Upper Shaximiao Formation",
     "country": "China",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Mamenchisaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Mamenchisaurus_sanjiangensis.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Mamenchisaurus_Skeleton_%2810096922675%29.jpg",
     "discoveryHistory": "• First discovered in 1952 at a highway construction site in Sichuan, China.\n• Described in 1954 by renowned paleontologist C.C. Young.\n• Many species have been assigned to the genus, though some may belong to other genera.",
     "interestingFacts": [
@@ -927,7 +959,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Dinosaur (Sauropod)"
+    "creatureType": "Dinosaur (Sauropod)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Mamenchisaurus_sanjiangensis.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Connor Ashbridge (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mamenchisaurus%20sanjiangensis.png"
+      }
+    ]
   },
   {
     "name": "Omeisaurus",
@@ -1225,7 +1265,7 @@
     "family": "Bellusaurusidae",
     "fossilFormation": "Shishugou Formation",
     "country": "China",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Bellusaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/25/Bellusaurus-v1.jpg",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Bellusaurus_-_skeleton.jpg",
     "discoveryHistory": "• Discovered in the Junggar Basin in Xinjiang, China.\n• Described in 1987 by Dong Zhiming.\n• Seventeen juvenile skeletons were found together in a single quarry.",
     "interestingFacts": [
@@ -1237,7 +1277,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Dinosaur (Sauropod)"
+    "creatureType": "Dinosaur (Sauropod)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/25/Bellusaurus-v1.jpg",
+        "type": "art",
+        "credit": "Debivort (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bellusaurus-v1.jpg"
+      }
+    ]
   },
   {
     "name": "Stegosaurus",
@@ -1504,7 +1552,7 @@
     "family": "Gargoyleosaurusidae",
     "fossilFormation": "Morrison Formation",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Ankylosauria_Scale.svg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/52/Gargoyleosaurus_drinking.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/30/Gargoyleosaurus_parkpinorum_skeleton.JPG",
     "discoveryHistory": "• Discovered in 1996 in the Bone Cabin Quarry West, Wyoming.\n• Named in 1998 by Ken Carpenter and colleagues.\n• The holotype includes a nearly complete, well-preserved skull.",
     "interestingFacts": [
@@ -1516,7 +1564,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Dinosaur (Ornithischian)"
+    "creatureType": "Dinosaur (Ornithischian)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/52/Gargoyleosaurus_drinking.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Conty (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gargoyleosaurus%20drinking.png"
+      }
+    ]
   },
   {
     "name": "Othnielosaurus",
@@ -1535,7 +1591,7 @@
     "family": "Othnielosaurusidae",
     "fossilFormation": "Morrison Formation",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Othnielosaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Othnielosaurus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/66/HMMS_%E2%80%9COthnielosaurus%E2%80%9D.jpg",
     "discoveryHistory": "• Discovered in the late 19th century and heavily revised over time.\n• Named in 2007 by Peter Galton to replace the confused taxon Othnielia.\n• Known from several partial skeletons in the Morrison Formation.",
     "interestingFacts": [
@@ -1547,7 +1603,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Dinosaur (Ornithischian)"
+    "creatureType": "Dinosaur (Ornithischian)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Othnielosaurus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Danny Cicchetti (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Othnielosaurus.jpg"
+      }
+    ]
   },
   {
     "name": "Lesothosaurus",
@@ -1876,7 +1940,7 @@
     "family": "Rhamphorhynchusidae",
     "fossilFormation": "Solnhofen Limestone",
     "country": "Germany",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Rhamphorhynchus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Rhamphorhynchus_life_restoration.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/da/Rhamphorhynchus_fossil.jpg",
     "discoveryHistory": "• Discovered in the Solnhofen Limestone of Bavaria, Germany.\n• First named by Christian Erich Hermann von Meyer in 1847.\n• Known from numerous perfectly preserved specimens.\n• Many specimens preserve soft tissues, including wing membranes.",
     "interestingFacts": [
@@ -1888,7 +1952,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Pterosaur"
+    "creatureType": "Pterosaur",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Rhamphorhynchus_life_restoration.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Jaime A. Headden (CC BY 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rhamphorhynchus%20life%20restoration.png"
+      }
+    ]
   },
   {
     "name": "Dimorphodon",
@@ -1938,7 +2010,7 @@
     "family": "Pterodactylusidae",
     "fossilFormation": "Solnhofen Limestone",
     "country": "Germany",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Pterodactylus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Pterodactylus_antiquus_DB.jpg",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Annotated_Pterodactylus_skeleton%2C_from_Abel%2C_O._%281919%29._Die_St%C3%A4mme_der_Wirbeltiere.jpg",
     "discoveryHistory": "• Discovered in the Solnhofen Limestone of Bavaria, Germany.\n• Described by Cosimo Alessandro Collini in 1784.\n• The first pterosaur ever identified as a flying reptile.\n• Georges Cuvier later coined the name Ptero-dactyle.",
     "interestingFacts": [
@@ -1950,7 +2022,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Pterosaur"
+    "creatureType": "Pterosaur",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Pterodactylus_antiquus_DB.jpg",
+        "type": "art",
+        "credit": "Dmitry Bogdanov (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pterodactylus_antiquus_DB.jpg"
+      }
+    ]
   },
   {
     "name": "Anurognathus",
@@ -1969,7 +2049,7 @@
     "family": "Anurognathusidae",
     "fossilFormation": "Solnhofen Limestone",
     "country": "Germany",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/df/Anurognathus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/AnurognathusDB_white_background.jpg",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/65/Pterosauria_Infobox_Panoply.png",
     "discoveryHistory": "• Discovered in the Solnhofen Limestone of Germany.\n• Described by Ludwig Döderlein in 1923.\n• The holotype is a small, nearly complete skeleton on a single slab.\n• Its name means without tail and jaw.",
     "interestingFacts": [
@@ -1981,7 +2061,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Pterosaur"
+    "creatureType": "Pterosaur",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/16/AnurognathusDB_white_background.jpg",
+        "type": "art",
+        "credit": "Dmitry Bogdanov (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:AnurognathusDB_white_background.jpg"
+      }
+    ]
   },
   {
     "name": "Campylognathoides",
@@ -2186,7 +2274,7 @@
     "family": "Kunpengopterusidae",
     "fossilFormation": "Tiaojishan Formation",
     "country": "China",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Kunpengopterus_antipollicatus_and_Allaboilus_gigantus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Kunpengopterus_antipollicatus_and_Allaboilus_gigantus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Kunpengopterus.png",
     "discoveryHistory": "• Discovered in the Tiaojishan Formation of China.\n• Described by Wang Xiaolin and colleagues in 2010.\n• Named after the Kunpeng, a mythical Chinese creature that transforms from fish to bird.\n• Known from well-preserved specimens including an egg.",
     "interestingFacts": [
@@ -2198,7 +2286,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Pterosaur"
+    "creatureType": "Pterosaur",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Kunpengopterus_antipollicatus_and_Allaboilus_gigantus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Luxquine (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kunpengopterus%20antipollicatus%20and%20Allaboilus%20gigantus.jpg"
+      }
+    ]
   },
   {
     "name": "Ctenochasma",
@@ -2372,7 +2468,7 @@
     "family": "Harpactognathusidae",
     "fossilFormation": "Morrison Formation",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Harpactognathus_skull_reconstruction.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/da/Rhamphorhynchus_muensteri_restoration.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Harpactognathus_gentryii.png",
     "discoveryHistory": "• Discovered in the Morrison Formation of Wyoming, USA.\n• Described by Kenneth Carpenter and colleagues in 2003.\n• Known only from a partial snout.\n• Name means snatching jaw.",
     "interestingFacts": [
@@ -2384,7 +2480,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Pterosaur"
+    "creatureType": "Pterosaur",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/da/Rhamphorhynchus_muensteri_restoration.png",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rhamphorhynchus_muensteri_restoration.png"
+      }
+    ]
   },
   {
     "name": "Mesadactylus",
@@ -2434,7 +2538,7 @@
     "family": "Jianchangnathusidae",
     "fossilFormation": "Tiaojishan Formation",
     "country": "China",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Jianchangnathus-Paleozoological_Museum_of_China.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Scaphognathus_crassirostris.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Jianchangnathus-Paleozoological_Museum_of_China.jpg",
     "discoveryHistory": "• Discovered in the Tiaojishan Formation, Liaoning, China.\n• Described by Xin Cheng and colleagues in 2012.\n• The holotype is a nearly complete skeleton.\n• Closely related to the genus Scaphognathus.",
     "interestingFacts": [
@@ -2446,7 +2550,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Pterosaur"
+    "creatureType": "Pterosaur",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Scaphognathus_crassirostris.png",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Scaphognathus_crassirostris.png"
+      }
+    ]
   },
   {
     "name": "Fenghuangopterus",
@@ -2465,7 +2577,7 @@
     "family": "Fenghuangopterusidae",
     "fossilFormation": "Tiaojishan Formation",
     "country": "China",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Fenghuangopterus_-_early_cretaceous_Liaoning_IMG_5184_Beijing_Museum_of_Natural_History.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Wukongopterus_linglongtaensis.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Fenghuangopterus_-_early_cretaceous_Liaoning_IMG_5184_Beijing_Museum_of_Natural_History.jpg",
     "discoveryHistory": "• Discovered in the Tiaojishan Formation of Liaoning, China.\n• Described by Lü Junchang and colleagues in 2010.\n• Represented by a single, beautifully preserved skeleton.\n• Named after the Fenghuang, a mythological Chinese bird.",
     "interestingFacts": [
@@ -2477,7 +2589,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Pterosaur"
+    "creatureType": "Pterosaur",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Wukongopterus_linglongtaensis.png",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Wukongopterus_linglongtaensis.png"
+      }
+    ]
   },
   {
     "name": "Liopleurodon",
@@ -2496,7 +2616,7 @@
     "family": "Liopleurodonidae",
     "fossilFormation": "Oxford Clay",
     "country": "UK",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Liopleurodon_ferox_skull_reconstruction.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Liopleurodon_after_Tarlo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/26/Liopleurodon_skeletal_diagram.png",
     "discoveryHistory": "• First discovered in the Oxford Clay Formation, England or France.\n• Described by Henri Émile Sauvage in 1873.\n• Name means smooth-sided tooth, referring to its tooth enamel.\n• Gained fame through its exaggerated depiction in Walking with Dinosaurs.",
     "interestingFacts": [
@@ -2508,7 +2628,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Other"
+    "creatureType": "Other",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Liopleurodon_after_Tarlo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "DiBgd (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Liopleurodon%20after%20Tarlo.jpg"
+      }
+    ]
   },
   {
     "name": "Plesiosaurus",
@@ -2558,7 +2686,7 @@
     "family": "Ichthyosaurusidae",
     "fossilFormation": "Blue Lias",
     "country": "UK",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/df/Ichthyosaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/22/Mosasaurus_ichthyosaurus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Ichthyosaurus_communis_in_London.jpg",
     "discoveryHistory": "• Discovered by Mary Anning in Lyme Regis, England, in the early 19th century.\n• Described by Charles König in 1818.\n• The first fully recognized genus of the ichthyosaur group.\n• Its name translates to fish lizard.",
     "interestingFacts": [
@@ -2570,7 +2698,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Other"
+    "creatureType": "Other",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/22/Mosasaurus_ichthyosaurus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Heinrich Harder (1858–1935) (Public domain)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mosasaurus%20ichthyosaurus.jpg"
+      }
+    ]
   },
   {
     "name": "Ophthalmosaurus",
@@ -2651,7 +2787,7 @@
     "family": "Rhomaleosaurusidae",
     "fossilFormation": "Whitby Mudstone",
     "country": "UK",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Meyerasaurus_victor_skull.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Rhomaleosaurus_crampt12DB.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/52/Displayed_Rhomaleosaurus_skeleton_YORYM_G503.JPG",
     "discoveryHistory": "• Discovered in the Alum Shale Formation of Yorkshire, England.\n• Described by Harry Govier Seeley in 1874.\n• The most famous specimen is named the Barrow Kipper.\n• Name means strong lizard.",
     "interestingFacts": [
@@ -2663,7 +2799,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Other"
+    "creatureType": "Other",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Rhomaleosaurus_crampt12DB.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Dmitry Bogdanov (CC BY 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rhomaleosaurus%20crampt12DB.jpg"
+      }
+    ]
   },
   {
     "name": "Macroplata",
@@ -2713,7 +2857,7 @@
     "family": "Peloneustesidae",
     "fossilFormation": "Oxford Clay",
     "country": "UK",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/04/Peloneustes_Skeletal_1913.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Peloneustes_BW.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/04/Peloneustes_Skeletal_1913.png",
     "discoveryHistory": "• Discovered in the Oxford Clay Formation of England.\n• Described by Richard Lydekker in 1889.\n• The name translates roughly to mud swimmer.\n• Known from numerous specimens.",
     "interestingFacts": [
@@ -2806,7 +2950,7 @@
     "family": "Temnodontosaurusidae",
     "fossilFormation": "Blue Lias",
     "country": "UK",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Temnodontosaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Temnodontosaurus_trigonodon_5.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Temnodontosaurus_skeletons.jpg",
     "discoveryHistory": "• Discovered by Mary Anning in Lyme Regis, England.\n• Described by Richard Lydekker in 1889.\n• The first ichthyosaur skull ever found belonged to this genus.\n• Name means cutting-tooth lizard.",
     "interestingFacts": [
@@ -2818,7 +2962,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Other"
+    "creatureType": "Other",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Temnodontosaurus_trigonodon_5.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Ghedoghedo (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Temnodontosaurus%20trigonodon%205.JPG"
+      }
+    ]
   },
   {
     "name": "Stenopterygius",
@@ -2868,7 +3020,7 @@
     "family": "Eurhinosaurusidae",
     "fossilFormation": "Posidonia Shale",
     "country": "Germany",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/63/Excalibosaurus_SW.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/63/Excalibosaurus_SW.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Eurhinosaurus_and_Stenopterygius_NHM.jpg",
     "discoveryHistory": "• Discovered in the Posidonia Shale of Germany.\n• Described by O. Abel in 1909.\n• A well-known relative to the similar Excalibosaurus.\n• Name means well-nosed lizard.",
     "interestingFacts": [
@@ -2880,7 +3032,15 @@
     "heightM": 2,
     "weightKg": 1000,
     "sizeNotes": "Medium-sized for its group.",
-    "creatureType": "Other"
+    "creatureType": "Other",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/63/Excalibosaurus_SW.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Slate Weasel (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Excalibosaurus%20SW.png"
+      }
+    ]
   },
   {
     "name": "Excalibosaurus",
@@ -3148,7 +3308,7 @@
     "fossilFormation": "Kota Formation",
     "country": "India",
     "creatureType": "Dinosaur (Sauropod)",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/30/Triassic_fossils.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/87/Kotasaurus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "/images/placeholders/sauropod.svg",
     "discoveryHistory": "• Discovered in the late 1970s near the village of Yamanpalli in the Mancherial District of Telangana, India.\n• Excavations conducted by the Geological Survey of India (GSI) between 1974 and 1982 recovered approximately 840 bone fragments.\n• Formally described and named in 1988 by GSI paleontologist P. Yadagiri.\n• The skeletal remains represent at least 12 individual dinosaurs found in a communal bonebed.",
     "interestingFacts": [
@@ -3159,6 +3319,14 @@
     "lengthM": 14,
     "heightM": 5,
     "weightKg": 8000,
-    "sizeNotes": "Estimated length of 14 meters and standing over 5 meters tall."
+    "sizeNotes": "Estimated length of 14 meters and standing over 5 meters tall.",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/87/Kotasaurus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Aaa232355 (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kotasaurus.jpg"
+      }
+    ]
   }
 ]

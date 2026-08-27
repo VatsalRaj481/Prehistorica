@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar.js';
 import Footer from './components/Footer.js';
@@ -5,8 +6,13 @@ import Home from './pages/Home.js';
 import Browse from './pages/Browse.js';
 import SpeciesDetail from './pages/SpeciesDetail.js';
 import TimeMap from './pages/TimeMap.js';
+import { wakePing } from './services/api.js';
 
 export default function App() {
+  useEffect(() => {
+    wakePing();
+  }, []);
+
   return (
     <Router>
       <Navbar />
@@ -22,3 +28,4 @@ export default function App() {
     </Router>
   );
 }
+

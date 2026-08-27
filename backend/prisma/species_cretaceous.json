@@ -16,7 +16,7 @@
     "family": "Tyrannosauridae",
     "fossilFormation": "Hell Creek",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Tyrannosaurus_rex_head_reconstruction.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/98/Tyrannosaurus_BW.jpg",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Tyrannosaurus_Rex_%28Zhengzhou%29.jpg",
     "discoveryHistory": "• First partial skeleton was discovered in 1900 by Barnum Brown in Wyoming.\n• Henry Fairfield Osborn formally named the species Tyrannosaurus rex in 1905.\n• In 1990, the most complete specimen, 'Sue', was discovered in South Dakota.",
     "interestingFacts": [
@@ -28,7 +28,15 @@
     "heightM": 4,
     "weightKg": 8400,
     "sizeNotes": "Massive.",
-    "creatureType": "Dinosaur (Theropod)"
+    "creatureType": "Dinosaur (Theropod)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/98/Tyrannosaurus_BW.jpg",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tyrannosaurus_BW.jpg"
+      }
+    ]
   },
   {
     "name": "Velociraptor",
@@ -47,7 +55,7 @@
     "family": "Dromaeosauridae",
     "fossilFormation": "Djadochta",
     "country": "Mongolia",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Velociraptor.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Velociraptor_TD.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Velociraptor_skeleton_white_background.jpg",
     "discoveryHistory": "• First fossil discovered in 1923 by Peter Kaisen in the Gobi Desert.\n• Formally described by Henry Fairfield Osborn in 1924.\n• A famous 'Fighting Dinosaurs' fossil showing Velociraptor locked in combat with a Protoceratops was found in 1971.",
     "interestingFacts": [
@@ -59,7 +67,15 @@
     "heightM": 0.5,
     "weightKg": 15,
     "sizeNotes": "Turkey-sized.",
-    "creatureType": "Dinosaur (Theropod)"
+    "creatureType": "Dinosaur (Theropod)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Velociraptor_TD.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "TotalDino (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Velociraptor%20TD.png"
+      }
+    ]
   },
   {
     "name": "Spinosaurus",
@@ -78,7 +94,7 @@
     "family": "Spinosauridae",
     "fossilFormation": "Bahariya",
     "country": "Egypt",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/66/Spinosaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/86/Spinosaurus_life_restoration_with_Onchopristis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Spinosaurus_aegyptiacus_skeletal.jpg",
     "discoveryHistory": "• First discovered in 1912 by Richard Markgraf in the Bahariya Formation of Egypt.\n• Ernst Stromer described and named the species in 1915.\n• Original fossils were destroyed during a WWII bombing in Munich in 1944.",
     "interestingFacts": [
@@ -90,7 +106,15 @@
     "heightM": 4.5,
     "weightKg": 7400,
     "sizeNotes": "Largest theropod.",
-    "creatureType": "Dinosaur (Theropod)"
+    "creatureType": "Dinosaur (Theropod)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/86/Spinosaurus_life_restoration_with_Onchopristis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Spinosaurus%20life%20restoration%20with%20Onchopristis.jpg"
+      }
+    ]
   },
   {
     "name": "Giganotosaurus",
@@ -140,7 +164,7 @@
     "family": "Abelisauridae",
     "fossilFormation": "La Colonia",
     "country": "Argentina",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Carnotaurus_BW.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Carnotaurus_life_restoration_%28mirrored%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Carnotaurus_skeleton_LA.jpg",
     "discoveryHistory": "• A nearly complete skeleton was discovered in 1984 in Chubut Province, Argentina.\n• Described and named by paleontologist José Bonaparte in 1985.\n• Notable for extensive skin impressions revealing scales without feathers.",
     "interestingFacts": [
@@ -152,7 +176,15 @@
     "heightM": 3,
     "weightKg": 1350,
     "sizeNotes": "Short snout.",
-    "creatureType": "Dinosaur (Theropod)"
+    "creatureType": "Dinosaur (Theropod)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Carnotaurus_life_restoration_%28mirrored%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Lida Xing and Yi Liu (CC BY 2.5)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Carnotaurus%20life%20restoration%20(mirrored).jpg"
+      }
+    ]
   },
   {
     "name": "Deinonychus",
@@ -233,7 +265,7 @@
     "family": "Carcharodontosauridae",
     "fossilFormation": "Kem Kem",
     "country": "Morocco",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/25/Carcharodontosaurus_saharicus_skull_reconstruction.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/52/Carcharodontosaurus.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Carcharodontosaurus_saharicus_DentIII.jpg",
     "discoveryHistory": "• First fragmentary fossils discovered in 1924 in Algeria.\n• Ernst Stromer named the genus in 1931 after finding more complete remains.\n• Like Spinosaurus, the original fossils were destroyed in World War II.",
     "interestingFacts": [
@@ -245,7 +277,15 @@
     "heightM": 4,
     "weightKg": 6000,
     "sizeNotes": "Huge predator.",
-    "creatureType": "Dinosaur (Theropod)"
+    "creatureType": "Dinosaur (Theropod)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/52/Carcharodontosaurus.png",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Carcharodontosaurus.png"
+      }
+    ]
   },
   {
     "name": "Albertosaurus",
@@ -357,7 +397,7 @@
     "family": "Oviraptoridae",
     "fossilFormation": "Djadochta",
     "country": "Mongolia",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Oviraptor.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Oviraptor_TD.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Oviraptor_philoceratops_skeleton.jpg",
     "discoveryHistory": "• Discovered in 1923 by George Olsen during an expedition to Mongolia.\n• Named 'egg thief' because the first fossil was found atop a clutch of eggs.\n• Later discoveries proved the eggs belonged to Oviraptor itself, and it was brooding them.",
     "interestingFacts": [
@@ -369,7 +409,15 @@
     "heightM": 1,
     "weightKg": 34,
     "sizeNotes": "Parrot-like beak.",
-    "creatureType": "Dinosaur (Theropod)"
+    "creatureType": "Dinosaur (Theropod)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/16/Oviraptor_TD.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "TotalDino (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Oviraptor%20TD.png"
+      }
+    ]
   },
   {
     "name": "Gallimimus",
@@ -481,8 +529,8 @@
     "family": "Carcharodontosauridae",
     "fossilFormation": "Antlers",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Acrocanthosaurus_skull_reconstruction.png",
-    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/91/Acrocanthosaurus_skeleton_%281%29.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Acrocanthosaurus_restoration.jpg",
+    "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Acrocanthosaurus_atokensis_by_durbed.jpg",
     "discoveryHistory": "• Discovered in the early 1940s in Oklahoma, USA.\n• Named Acrocanthosaurus atokensis in 1950 by Stovall and Langston.\n• A nearly complete skeleton 'Fran' was discovered in the 1990s.",
     "interestingFacts": [
       "Characterized by tall neural spines along its back and neck.",
@@ -698,7 +746,7 @@
     "family": "Ceratopsidae",
     "fossilFormation": "Dinosaur Park",
     "country": "Canada",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Styracosaurus_albertensis_skull_02.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Styracosaurus_01_%28update%29.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Styracosaurus_skeleton_AMNH5372.jpg",
     "discoveryHistory": "• The first skull was collected in 1913 by Charles H. Sternberg in Alberta.\n• Named by Lawrence Lambe in 1913.\n• Bonebeds suggest it lived in massive herds.",
     "interestingFacts": [
@@ -710,7 +758,15 @@
     "heightM": 1.8,
     "weightKg": 1800,
     "sizeNotes": "Spectacular frill.",
-    "creatureType": "Dinosaur (Ornithischian)"
+    "creatureType": "Dinosaur (Ornithischian)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Styracosaurus_01_%28update%29.png",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Styracosaurus_01_(update).png"
+      }
+    ]
   },
   {
     "name": "Pachyrhinosaurus",
@@ -915,7 +971,7 @@
     "family": "Ceratopsidae",
     "fossilFormation": "Kaiparowits",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/24/Skull_reconstruction_of_Kosmoceratops_richardsoni.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Kosmoceratops_NT_small_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Kosmoceratops_richardsoni_skull_salt_lake_city.jpg",
     "discoveryHistory": "• Found in 2006 by a volunteer in the Kaiparowits Formation of Utah.\n• Formally named by Scott Sampson and colleagues in 2010.\n• Its discovery shed light on dinosaur endemism in Late Cretaceous North America.",
     "interestingFacts": [
@@ -927,7 +983,15 @@
     "heightM": 1.5,
     "weightKg": 1200,
     "sizeNotes": "Most ornate skull.",
-    "creatureType": "Dinosaur (Ornithischian)"
+    "creatureType": "Dinosaur (Ornithischian)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Kosmoceratops_NT_small_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Nobu Tamura email:nobu.tamura@yahoo.com http://spinops.blogspot.com/ http://paleoexhibit.blogspot.com/ (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kosmoceratops%20NT%20small%20(2).jpg"
+      }
+    ]
   },
   {
     "name": "Zuniceratops",
@@ -1039,7 +1103,7 @@
     "family": "Ceratopsidae",
     "fossilFormation": "Two Medicine",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Achelousaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Achelousaurus_horneri.jpg",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Achelousaurus_dinosaur.png",
     "discoveryHistory": "• Discovered in 1987 by a team led by Jack Horner in Montana.\n• Named by Scott Sampson in 1995 alongside Einiosaurus.\n• Represents an evolutionary transition between Einiosaurus and Pachyrhinosaurus.",
     "interestingFacts": [
@@ -1051,7 +1115,15 @@
     "heightM": 2,
     "weightKg": 1500,
     "sizeNotes": "Transitional form.",
-    "creatureType": "Dinosaur (Ornithischian)"
+    "creatureType": "Dinosaur (Ornithischian)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Achelousaurus_horneri.jpg",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Achelousaurus_horneri.jpg"
+      }
+    ]
   },
   {
     "name": "Nasutoceratops",
@@ -1101,7 +1173,7 @@
     "family": "Hadrosauridae",
     "fossilFormation": "Dinosaur Park",
     "country": "Canada",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/54/Parasaurolophus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Life_reconstruction_of_Parasaurolophus_walkeri.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Parasaurolophus_juvenile_skeleton.png",
     "discoveryHistory": "• Discovered in 1920 by an expedition from the University of Toronto in Alberta.\n• William Parks named the genus Parasaurolophus in 1922.\n• Extremely rare, with only a handful of good skulls known.",
     "interestingFacts": [
@@ -1113,7 +1185,15 @@
     "heightM": 3,
     "weightKg": 3000,
     "sizeNotes": "Iconic crest.",
-    "creatureType": "Other"
+    "creatureType": "Other",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Life_reconstruction_of_Parasaurolophus_walkeri.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Connor Ashbridge (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Life%20reconstruction%20of%20Parasaurolophus%20walkeri.png"
+      }
+    ]
   },
   {
     "name": "Iguanodon",
@@ -1132,7 +1212,7 @@
     "family": "Iguanodontidae",
     "fossilFormation": "Sainte-Barbe Clays",
     "country": "Belgium",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Iguanodon_Skeletal.svg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/70/Iguanodon_bernissartensis_%28Davide_Bonadonna%29.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f3/EB1911_Iguanodon_-_Skeleton_of_Iguanadon_bernissartensis.jpg",
     "discoveryHistory": "• First teeth discovered by Gideon Mantell in Sussex, England, around 1822.\n• Formally named in 1825, becoming the second dinosaur ever named.\n• Over 30 complete skeletons were discovered in a Belgian coal mine in 1878.",
     "interestingFacts": [
@@ -1144,7 +1224,15 @@
     "heightM": 3,
     "weightKg": 3000,
     "sizeNotes": "One of the first dinosaurs named.",
-    "creatureType": "Other"
+    "creatureType": "Other",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/70/Iguanodon_bernissartensis_%28Davide_Bonadonna%29.png",
+        "type": "art",
+        "credit": "Davide Bonadonna (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Iguanodon_bernissartensis_(Davide_Bonadonna).png"
+      }
+    ]
   },
   {
     "name": "Edmontosaurus",
@@ -1163,7 +1251,7 @@
     "family": "Hadrosauridae",
     "fossilFormation": "Hell Creek",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Edmontosaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/49/Life_reconstruction_of_Edmontosaurus_regalis.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Edmontosaurus_annectens_skeleton_02.jpg",
     "discoveryHistory": "• First remains were found in the late 19th century during the Bone Wars.\n• Lawrence Lambe named the genus Edmontosaurus in 1917.\n• Some of the best-preserved dinosaur mummies belong to this genus.",
     "interestingFacts": [
@@ -1175,7 +1263,15 @@
     "heightM": 3,
     "weightKg": 4000,
     "sizeNotes": "Very common.",
-    "creatureType": "Other"
+    "creatureType": "Other",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/4/49/Life_reconstruction_of_Edmontosaurus_regalis.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Connor Ashbridge (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Life%20reconstruction%20of%20Edmontosaurus%20regalis.png"
+      }
+    ]
   },
   {
     "name": "Corythosaurus",
@@ -1194,7 +1290,7 @@
     "family": "Hadrosauridae",
     "fossilFormation": "Dinosaur Park",
     "country": "Canada",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/33/Corythosaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/51/Corythosaurus_restoration_from_1916.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Corythosaurus_skeleton_mount.jpg",
     "discoveryHistory": "• Discovered in 1912 by Barnum Brown in Alberta, Canada.\n• Named Corythosaurus by Brown in 1914.\n• Early specimens featured extensive skin impressions.",
     "interestingFacts": [
@@ -1206,7 +1302,15 @@
     "heightM": 3,
     "weightKg": 3000,
     "sizeNotes": "Cassowary-like crest.",
-    "creatureType": "Other"
+    "creatureType": "Other",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/51/Corythosaurus_restoration_from_1916.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Barnum Brown (Public domain)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Corythosaurus%20restoration%20from%201916.jpg"
+      }
+    ]
   },
   {
     "name": "Maiasaura",
@@ -1412,7 +1516,7 @@
     "family": "Hadrosauridae",
     "fossilFormation": "Udurchukan",
     "country": "Russia",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/20/Olorotitan.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/32/Life_reconstruction_of_Olorotitan_arharensis.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/34/Reconstructed_Olorotitan_skeleton.jpg",
     "discoveryHistory": "• Discovered in 1999 in the Amur Region of Far Eastern Russia.\n• Named in 2003 by Pascal Godefroit and colleagues.\n• Its skeleton was exceptionally complete for an Asian hadrosaur.",
     "interestingFacts": [
@@ -1424,7 +1528,15 @@
     "heightM": 3,
     "weightKg": 2500,
     "sizeNotes": "Long neck.",
-    "creatureType": "Other"
+    "creatureType": "Other",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/32/Life_reconstruction_of_Olorotitan_arharensis.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Connor Ashbridge (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Life%20reconstruction%20of%20Olorotitan%20arharensis.png"
+      }
+    ]
   },
   {
     "name": "Shantungosaurus",
@@ -1536,7 +1648,7 @@
     "family": "Thescelosauridae",
     "fossilFormation": "Hell Creek",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/80/Thescelosaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/85/Thescelosaurus_filamented_transparent.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Thescelosaurus_neglectus_Burpee.jpg",
     "discoveryHistory": "• Discovered in 1891 by John Bell Hatcher in Wyoming.\n• Named by Charles W. Gilmore in 1913.\n• Known from several exceptionally preserved skeletons.",
     "interestingFacts": [
@@ -1548,7 +1660,15 @@
     "heightM": 1,
     "weightKg": 300,
     "sizeNotes": "Robust build.",
-    "creatureType": "Other"
+    "creatureType": "Other",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/85/Thescelosaurus_filamented_transparent.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Leandra Walters, Phil Senter, James H. Robins (CC BY-SA 2.5)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thescelosaurus%20filamented%20transparent.png"
+      }
+    ]
   },
   {
     "name": "Ankylosaurus",
@@ -1567,7 +1687,7 @@
     "family": "Ankylosauridae",
     "fossilFormation": "Hell Creek",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Ankylosaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Ankylosaurus_TD.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Ankylosaurus_skull_7367.JPG",
     "discoveryHistory": "• Discovered in 1906 by Barnum Brown in the Hell Creek Formation of Montana.\n• Described and named by Brown in 1908.\n• Complete skeletons are rare, with most finds consisting of armor plates.",
     "interestingFacts": [
@@ -1579,7 +1699,15 @@
     "heightM": 1.7,
     "weightKg": 6000,
     "sizeNotes": "Heavily armored.",
-    "creatureType": "Dinosaur (Ornithischian)"
+    "creatureType": "Dinosaur (Ornithischian)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Ankylosaurus_TD.png",
+        "type": "art",
+        "credit": "TotalDino (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ankylosaurus_TD.png"
+      }
+    ]
   },
   {
     "name": "Edmontonia",
@@ -1660,7 +1788,7 @@
     "family": "Ankylosauridae",
     "fossilFormation": "Dinosaur Park",
     "country": "Canada",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Euoplocephalus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Euoplocephalus_TD.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Euoplocephalus_and_Albertosaurus.jpg",
     "discoveryHistory": "• Discovered in the 19th or 20th century.\n• Holotype found in Cretaceous fossil beds.\n• Named Euoplocephalus by paleontologists after careful study.\n• Subsequent discoveries expanded our understanding of its anatomy.",
     "interestingFacts": [
@@ -1672,7 +1800,15 @@
     "heightM": 2,
     "weightKg": 2500,
     "sizeNotes": "Common in Alberta.",
-    "creatureType": "Dinosaur (Ornithischian)"
+    "creatureType": "Dinosaur (Ornithischian)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Euoplocephalus_TD.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "TotalDino (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Euoplocephalus%20TD.png"
+      }
+    ]
   },
   {
     "name": "Sauropelta",
@@ -1846,7 +1982,7 @@
     "family": "Nodosauridae",
     "fossilFormation": "Cedar Mountain",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/64/Gastonia.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/Gastonia_TD.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Gastonia_fossil.jpg",
     "discoveryHistory": "• Discovered in the 19th or 20th century.\n• Holotype found in Cretaceous fossil beds.\n• Named Gastonia by paleontologists after careful study.\n• Subsequent discoveries expanded our understanding of its anatomy.",
     "interestingFacts": [
@@ -1858,7 +1994,15 @@
     "heightM": 1.5,
     "weightKg": 1900,
     "sizeNotes": "Very heavily armored.",
-    "creatureType": "Dinosaur (Ornithischian)"
+    "creatureType": "Dinosaur (Ornithischian)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/55/Gastonia_TD.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "TotalDino (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gastonia%20TD.png"
+      }
+    ]
   },
   {
     "name": "Pachycephalosaurus",
@@ -1939,7 +2083,7 @@
     "family": "Pachycephalosauridae",
     "fossilFormation": "Hell Creek",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Stygimoloch_NT_small.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Stygimoloch_NT_small.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Stygimoloch_spinifer.jpg",
     "discoveryHistory": "• Discovered in the 19th or 20th century.\n• Holotype found in Cretaceous fossil beds.\n• Named Stygimoloch by paleontologists after careful study.\n• Subsequent discoveries expanded our understanding of its anatomy.",
     "interestingFacts": [
@@ -1951,7 +2095,15 @@
     "heightM": 1,
     "weightKg": 78,
     "sizeNotes": "Possibly juvenile Pachycephalosaurus.",
-    "creatureType": "Dinosaur (Ornithischian)"
+    "creatureType": "Dinosaur (Ornithischian)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Stygimoloch_NT_small.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Nobu Tamura email:nobu.tamura@yahoo.com  http://spinops.blogspot.com/ (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stygimoloch%20NT%20small.jpg"
+      }
+    ]
   },
   {
     "name": "Dracorex",
@@ -1970,7 +2122,7 @@
     "family": "Pachycephalosauridae",
     "fossilFormation": "Hell Creek",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/48/Dracorex.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Pachycephalosauridae_head_butting.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/34/Dracorex_1.jpg",
     "discoveryHistory": "• Discovered in the 19th or 20th century.\n• Holotype found in Cretaceous fossil beds.\n• Named Dracorex by paleontologists after careful study.\n• Subsequent discoveries expanded our understanding of its anatomy.",
     "interestingFacts": [
@@ -1982,7 +2134,15 @@
     "heightM": 1,
     "weightKg": 78,
     "sizeNotes": "Possibly juvenile Pachycephalosaurus.",
-    "creatureType": "Dinosaur (Ornithischian)"
+    "creatureType": "Dinosaur (Ornithischian)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Pachycephalosauridae_head_butting.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Joseph E. Peterson, Collin Dischler, Nicholas R. Longrich (CC BY 2.5)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pachycephalosauridae%20head%20butting.png"
+      }
+    ]
   },
   {
     "name": "Prenocephale",
@@ -2001,7 +2161,7 @@
     "family": "Pachycephalosauridae",
     "fossilFormation": "Nemegt",
     "country": "Mongolia",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Prenocephale.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Prenocephale_bickering.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/1/17/Prenocephale_1.jpg",
     "discoveryHistory": "• Discovered in the 19th or 20th century.\n• Holotype found in Cretaceous fossil beds.\n• Named Prenocephale by paleontologists after careful study.\n• Subsequent discoveries expanded our understanding of its anatomy.",
     "interestingFacts": [
@@ -2013,7 +2173,15 @@
     "heightM": 1,
     "weightKg": 130,
     "sizeNotes": "Asian pachycephalosaur.",
-    "creatureType": "Other"
+    "creatureType": "Other",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Prenocephale_bickering.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "AntoninJury (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Prenocephale%20bickering.jpg"
+      }
+    ]
   },
   {
     "name": "Argentinosaurus",
@@ -2063,7 +2231,7 @@
     "family": "Titanosauria",
     "fossilFormation": "Ojo Alamo",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Alamosaurus.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Alamosaurus_TD.png",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Alamosaurus_sanjuanensis_dinosaur.png",
     "discoveryHistory": "• Discovered in the 19th or 20th century.\n• Holotype found in Cretaceous fossil beds.\n• Named Alamosaurus by paleontologists after careful study.\n• Subsequent discoveries expanded our understanding of its anatomy.",
     "interestingFacts": [
@@ -2075,7 +2243,15 @@
     "heightM": 8,
     "weightKg": 70000,
     "sizeNotes": "Massive North American sauropod.",
-    "creatureType": "Dinosaur (Sauropod)"
+    "creatureType": "Dinosaur (Sauropod)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Alamosaurus_TD.png",
+        "type": "art",
+        "credit": "TotalDino (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alamosaurus_TD.png"
+      }
+    ]
   },
   {
     "name": "Saltasaurus",
@@ -2218,7 +2394,7 @@
     "family": "Titanosauria",
     "fossilFormation": "Bahariya",
     "country": "Egypt",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Bahariya_Formation_McAfee.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/97/Paralititan_63844.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/72/Paralititan_stromeri_by_Hatem_Moushir_9.JPG",
     "discoveryHistory": "• Discovered in the 19th or 20th century.\n• Holotype found in Cretaceous fossil beds.\n• Named Paralititan by paleontologists after careful study.\n• Subsequent discoveries expanded our understanding of its anatomy.",
     "interestingFacts": [
@@ -2230,7 +2406,15 @@
     "heightM": 7,
     "weightKg": 59000,
     "sizeNotes": "Massive African titanosaur.",
-    "creatureType": "Dinosaur (Sauropod)"
+    "creatureType": "Dinosaur (Sauropod)",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/97/Paralititan_63844.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "Conty (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Paralititan%2063844.jpg"
+      }
+    ]
   },
   {
     "name": "Rapetosaurus",
@@ -2281,7 +2465,7 @@
     "fossilFormation": "Lameta Formation",
     "country": "India",
     "creatureType": "Dinosaur (Sauropod)",
-    "reconstructionImageUrl": "/images/placeholders/sauropod.svg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/be/Isisaurus_life_restoration.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "/images/placeholders/sauropod.svg",
     "discoveryHistory": "• The fossils were first described and named Titanosaurus colberti in 1997 by Sohan Lal Jain and Saswati Bandyopadhyay.\n• In 2003, paleontologists Jeffrey A. Wilson and Paul Upchurch reclassified the remains into the new genus Isisaurus.\n• The genus name is an acronym for the Indian Statistical Institute (ISI) in Kolkata, where the fossils were studied.\n• The species name colberti honors Edwin H. Colbert, a prominent American paleontologist.",
     "interestingFacts": [
@@ -2292,7 +2476,15 @@
     "lengthM": 18,
     "heightM": 6,
     "weightKg": 15000,
-    "sizeNotes": "Reached an estimated length of 18 meters and weighed roughly 15 metric tonnes."
+    "sizeNotes": "Reached an estimated length of 18 meters and weighed roughly 15 metric tonnes.",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/be/Isisaurus_life_restoration.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "type": "art",
+        "credit": "DNB XD (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Isisaurus%20life%20restoration.png"
+      }
+    ]
   },
   {
     "name": "Magyarosaurus",
@@ -2839,7 +3031,7 @@
     "family": "Mosasauridae",
     "fossilFormation": "Niobrara",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/4/46/Skeletal_reconstruction_and_inferred_body_outline_of_Platecarpus.png",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/9/99/Platecarpus_corypheus_Kansas_MNHN_Sur_les_traces_des_dinosaures.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/07/Platecarpus_fossil.jpg",
     "discoveryHistory": "• Discovered in the 19th or 20th century.\n• Holotype found in Cretaceous fossil beds.\n• Named Platecarpus by paleontologists after careful study.\n• Subsequent discoveries expanded our understanding of its anatomy.",
     "interestingFacts": [
@@ -3025,7 +3217,7 @@
     "family": "Baculitidae",
     "fossilFormation": "Pierre Shale",
     "country": "USA",
-    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Baculites.jpg",
+    "reconstructionImageUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Baculites_restoration.jpg",
     "fossilImageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Baculites_ovatus.jpg",
     "discoveryHistory": "• Discovered in the 19th or 20th century.\n• Holotype found in Cretaceous fossil beds.\n• Named Baculites by paleontologists after careful study.\n• Subsequent discoveries expanded our understanding of its anatomy.",
     "interestingFacts": [
@@ -3037,7 +3229,15 @@
     "heightM": 0.1,
     "weightKg": 5,
     "sizeNotes": "Very common.",
-    "creatureType": "Invertebrate"
+    "creatureType": "Invertebrate",
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Baculites_restoration.jpg",
+        "type": "art",
+        "credit": "Wikimedia Commons Contributor (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Baculites_restoration.jpg"
+      }
+    ]
   },
   {
     "name": "Jeletzkytes",

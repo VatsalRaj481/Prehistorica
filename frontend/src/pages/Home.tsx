@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useReducedMotion, Variants } from 'framer-motion';
 import { fetchCreatureOfTheDay, fetchSpecies, Species } from '../services/api.js';
 import ThreeDFossilStarfield from '../components/ThreeDFossilStarfield.js';
-import { Calendar, ArrowRight, Dna, Map, ShieldAlert, Sparkles, FileText, Layers } from 'lucide-react';
+import { Calendar, ArrowRight, Dna, Map, ShieldAlert, Sparkles, FileText, Layers, Loader2 } from 'lucide-react';
 import { formatMass } from '../utils/formatMass.js';
 
 export default function Home() {
@@ -121,10 +121,56 @@ export default function Home() {
         </div>
 
         {loading ? (
-          <div className="animate-pulse bg-slate-950 border border-slate-800 h-96 flex items-center justify-center font-mono text-slate-500 text-sm">
-            Excavating daily archive specimen...
+          <div className="relative bg-slate-950 border border-slate-800 rounded-none overflow-hidden shadow-2xl p-6 sm:p-8 animate-pulse">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              {/* Image Viewport Skeleton */}
+              <div className="lg:col-span-7 relative h-72 sm:h-96 rounded-none bg-slate-900 border border-slate-800/80 flex flex-col items-center justify-center p-6 text-center">
+                <Loader2 className="h-10 w-10 text-amber-500 animate-spin mb-3" />
+                <p className="font-mono text-slate-300 font-bold text-sm">
+                  Waking up museum archive server...
+                </p>
+                <p className="font-mono text-slate-500 text-xs mt-1">
+                  Excavating daily specimen (Render cold start may take 30–50s)
+                </p>
+              </div>
+
+              {/* Specimen Dossier Details Skeleton */}
+              <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+                <div className="space-y-4">
+                  <div className="space-y-2 border-l-2 border-slate-800 pl-4">
+                    <div className="h-8 bg-slate-800 w-3/4" />
+                    <div className="h-4 bg-slate-800/60 w-1/2" />
+                  </div>
+                  <div className="p-3.5 bg-slate-900 border border-slate-800/80 space-y-2">
+                    <div className="h-3 bg-slate-800 w-1/3" />
+                    <div className="h-3 bg-slate-800/60 w-full" />
+                    <div className="h-3 bg-slate-800/60 w-4/5" />
+                  </div>
+                  <div className="grid grid-cols-3 divide-x divide-slate-800 border-y border-slate-800 py-3">
+                    <div className="pr-3 space-y-2">
+                      <div className="h-2.5 bg-slate-800/60 w-12" />
+                      <div className="h-6 bg-slate-800 w-16" />
+                    </div>
+                    <div className="px-3 space-y-2">
+                      <div className="h-2.5 bg-slate-800/60 w-12" />
+                      <div className="h-6 bg-slate-800 w-16" />
+                    </div>
+                    <div className="pl-3 space-y-2">
+                      <div className="h-2.5 bg-slate-800/60 w-12" />
+                      <div className="h-6 bg-slate-800 w-16" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
+                  <div className="h-4 bg-slate-800 w-28" />
+                  <div className="h-9 bg-slate-800 w-36" />
+                </div>
+              </div>
+            </div>
           </div>
-        ) : error || !creature ? (
+        ) :
+ error || !creature ? (
           <div className="bg-slate-950 border border-red-500/20 p-8 text-center text-red-400 flex flex-col items-center gap-2 font-mono">
             <ShieldAlert className="h-10 w-10 text-red-500" />
             <p className="font-bold">{error || 'Creature record not found'}</p>

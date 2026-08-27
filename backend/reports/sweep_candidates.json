@@ -1,0 +1,824 @@
+[
+  {
+    "id": 224,
+    "name": "Liopleurodon",
+    "scientificName": "Liopleurodon ferox",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Liopleurodon_ferox_skull_reconstruction.png",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Liopleurodon_ferox_skull_reconstruction.png",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Liopleurodon_ferox_skull_reconstruction.png"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/26/Liopleurodon_skeletal_diagram.png",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/26/Liopleurodon_skeletal_diagram.png"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "name": "Smilodon fatalis",
+    "scientificName": "Smilodon fatalis",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Saber-toothed_cat_%28Smilodon_fatalis%29_reconstruction%2C_Natural_History_Museum%2C_London%2C_Mammals_Gallery.JPG",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Saber-toothed_cat_%28Smilodon_fatalis%29_reconstruction%2C_Natural_History_Museum%2C_London%2C_Mammals_Gallery.JPG",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Saber-toothed_cat_%28Smilodon_fatalis%29_reconstruction%2C_Natural_History_Museum%2C_London%2C_Mammals_Gallery.JPG"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Smilodon_fatalis_skeleton.jpg",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Smilodon_fatalis_skeleton.jpg"
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "name": "Coloradisaurus",
+    "scientificName": "Coloradisaurus spp.",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/4/47/Coloradisaurus_skull_reconstruction.png",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/4/47/Coloradisaurus_skull_reconstruction.png",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/47/Coloradisaurus_skull_reconstruction.png"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/4/47/Coloradisaurus_skull_reconstruction.png",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/47/Coloradisaurus_skull_reconstruction.png"
+      }
+    ]
+  },
+  {
+    "id": 1670,
+    "name": "Lightningclaw",
+    "scientificName": "Lightningclaw",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://images.unsplash.com/photo-1551085254-e96b210df58a?q=80&w=1200&auto=format&fit=crop",
+    "credit": "Paleontological Research Archive",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://images.unsplash.com/photo-1551085254-e96b210df58a?q=80&w=1200&auto=format&fit=crop",
+        "type": "art",
+        "credit": "Paleontological Research Archive",
+        "sourceUrl": "https://commons.wikimedia.org"
+      }
+    ]
+  },
+  {
+    "id": 125,
+    "name": "Macrocnemus",
+    "scientificName": "Macrocnemus spp.",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/Macrocnemus_bassanii_3D_printed_skull.jpg",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/93/Macrocnemus_bassanii_3D_printed_skull.jpg",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/Macrocnemus_bassanii_3D_printed_skull.jpg"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Macrocnemus_bassanii_skeleton.JPG",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Macrocnemus_bassanii_skeleton.JPG"
+      }
+    ]
+  },
+  {
+    "id": 111,
+    "name": "Saltoposuchus",
+    "scientificName": "Saltoposuchus spp.",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/2/25/Saltoposuchus_skeletal.png",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/25/Saltoposuchus_skeletal.png",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/25/Saltoposuchus_skeletal.png"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Saltoposuchus_connectens_%28holotype%2C_SMNS_12597a%29.jpg",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Saltoposuchus_connectens_%28holotype%2C_SMNS_12597a%29.jpg"
+      }
+    ]
+  },
+  {
+    "id": 95,
+    "name": "Batrachotomus",
+    "scientificName": "Batrachotomus spp.",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Batrachotomus_skull_diagram.png",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Batrachotomus_skull_diagram.png",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Batrachotomus_skull_diagram.png"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Batrachotomus_scale_diagram.png",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Batrachotomus_scale_diagram.png"
+      }
+    ]
+  },
+  {
+    "id": 99,
+    "name": "Phytosaurus",
+    "scientificName": "Phytosaurus spp.",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Parasuchidae_skull_drawing%2C_from_Abel%2C_O._%281919%29._Die_St%C3%A4mme_der_Wirbeltiere.jpg",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Parasuchidae_skull_drawing%2C_from_Abel%2C_O._%281919%29._Die_St%C3%A4mme_der_Wirbeltiere.jpg",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Parasuchidae_skull_drawing%2C_from_Abel%2C_O._%281919%29._Die_St%C3%A4mme_der_Wirbeltiere.jpg"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/be/Phytosaurus_cylindricodon_23-removebg-preview.png",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/b/be/Phytosaurus_cylindricodon_23-removebg-preview.png"
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Mammuthus primigenius",
+    "scientificName": "Mammuthus primigenius",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Reconstruction_of_The_Skeleton_of_a_Mammuthus_Primigenius_-_1.jpg",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Reconstruction_of_The_Skeleton_of_a_Mammuthus_Primigenius_-_1.jpg",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Reconstruction_of_The_Skeleton_of_a_Mammuthus_Primigenius_-_1.jpg"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Squelette_de_mammouth_laineux_%28Mammuthus_primigenius%29_en_plastique_phosphorescent.jpg",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Squelette_de_mammouth_laineux_%28Mammuthus_primigenius%29_en_plastique_phosphorescent.jpg"
+      }
+    ]
+  },
+  {
+    "id": 114,
+    "name": "Sphenosuchus",
+    "scientificName": "Sphenosuchus spp.",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/1/12/UCMP_129470_skeletal.png",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/12/UCMP_129470_skeletal.png",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/1/12/UCMP_129470_skeletal.png"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Sphenosuchus_skull.png",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Sphenosuchus_skull.png"
+      }
+    ]
+  },
+  {
+    "id": 473,
+    "name": "Kosmoceratops",
+    "scientificName": "Kosmoceratops richardsoni",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/2/24/Skull_reconstruction_of_Kosmoceratops_richardsoni.jpg",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/24/Skull_reconstruction_of_Kosmoceratops_richardsoni.jpg",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/24/Skull_reconstruction_of_Kosmoceratops_richardsoni.jpg"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Kosmoceratops_richardsoni_skull_salt_lake_city.jpg",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Kosmoceratops_richardsoni_skull_salt_lake_city.jpg"
+      }
+    ]
+  },
+  {
+    "id": 120,
+    "name": "Arizonasaurus",
+    "scientificName": "Arizonasaurus spp.",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Arizonasaurus_skeletal.png",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Arizonasaurus_skeletal.png",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Arizonasaurus_skeletal.png"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Arizonasaurus_skeletal.png",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Arizonasaurus_skeletal.png"
+      }
+    ]
+  },
+  {
+    "id": 126,
+    "name": "Dinocephalosaurus",
+    "scientificName": "Dinocephalosaurus spp.",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Dinocephalosaurus_%28Skeletal_reconstruction%29.png",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Dinocephalosaurus_%28Skeletal_reconstruction%29.png",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Dinocephalosaurus_%28Skeletal_reconstruction%29.png"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Dinocephalosaurus-embryo-3.jpg",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Dinocephalosaurus-embryo-3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 535,
+    "name": "Platecarpus",
+    "scientificName": "Platecarpus tympaniticus",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/4/46/Skeletal_reconstruction_and_inferred_body_outline_of_Platecarpus.png",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/4/46/Skeletal_reconstruction_and_inferred_body_outline_of_Platecarpus.png",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/46/Skeletal_reconstruction_and_inferred_body_outline_of_Platecarpus.png"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/07/Platecarpus_fossil.jpg",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/07/Platecarpus_fossil.jpg"
+      }
+    ]
+  },
+  {
+    "id": 220,
+    "name": "Harpactognathus",
+    "scientificName": "Harpactognathus gentryii",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Harpactognathus_skull_reconstruction.png",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Harpactognathus_skull_reconstruction.png",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Harpactognathus_skull_reconstruction.png"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Harpactognathus_gentryii.png",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Harpactognathus_gentryii.png"
+      }
+    ]
+  },
+  {
+    "id": 1754,
+    "name": "Hypselospinus fittoni",
+    "scientificName": "Hypselospinus fittoni",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/1754-perfect-art.jpg",
+    "credit": "Nobu Tamura http://paleoexhibit.blogspot.com/ http://spinops.blogspot.com/ (CC BY-SA 3.0)",
+    "type": "art",
+    "isSelfHosted": true,
+    "media": [
+      {
+        "url": "https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/1754-perfect-art.jpg",
+        "type": "art",
+        "credit": "Nobu Tamura http://paleoexhibit.blogspot.com/ http://spinops.blogspot.com/ (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hypselospinus_NT_flipped.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1624,
+    "name": "Jaklapallisaurus asymmetrica",
+    "scientificName": "Jaklapallisaurus asymmetrica",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/1624-perfect-art.jpg",
+    "credit": "Márcio L. Castro (CC BY 4.0)",
+    "type": "art",
+    "isSelfHosted": true,
+    "media": [
+      {
+        "url": "https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/1624-perfect-art.jpg",
+        "type": "art",
+        "credit": "Márcio L. Castro (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Upper_Maleri_Formation_dinosaurs_(Maleriraptor_and_Jaklapallisaurus).jpg"
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "name": "Machaeroprosopus",
+    "scientificName": "Machaeroprosopus spp.",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/7/72/Machaeroprosopus_%28Redondasaurus%29_gregorii_skeletal.png",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/72/Machaeroprosopus_%28Redondasaurus%29_gregorii_skeletal.png",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/72/Machaeroprosopus_%28Redondasaurus%29_gregorii_skeletal.png"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/72/Machaeroprosopus_%28Redondasaurus%29_gregorii_skeletal.png",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/72/Machaeroprosopus_%28Redondasaurus%29_gregorii_skeletal.png"
+      }
+    ]
+  },
+  {
+    "id": 109,
+    "name": "Gracilisuchus",
+    "scientificName": "Gracilisuchus spp.",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/d/de/Gracilisuchus_Composite_Skeletal.png",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/de/Gracilisuchus_Composite_Skeletal.png",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/d/de/Gracilisuchus_Composite_Skeletal.png"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/19/Breviora_%281971-1973%29_%2820406119102%29.jpg",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/1/19/Breviora_%281971-1973%29_%2820406119102%29.jpg"
+      }
+    ]
+  },
+  {
+    "id": 571,
+    "name": "Hylonomus lyelli",
+    "scientificName": "Hylonomus lyelli",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Hylonomus_skull.svg",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Hylonomus_skull.svg",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Hylonomus_skull.svg"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Geological_magazine_%281891%29_%2814798072883%29.jpg",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Geological_magazine_%281891%29_%2814798072883%29.jpg"
+      }
+    ]
+  },
+  {
+    "id": 192,
+    "name": "Gargoyleosaurus",
+    "scientificName": "Gargoyleosaurus parkpinorum",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Ankylosauria_Scale.svg",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Ankylosauria_Scale.svg",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Ankylosauria_Scale.svg"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/30/Gargoyleosaurus_parkpinorum_skeleton.JPG",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/30/Gargoyleosaurus_parkpinorum_skeleton.JPG"
+      }
+    ]
+  },
+  {
+    "id": 222,
+    "name": "Jianchangnathus",
+    "scientificName": "Jianchangnathus robustus",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Jianchangnathus-Paleozoological_Museum_of_China.jpg",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Jianchangnathus-Paleozoological_Museum_of_China.jpg",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Jianchangnathus-Paleozoological_Museum_of_China.jpg"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Jianchangnathus-Paleozoological_Museum_of_China.jpg",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Jianchangnathus-Paleozoological_Museum_of_China.jpg"
+      }
+    ]
+  },
+  {
+    "id": 223,
+    "name": "Fenghuangopterus",
+    "scientificName": "Fenghuangopterus lii",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Fenghuangopterus_-_early_cretaceous_Liaoning_IMG_5184_Beijing_Museum_of_Natural_History.jpg",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Fenghuangopterus_-_early_cretaceous_Liaoning_IMG_5184_Beijing_Museum_of_Natural_History.jpg",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Fenghuangopterus_-_early_cretaceous_Liaoning_IMG_5184_Beijing_Museum_of_Natural_History.jpg"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Fenghuangopterus_-_early_cretaceous_Liaoning_IMG_5184_Beijing_Museum_of_Natural_History.jpg",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9b/Fenghuangopterus_-_early_cretaceous_Liaoning_IMG_5184_Beijing_Museum_of_Natural_History.jpg"
+      }
+    ]
+  },
+  {
+    "id": 229,
+    "name": "Rhomaleosaurus",
+    "scientificName": "Rhomaleosaurus cramptoni",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Meyerasaurus_victor_skull.jpg",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Meyerasaurus_victor_skull.jpg",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Meyerasaurus_victor_skull.jpg"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/52/Displayed_Rhomaleosaurus_skeleton_YORYM_G503.JPG",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/52/Displayed_Rhomaleosaurus_skeleton_YORYM_G503.JPG"
+      }
+    ]
+  },
+  {
+    "id": 231,
+    "name": "Peloneustes",
+    "scientificName": "Peloneustes philarchus",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/0/04/Peloneustes_Skeletal_1913.png",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Peloneustes_Skeletal_1913.png",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/04/Peloneustes_Skeletal_1913.png"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Peloneustes_Skeletal_1913.png",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/04/Peloneustes_Skeletal_1913.png"
+      }
+    ]
+  },
+  {
+    "id": 3008,
+    "name": "Kotasaurus",
+    "scientificName": "Kotasaurus yamanpalliensis",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/3/30/Triassic_fossils.png",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/30/Triassic_fossils.png",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/30/Triassic_fossils.png"
+      },
+      {
+        "url": "/images/placeholders/sauropod.svg",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "/images/placeholders/sauropod.svg"
+      }
+    ]
+  },
+  {
+    "id": 3016,
+    "name": "Carcharodontosaurus",
+    "scientificName": "Carcharodontosaurus saharicus",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/2/25/Carcharodontosaurus_saharicus_skull_reconstruction.png",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/25/Carcharodontosaurus_saharicus_skull_reconstruction.png",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/2/25/Carcharodontosaurus_saharicus_skull_reconstruction.png"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Carcharodontosaurus_saharicus_DentIII.jpg",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Carcharodontosaurus_saharicus_DentIII.jpg"
+      }
+    ]
+  },
+  {
+    "id": 453,
+    "name": "Utahraptor",
+    "scientificName": "Utahraptor ostrommaysi",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/6/61/Utahraptor_size.png",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Utahraptor_size.png",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/6/61/Utahraptor_size.png"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Utahraptor_skeleton_NAMAL_white_background.jpg",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Utahraptor_skeleton_NAMAL_white_background.jpg"
+      }
+    ]
+  },
+  {
+    "id": 459,
+    "name": "Acrocanthosaurus",
+    "scientificName": "Acrocanthosaurus atokensis",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Acrocanthosaurus_skull_reconstruction.png",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Acrocanthosaurus_skull_reconstruction.png",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Acrocanthosaurus_skull_reconstruction.png"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/91/Acrocanthosaurus_skeleton_%281%29.jpg",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/91/Acrocanthosaurus_skeleton_%281%29.jpg"
+      }
+    ]
+  },
+  {
+    "id": 466,
+    "name": "Styracosaurus",
+    "scientificName": "Styracosaurus albertensis",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Styracosaurus_albertensis_skull_02.jpg",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Styracosaurus_albertensis_skull_02.jpg",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Styracosaurus_albertensis_skull_02.jpg"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Styracosaurus_skeleton_AMNH5372.jpg",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Styracosaurus_skeleton_AMNH5372.jpg"
+      }
+    ]
+  },
+  {
+    "id": 3045,
+    "name": "Iguanodon",
+    "scientificName": "Iguanodon bernissartensis",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Iguanodon_Skeletal.svg",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Iguanodon_Skeletal.svg",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Iguanodon_Skeletal.svg"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/EB1911_Iguanodon_-_Skeleton_of_Iguanadon_bernissartensis.jpg",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f3/EB1911_Iguanodon_-_Skeleton_of_Iguanadon_bernissartensis.jpg"
+      }
+    ]
+  },
+  {
+    "id": 3080,
+    "name": "Paralititan",
+    "scientificName": "Paralititan stromeri",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Bahariya_Formation_McAfee.jpg",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Bahariya_Formation_McAfee.jpg",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Bahariya_Formation_McAfee.jpg"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/72/Paralititan_stromeri_by_Hatem_Moushir_9.JPG",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/7/72/Paralititan_stromeri_by_Hatem_Moushir_9.JPG"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Ichthyostega stensioei",
+    "scientificName": "Ichthyostega stensioei",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Ichthyostega_skeletal_reconstruction_2018.png",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Ichthyostega_skeletal_reconstruction_2018.png",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Ichthyostega_skeletal_reconstruction_2018.png"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f6/202003_Ichthyostega.png",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f6/202003_Ichthyostega.png"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Arthropleura armata",
+    "scientificName": "Arthropleura armata",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/20211224_Arthropleura_armata_diagrammatic_reconstruction.png",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/55/20211224_Arthropleura_armata_diagrammatic_reconstruction.png",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/5/55/20211224_Arthropleura_armata_diagrammatic_reconstruction.png"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/93/Arthropleura_armata_Palaeontographic57cass_0361.jpg",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/9/93/Arthropleura_armata_Palaeontographic57cass_0361.jpg"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Gastornis parisiensis",
+    "scientificName": "Gastornis parisiensis",
+    "reason": "art_but_fossil_or_diagram_keywords",
+    "primaryUrl": "https://upload.wikimedia.org/wikipedia/commons/3/39/PSM_V21_D483_Skeleton_of_a_gastornis_eduardsii.jpg",
+    "credit": "Life reconstruction illustration",
+    "type": "art",
+    "isSelfHosted": false,
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/39/PSM_V21_D483_Skeleton_of_a_gastornis_eduardsii.jpg",
+        "type": "art",
+        "credit": "Life reconstruction illustration",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/39/PSM_V21_D483_Skeleton_of_a_gastornis_eduardsii.jpg"
+      },
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/39/PSM_V21_D483_Skeleton_of_a_gastornis_eduardsii.jpg",
+        "type": "photo",
+        "credit": "Fossil skeletal specimen photo",
+        "sourceUrl": "https://upload.wikimedia.org/wikipedia/commons/3/39/PSM_V21_D483_Skeleton_of_a_gastornis_eduardsii.jpg"
+      }
+    ]
+  }
+]

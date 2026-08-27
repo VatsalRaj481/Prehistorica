@@ -1,0 +1,2259 @@
+const fs = require('fs');
+const path = require('path');
+
+const newSpeciesList = [
+  {
+    name: "Squalicorax falcatus",
+    scientificName: "Squalicorax falcatus",
+    nameMeaning: "Crow shark",
+    timePeriod: "Late Cretaceous",
+    myaStart: 100.0,
+    myaEnd: 66.0,
+    clade: "Other",
+    diet: "carnivore",
+    habitat: "marine",
+    dietDetails: "Opportunistic predator and scavenger feeding on fish, marine reptiles, and floating dinosaur carcasses.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "K-Pg Extinction Event",
+    closestLivingRelatives: ["Modern Lamniform Sharks (Tiger Shark, White Shark)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/4/41/Squalicorax_falcinus_1DB.jpg",
+        type: "art",
+        credit: "Life reconstruction of Squalicorax (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Squalicorax_falcinus_1DB.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Chondrichthyes",
+      order: "Lamniformes",
+      family: "Anacoracidae",
+      genus: "Squalicorax",
+      species: "Squalicorax falcatus"
+    },
+    geographicRange: {
+      continent: "North America, Europe, Africa",
+      region: "Western Interior Seaway",
+      country: "United States",
+      fossilFormation: "Niobrara Formation"
+    },
+    sizeEstimate: {
+      length: { value: 5.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 1.2, unit: "meters", confidence: "estimated" },
+      weight: { value: 500.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Average length between 2 to 5 meters, with serrated teeth specialized for cutting.",
+    discoveryHistory: "• First described by Louis Agassiz in 1843 from teeth found in Cretaceous marine strata.\n• Fossilized teeth are extremely common across North American and European Cretaceous marine deposits.\n• In 2010, a specimen was discovered with fossilized bones of a mosasaur inside its stomach region.",
+    interestingFacts: [
+      "Known as the 'Crow Shark' due to its ubiquitous presence as a scavenger in Cretaceous seas.",
+      "Fossilized Squalicorax teeth have been found embedded in the bones of terrestrial dinosaurs, proving it scavenged on carcasses washed out to sea.",
+      "Possessed distinctive serrated, crescent-shaped teeth perfect for slicing through tough flesh and bone."
+    ],
+    sources: [
+      { citation: "Shimada, K. (2008). Dentition of the Late Cretaceous lamniform shark, Squalicorax falcatus. Journal of Vertebrate Paleontology.", url: "https://doi.org/10.1671/0272-4634(2008)28[581:DOTLCS]2.0.CO;2" }
+    ]
+  },
+  {
+    name: "Zalmoxes robustus",
+    scientificName: "Zalmoxes robustus",
+    nameMeaning: "Named after Zalmoxis, a Dacian deity",
+    timePeriod: "Late Cretaceous",
+    myaStart: 70.0,
+    myaEnd: 66.0,
+    clade: "Ornithischian",
+    diet: "herbivore",
+    habitat: "terrestrial",
+    dietDetails: "Low-level browser feeding on ferns, horsetails, and flowering plants on Hațeg Island.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "K-Pg Extinction Event",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Zalmoxes_robustus.jpg",
+        type: "art",
+        credit: "Life reconstruction of Zalmoxes (Wikimedia Commons CC BY-SA 4.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Zalmoxes_robustus.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Ornithischia",
+      family: "Rhabdodontidae",
+      genus: "Zalmoxes",
+      species: "Zalmoxes robustus"
+    },
+    geographicRange: {
+      continent: "Europe",
+      region: "Hațeg Island",
+      country: "Romania",
+      fossilFormation: "Sânpetru Formation"
+    },
+    sizeEstimate: {
+      length: { value: 2.5, unit: "meters", confidence: "well-supported" },
+      height: { value: 1.1, unit: "meters", confidence: "well-supported" },
+      weight: { value: 250.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Classic example of insular dwarfism; significantly smaller than mainland iguanodontians.",
+    discoveryHistory: "• First described by Baron Franz Nopcsa in 1900 under the genus Mochlodon.\n• Reclassified as the distinct genus Zalmoxes by Weishampel et al. in 2003.\n• Nopcsa used Zalmoxes fossils to formulate his pioneering theory of insular dwarfism in dinosaurs.",
+    interestingFacts: [
+      "Lived on Hațeg Island, an isolated landmass in Late Cretaceous Europe, leading to insular dwarfism.",
+      "Possessed a surprisingly robust, heavy skull compared to its small overall body size.",
+      "Served as a primary herbivorous prey species for the giant azhdarchid pterosaur Hatzegopteryx."
+    ],
+    sources: [
+      { citation: "Weishampel, D. B. et al. (2003). Zalmoxes, a new iguanodontian from the Early Cretaceous of Romania. Journal of Vertebrate Paleontology.", url: "https://doi.org/10.1671/0272-4634(2003)023[0513:ZANIFT]2.0.CO;2" }
+    ]
+  },
+  {
+    name: "Geosaurus giganteus",
+    scientificName: "Geosaurus giganteus",
+    nameMeaning: "Earth lizard",
+    timePeriod: "Late Jurassic",
+    myaStart: 152.0,
+    myaEnd: 145.0,
+    clade: "Crocodylomorph",
+    diet: "carnivore",
+    habitat: "marine",
+    dietDetails: "Fast-swimming marine predator preying upon fish, squid, and smaller marine reptiles.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Jurassic-Cretaceous Transition",
+    closestLivingRelatives: ["Modern Crocodilians (Crocodylia)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/9/90/Geosaurus_giganteus.jpg",
+        type: "art",
+        credit: "Life reconstruction of Geosaurus (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Geosaurus_giganteus.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Pseudosuchia",
+      order: "Crocodylomorpha",
+      family: "Metriorhynchidae",
+      genus: "Geosaurus",
+      species: "Geosaurus giganteus"
+    },
+    geographicRange: {
+      continent: "Europe",
+      region: "Solnhofen Archipelago",
+      country: "Germany",
+      fossilFormation: "Solnhofen Limestone"
+    },
+    sizeEstimate: {
+      length: { value: 3.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 0.5, unit: "meters", confidence: "estimated" },
+      weight: { value: 150.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Streamlined marine crocodilian with paddle-like limbs and a hypocercal tail fluke.",
+    discoveryHistory: "• Formally named by Georges Cuvier in 1824 from fossils discovered in Bavaria, Germany.\n• Exceptionally preserved Solnhofen limestone fossils revealed soft-tissue impressions of tail flukes.\n• Redescribed extensively in 2009 by Young & Andrade, clarifying its hyper-carnivorous adaptations.",
+    interestingFacts: [
+      "Completely lost heavy osteoderm armor to maximize aquatic agility and swimming speed.",
+      "Transformed its legs into hydrofoil paddles and developed a fish-like hypocercal tail fin.",
+      "Equipped with serrated, ziphodont teeth optimized for tearing prey rather than crushing shells."
+    ],
+    sources: [
+      { citation: "Young, M. T., & Andrade, M. B. (2009). What is Geosaurus? Redescription of Geosaurus giganteus. Zoological Journal of the Linnean Society.", url: "https://doi.org/10.1111/j.1096-3642.2009.00536.x" }
+    ]
+  },
+  {
+    name: "Metriorhynchus geoffroyii",
+    scientificName: "Metriorhynchus geoffroyii",
+    nameMeaning: "Moderate snout",
+    timePeriod: "Middle to Late Jurassic",
+    myaStart: 165.0,
+    myaEnd: 150.0,
+    clade: "Crocodylomorph",
+    diet: "carnivore",
+    habitat: "marine",
+    dietDetails: "Aquatic carnivore preying on belemnites, ammonites, and fast-swimming teleost fish.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Late Jurassic Extinction",
+    closestLivingRelatives: ["Modern Crocodilians (Crocodylia)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Metriorhynchus_superciliosus.jpg",
+        type: "art",
+        credit: "Life reconstruction of Metriorhynchus (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Metriorhynchus_superciliosus.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Pseudosuchia",
+      order: "Crocodylomorpha",
+      family: "Metriorhynchidae",
+      genus: "Metriorhynchus",
+      species: "Metriorhynchus geoffroyii"
+    },
+    geographicRange: {
+      continent: "Europe",
+      region: "English Channel Basin",
+      country: "United Kingdom, France",
+      fossilFormation: "Oxford Clay Formation"
+    },
+    sizeEstimate: {
+      length: { value: 3.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 0.5, unit: "meters", confidence: "estimated" },
+      weight: { value: 160.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Fully aquatic thalattosuchian crocodilian measuring approximately 3 meters.",
+    discoveryHistory: "• Named by Christian Erich Hermann von Meyer in 1830.\n• Abundant specimens recovered from the Jurassic Oxford Clay of Peterborough, England.\n• Histological studies confirm it spent its entire life in open marine environments.",
+    interestingFacts: [
+      "Possessed large salt glands positioned above its eyes to excrete excess ocean salt.",
+      "Gave live birth at sea (viviparity) as its limbs could no longer support walking on land.",
+      "Had smooth skin without armor scales, reducing drag in the water."
+    ],
+    sources: [
+      { citation: "Young, M. T. et al. (2010). The pelvic girdle and hind limb of Metriorhynchus. Geological Magazine.", url: "https://doi.org/10.1017/S001675681000007X" }
+    ]
+  },
+  {
+    name: "Megaraptor namunhuaiquii",
+    scientificName: "Megaraptor namunhuaiquii",
+    nameMeaning: "Giant thief with foot claw",
+    timePeriod: "Late Cretaceous",
+    myaStart: 91.0,
+    myaEnd: 88.0,
+    clade: "Theropod",
+    diet: "carnivore",
+    habitat: "terrestrial",
+    dietDetails: "Apex predator using giant hand claws to capture and disembowel ornithopod and sauropod prey.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "K-Pg Extinction Event",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Megaraptor_namunhuaiquii.jpg",
+        type: "art",
+        credit: "Life reconstruction of Megaraptor (Wikimedia Commons CC BY-SA 4.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Megaraptor_namunhuaiquii.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Saurischia",
+      suborder: "Theropoda",
+      family: "Megaraptoridae",
+      genus: "Megaraptor",
+      species: "Megaraptor namunhuaiquii"
+    },
+    geographicRange: {
+      continent: "South America",
+      region: "Patagonia",
+      country: "Argentina",
+      fossilFormation: "Portezuelo Formation"
+    },
+    sizeEstimate: {
+      length: { value: 8.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 2.5, unit: "meters", confidence: "well-supported" },
+      weight: { value: 1000.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Large megaraptoran theropod characterized by immense 35-centimeter hand claws.",
+    discoveryHistory: "• Discovered in 1998 by Fernando Novas in Neuquén Province, Argentina.\n• Initially mistaken for a giant dromaeosaurid due to an enormous claw assumed to belong to the foot.\n• 2004 discovery of complete forelimbs revealed the massive sickle claw actually belonged to the hand (Digit I).",
+    interestingFacts: [
+      "Its famous 35 cm sickle claw was originally misidentified as a giant foot claw like Velociraptor's.",
+      "Head of the enigmatic Megaraptora clade, which dominated South American ecosystems after carcharodontosaurids declined.",
+      "Possessed highly pneumatic (air-filled) bones, making it agile for an 8-meter long predator."
+    ],
+    sources: [
+      { citation: "Novas, F. E. (1998). Megaraptor namunhuaiquii, gen. et sp. nov., a large clawed theropod from Argentina. Journal of Vertebrate Paleontology.", url: "https://doi.org/10.1080/02724634.1998.10011070" }
+    ]
+  },
+  {
+    name: "Maip macrothorax",
+    scientificName: "Maip macrothorax",
+    nameMeaning: "Shadow of death with large thorax",
+    timePeriod: "Late Cretaceous",
+    myaStart: 70.0,
+    myaEnd: 66.0,
+    clade: "Theropod",
+    diet: "carnivore",
+    habitat: "terrestrial",
+    dietDetails: "Apex superpredator preying upon titanosaurs and ornithopods in latest Cretaceous Patagonia.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "K-Pg Extinction Event (66 MYA)",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/1/15/Maip_macrothorax.jpg",
+        type: "art",
+        credit: "Life reconstruction of Maip macrothorax (Wikimedia Commons CC BY-SA 4.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Maip_macrothorax.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Saurischia",
+      suborder: "Theropoda",
+      family: "Megaraptoridae",
+      genus: "Maip",
+      species: "Maip macrothorax"
+    },
+    geographicRange: {
+      continent: "South America",
+      region: "Southern Patagonia",
+      country: "Argentina",
+      fossilFormation: "Chorrillo Formation"
+    },
+    sizeEstimate: {
+      length: { value: 10.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 3.0, unit: "meters", confidence: "estimated" },
+      weight: { value: 5000.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Largest known megaraptoran theropod, reaching up to 10 meters long and 5 tonnes.",
+    discoveryHistory: "• Discovered in 2019 by Alexis Aranciaga Rolando and team in Santa Cruz Province, Argentina.\n• Formally described in Scientific Reports in April 2022.\n• Preserved vertebrae, ribs, coracoid, gastralia, and partial pelvis.",
+    interestingFacts: [
+      "Named 'Maip' after an evil mythological spirit of the Aonikenk (Tehuelche) people representing cold death.",
+      "The largest megaraptoran ever discovered, outsizing Megaraptor and Australovenator.",
+      "Had an unusually wide, heavy thoracic cavity ('macrothorax') housing large lung systems for high metabolism."
+    ],
+    sources: [
+      { citation: "Rolando, A. M. A. et al. (2022). A large megaraptorid theropod from the Upper Cretaceous (Maastrichtian) of Patagonia. Scientific Reports.", url: "https://doi.org/10.1038/s41598-022-09272-z" }
+    ]
+  },
+  {
+    name: "Lythronax argestes",
+    scientificName: "Lythronax argestes",
+    nameMeaning: "Gore king from the southwest",
+    timePeriod: "Late Cretaceous",
+    myaStart: 80.6,
+    myaEnd: 79.9,
+    clade: "Theropod",
+    diet: "carnivore",
+    habitat: "terrestrial",
+    dietDetails: "Apex predator utilizing wide binocular vision and crushing bite force to hunt ceratopsids and hadrosaurs.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "K-Pg Extinction Event",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Lythronax_argestes.jpg",
+        type: "art",
+        credit: "Life reconstruction of Lythronax (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Lythronax_argestes.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Saurischia",
+      suborder: "Theropoda",
+      family: "Tyrannosauridae",
+      genus: "Lythronax",
+      species: "Lythronax argestes"
+    },
+    geographicRange: {
+      continent: "North America",
+      region: "Laramidia",
+      country: "United States",
+      fossilFormation: "Wahweap Formation"
+    },
+    sizeEstimate: {
+      length: { value: 8.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 2.4, unit: "meters", confidence: "well-supported" },
+      weight: { value: 2500.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Estimated at 8 meters in length and 2.5 tonnes; earliest true tyrannosaurid known.",
+    discoveryHistory: "• Discovered in 2009 in Grand Staircase-Escalante National Monument, Utah.\n• Formally described in 2013 by Mark Loewen and colleagues.\n• Holotype specimen UMNH VP 20200 includes skull, postcranial elements, and gastralia.",
+    interestingFacts: [
+      "Nickname 'Gore King' comes from its scientific name translating directly to 'King of Gore'.",
+      "Possessed broad skull rear and narrow snout, giving it overlapping 3D binocular vision like T. rex 13 million years earlier.",
+      "Proved that tyrannosaurid radiation occurred much earlier than previously assumed."
+    ],
+    sources: [
+      { citation: "Loewen, M. A. et al. (2013). Tyrant Dinosaur Evolution Tracks the Rise and Fall of Late Cretaceous Oceans. PLoS ONE.", url: "https://doi.org/10.1371/journal.pone.0079420" }
+    ]
+  },
+  {
+    name: "Moros intrepidus",
+    scientificName: "Moros intrepidus",
+    nameMeaning: "Intrepid harbinger of doom",
+    timePeriod: "Late Cretaceous",
+    myaStart: 96.0,
+    myaEnd: 95.0,
+    clade: "Theropod",
+    diet: "carnivore",
+    habitat: "terrestrial",
+    dietDetails: "Fast-running cursorial carnivore hunting small vertebrates, mammals, and juvenile dinosaurs.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "K-Pg Extinction Event",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/4/4d/Moros_intrepidus.jpg",
+        type: "art",
+        credit: "Life reconstruction of Moros intrepidus (Wikimedia Commons CC BY-SA 4.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Moros_intrepidus.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Saurischia",
+      suborder: "Theropoda",
+      family: "Tyrannosauroidea",
+      genus: "Moros",
+      species: "Moros intrepidus"
+    },
+    geographicRange: {
+      continent: "North America",
+      region: "Laramidia",
+      country: "United States",
+      fossilFormation: "Cedar Mountain Formation"
+    },
+    sizeEstimate: {
+      length: { value: 1.2, unit: "meters", confidence: "well-supported" },
+      height: { value: 0.8, unit: "meters", confidence: "well-supported" },
+      weight: { value: 78.0, unit: "kg", confidence: "well-supported" }
+    },
+    sizeNotes: "Small, lightweight cursorial tyrannosauroid standing less than a meter high at the hip.",
+    discoveryHistory: "• Discovered in Emery County, Utah, after a decade-long search led by Lindsay Zanno.\n• Formally described in Communications Biology in February 2019.\n• Represents the earliest diagnostic Cretaceous tyrannosauroid in North America.",
+    interestingFacts: [
+      "Filled the 70-million-year gap in North American tyrannosaur evolution.",
+      "Existed as a small, nimble predator when giant allosauroids (like Siats) were apex predators.",
+      "Extremely long leg bones indicate superior running speed and cursorial agility."
+    ],
+    sources: [
+      { citation: "Zanno, L. E. et al. (2019). Diminutive fleet-footed tyrannosauroid narrows the 70-million-year gap in the North American fossil record. Communications Biology.", url: "https://doi.org/10.1038/s42003-019-0308-7" }
+    ]
+  },
+  {
+    name: "Sauroposeidon proteles",
+    scientificName: "Sauroposeidon proteles",
+    nameMeaning: "Lizard god of earthquakes, perfected before the end",
+    timePeriod: "Early Cretaceous",
+    myaStart: 118.0,
+    myaEnd: 110.0,
+    clade: "Sauropod",
+    diet: "herbivore",
+    habitat: "terrestrial",
+    dietDetails: "High-canopy browser feeding on tall conifers, cycads, and ginkgos up to 18 meters above ground.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Mid-Cretaceous Faunal Turnover",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/e/e6/Sauroposeidon_DB.jpg",
+        type: "art",
+        credit: "Life reconstruction of Sauroposeidon (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Sauroposeidon_DB.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Saurischia",
+      suborder: "Sauropodomorpha",
+      family: "Somphospondyli",
+      genus: "Sauroposeidon",
+      species: "Sauroposeidon proteles"
+    },
+    geographicRange: {
+      continent: "North America",
+      region: "Gulf Coast / Interior Plains",
+      country: "United States",
+      fossilFormation: "Antlers Formation, Cloverly Formation"
+    },
+    sizeEstimate: {
+      length: { value: 34.0, unit: "meters", confidence: "estimated" },
+      height: { value: 18.0, unit: "meters", confidence: "estimated" },
+      weight: { value: 50000.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Stood up to 18 meters (60 feet) high, making it one of the tallest land animals to ever live.",
+    discoveryHistory: "• Four massive neck vertebrae discovered in Oklahoma in 1994 by prison trainer Bobby Cross.\n• Initially stored as petrified wood for five years before paleontologists recognized their true nature.\n• Formally described in 2000 by Mathew Wedel, Richard Cifelli, and Kent Sanders.",
+    interestingFacts: [
+      "Its neck reached up to 12 meters (39 feet) in length, accounting for over one-third of its total body length.",
+      "Cervical vertebrae were up to 1.4 meters long and filled with honeycombed internal air cells (trabecular bone).",
+      "Stood as tall as a 6-story building, allowing it to browse vegetation inaccessible to any other creature."
+    ],
+    sources: [
+      { citation: "Wedel, M. J. et al. (2000). Sauroposeidon proteles, a new sauropod from the Early Cretaceous of Oklahoma. Journal of Vertebrate Paleontology.", url: "https://doi.org/10.1671/0272-4634(2000)020[0109:SPANSS]2.0.CO;2" }
+    ]
+  },
+  {
+    name: "Psephoderma alpinum",
+    scientificName: "Psephoderma alpinum",
+    nameMeaning: "Pebbly skin of the Alps",
+    timePeriod: "Late Triassic",
+    myaStart: 210.0,
+    myaEnd: 201.3,
+    clade: "Marine Reptile",
+    diet: "carnivore",
+    habitat: "marine",
+    dietDetails: "Durophagous feeder using specialized crushing jaw plates to crush thick-shelled bivalves and crustaceans.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Triassic-Jurassic Extinction Event",
+    closestLivingRelatives: ["Modern Squamates & Archosaurs"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Psephoderma_alpinum.jpg",
+        type: "art",
+        credit: "Life reconstruction of Psephoderma (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Psephoderma_alpinum.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Sauropterygia",
+      order: "Placodontia",
+      family: "Cyamodontidae",
+      genus: "Psephoderma",
+      species: "Psephoderma alpinum"
+    },
+    geographicRange: {
+      continent: "Europe",
+      region: "Tethys Ocean Coastline",
+      country: "Italy, United Kingdom",
+      fossilFormation: "Zorzino Limestone"
+    },
+    sizeEstimate: {
+      length: { value: 1.8, unit: "meters", confidence: "well-supported" },
+      height: { value: 0.3, unit: "meters", confidence: "well-supported" },
+      weight: { value: 50.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Turtle-like marine placodont with a flattened, armored body split into two shields.",
+    discoveryHistory: "• First described by Christian Erich Hermann von Meyer in 1858.\n• Complete articulated specimens recovered from the Italian Alps (Zorzino Limestone).\n• Represents one of the last surviving placodonts before the end-Triassic extinction.",
+    interestingFacts: [
+      "Superficially resembled a marine turtle but belonged to the extinct placodont order of sauropterygians.",
+      "Had two distinct protective carapace shields: one covering the shoulders/chest and a smaller one over the pelvis.",
+      "Possessed toothless, narrow beaked jaws lined internally with flat, pavement-like crushing plates."
+    ],
+    sources: [
+      { citation: "Rieppel, O. (2002). The skull of Psephoderma alpinum Meyer, 1858 (Reptilia: Placodontia). Fieldiana Geology.", url: "https://doi.org/10.5962/bhl.title.5369" }
+    ]
+  },
+  {
+    name: "Vayuraptor agriculturalis",
+    scientificName: "Vayuraptor agriculturalis",
+    nameMeaning: "Raptor of Vayu (Hindu god of wind)",
+    timePeriod: "Early Cretaceous",
+    myaStart: 130.0,
+    myaEnd: 125.0,
+    clade: "Theropod",
+    diet: "carnivore",
+    habitat: "terrestrial",
+    dietDetails: "Agile, swift carnivore preying on small ornithopods and lizard-like reptiles.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Mid-Cretaceous Extinction",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/2/23/Vayuraptor_agriculturalis.jpg",
+        type: "art",
+        credit: "Life reconstruction of Vayuraptor (Wikimedia Commons CC BY-SA 4.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Vayuraptor_agriculturalis.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Saurischia",
+      suborder: "Theropoda",
+      family: "Coelurosauria",
+      genus: "Vayuraptor",
+      species: "Vayuraptor agriculturalis"
+    },
+    geographicRange: {
+      continent: "Asia",
+      region: "Khorat Plateau",
+      country: "Thailand",
+      fossilFormation: "Sao Khua Formation"
+    },
+    sizeEstimate: {
+      length: { value: 4.5, unit: "meters", confidence: "estimated" },
+      height: { value: 1.5, unit: "meters", confidence: "estimated" },
+      weight: { value: 200.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Medium-sized basal coelurosaurian theropod estimated at 4.5 meters in length.",
+    discoveryHistory: "• Discovered in 2008 during agricultural field excavations in Chaiyaphum Province, Thailand.\n• Formally described in 2019 by Adun Samathi and colleagues.\n• Named in honor of the Sanskrit wind god Vayu due to its lightweight, fast-running skeletal adaptations.",
+    interestingFacts: [
+      "Coexisted with another medium-sized theropod, Siamraptor, in Early Cretaceous Thailand.",
+      "Ankle bones (astragalus and calcaneum) were fused together, enhancing biomechanical sprinting stability.",
+      "Species name 'agriculturalis' honors local farmers who assisted in uncovering the fossil site."
+    ],
+    sources: [
+      { citation: "Samathi, A. et al. (2019). Two new basal coelurosaurian theropods from the Early Cretaceous Sao Khua Formation of Thailand. Acta Palaeontologica Polonica.", url: "https://doi.org/10.4202/app.00624.2019" }
+    ]
+  },
+  {
+    name: "Rhizodus hibberti",
+    scientificName: "Rhizodus hibberti",
+    nameMeaning: "Root tooth",
+    timePeriod: "Carboniferous",
+    myaStart: 330.0,
+    myaEnd: 300.0,
+    clade: "Other",
+    diet: "carnivore",
+    habitat: "freshwater",
+    dietDetails: "Apex predator of Carboniferous swamps, ambush hunting giant amphibians and early tetrapods.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Carboniferous Rainforest Collapse",
+    closestLivingRelatives: ["Modern Tetrapods (Land Vertebrates)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Rhizodus_hibberti.jpg",
+        type: "art",
+        credit: "Life reconstruction of Rhizodus (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Rhizodus_hibberti.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Sarcopterygii",
+      order: "Rhizodontida",
+      family: "Rhizodontidae",
+      genus: "Rhizodus",
+      species: "Rhizodus hibberti"
+    },
+    geographicRange: {
+      continent: "Europe, North America",
+      region: "Midland Valley",
+      country: "United Kingdom (Scotland)",
+      fossilFormation: "Oil-Shale Group"
+    },
+    sizeEstimate: {
+      length: { value: 7.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 1.2, unit: "meters", confidence: "estimated" },
+      weight: { value: 2000.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "The largest known freshwater lobe-finned fish, reaching up to 7 meters in length.",
+    discoveryHistory: "• First described by Richard Owen in 1840 from massive tooth specimens found near Edinburgh.\n• Fossilized scales up to 30 cm across and 22 cm long tusk-teeth were recovered in Scottish coal fields.\n• Biomechanical studies confirm massive pectoral fin musculature for rapid burst acceleration.",
+    interestingFacts: [
+      "Possessed enormous 22 cm (9 inch) tusk-like teeth anchored deeply into massive jaws.",
+      "Could likely lung onto land or shallow swamp margins to snatch terrestrial amphibians, similar to modern crocodiles.",
+      "Its skin was covered in heavy, overlapping cosmoid scales providing armor against rival aquatic predators."
+    ],
+    sources: [
+      { citation: "Jeffery, J. E. (2001). Pectoral fin anatomy of Rhizodus hibberti (Rhizodontida, Sarcopterygii). Journal of Vertebrate Paleontology.", url: "https://doi.org/10.1671/0272-4634(2001)021[0495:PFAORH]2.0.CO;2" }
+    ]
+  },
+  {
+    name: "Gillicus arcuatus",
+    scientificName: "Gillicus arcuatus",
+    nameMeaning: "Arched Gill fish",
+    timePeriod: "Late Cretaceous",
+    myaStart: 100.0,
+    myaEnd: 66.0,
+    clade: "Other",
+    diet: "filter_feeder",
+    habitat: "marine",
+    dietDetails: "Filter-feeding teleost fish scooping up small fish and zooplankton in open sea waters.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "K-Pg Extinction Event",
+    closestLivingRelatives: ["Modern Teleost Fishes (Arowana, Arapaima)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Gillicus_arcuatus.jpg",
+        type: "art",
+        credit: "Life reconstruction of Gillicus (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Gillicus_arcuatus.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Actinopterygii",
+      order: "Ichthyodectiformes",
+      family: "Ichthyodectidae",
+      genus: "Gillicus",
+      species: "Gillicus arcuatus"
+    },
+    geographicRange: {
+      continent: "North America",
+      region: "Western Interior Seaway",
+      country: "United States",
+      fossilFormation: "Smoky Hill Chalk"
+    },
+    sizeEstimate: {
+      length: { value: 2.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 0.5, unit: "meters", confidence: "well-supported" },
+      weight: { value: 40.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Slender, 2-meter long ichthyodectid fish with fine, toothless or tiny-toothed jaws.",
+    discoveryHistory: "• First named by Edward Drinker Cope in 1872.\n• Famous for the 'Fish-Within-A-Fish' fossil at the Sternberg Museum where a 4.3m Xiphactinus contains an intact 2m Gillicus in its ribcage.\n• Abundant in Kansas chalk deposits.",
+    interestingFacts: [
+      "Best known as the swallowed prey in the famous 14-foot Xiphactinus specimen at Hays, Kansas.",
+      "Possessed numerous fine, needle-like gill rakers used to strain small marine organisms from sea water.",
+      "Had deeply embedded, thin circular scales that reduced turbulence during swift schooling swims."
+    ],
+    sources: [
+      { citation: "Bardack, D. (1965). Anatomy and evolution of chirocentrid fishes. University of Kansas Paleontological Contributions.", url: "https://hdl.handle.net/1808/3814" }
+    ]
+  },
+  {
+    name: "Yutyrannus huali",
+    scientificName: "Yutyrannus huali",
+    nameMeaning: "Beautiful feathered tyrant",
+    timePeriod: "Early Cretaceous",
+    myaStart: 125.0,
+    myaEnd: 124.0,
+    clade: "Theropod",
+    diet: "carnivore",
+    habitat: "terrestrial",
+    dietDetails: "Apex predator of cool, temperate Early Cretaceous forests, hunting sauropods and iguanodontians.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Mid-Cretaceous Turnover",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Yutyrannus_huali.jpg",
+        type: "art",
+        credit: "Life reconstruction of Yutyrannus (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Yutyrannus_huali.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Saurischia",
+      suborder: "Theropoda",
+      family: "Proceratosauridae",
+      genus: "Yutyrannus",
+      species: "Yutyrannus huali"
+    },
+    geographicRange: {
+      continent: "Asia",
+      region: "Liaoning Province",
+      country: "China",
+      fossilFormation: "Yixian Formation"
+    },
+    sizeEstimate: {
+      length: { value: 9.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 2.7, unit: "meters", confidence: "well-supported" },
+      weight: { value: 1400.0, unit: "kg", confidence: "well-supported" }
+    },
+    sizeNotes: "Largest known dinosaur with direct, fossilized evidence of feathers.",
+    discoveryHistory: "• Discovered by local fossil collectors in Liaoning Province, China, and acquired by Xu Xing.\n• Formally described in Nature in April 2012 by Xu Xing and colleagues.\n• Three nearly complete skeletons of varying ages preserved extensive filamentous plumage.",
+    interestingFacts: [
+      "Holds the record as the largest direct feather-bearing animal in Earth's history (9 meters long, 1.4 tonnes).",
+      "Feathers were 20 cm long filamentous proto-feathers providing insulation in Liaoning's chilly 10°C climate.",
+      "Possessed a high median crest along its snout used for species display and intra-species communication."
+    ],
+    sources: [
+      { citation: "Xu, X. et al. (2012). A gigantic feathered dinosaur from the Lower Cretaceous of China. Nature.", url: "https://doi.org/10.1038/nature10906" }
+    ]
+  },
+  {
+    name: "Nanotyrannus lancensis",
+    scientificName: "Nanotyrannus lancensis",
+    nameMeaning: "Dwarf tyrant from Hell Creek",
+    timePeriod: "Late Cretaceous",
+    myaStart: 68.0,
+    myaEnd: 66.0,
+    clade: "Theropod",
+    diet: "carnivore",
+    habitat: "terrestrial",
+    dietDetails: "Fast, highly active predator hunting agile prey such as ornithomimids, pachycephalosaurs, and young dinosaurs.",
+    taxonomicStatus: "disputed",
+    extinctionEvent: "K-Pg Extinction Event (66 MYA)",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/c/c5/Nanotyrannus_lancensis.jpg",
+        type: "art",
+        credit: "Life reconstruction of Nanotyrannus (Wikimedia Commons CC BY-SA 4.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Nanotyrannus_lancensis.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Saurischia",
+      suborder: "Theropoda",
+      family: "Tyrannosauridae",
+      genus: "Nanotyrannus",
+      species: "Nanotyrannus lancensis"
+    },
+    geographicRange: {
+      continent: "North America",
+      region: "Laramidia",
+      country: "United States",
+      fossilFormation: "Hell Creek Formation, Lance Formation"
+    },
+    sizeEstimate: {
+      length: { value: 5.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 2.0, unit: "meters", confidence: "well-supported" },
+      weight: { value: 900.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Slender, long-limbed theropod measuring roughly 5 meters in length and weighing ~900 kg.",
+    discoveryHistory: "• Skull discovered in 1942 by Charles W. Gilmore and initially named Gorgosaurus lancensis.\n• Renamed Nanotyrannus by Robert Bakker, Michael Williams, and Philip Currie in 1988.\n• Long debated whether it is a valid distinct genus or a juvenile Tyrannosaurus rex; 2024 studies by Longrich & Saitta reignited support for its validity.",
+    interestingFacts: [
+      "Subject of one of the longest and most fiercely contested debates in paleontology history.",
+      "Had significantly more teeth (up to 36 in upper jaw) and larger forelimbs than adult T. rex.",
+      "Possessed extremely long, slender leg bones adapted for high-speed pursuit running."
+    ],
+    sources: [
+      { citation: "Longrich, N. R., & Saitta, E. T. (2024). Taxonomic Status of Nanotyrannus lancensis: A Distinct Genus of Small Tyrannosaurid. Fossil Studies.", url: "https://doi.org/10.3390/fossils2010003" }
+    ]
+  },
+  {
+    name: "Irritator challengeri",
+    scientificName: "Irritator challengeri",
+    nameMeaning: "Irritating one, named after Professor Challenger",
+    timePeriod: "Early Cretaceous",
+    myaStart: 113.0,
+    myaEnd: 110.0,
+    clade: "Theropod",
+    diet: "piscivore",
+    habitat: "semi_aquatic",
+    dietDetails: "Piscivorous specialist snatching fish, pterosaurs, and small aquatic reptiles with snappy jaws.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Mid-Cretaceous Extinction",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Irritator_challengeri.jpg",
+        type: "art",
+        credit: "Life reconstruction of Irritator (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Irritator_challengeri.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Saurischia",
+      suborder: "Theropoda",
+      family: "Spinosauridae",
+      genus: "Irritator",
+      species: "Irritator challengeri"
+    },
+    geographicRange: {
+      continent: "South America",
+      region: "Araripe Basin",
+      country: "Brazil",
+      fossilFormation: "Romualdo Formation"
+    },
+    sizeEstimate: {
+      length: { value: 7.5, unit: "meters", confidence: "well-supported" },
+      height: { value: 2.2, unit: "meters", confidence: "well-supported" },
+      weight: { value: 1000.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Medium-sized spinosauridtheropod measuring approximately 7.5 meters long.",
+    discoveryHistory: "• Skull acquired from illegal fossil dealers who had artificial plaster added to make it look complete.\n• Described in 1996 by Martill, Cruickshank, Frey, Small, and Clarke; named 'Irritator' due to the frustration of removing fake plaster.\n• Species name honors Professor Challenger from Arthur Conan Doyle's 'The Lost World'.",
+    interestingFacts: [
+      "Received its name because paleontologists were immensely irritated by fossil poachers vandalizing the skull with plaster.",
+      "A tooth belonging to Irritator was found embedded inside a fossilized pterosaur spine, confirming pterosaur predation.",
+      "Possessed an exceptionally fast jaw closure mechanism, lowering its lower jaw sideways to swallow fish whole."
+    ],
+    sources: [
+      { citation: "Martill, D. M. et al. (1996). A new spinosaurid theropod from the Cretaceous of Brazil. Neues Jahrbuch für Geologie und Paläontologie.", url: "https://doi.org/10.1127/njgpm/1996/1996/1" }
+    ]
+  },
+  {
+    name: "Palaeoloxodon antiquus",
+    scientificName: "Palaeoloxodon antiquus",
+    nameMeaning: "Ancient straight-tusked elephant",
+    timePeriod: "Pleistocene",
+    myaStart: 0.8,
+    myaEnd: 0.03,
+    clade: "Early Mammal/Synapsid",
+    diet: "herbivore",
+    habitat: "terrestrial",
+    dietDetails: "Mixed feeder browsing on broadleaf foliage, shrubs, and grasses in temperate European forests.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Quaternary Extinction Event",
+    closestLivingRelatives: ["African Forest Elephant (Loxodonta cyclotis)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/a/ab/Palaeoloxodon_antiquus.jpg",
+        type: "art",
+        credit: "Life reconstruction of Palaeoloxodon antiquus (Wikimedia Commons CC BY-SA 4.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Palaeoloxodon_antiquus.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Mammalia",
+      order: "Proboscidea",
+      family: "Elephantidae",
+      genus: "Palaeoloxodon",
+      species: "Palaeoloxodon antiquus"
+    },
+    geographicRange: {
+      continent: "Europe, Asia",
+      region: "Mediterranean & Central Europe",
+      country: "Germany, United Kingdom, Italy, Greece",
+      fossilFormation: "Ebbsfleet Valley deposits"
+    },
+    sizeEstimate: {
+      length: { value: 7.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 4.2, unit: "meters", confidence: "well-supported" },
+      weight: { value: 13000.0, unit: "kg", confidence: "well-supported" }
+    },
+    sizeNotes: "Stood up to 4.2 meters tall at the shoulder and weighed up to 13-15 metric tonnes.",
+    discoveryHistory: "• Formally described in 1847 by Hugh Falconer and Proby Cautley.\n• Numerous butchered skeletons discovered across Europe alongside Neanderthal flint tools.\n• Genomic analysis in 2017 revealed Palaeoloxodon is closely related to modern African forest elephants.",
+    interestingFacts: [
+      "One of the largest terrestrial mammals to ever walk the Earth, outsizing the Woolly Mammoth.",
+      "Possessed long, nearly straight tusks reaching up to 3.8 meters in length.",
+      "Coexisted with Neanderthals and early Homo sapiens, who actively hunted these leviathans with wooden spears."
+    ],
+    sources: [
+      { citation: "Meyer, M. et al. (2017). Palaeogenomics of the straight-tusked elephant Palaeoloxodon antiquus. eLife.", url: "https://doi.org/10.7554/eLife.25413" }
+    ]
+  },
+  {
+    name: "Gryposuchus colombianus",
+    scientificName: "Gryposuchus colombianus",
+    nameMeaning: "Hook-nosed crocodile from Colombia",
+    timePeriod: "Middle to Late Miocene",
+    myaStart: 13.0,
+    myaEnd: 7.0,
+    clade: "Crocodylomorph",
+    diet: "piscivore",
+    habitat: "freshwater",
+    dietDetails: "Piscivorous specialist preying upon giant catfish, characins, and freshwater turtles in the Pebas Wetland.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Pebas Wetland Desiccation",
+    closestLivingRelatives: ["Gharial (Gavialis gangeticus)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/1/1c/Gryposuchus_colombianus.jpg",
+        type: "art",
+        credit: "Life reconstruction of Gryposuchus (Wikimedia Commons CC BY-SA 4.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Gryposuchus_colombianus.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Pseudosuchia",
+      order: "Crocodylomorpha",
+      family: "Gavialidae",
+      genus: "Gryposuchus",
+      species: "Gryposuchus colombianus"
+    },
+    geographicRange: {
+      continent: "South America",
+      region: "Amazon & Orinoco Basins",
+      country: "Colombia, Venezuela, Brazil",
+      fossilFormation: "La Venta Formation, Urumaco Formation"
+    },
+    sizeEstimate: {
+      length: { value: 10.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 1.3, unit: "meters", confidence: "estimated" },
+      weight: { value: 1750.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Giant gharial-like crocodilian reaching estimated lengths of 10 meters.",
+    discoveryHistory: "• First described by Langston in 1965 from fossils collected at La Venta, Colombia.\n• Exceptionally complete skulls recovered from Miocene deposits in Venezuela and Peru.\n• Represents one of the largest members of the gharial family Gavialidae.",
+    interestingFacts: [
+      "Possessed an extremely elongated, narrow snout packed with over 80 inter-locking needle teeth.",
+      "Inhabited the mega-wetlands of Miocene South America alongside giant caimans like Purussaurus.",
+      "The hook-like curvature at the tip of its snout helped hold onto slippery, armor-plated prehistoric catfish."
+    ],
+    sources: [
+      { citation: "Riff, D. et al. (2010). Neogene giant South American crocodilians. Amazonia: Landscape and Species Evolution.", url: "https://doi.org/10.1002/9781444326680.ch15" }
+    ]
+  },
+  {
+    name: "Plesiosuchus manselii",
+    scientificName: "Plesiosuchus manselii",
+    nameMeaning: "Near crocodile of Mansel",
+    timePeriod: "Late Jurassic",
+    myaStart: 153.0,
+    myaEnd: 147.0,
+    clade: "Crocodylomorph",
+    diet: "carnivore",
+    habitat: "marine",
+    dietDetails: "Apex marine predator hunting large prey including plesiosaurs, ichthyosaurs, and large fish.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Jurassic-Cretaceous Transition",
+    closestLivingRelatives: ["Modern Crocodilians (Crocodylia)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/0/07/Plesiosuchus_manselii.jpg",
+        type: "art",
+        credit: "Life reconstruction of Plesiosuchus (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Plesiosuchus_manselii.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Pseudosuchia",
+      order: "Crocodylomorpha",
+      family: "Metriorhynchidae",
+      genus: "Plesiosuchus",
+      species: "Plesiosuchus manselii"
+    },
+    geographicRange: {
+      continent: "Europe",
+      region: "Sub-Boreal Seaway",
+      country: "United Kingdom, Spain",
+      fossilFormation: "Kimmeridge Clay Formation"
+    },
+    sizeEstimate: {
+      length: { value: 6.8, unit: "meters", confidence: "well-supported" },
+      height: { value: 1.0, unit: "meters", confidence: "estimated" },
+      weight: { value: 1200.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "The largest known metriorhynchid marine crocodilian, reaching almost 7 meters.",
+    discoveryHistory: "• Named by Richard Owen in 1884 based on a skull found in Kimmeridge Bay, Dorset.\n• Re-analyzed in 2012 by Mark Young and colleagues, establishing Plesiosuchus as the apex predator of Kimmeridgian seas.",
+    interestingFacts: [
+      "The largest metriorhynchid crocodilian ever discovered, outgrowing Geosaurus and Metriorhynchus.",
+      "Had wide-opening jaws with coarse serrations adapted for severing flesh from large marine vertebrates.",
+      "Shared marine habitats with Dakosaurus, dividing ecological niches based on skull mechanics."
+    ],
+    sources: [
+      { citation: "Young, M. T. et al. (2012). The spatial and temporal range of Geosaurus and Plesiosuchus. PLoS ONE.", url: "https://doi.org/10.1371/journal.pone.0044985" }
+    ]
+  },
+  {
+    name: "Suchodus durobrivensis",
+    scientificName: "Suchodus durobrivensis",
+    nameMeaning: "Crocodile tooth from Durobrivae (Peterborough)",
+    timePeriod: "Middle Jurassic",
+    myaStart: 165.0,
+    myaEnd: 160.0,
+    clade: "Crocodylomorph",
+    diet: "carnivore",
+    habitat: "marine",
+    dietDetails: "Marine predator targeting hard-bodied marine prey and fast-swimming teleost fish.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Late Jurassic Extinction",
+    closestLivingRelatives: ["Modern Crocodilians (Crocodylia)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Suchodus_durobrivensis.jpg",
+        type: "art",
+        credit: "Life reconstruction of Suchodus (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Suchodus_durobrivensis.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Pseudosuchia",
+      order: "Crocodylomorpha",
+      family: "Metriorhynchidae",
+      genus: "Suchodus",
+      species: "Suchodus durobrivensis"
+    },
+    geographicRange: {
+      continent: "Europe",
+      region: "Oxford Clay Basin",
+      country: "United Kingdom, France",
+      fossilFormation: "Oxford Clay Formation"
+    },
+    sizeEstimate: {
+      length: { value: 4.5, unit: "meters", confidence: "well-supported" },
+      height: { value: 0.7, unit: "meters", confidence: "estimated" },
+      weight: { value: 380.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Robust metriorhynchid crocodilian measuring 4.5 meters in length.",
+    discoveryHistory: "• First described by Lydekker in 1890 from specimens collected near Peterborough, England.\n• Re-erected as a distinct genus separate from Metriorhynchus by Young et al. in 2010.",
+    interestingFacts: [
+      "Possessed significantly shorter, stronger jaws than Metriorhynchus for crushing armored prey.",
+      "Equipped with paddle-shaped limbs and a tail fin for pelagic sea life.",
+      "Fossilized eye rings (sclerotic rings) show adaptations for deep diving."
+    ],
+    sources: [
+      { citation: "Young, M. T. et al. (2010). Revision of the Metriorhynchinae (Crocodylomorpha: Thalattosuchia). Zoological Journal of the Linnean Society.", url: "https://doi.org/10.1111/j.1096-3642.2009.00600.x" }
+    ]
+  },
+  {
+    name: "Edestus heinrichi",
+    scientificName: "Edestus heinrichi",
+    nameMeaning: "Devourer",
+    timePeriod: "Late Carboniferous",
+    myaStart: 315.0,
+    myaEnd: 307.0,
+    clade: "Other",
+    diet: "carnivore",
+    habitat: "marine",
+    dietDetails: "Marine predator using vertical scissor-like jaw whorls to slash soft-bodied prey and fish.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Carboniferous-Permian Extinction",
+    closestLivingRelatives: ["Modern Chimaeras (Holocephali)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/7/7b/Edestus_giganteus.jpg",
+        type: "art",
+        credit: "Life reconstruction of Edestus (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Edestus_giganteus.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Chondrichthyes",
+      order: "Eugeneodontida",
+      family: "Edestidae",
+      genus: "Edestus",
+      species: "Edestus heinrichi"
+    },
+    geographicRange: {
+      continent: "North America, Europe",
+      region: "Illinois Basin",
+      country: "United States, Russia",
+      fossilFormation: "Carbondale Formation"
+    },
+    sizeEstimate: {
+      length: { value: 6.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 1.2, unit: "meters", confidence: "estimated" },
+      weight: { value: 800.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Nicknamed the 'Scissor-toothed Shark'; reached lengths of up to 6 meters.",
+    discoveryHistory: "• First described by Joseph Leidy in 1855 from bracketed tooth whorls found in coal mines.\n• 2019 jaw mechanics study confirmed vertical slashing jaw action.",
+    interestingFacts: [
+      "Did not shed worn teeth; new teeth grew in from the back, pushing old teeth forward into protruding curved brackets.",
+      "Jaws operated like a pair of hedge trimmers, thrashing up and down to slash prey.",
+      "Belonged to Eugeneodontida, closely related to modern chimaeras rather than true sharks."
+    ],
+    sources: [
+      { citation: "Itano, W. M. (2019). Edestus, the scissor-toothed shark: jaw mechanics and predation. Mineralico.", url: "https://doi.org/10.1007/s12542-019-00448-9" }
+    ]
+  },
+  {
+    name: "Pyroraptor olympius",
+    scientificName: "Pyroraptor olympius",
+    nameMeaning: "Fire thief of Mount Olympus",
+    timePeriod: "Late Cretaceous",
+    myaStart: 70.6,
+    myaEnd: 66.0,
+    clade: "Theropod",
+    diet: "carnivore",
+    habitat: "terrestrial",
+    dietDetails: "Agile, feathered pack hunter preying upon dwarf titanosaurs and iguanodontians on European islands.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "K-Pg Extinction Event (66 MYA)",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Pyroraptor_olympius.jpg",
+        type: "art",
+        credit: "Life reconstruction of Pyroraptor (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Pyroraptor_olympius.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Saurischia",
+      suborder: "Theropoda",
+      family: "Dromaeosauridae",
+      genus: "Pyroraptor",
+      species: "Pyroraptor olympius"
+    },
+    geographicRange: {
+      continent: "Europe",
+      region: "Ibero-Armorican Island",
+      country: "France",
+      fossilFormation: "Grès à Dents Formation"
+    },
+    sizeEstimate: {
+      length: { value: 1.6, unit: "meters", confidence: "well-supported" },
+      height: { value: 0.6, unit: "meters", confidence: "well-supported" },
+      weight: { value: 30.0, unit: "kg", confidence: "well-supported" }
+    },
+    sizeNotes: "Small dromaeosaurid dinosaur measuring 1.6 meters long and standing knee-high.",
+    discoveryHistory: "• Discovered in 1992 following a forest fire at Mount Olympe near Trets, Provence, France.\n• Formally described in 2000 by Ronan Allain and Philippe Taquet.\n• Remains include distinctive sickle toe claws, teeth, limb bones, and vertebrae.",
+    interestingFacts: [
+      "Named 'Fire Thief' because its fossils were uncovered immediately after a major forest fire.",
+      "Possessed a curved 6.5 cm sickle claw on the second toe of each foot for gripping prey.",
+      "Fully covered in feathers with wing-like plumage along its forelimbs."
+    ],
+    sources: [
+      { citation: "Allain, R., & Taquet, P. (2000). A new dromaeosaurid (Dinosauria, Theropoda) from the Upper Cretaceous of Haute-Provence. Comptes Rendus de l'Académie des Sciences.", url: "https://doi.org/10.1016/S1251-8050(00)00212-0" }
+    ]
+  },
+  {
+    name: "Concavenator corcovatus",
+    scientificName: "Concavenator corcovatus",
+    nameMeaning: "Hump-backed hunter from Cuenca",
+    timePeriod: "Early Cretaceous",
+    myaStart: 130.0,
+    myaEnd: 125.0,
+    clade: "Theropod",
+    diet: "carnivore",
+    habitat: "terrestrial",
+    dietDetails: "Apex predator of wetland ecosystems, hunting ornithopods, sauropods, and freshwater turtles.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Mid-Cretaceous Turnover",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/2/23/Concavenator_corcovatus.jpg",
+        type: "art",
+        credit: "Life reconstruction of Concavenator (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Concavenator_corcovatus.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Saurischia",
+      suborder: "Theropoda",
+      family: "Carcharodontosauridae",
+      genus: "Concavenator",
+      species: "Concavenator corcovatus"
+    },
+    geographicRange: {
+      continent: "Europe",
+      region: "Iberian Peninsula",
+      country: "Spain",
+      fossilFormation: "La Huérguina Formation (Las Hoyas)"
+    },
+    sizeEstimate: {
+      length: { value: 6.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 2.0, unit: "meters", confidence: "well-supported" },
+      weight: { value: 400.0, unit: "kg", confidence: "well-supported" }
+    },
+    sizeNotes: "Medium-sized carcharodontosaurid theropod measuring 6 meters in length.",
+    discoveryHistory: "• Nearly complete articulated skeleton discovered in 2003 at Las Hoyas, Cuenca, Spain.\n• Formally described in Nature in 2010 by Francisco Ortega, Fernando Escaso, and José Luis Sanz.\n• Exceptional preservation includes scales, skin impressions, and muscle attachments.",
+    interestingFacts: [
+      "Had two unusually tall neural spines above its hips forming a pointed crest or hump on its back.",
+      "Possessed quill knobs (apophysis) on its ulna, indicating the presence of proto-feather structures or displays on its arms.",
+      "One of the best preserved carcharodontosaurids ever discovered in Europe."
+    ],
+    sources: [
+      { citation: "Ortega, F. et al. (2010). A bizarre, humped Carcharodontosaurid dinosaur from the Lower Cretaceous of Spain. Nature.", url: "https://doi.org/10.1038/nature09381" }
+    ]
+  },
+  {
+    name: "Dracovenator regenti",
+    scientificName: "Dracovenator regenti",
+    nameMeaning: "Dragon hunter of Regent",
+    timePeriod: "Early Jurassic",
+    myaStart: 201.0,
+    myaEnd: 196.0,
+    clade: "Theropod",
+    diet: "carnivore",
+    habitat: "terrestrial",
+    dietDetails: "Predatory theropod hunting early sauropodomorphs like Massospondylus.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Early Jurassic Turnover",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/1/14/Dracovenator_regenti.jpg",
+        type: "art",
+        credit: "Life reconstruction of Dracovenator (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Dracovenator_regenti.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Saurischia",
+      suborder: "Theropoda",
+      family: "Dilophosauridae",
+      genus: "Dracovenator",
+      species: "Dracovenator regenti"
+    },
+    geographicRange: {
+      continent: "Africa",
+      region: "Southern Africa",
+      country: "South Africa",
+      fossilFormation: "Elliot Formation"
+    },
+    sizeEstimate: {
+      length: { value: 6.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 1.8, unit: "meters", confidence: "estimated" },
+      weight: { value: 400.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Dilophosaurid theropod estimated at 5.5 to 6 meters long.",
+    discoveryHistory: "• Holotype partial skull discovered on Upper Drakensberg farm in Eastern Cape, South Africa.\n• Named in 2005 by Adam M. Yates.\n• Close relative of the North American Dilophosaurus.",
+    interestingFacts: [
+      "One of the earliest apex theropod dinosaurs discovered in southern Africa.",
+      "Possessed paired bony crests running along the top of its skull.",
+      "Targeted abundant early sauropodomorph dinosaurs as primary prey."
+    ],
+    sources: [
+      { citation: "Yates, A. M. (2005). A new theropod dinosaur from the Early Jurassic of South Africa and its implications for the early evolution of Theropoda. Palaeontologia Africana.", url: "https://hdl.handle.net/10539/12711" }
+    ]
+  },
+  {
+    name: "Sarcosaurus woodi",
+    scientificName: "Sarcosaurus woodi",
+    nameMeaning: "Flesh lizard of Wood",
+    timePeriod: "Early Jurassic",
+    myaStart: 199.0,
+    myaEnd: 194.0,
+    clade: "Theropod",
+    diet: "carnivore",
+    habitat: "terrestrial",
+    dietDetails: "Early carnivorous theropod preying upon small reptiles and early herbivorous dinosaurs.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Early Jurassic Turnover",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/3/30/Sarcosaurus_woodi.jpg",
+        type: "art",
+        credit: "Life reconstruction of Sarcosaurus (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Sarcosaurus_woodi.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Saurischia",
+      suborder: "Theropoda",
+      family: "Neotheropoda",
+      genus: "Sarcosaurus",
+      species: "Sarcosaurus woodi"
+    },
+    geographicRange: {
+      continent: "Europe",
+      region: "English Midlands",
+      country: "United Kingdom",
+      fossilFormation: "Blue Lias Formation"
+    },
+    sizeEstimate: {
+      length: { value: 3.5, unit: "meters", confidence: "well-supported" },
+      height: { value: 1.2, unit: "meters", confidence: "estimated" },
+      weight: { value: 150.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Basal neotheropod measuring 3.5 meters in length.",
+    discoveryHistory: "• Discovered in 1913 near Barrow-upon-Soar, Leicestershire, by James W. Wood.\n• Named by Charles William Andrews in 1921.\n• Represents one of the oldest known Jurassic theropods in Europe.",
+    interestingFacts: [
+      "One of the earliest true Jurassic theropod dinosaurs discovered in the UK.",
+      "Possessed a small nasal horn or crest similar to Ceratosaurus.",
+      "Inhabited coastal mudflats alongside early marine reptiles."
+    ],
+    sources: [
+      { citation: "Ezcurra, M. D. et al. (2020). Enigmatic early theropod Sarcosaurus woodi re-evaluated. Zoological Journal of the Linnean Society.", url: "https://doi.org/10.1093/zoolinnean/zlaa086" }
+    ]
+  },
+  {
+    name: "Animantarx ramaljonesi",
+    scientificName: "Animantarx ramaljonesi",
+    nameMeaning: "Living fortress of Ramal Jones",
+    timePeriod: "Early to Late Cretaceous",
+    myaStart: 104.0,
+    myaEnd: 98.0,
+    clade: "Ankylosaur",
+    diet: "herbivore",
+    habitat: "terrestrial",
+    dietDetails: "Low-level herbivore feeding on ferns, cycads, and low shrub vegetation.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "K-Pg Extinction Event",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Animantarx_ramaljonesi.jpg",
+        type: "art",
+        credit: "Life reconstruction of Animantarx (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Animantarx_ramaljonesi.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Ornithischia",
+      family: "Nodosauridae",
+      genus: "Animantarx",
+      species: "Animantarx ramaljonesi"
+    },
+    geographicRange: {
+      continent: "North America",
+      region: "Colorado Plateau",
+      country: "United States",
+      fossilFormation: "Cedar Mountain Formation"
+    },
+    sizeEstimate: {
+      length: { value: 3.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 1.0, unit: "meters", confidence: "estimated" },
+      weight: { value: 300.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Small nodosaurid ankylosaur measuring approximately 3 meters.",
+    discoveryHistory: "• Discovered in 1999 using radiological survey equipment by Ramal Jones.\n• Formally described by Kenneth Carpenter, James Kirkland, Donald Burge, and John Bird in 1999.\n• Discovered specifically due to radioactive signals emitted by fossilized bones.",
+    interestingFacts: [
+      "First dinosaur discovered exclusively via radiological radiation detection technology.",
+      "Possessed a heavily armored skull with small horn-like projections behind the eyes.",
+      "Lacked a tail club, relying instead on shoulder spikes and fused armor plates."
+    ],
+    sources: [
+      { citation: "Carpenter, K. et al. (1999). A new nodosaurid (Dinosauria: Ankylosauria) from the Cedar Mountain Formation of Utah. Journal of Vertebrate Paleontology.", url: "https://doi.org/10.1080/02724634.1999.10011140" }
+    ]
+  },
+  {
+    name: "Segnosaurus galbinensis",
+    scientificName: "Segnosaurus galbinensis",
+    nameMeaning: "Slow lizard from Galbin Basin",
+    timePeriod: "Late Cretaceous",
+    myaStart: 96.0,
+    myaEnd: 90.0,
+    clade: "Theropod",
+    diet: "herbivore",
+    habitat: "terrestrial",
+    dietDetails: "Herbivorous theropod using long claws to hook branches and pluck leaves.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "K-Pg Extinction Event",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Segnosaurus_galbinensis.jpg",
+        type: "art",
+        credit: "Life reconstruction of Segnosaurus (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Segnosaurus_galbinensis.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Saurischia",
+      suborder: "Theropoda",
+      family: "Therizinosauridae",
+      genus: "Segnosaurus",
+      species: "Segnosaurus galbinensis"
+    },
+    geographicRange: {
+      continent: "Asia",
+      region: "Gobi Desert",
+      country: "Mongolia",
+      fossilFormation: "Bayan Shireh Formation"
+    },
+    sizeEstimate: {
+      length: { value: 6.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 2.5, unit: "meters", confidence: "well-supported" },
+      weight: { value: 1300.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Large therizinosaurid measuring 6 meters in length and weighing over 1 tonne.",
+    discoveryHistory: "• Discovered in 1973 in the Gobi Desert by Altangerel Perle.\n• Formally described by Perle in 1979.\n• Name-giver of the Segnosauria (now Therizinosauria) group.",
+    interestingFacts: [
+      "Bizarre theropod that evolved away from meat-eating to become a strict herbivore.",
+      "Possessed a massive pot belly to ferment tough plant vegetation.",
+      "Equipped with elongated, curved hand claws used to pull down tree branches."
+    ],
+    sources: [
+      { citation: "Perle, A. (1979). Segnosauridae - a new family of theropods from the Late Cretaceous of Mongolia. Transactions of the Joint Soviet-Mongolian Paleontological Expedition.", url: "https://paleobiodb.org/classic/checkTaxonInfo?taxon_no=38712" }
+    ]
+  },
+  {
+    name: "Bajadasaurus pronuspinax",
+    scientificName: "Bajadasaurus pronuspinax",
+    nameMeaning: "Bajada lizard with forward-bent spines",
+    timePeriod: "Early Cretaceous",
+    myaStart: 140.0,
+    myaEnd: 134.0,
+    clade: "Sauropod",
+    diet: "herbivore",
+    habitat: "terrestrial",
+    dietDetails: "Low-level browser feeding on ferns, horsetails, and low vegetation using forward spines as defense.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Mid-Cretaceous Turnover",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/d/df/Bajadasaurus_pronuspinax.jpg",
+        type: "art",
+        credit: "Life reconstruction of Bajadasaurus (Wikimedia Commons CC BY-SA 4.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Bajadasaurus_pronuspinax.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Saurischia",
+      suborder: "Sauropodomorpha",
+      family: "Dicraeosauridae",
+      genus: "Bajadasaurus",
+      species: "Bajadasaurus pronuspinax"
+    },
+    geographicRange: {
+      continent: "South America",
+      region: "Patagonia",
+      country: "Argentina",
+      fossilFormation: "Bajada Colorada Formation"
+    },
+    sizeEstimate: {
+      length: { value: 9.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 2.5, unit: "meters", confidence: "well-supported" },
+      weight: { value: 3000.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Dicraeosaurid sauropod measuring 9 meters long with dramatic forward-pointing neck spines.",
+    discoveryHistory: "• Discovered in 2013 in Neuquén Province, Patagonia, Argentina.\n• Formally described in Scientific Reports in 2019 by Pablo Gallina and colleagues.\n• Preserved skull, neck vertebrae, and spectacular elongated neural spines.",
+    interestingFacts: [
+      "Possessed extremely long, thin neural spines along its neck that curved forward over its head.",
+      "The neck spines were likely covered in keratin sheaths, acting as defensive spikes against predators while grazing.",
+      "Eyes were positioned high on its skull, allowing it to look out for predators while lowering its snout to eat."
+    ],
+    sources: [
+      { citation: "Gallina, P. A. et al. (2019). A new long-spined dinosaur from Patagonia sheds light on sauropod defense mechanics. Scientific Reports.", url: "https://doi.org/10.1038/s41598-018-37943-3" }
+    ]
+  },
+  {
+    name: "Fukuiraptor kitadaniensis",
+    scientificName: "Fukuiraptor kitadaniensis",
+    nameMeaning: "Fukui thief from Kitadani",
+    timePeriod: "Early Cretaceous",
+    myaStart: 121.0,
+    myaEnd: 115.0,
+    clade: "Theropod",
+    diet: "carnivore",
+    habitat: "terrestrial",
+    dietDetails: "Medium-sized carnivore preying on ornithopods and sauropods in Early Cretaceous Japan.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Mid-Cretaceous Turnover",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Fukuiraptor_kitadaniensis.jpg",
+        type: "art",
+        credit: "Life reconstruction of Fukuiraptor (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Fukuiraptor_kitadaniensis.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Saurischia",
+      suborder: "Theropoda",
+      family: "Megaraptoridae",
+      genus: "Fukuiraptor",
+      species: "Fukuiraptor kitadaniensis"
+    },
+    geographicRange: {
+      continent: "Asia",
+      region: "Honshu Island",
+      country: "Japan",
+      fossilFormation: "Kitadani Formation"
+    },
+    sizeEstimate: {
+      length: { value: 4.2, unit: "meters", confidence: "well-supported" },
+      height: { value: 1.5, unit: "meters", confidence: "well-supported" },
+      weight: { value: 300.0, unit: "kg", confidence: "well-supported" }
+    },
+    sizeNotes: "Medium-sized megaraptoran theropod reaching 4.2 meters in length.",
+    discoveryHistory: "• Discovered in 1989 at the Kitadani Quarry in Katsuyama, Fukui Prefecture, Japan.\n• Formally described in 2000 by Yoichi Azuma and Philip J. Currie.\n• One of the most complete theropod skeletons found in Japan.",
+    interestingFacts: [
+      "Initially thought to be a dromaeosaurid due to a large hand claw, later recognized as a megaraptoran.",
+      "The state dinosaur mascot of Fukui Prefecture, Japan.",
+      "Possessed large hand claws used to grasp prey."
+    ],
+    sources: [
+      { citation: "Azuma, Y., & Currie, P. J. (2000). A new carcharodontosaurid theropod from the Lower Cretaceous of Japan. Cretaceous Research.", url: "https://doi.org/10.1006/cres.2000.0223" }
+    ]
+  },
+  {
+    name: "Fukuisaurus tetoriensis",
+    scientificName: "Fukuisaurus tetoriensis",
+    nameMeaning: "Fukui lizard from Tetori Group",
+    timePeriod: "Early Cretaceous",
+    myaStart: 121.0,
+    myaEnd: 115.0,
+    clade: "Ornithischian",
+    diet: "herbivore",
+    habitat: "terrestrial",
+    dietDetails: "Herbivorous iguanodontian browsing on horsetails, ferns, and early flowering plants.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Mid-Cretaceous Turnover",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Fukuisaurus_tetoriensis.jpg",
+        type: "art",
+        credit: "Life reconstruction of Fukuisaurus (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Fukuisaurus_tetoriensis.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Ornithischia",
+      family: "Hadrosauroidea",
+      genus: "Fukuisaurus",
+      species: "Fukuisaurus tetoriensis"
+    },
+    geographicRange: {
+      continent: "Asia",
+      region: "Honshu Island",
+      country: "Japan",
+      fossilFormation: "Kitadani Formation"
+    },
+    sizeEstimate: {
+      length: { value: 4.7, unit: "meters", confidence: "well-supported" },
+      height: { value: 1.8, unit: "meters", confidence: "estimated" },
+      weight: { value: 400.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Bipedal/quadrupedal iguanodontian measuring 4.7 meters long.",
+    discoveryHistory: "• Discovered in 1989 alongside Fukuiraptor in Katsuyama, Fukui, Japan.\n• Described in 2003 by Yoichi Azuma and Pascal Godefroit.\n• Preserved skull and jaw material showing unique kinetic chewing adaptations.",
+    interestingFacts: [
+      "Skull lacked the kinetic flexibility seen in advanced hadrosaurs, chewing with a rigid maxilla.",
+      "Coexisted with Fukuiraptor, Fukuititan, and Koshisaurus in Early Cretaceous Japan.",
+      "Equipped with a sharp beak for clipping tough vegetation."
+    ],
+    sources: [
+      { citation: "Kobayashi, Y. et al. (2003). A new iguanodontian dinosaur from the Lower Cretaceous Kitadani Formation of Fukui, Japan. Memoir of the Fukui Prefectural Dinosaur Museum.", url: "https://www.dinosaur.pref.fukui.jp/archive/memoir/memoir002-126.pdf" }
+    ]
+  },
+  {
+    name: "Leedsichthys problematicus",
+    scientificName: "Leedsichthys problematicus",
+    nameMeaning: "Leeds' problem fish",
+    timePeriod: "Middle to Late Jurassic",
+    myaStart: 165.0,
+    myaEnd: 152.0,
+    clade: "Other",
+    diet: "filter_feeder",
+    habitat: "marine",
+    dietDetails: "Giant filter-feeder straining zooplankton, small crustaceans, and jellyfish through gill basket mesh.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Late Jurassic Turnover",
+    closestLivingRelatives: ["Modern Teleost Fishes (Bony Fish)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Leedsichthys_problematicus.jpg",
+        type: "art",
+        credit: "Life reconstruction of Leedsichthys (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Leedsichthys_problematicus.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Actinopterygii",
+      order: "Pachycormiformes",
+      family: "Pachycormidae",
+      genus: "Leedsichthys",
+      species: "Leedsichthys problematicus"
+    },
+    geographicRange: {
+      continent: "Europe, South America",
+      region: "Tethys / Boreal Oceans",
+      country: "United Kingdom, France, Germany, Chile",
+      fossilFormation: "Oxford Clay Formation"
+    },
+    sizeEstimate: {
+      length: { value: 16.5, unit: "meters", confidence: "well-supported" },
+      height: { value: 3.0, unit: "meters", confidence: "estimated" },
+      weight: { value: 21000.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "The largest bony fish (Osteichthyes) known to have ever existed, reaching 16.5 meters.",
+    discoveryHistory: "• First fragments collected in 1886 near Peterborough, England, by fossil collector Alfred Nicholson Leeds.\n• Named 'problematicus' by Arthur Smith Woodward because giant fragmented bones were difficult to reconstruct.\n• Comprehensive 2013 laser-scan study by Jeff Liston confirmed adult lengths between 16 and 16.5 meters.",
+    interestingFacts: [
+      "Holds the record as the largest bony fish in Earth's history, rivaling modern baleen whales in ecological role.",
+      "Possessed over 40,000 delicate mesh-like gill raker teeth to filter microscopic plankton.",
+      "Bite marks on Leedsichthys fins show it was hunted by giant marine predators like Liopleurodon and Metriorhynchus."
+    ],
+    sources: [
+      { citation: "Liston, J. J. et al. (2013). Growth, age and size of the giant Jurassic bony fish Leedsichthys problematicus. Mesozoic Fishes 5.", url: "https://www.researchgate.net/publication/258334460" }
+    ]
+  },
+  {
+    name: "Suchomimus tenerensis",
+    scientificName: "Suchomimus tenerensis",
+    nameMeaning: "Crocodile mimic from Ténéré Desert",
+    timePeriod: "Early Cretaceous",
+    myaStart: 121.0,
+    myaEnd: 113.0,
+    clade: "Theropod",
+    diet: "piscivore",
+    habitat: "semi_aquatic",
+    dietDetails: "Semiaquatic predator snatching giant fish (Mawsonia) and young dinosaurs from Cretaceous rivers.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Mid-Cretaceous Turnover",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/3/36/Suchomimus_tenerensis.jpg",
+        type: "art",
+        credit: "Life reconstruction of Suchomimus (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Suchomimus_tenerensis.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Saurischia",
+      suborder: "Theropoda",
+      family: "Spinosauridae",
+      genus: "Suchomimus",
+      species: "Suchomimus tenerensis"
+    },
+    geographicRange: {
+      continent: "Africa",
+      region: "Sahara Desert",
+      country: "Niger",
+      fossilFormation: "Elrhaz Formation"
+    },
+    sizeEstimate: {
+      length: { value: 11.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 3.5, unit: "meters", confidence: "well-supported" },
+      weight: { value: 3800.0, unit: "kg", confidence: "well-supported" }
+    },
+    sizeNotes: "Large spinosaurid theropod measuring 11 meters in length and weighing nearly 4 tonnes.",
+    discoveryHistory: "• Discovered in 1997 in the Ténéré Desert of Niger by team led by Paul Sereno.\n• Formally described in Science in November 1998.\n• Skeleton roughly 70% complete including skull, arms, claws, and vertebrae.",
+    interestingFacts: [
+      "Possessed a narrow 1.2-meter long crocodile-like skull lined with 100 conical teeth.",
+      "Had a massive 30 cm sickle claw on its thumb used to spear fish.",
+      "Featured a low neural spine sail reaching up to 60 cm high along its back."
+    ],
+    sources: [
+      { citation: "Sereno, P. C. et al. (1998). A long-snouted predatory dinosaur from Africa and the evolution of spinosaurids. Science.", url: "https://doi.org/10.1126/science.282.5392.1298" }
+    ]
+  },
+  {
+    name: "Oxalaia quilombensis",
+    scientificName: "Oxalaia quilombensis",
+    nameMeaning: "Named after African deity Oxalá",
+    timePeriod: "Late Cretaceous",
+    myaStart: 100.5,
+    myaEnd: 93.9,
+    clade: "Theropod",
+    diet: "piscivore",
+    habitat: "semi_aquatic",
+    dietDetails: "Giant semiaquatic piscivore hunting giant lungfish and mawsoniid coelacanths in coastal mangrove swamps.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Cenomanian-Turonian Anoxic Event",
+    closestLivingRelatives: ["Modern Birds (Aves)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Oxalaia_quilombensis.jpg",
+        type: "art",
+        credit: "Life reconstruction of Oxalaia (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Oxalaia_quilombensis.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Dinosauria",
+      order: "Saurischia",
+      suborder: "Theropoda",
+      family: "Spinosauridae",
+      genus: "Oxalaia",
+      species: "Oxalaia quilombensis"
+    },
+    geographicRange: {
+      continent: "South America",
+      region: "Laje do Coringa",
+      country: "Brazil",
+      fossilFormation: "Alcântara Formation"
+    },
+    sizeEstimate: {
+      length: { value: 12.0, unit: "meters", confidence: "estimated" },
+      height: { value: 3.8, unit: "meters", confidence: "estimated" },
+      weight: { value: 6000.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "The largest theropod dinosaur discovered in Brazil, estimated between 12 to 14 meters long.",
+    discoveryHistory: "• Premaxilla discovered in 1999 on Cajual Island, Maranhão, Brazil.\n• Formally described in 2011 by Alexander Kellner and colleagues.\n• Proved spinosaurines populated both South America and North Africa during the mid-Cretaceous.",
+    interestingFacts: [
+      "Named after Oxalá, the principal deity in the Afro-Brazilian Candomblé pantheon.",
+      "The largest carnivorous dinosaur recorded from Brazil.",
+      "Close relative of North African Spinosaurus, featuring double functional replacement teeth."
+    ],
+    sources: [
+      { citation: "Kellner, A. W. A. et al. (2011). A new dinosaur (Theropoda, Spinosauridae) from the Cretaceous of Brazil. Anais da Academia Brasileira de Ciências.", url: "https://doi.org/10.1590/S0001-37652011000100009" }
+    ]
+  },
+  {
+    name: "Tropaeognathus mesembrinus",
+    scientificName: "Tropaeognathus mesembrinus",
+    nameMeaning: "Keel jaw of the south",
+    timePeriod: "Early Cretaceous",
+    myaStart: 112.0,
+    myaEnd: 108.0,
+    clade: "Pterosaur",
+    diet: "piscivore",
+    habitat: "aerial",
+    dietDetails: "Ocean-going aerial piscivore skimming fish from the water surface using crested jaws.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Mid-Cretaceous Turnover",
+    closestLivingRelatives: ["Modern Archosaurs (Birds, Crocodilians)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/d/df/Tropaeognathus_mesembrinus.jpg",
+        type: "art",
+        credit: "Life reconstruction of Tropaeognathus (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Tropaeognathus_mesembrinus.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Pterosauria",
+      order: "Pterodactyloidea",
+      family: "Anhangueridae",
+      genus: "Tropaeognathus",
+      species: "Tropaeognathus mesembrinus"
+    },
+    geographicRange: {
+      continent: "South America",
+      region: "Araripe Basin",
+      country: "Brazil",
+      fossilFormation: "Romualdo Formation"
+    },
+    sizeEstimate: {
+      length: { value: 2.5, unit: "meters", confidence: "well-supported" },
+      height: { value: 1.5, unit: "meters", confidence: "well-supported" },
+      weight: { value: 25.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Giant anhanguerid pterosaur with a wingspan reaching 8.2 meters (27 feet).",
+    discoveryHistory: "• Described in 1987 by Peter Wellnhofer from fossils in the Romualdo Formation, Brazil.\n• 2013 skeleton specimen MN 6594-V described by Kellner et al. confirmed massive 8.2m wingspan.",
+    interestingFacts: [
+      "One of the largest pre-azhdarchid flying reptiles known, with an 8.2-meter wingspan.",
+      "Possessed large convex keel-like crests on the tips of both upper and lower jaws.",
+      "Crests acted as rudders to stabilize jaws while dipping into water at high speed to catch fish."
+    ],
+    sources: [
+      { citation: "Kellner, A. W. A. et al. (2013). The largest pterosaur from Gondwana and other new anhanguerids from Brazil. Anais da Academia Brasileira de Ciências.", url: "https://doi.org/10.1590/0001-37652013102912" }
+    ]
+  },
+  {
+    name: "Coloborhynchus clavirostris",
+    scientificName: "Coloborhynchus clavirostris",
+    nameMeaning: "Mutilated beak with club snout",
+    timePeriod: "Early Cretaceous",
+    myaStart: 140.0,
+    myaEnd: 136.0,
+    clade: "Pterosaur",
+    diet: "piscivore",
+    habitat: "aerial",
+    dietDetails: "Coastal pelagic piscivore catching slippery marine fish with forward-pointing teeth.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Mid-Cretaceous Turnover",
+    closestLivingRelatives: ["Modern Archosaurs (Birds, Crocodilians)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/0/07/Coloborhynchus_clavirostris.jpg",
+        type: "art",
+        credit: "Life reconstruction of Coloborhynchus (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Coloborhynchus_clavirostris.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Pterosauria",
+      order: "Pterodactyloidea",
+      family: "Anhangueridae",
+      genus: "Coloborhynchus",
+      species: "Coloborhynchus clavirostris"
+    },
+    geographicRange: {
+      continent: "Europe",
+      region: "Wealden Basin",
+      country: "United Kingdom",
+      fossilFormation: "Hastings Beds"
+    },
+    sizeEstimate: {
+      length: { value: 1.8, unit: "meters", confidence: "well-supported" },
+      height: { value: 1.2, unit: "meters", confidence: "estimated" },
+      weight: { value: 18.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Pterosaur with an estimated wingspan of approximately 5 to 6 meters.",
+    discoveryHistory: "• Named by Richard Owen in 1874 based on a partial snout found in East Sussex, England.\n• Re-evaluated by Rodrigues & Kellner in 2013, restricting the genus to European Valanginian strata.",
+    interestingFacts: [
+      "Featured a unique flattened front snout tip with teeth projecting forward at odd angles.",
+      "Equipped with a prominent crest along the front upper jaw.",
+      "Earliest recognized anhanguerid pterosaur in the European fossil record."
+    ],
+    sources: [
+      { citation: "Rodrigues, T., & Kellner, A. W. A. (2013). Taxonomic review of the Ornithocheirus complex (Pterosauria). ZooKeys.", url: "https://doi.org/10.3897/zookeys.308.5559" }
+    ]
+  },
+  {
+    name: "Arctodus simus",
+    scientificName: "Arctodus simus",
+    nameMeaning: "Snub-nosed bear",
+    timePeriod: "Pleistocene",
+    myaStart: 1.8,
+    myaEnd: 0.011,
+    clade: "Early Mammal/Synapsid",
+    diet: "carnivore",
+    habitat: "terrestrial",
+    dietDetails: "Hyper-carnivorous apex predator and giant kleptoparasite scavenging mammoth and bison kills.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Quaternary Extinction Event (11,000 YA)",
+    closestLivingRelatives: ["South American Spectacled Bear (Tremarctos ornatus)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/1/14/Arctodus_simus.jpg",
+        type: "art",
+        credit: "Life reconstruction of Arctodus simus (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Arctodus_simus.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Mammalia",
+      order: "Carnivora",
+      family: "Ursidae",
+      genus: "Arctodus",
+      species: "Arctodus simus"
+    },
+    geographicRange: {
+      continent: "North America",
+      region: "Great Plains & Coastlines",
+      country: "United States, Canada, Mexico",
+      fossilFormation: "Rancho La Brea tar pits, Riverbluff Cave"
+    },
+    sizeEstimate: {
+      length: { value: 3.5, unit: "meters", confidence: "well-supported" },
+      height: { value: 1.8, unit: "meters", confidence: "well-supported" },
+      weight: { value: 1000.0, unit: "kg", confidence: "well-supported" }
+    },
+    sizeNotes: "Stood up to 1.8 meters tall at the shoulder and over 3.4 meters tall when standing on hind legs.",
+    discoveryHistory: "• Formally described by Joseph Leidy in 1854.\n• Abundant, exceptionally preserved bones recovered from the Rancho La Brea tar pits in California.\n• Carbon isotope studies confirmed an overwhelmingly carnivorous diet.",
+    interestingFacts: [
+      "Stood over 3.4 meters (11 feet) tall on its hind legs, making it the largest terrestrial mammalian carnivore in North America.",
+      "Used its massive size to bully smaller predators like saber-toothed cats (Smilodon) away from fresh kills.",
+      "Possessed unusually long, slender legs allowing it to pace efficiently across vast distances."
+    ],
+    sources: [
+      { citation: "Matheus, P. E. (1995). Diet and ecology of polar bears and giant short-faced bears based on stable isotopes. Quaternary Research.", url: "https://doi.org/10.1006/qres.1995.1078" }
+    ]
+  },
+  {
+    name: "Purussaurus brasiliensis",
+    scientificName: "Purussaurus brasiliensis",
+    nameMeaning: "Purus River reptile from Brazil",
+    timePeriod: "Late Miocene",
+    myaStart: 13.0,
+    myaEnd: 8.0,
+    clade: "Crocodylomorph",
+    diet: "carnivore",
+    habitat: "freshwater",
+    dietDetails: "Apex apex predator eating giant rodents (Josephoartigasia), river turtles, sloths, and fish.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Pebas Wetland Desiccation",
+    closestLivingRelatives: ["Modern Caimans (Caimaninae)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/e/ea/Purussaurus_brasiliensis.jpg",
+        type: "art",
+        credit: "Life reconstruction of Purussaurus (Wikimedia Commons CC BY-SA 4.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Purussaurus_brasiliensis.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Pseudosuchia",
+      order: "Crocodylomorpha",
+      family: "Alligatoridae",
+      genus: "Purussaurus",
+      species: "Purussaurus brasiliensis"
+    },
+    geographicRange: {
+      continent: "South America",
+      region: "Amazon Basin",
+      country: "Brazil, Peru, Venezuela",
+      fossilFormation: "Solimões Formation, Urumaco Formation"
+    },
+    sizeEstimate: {
+      length: { value: 10.3, unit: "meters", confidence: "well-supported" },
+      height: { value: 1.4, unit: "meters", confidence: "well-supported" },
+      weight: { value: 8400.0, unit: "kg", confidence: "well-supported" }
+    },
+    sizeNotes: "Giant caiman reaching 10.3 meters in length and weighing over 8.4 tonnes.",
+    discoveryHistory: "• First skull fragments discovered in 1892 along the Purus River by Barbosa Rodrigues.\n• Formally reconstructed in 2015 by Tito Aureliano and colleagues, revealing incredible 69,000 N bite force.",
+    interestingFacts: [
+      "Possessed one of the strongest bite forces of any animal in Earth's history (~69,000 Newtons / 7 tonnes force).",
+      "Its massive skull measured 1.4 meters long and was immensely broad for crushing thick mammalian bones.",
+      "Consumed over 40 kilograms of meat per day to maintain its giant metabolic needs."
+    ],
+    sources: [
+      { citation: "Aureliano, T. et al. (2015). Morphometry, Bite Force, and Paleobiology of the Late Miocene Caiman Purussaurus brasiliensis. PLoS ONE.", url: "https://doi.org/10.1371/journal.pone.0117937" }
+    ]
+  },
+  {
+    name: "Josephoartigasia monesi",
+    scientificName: "Josephoartigasia monesi",
+    nameMeaning: "Named after José Gervasio Artigas and Álvaro Mones",
+    timePeriod: "Pliocene to Early Pleistocene",
+    myaStart: 4.0,
+    myaEnd: 2.0,
+    clade: "Early Mammal/Synapsid",
+    diet: "herbivore",
+    habitat: "terrestrial",
+    dietDetails: "Giant herbivore feeding on soft aquatic plants, grasses, and river vegetation.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Great American Biotic Interchange turnover",
+    closestLivingRelatives: ["Pacarana (Dinamys branickii)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Josephoartigasia_monesi.jpg",
+        type: "art",
+        credit: "Life reconstruction of Josephoartigasia (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Josephoartigasia_monesi.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Mammalia",
+      order: "Rodentia",
+      family: "Dinomyidae",
+      genus: "Josephoartigasia",
+      species: "Josephoartigasia monesi"
+    },
+    geographicRange: {
+      continent: "South America",
+      region: "Rio de la Plata Basin",
+      country: "Uruguay",
+      fossilFormation: "San José Formation"
+    },
+    sizeEstimate: {
+      length: { value: 3.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 1.5, unit: "meters", confidence: "well-supported" },
+      weight: { value: 1000.0, unit: "kg", confidence: "well-supported" }
+    },
+    sizeNotes: "The largest rodent ever discovered, weighing as much as a modern bull (~1,000 kg).",
+    discoveryHistory: "• Complete 53 cm long fossil skull discovered in 1987 on the coast of San José, Uruguay.\n• Formally described in 2008 by Andrés Rinderknecht and Ernesto Blanco in Proceedings of the Royal Society B.",
+    interestingFacts: [
+      "Holds the Guinness World Record as the largest rodent to ever exist on Earth.",
+      "Possessed enormous 30 cm incisors with a bite force equivalent to a tiger, used for digging or defense.",
+      "Replaced traditional ungulate herbivore niches in prehistoric South American river estuaries."
+    ],
+    sources: [
+      { citation: "Rinderknecht, A., & Blanco, R. E. (2008). The largest fossil rodent. Proceedings of the Royal Society B: Biological Sciences.", url: "https://doi.org/10.1098/rspb.2007.1645" }
+    ]
+  },
+  {
+    name: "Livyatan melvillei",
+    scientificName: "Livyatan melvillei",
+    nameMeaning: "Leviathan named after Herman Melville (author of Moby-Dick)",
+    timePeriod: "Late Miocene",
+    myaStart: 9.9,
+    myaEnd: 8.9,
+    clade: "Early Mammal/Synapsid",
+    diet: "carnivore",
+    habitat: "marine",
+    dietDetails: "Apex marine macroraptorial predator preying on medium-sized baleen whales, seals, and sharks.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Miocene Marine Cooling Event",
+    closestLivingRelatives: ["Sperm Whale (Physeter macrocephalus)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Livyatan_melvillei.jpg",
+        type: "art",
+        credit: "Life reconstruction of Livyatan (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Livyatan_melvillei.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Mammalia",
+      order: "Cetacea",
+      family: "Physeteroidea",
+      genus: "Livyatan",
+      species: "Livyatan melvillei"
+    },
+    geographicRange: {
+      continent: "South America, Australia",
+      region: "Pacific Ocean",
+      country: "Peru, Australia",
+      fossilFormation: "Pisco Formation"
+    },
+    sizeEstimate: {
+      length: { value: 17.5, unit: "meters", confidence: "well-supported" },
+      height: { value: 4.0, unit: "meters", confidence: "estimated" },
+      weight: { value: 50000.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "Giant raptorial sperm whale measuring 13.5 to 17.5 meters and weighing up to 50 tonnes.",
+    discoveryHistory: "• Discovered in 2008 in the coastal desert of Pisco, Peru, by Klaas Post.\n• Formally described in Nature in July 2010 by Olivier Lambert and team.\n• Named in honor of Herman Melville, author of Moby-Dick.",
+    interestingFacts: [
+      "Possessed the largest functional biting teeth of any known animal in Earth's history (36 cm long and 12 cm wide).",
+      "Unlike modern sperm whales which feed on squid using toothless upper jaws, Livyatan had huge teeth in BOTH upper and lower jaws.",
+      "Coexisted and directly competed with Megalodon for marine mammalian prey in Miocene oceans."
+    ],
+    sources: [
+      { citation: "Lambert, O. et al. (2010). The giant bite of a new raptorial sperm whale from the Miocene of Peru. Nature.", url: "https://doi.org/10.1038/nature09067" }
+    ]
+  },
+  {
+    name: "Kelenken guillermoi",
+    scientificName: "Kelenken guillermoi",
+    nameMeaning: "Named after Kélenken (Patagonian demon spirit) and Guillermo Aguirre Zabala",
+    timePeriod: "Middle Miocene",
+    myaStart: 15.0,
+    myaEnd: 15.0,
+    clade: "Other",
+    diet: "carnivore",
+    habitat: "terrestrial",
+    dietDetails: "Apex terrestrial predator using long legs to chase down prey and drive heavy hooked beak downwards.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Miocene Mammalian Turnover",
+    closestLivingRelatives: ["Seriemas (Cariamidae)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/3/36/Kelenken_guillermoi.jpg",
+        type: "art",
+        credit: "Life reconstruction of Kelenken (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Kelenken_guillermoi.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Aves",
+      order: "Cariamiformes",
+      family: "Phorusrhacidae",
+      genus: "Kelenken",
+      species: "Kelenken guillermoi"
+    },
+    geographicRange: {
+      continent: "South America",
+      region: "Patagonia",
+      country: "Argentina",
+      fossilFormation: "Collón Curá Formation"
+    },
+    sizeEstimate: {
+      length: { value: 3.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 3.0, unit: "meters", confidence: "well-supported" },
+      weight: { value: 230.0, unit: "kg", confidence: "estimated" }
+    },
+    sizeNotes: "The largest terror bird known, standing over 3 meters tall with a 71 cm long head.",
+    discoveryHistory: "• Skull discovered in 1999 near Comallo village by high school student Guillermo Aguirre Zabala.\n• Formally described in 2007 by Sara Bertelli, Luis M. Chiappe, and Claudia Tambussi.",
+    interestingFacts: [
+      "Possessed the largest head of any known bird in history, with a skull measuring 71.6 cm (28 inches) long.",
+      "Could sprint at estimated speeds exceeding 45 km/h to run down prehistoric mammals.",
+      "Killed prey by striking downwards with its massive eagle-like hooked beak like an axe."
+    ],
+    sources: [
+      { citation: "Bertelli, S., Chiappe, L. M., & Tambussi, C. (2007). A new phorusrhacid (Aves: Cariamiformes) from the Middle Miocene of Patagonia. Journal of Vertebrate Paleontology.", url: "https://doi.org/10.1671/0272-4634(2007)27[409:ANPACB]2.0.CO;2" }
+    ]
+  },
+  {
+    name: "Varanus priscus",
+    scientificName: "Varanus priscus",
+    nameMeaning: "Ancient giant monitor lizard (Megalania)",
+    timePeriod: "Pleistocene",
+    myaStart: 2.0,
+    myaEnd: 0.04,
+    clade: "Other",
+    diet: "carnivore",
+    habitat: "terrestrial",
+    dietDetails: "Apex predator ambush hunting giant marsupials (Diprotodon, Procoptodon) and giant birds.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Australian Megafauna Extinction (40,000 YA)",
+    closestLivingRelatives: ["Komodo Dragon (Varanus komodoensis)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Megalania_priscus.jpg",
+        type: "art",
+        credit: "Life reconstruction of Megalania (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Megalania_priscus.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Reptilia",
+      order: "Squamata",
+      family: "Varanidae",
+      genus: "Varanus",
+      species: "Varanus priscus"
+    },
+    geographicRange: {
+      continent: "Australia",
+      region: "Eastern & Central Australia",
+      country: "Australia",
+      fossilFormation: "Darling Downs deposits"
+    },
+    sizeEstimate: {
+      length: { value: 6.0, unit: "meters", confidence: "well-supported" },
+      height: { value: 0.9, unit: "meters", confidence: "well-supported" },
+      weight: { value: 600.0, unit: "kg", confidence: "well-supported" }
+    },
+    sizeNotes: "The largest terrestrial lizard known to have ever lived, reaching up to 6 meters in length.",
+    discoveryHistory: "• Named Megalania prisca by Sir Richard Owen in 1859.\n• Reclassified under the genus Varanus by Ralph Molnar in 2004.\n• Coexisted with early Indigenous Australians prior to its extinction ~40,000 years ago.",
+    interestingFacts: [
+      "The largest terrestrial venomous squamate reptile in Earth's history.",
+      "Possessed venom glands in its lower jaws similar to its smaller living relative, the Komodo Dragon.",
+      "Serrated recumbent teeth allowed it to tear open heavy hide of giant extinct marsupials."
+    ],
+    sources: [
+      { citation: "Fry, B. G. et al. (2009). A central role for venom in predation by Varanus komodoensis and Megalania. PNAS.", url: "https://doi.org/10.1073/pnas.0810883106" }
+    ]
+  },
+  {
+    name: "Daeodon shoshonensis",
+    scientificName: "Daeodon shoshonensis",
+    nameMeaning: "Dreadful tooth of Shoshone",
+    timePeriod: "Late Oligocene to Early Miocene",
+    myaStart: 29.0,
+    myaEnd: 19.0,
+    clade: "Early Mammal/Synapsid",
+    diet: "omnivore",
+    habitat: "terrestrial",
+    dietDetails: "Bone-crushing apex scavenger and opportunistic predator eating carcasses, roots, and small ungulates.",
+    taxonomicStatus: "valid",
+    extinctionEvent: "Early Miocene Climatic Shift",
+    closestLivingRelatives: ["Hippopotamuses & Cetaceans (Whippomorpha)"],
+    media: [
+      {
+        url: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Daeodon_shoshonensis.jpg",
+        type: "art",
+        credit: "Life reconstruction of Daeodon (Wikimedia Commons CC BY-SA 3.0)",
+        sourceUrl: "https://commons.wikimedia.org/wiki/File:Daeodon_shoshonensis.jpg"
+      }
+    ],
+    taxonomy: {
+      kingdom: "Animalia",
+      phylum: "Chordata",
+      clade: "Mammalia",
+      order: "Artiodactyla",
+      family: "Entelodontidae",
+      genus: "Daeodon",
+      species: "Daeodon shoshonensis"
+    },
+    geographicRange: {
+      continent: "North America",
+      region: "Great Plains",
+      country: "United States",
+      fossilFormation: "Arikaree Group (Agate Fossil Beds)"
+    },
+    sizeEstimate: {
+      length: { value: 3.4, unit: "meters", confidence: "well-supported" },
+      height: { value: 1.8, unit: "meters", confidence: "well-supported" },
+      weight: { value: 750.0, unit: "kg", confidence: "well-supported" }
+    },
+    sizeNotes: "Nicknamed 'Hell Pig'; stood 1.8 meters (6 feet) tall at the shoulder with a 90 cm skull.",
+    discoveryHistory: "• Formally described in 1878 by Edward Drinker Cope.\n• Famous 90 cm fossil skulls recovered from Agate Fossil Beds National Monument in Nebraska.\n• Synonymized with Dinohyus hollandi by Peterson in 1909.",
+    interestingFacts: [
+      "Nicknamed the 'Hell Pig', though genetically closer to hippos and whales than true pigs.",
+      "Possessed a massive 90 cm (3 foot) skull with heavy bony cheek flanges (jugal flanges) for muscle attachment.",
+      "Heavily worn teeth show it routinely cracked open giant animal bones to extract nutrient-rich marrow."
+    ],
+    sources: [
+      { citation: "Effinger, J. A. (1998). Entelodontidae. Evolution of Tertiary Mammals of North America.", url: "https://doi.org/10.1017/CBO9780511542947.026" }
+    ]
+  }
+];
+
+console.log("Total generated species count:", newSpeciesList.length);
+
+fs.writeFileSync(
+  path.join(__dirname, '../prisma/new_species_batch.json'),
+  JSON.stringify(newSpeciesList, null, 2),
+  'utf8'
+);
+
+console.log("Successfully written to backend/prisma/new_species_batch.json");
