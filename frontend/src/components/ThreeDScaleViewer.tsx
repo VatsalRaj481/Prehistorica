@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Grid, Html } from '@react-three/drei';
 import * as THREE from 'three';
@@ -11,191 +11,98 @@ interface ThreeDScaleViewerProps {
   heightM?: number | null;
   weightKg?: number | null;
   clade?: string | null;
+  imageUrl?: string | null;
 }
 
-// Low-poly procedural creature model built with Three.js primitives (1 Three.js unit = 1 meter)
-function LowPolyCreature({
-  lengthM = 10,
-  heightM = 3.5,
-  clade = 'Theropod',
+// Extruded 3D Silhouette Specimen Mesh using species' 2D life reconstruction artwork
+function CutoutSpecimen({
+  imageUrl,
+  lengthM = 8,
+  heightM = 3,
   wireframe = false
 }: {
-  lengthM?: number;
-  heightM?: number;
-  clade?: string;
-  wireframe?: boolean;
+  imageUrl?: string | null;
+  lengthM: number;
+  heightM: number;
+  wireframe: boolean;
 }) {
   const groupRef = useRef<THREE.Group>(null);
+  const [texture, setTexture] = useState<THREE.Texture | null>(null);
+  const [loadFailed, setLoadFailed] = useState(false);
 
-  // Animate gentle idling breathing motion
+  useEffect(() => {
+    if (!imageUrl) {
+      setLoadFailed(true);
+      return;
+    }
+
+    const loader = new THREE.TextureLoader();
+    loader.setCrossOrigin('anonymous');
+    loader.load(
+      imageUrl,
+      (tex) => {
+        tex.colorSpace = THREE.SRGBColorSpace;
+        setTexture(tex);
+        setLoadFailed(false);
+      },
+      undefined,
+      () => {
+        setLoadFailed(true);
+      }
+    );
+  }, [imageUrl]);
+
+  // Gentle idling breathing motion
   useFrame((state) => {
     if (groupRef.current) {
-      groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 1.5) * 0.04;
+      groupRef.current.position.y = heightM / 2 + Math.sin(state.clock.elapsedTime * 1.5) * 0.03;
     }
   });
 
-  const material = new THREE.MeshStandardMaterial({
-    color: '#D97706', // Warm amber museum specimen tone
-    roughness: 0.4,
-    metalness: 0.25,
-    wireframe: wireframe,
-    flatShading: true
-  });
+  // Calculate slight 3D depth (thickness proportional to size)
+  const depth = Math.max(0.08, Math.min(0.25, lengthM * 0.02));
 
-  const accentMaterial = new THREE.MeshStandardMaterial({
-    color: '#B45309', // Terracotta/Rust accent
-    roughness: 0.45,
-    metalness: 0.3,
-    wireframe: wireframe,
-    flatShading: true
-  });
-
-  const normClade = (clade || '').toLowerCase();
-  const isSauropod = normClade.includes('sauropod');
-  const isPterosaur = normClade.includes('pterosaur');
-  const isMarine = normClade.includes('marine') || normClade.includes('piscivore') || normClade.includes('ichthyosaur');
-
-  // Scale parameters (1 unit = 1 meter, with realistic proportions)
-  const len = Math.max(1.2, lengthM * 0.35);
-  const ht = Math.max(0.7, heightM * 0.45);
-
-  if (isSauropod) {
-    return (
-      <group ref={groupRef} position={[-len * 0.2, ht * 0.45, 0]}>
-        {/* Main Barrel Torso */}
-        <mesh material={material} position={[0, 0, 0]} rotation={[Math.PI / 2, 0, 0]}>
-          <cylinderGeometry args={[ht * 0.45, ht * 0.5, len * 0.45, 8]} />
-        </mesh>
-
-        {/* Sweeping Long Neck */}
-        <mesh material={material} position={[0, ht * 0.6, len * 0.3]} rotation={[0.4, 0, 0]}>
-          <cylinderGeometry args={[ht * 0.15, ht * 0.3, ht * 1.2, 7]} />
-        </mesh>
-
-        {/* Head */}
-        <mesh material={accentMaterial} position={[0, ht * 1.1, len * 0.48]}>
-          <boxGeometry args={[ht * 0.22, ht * 0.18, ht * 0.32]} />
-        </mesh>
-
-        {/* Whip Tail */}
-        <mesh material={material} position={[0, ht * 0.05, -len * 0.4]} rotation={[-0.2, 0, 0]}>
-          <coneGeometry args={[ht * 0.25, len * 0.6, 7]} />
-        </mesh>
-
-        {/* 4 Pillar Legs */}
-        {[-ht * 0.35, ht * 0.35].map((x, i) => (
-          <React.Fragment key={i}>
-            {/* Front Leg */}
-            <mesh material={accentMaterial} position={[x, -ht * 0.45, len * 0.15]}>
-              <cylinderGeometry args={[ht * 0.12, ht * 0.14, ht * 0.9, 6]} />
-            </mesh>
-            {/* Rear Leg */}
-            <mesh material={accentMaterial} position={[x, -ht * 0.45, -len * 0.18]}>
-              <cylinderGeometry args={[ht * 0.14, ht * 0.15, ht * 0.9, 6]} />
-            </mesh>
-          </React.Fragment>
-        ))}
-      </group>
-    );
-  }
-
-  if (isPterosaur) {
-    return (
-      <group ref={groupRef} position={[0, heightM * 0.5 + 1.2, 0]}>
-        {/* Torso */}
-        <mesh material={material} position={[0, 0, 0]} rotation={[0.3, 0, 0]}>
-          <cylinderGeometry args={[0.15, 0.2, 0.9, 6]} />
-        </mesh>
-        {/* Head & Long Crest */}
-        <mesh material={accentMaterial} position={[0, 0.3, 0.35]} rotation={[0.4, 0, 0]}>
-          <coneGeometry args={[0.12, 0.8, 5]} />
-        </mesh>
-        {/* Expanded Wings */}
-        <mesh material={material} position={[-len * 0.45, 0, 0]} rotation={[0, 0, -0.15]}>
-          <boxGeometry args={[len * 0.9, 0.03, 0.6]} />
-        </mesh>
-        <mesh material={material} position={[len * 0.45, 0, 0]} rotation={[0, 0, 0.15]}>
-          <boxGeometry args={[len * 0.9, 0.03, 0.6]} />
-        </mesh>
-      </group>
-    );
-  }
-
-  if (isMarine) {
-    return (
-      <group ref={groupRef} position={[0, ht * 0.5 + 0.5, 0]}>
-        {/* Streamlined Torpedo Body */}
-        <mesh material={material} position={[0, 0, 0]} rotation={[Math.PI / 2, 0, 0]}>
-          <cylinderGeometry args={[ht * 0.1, ht * 0.45, len * 0.8, 8]} />
-        </mesh>
-        {/* Snout */}
-        <mesh material={accentMaterial} position={[0, 0, len * 0.45]} rotation={[Math.PI / 2, 0, 0]}>
-          <coneGeometry args={[ht * 0.15, len * 0.25, 7]} />
-        </mesh>
-        {/* Flippers */}
-        <mesh material={accentMaterial} position={[-ht * 0.4, 0, len * 0.1]} rotation={[0, 0, -0.4]}>
-          <boxGeometry args={[ht * 0.6, 0.04, 0.3]} />
-        </mesh>
-        <mesh material={accentMaterial} position={[ht * 0.4, 0, len * 0.1]} rotation={[0, 0, 0.4]}>
-          <boxGeometry args={[ht * 0.6, 0.04, 0.3]} />
-        </mesh>
-      </group>
-    );
-  }
-
-  // Default Theropod / Bipedal Dinosaur (T-rex, Spinosaurus, Rajasaurus, etc.)
   return (
-    <group ref={groupRef} position={[-len * 0.1, ht * 0.5, 0]}>
-      {/* Torso */}
-      <mesh material={material} position={[0, 0, 0]} rotation={[0.2, 0, 0]}>
-        <cylinderGeometry args={[ht * 0.35, ht * 0.4, len * 0.4, 8]} />
+    <group ref={groupRef} position={[0, heightM / 2, 0]}>
+      {/* 3D Extruded Backing Panel & Specimen Frame */}
+      <mesh position={[0, 0, -depth / 2]}>
+        <boxGeometry args={[lengthM + 0.06, heightM + 0.06, depth]} />
+        <meshStandardMaterial
+          color="#B45309"
+          roughness={0.45}
+          metalness={0.3}
+          wireframe={wireframe}
+          flatShading
+        />
       </mesh>
 
-      {/* Neck */}
-      <mesh material={material} position={[0, ht * 0.35, len * 0.2]} rotation={[0.5, 0, 0]}>
-        <cylinderGeometry args={[ht * 0.2, ht * 0.28, ht * 0.5, 7]} />
-      </mesh>
-
-      {/* Head & Jaws */}
-      <mesh material={material} position={[0, ht * 0.55, len * 0.35]}>
-        <boxGeometry args={[ht * 0.22, ht * 0.22, len * 0.22]} />
-      </mesh>
-
-      {/* Tapered Snout */}
-      <mesh material={accentMaterial} position={[0, ht * 0.5, len * 0.48]}>
-        <boxGeometry args={[ht * 0.18, ht * 0.15, len * 0.16]} />
-      </mesh>
-
-      {/* Long Tail */}
-      <mesh material={material} position={[0, ht * 0.05, -len * 0.35]} rotation={[-0.15, 0, 0]}>
-        <coneGeometry args={[ht * 0.28, len * 0.55, 7]} />
-      </mesh>
-
-      {/* Bipedal Hind Legs */}
-      {[-ht * 0.22, ht * 0.22].map((x, i) => (
-        <group key={i} position={[x, -ht * 0.5, -len * 0.05]}>
-          {/* Upper Thigh */}
-          <mesh material={accentMaterial} position={[0, ht * 0.2, 0]} rotation={[-0.2, 0, 0]}>
-            <cylinderGeometry args={[ht * 0.14, ht * 0.1, ht * 0.45, 6]} />
-          </mesh>
-          {/* Lower Shin */}
-          <mesh material={accentMaterial} position={[0, -ht * 0.15, len * 0.03]} rotation={[0.2, 0, 0]}>
-            <cylinderGeometry args={[ht * 0.08, ht * 0.06, ht * 0.45, 6]} />
-          </mesh>
-          {/* Foot */}
-          <mesh material={material} position={[0, -ht * 0.38, len * 0.08]}>
-            <boxGeometry args={[ht * 0.12, 0.06, len * 0.12]} />
-          </mesh>
-        </group>
-      ))}
-
-      {/* Small Forelimb Arms */}
-      <mesh material={accentMaterial} position={[-ht * 0.18, 0.05, len * 0.16]} rotation={[0.4, 0, 0]}>
-        <boxGeometry args={[0.06, ht * 0.2, 0.06]} />
-      </mesh>
-      <mesh material={accentMaterial} position={[ht * 0.18, 0.05, len * 0.16]} rotation={[0.4, 0, 0]}>
-        <boxGeometry args={[0.06, ht * 0.2, 0.06]} />
-      </mesh>
+      {/* Front Life Reconstruction Artwork Plane */}
+      {texture && !loadFailed ? (
+        <mesh position={[0, 0, depth / 2 + 0.005]}>
+          <planeGeometry args={[lengthM, heightM]} />
+          <meshStandardMaterial
+            map={texture}
+            transparent={true}
+            alphaTest={0.05}
+            side={THREE.DoubleSide}
+            roughness={0.35}
+            metalness={0.1}
+            wireframe={wireframe}
+          />
+        </mesh>
+      ) : (
+        /* Fallback Amber Specimen Silhouette Plane */
+        <mesh position={[0, 0, depth / 2 + 0.005]}>
+          <planeGeometry args={[lengthM, heightM]} />
+          <meshStandardMaterial
+            color="#D97706"
+            roughness={0.3}
+            metalness={0.2}
+            side={THREE.DoubleSide}
+            wireframe={wireframe}
+          />
+        </mesh>
+      )}
     </group>
   );
 }
@@ -241,7 +148,7 @@ export default function ThreeDScaleViewer({
   lengthM = 12,
   heightM = 4,
   weightKg,
-  clade
+  imageUrl
 }: ThreeDScaleViewerProps) {
   const [wireframe, setWireframe] = useState(false);
   const [autoRotate, setAutoRotate] = useState(true);
@@ -250,7 +157,7 @@ export default function ThreeDScaleViewer({
   const safeLength = lengthM && lengthM > 0 ? lengthM : 8;
   const safeHeight = heightM && heightM > 0 ? heightM : 3;
 
-  const cameraDistance = Math.max(6, safeLength * 0.75);
+  const cameraDistance = Math.max(5.5, safeLength * 0.75);
 
   const handleResetView = () => {
     if (controlsRef.current) {
@@ -288,10 +195,10 @@ export default function ThreeDScaleViewer({
                 ? 'bg-amber-500/20 border-amber-500 text-amber-300'
                 : 'bg-slate-900/90 border-slate-800 text-slate-300 hover:text-white'
             }`}
-            title="Toggle Mesh Shading"
+            title="Toggle Bounding Frame Shading"
           >
             <Box className="h-3.5 w-3.5" />
-            <span className="hidden sm:inline">{wireframe ? 'Shaded' : 'Low-Poly Mesh'}</span>
+            <span className="hidden sm:inline">{wireframe ? 'Solid' : 'Bounding Frame'}</span>
           </button>
 
           <button
@@ -326,20 +233,20 @@ export default function ThreeDScaleViewer({
         <color attach="background" args={['#090D16']} />
 
         {/* Museum Spotlight & Ambient Lighting */}
-        <ambientLight intensity={0.65} />
+        <ambientLight intensity={0.7} />
         <directionalLight position={[10, 15, 10]} intensity={1.3} castShadow />
         <pointLight position={[-10, -10, -10]} intensity={0.4} color="#D97706" />
 
-        {/* 3D Procedural Specimen Creature */}
-        <LowPolyCreature
+        {/* 3D Extruded Silhouette Specimen */}
+        <CutoutSpecimen
+          imageUrl={imageUrl}
           lengthM={safeLength}
           heightM={safeHeight}
-          clade={clade || undefined}
           wireframe={wireframe}
         />
 
         {/* 1.8m Architectural Human Figure */}
-        <HumanScaleFigure positionX={Math.max(2.2, safeLength * 0.25 + 1.5)} />
+        <HumanScaleFigure positionX={Math.max(2.2, safeLength * 0.55 + 1.2)} />
 
         {/* Ground Floor Grid */}
         <Grid

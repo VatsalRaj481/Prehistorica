@@ -170,24 +170,33 @@ export default function SpeciesDetail() {
       </div>
 
       {/* Modern Museum Pavilion Exhibit Hero 3D Stage */}
-      <div className="space-y-2">
-        <div className="flex items-center justify-between text-xs font-mono text-slate-400 pb-1">
-          <span className="flex items-center gap-2 text-slate-300 font-bold uppercase tracking-wider">
-            <Layers className="h-4 w-4 text-amber-500" /> Interactive Scale Specimen Stage
-          </span>
-          <span className="text-amber-500/80 font-bold uppercase tracking-widest text-[10px]">
-            Rendered at 1:1 Scale
-          </span>
-        </div>
+      {(() => {
+        let mediaArr: any[] = [];
+        try { mediaArr = typeof species.media === 'string' ? JSON.parse(species.media) : (species.media || []); } catch (e) {}
+        const primaryArtUrl = mediaArr.find((m: any) => m.type === 'art')?.url || mediaArr[0]?.url || species.reconstructionImageUrl || null;
 
-        <ThreeDScaleViewer
-          speciesName={species.name}
-          lengthM={species.lengthM}
-          heightM={species.heightM}
-          weightKg={species.weightKg}
-          clade={species.clade}
-        />
-      </div>
+        return (
+          <div className="space-y-2">
+            <div className="flex items-center justify-between text-xs font-mono text-slate-400 pb-1">
+              <span className="flex items-center gap-2 text-slate-300 font-bold uppercase tracking-wider">
+                <Layers className="h-4 w-4 text-amber-500" /> Interactive Scale Specimen Stage
+              </span>
+              <span className="text-amber-500/80 font-bold uppercase tracking-widest text-[10px]">
+                Rendered at 1:1 Scale
+              </span>
+            </div>
+
+            <ThreeDScaleViewer
+              speciesName={species.name}
+              lengthM={species.lengthM}
+              heightM={species.heightM}
+              weightKg={species.weightKg}
+              clade={species.clade}
+              imageUrl={primaryArtUrl}
+            />
+          </div>
+        );
+      })()}
 
       {/* Stark Architectural Metrics Banner */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-slate-800 border border-slate-800 p-px shadow-2xl">
