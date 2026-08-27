@@ -9,7 +9,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 async function main() {
-  console.log('Seeding species data...');
+  // ══════════════════════════════════════════════════════════════════════════════
+  // SAFETY GUARD — INSERT-ONLY MODE
+  // seed.ts will NEVER update or overwrite any existing row.
+  // All manually-corrected fields (media, taxonomy, interestingFacts, sources,
+  // closestLivingRelatives, habitat) are permanently safe from seed runs.
+  // To force a full re-seed from scratch, manually truncate the Species table.
+  // ══════════════════════════════════════════════════════════════════════════════
+  console.log('Seeding species data (INSERT-ONLY — existing rows will be skipped)...');
   const files = ['species_triassic.json', 'species_jurassic.json', 'species_cretaceous.json', 'species_others.json'];
   let speciesList: any[] = [];
 
@@ -24,7 +31,10 @@ async function main() {
     }
   }
 
-  console.log(`Merged ${speciesList.length} species from split files. Sanitizing and upserting into DB...`);
+  // Pre-load ALL existing species names — skip any that already exist in DB.
+  const existingRows = await prisma.species.findMany({ select: { name: true } });
+  const existingNames = new Set(existingRows.map((r: { name: string }) => r.name.toLowerCase().trim()));
+  console.log(`DB already has ${existingNames.size} species. Only genuinely NEW rows will be inserted.`);
 
   const cladeMap: Record<string, Clade> = {
     'marine reptile': Clade.Marine_Reptile,
@@ -57,7 +67,16 @@ async function main() {
     'other': Clade.Other
   };
 
+  let inserted = 0;
+  let skipped = 0;
+
   for (const s of speciesList) {
+    // ── SKIP if this species already exists — never overwrite live data ──
+    if (existingNames.has((s.name || '').toLowerCase().trim())) {
+      skipped++;
+      continue;
+    }
+
     const interestingFactsArray = typeof s.interestingFacts === 'string'
       ? [s.interestingFacts]
       : Array.isArray(s.interestingFacts)
@@ -179,14 +198,13 @@ async function main() {
       placeholder: false
     };
 
-    await prisma.species.upsert({
-      where: { name: s.name },
-      update: upsertData,
-      create: upsertData
-    });
+    // INSERT ONLY — never update an existing row
+    await prisma.species.create({ data: upsertData });
+    inserted++;
   }
 
-  console.log('Species entries upserted. Backfilling related species relations (genus/family-based)...');
+  console.log(`Seed complete: ${inserted} new species inserted, ${skipped} existing species skipped (untouched).`);
+  console.log('Backfilling related species relations (genus/family-based)...');
 
   await prisma.speciesRelation.deleteMany({});
 
