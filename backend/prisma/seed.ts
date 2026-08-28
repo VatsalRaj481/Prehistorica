@@ -31,10 +31,32 @@ async function main() {
     }
   }
 
-  // Pre-load ALL existing species names — skip any that already exist in DB.
-  const existingRows = await prisma.species.findMany({ select: { name: true } });
-  const existingNames = new Set(existingRows.map((r: { name: string }) => r.name.toLowerCase().trim()));
-  console.log(`DB already has ${existingNames.size} species. Only genuinely NEW rows will be inserted.`);
+  // Helper to normalize strings (lowercase, trimmed, collapsed inner whitespace)
+  function normalizeStr(str?: string): string {
+    if (!str) return '';
+    return str.toLowerCase().trim().replace(/\s+/g, ' ');
+  }
+
+  // Pre-load ALL existing normalized names, scientificNames, and genus keys
+  const existingRows = await prisma.species.findMany({
+    select: { name: true, scientificName: true }
+  });
+
+  // existingNormalizedKeys stores ONLY full normalized names and full normalized scientificNames
+  const existingNormalizedKeys = new Set<string>();
+  const existingGenera = new Set<string>();
+
+  for (const r of existingRows) {
+    const normName = normalizeStr(r.name);
+    const normSciName = normalizeStr(r.scientificName || r.name);
+    if (normName) existingNormalizedKeys.add(normName);
+    if (normSciName) existingNormalizedKeys.add(normSciName);
+
+    const genus = normSciName.split(' ')[0] || normName.split(' ')[0];
+    if (genus) existingGenera.add(genus);
+  }
+
+  console.log(`DB has ${existingRows.length} species records. Only genuinely NEW species will be inserted.`);
 
   const cladeMap: Record<string, Clade> = {
     'marine reptile': Clade.Marine_Reptile,
@@ -71,8 +93,24 @@ async function main() {
   let skipped = 0;
 
   for (const s of speciesList) {
+    const normName = normalizeStr(s.name);
+    const normSciName = normalizeStr(s.scientificName || s.name);
+
+    // Check 1: Full exact match against existing names / scientificNames
+    let isDuplicate = existingNormalizedKeys.has(normName) || existingNormalizedKeys.has(normSciName);
+
+    // Check 2: Single-word candidate name handling (e.g. candidate name "Ankylosaurus" when "Ankylosaurus magniventris" exists)
+    // ONLY trigger if candidate itself is a single-word genus name without species epithet
+    const isCandidateSingleWord = !normName.includes(' ') || !normSciName.includes(' ');
+    if (!isDuplicate && isCandidateSingleWord) {
+      const candGenus = normSciName.split(' ')[0] || normName.split(' ')[0];
+      if (candGenus && existingGenera.has(candGenus)) {
+        isDuplicate = true;
+      }
+    }
+
     // ── SKIP if this species already exists — never overwrite live data ──
-    if (existingNames.has((s.name || '').toLowerCase().trim())) {
+    if (isDuplicate) {
       skipped++;
       continue;
     }
