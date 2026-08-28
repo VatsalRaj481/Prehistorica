@@ -44,7 +44,7 @@
     "geographicRange": "{\"region\":\"Europe\",\"country\":\"Germany\",\"fossilFormation\":\"Trossingen Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Sauropodomorpha\",\"family\":\"Plateosauridae\",\"genus\":\"Plateosaurus\",\"species\":\"Plateosaurus trossingensis\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/15-Plateosaurus.png\",\"type\":\"art\",\"credit\":\"David J. Button, Paul M. Barrett and Emily J. Rayfield (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Jaw_musculature_in_Plateosaurus_and_Camarasaurus.png\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/e0/Plateosaurus_BW.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 2.5)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Plateosaurus_BW.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c5/Jaw_musculature_in_Plateosaurus_and_Camarasaurus.png\",\"type\":\"photo\",\"credit\":\"Fossil jaw musculature diagram\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Jaw_musculature_in_Plateosaurus_and_Camarasaurus.png\"}]",
     "discoveryHistory": "Discovered in 1834 near Nuremberg, Germany, by Johann Engelhardt. Described by Hermann von Meyer in 1837.",
     "interestingFacts": "{\"An early sauropodomorph, a group that would eventually evolve into the giant, long-necked sauropods.\",\"Strictly bipedal; its hands were unable to rotate, making quadrupedal walking anatomically impossible.\",\"Fossil mass graves in Europe suggest they traveled in herds or became trapped in mud flats.\"}",
     "sizeNotes": "Highly variable adult sizes, ranging from 4.8 to 10 meters in length and 600 to 4,000 kg.",
@@ -55,7 +55,7 @@
     "sources": "[{\"citation\":\"von Meyer, H. (1837). Original description of Plateosaurus trossingensis.\",\"url\":\"https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=38670\"},{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Plateosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Plateosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.652Z",
-    "updatedAt": "2026-08-26T11:27:32.608Z"
+    "updatedAt": "2026-08-28T15:13:40.340Z"
   },
   {
     "id": 16,

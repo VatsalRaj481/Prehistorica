@@ -102,7 +102,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation (Cleveland-Lloyd, UT)\"}",
     "taxonomy": "{\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Allosauridae\",\"family\":\"Allosauridae\",\"species\":\"Allosaurus fragilis\",\"genus\":\"Allosaurus\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/20-Allosaurus.jpg\",\"type\":\"art\",\"credit\":\"Steveoc 86 (CC BY 2.5)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Allosaurus%20Jaws%20Steveoc86.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/0/03/Allosaurus_jimmadseni.png\",\"type\":\"art\",\"credit\":\"Fred Wierum (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Allosaurus_jimmadseni.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/f/fe/Allosaurus_Jaws_Steveoc86.jpg\",\"type\":\"photo\",\"credit\":\"Fossil jaw specimen photo\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Allosaurus_Jaws_Steveoc86.jpg\"}]",
     "discoveryHistory": "First described by Othniel Charles Marsh in 1877 based on fragmentary remains from Colorado. Dozens of individuals were later found at the Cleveland-Lloyd Dinosaur Quarry in Utah.",
     "interestingFacts": "{\"The most common large predator of Late Jurassic North America, accounting for a vast majority of theropod fossils found.\",\"Its skull was highly flexible and could expand laterally, allowing it to swallow large chunks of meat.\",\"Had a lower bite force than modern lions, suggesting it used its skull like an axe to slash at prey.\"}",
     "sizeNotes": "Average length was 8.5 meters (28 feet), but rare large specimens (like Saurophaganax) reached 11-12 meters.",
@@ -113,7 +113,7 @@
     "sources": "[{\"citation\":\"Marsh, O.C. (1877). Notice of new dinosaurian reptiles from the Jurassic formation. American Journal of Science 14: 514–516.\",\"url\":\"https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=38596\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.874Z",
-    "updatedAt": "2026-08-26T16:22:06.176Z"
+    "updatedAt": "2026-08-28T15:13:39.832Z"
   },
   {
     "id": 21,
@@ -3524,7 +3524,7 @@
     "geographicRange": "{\"region\": \"Asia\", \"country\": \"India\", \"fossilFormation\": \"Kota Formation\", \"coordinates\": [18.8, 79.8]}",
     "taxonomy": "{\"domain\": \"Eukaryota\", \"kingdom\": \"Animalia\", \"phylum\": \"Chordata\", \"class\": \"Reptilia\", \"order\": \"Testudines\", \"family\": \"Indochelyidae\", \"genus\": \"Indochelys\", \"species\": \"Indochelys spatulata\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/2317-self-hosted.jpg\",\"type\":\"art\",\"credit\":\"Walter Joyce, Saswati Bandyopadhyay (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:GSI-20380-Indochelys-spatulata-holotype-Maharashtra-India-Kota-Formation.png\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/b/b0/Proganochelys_BW.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Proganochelys_BW.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/5/5c/GSI-20380-Indochelys-spatulata-holotype-Maharashtra-India-Kota-Formation.png\",\"type\":\"photo\",\"credit\":\"Fossil holotype shell specimen photo\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:GSI-20380-Indochelys-spatulata-holotype-Maharashtra-India-Kota-Formation.png\"}]",
     "discoveryHistory": "Described by Datta et al. in 2000 from Kota limestone beds, Telangana.",
     "interestingFacts": "[\"Early aquatic turtle.\", \"Thick spatulate shell.\", \"Endemic to Early Jurassic India.\"]",
     "sizeNotes": "Adult length ~0.5m, height ~0.15m, estimated weight ~5kg.",
@@ -3535,7 +3535,7 @@
     "sources": "[{\"citation\": \"Datta, P.M., et al. (2000). J. Vertebr. Paleontol.\", \"url\": \"https://doi.org/10.1671/0272-4634(2000)020[0404:ANTFTT]2.0.CO;2\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T14:04:39.161Z",
-    "updatedAt": "2026-08-26T14:36:50.334Z"
+    "updatedAt": "2026-08-28T15:13:40.438Z"
   },
   {
     "id": 2318,

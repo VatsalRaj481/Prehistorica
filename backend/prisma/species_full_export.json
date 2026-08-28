@@ -421,7 +421,7 @@
     "geographicRange": "{\"region\":\"Europe\",\"country\":\"Germany\",\"fossilFormation\":\"Trossingen Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Sauropodomorpha\",\"family\":\"Plateosauridae\",\"genus\":\"Plateosaurus\",\"species\":\"Plateosaurus trossingensis\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/15-Plateosaurus.png\",\"type\":\"art\",\"credit\":\"David J. Button, Paul M. Barrett and Emily J. Rayfield (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Jaw_musculature_in_Plateosaurus_and_Camarasaurus.png\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/e0/Plateosaurus_BW.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 2.5)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Plateosaurus_BW.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c5/Jaw_musculature_in_Plateosaurus_and_Camarasaurus.png\",\"type\":\"photo\",\"credit\":\"Fossil jaw musculature diagram\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Jaw_musculature_in_Plateosaurus_and_Camarasaurus.png\"}]",
     "discoveryHistory": "Discovered in 1834 near Nuremberg, Germany, by Johann Engelhardt. Described by Hermann von Meyer in 1837.",
     "interestingFacts": "{\"An early sauropodomorph, a group that would eventually evolve into the giant, long-necked sauropods.\",\"Strictly bipedal; its hands were unable to rotate, making quadrupedal walking anatomically impossible.\",\"Fossil mass graves in Europe suggest they traveled in herds or became trapped in mud flats.\"}",
     "sizeNotes": "Highly variable adult sizes, ranging from 4.8 to 10 meters in length and 600 to 4,000 kg.",
@@ -432,7 +432,7 @@
     "sources": "[{\"citation\":\"von Meyer, H. (1837). Original description of Plateosaurus trossingensis.\",\"url\":\"https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=38670\"},{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Plateosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Plateosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.652Z",
-    "updatedAt": "2026-08-26T11:27:32.608Z"
+    "updatedAt": "2026-08-28T15:13:40.340Z"
   },
   {
     "id": 16,
@@ -566,7 +566,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation (Cleveland-Lloyd, UT)\"}",
     "taxonomy": "{\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Allosauridae\",\"family\":\"Allosauridae\",\"species\":\"Allosaurus fragilis\",\"genus\":\"Allosaurus\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/20-Allosaurus.jpg\",\"type\":\"art\",\"credit\":\"Steveoc 86 (CC BY 2.5)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Allosaurus%20Jaws%20Steveoc86.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/0/03/Allosaurus_jimmadseni.png\",\"type\":\"art\",\"credit\":\"Fred Wierum (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Allosaurus_jimmadseni.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/f/fe/Allosaurus_Jaws_Steveoc86.jpg\",\"type\":\"photo\",\"credit\":\"Fossil jaw specimen photo\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Allosaurus_Jaws_Steveoc86.jpg\"}]",
     "discoveryHistory": "First described by Othniel Charles Marsh in 1877 based on fragmentary remains from Colorado. Dozens of individuals were later found at the Cleveland-Lloyd Dinosaur Quarry in Utah.",
     "interestingFacts": "{\"The most common large predator of Late Jurassic North America, accounting for a vast majority of theropod fossils found.\",\"Its skull was highly flexible and could expand laterally, allowing it to swallow large chunks of meat.\",\"Had a lower bite force than modern lions, suggesting it used its skull like an axe to slash at prey.\"}",
     "sizeNotes": "Average length was 8.5 meters (28 feet), but rare large specimens (like Saurophaganax) reached 11-12 meters.",
@@ -577,7 +577,7 @@
     "sources": "[{\"citation\":\"Marsh, O.C. (1877). Notice of new dinosaurian reptiles from the Jurassic formation. American Journal of Science 14: 514–516.\",\"url\":\"https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=38596\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.874Z",
-    "updatedAt": "2026-08-26T16:22:06.176Z"
+    "updatedAt": "2026-08-28T15:13:39.832Z"
   },
   {
     "id": 21,
@@ -6714,7 +6714,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Two Medicine\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Archosauria\",\"family\":\"Ceratopsidae\",\"genus\":\"Achelousaurus\",\"species\":\"Achelousaurus horneri\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/477-Achelousaurus.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Achelousaurus_horneri.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/2/23/Achelousaurus_BW.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Achelousaurus_BW.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/477-Achelousaurus.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skull frill specimen photo\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Achelousaurus_horneri.jpg\"}]",
     "discoveryHistory": "• Discovered in 1987 by a team led by Jack Horner in Montana.\n• Named by Scott Sampson in 1995 alongside Einiosaurus.\n• Represents an evolutionary transition between Einiosaurus and Pachyrhinosaurus.",
     "interestingFacts": "[\"Had bony bosses on its snout and above its eyes instead of sharp horns.\",\"Named after Achelous, a Greek river deity who had a horn torn off.\",\"Fossils show a clear progression of horn loss within its lineage.\"]",
     "sizeNotes": "Transitional form.",
@@ -6725,7 +6725,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Achelousaurus horneri description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Achelousaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:05.903Z",
-    "updatedAt": "2026-08-27T08:36:15.840Z"
+    "updatedAt": "2026-08-28T15:13:10.531Z"
   },
   {
     "id": 478,
@@ -10397,7 +10397,7 @@
     "geographicRange": "{\"region\": \"Oceania\", \"country\": \"Australia\", \"fossilFormation\": \"Lightning Ridge\", \"coordinates\": [-29.4, 147.9]}",
     "taxonomy": "{\"domain\": \"Eukaryota\", \"kingdom\": \"Animalia\", \"phylum\": \"Chordata\", \"class\": \"Mammalia\", \"order\": \"Monotremata\", \"family\": \"Kollikodontidae\", \"genus\": \"Kollikodon\", \"species\": \"Kollikodon ritchiei\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/1672-self-hosted.jpg\",\"type\":\"art\",\"credit\":\"Fotógrafo: Stuart Humphreys - Foto de fóssil de Kollikodon do Museu da Australia (Attribution)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Kollikodon.fossil.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/5/5e/Kollikodon_ritchiei_life_restoration.jpg\",\"type\":\"art\",\"credit\":\"Paleoart restoration of Kollikodon (Wikimedia Commons CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/Category:Kollikodon\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/b/b4/Kollikodon.fossil.jpg\",\"type\":\"photo\",\"credit\":\"Opalized fossil jaw specimen photo\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Kollikodon.fossil.jpg\"}]",
     "discoveryHistory": "Discovered in 1995 in an opalized dentary bone.",
     "interestingFacts": "[\"Giant early monotreme mammal.\", \"Molar teeth with rounded crushing cusps.\", \"Opalized fossil specimen.\"]",
     "sizeNotes": "Adult length ~1.0m, height ~0.3m, estimated weight ~5kg.",
@@ -10408,7 +10408,7 @@
     "sources": "[{\"citation\": \"Flannery, T.F., et al. (1995). Nature.\", \"url\": \"https://doi.org/10.1038/377418a0\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:06.715Z",
-    "updatedAt": "2026-08-26T14:35:33.864Z"
+    "updatedAt": "2026-08-28T15:13:40.387Z"
   },
   {
     "id": 1729,
@@ -12514,7 +12514,7 @@
     "geographicRange": "{\"region\": \"Asia\", \"country\": \"India\", \"fossilFormation\": \"Kota Formation\", \"coordinates\": [18.8, 79.8]}",
     "taxonomy": "{\"domain\": \"Eukaryota\", \"kingdom\": \"Animalia\", \"phylum\": \"Chordata\", \"class\": \"Reptilia\", \"order\": \"Testudines\", \"family\": \"Indochelyidae\", \"genus\": \"Indochelys\", \"species\": \"Indochelys spatulata\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/2317-self-hosted.jpg\",\"type\":\"art\",\"credit\":\"Walter Joyce, Saswati Bandyopadhyay (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:GSI-20380-Indochelys-spatulata-holotype-Maharashtra-India-Kota-Formation.png\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/b/b0/Proganochelys_BW.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Proganochelys_BW.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/5/5c/GSI-20380-Indochelys-spatulata-holotype-Maharashtra-India-Kota-Formation.png\",\"type\":\"photo\",\"credit\":\"Fossil holotype shell specimen photo\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:GSI-20380-Indochelys-spatulata-holotype-Maharashtra-India-Kota-Formation.png\"}]",
     "discoveryHistory": "Described by Datta et al. in 2000 from Kota limestone beds, Telangana.",
     "interestingFacts": "[\"Early aquatic turtle.\", \"Thick spatulate shell.\", \"Endemic to Early Jurassic India.\"]",
     "sizeNotes": "Adult length ~0.5m, height ~0.15m, estimated weight ~5kg.",
@@ -12525,7 +12525,7 @@
     "sources": "[{\"citation\": \"Datta, P.M., et al. (2000). J. Vertebr. Paleontol.\", \"url\": \"https://doi.org/10.1671/0272-4634(2000)020[0404:ANTFTT]2.0.CO;2\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T14:04:39.161Z",
-    "updatedAt": "2026-08-26T14:36:50.334Z"
+    "updatedAt": "2026-08-28T15:13:40.438Z"
   },
   {
     "id": 2318,
