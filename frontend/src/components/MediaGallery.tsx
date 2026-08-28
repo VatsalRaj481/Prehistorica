@@ -73,13 +73,21 @@ export default function MediaGallery({
     switch (type) {
       case 'art':
         return 'Life Reconstruction';
+      case 'taxonomy_diagram':
+        return 'Taxonomy Diagram';
+      case 'fossil_specimen':
       case 'photo':
         return 'Fossil Specimen';
-      case 'diagram':
+      case 'skeletal_reconstruction':
       case 'scale_diagram':
-        return 'Skeletal Diagram';
+      case 'diagram':
+        return 'Skeletal Reconstruction';
+      case 'comparative_anatomy':
+        return 'Comparative Anatomy';
+      case 'scientific_figure':
+        return 'Scientific Figure';
       default:
-        return 'Reconstruction';
+        return 'Life Reconstruction';
     }
   };
 
