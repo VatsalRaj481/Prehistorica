@@ -189,7 +189,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"Germany\",\"fossilFormation\":\"Stellichte Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Arthropoda\",\"class\":\"Diplopoda\",\"order\":\"Arthropleuridae\",\"family\":\"Arthropleuridae\",\"genus\":\"Arthropleura\",\"species\":\"Arthropleura armata\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/7-Arthropleura.png\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/5/55/20211224_Arthropleura_armata_diagrammatic_reconstruction.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/9/93/Arthropleura_armata_Palaeontographic57cass_0361.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/9/93/Arthropleura_armata_Palaeontographic57cass_0361.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/ca/Arthropleura_NT_small.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura email:nobu.tamura@yahoo.com  http://spinops.blogspot.com/ http://paleoexhibit.blogspot.com/ (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3AArthropleura_NT_small.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/9/93/Arthropleura_armata_Palaeontographic57cass_0361.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/9/93/Arthropleura_armata_Palaeontographic57cass_0361.jpg\"}]",
     "discoveryHistory": "• Initially described in 1854 based on fragmentary fossils from Germany.\n• A massive, nearly complete specimen was found in England in 2018.\n• Trackways attributed to it have been found in multiple locations across Europe and North America.",
     "interestingFacts": "[\"It is the largest known land invertebrate in Earth's history.\",\"Its colossal size was enabled by the high oxygen levels of the Carboniferous atmosphere.\",\"Despite its fearsome appearance, it was a herbivore that fed on rotting plant matter.\"]",
     "sizeNotes": "Ranged from 0.3 to 2.6 meters long; estimated weight up to 50 kg.",
@@ -200,7 +200,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Arthropleura armata description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Arthropleura%20armata\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:36.914Z",
-    "updatedAt": "2026-08-27T08:36:19.890Z"
+    "updatedAt": "2026-08-28T15:16:45.788Z"
   },
   {
     "id": 8,
@@ -1494,7 +1494,7 @@
     "geographicRange": "{\"continent\":\"Europe, North America\",\"region\":\"Midland Valley\",\"country\":\"United Kingdom (Scotland)\",\"fossilFormation\":\"Oil-Shale Group\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Sarcopterygii\",\"order\":\"Rhizodontida\",\"family\":\"Rhizodontidae\",\"genus\":\"Rhizodus\",\"species\":\"Rhizodus hibberti\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/a/a2/Rhizodus_hibberti.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Rhizodus (Wikimedia Commons CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Rhizodus_hibberti.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/4/4e/Rhizodus_hibberti_1DB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Rhizodus_hibberti_1DB.jpg\"}]",
     "discoveryHistory": "• First described by Richard Owen in 1840 from massive tooth specimens found near Edinburgh.\n• Fossilized scales up to 30 cm across and 22 cm long tusk-teeth were recovered in Scottish coal fields.\n• Biomechanical studies confirm massive pectoral fin musculature for rapid burst acceleration.",
     "interestingFacts": "[\"Possessed enormous 22 cm (9 inch) tusk-like teeth anchored deeply into massive jaws.\",\"Could likely lung onto land or shallow swamp margins to snatch terrestrial amphibians, similar to modern crocodiles.\",\"Its skin was covered in heavy, overlapping cosmoid scales providing armor against rival aquatic predators.\"]",
     "sizeNotes": "The largest known freshwater lobe-finned fish, reaching up to 7 meters in length.",
@@ -1505,7 +1505,7 @@
     "sources": "[{\"citation\":\"Jeffery, J. E. (2001). Pectoral fin anatomy of Rhizodus hibberti (Rhizodontida, Sarcopterygii). Journal of Vertebrate Paleontology.\",\"url\":\"https://doi.org/10.1671/0272-4634(2001)021[0495:PFAORH]2.0.CO;2\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.142Z",
-    "updatedAt": "2026-08-27T08:36:22.428Z"
+    "updatedAt": "2026-08-28T15:30:15.062Z"
   },
   {
     "id": 3168,
@@ -1523,7 +1523,7 @@
     "geographicRange": "{\"continent\":\"Europe, Asia\",\"region\":\"Mediterranean & Central Europe\",\"country\":\"Germany, United Kingdom, Italy, Greece\",\"fossilFormation\":\"Ebbsfleet Valley deposits\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Mammalia\",\"order\":\"Proboscidea\",\"family\":\"Elephantidae\",\"genus\":\"Palaeoloxodon\",\"species\":\"Palaeoloxodon antiquus\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/a/ab/Palaeoloxodon_antiquus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Palaeoloxodon antiquus (Wikimedia Commons CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Palaeoloxodon_antiquus.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/f/f6/Palaeoloxodon_antiquus.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Palaeoloxodon_antiquus.jpg\"}]",
     "discoveryHistory": "• Formally described in 1847 by Hugh Falconer and Proby Cautley.\n• Numerous butchered skeletons discovered across Europe alongside Neanderthal flint tools.\n• Genomic analysis in 2017 revealed Palaeoloxodon is closely related to modern African forest elephants.",
     "interestingFacts": "[\"One of the largest terrestrial mammals to ever walk the Earth, outsizing the Woolly Mammoth.\",\"Possessed long, nearly straight tusks reaching up to 3.8 meters in length.\",\"Coexisted with Neanderthals and early Homo sapiens, who actively hunted these leviathans with wooden spears.\"]",
     "sizeNotes": "Stood up to 4.2 meters tall at the shoulder and weighed up to 13-15 metric tonnes.",
@@ -1534,7 +1534,7 @@
     "sources": "[{\"citation\":\"Meyer, M. et al. (2017). Palaeogenomics of the straight-tusked elephant Palaeoloxodon antiquus. eLife.\",\"url\":\"https://doi.org/10.7554/eLife.25413\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.355Z",
-    "updatedAt": "2026-08-27T08:36:22.691Z"
+    "updatedAt": "2026-08-28T15:30:15.112Z"
   },
   {
     "id": 3169,
@@ -1552,7 +1552,7 @@
     "geographicRange": "{\"continent\":\"South America\",\"region\":\"Amazon & Orinoco Basins\",\"country\":\"Colombia, Venezuela, Brazil\",\"fossilFormation\":\"La Venta Formation, Urumaco Formation\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Pseudosuchia\",\"order\":\"Crocodylomorpha\",\"family\":\"Gavialidae\",\"genus\":\"Gryposuchus\",\"species\":\"Gryposuchus colombianus\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/1/1c/Gryposuchus_colombianus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Gryposuchus (Wikimedia Commons CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Gryposuchus_colombianus.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/3/30/Gryposuchus_colombianus_1DB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Gryposuchus_colombianus_1DB.jpg\"}]",
     "discoveryHistory": "• First described by Langston in 1965 from fossils collected at La Venta, Colombia.\n• Exceptionally complete skulls recovered from Miocene deposits in Venezuela and Peru.\n• Represents one of the largest members of the gharial family Gavialidae.",
     "interestingFacts": "[\"Possessed an extremely elongated, narrow snout packed with over 80 inter-locking needle teeth.\",\"Inhabited the mega-wetlands of Miocene South America alongside giant caimans like Purussaurus.\",\"The hook-like curvature at the tip of its snout helped hold onto slippery, armor-plated prehistoric catfish.\"]",
     "sizeNotes": "Giant gharial-like crocodilian reaching estimated lengths of 10 meters.",
@@ -1563,7 +1563,7 @@
     "sources": "[{\"citation\":\"Riff, D. et al. (2010). Neogene giant South American crocodilians. Amazonia: Landscape and Species Evolution.\",\"url\":\"https://doi.org/10.1002/9781444326680.ch15\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.397Z",
-    "updatedAt": "2026-08-27T08:36:22.748Z"
+    "updatedAt": "2026-08-28T15:30:15.153Z"
   },
   {
     "id": 3172,
@@ -1581,7 +1581,7 @@
     "geographicRange": "{\"continent\":\"North America, Europe\",\"region\":\"Illinois Basin\",\"country\":\"United States, Russia\",\"fossilFormation\":\"Carbondale Formation\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Chondrichthyes\",\"order\":\"Eugeneodontida\",\"family\":\"Edestidae\",\"genus\":\"Edestus\",\"species\":\"Edestus heinrichi\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/7/7b/Edestus_giganteus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Edestus (Wikimedia Commons CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Edestus_giganteus.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/3/32/Edestus_heinrichi_1DB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Edestus_heinrichi_1DB.jpg\"}]",
     "discoveryHistory": "• First described by Joseph Leidy in 1855 from bracketed tooth whorls found in coal mines.\n• 2019 jaw mechanics study confirmed vertical slashing jaw action.",
     "interestingFacts": "[\"Did not shed worn teeth; new teeth grew in from the back, pushing old teeth forward into protruding curved brackets.\",\"Jaws operated like a pair of hedge trimmers, thrashing up and down to slash prey.\",\"Belonged to Eugeneodontida, closely related to modern chimaeras rather than true sharks.\"]",
     "sizeNotes": "Nicknamed the 'Scissor-toothed Shark'; reached lengths of up to 6 meters.",
@@ -1592,7 +1592,7 @@
     "sources": "[{\"citation\":\"Itano, W. M. (2019). Edestus, the scissor-toothed shark: jaw mechanics and predation. Mineralico.\",\"url\":\"https://doi.org/10.1007/s12542-019-00448-9\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.549Z",
-    "updatedAt": "2026-08-27T08:36:22.907Z"
+    "updatedAt": "2026-08-28T15:30:15.192Z"
   },
   {
     "id": 3187,
@@ -1610,7 +1610,7 @@
     "geographicRange": "{\"continent\":\"North America\",\"region\":\"Great Plains & Coastlines\",\"country\":\"United States, Canada, Mexico\",\"fossilFormation\":\"Rancho La Brea tar pits, Riverbluff Cave\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Mammalia\",\"order\":\"Carnivora\",\"family\":\"Ursidae\",\"genus\":\"Arctodus\",\"species\":\"Arctodus simus\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/1/14/Arctodus_simus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Arctodus simus (Wikimedia Commons CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Arctodus_simus.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/2/23/Short-faced_bear.jpg\",\"type\":\"art\",\"credit\":\"Sergiodlarosa (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Short-faced_bear.jpg\"}]",
     "discoveryHistory": "• Formally described by Joseph Leidy in 1854.\n• Abundant, exceptionally preserved bones recovered from the Rancho La Brea tar pits in California.\n• Carbon isotope studies confirmed an overwhelmingly carnivorous diet.",
     "interestingFacts": "[\"Stood over 3.4 meters (11 feet) tall on its hind legs, making it the largest terrestrial mammalian carnivore in North America.\",\"Used its massive size to bully smaller predators like saber-toothed cats (Smilodon) away from fresh kills.\",\"Possessed unusually long, slender legs allowing it to pace efficiently across vast distances.\"]",
     "sizeNotes": "Stood up to 1.8 meters tall at the shoulder and over 3.4 meters tall when standing on hind legs.",
@@ -1621,7 +1621,7 @@
     "sources": "[{\"citation\":\"Matheus, P. E. (1995). Diet and ecology of polar bears and giant short-faced bears based on stable isotopes. Quaternary Research.\",\"url\":\"https://doi.org/10.1006/qres.1995.1078\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:12.195Z",
-    "updatedAt": "2026-08-27T08:36:23.758Z"
+    "updatedAt": "2026-08-28T15:30:15.985Z"
   },
   {
     "id": 3188,
@@ -1639,7 +1639,7 @@
     "geographicRange": "{\"continent\":\"South America\",\"region\":\"Amazon Basin\",\"country\":\"Brazil, Peru, Venezuela\",\"fossilFormation\":\"Solimões Formation, Urumaco Formation\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Pseudosuchia\",\"order\":\"Crocodylomorpha\",\"family\":\"Alligatoridae\",\"genus\":\"Purussaurus\",\"species\":\"Purussaurus brasiliensis\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/ea/Purussaurus_brasiliensis.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Purussaurus (Wikimedia Commons CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Purussaurus_brasiliensis.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/7/76/Purussaurus_BW.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (http://spinops.blogspot.com) (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Purussaurus_BW.jpg\"}]",
     "discoveryHistory": "• First skull fragments discovered in 1892 along the Purus River by Barbosa Rodrigues.\n• Formally reconstructed in 2015 by Tito Aureliano and colleagues, revealing incredible 69,000 N bite force.",
     "interestingFacts": "[\"Possessed one of the strongest bite forces of any animal in Earth's history (~69,000 Newtons / 7 tonnes force).\",\"Its massive skull measured 1.4 meters long and was immensely broad for crushing thick mammalian bones.\",\"Consumed over 40 kilograms of meat per day to maintain its giant metabolic needs.\"]",
     "sizeNotes": "Giant caiman reaching 10.3 meters in length and weighing over 8.4 tonnes.",
@@ -1650,7 +1650,7 @@
     "sources": "[{\"citation\":\"Aureliano, T. et al. (2015). Morphometry, Bite Force, and Paleobiology of the Late Miocene Caiman Purussaurus brasiliensis. PLoS ONE.\",\"url\":\"https://doi.org/10.1371/journal.pone.0117937\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:12.242Z",
-    "updatedAt": "2026-08-27T08:36:23.819Z"
+    "updatedAt": "2026-08-28T15:30:15.371Z"
   },
   {
     "id": 3189,
@@ -1668,7 +1668,7 @@
     "geographicRange": "{\"continent\":\"South America\",\"region\":\"Rio de la Plata Basin\",\"country\":\"Uruguay\",\"fossilFormation\":\"San José Formation\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Mammalia\",\"order\":\"Rodentia\",\"family\":\"Dinomyidae\",\"genus\":\"Josephoartigasia\",\"species\":\"Josephoartigasia monesi\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/eb/Josephoartigasia_monesi.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Josephoartigasia (Wikimedia Commons CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Josephoartigasia_monesi.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/7/75/Josephoartigasia_monesi.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Josephoartigasia_monesi.jpg\"}]",
     "discoveryHistory": "• Complete 53 cm long fossil skull discovered in 1987 on the coast of San José, Uruguay.\n• Formally described in 2008 by Andrés Rinderknecht and Ernesto Blanco in Proceedings of the Royal Society B.",
     "interestingFacts": "[\"Holds the Guinness World Record as the largest rodent to ever exist on Earth.\",\"Possessed enormous 30 cm incisors with a bite force equivalent to a tiger, used for digging or defense.\",\"Replaced traditional ungulate herbivore niches in prehistoric South American river estuaries.\"]",
     "sizeNotes": "The largest rodent ever discovered, weighing as much as a modern bull (~1,000 kg).",
@@ -1679,7 +1679,7 @@
     "sources": "[{\"citation\":\"Rinderknecht, A., & Blanco, R. E. (2008). The largest fossil rodent. Proceedings of the Royal Society B: Biological Sciences.\",\"url\":\"https://doi.org/10.1098/rspb.2007.1645\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:12.287Z",
-    "updatedAt": "2026-08-27T08:36:23.872Z"
+    "updatedAt": "2026-08-28T15:30:15.412Z"
   },
   {
     "id": 3190,
@@ -1697,7 +1697,7 @@
     "geographicRange": "{\"continent\":\"South America, Australia\",\"region\":\"Pacific Ocean\",\"country\":\"Peru, Australia\",\"fossilFormation\":\"Pisco Formation\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Mammalia\",\"order\":\"Cetacea\",\"family\":\"Physeteroidea\",\"genus\":\"Livyatan\",\"species\":\"Livyatan melvillei\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/eb/Livyatan_melvillei.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Livyatan (Wikimedia Commons CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Livyatan_melvillei.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/b/bb/Livyatan_melvillei.jpg\",\"type\":\"art\",\"credit\":\"Apokryltaros (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Livyatan_melvillei.jpg\"}]",
     "discoveryHistory": "• Discovered in 2008 in the coastal desert of Pisco, Peru, by Klaas Post.\n• Formally described in Nature in July 2010 by Olivier Lambert and team.\n• Named in honor of Herman Melville, author of Moby-Dick.",
     "interestingFacts": "[\"Possessed the largest functional biting teeth of any known animal in Earth's history (36 cm long and 12 cm wide).\",\"Unlike modern sperm whales which feed on squid using toothless upper jaws, Livyatan had huge teeth in BOTH upper and lower jaws.\",\"Coexisted and directly competed with Megalodon for marine mammalian prey in Miocene oceans.\"]",
     "sizeNotes": "Giant raptorial sperm whale measuring 13.5 to 17.5 meters and weighing up to 50 tonnes.",
@@ -1708,7 +1708,7 @@
     "sources": "[{\"citation\":\"Lambert, O. et al. (2010). The giant bite of a new raptorial sperm whale from the Miocene of Peru. Nature.\",\"url\":\"https://doi.org/10.1038/nature09067\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:12.333Z",
-    "updatedAt": "2026-08-27T08:36:23.937Z"
+    "updatedAt": "2026-08-28T15:30:15.621Z"
   },
   {
     "id": 3191,
@@ -1726,7 +1726,7 @@
     "geographicRange": "{\"continent\":\"South America\",\"region\":\"Patagonia\",\"country\":\"Argentina\",\"fossilFormation\":\"Collón Curá Formation\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Aves\",\"order\":\"Cariamiformes\",\"family\":\"Phorusrhacidae\",\"genus\":\"Kelenken\",\"species\":\"Kelenken guillermoi\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/3/36/Kelenken_guillermoi.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Kelenken (Wikimedia Commons CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Kelenken_guillermoi.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/9/9e/Kelenken_guillermoi_1DB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Kelenken_guillermoi_1DB.jpg\"}]",
     "discoveryHistory": "• Skull discovered in 1999 near Comallo village by high school student Guillermo Aguirre Zabala.\n• Formally described in 2007 by Sara Bertelli, Luis M. Chiappe, and Claudia Tambussi.",
     "interestingFacts": "[\"Possessed the largest head of any known bird in history, with a skull measuring 71.6 cm (28 inches) long.\",\"Could sprint at estimated speeds exceeding 45 km/h to run down prehistoric mammals.\",\"Killed prey by striking downwards with its massive eagle-like hooked beak like an axe.\"]",
     "sizeNotes": "The largest terror bird known, standing over 3 meters tall with a 71 cm long head.",
@@ -1737,7 +1737,7 @@
     "sources": "[{\"citation\":\"Bertelli, S., Chiappe, L. M., & Tambussi, C. (2007). A new phorusrhacid (Aves: Cariamiformes) from the Middle Miocene of Patagonia. Journal of Vertebrate Paleontology.\",\"url\":\"https://doi.org/10.1671/0272-4634(2007)27[409:ANPACB]2.0.CO;2\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:12.377Z",
-    "updatedAt": "2026-08-27T08:36:23.991Z"
+    "updatedAt": "2026-08-28T15:30:15.862Z"
   },
   {
     "id": 3192,
@@ -1755,7 +1755,7 @@
     "geographicRange": "{\"continent\":\"Australia\",\"region\":\"Eastern & Central Australia\",\"country\":\"Australia\",\"fossilFormation\":\"Darling Downs deposits\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Reptilia\",\"order\":\"Squamata\",\"family\":\"Varanidae\",\"genus\":\"Varanus\",\"species\":\"Varanus priscus\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/eb/Megalania_priscus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Megalania (Wikimedia Commons CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Megalania_priscus.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/b/bf/Megalania_prisca_1DB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Megalania_prisca_1DB.jpg\"}]",
     "discoveryHistory": "• Named Megalania prisca by Sir Richard Owen in 1859.\n• Reclassified under the genus Varanus by Ralph Molnar in 2004.\n• Coexisted with early Indigenous Australians prior to its extinction ~40,000 years ago.",
     "interestingFacts": "[\"The largest terrestrial venomous squamate reptile in Earth's history.\",\"Possessed venom glands in its lower jaws similar to its smaller living relative, the Komodo Dragon.\",\"Serrated recumbent teeth allowed it to tear open heavy hide of giant extinct marsupials.\"]",
     "sizeNotes": "The largest terrestrial lizard known to have ever lived, reaching up to 6 meters in length.",
@@ -1766,7 +1766,7 @@
     "sources": "[{\"citation\":\"Fry, B. G. et al. (2009). A central role for venom in predation by Varanus komodoensis and Megalania. PNAS.\",\"url\":\"https://doi.org/10.1073/pnas.0810883106\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:12.420Z",
-    "updatedAt": "2026-08-27T08:36:24.048Z"
+    "updatedAt": "2026-08-28T15:30:15.454Z"
   },
   {
     "id": 3193,
@@ -1784,7 +1784,7 @@
     "geographicRange": "{\"continent\":\"North America\",\"region\":\"Great Plains\",\"country\":\"United States\",\"fossilFormation\":\"Arikaree Group (Agate Fossil Beds)\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Mammalia\",\"order\":\"Artiodactyla\",\"family\":\"Entelodontidae\",\"genus\":\"Daeodon\",\"species\":\"Daeodon shoshonensis\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/eb/Daeodon_shoshonensis.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Daeodon (Wikimedia Commons CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Daeodon_shoshonensis.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/d/d4/Daeodon_shoshonensis.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Daeodon_shoshonensis.jpg\"}]",
     "discoveryHistory": "• Formally described in 1878 by Edward Drinker Cope.\n• Famous 90 cm fossil skulls recovered from Agate Fossil Beds National Monument in Nebraska.\n• Synonymized with Dinohyus hollandi by Peterson in 1909.",
     "interestingFacts": "[\"Nicknamed the 'Hell Pig', though genetically closer to hippos and whales than true pigs.\",\"Possessed a massive 90 cm (3 foot) skull with heavy bony cheek flanges (jugal flanges) for muscle attachment.\",\"Heavily worn teeth show it routinely cracked open giant animal bones to extract nutrient-rich marrow.\"]",
     "sizeNotes": "Nicknamed 'Hell Pig'; stood 1.8 meters (6 feet) tall at the shoulder with a 90 cm skull.",
@@ -1795,6 +1795,6 @@
     "sources": "[{\"citation\":\"Effinger, J. A. (1998). Entelodontidae. Evolution of Tertiary Mammals of North America.\",\"url\":\"https://doi.org/10.1017/CBO9780511542947.026\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:12.462Z",
-    "updatedAt": "2026-08-27T08:36:24.108Z"
+    "updatedAt": "2026-08-28T15:30:16.328Z"
   }
 ]

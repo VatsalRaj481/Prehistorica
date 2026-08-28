@@ -102,7 +102,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation (Cleveland-Lloyd, UT)\"}",
     "taxonomy": "{\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Allosauridae\",\"family\":\"Allosauridae\",\"species\":\"Allosaurus fragilis\",\"genus\":\"Allosaurus\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/0/03/Allosaurus_jimmadseni.png\",\"type\":\"art\",\"credit\":\"Fred Wierum (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Allosaurus_jimmadseni.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/f/fe/Allosaurus_Jaws_Steveoc86.jpg\",\"type\":\"photo\",\"credit\":\"Fossil jaw specimen photo\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Allosaurus_Jaws_Steveoc86.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/5/55/Allosaurus_BW_mirrored.jpg\",\"type\":\"art\",\"credit\":\"Rlevente, original author: Nobu Tamura (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3AAllosaurus_BW_mirrored.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/f/fe/Allosaurus_Jaws_Steveoc86.jpg\",\"type\":\"photo\",\"credit\":\"Fossil jaw specimen photo\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Allosaurus_Jaws_Steveoc86.jpg\"}]",
     "discoveryHistory": "First described by Othniel Charles Marsh in 1877 based on fragmentary remains from Colorado. Dozens of individuals were later found at the Cleveland-Lloyd Dinosaur Quarry in Utah.",
     "interestingFacts": "{\"The most common large predator of Late Jurassic North America, accounting for a vast majority of theropod fossils found.\",\"Its skull was highly flexible and could expand laterally, allowing it to swallow large chunks of meat.\",\"Had a lower bite force than modern lions, suggesting it used its skull like an axe to slash at prey.\"}",
     "sizeNotes": "Average length was 8.5 meters (28 feet), but rare large specimens (like Saurophaganax) reached 11-12 meters.",
@@ -113,7 +113,7 @@
     "sources": "[{\"citation\":\"Marsh, O.C. (1877). Notice of new dinosaurian reptiles from the Jurassic formation. American Journal of Science 14: 514–516.\",\"url\":\"https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=38596\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.874Z",
-    "updatedAt": "2026-08-28T15:13:39.832Z"
+    "updatedAt": "2026-08-28T15:17:55.127Z"
   },
   {
     "id": 21,
@@ -653,7 +653,7 @@
     "geographicRange": "{\"region\":\"Europe\",\"country\":\"Germany\",\"fossilFormation\":\"Painten Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Archosauria\",\"family\":\"Juravenatoridae\",\"genus\":\"Juravenator\",\"species\":\"Juravenator starki\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/163-Juravenator.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/f/fe/Juravenator.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c0/Compsognathidae.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/c/c0/Compsognathidae.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/3/37/Juravenator_by_Tom_Parker.png\",\"type\":\"art\",\"credit\":\"Tom Parker (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3AJuravenator_by_Tom_Parker.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c0/Compsognathidae.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/c/c0/Compsognathidae.jpg\"}]",
     "discoveryHistory": "• Discovered in 1998 in the Solnhofen limestone in Germany.\n• Named in 2006 by Ursula Göhlich and Luis Chiappe.\n• The specimen is a nearly complete juvenile skeleton.",
     "interestingFacts": "[\"Its fossil shows patches of scaly skin, suggesting a lack of feathers in some areas.\",\"It had unusually large eyes, suited for nocturnal hunting.\",\"It was a very small, agile predator.\"]",
     "sizeNotes": "Medium-sized for its group.",
@@ -664,7 +664,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Juravenator starki description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Juravenator\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:30.502Z",
-    "updatedAt": "2026-08-27T08:36:09.564Z"
+    "updatedAt": "2026-08-28T15:18:32.002Z"
   },
   {
     "id": 165,
@@ -711,7 +711,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Archosauria\",\"family\":\"Apatosaurusidae\",\"genus\":\"Apatosaurus\",\"species\":\"Apatosaurus ajax\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/166-Apatosaurus.jpg\",\"type\":\"art\",\"credit\":\"Connor Ashbridge (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Apatosaurus_louisae.png\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/9/9c/Apatosaurus_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3AApatosaurus_TD.png\"}]",
     "discoveryHistory": "• Discovered and named by O.C. Marsh in 1877 in Colorado.\n• For over a century, its skeleton was mounted with the wrong skull (that of a Camarasaurus).\n• A correct skull was finally mounted on skeletons in the late 1970s.",
     "interestingFacts": "[\"It had a very robust, heavily built skeleton compared to Diplodocus.\",\"Its tail may have been able to crack like a whip, producing a loud sound.\",\"It was an abundant herbivore in the Morrison Formation.\"]",
     "sizeNotes": "Medium-sized for its group.",
@@ -722,7 +722,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Apatosaurus ajax description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Apatosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:30.617Z",
-    "updatedAt": "2026-08-27T08:36:09.726Z"
+    "updatedAt": "2026-08-28T15:18:35.493Z"
   },
   {
     "id": 167,
@@ -3785,7 +3785,7 @@
     "geographicRange": "{\"continent\":\"Europe\",\"region\":\"Solnhofen Archipelago\",\"country\":\"Germany\",\"fossilFormation\":\"Solnhofen Limestone\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Pseudosuchia\",\"order\":\"Crocodylomorpha\",\"family\":\"Metriorhynchidae\",\"genus\":\"Geosaurus\",\"species\":\"Geosaurus giganteus\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/9/90/Geosaurus_giganteus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Geosaurus (Wikimedia Commons CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Geosaurus_giganteus.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/a/a1/Geosaurus_suevicus_DB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Geosaurus_suevicus_DB.jpg\"}]",
     "discoveryHistory": "• Formally named by Georges Cuvier in 1824 from fossils discovered in Bavaria, Germany.\n• Exceptionally preserved Solnhofen limestone fossils revealed soft-tissue impressions of tail flukes.\n• Redescribed extensively in 2009 by Young & Andrade, clarifying its hyper-carnivorous adaptations.",
     "interestingFacts": "[\"Completely lost heavy osteoderm armor to maximize aquatic agility and swimming speed.\",\"Transformed its legs into hydrofoil paddles and developed a fish-like hypocercal tail fin.\",\"Equipped with serrated, ziphodont teeth optimized for tearing prey rather than crushing shells.\"]",
     "sizeNotes": "Streamlined marine crocodilian with paddle-like limbs and a hypocercal tail fluke.",
@@ -3796,7 +3796,7 @@
     "sources": "[{\"citation\":\"Young, M. T., & Andrade, M. B. (2009). What is Geosaurus? Redescription of Geosaurus giganteus. Zoological Journal of the Linnean Society.\",\"url\":\"https://doi.org/10.1111/j.1096-3642.2009.00536.x\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:10.740Z",
-    "updatedAt": "2026-08-27T08:36:21.909Z"
+    "updatedAt": "2026-08-28T15:30:16.024Z"
   },
   {
     "id": 3155,
@@ -3814,7 +3814,7 @@
     "geographicRange": "{\"continent\":\"Europe\",\"region\":\"English Channel Basin\",\"country\":\"United Kingdom, France\",\"fossilFormation\":\"Oxford Clay Formation\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Pseudosuchia\",\"order\":\"Crocodylomorpha\",\"family\":\"Metriorhynchidae\",\"genus\":\"Metriorhynchus\",\"species\":\"Metriorhynchus geoffroyii\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/d/d4/Metriorhynchus_superciliosus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Metriorhynchus (Wikimedia Commons CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Metriorhynchus_superciliosus.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/5/53/Metriorhynchus_superciliosus_DB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Metriorhynchus_superciliosus_DB.jpg\"}]",
     "discoveryHistory": "• Named by Christian Erich Hermann von Meyer in 1830.\n• Abundant specimens recovered from the Jurassic Oxford Clay of Peterborough, England.\n• Histological studies confirm it spent its entire life in open marine environments.",
     "interestingFacts": "[\"Possessed large salt glands positioned above its eyes to excrete excess ocean salt.\",\"Gave live birth at sea (viviparity) as its limbs could no longer support walking on land.\",\"Had smooth skin without armor scales, reducing drag in the water.\"]",
     "sizeNotes": "Fully aquatic thalattosuchian crocodilian measuring approximately 3 meters.",
@@ -3825,7 +3825,7 @@
     "sources": "[{\"citation\":\"Young, M. T. et al. (2010). The pelvic girdle and hind limb of Metriorhynchus. Geological Magazine.\",\"url\":\"https://doi.org/10.1017/S001675681000007X\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:10.782Z",
-    "updatedAt": "2026-08-27T08:36:21.960Z"
+    "updatedAt": "2026-08-28T15:30:14.939Z"
   },
   {
     "id": 3170,
@@ -3843,7 +3843,7 @@
     "geographicRange": "{\"continent\":\"Europe\",\"region\":\"Sub-Boreal Seaway\",\"country\":\"United Kingdom, Spain\",\"fossilFormation\":\"Kimmeridge Clay Formation\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Pseudosuchia\",\"order\":\"Crocodylomorpha\",\"family\":\"Metriorhynchidae\",\"genus\":\"Plesiosuchus\",\"species\":\"Plesiosuchus manselii\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/0/07/Plesiosuchus_manselii.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Plesiosuchus (Wikimedia Commons CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Plesiosuchus_manselii.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c8/Plesiosuchus_manselii_1DB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Plesiosuchus_manselii_1DB.jpg\"}]",
     "discoveryHistory": "• Named by Richard Owen in 1884 based on a skull found in Kimmeridge Bay, Dorset.\n• Re-analyzed in 2012 by Mark Young and colleagues, establishing Plesiosuchus as the apex predator of Kimmeridgian seas.",
     "interestingFacts": "[\"The largest metriorhynchid crocodilian ever discovered, outgrowing Geosaurus and Metriorhynchus.\",\"Had wide-opening jaws with coarse serrations adapted for severing flesh from large marine vertebrates.\",\"Shared marine habitats with Dakosaurus, dividing ecological niches based on skull mechanics.\"]",
     "sizeNotes": "The largest known metriorhynchid marine crocodilian, reaching almost 7 meters.",
@@ -3854,7 +3854,7 @@
     "sources": "[{\"citation\":\"Young, M. T. et al. (2012). The spatial and temporal range of Geosaurus and Plesiosuchus. PLoS ONE.\",\"url\":\"https://doi.org/10.1371/journal.pone.0044985\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.439Z",
-    "updatedAt": "2026-08-27T08:36:22.801Z"
+    "updatedAt": "2026-08-28T15:30:15.699Z"
   },
   {
     "id": 3171,
@@ -3872,7 +3872,7 @@
     "geographicRange": "{\"continent\":\"Europe\",\"region\":\"Oxford Clay Basin\",\"country\":\"United Kingdom, France\",\"fossilFormation\":\"Oxford Clay Formation\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Pseudosuchia\",\"order\":\"Crocodylomorpha\",\"family\":\"Metriorhynchidae\",\"genus\":\"Suchodus\",\"species\":\"Suchodus durobrivensis\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/7/7b/Suchodus_durobrivensis.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Suchodus (Wikimedia Commons CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Suchodus_durobrivensis.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/2/29/Suchodus_durobrivensis_1DB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Suchodus_durobrivensis_1DB.jpg\"}]",
     "discoveryHistory": "• First described by Lydekker in 1890 from specimens collected near Peterborough, England.\n• Re-erected as a distinct genus separate from Metriorhynchus by Young et al. in 2010.",
     "interestingFacts": "[\"Possessed significantly shorter, stronger jaws than Metriorhynchus for crushing armored prey.\",\"Equipped with paddle-shaped limbs and a tail fin for pelagic sea life.\",\"Fossilized eye rings (sclerotic rings) show adaptations for deep diving.\"]",
     "sizeNotes": "Robust metriorhynchid crocodilian measuring 4.5 meters in length.",
@@ -3883,7 +3883,7 @@
     "sources": "[{\"citation\":\"Young, M. T. et al. (2010). Revision of the Metriorhynchinae (Crocodylomorpha: Thalattosuchia). Zoological Journal of the Linnean Society.\",\"url\":\"https://doi.org/10.1111/j.1096-3642.2009.00600.x\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.506Z",
-    "updatedAt": "2026-08-27T08:36:22.852Z"
+    "updatedAt": "2026-08-28T15:30:15.739Z"
   },
   {
     "id": 3175,
@@ -3901,7 +3901,7 @@
     "geographicRange": "{\"continent\":\"Africa\",\"region\":\"Southern Africa\",\"country\":\"South Africa\",\"fossilFormation\":\"Elliot Formation\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Dinosauria\",\"order\":\"Saurischia\",\"suborder\":\"Theropoda\",\"family\":\"Dilophosauridae\",\"genus\":\"Dracovenator\",\"species\":\"Dracovenator regenti\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/1/14/Dracovenator_regenti.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Dracovenator (Wikimedia Commons CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Dracovenator_regenti.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/5/52/Dracovenator_BW.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Dracovenator_BW.jpg\"}]",
     "discoveryHistory": "• Holotype partial skull discovered on Upper Drakensberg farm in Eastern Cape, South Africa.\n• Named in 2005 by Adam M. Yates.\n• Close relative of the North American Dilophosaurus.",
     "interestingFacts": "[\"One of the earliest apex theropod dinosaurs discovered in southern Africa.\",\"Possessed paired bony crests running along the top of its skull.\",\"Targeted abundant early sauropodomorph dinosaurs as primary prey.\"]",
     "sizeNotes": "Dilophosaurid theropod estimated at 5.5 to 6 meters long.",
@@ -3912,7 +3912,7 @@
     "sources": "[{\"citation\":\"Yates, A. M. (2005). A new theropod dinosaur from the Early Jurassic of South Africa and its implications for the early evolution of Theropoda. Palaeontologia Africana.\",\"url\":\"https://hdl.handle.net/10539/12711\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.682Z",
-    "updatedAt": "2026-08-27T08:36:23.106Z"
+    "updatedAt": "2026-08-28T15:30:14.894Z"
   },
   {
     "id": 3176,
@@ -3930,7 +3930,7 @@
     "geographicRange": "{\"continent\":\"Europe\",\"region\":\"English Midlands\",\"country\":\"United Kingdom\",\"fossilFormation\":\"Blue Lias Formation\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Dinosauria\",\"order\":\"Saurischia\",\"suborder\":\"Theropoda\",\"family\":\"Neotheropoda\",\"genus\":\"Sarcosaurus\",\"species\":\"Sarcosaurus woodi\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/3/30/Sarcosaurus_woodi.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Sarcosaurus (Wikimedia Commons CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Sarcosaurus_woodi.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/e4/Sarcosaurus_BW.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Sarcosaurus_BW.jpg\"}]",
     "discoveryHistory": "• Discovered in 1913 near Barrow-upon-Soar, Leicestershire, by James W. Wood.\n• Named by Charles William Andrews in 1921.\n• Represents one of the oldest known Jurassic theropods in Europe.",
     "interestingFacts": "[\"One of the earliest true Jurassic theropod dinosaurs discovered in the UK.\",\"Possessed a small nasal horn or crest similar to Ceratosaurus.\",\"Inhabited coastal mudflats alongside early marine reptiles.\"]",
     "sizeNotes": "Basal neotheropod measuring 3.5 meters in length.",
@@ -3941,7 +3941,7 @@
     "sources": "[{\"citation\":\"Ezcurra, M. D. et al. (2020). Enigmatic early theropod Sarcosaurus woodi re-evaluated. Zoological Journal of the Linnean Society.\",\"url\":\"https://doi.org/10.1093/zoolinnean/zlaa086\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.725Z",
-    "updatedAt": "2026-08-27T08:36:23.159Z"
+    "updatedAt": "2026-08-28T15:30:15.581Z"
   },
   {
     "id": 3182,
@@ -3959,7 +3959,7 @@
     "geographicRange": "{\"continent\":\"Europe, South America\",\"region\":\"Tethys / Boreal Oceans\",\"country\":\"United Kingdom, France, Germany, Chile\",\"fossilFormation\":\"Oxford Clay Formation\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Actinopterygii\",\"order\":\"Pachycormiformes\",\"family\":\"Pachycormidae\",\"genus\":\"Leedsichthys\",\"species\":\"Leedsichthys problematicus\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/a/a2/Leedsichthys_problematicus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Leedsichthys (Wikimedia Commons CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Leedsichthys_problematicus.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/eb/Leedsichthys_problematicus_1DB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Leedsichthys_problematicus_1DB.jpg\"}]",
     "discoveryHistory": "• First fragments collected in 1886 near Peterborough, England, by fossil collector Alfred Nicholson Leeds.\n• Named 'problematicus' by Arthur Smith Woodward because giant fragmented bones were difficult to reconstruct.\n• Comprehensive 2013 laser-scan study by Jeff Liston confirmed adult lengths between 16 and 16.5 meters.",
     "interestingFacts": "[\"Holds the record as the largest bony fish in Earth's history, rivaling modern baleen whales in ecological role.\",\"Possessed over 40,000 delicate mesh-like gill raker teeth to filter microscopic plankton.\",\"Bite marks on Leedsichthys fins show it was hunted by giant marine predators like Liopleurodon and Metriorhynchus.\"]",
     "sizeNotes": "The largest bony fish (Osteichthyes) known to have ever existed, reaching 16.5 meters.",
@@ -3970,6 +3970,6 @@
     "sources": "[{\"citation\":\"Liston, J. J. et al. (2013). Growth, age and size of the giant Jurassic bony fish Leedsichthys problematicus. Mesozoic Fishes 5.\",\"url\":\"https://www.researchgate.net/publication/258334460\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.981Z",
-    "updatedAt": "2026-08-27T08:36:23.486Z"
+    "updatedAt": "2026-08-28T15:30:14.709Z"
   }
 ]

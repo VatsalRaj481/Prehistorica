@@ -44,7 +44,7 @@
     "geographicRange": "{\"region\":\"Europe\",\"country\":\"Germany\",\"fossilFormation\":\"Trossingen Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Sauropodomorpha\",\"family\":\"Plateosauridae\",\"genus\":\"Plateosaurus\",\"species\":\"Plateosaurus trossingensis\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/e0/Plateosaurus_BW.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 2.5)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Plateosaurus_BW.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c5/Jaw_musculature_in_Plateosaurus_and_Camarasaurus.png\",\"type\":\"photo\",\"credit\":\"Fossil jaw musculature diagram\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Jaw_musculature_in_Plateosaurus_and_Camarasaurus.png\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/f/fb/Plateosaurus_picture4.png\",\"type\":\"art\",\"credit\":\"Dropzink (CC BY-SA 2.5)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3APlateosaurus_picture4.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c5/Jaw_musculature_in_Plateosaurus_and_Camarasaurus.png\",\"type\":\"photo\",\"credit\":\"Fossil jaw musculature diagram\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Jaw_musculature_in_Plateosaurus_and_Camarasaurus.png\"}]",
     "discoveryHistory": "Discovered in 1834 near Nuremberg, Germany, by Johann Engelhardt. Described by Hermann von Meyer in 1837.",
     "interestingFacts": "{\"An early sauropodomorph, a group that would eventually evolve into the giant, long-necked sauropods.\",\"Strictly bipedal; its hands were unable to rotate, making quadrupedal walking anatomically impossible.\",\"Fossil mass graves in Europe suggest they traveled in herds or became trapped in mud flats.\"}",
     "sizeNotes": "Highly variable adult sizes, ranging from 4.8 to 10 meters in length and 600 to 4,000 kg.",
@@ -55,7 +55,7 @@
     "sources": "[{\"citation\":\"von Meyer, H. (1837). Original description of Plateosaurus trossingensis.\",\"url\":\"https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=38670\"},{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Plateosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Plateosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.652Z",
-    "updatedAt": "2026-08-28T15:13:40.340Z"
+    "updatedAt": "2026-08-28T15:17:51.364Z"
   },
   {
     "id": 16,
@@ -3118,7 +3118,7 @@
     "geographicRange": "{\"continent\":\"Europe\",\"region\":\"Tethys Ocean Coastline\",\"country\":\"Italy, United Kingdom\",\"fossilFormation\":\"Zorzino Limestone\"}",
     "taxonomy": "{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Sauropterygia\",\"order\":\"Placodontia\",\"family\":\"Cyamodontidae\",\"genus\":\"Psephoderma\",\"species\":\"Psephoderma alpinum\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/7/7b/Psephoderma_alpinum.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction of Psephoderma (Wikimedia Commons CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Psephoderma_alpinum.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/5/5a/Psephoderma_BW.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Psephoderma_BW.jpg\"}]",
     "discoveryHistory": "• First described by Christian Erich Hermann von Meyer in 1858.\n• Complete articulated specimens recovered from the Italian Alps (Zorzino Limestone).\n• Represents one of the last surviving placodonts before the end-Triassic extinction.",
     "interestingFacts": "[\"Superficially resembled a marine turtle but belonged to the extinct placodont order of sauropterygians.\",\"Had two distinct protective carapace shields: one covering the shoulders/chest and a smaller one over the pelvis.\",\"Possessed toothless, narrow beaked jaws lined internally with flat, pavement-like crushing plates.\"]",
     "sizeNotes": "Turtle-like marine placodont with a flattened, armored body split into two shields.",
@@ -3129,6 +3129,6 @@
     "sources": "[{\"citation\":\"Rieppel, O. (2002). The skull of Psephoderma alpinum Meyer, 1858 (Reptilia: Placodontia). Fieldiana Geology.\",\"url\":\"https://doi.org/10.5962/bhl.title.5369\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.057Z",
-    "updatedAt": "2026-08-27T08:36:22.320Z"
+    "updatedAt": "2026-08-28T15:30:15.497Z"
   }
 ]
