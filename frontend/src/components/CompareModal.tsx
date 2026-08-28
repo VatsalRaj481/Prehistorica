@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Species, fetchSpeciesCompare, fetchSpecies } from '../services/api.js';
 import { X, ArrowRightLeft, Scale, Calendar, Dna, MapPin } from 'lucide-react';
+import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 
 interface CompareModalProps {
   initialSpecies?: Species | null;
@@ -177,10 +178,15 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
                     )}
                   </div>
 
-                  <div>
-                    <h3 className="text-lg font-extrabold text-slate-100">{species1.name}</h3>
-                    <p className="text-xs italic text-slate-400">{species1.scientificName}</p>
-                  </div>
+                  {(() => {
+                    const names1 = getSpeciesDisplayNames(species1);
+                    return (
+                      <div>
+                        <h3 className="text-lg font-black uppercase text-slate-100">{names1.heading}</h3>
+                        <p className="text-xs italic font-serif text-amber-400">{names1.subheading}</p>
+                      </div>
+                    );
+                  })()}
 
                   <div className="space-y-2 text-xs text-slate-300">
                     <div className="flex justify-between border-b border-slate-850 pb-1.5">
@@ -227,10 +233,15 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
                     )}
                   </div>
 
-                  <div>
-                    <h3 className="text-lg font-extrabold text-slate-100">{species2.name}</h3>
-                    <p className="text-xs italic text-slate-400">{species2.scientificName}</p>
-                  </div>
+                  {(() => {
+                    const names2 = getSpeciesDisplayNames(species2);
+                    return (
+                      <div>
+                        <h3 className="text-lg font-black uppercase text-slate-100">{names2.heading}</h3>
+                        <p className="text-xs italic font-serif text-amber-400">{names2.subheading}</p>
+                      </div>
+                    );
+                  })()}
 
                   <div className="space-y-2 text-xs text-slate-300">
                     <div className="flex justify-between border-b border-slate-850 pb-1.5">

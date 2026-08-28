@@ -6,6 +6,7 @@ import TaxonomyBreadcrumbs from '../components/TaxonomyBreadcrumbs.js';
 import ThreeDScaleViewer from '../components/ThreeDScaleViewer.js';
 import MediaGallery from '../components/MediaGallery.js';
 import { Calendar, Compass, ArrowLeft, Dna, FileText, Scale, BookOpen, AlertCircle, Bookmark, BookmarkCheck, ExternalLink, Globe, Zap, Layers } from 'lucide-react';
+import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 
 export default function SpeciesDetail() {
   const { id } = useParams<{ id: string }>();
@@ -141,33 +142,38 @@ export default function SpeciesDetail() {
       </div>
 
       {/* Main Specimen Title & Classification Headline */}
-      <div className="space-y-4 border-l-2 border-amber-500 pl-6">
-        <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono">
-          <span className="px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 font-bold uppercase tracking-widest flex items-center gap-1.5 rounded-full">
-            <Calendar className="h-3.5 w-3.5" />
-            {species.timePeriod} &bull; {species.myaStart}–{species.myaEnd} MYA
-          </span>
-          <span className="px-3 py-1 bg-slate-900/80 border border-white/10 text-slate-300 font-bold uppercase tracking-widest rounded-full">
-            Clade: {species.clade}
-          </span>
-          <span className="px-3 py-1 bg-slate-900/80 border border-white/10 text-amber-300/90 font-bold uppercase tracking-widest rounded-full">
-            Status: {species.taxonomicStatus}
-          </span>
-        </div>
+      {(() => {
+        const names = getSpeciesDisplayNames(species);
+        return (
+          <div className="space-y-4 border-l-2 border-amber-500 pl-6">
+            <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono">
+              <span className="px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 font-bold uppercase tracking-widest flex items-center gap-1.5 rounded-full">
+                <Calendar className="h-3.5 w-3.5" />
+                {species.timePeriod} &bull; {species.myaStart}–{species.myaEnd} MYA
+              </span>
+              <span className="px-3 py-1 bg-slate-900/80 border border-white/10 text-slate-300 font-bold uppercase tracking-widest rounded-full">
+                Clade: {species.clade}
+              </span>
+              <span className="px-3 py-1 bg-slate-900/80 border border-white/10 text-amber-300/90 font-bold uppercase tracking-widest rounded-full">
+                Status: {species.taxonomicStatus}
+              </span>
+            </div>
 
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-slate-100 uppercase break-words leading-none font-sans">
-          {species.name}
-        </h1>
-        <p className="text-xl italic font-serif text-amber-200/90">
-          {species.scientificName}
-        </p>
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-slate-100 uppercase break-words leading-none font-sans">
+              {names.heading}
+            </h1>
+            <p className="text-xl italic font-serif text-amber-400">
+              {names.subheading}
+            </p>
 
-        {species.nameMeaning && (
-          <p className="text-xs font-mono text-slate-400 leading-relaxed border-t border-white/10 pt-3">
-            <strong className="font-bold text-amber-400 uppercase tracking-widest">Etymology & Translation:</strong> "{species.nameMeaning}"
-          </p>
-        )}
-      </div>
+            {species.nameMeaning && (
+              <p className="text-xs font-mono text-slate-400 leading-relaxed border-t border-white/10 pt-3">
+                <strong className="font-bold text-amber-400 uppercase tracking-widest">Etymology & Translation:</strong> "{species.nameMeaning}"
+              </p>
+            )}
+          </div>
+        );
+      })()}
 
       {/* Modern Museum Pavilion Exhibit Hero 3D Stage */}
       {(() => {
@@ -357,6 +363,7 @@ export default function SpeciesDetail() {
           <div className="flex gap-4 overflow-x-auto pb-4 pt-2 snap-x scrollbar-thin scrollbar-thumb-amber-500/30 scrollbar-track-slate-900 font-mono">
             {species.relatedSpecies.map((rel: any) => {
               const imgUrl = rel.reconstructionImageUrl || rel.media?.[0]?.url || 'https://images.unsplash.com/photo-1551085254-e96b210df58a?q=80&w=1200&auto=format&fit=crop';
+              const names = getSpeciesDisplayNames(rel);
               return (
                 <Link
                   key={rel.id}
@@ -375,11 +382,11 @@ export default function SpeciesDetail() {
                     </div>
                   </div>
                   <div className="space-y-1.5">
-                    <h4 className="text-xs font-bold font-sans text-slate-200 group-hover:text-amber-300 transition-colors uppercase truncate">
-                      {rel.name}
+                    <h4 className="text-xs font-bold font-sans text-slate-100 group-hover:text-amber-400 transition-colors uppercase truncate">
+                      {names.heading}
                     </h4>
-                    <p className="text-[10px] font-serif italic text-amber-200/80 truncate">
-                      {rel.scientificName}
+                    <p className="text-[10px] font-serif italic text-amber-400 truncate">
+                      {names.subheading}
                     </p>
                     <div className="flex items-center justify-between text-[9px] font-mono text-slate-400 pt-2 border-t border-white/10">
                       <span className="truncate">{rel.timePeriod || 'Prehistoric'}</span>

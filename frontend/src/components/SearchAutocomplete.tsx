@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { fetchSpeciesAutocomplete, AutocompleteItem } from '../services/api.js';
 import { Search, Loader2, Dna, ArrowRight } from 'lucide-react';
+import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 
 export default function SearchAutocomplete() {
   const location = useLocation();
@@ -93,32 +94,35 @@ export default function SearchAutocomplete() {
       {/* Autocomplete Dropdown List */}
       {isOpen && suggestions.length > 0 && (
         <div className="absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-slate-800 rounded-xl shadow-2xl overflow-hidden z-50 divide-y divide-slate-850">
-          {suggestions.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => handleSelect(item.id)}
-              className="w-full text-left p-3 hover:bg-slate-800/80 transition-colors flex items-center gap-3 group cursor-pointer"
-            >
-              <div className="h-10 w-10 rounded-lg bg-slate-950 border border-slate-800 overflow-hidden shrink-0">
-                {item.reconstructionImageUrl ? (
-                  <img src={item.reconstructionImageUrl} alt="" className="w-full h-full object-cover" />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-slate-650">
-                    <Dna className="h-4 w-4" />
+          {suggestions.map((item) => {
+            const names = getSpeciesDisplayNames(item);
+            return (
+              <button
+                key={item.id}
+                onClick={() => handleSelect(item.id)}
+                className="w-full text-left p-3 hover:bg-slate-800/80 transition-colors flex items-center gap-3 group cursor-pointer"
+              >
+                <div className="h-10 w-10 rounded-lg bg-slate-950 border border-slate-800 overflow-hidden shrink-0">
+                  {item.reconstructionImageUrl ? (
+                    <img src={item.reconstructionImageUrl} alt="" className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-slate-650">
+                      <Dna className="h-4 w-4" />
+                    </div>
+                  )}
+                </div>
+                <div className="flex-grow min-w-0">
+                  <div className="text-xs font-bold uppercase text-slate-100 group-hover:text-amber-400 transition-colors truncate font-sans">
+                    {names.heading}
                   </div>
-                )}
-              </div>
-              <div className="flex-grow min-w-0">
-                <div className="text-xs font-bold text-slate-200 group-hover:text-blue-400 transition-colors truncate">
-                  {item.name}
+                  <div className="text-[10px] text-amber-400 italic font-serif truncate">
+                    {names.subheading} &bull; <span className="text-slate-400 not-italic font-mono">{item.clade}</span>
+                  </div>
                 </div>
-                <div className="text-[10px] text-slate-400 italic truncate">
-                  {item.scientificName} &bull; <span className="text-indigo-400 not-italic font-semibold">{item.clade}</span>
-                </div>
-              </div>
-              <ArrowRight className="h-3.5 w-3.5 text-slate-600 group-hover:text-white transition-colors shrink-0" />
-            </button>
-          ))}
+                <ArrowRight className="h-3.5 w-3.5 text-slate-600 group-hover:text-amber-400 transition-colors shrink-0" />
+              </button>
+            );
+          })}
           <button
             onClick={handleSubmit}
             className="w-full p-2.5 bg-slate-950 text-center text-xs font-semibold text-blue-400 hover:text-blue-300 transition-colors flex items-center justify-center gap-1"

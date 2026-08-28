@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useReducedMotion, Variants } from 'framer-moti
 import { fetchSpecies, Species } from '../services/api.js';
 import ThreeDFossilStarfield from '../components/ThreeDFossilStarfield.js';
 import { SlidersHorizontal, ArrowRight, Dna, Info, X, ChevronLeft, ChevronRight, Filter } from 'lucide-react';
+import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 
 export default function Browse() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -655,54 +656,56 @@ export default function Browse() {
                 animate="show"
                 className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
               >
-                {speciesList.map((species) => (
-                  <motion.div
-                    key={species.id}
-                    variants={cardVariants}
-                    whileHover={shouldReduceMotion ? {} : { y: -4, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
-                    whileTap={{ scale: 0.97 }}
-                  >
-                    <Link
-                      to={`/species/${species.id}`}
-                      className="group glass-panel rounded-xl border border-white/10 hover:border-amber-500/40 transition-all duration-300 flex flex-col justify-between h-full shadow-xl overflow-hidden"
+                {speciesList.map((species) => {
+                  const names = getSpeciesDisplayNames(species);
+                  return (
+                    <motion.div
+                      key={species.id}
+                      variants={cardVariants}
+                      whileHover={shouldReduceMotion ? {} : { y: -4, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
+                      whileTap={{ scale: 0.97 }}
                     >
-                      <div>
-                        {/* Thumbnail Image */}
-                        <div className="relative h-48 bg-slate-900/80 border-b border-white/10 overflow-hidden flex items-center justify-center p-4">
-                          <div className="absolute inset-0 bg-fossil-grid opacity-20 pointer-events-none" />
-                          {species.reconstructionImageUrl ? (
-                            <img
-                              src={species.reconstructionImageUrl}
-                              alt={species.name}
-                              className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-xl z-10"
-                              loading="lazy"
-                            />
-                          ) : (
-                            <div className="w-full h-full flex flex-col items-center justify-center text-slate-500 text-xs font-mono bg-slate-950/60 rounded-lg">
-                              <Dna className="h-8 w-8 text-slate-700 mb-1" />
-                              Illustration Uncataloged
-                            </div>
-                          )}
-                          {/* Era label */}
-                          <span className="absolute top-2 left-2 bg-slate-950/90 backdrop-blur-md border border-white/10 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold text-amber-400 tracking-wider uppercase z-20 shadow-md">
-                            {species.timePeriod.split(' ').pop()}
-                          </span>
-                        </div>
+                      <Link
+                        to={`/species/${species.id}`}
+                        className="group glass-panel rounded-xl border border-white/10 hover:border-amber-500/40 transition-all duration-300 flex flex-col justify-between h-full shadow-xl overflow-hidden"
+                      >
+                        <div>
+                          {/* Thumbnail Image */}
+                          <div className="relative h-48 bg-slate-900/80 border-b border-white/10 overflow-hidden flex items-center justify-center p-4">
+                            <div className="absolute inset-0 bg-fossil-grid opacity-20 pointer-events-none" />
+                            {species.reconstructionImageUrl ? (
+                              <img
+                                src={species.reconstructionImageUrl}
+                                alt={species.name}
+                                className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-xl z-10"
+                                loading="lazy"
+                              />
+                            ) : (
+                              <div className="w-full h-full flex flex-col items-center justify-center text-slate-500 text-xs font-mono bg-slate-950/60 rounded-lg">
+                                <Dna className="h-8 w-8 text-slate-700 mb-1" />
+                                Illustration Uncataloged
+                              </div>
+                            )}
+                            {/* Era label */}
+                            <span className="absolute top-2 left-2 bg-slate-950/90 backdrop-blur-md border border-white/10 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold text-amber-400 tracking-wider uppercase z-20 shadow-md">
+                              {species.timePeriod.split(' ').pop()}
+                            </span>
+                          </div>
 
-                        <div className="p-4 space-y-2">
-                          <div className="space-y-0.5 border-l-2 border-amber-500 pl-3">
-                            <h3 className="text-base font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans">
-                              {species.name}
-                            </h3>
-                            <p className="text-xs italic font-serif text-amber-200/80">
-                              {species.scientificName}
+                          <div className="p-4 space-y-2">
+                            <div className="space-y-0.5 border-l-2 border-amber-500 pl-3">
+                              <h3 className="text-base font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans">
+                                {names.heading}
+                              </h3>
+                              <p className="text-xs italic font-serif text-amber-400">
+                                {names.subheading}
+                              </p>
+                            </div>
+                            <p className="text-xs font-sans text-slate-300 line-clamp-3 leading-relaxed">
+                              {species.dietDetails}
                             </p>
                           </div>
-                          <p className="text-xs font-sans text-slate-300 line-clamp-3 leading-relaxed">
-                            {species.dietDetails}
-                          </p>
                         </div>
-                      </div>
 
                       <div className="px-4 py-3 border-t border-white/10 bg-slate-950/60 flex items-center justify-between font-mono text-[11px] text-slate-400">
                         <div className="flex gap-2 items-center min-w-0">
@@ -718,8 +721,9 @@ export default function Browse() {
                       </div>
                     </Link>
                   </motion.div>
-                ))}
-              </motion.div>
+                );
+              })}
+            </motion.div>
 
               {/* Pagination Controls */}
               {pagination.totalPages > 1 && (

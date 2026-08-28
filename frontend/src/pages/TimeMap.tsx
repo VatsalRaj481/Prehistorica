@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import L from 'leaflet';
 import { fetchSpecies, Species } from '../services/api.js';
 import { Compass, Dna, Info, ArrowRight, MapPin, Loader2 } from 'lucide-react';
+import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 
 const ERAS = [
   { name: 'Cambrian', myaStart: 541, myaEnd: 485, range: '541–485 MYA', desc: 'Explosion of marine life forms' },
@@ -357,47 +358,50 @@ export default function TimeMap() {
             </div>
           ) : (
             <div className="space-y-3 max-h-[460px] overflow-y-auto pr-1">
-              {speciesList.map((species) => (
-                <motion.div
-                  key={species.id}
-                  whileHover={shouldReduceMotion ? {} : { x: 3, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <Link
-                    to={`/species/${species.id}`}
-                    className="group glass-panel rounded-xl border border-white/10 p-3.5 hover:border-amber-500/40 transition-all flex items-center justify-between gap-3 shadow-md overflow-hidden"
+              {speciesList.map((species) => {
+                const names = getSpeciesDisplayNames(species);
+                return (
+                  <motion.div
+                    key={species.id}
+                    whileHover={shouldReduceMotion ? {} : { x: 3, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
+                    whileTap={{ scale: 0.97 }}
                   >
-                    <div className="flex items-center gap-3 min-w-0">
-                      <div className="h-12 w-12 bg-slate-900/80 rounded-lg border border-white/10 shrink-0 flex items-center justify-center p-1 overflow-hidden">
-                        {species.reconstructionImageUrl ? (
-                          <img
-                            src={species.reconstructionImageUrl}
-                            alt={species.name}
-                            className="w-full h-full object-contain drop-shadow"
-                          />
-                        ) : (
-                          <Dna className="h-5 w-5 text-slate-700" />
-                        )}
-                      </div>
-                      <div className="min-w-0 space-y-0.5">
-                        <h4 className="text-sm font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors truncate tracking-tight font-sans">
-                          {species.name}
-                        </h4>
-                        <p className="text-xs italic font-serif text-amber-200/80 truncate">
-                          {species.scientificName}
-                        </p>
-                        <div className="flex items-center gap-2 text-[10px] text-slate-400">
-                          <span className="font-bold text-amber-400">{species.clade}</span>
-                          <span>&bull;</span>
-                          <span className="truncate">{species.fossilFormation || 'Formation Unspecified'}</span>
+                    <Link
+                      to={`/species/${species.id}`}
+                      className="group glass-panel rounded-xl border border-white/10 p-3.5 hover:border-amber-500/40 transition-all flex items-center justify-between gap-3 shadow-md overflow-hidden"
+                    >
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="h-12 w-12 bg-slate-900/80 rounded-lg border border-white/10 shrink-0 flex items-center justify-center p-1 overflow-hidden">
+                          {species.reconstructionImageUrl ? (
+                            <img
+                              src={species.reconstructionImageUrl}
+                              alt={species.name}
+                              className="w-full h-full object-contain drop-shadow"
+                            />
+                          ) : (
+                            <Dna className="h-5 w-5 text-slate-700" />
+                          )}
+                        </div>
+                        <div className="min-w-0 space-y-0.5">
+                          <h4 className="text-sm font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors truncate tracking-tight font-sans">
+                            {names.heading}
+                          </h4>
+                          <p className="text-xs italic font-serif text-amber-400 truncate">
+                            {names.subheading}
+                          </p>
+                          <div className="flex items-center gap-2 text-[10px] text-slate-400">
+                            <span className="font-bold text-amber-400">{species.clade}</span>
+                            <span>&bull;</span>
+                            <span className="truncate">{species.fossilFormation || 'Formation Unspecified'}</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    <ArrowRight className="h-4 w-4 text-slate-500 group-hover:text-amber-400 group-hover:translate-x-0.5 transition-all shrink-0" />
-                  </Link>
-                </motion.div>
-              ))}
+                      <ArrowRight className="h-4 w-4 text-slate-500 group-hover:text-amber-400 group-hover:translate-x-0.5 transition-all shrink-0" />
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </div>
           )}
         </div>
