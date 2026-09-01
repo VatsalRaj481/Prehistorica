@@ -46,7 +46,13 @@ Built around **The Modern Museum Pavilion** visual language. **Prehistorica** ex
 - **Blocked Public Writes**: Unauthenticated `INSERT`/`UPDATE`/`DELETE` API requests are rejected by RLS.
 - **Bypassed Service Writes**: Backend Express server, CLI ingestion tools, and Prisma ORM connect via direct PostgreSQL credentials, bypassing RLS cleanly.
 
-### 6. 📱 Multi-Device Responsive Architecture
+### 6. 🛡️ Permanent Safeguard & Anti-Regression Invariant
+> **This project's core rule: scripts that add species must NEVER modify existing rows. If you need to fix/update an existing species' data, that is a separate, manual, reviewed operation — never part of routine seeding or adding new species.**
+- **Insert-Only Guarantee**: `backend/prisma/seed.ts` and `backend/scripts/add-species.ts` strictly execute `create()` for genuinely new rows, and reject or skip existing records by normalized name, scientific name, or genus match.
+- **Automated Pre/Post Regression Check**: `backend/scripts/verify-no-regression.ts` captures an immutable SHA-256 snapshot of all protected fields (`media`, `taxonomy`, `interestingFacts`, `sources`, `sizeEstimate`, `diet`, `habitat`, `clade`, etc.) before any seed or add-species operation, and verifies all pre-existing records remain 100% untouched post-operation.
+- **Hard Failure on Regression**: If any existing record's fields are altered or deleted, the script fails loudly with exit code `1` and aborts.
+
+### 7. 📱 Multi-Device Responsive Architecture
 - Verified 100% pixel-perfect responsive behavior across:
   - **Mobile**: 375px (iPhone SE)
   - **Mobile Large**: 428px (iPhone Pro Max)
@@ -120,16 +126,19 @@ The interactive web application will open at `http://localhost:5173`.
 
 ---
 
-### 3. Official Species Ingestion CLI Tool
+### 3. Official Species Ingestion CLI Tool & Automated Safeguards
 
-Add new species to the encyclopedia with strict Zod validation:
+Add new species to the encyclopedia with strict Zod validation and automated anti-regression protection:
 
 ```bash
 # Run CLI tool dry-run check
 npm run add-species -- ./path/to/new_species.json --dry-run
 
-# Commit new species to PostgreSQL
+# Commit new species to PostgreSQL (with automated duplicate rejection & snapshot integrity verification)
 npm run add-species -- ./path/to/new_species.json
+
+# Run standalone integrity check against current database
+npm run safeguard:check
 ```
 Reference `backend/scripts/species-template.json` for required schema standards.
 
@@ -142,13 +151,14 @@ Prehistorica/
 ├── backend/
 │   ├── prisma/
 │   │   ├── schema.prisma       # Database schema & RLS definitions
-│   │   ├── seed.ts             # Seeding script for 462 species
+│   │   ├── seed.ts             # Insert-only seed script with pre/post regression verification
 │   │   ├── species_triassic.json
 │   │   ├── species_jurassic.json
 │   │   ├── species_cretaceous.json
 │   │   └── species_others.json
 │   ├── scripts/
-│   │   ├── add-species.ts      # Official CLI ingestion tool
+│   │   ├── add-species.ts          # Ingestion CLI with duplicate rejection & safeguard checks
+│   │   ├── verify-no-regression.ts # Anti-regression snapshot & verification engine
 │   │   ├── species-template.json
 │   │   ├── ingest_species_batch.js
 │   │   └── run_all_remaining_batches.js

@@ -1,7 +1,21 @@
+/**
+ * ══════════════════════════════════════════════════════════════════════════════
+ * PREHISTORICA DATABASE SEED SCRIPT: seed.ts
+ * ══════════════════════════════════════════════════════════════════════════════
+ * This project's core rule: scripts that add species must NEVER modify existing rows.
+ * If you need to fix/update an existing species' data, that is a separate, manual,
+ * reviewed operation — never part of routine seeding or adding new species.
+ * ══════════════════════════════════════════════════════════════════════════════
+ */
+
+import dns from 'dns';
+dns.setDefaultResultOrder('ipv4first');
+
 import { PrismaClient, Clade, Diet, Habitat } from '@prisma/client';
 import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
+import { takeSnapshot, verifyRegression } from '../scripts/verify-no-regression.js';
 
 const prisma = new PrismaClient();
 
@@ -10,13 +24,17 @@ const __dirname = path.dirname(__filename);
 
 async function main() {
   // ══════════════════════════════════════════════════════════════════════════════
-  // SAFETY GUARD — INSERT-ONLY MODE
+  // SAFETY GUARD — INSERT-ONLY MODE & REGRESSION SNAPSHOT
   // seed.ts will NEVER update or overwrite any existing row.
   // All manually-corrected fields (media, taxonomy, interestingFacts, sources,
   // closestLivingRelatives, habitat) are permanently safe from seed runs.
   // To force a full re-seed from scratch, manually truncate the Species table.
   // ══════════════════════════════════════════════════════════════════════════════
   console.log('Seeding species data (INSERT-ONLY — existing rows will be skipped)...');
+  
+  // Capture pre-operation snapshot
+  await takeSnapshot();
+
   const files = ['species_triassic.json', 'species_jurassic.json', 'species_cretaceous.json', 'species_others.json'];
   let speciesList: any[] = [];
 
@@ -205,7 +223,7 @@ async function main() {
     const extinctionEvent = s.extinctionEvent || (s.timePeriod.includes('Cretaceous') ? 'K-Pg extinction event (66 MYA)' : null);
     const closestRelatives = s.closestLivingRelatives || ['Modern Birds (Aves)', 'Crocodilians'];
 
-    const upsertData: any = {
+    const createData: any = {
       name: s.name,
       scientificName: s.scientificName || s.name,
       nameMeaning: s.nameMeaning || 'Prehistoric species',
@@ -236,8 +254,8 @@ async function main() {
       placeholder: false
     };
 
-    // INSERT ONLY — never update an existing row
-    await prisma.species.create({ data: upsertData });
+    // INSERT ONLY — never update or upsert an existing row
+    await prisma.species.create({ data: createData });
     inserted++;
   }
 
@@ -247,6 +265,7 @@ async function main() {
   await prisma.speciesRelation.deleteMany({});
 
   const allDbSpecies = await prisma.species.findMany({});
+  const allRelationsToInsert: { speciesId: number; relatedSpeciesId: number }[] = [];
   
   for (const species of allDbSpecies) {
     let genus: string | null = null;
@@ -292,23 +311,30 @@ async function main() {
     const topRelated = related.slice(0, 6);
 
     for (const rel of topRelated) {
-      await prisma.speciesRelation.upsert({
-        where: {
-          speciesId_relatedSpeciesId: {
-            speciesId: species.id,
-            relatedSpeciesId: rel.id
-          }
-        },
-        update: {},
-        create: {
-          speciesId: species.id,
-          relatedSpeciesId: rel.id
-        }
+      allRelationsToInsert.push({
+        speciesId: species.id,
+        relatedSpeciesId: rel.id
       });
     }
   }
 
-  console.log('Seeding and backfill completed successfully!');
+  if (allRelationsToInsert.length > 0) {
+    await prisma.speciesRelation.createMany({
+      data: allRelationsToInsert,
+      skipDuplicates: true
+    });
+  }
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // POST-OPERATION VERIFICATION (AUTOMATED REGRESSION CHECK)
+  // ══════════════════════════════════════════════════════════════════════════════
+  const verification = await verifyRegression();
+  if (!verification.success) {
+    console.error('❌ POST-SEED REGRESSION CHECK FAILED!');
+    process.exit(1);
+  }
+
+  console.log('Seeding and backfill completed successfully with verified zero regressions!');
 }
 
 main()

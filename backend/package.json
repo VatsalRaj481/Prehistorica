@@ -9,7 +9,11 @@
     "start": "node dist/server.js",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
+    "safeguard:snapshot": "tsx scripts/verify-no-regression.ts --snapshot",
+    "safeguard:verify": "tsx scripts/verify-no-regression.ts --verify",
+    "safeguard:check": "tsx scripts/verify-no-regression.ts --snapshot && tsx scripts/verify-no-regression.ts --verify",
     "prisma:seed": "tsx prisma/seed.ts",
+    "seed": "npm run prisma:seed",
     "add-species": "tsx scripts/add-species.ts"
   },
   "dependencies": {

@@ -1,10 +1,21 @@
+/**
+ * ══════════════════════════════════════════════════════════════════════════════
+ * PREHISTORICA OFFICIAL INGESTION CLI: add-species.ts
+ * ══════════════════════════════════════════════════════════════════════════════
+ * This project's core rule: scripts that add species must NEVER modify existing rows.
+ * If you need to fix/update an existing species' data, that is a separate, manual,
+ * reviewed operation — never part of routine seeding or adding new species.
+ * ══════════════════════════════════════════════════════════════════════════════
+ */
+
+import dns from 'dns';
+dns.setDefaultResultOrder('ipv4first');
+
 import { PrismaClient, Clade, Diet, Habitat, TaxonomicStatus } from '@prisma/client';
 import fs from 'fs';
 import path from 'path';
 import { z } from 'zod';
-import dns from 'dns';
-
-dns.setDefaultResultOrder('ipv4first');
+import { takeSnapshot, verifyRegression } from './verify-no-regression.js';
 
 const prisma = new PrismaClient();
 
@@ -78,6 +89,11 @@ const SpeciesInputSchema = z.object({
   ).min(1, 'sources must contain at least 1 citation and url')
 });
 
+function normalizeStr(str?: string): string {
+  if (!str) return '';
+  return str.toLowerCase().trim().replace(/\s+/g, ' ');
+}
+
 async function main() {
   const args = process.argv.slice(2);
   const isDryRun = args.includes('--dry-run');
@@ -134,13 +150,75 @@ async function main() {
   console.log(`✅ SCHEMA VALIDATED SUCCESSFULLY!`);
   console.log(`Species: ${data.name} (${data.scientificName}) - Clade: ${data.clade}\n`);
 
+  // ══════════════════════════════════════════════════════════════════════════════
+  // DUPLICATE REJECTION CHECK (AGAINST LIVE DATABASE)
+  // ══════════════════════════════════════════════════════════════════════════════
+  console.log('🔍 Checking database for existing records with matching name or scientific name...');
+  const existingRows = await prisma.species.findMany({
+    select: { id: true, name: true, scientificName: true }
+  });
+
+  const normCandidateName = normalizeStr(data.name);
+  const normCandidateSciName = normalizeStr(data.scientificName);
+  const candGenus = normCandidateSciName.split(' ')[0] || normCandidateName.split(' ')[0];
+  const isCandidateSingleWord = !normCandidateName.includes(' ') || !normCandidateSciName.includes(' ');
+
+  let duplicateMatch: { id: number; name: string; scientificName: string; reason: string } | null = null;
+
+  for (const r of existingRows) {
+    const normRowName = normalizeStr(r.name);
+    const normRowSciName = normalizeStr(r.scientificName || r.name);
+    const rowGenus = normRowSciName.split(' ')[0] || normRowName.split(' ')[0];
+
+    if (normRowName === normCandidateName) {
+      duplicateMatch = { id: r.id, name: r.name, scientificName: r.scientificName, reason: `Exact common name match with #${r.id}` };
+      break;
+    }
+    if (normRowSciName === normCandidateSciName) {
+      duplicateMatch = { id: r.id, name: r.name, scientificName: r.scientificName, reason: `Exact scientific name match with #${r.id}` };
+      break;
+    }
+    if (normRowName === normCandidateSciName || normRowSciName === normCandidateName) {
+      duplicateMatch = { id: r.id, name: r.name, scientificName: r.scientificName, reason: `Cross-match between name and scientificName with #${r.id}` };
+      break;
+    }
+    if (isCandidateSingleWord && candGenus && rowGenus === candGenus) {
+      duplicateMatch = { id: r.id, name: r.name, scientificName: r.scientificName, reason: `Single-word candidate matches genus of existing species #${r.id}` };
+      break;
+    }
+  }
+
+  if (duplicateMatch) {
+    console.error('\n' + '█'.repeat(80));
+    console.error('❌ REJECTED: SPECIES ALREADY EXISTS IN DATABASE!');
+    console.error('█'.repeat(80));
+    console.error(`Candidate Species: "${data.name}" (${data.scientificName})`);
+    console.error(`Conflicting Row:   #${duplicateMatch.id} "${duplicateMatch.name}" (${duplicateMatch.scientificName})`);
+    console.error(`Conflict Reason:   ${duplicateMatch.reason}`);
+    console.error('\nThis project enforces an INSERT-ONLY policy. Adding a species that already');
+    console.error('exists is strictly prohibited to prevent data regression.');
+    console.error('If you intended to update an existing record, perform a manual, reviewed operation.');
+    console.error('█'.repeat(80) + '\n');
+    await prisma.$disconnect();
+    process.exit(1);
+  }
+
+  console.log(`✅ NO DUPLICATES FOUND: "${data.name}" is genuinely new (checked against ${existingRows.length} existing records).\n`);
+
   if (isDryRun) {
-    console.log(`[DRY-RUN COMPLETE]: Entry is 100% valid. Database write skipped.`);
+    console.log(`[DRY-RUN COMPLETE]: Entry is 100% valid and verified unique. Database write skipped.`);
     await prisma.$disconnect();
     return;
   }
 
-  // Database Write
+  // ══════════════════════════════════════════════════════════════════════════════
+  // PRE-OPERATION SNAPSHOT CAPTURE (AUTOMATED REGRESSION PROTECTION)
+  // ══════════════════════════════════════════════════════════════════════════════
+  await takeSnapshot();
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // DATABASE WRITE (INSERT ONLY - NEVER UPDATE OR UPSERT)
+  // ══════════════════════════════════════════════════════════════════════════════
   try {
     const createdSpecies = await prisma.species.create({
       data: {
@@ -169,7 +247,7 @@ async function main() {
       }
     });
 
-    console.log(`🎉 SUCCESS: Species inserted into database!`);
+    console.log(`\n🎉 SUCCESS: Species inserted into database!`);
     console.log(`Created Species ID: #${createdSpecies.id}`);
 
     // Sanity Check on Newly Created Row
@@ -190,6 +268,15 @@ async function main() {
       console.error(`⚠️ SANITY CHECK FAILED: Incomplete fields found: ${missingFields.join(', ')}`);
     } else {
       console.log(`✅ SANITY CHECK PASSED: Record is 100% complete with no missing required fields.`);
+    }
+
+    // ══════════════════════════════════════════════════════════════════════════════
+    // POST-OPERATION VERIFICATION (AUTOMATED REGRESSION CHECK)
+    // ══════════════════════════════════════════════════════════════════════════════
+    const verification = await verifyRegression();
+    if (!verification.success) {
+      console.error('❌ POST-OPERATION REGRESSION CHECK FAILED!');
+      process.exit(1);
     }
 
     // Final Database Count

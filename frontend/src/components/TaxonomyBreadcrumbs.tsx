@@ -32,14 +32,14 @@ export default function TaxonomyBreadcrumbs({ taxonomy, taxonomicClassification 
 
   if (taxonomy) {
     const ranks = [
-      { label: 'Domain', val: taxonomy.domain },
-      { label: 'Kingdom', val: taxonomy.kingdom },
-      { label: 'Phylum', val: taxonomy.phylum },
-      { label: 'Class', val: taxonomy.class },
-      { label: 'Order', val: taxonomy.order },
-      { label: 'Family', val: taxonomy.family },
-      { label: 'Genus', val: taxonomy.genus },
-      { label: 'Species', val: taxonomy.species }
+      { label: 'Domain', val: taxonomy.domain || 'Eukaryota' },
+      { label: 'Kingdom', val: taxonomy.kingdom || 'Animalia' },
+      { label: 'Phylum', val: taxonomy.phylum || 'Chordata' },
+      { label: 'Class', val: taxonomy.class || (taxonomy as any).clade || 'Reptilia' },
+      { label: 'Order', val: taxonomy.order || (taxonomy as any).suborder || 'Theropoda' },
+      { label: 'Family', val: taxonomy.family || 'Dinosauridae' },
+      { label: 'Genus', val: taxonomy.genus || taxonomy.species?.split(' ')[0] || '' },
+      { label: 'Species', val: taxonomy.species || '' }
     ];
 
     return (

@@ -1,0 +1,1452 @@
+{
+  "summary": {
+    "totalStorageFiles": 610,
+    "totalStorageBytes": 814322089,
+    "totalStorageMB": "776.60",
+    "exactMatchesCount": 452,
+    "exactMatchesBytes": 575060004,
+    "exactMatchesMB": "548.42",
+    "possibleMatchesCount": 1,
+    "possibleMatchesBytes": 276806,
+    "possibleMatchesMB": "0.26",
+    "confirmedOrphansCount": 157,
+    "confirmedOrphansBytes": 238985279,
+    "confirmedOrphansMB": "227.91",
+    "totalSpeciesInDB": 502,
+    "totalMediaURLsInDB": 680
+  },
+  "possibleMatches": [
+    {
+      "file": {
+        "name": "38-perfect-art.jpg",
+        "path": "38-perfect-art.jpg",
+        "size": 276806
+      },
+      "ref": {
+        "speciesId": 2038,
+        "speciesName": "Dorygnathus banthensis",
+        "scientificName": "Dorygnathus banthensis",
+        "mediaType": "found_in_db_text",
+        "rawUrl": "38-perfect-art.jpg",
+        "extractedPath": "38-perfect-art.jpg",
+        "normalizedPath": "38-perfect-art.jpg"
+      },
+      "reason": "Found elsewhere in species #2038 (Dorygnathus banthensis) DB record, but not in media array"
+    }
+  ],
+  "confirmedOrphans": [
+    {
+      "index": 1,
+      "filename": "1-Anomalocaris_canadensis.png",
+      "sizeBytes": 631282,
+      "sizeKB": "616.5",
+      "sizeMB": "0.60",
+      "suspectedSpecies": "Species #1: Anomalocaris canadensis (Anomalocaris canadensis)",
+      "suspectedSpeciesId": 1
+    },
+    {
+      "index": 2,
+      "filename": "100-Machaeroprosopus.png",
+      "sizeBytes": 2662937,
+      "sizeKB": "2600.5",
+      "sizeMB": "2.54",
+      "suspectedSpecies": "Species #100: Machaeroprosopus (Machaeroprosopus spp.)",
+      "suspectedSpeciesId": 100
+    },
+    {
+      "index": 3,
+      "filename": "100-perfect-art.jpg",
+      "sizeBytes": 754203,
+      "sizeKB": "736.5",
+      "sizeMB": "0.72",
+      "suspectedSpecies": "Species #100: Machaeroprosopus (Machaeroprosopus spp.)",
+      "suspectedSpeciesId": 100
+    },
+    {
+      "index": 4,
+      "filename": "104-Typothorax.jpg",
+      "sizeBytes": 11877762,
+      "sizeKB": "11599.4",
+      "sizeMB": "11.33",
+      "suspectedSpecies": "Species ID #104 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 104
+    },
+    {
+      "index": 5,
+      "filename": "109-perfect-art.png",
+      "sizeBytes": 235733,
+      "sizeKB": "230.2",
+      "sizeMB": "0.22",
+      "suspectedSpecies": "Species #109: Gracilisuchus (Gracilisuchus spp.)",
+      "suspectedSpeciesId": 109
+    },
+    {
+      "index": 6,
+      "filename": "111-Saltoposuchus.png",
+      "sizeBytes": 1196596,
+      "sizeKB": "1168.6",
+      "sizeMB": "1.14",
+      "suspectedSpecies": "Species #111: Saltoposuchus (Saltoposuchus spp.)",
+      "suspectedSpeciesId": 111
+    },
+    {
+      "index": 7,
+      "filename": "116-perfect-art.jpg",
+      "sizeBytes": 20001,
+      "sizeKB": "19.5",
+      "sizeMB": "0.02",
+      "suspectedSpecies": "Species #116: Effigia (Effigia spp.)",
+      "suspectedSpeciesId": 116
+    },
+    {
+      "index": 8,
+      "filename": "118-Poposaurus.jpg",
+      "sizeBytes": 705145,
+      "sizeKB": "688.6",
+      "sizeMB": "0.67",
+      "suspectedSpecies": "Species ID #118 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 118
+    },
+    {
+      "index": 9,
+      "filename": "120-perfect-art.png",
+      "sizeBytes": 6586356,
+      "sizeKB": "6432.0",
+      "sizeMB": "6.28",
+      "suspectedSpecies": "Species #120: Arizonasaurus (Arizonasaurus spp.)",
+      "suspectedSpeciesId": 120
+    },
+    {
+      "index": 10,
+      "filename": "125-perfect-art.jpg",
+      "sizeBytes": 1528500,
+      "sizeKB": "1492.7",
+      "sizeMB": "1.46",
+      "suspectedSpecies": "Species #125: Macrocnemus (Macrocnemus spp.)",
+      "suspectedSpeciesId": 125
+    },
+    {
+      "index": 11,
+      "filename": "126-perfect-art.png",
+      "sizeBytes": 2030279,
+      "sizeKB": "1982.7",
+      "sizeMB": "1.94",
+      "suspectedSpecies": "Species #126: Dinocephalosaurus (Dinocephalosaurus spp.)",
+      "suspectedSpeciesId": 126
+    },
+    {
+      "index": 12,
+      "filename": "14-Coelophysis.jpg",
+      "sizeBytes": 586446,
+      "sizeKB": "572.7",
+      "sizeMB": "0.56",
+      "suspectedSpecies": "Species #14: Coelophysis bauri (Coelophysis bauri)",
+      "suspectedSpeciesId": 14
+    },
+    {
+      "index": 13,
+      "filename": "143-Campylognathoides.png",
+      "sizeBytes": 69016,
+      "sizeKB": "67.4",
+      "sizeMB": "0.07",
+      "suspectedSpecies": "Species ID #143 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 143
+    },
+    {
+      "index": 14,
+      "filename": "15-Plateosaurus.png",
+      "sizeBytes": 2761167,
+      "sizeKB": "2696.5",
+      "sizeMB": "2.63",
+      "suspectedSpecies": "Species #15: Plateosaurus trossingensis (Plateosaurus trossingensis)",
+      "suspectedSpeciesId": 15
+    },
+    {
+      "index": 15,
+      "filename": "15-Plateosaurus.svg",
+      "sizeBytes": 454521,
+      "sizeKB": "443.9",
+      "sizeMB": "0.43",
+      "suspectedSpecies": "Species #15: Plateosaurus trossingensis (Plateosaurus trossingensis)",
+      "suspectedSpeciesId": 15
+    },
+    {
+      "index": 16,
+      "filename": "156-Yangchuanosaurus.jpg",
+      "sizeBytes": 34204,
+      "sizeKB": "33.4",
+      "sizeMB": "0.03",
+      "suspectedSpecies": "Species ID #156 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 156
+    },
+    {
+      "index": 17,
+      "filename": "16-Postosuchus.jpg",
+      "sizeBytes": 150819,
+      "sizeKB": "147.3",
+      "sizeMB": "0.14",
+      "suspectedSpecies": "Species #16: Postosuchus kirkpatricki (Postosuchus kirkpatricki)",
+      "suspectedSpeciesId": 16
+    },
+    {
+      "index": 18,
+      "filename": "163-Juravenator.jpg",
+      "sizeBytes": 30527,
+      "sizeKB": "29.8",
+      "sizeMB": "0.03",
+      "suspectedSpecies": "Species #163: Juravenator (Juravenator starki)",
+      "suspectedSpeciesId": 163
+    },
+    {
+      "index": 19,
+      "filename": "163-perfect-art.png",
+      "sizeBytes": 1491982,
+      "sizeKB": "1457.0",
+      "sizeMB": "1.42",
+      "suspectedSpecies": "Species #163: Juravenator (Juravenator starki)",
+      "suspectedSpeciesId": 163
+    },
+    {
+      "index": 20,
+      "filename": "166-Apatosaurus.jpg",
+      "sizeBytes": 1259413,
+      "sizeKB": "1229.9",
+      "sizeMB": "1.20",
+      "suspectedSpecies": "Species #166: Apatosaurus (Apatosaurus ajax)",
+      "suspectedSpeciesId": 166
+    },
+    {
+      "index": 21,
+      "filename": "166-Apatosaurus.png",
+      "sizeBytes": 1417323,
+      "sizeKB": "1384.1",
+      "sizeMB": "1.35",
+      "suspectedSpecies": "Species #166: Apatosaurus (Apatosaurus ajax)",
+      "suspectedSpeciesId": 166
+    },
+    {
+      "index": 22,
+      "filename": "1672-self-hosted.jpg",
+      "sizeBytes": 16989,
+      "sizeKB": "16.6",
+      "sizeMB": "0.02",
+      "suspectedSpecies": "Species #1672: Kollikodon ritchiei (Kollikodon ritchiei)",
+      "suspectedSpeciesId": 1672
+    },
+    {
+      "index": 23,
+      "filename": "172-Shunosaurus.jpg",
+      "sizeBytes": 44747,
+      "sizeKB": "43.7",
+      "sizeMB": "0.04",
+      "suspectedSpecies": "Species ID #172 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 172
+    },
+    {
+      "index": 24,
+      "filename": "173-Mamenchisaurus.jpg",
+      "sizeBytes": 230304,
+      "sizeKB": "224.9",
+      "sizeMB": "0.22",
+      "suspectedSpecies": "Species ID #173 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 173
+    },
+    {
+      "index": 25,
+      "filename": "178-Spinophorosaurus.png",
+      "sizeBytes": 5868675,
+      "sizeKB": "5731.1",
+      "sizeMB": "5.60",
+      "suspectedSpecies": "Species #178: Spinophorosaurus (Spinophorosaurus nigerensis)",
+      "suspectedSpeciesId": 178
+    },
+    {
+      "index": 26,
+      "filename": "188-Heterodontosaurus.jpg",
+      "sizeBytes": 19202,
+      "sizeKB": "18.8",
+      "sizeMB": "0.02",
+      "suspectedSpecies": "Species ID #188 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 188
+    },
+    {
+      "index": 27,
+      "filename": "19-Brachiosaurus.png",
+      "sizeBytes": 1853082,
+      "sizeKB": "1809.7",
+      "sizeMB": "1.77",
+      "suspectedSpecies": "Species #19: Brachiosaurus altithorax (Brachiosaurus altithorax)",
+      "suspectedSpeciesId": 19
+    },
+    {
+      "index": 28,
+      "filename": "191-Huayangosaurus.png",
+      "sizeBytes": 327542,
+      "sizeKB": "319.9",
+      "sizeMB": "0.31",
+      "suspectedSpecies": "Species ID #191 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 191
+    },
+    {
+      "index": 29,
+      "filename": "192-Gargoyleosaurus.svg",
+      "sizeBytes": 385007,
+      "sizeKB": "376.0",
+      "sizeMB": "0.37",
+      "suspectedSpecies": "Species #192: Gargoyleosaurus (Gargoyleosaurus parkpinorum)",
+      "suspectedSpeciesId": 192
+    },
+    {
+      "index": 30,
+      "filename": "195-Agilisaurus.jpg",
+      "sizeBytes": 28946,
+      "sizeKB": "28.3",
+      "sizeMB": "0.03",
+      "suspectedSpecies": "Species ID #195 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 195
+    },
+    {
+      "index": 31,
+      "filename": "20-Allosaurus.jpg",
+      "sizeBytes": 470812,
+      "sizeKB": "459.8",
+      "sizeMB": "0.45",
+      "suspectedSpecies": "Species #20: Allosaurus fragilis (Allosaurus fragilis)",
+      "suspectedSpeciesId": 20
+    },
+    {
+      "index": 32,
+      "filename": "207-paleoart.jpg",
+      "sizeBytes": 370166,
+      "sizeKB": "361.5",
+      "sizeMB": "0.35",
+      "suspectedSpecies": "Species #207: Anurognathus (Anurognathus ammoni)",
+      "suspectedSpeciesId": 207
+    },
+    {
+      "index": 33,
+      "filename": "209-Dorygnathus.png",
+      "sizeBytes": 319358,
+      "sizeKB": "311.9",
+      "sizeMB": "0.30",
+      "suspectedSpecies": "Species ID #209 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 209
+    },
+    {
+      "index": 34,
+      "filename": "220-perfect-art.jpg",
+      "sizeBytes": 848494,
+      "sizeKB": "828.6",
+      "sizeMB": "0.81",
+      "suspectedSpecies": "Species #220: Harpactognathus (Harpactognathus gentryii)",
+      "suspectedSpeciesId": 220
+    },
+    {
+      "index": 35,
+      "filename": "224-perfect-art.jpg",
+      "sizeBytes": 1362715,
+      "sizeKB": "1330.8",
+      "sizeMB": "1.30",
+      "suspectedSpecies": "Species #224: Liopleurodon (Liopleurodon ferox)",
+      "suspectedSpeciesId": 224
+    },
+    {
+      "index": 36,
+      "filename": "229-Rhomaleosaurus.jpg",
+      "sizeBytes": 90107,
+      "sizeKB": "88.0",
+      "sizeMB": "0.09",
+      "suspectedSpecies": "Species #229: Rhomaleosaurus (Rhomaleosaurus cramptoni)",
+      "suspectedSpeciesId": 229
+    },
+    {
+      "index": 37,
+      "filename": "23-Spinosaurus.png",
+      "sizeBytes": 2366973,
+      "sizeKB": "2311.5",
+      "sizeMB": "2.26",
+      "suspectedSpecies": "Species ID #23 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 23
+    },
+    {
+      "index": 38,
+      "filename": "231-Peloneustes.png",
+      "sizeBytes": 101355,
+      "sizeKB": "99.0",
+      "sizeMB": "0.10",
+      "suspectedSpecies": "Species #231: Peloneustes (Peloneustes philarchus)",
+      "suspectedSpeciesId": 231
+    },
+    {
+      "index": 39,
+      "filename": "2317-self-hosted.jpg",
+      "sizeBytes": 891468,
+      "sizeKB": "870.6",
+      "sizeMB": "0.85",
+      "suspectedSpecies": "Species #2317: Indochelys spatulata (Indochelys spatulata)",
+      "suspectedSpeciesId": 2317
+    },
+    {
+      "index": 40,
+      "filename": "235-Stenopterygius.jpg",
+      "sizeBytes": 98336,
+      "sizeKB": "96.0",
+      "sizeMB": "0.09",
+      "suspectedSpecies": "Species ID #235 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 235
+    },
+    {
+      "index": 41,
+      "filename": "236-Eurhinosaurus.png",
+      "sizeBytes": 276642,
+      "sizeKB": "270.2",
+      "sizeMB": "0.26",
+      "suspectedSpecies": "Species ID #236 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 236
+    },
+    {
+      "index": 42,
+      "filename": "24-Tyrannosaurus_rex.jpg",
+      "sizeBytes": 41907,
+      "sizeKB": "40.9",
+      "sizeMB": "0.04",
+      "suspectedSpecies": "Species #24: Tyrannosaurus rex (Tyrannosaurus rex)",
+      "suspectedSpeciesId": 24
+    },
+    {
+      "index": 43,
+      "filename": "24-Tyrannosaurus_rex.png",
+      "sizeBytes": 580973,
+      "sizeKB": "567.4",
+      "sizeMB": "0.55",
+      "suspectedSpecies": "Species #24: Tyrannosaurus rex (Tyrannosaurus rex)",
+      "suspectedSpeciesId": 24
+    },
+    {
+      "index": 44,
+      "filename": "241-perfect-art.jpg",
+      "sizeBytes": 50650,
+      "sizeKB": "49.5",
+      "sizeMB": "0.05",
+      "suspectedSpecies": "Species #241: Fruitafossor (Fruitafossor windscheffeli)",
+      "suspectedSpeciesId": 241
+    },
+    {
+      "index": 45,
+      "filename": "26-Velociraptor.png",
+      "sizeBytes": 27107,
+      "sizeKB": "26.5",
+      "sizeMB": "0.03",
+      "suspectedSpecies": "Species #26: Velociraptor mongoliensis (Velociraptor mongoliensis)",
+      "suspectedSpeciesId": 26
+    },
+    {
+      "index": 46,
+      "filename": "2807-Herrerasaurus.jpg",
+      "sizeBytes": 87068,
+      "sizeKB": "85.0",
+      "sizeMB": "0.08",
+      "suspectedSpecies": "Species ID #2807 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2807
+    },
+    {
+      "index": 47,
+      "filename": "2808-Coelophysis.jpg",
+      "sizeBytes": 13982423,
+      "sizeKB": "13654.7",
+      "sizeMB": "13.33",
+      "suspectedSpecies": "Species ID #2808 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2808
+    },
+    {
+      "index": 48,
+      "filename": "2809-Plateosaurus.jpg",
+      "sizeBytes": 746777,
+      "sizeKB": "729.3",
+      "sizeMB": "0.71",
+      "suspectedSpecies": "Species ID #2809 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2809
+    },
+    {
+      "index": 49,
+      "filename": "2810-Postosuchus.jpg",
+      "sizeBytes": 331458,
+      "sizeKB": "323.7",
+      "sizeMB": "0.32",
+      "suspectedSpecies": "Species ID #2810 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2810
+    },
+    {
+      "index": 50,
+      "filename": "2811-Desmatosuchus.jpg",
+      "sizeBytes": 284505,
+      "sizeKB": "277.8",
+      "sizeMB": "0.27",
+      "suspectedSpecies": "Species ID #2811 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2811
+    },
+    {
+      "index": 51,
+      "filename": "2812-Placerias.jpg",
+      "sizeBytes": 646999,
+      "sizeKB": "631.8",
+      "sizeMB": "0.62",
+      "suspectedSpecies": "Species ID #2812 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2812
+    },
+    {
+      "index": 52,
+      "filename": "2819-Metoposaurus.jpg",
+      "sizeBytes": 744527,
+      "sizeKB": "727.1",
+      "sizeMB": "0.71",
+      "suspectedSpecies": "Species ID #2819 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2819
+    },
+    {
+      "index": 53,
+      "filename": "2820-Lystrosaurus.jpg",
+      "sizeBytes": 52442,
+      "sizeKB": "51.2",
+      "sizeMB": "0.05",
+      "suspectedSpecies": "Species ID #2820 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2820
+    },
+    {
+      "index": 54,
+      "filename": "2821-Eoraptor.jpg",
+      "sizeBytes": 127961,
+      "sizeKB": "125.0",
+      "sizeMB": "0.12",
+      "suspectedSpecies": "Species ID #2821 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2821
+    },
+    {
+      "index": 55,
+      "filename": "2822-Pisanosaurus.jpg",
+      "sizeBytes": 111341,
+      "sizeKB": "108.7",
+      "sizeMB": "0.11",
+      "suspectedSpecies": "Species ID #2822 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2822
+    },
+    {
+      "index": 56,
+      "filename": "2832-Melanorosaurus.jpg",
+      "sizeBytes": 501546,
+      "sizeKB": "489.8",
+      "sizeMB": "0.48",
+      "suspectedSpecies": "Species ID #2832 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2832
+    },
+    {
+      "index": 57,
+      "filename": "2834-Blikanasaurus.png",
+      "sizeBytes": 64285,
+      "sizeKB": "62.8",
+      "sizeMB": "0.06",
+      "suspectedSpecies": "Species ID #2834 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2834
+    },
+    {
+      "index": 58,
+      "filename": "2839-Lufengosaurus.jpg",
+      "sizeBytes": 1122947,
+      "sizeKB": "1096.6",
+      "sizeMB": "1.07",
+      "suspectedSpecies": "Species ID #2839 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2839
+    },
+    {
+      "index": 59,
+      "filename": "2840-Jingshanosaurus.png",
+      "sizeBytes": 678687,
+      "sizeKB": "662.8",
+      "sizeMB": "0.65",
+      "suspectedSpecies": "Species ID #2840 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2840
+    },
+    {
+      "index": 60,
+      "filename": "2841-Yunnanosaurus.jpg",
+      "sizeBytes": 27606,
+      "sizeKB": "27.0",
+      "sizeMB": "0.03",
+      "suspectedSpecies": "Species ID #2841 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2841
+    },
+    {
+      "index": 61,
+      "filename": "2855-Saurosuchus.jpg",
+      "sizeBytes": 9388627,
+      "sizeKB": "9168.6",
+      "sizeMB": "8.95",
+      "suspectedSpecies": "Species ID #2855 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2855
+    },
+    {
+      "index": 62,
+      "filename": "2860-Rutiodon.jpg",
+      "sizeBytes": 678597,
+      "sizeKB": "662.7",
+      "sizeMB": "0.65",
+      "suspectedSpecies": "Species ID #2860 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2860
+    },
+    {
+      "index": 63,
+      "filename": "2867-Typothorax.jpg",
+      "sizeBytes": 11877762,
+      "sizeKB": "11599.4",
+      "sizeMB": "11.33",
+      "suspectedSpecies": "Species ID #2867 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2867
+    },
+    {
+      "index": 64,
+      "filename": "2881-Poposaurus.jpg",
+      "sizeBytes": 72554,
+      "sizeKB": "70.9",
+      "sizeMB": "0.07",
+      "suspectedSpecies": "Species ID #2881 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2881
+    },
+    {
+      "index": 65,
+      "filename": "2906-Campylognathoides.png",
+      "sizeBytes": 111431,
+      "sizeKB": "108.8",
+      "sizeMB": "0.11",
+      "suspectedSpecies": "Species ID #2906 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2906
+    },
+    {
+      "index": 66,
+      "filename": "2907-Allosaurus.jpg",
+      "sizeBytes": 87486,
+      "sizeKB": "85.4",
+      "sizeMB": "0.08",
+      "suspectedSpecies": "Species ID #2907 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2907
+    },
+    {
+      "index": 67,
+      "filename": "2909-Dilophosaurus.jpg",
+      "sizeBytes": 85214,
+      "sizeKB": "83.2",
+      "sizeMB": "0.08",
+      "suspectedSpecies": "Species ID #2909 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2909
+    },
+    {
+      "index": 68,
+      "filename": "2919-Yangchuanosaurus.jpg",
+      "sizeBytes": 17074,
+      "sizeKB": "16.7",
+      "sizeMB": "0.02",
+      "suspectedSpecies": "Species ID #2919 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2919
+    },
+    {
+      "index": 69,
+      "filename": "2927-Brachiosaurus.jpg",
+      "sizeBytes": 5735208,
+      "sizeKB": "5600.8",
+      "sizeMB": "5.47",
+      "suspectedSpecies": "Species ID #2927 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2927
+    },
+    {
+      "index": 70,
+      "filename": "2935-Shunosaurus.jpg",
+      "sizeBytes": 67613,
+      "sizeKB": "66.0",
+      "sizeMB": "0.06",
+      "suspectedSpecies": "Species ID #2935 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2935
+    },
+    {
+      "index": 71,
+      "filename": "2936-Mamenchisaurus.png",
+      "sizeBytes": 1166019,
+      "sizeKB": "1138.7",
+      "sizeMB": "1.11",
+      "suspectedSpecies": "Species ID #2936 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2936
+    },
+    {
+      "index": 72,
+      "filename": "2947-Stegosaurus.jpg",
+      "sizeBytes": 2435099,
+      "sizeKB": "2378.0",
+      "sizeMB": "2.32",
+      "suspectedSpecies": "Species ID #2947 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2947
+    },
+    {
+      "index": 73,
+      "filename": "2951-Heterodontosaurus.jpg",
+      "sizeBytes": 29160,
+      "sizeKB": "28.5",
+      "sizeMB": "0.03",
+      "suspectedSpecies": "Species ID #2951 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2951
+    },
+    {
+      "index": 74,
+      "filename": "2954-Huayangosaurus.png",
+      "sizeBytes": 327542,
+      "sizeKB": "319.9",
+      "sizeMB": "0.31",
+      "suspectedSpecies": "Species ID #2954 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2954
+    },
+    {
+      "index": 75,
+      "filename": "2958-Agilisaurus.jpg",
+      "sizeBytes": 42411,
+      "sizeKB": "41.4",
+      "sizeMB": "0.04",
+      "suspectedSpecies": "Species ID #2958 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2958
+    },
+    {
+      "index": 76,
+      "filename": "2972-Dorygnathus.png",
+      "sizeBytes": 319358,
+      "sizeKB": "311.9",
+      "sizeMB": "0.30",
+      "suspectedSpecies": "Species ID #2972 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2972
+    },
+    {
+      "index": 77,
+      "filename": "2998-Stenopterygius.jpg",
+      "sizeBytes": 98336,
+      "sizeKB": "96.0",
+      "sizeMB": "0.09",
+      "suspectedSpecies": "Species ID #2998 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2998
+    },
+    {
+      "index": 78,
+      "filename": "2999-Eurhinosaurus.png",
+      "sizeBytes": 276642,
+      "sizeKB": "270.2",
+      "sizeMB": "0.26",
+      "suspectedSpecies": "Species ID #2999 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 2999
+    },
+    {
+      "index": 79,
+      "filename": "3008-Kotasaurus.jpg",
+      "sizeBytes": 61575,
+      "sizeKB": "60.1",
+      "sizeMB": "0.06",
+      "suspectedSpecies": "Species ID #3008 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3008
+    },
+    {
+      "index": 80,
+      "filename": "3010-Velociraptor.png",
+      "sizeBytes": 1296209,
+      "sizeKB": "1265.8",
+      "sizeMB": "1.24",
+      "suspectedSpecies": "Species ID #3010 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3010
+    },
+    {
+      "index": 81,
+      "filename": "3011-Spinosaurus.jpg",
+      "sizeBytes": 427789,
+      "sizeKB": "417.8",
+      "sizeMB": "0.41",
+      "suspectedSpecies": "Species ID #3011 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3011
+    },
+    {
+      "index": 82,
+      "filename": "3013-Carnotaurus.jpg",
+      "sizeBytes": 1321234,
+      "sizeKB": "1290.3",
+      "sizeMB": "1.26",
+      "suspectedSpecies": "Species ID #3013 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3013
+    },
+    {
+      "index": 83,
+      "filename": "3015-Tarbosaurus.jpg",
+      "sizeBytes": 4347762,
+      "sizeKB": "4245.9",
+      "sizeMB": "4.15",
+      "suspectedSpecies": "Species ID #3015 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3015
+    },
+    {
+      "index": 84,
+      "filename": "3016-Carcharodontosaurus.png",
+      "sizeBytes": 4765119,
+      "sizeKB": "4653.4",
+      "sizeMB": "4.54",
+      "suspectedSpecies": "Species ID #3016 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3016
+    },
+    {
+      "index": 85,
+      "filename": "3021-Gallimimus.jpg",
+      "sizeBytes": 63107,
+      "sizeKB": "61.6",
+      "sizeMB": "0.06",
+      "suspectedSpecies": "Species ID #3021 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3021
+    },
+    {
+      "index": 86,
+      "filename": "3029-Triceratops.jpg",
+      "sizeBytes": 776757,
+      "sizeKB": "758.6",
+      "sizeMB": "0.74",
+      "suspectedSpecies": "Species ID #3029 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3029
+    },
+    {
+      "index": 87,
+      "filename": "3030-Protoceratops.jpg",
+      "sizeBytes": 8084704,
+      "sizeKB": "7895.2",
+      "sizeMB": "7.71",
+      "suspectedSpecies": "Species ID #3030 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3030
+    },
+    {
+      "index": 88,
+      "filename": "3044-Parasaurolophus.png",
+      "sizeBytes": 2261542,
+      "sizeKB": "2208.5",
+      "sizeMB": "2.16",
+      "suspectedSpecies": "Species ID #3044 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3044
+    },
+    {
+      "index": 89,
+      "filename": "3045-Iguanodon.png",
+      "sizeBytes": 16057096,
+      "sizeKB": "15680.8",
+      "sizeMB": "15.31",
+      "suspectedSpecies": "Species ID #3045 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3045
+    },
+    {
+      "index": 90,
+      "filename": "3051-Muttaburrasaurus.png",
+      "sizeBytes": 7264340,
+      "sizeKB": "7094.1",
+      "sizeMB": "6.93",
+      "suspectedSpecies": "Species ID #3051 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3051
+    },
+    {
+      "index": 91,
+      "filename": "3059-Ankylosaurus.png",
+      "sizeBytes": 2051632,
+      "sizeKB": "2003.5",
+      "sizeMB": "1.96",
+      "suspectedSpecies": "Species ID #3059 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3059
+    },
+    {
+      "index": 92,
+      "filename": "3065-Pinacosaurus.jpg",
+      "sizeBytes": 309267,
+      "sizeKB": "302.0",
+      "sizeMB": "0.29",
+      "suspectedSpecies": "Species ID #3065 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3065
+    },
+    {
+      "index": 93,
+      "filename": "3073-Prenocephale.jpg",
+      "sizeBytes": 3535606,
+      "sizeKB": "3452.7",
+      "sizeMB": "3.37",
+      "suspectedSpecies": "Species ID #3073 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3073
+    },
+    {
+      "index": 94,
+      "filename": "3080-Paralititan.jpg",
+      "sizeBytes": 381505,
+      "sizeKB": "372.6",
+      "sizeMB": "0.36",
+      "suspectedSpecies": "Species ID #3080 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3080
+    },
+    {
+      "index": 95,
+      "filename": "3082-Isisaurus.png",
+      "sizeBytes": 270585,
+      "sizeKB": "264.2",
+      "sizeMB": "0.26",
+      "suspectedSpecies": "Species ID #3082 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3082
+    },
+    {
+      "index": 96,
+      "filename": "3084-Quetzalcoatlus.jpg",
+      "sizeBytes": 49514,
+      "sizeKB": "48.4",
+      "sizeMB": "0.05",
+      "suspectedSpecies": "Species ID #3084 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3084
+    },
+    {
+      "index": 97,
+      "filename": "3085-Pteranodon.jpg",
+      "sizeBytes": 310124,
+      "sizeKB": "302.9",
+      "sizeMB": "0.30",
+      "suspectedSpecies": "Species ID #3085 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3085
+    },
+    {
+      "index": 98,
+      "filename": "3086-Tapejara.jpg",
+      "sizeBytes": 361863,
+      "sizeKB": "353.4",
+      "sizeMB": "0.35",
+      "suspectedSpecies": "Species ID #3086 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3086
+    },
+    {
+      "index": 99,
+      "filename": "3094-Mosasaurus.jpg",
+      "sizeBytes": 774630,
+      "sizeKB": "756.5",
+      "sizeMB": "0.74",
+      "suspectedSpecies": "Species ID #3094 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3094
+    },
+    {
+      "index": 100,
+      "filename": "3095-Elasmosaurus.png",
+      "sizeBytes": 166433,
+      "sizeKB": "162.5",
+      "sizeMB": "0.16",
+      "suspectedSpecies": "Species ID #3095 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 3095
+    },
+    {
+      "index": 101,
+      "filename": "32-Mosasaurus.jpg",
+      "sizeBytes": 1818191,
+      "sizeKB": "1775.6",
+      "sizeMB": "1.73",
+      "suspectedSpecies": "Species #32: Mosasaurus hoffmannii (Mosasaurus hoffmannii)",
+      "suspectedSpeciesId": 32
+    },
+    {
+      "index": 102,
+      "filename": "37-Smilodon.jpg",
+      "sizeBytes": 4249029,
+      "sizeKB": "4149.4",
+      "sizeMB": "4.05",
+      "suspectedSpecies": "Species #37: Smilodon fatalis (Smilodon fatalis)",
+      "suspectedSpeciesId": 37
+    },
+    {
+      "index": 103,
+      "filename": "44-Herrerasaurus.jpg",
+      "sizeBytes": 88267,
+      "sizeKB": "86.2",
+      "sizeMB": "0.08",
+      "suspectedSpecies": "Species ID #44 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 44
+    },
+    {
+      "index": 104,
+      "filename": "450-Tarbosaurus.jpg",
+      "sizeBytes": 4347762,
+      "sizeKB": "4245.9",
+      "sizeMB": "4.15",
+      "suspectedSpecies": "Species ID #450 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 450
+    },
+    {
+      "index": 105,
+      "filename": "451-Carcharodontosaurus.png",
+      "sizeBytes": 1502438,
+      "sizeKB": "1467.2",
+      "sizeMB": "1.43",
+      "suspectedSpecies": "Species ID #451 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 451
+    },
+    {
+      "index": 106,
+      "filename": "454-Therizinosaurus.svg",
+      "sizeBytes": 222719,
+      "sizeKB": "217.5",
+      "sizeMB": "0.21",
+      "suspectedSpecies": "Species ID #454 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 454
+    },
+    {
+      "index": 107,
+      "filename": "456-Gallimimus.jpg",
+      "sizeBytes": 63107,
+      "sizeKB": "61.6",
+      "sizeMB": "0.06",
+      "suspectedSpecies": "Species ID #456 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 456
+    },
+    {
+      "index": 108,
+      "filename": "459-perfect-art.jpg",
+      "sizeBytes": 132416,
+      "sizeKB": "129.3",
+      "sizeMB": "0.13",
+      "suspectedSpecies": "Species #459: Acrocanthosaurus (Acrocanthosaurus atokensis)",
+      "suspectedSpeciesId": 459
+    },
+    {
+      "index": 109,
+      "filename": "465-Protoceratops.jpg",
+      "sizeBytes": 8084704,
+      "sizeKB": "7895.2",
+      "sizeMB": "7.71",
+      "suspectedSpecies": "Species ID #465 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 465
+    },
+    {
+      "index": 110,
+      "filename": "473-perfect-art.jpg",
+      "sizeBytes": 546776,
+      "sizeKB": "534.0",
+      "sizeMB": "0.52",
+      "suspectedSpecies": "Species #473: Kosmoceratops (Kosmoceratops richardsoni)",
+      "suspectedSpeciesId": 473
+    },
+    {
+      "index": 111,
+      "filename": "477-Achelousaurus.png",
+      "sizeBytes": 1529324,
+      "sizeKB": "1493.5",
+      "sizeMB": "1.46",
+      "suspectedSpecies": "Species #477: Achelousaurus (Achelousaurus horneri)",
+      "suspectedSpeciesId": 477
+    },
+    {
+      "index": 112,
+      "filename": "48-Desmatosuchus.jpg",
+      "sizeBytes": 375526,
+      "sizeKB": "366.7",
+      "sizeMB": "0.36",
+      "suspectedSpecies": "Species ID #48 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 48
+    },
+    {
+      "index": 113,
+      "filename": "480-Iguanodon.svg",
+      "sizeBytes": 1021043,
+      "sizeKB": "997.1",
+      "sizeMB": "0.97",
+      "suspectedSpecies": "Species ID #480 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 480
+    },
+    {
+      "index": 114,
+      "filename": "486-Muttaburrasaurus.png",
+      "sizeBytes": 9706932,
+      "sizeKB": "9479.4",
+      "sizeMB": "9.26",
+      "suspectedSpecies": "Species ID #486 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 486
+    },
+    {
+      "index": 115,
+      "filename": "49-Placerias.jpg",
+      "sizeBytes": 646999,
+      "sizeKB": "631.8",
+      "sizeMB": "0.62",
+      "suspectedSpecies": "Species ID #49 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 49
+    },
+    {
+      "index": 116,
+      "filename": "500-Pinacosaurus.jpg",
+      "sizeBytes": 309267,
+      "sizeKB": "302.0",
+      "sizeMB": "0.29",
+      "suspectedSpecies": "Species ID #500 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 500
+    },
+    {
+      "index": 117,
+      "filename": "503-Gastonia.jpg",
+      "sizeBytes": 35724,
+      "sizeKB": "34.9",
+      "sizeMB": "0.03",
+      "suspectedSpecies": "Species #503: Gastonia (Gastonia burgei)",
+      "suspectedSpeciesId": 503
+    },
+    {
+      "index": 118,
+      "filename": "503-perfect-art.png",
+      "sizeBytes": 1296901,
+      "sizeKB": "1266.5",
+      "sizeMB": "1.24",
+      "suspectedSpecies": "Species #503: Gastonia (Gastonia burgei)",
+      "suspectedSpeciesId": 503
+    },
+    {
+      "index": 119,
+      "filename": "508-Prenocephale.jpg",
+      "sizeBytes": 35823,
+      "sizeKB": "35.0",
+      "sizeMB": "0.03",
+      "suspectedSpecies": "Species ID #508 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 508
+    },
+    {
+      "index": 120,
+      "filename": "510-Alamosaurus.png",
+      "sizeBytes": 1442877,
+      "sizeKB": "1409.1",
+      "sizeMB": "1.38",
+      "suspectedSpecies": "Species #510: Alamosaurus (Alamosaurus sanjuanensis)",
+      "suspectedSpeciesId": 510
+    },
+    {
+      "index": 121,
+      "filename": "514-Patagotitan.png",
+      "sizeBytes": 173594,
+      "sizeKB": "169.5",
+      "sizeMB": "0.17",
+      "suspectedSpecies": "Species #514: Patagotitan (Patagotitan mayorum)",
+      "suspectedSpeciesId": 514
+    },
+    {
+      "index": 122,
+      "filename": "515-Paralititan.jpg",
+      "sizeBytes": 553212,
+      "sizeKB": "540.2",
+      "sizeMB": "0.53",
+      "suspectedSpecies": "Species ID #515 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 515
+    },
+    {
+      "index": 123,
+      "filename": "521-Tapejara.jpg",
+      "sizeBytes": 361863,
+      "sizeKB": "353.4",
+      "sizeMB": "0.35",
+      "suspectedSpecies": "Species ID #521 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 521
+    },
+    {
+      "index": 124,
+      "filename": "526-paleoart.png",
+      "sizeBytes": 131565,
+      "sizeKB": "128.5",
+      "sizeMB": "0.13",
+      "suspectedSpecies": "Species #526: Anhanguera (Anhanguera blittersdorffi)",
+      "suspectedSpeciesId": 526
+    },
+    {
+      "index": 125,
+      "filename": "538-Deinosuchus.png",
+      "sizeBytes": 1221391,
+      "sizeKB": "1192.8",
+      "sizeMB": "1.16",
+      "suspectedSpecies": "Species #538: Deinosuchus (Deinosuchus riograndensis)",
+      "suspectedSpeciesId": 538
+    },
+    {
+      "index": 126,
+      "filename": "543-Tusoteuthis.png",
+      "sizeBytes": 2758766,
+      "sizeKB": "2694.1",
+      "sizeMB": "2.63",
+      "suspectedSpecies": "Species #543: Tusoteuthis (Tusoteuthis longa)",
+      "suspectedSpeciesId": 543
+    },
+    {
+      "index": 127,
+      "filename": "56-Metoposaurus.jpg",
+      "sizeBytes": 744527,
+      "sizeKB": "727.1",
+      "sizeMB": "0.71",
+      "suspectedSpecies": "Species ID #56 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 56
+    },
+    {
+      "index": 128,
+      "filename": "57-Lystrosaurus.jpg",
+      "sizeBytes": 33580,
+      "sizeKB": "32.8",
+      "sizeMB": "0.03",
+      "suspectedSpecies": "Species ID #57 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 57
+    },
+    {
+      "index": 129,
+      "filename": "571-perfect-art.jpg",
+      "sizeBytes": 286301,
+      "sizeKB": "279.6",
+      "sizeMB": "0.27",
+      "suspectedSpecies": "Species #571: Hylonomus lyelli (Hylonomus lyelli)",
+      "suspectedSpeciesId": 571
+    },
+    {
+      "index": 130,
+      "filename": "58-Eoraptor.jpg",
+      "sizeBytes": 203180,
+      "sizeKB": "198.4",
+      "sizeMB": "0.19",
+      "suspectedSpecies": "Species ID #58 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 58
+    },
+    {
+      "index": 131,
+      "filename": "59-Pisanosaurus.jpg",
+      "sizeBytes": 496352,
+      "sizeKB": "484.7",
+      "sizeMB": "0.47",
+      "suspectedSpecies": "Species ID #59 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 59
+    },
+    {
+      "index": 132,
+      "filename": "680-Allosaurus.jpg",
+      "sizeBytes": 45430,
+      "sizeKB": "44.4",
+      "sizeMB": "0.04",
+      "suspectedSpecies": "Species ID #680 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 680
+    },
+    {
+      "index": 133,
+      "filename": "682-Dilophosaurus.jpg",
+      "sizeBytes": 164512,
+      "sizeKB": "160.7",
+      "sizeMB": "0.16",
+      "suspectedSpecies": "Species ID #682 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 682
+    },
+    {
+      "index": 134,
+      "filename": "69-Melanorosaurus.jpg",
+      "sizeBytes": 501546,
+      "sizeKB": "489.8",
+      "sizeMB": "0.48",
+      "suspectedSpecies": "Species ID #69 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 69
+    },
+    {
+      "index": 135,
+      "filename": "7-Arthropleura.png",
+      "sizeBytes": 329117,
+      "sizeKB": "321.4",
+      "sizeMB": "0.31",
+      "suspectedSpecies": "Species #7: Arthropleura armata (Arthropleura armata)",
+      "suspectedSpeciesId": 7
+    },
+    {
+      "index": 136,
+      "filename": "700-Brachiosaurus.jpg",
+      "sizeBytes": 5735208,
+      "sizeKB": "5600.8",
+      "sizeMB": "5.47",
+      "suspectedSpecies": "Species ID #700 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 700
+    },
+    {
+      "index": 137,
+      "filename": "71-Blikanasaurus.png",
+      "sizeBytes": 70580,
+      "sizeKB": "68.9",
+      "sizeMB": "0.07",
+      "suspectedSpecies": "Species ID #71 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 71
+    },
+    {
+      "index": 138,
+      "filename": "720-Stegosaurus.jpg",
+      "sizeBytes": 2435099,
+      "sizeKB": "2378.0",
+      "sizeMB": "2.32",
+      "suspectedSpecies": "Species ID #720 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 720
+    },
+    {
+      "index": 139,
+      "filename": "76-Lufengosaurus.jpg",
+      "sizeBytes": 1122947,
+      "sizeKB": "1096.6",
+      "sizeMB": "1.07",
+      "suspectedSpecies": "Species ID #76 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 76
+    },
+    {
+      "index": 140,
+      "filename": "77-Jingshanosaurus.png",
+      "sizeBytes": 678823,
+      "sizeKB": "662.9",
+      "sizeMB": "0.65",
+      "suspectedSpecies": "Species ID #77 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 77
+    },
+    {
+      "index": 141,
+      "filename": "78-Yunnanosaurus.jpg",
+      "sizeBytes": 18575,
+      "sizeKB": "18.1",
+      "sizeMB": "0.02",
+      "suspectedSpecies": "Species ID #78 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 78
+    },
+    {
+      "index": 142,
+      "filename": "781-Kotasaurus.png",
+      "sizeBytes": 7109404,
+      "sizeKB": "6942.8",
+      "sizeMB": "6.78",
+      "suspectedSpecies": "Species ID #781 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 781
+    },
+    {
+      "index": 143,
+      "filename": "782-Tyrannosaurus.jpg",
+      "sizeBytes": 478336,
+      "sizeKB": "467.1",
+      "sizeMB": "0.46",
+      "suspectedSpecies": "Species ID #782 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 782
+    },
+    {
+      "index": 144,
+      "filename": "783-Velociraptor.jpg",
+      "sizeBytes": 120445,
+      "sizeKB": "117.6",
+      "sizeMB": "0.11",
+      "suspectedSpecies": "Species ID #783 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 783
+    },
+    {
+      "index": 145,
+      "filename": "786-Carnotaurus.jpg",
+      "sizeBytes": 23959,
+      "sizeKB": "23.4",
+      "sizeMB": "0.02",
+      "suspectedSpecies": "Species ID #786 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 786
+    },
+    {
+      "index": 146,
+      "filename": "802-Triceratops.jpg",
+      "sizeBytes": 776757,
+      "sizeKB": "758.6",
+      "sizeMB": "0.74",
+      "suspectedSpecies": "Species ID #802 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 802
+    },
+    {
+      "index": 147,
+      "filename": "817-Parasaurolophus.jpg",
+      "sizeBytes": 787702,
+      "sizeKB": "769.2",
+      "sizeMB": "0.75",
+      "suspectedSpecies": "Species ID #817 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 817
+    },
+    {
+      "index": 148,
+      "filename": "832-Ankylosaurus.jpg",
+      "sizeBytes": 1971630,
+      "sizeKB": "1925.4",
+      "sizeMB": "1.88",
+      "suspectedSpecies": "Species ID #832 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 832
+    },
+    {
+      "index": 149,
+      "filename": "85-perfect-art.jpg",
+      "sizeBytes": 35745,
+      "sizeKB": "34.9",
+      "sizeMB": "0.03",
+      "suspectedSpecies": "Species #85: Dromomeron (Dromomeron spp.)",
+      "suspectedSpeciesId": 85
+    },
+    {
+      "index": 150,
+      "filename": "857-Quetzalcoatlus.jpg",
+      "sizeBytes": 112839,
+      "sizeKB": "110.2",
+      "sizeMB": "0.11",
+      "suspectedSpecies": "Species ID #857 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 857
+    },
+    {
+      "index": 151,
+      "filename": "858-Pteranodon.jpg",
+      "sizeBytes": 310124,
+      "sizeKB": "302.9",
+      "sizeMB": "0.30",
+      "suspectedSpecies": "Species ID #858 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 858
+    },
+    {
+      "index": 152,
+      "filename": "867-Mosasaurus.jpg",
+      "sizeBytes": 774630,
+      "sizeKB": "756.5",
+      "sizeMB": "0.74",
+      "suspectedSpecies": "Species ID #867 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 867
+    },
+    {
+      "index": 153,
+      "filename": "868-Elasmosaurus.png",
+      "sizeBytes": 166433,
+      "sizeKB": "162.5",
+      "sizeMB": "0.16",
+      "suspectedSpecies": "Species ID #868 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 868
+    },
+    {
+      "index": 154,
+      "filename": "92-Saurosuchus.jpg",
+      "sizeBytes": 9388627,
+      "sizeKB": "9168.6",
+      "sizeMB": "8.95",
+      "suspectedSpecies": "Species ID #92 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 92
+    },
+    {
+      "index": 155,
+      "filename": "95-perfect-art.jpg",
+      "sizeBytes": 154110,
+      "sizeKB": "150.5",
+      "sizeMB": "0.15",
+      "suspectedSpecies": "Species #95: Batrachotomus (Batrachotomus spp.)",
+      "suspectedSpeciesId": 95
+    },
+    {
+      "index": 156,
+      "filename": "97-Rutiodon.jpg",
+      "sizeBytes": 678597,
+      "sizeKB": "662.7",
+      "sizeMB": "0.65",
+      "suspectedSpecies": "Species ID #97 (Former/Deleted DB ID)",
+      "suspectedSpeciesId": 97
+    },
+    {
+      "index": 157,
+      "filename": "99-Phytosaurus.jpg",
+      "sizeBytes": 153081,
+      "sizeKB": "149.5",
+      "sizeMB": "0.15",
+      "suspectedSpecies": "Species #99: Phytosaurus (Phytosaurus spp.)",
+      "suspectedSpeciesId": 99
+    }
+  ]
+}
