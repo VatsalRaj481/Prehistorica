@@ -5,6 +5,7 @@ import { fetchSpecies, Species } from '../services/api.js';
 import ThreeDFossilStarfield from '../components/ThreeDFossilStarfield.js';
 import { SlidersHorizontal, ArrowRight, Dna, Info, X, ChevronLeft, ChevronRight, Filter } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
+import { formatFeet } from '../utils/formatDimensions.js';
 
 export default function Browse() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -712,7 +713,7 @@ export default function Browse() {
                           <span className="font-bold text-amber-400 shrink-0 uppercase text-[10px] tracking-wider">{species.clade || species.dietType}</span>
                           <span className="text-slate-600 font-bold shrink-0">|</span>
                           <span className="font-bold text-slate-300 truncate">
-                            {species.lengthM ? `${species.lengthM}m` : 'Unspecified'}
+                            {formatFeet(species.lengthM, 'Unspecified')}
                           </span>
                         </div>
                         <span className="flex items-center gap-1 group-hover:text-amber-400 transition-colors shrink-0 font-bold uppercase tracking-wider text-[10px]">

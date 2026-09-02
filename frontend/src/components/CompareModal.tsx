@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Species, fetchSpeciesCompare, fetchSpecies } from '../services/api.js';
 import { X, ArrowRightLeft, Scale, Calendar, Dna, MapPin, Search, ChevronDown, Check } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
+import { formatFeet } from '../utils/formatDimensions.js';
 
 interface CompareModalProps {
   initialSpecies?: Species | null;
@@ -18,7 +19,7 @@ const formatClade = (cladeStr?: string | null) => {
   return cladeStr.replace(/_/g, ' ');
 };
 
-interface SpeciesComboboxProps {
+interface SpeciesSearchInputProps {
   label: string;
   selectedSpecies: Species | null;
   onSelect: (id: number) => void;
@@ -27,16 +28,17 @@ interface SpeciesComboboxProps {
   disabled?: boolean;
 }
 
-function SpeciesCombobox({
+function SpeciesSearchInput({
   label,
   selectedSpecies,
   onSelect,
   availableList,
-  placeholder = 'Type to search species...',
+  placeholder = 'Type species name, clade, or period...',
   disabled = false,
-}: SpeciesComboboxProps) {
+}: SpeciesSearchInputProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [query, setQuery] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -47,17 +49,18 @@ function SpeciesCombobox({
     function handleClickOutside(event: MouseEvent) {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
         setIsOpen(false);
-        setSearchTerm('');
+        setIsFocused(false);
+        setQuery('');
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Filter available species list based on search term
+  // Filter available species based on what the user types
   const filteredList = useMemo(() => {
-    if (!searchTerm.trim()) return availableList;
-    const term = searchTerm.toLowerCase().trim();
+    if (!query.trim()) return availableList;
+    const term = query.toLowerCase().trim();
     return availableList.filter((s) => {
       const nameMatch = s.name?.toLowerCase().includes(term);
       const sciMatch = s.scientificName?.toLowerCase().includes(term);
@@ -66,14 +69,14 @@ function SpeciesCombobox({
       const formationMatch = s.fossilFormation?.toLowerCase().includes(term);
       return nameMatch || sciMatch || cladeMatch || periodMatch || formationMatch;
     });
-  }, [availableList, searchTerm]);
+  }, [availableList, query]);
 
-  // Reset highlighted index when filter changes
+  // Reset highlight to first item when search query changes
   useEffect(() => {
     setHighlightedIndex(0);
   }, [filteredList]);
 
-  // Scroll active item into view
+  // Auto-scroll highlighted option into view
   useEffect(() => {
     if (isOpen && listRef.current) {
       const activeEl = listRef.current.children[highlightedIndex] as HTMLElement;
@@ -83,26 +86,19 @@ function SpeciesCombobox({
     }
   }, [highlightedIndex, isOpen]);
 
-  const handleOpen = () => {
-    if (disabled) return;
-    setIsOpen(true);
-    setSearchTerm('');
-    setTimeout(() => {
-      inputRef.current?.focus();
-    }, 50);
-  };
-
   const handleSelect = (species: Species) => {
     onSelect(species.id);
     setIsOpen(false);
-    setSearchTerm('');
+    setIsFocused(false);
+    setQuery('');
+    inputRef.current?.blur();
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!isOpen) {
-      if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+      if (e.key === 'ArrowDown' || e.key === 'Enter') {
         e.preventDefault();
-        handleOpen();
+        setIsOpen(true);
       }
       return;
     }
@@ -121,84 +117,110 @@ function SpeciesCombobox({
     } else if (e.key === 'Escape') {
       e.preventDefault();
       setIsOpen(false);
-      setSearchTerm('');
+      setIsFocused(false);
+      setQuery('');
+      inputRef.current?.blur();
     }
   };
 
-  const selectedDisplay = selectedSpecies
+  const displayInputValue = isFocused
+    ? query
+    : selectedSpecies
     ? `${selectedSpecies.name} (${formatClade(selectedSpecies.clade)} • ${selectedSpecies.timePeriod})`
-    : '-- Select Species --';
+    : '';
 
   return (
     <div ref={containerRef} className="space-y-1 relative w-full">
-      <label className="text-xs font-bold text-slate-300 uppercase tracking-wider block">
-        {label}
-      </label>
-
-      {/* Combobox Trigger / Search Input */}
-      <div
-        onClick={() => !isOpen && handleOpen()}
-        className={`relative flex items-center bg-slate-900 border ${
-          isOpen ? 'border-blue-500 ring-1 ring-blue-500' : 'border-slate-800 hover:border-slate-700'
-        } rounded-lg transition-all cursor-pointer ${disabled ? 'opacity-50 pointer-events-none' : ''}`}
-      >
-        <Search className="h-4 w-4 text-slate-500 ml-3 shrink-0" />
-
-        {isOpen ? (
-          <input
-            ref={inputRef}
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder={placeholder}
-            className="w-full py-2.5 px-2 bg-transparent text-xs font-medium text-slate-100 placeholder-slate-500 focus:outline-none"
-          />
-        ) : (
-          <div className="w-full py-2.5 px-2 text-xs font-medium text-slate-200 truncate select-none">
-            {selectedDisplay}
-          </div>
+      <div className="flex items-center justify-between">
+        <label className="text-xs font-bold text-slate-300 uppercase tracking-wider block">
+          {label}
+        </label>
+        {selectedSpecies && !isFocused && (
+          <span className="text-[10px] text-blue-400 font-mono">Selected: {selectedSpecies.name}</span>
         )}
+      </div>
+
+      {/* Interactive Search Bar */}
+      <div
+        className={`relative flex items-center bg-slate-900 border ${
+          isOpen || isFocused ? 'border-blue-500 ring-2 ring-blue-500/30' : 'border-slate-800 hover:border-slate-700'
+        } rounded-xl transition-all ${disabled ? 'opacity-50 pointer-events-none' : ''}`}
+      >
+        <Search className="h-4 w-4 text-slate-400 ml-3 shrink-0" />
+
+        <input
+          ref={inputRef}
+          type="text"
+          value={displayInputValue}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            if (!isOpen) setIsOpen(true);
+          }}
+          onFocus={() => {
+            setIsFocused(true);
+            setIsOpen(true);
+            setQuery('');
+          }}
+          onKeyDown={handleKeyDown}
+          placeholder={placeholder}
+          disabled={disabled}
+          className="w-full py-2.5 px-2 bg-transparent text-xs font-semibold text-slate-100 placeholder-slate-500 focus:outline-none"
+        />
 
         <div className="flex items-center gap-1 mr-2.5 shrink-0">
-          {isOpen && searchTerm && (
+          {isFocused && query && (
             <button
               type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                setSearchTerm('');
+              onClick={() => {
+                setQuery('');
                 inputRef.current?.focus();
               }}
-              className="p-1 text-slate-500 hover:text-slate-300 rounded hover:bg-slate-800 transition-colors"
+              className="p-1 text-slate-400 hover:text-slate-200 rounded-lg hover:bg-slate-800 transition-colors"
             >
               <X className="h-3.5 w-3.5" />
             </button>
           )}
-          <ChevronDown
-            className={`h-4 w-4 text-slate-500 transition-transform duration-200 ${
-              isOpen ? 'rotate-180 text-blue-400' : ''
-            }`}
-          />
+          <button
+            type="button"
+            onClick={() => {
+              if (isOpen) {
+                setIsOpen(false);
+                setIsFocused(false);
+                setQuery('');
+              } else {
+                inputRef.current?.focus();
+              }
+            }}
+            className="p-1 text-slate-400 hover:text-slate-200 rounded-lg hover:bg-slate-800 transition-colors"
+          >
+            <ChevronDown
+              className={`h-4 w-4 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-400' : ''}`}
+            />
+          </button>
         </div>
       </div>
 
-      {/* Floating Dropdown Results */}
+      {/* Real-time Filtered Results Dropdown */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 4, scale: 0.98 }}
+            initial={{ opacity: 0, y: 4, scale: 0.99 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 4, scale: 0.98 }}
-            transition={{ duration: 0.15 }}
-            className="absolute top-full left-0 right-0 mt-1.5 z-50 bg-slate-900 border border-slate-700/80 rounded-xl shadow-2xl overflow-hidden backdrop-blur-xl max-h-64 flex flex-col"
+            exit={{ opacity: 0, y: 4, scale: 0.99 }}
+            transition={{ duration: 0.12 }}
+            className="absolute top-full left-0 right-0 mt-1.5 z-50 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl overflow-hidden backdrop-blur-xl max-h-64 flex flex-col"
           >
-            {/* Filter Count & Search Hints */}
-            <div className="px-3 py-1.5 bg-slate-950/80 border-b border-slate-800 text-[10px] font-semibold text-slate-400 flex justify-between items-center select-none">
+            {/* Live Filter Header */}
+            <div className="px-3 py-1.5 bg-slate-950/90 border-b border-slate-800 text-[10px] font-semibold text-slate-400 flex justify-between items-center select-none">
               <span>{filteredList.length} matching species</span>
-              {searchTerm && <span>Filter: "{searchTerm}"</span>}
+              {query ? (
+                <span className="text-amber-400">Typing: "{query}"</span>
+              ) : (
+                <span className="text-slate-500">Type to filter list</span>
+              )}
             </div>
 
-            {/* Scrollable List */}
+            {/* Scrollable List of Species */}
             <div ref={listRef} className="overflow-y-auto divide-y divide-slate-800/60 p-1">
               {filteredList.length > 0 ? (
                 filteredList.map((s, idx) => {
@@ -214,9 +236,9 @@ function SpeciesCombobox({
                       onMouseEnter={() => setHighlightedIndex(idx)}
                       className={`w-full text-left p-2.5 rounded-lg flex items-center gap-3 transition-colors cursor-pointer ${
                         isHighlighted
-                          ? 'bg-blue-600/20 text-white'
+                          ? 'bg-blue-600/25 text-white'
                           : isSelected
-                          ? 'bg-slate-800/60 text-slate-100'
+                          ? 'bg-slate-800/70 text-slate-100'
                           : 'hover:bg-slate-800/50 text-slate-200'
                       }`}
                     >
@@ -234,7 +256,7 @@ function SpeciesCombobox({
                         )}
                       </div>
 
-                      {/* Species Details */}
+                      {/* Species Name & Details */}
                       <div className="flex-grow min-w-0">
                         <div className="flex items-center gap-2 truncate">
                           <span className="text-xs font-bold uppercase truncate font-sans text-slate-100">
@@ -254,7 +276,7 @@ function SpeciesCombobox({
                 })
               ) : (
                 <div className="p-6 text-center text-slate-400 text-xs">
-                  No species matching "{searchTerm}"
+                  No species matching "<span className="text-slate-200 font-bold">{query}</span>"
                 </div>
               )}
             </div>
@@ -281,7 +303,6 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
   useEffect(() => {
     if (isOpen) {
       setLoading(true);
-      // Fetch full available encyclopedia species
       fetchSpecies({ limit: 1000 })
         .then((res: any) => {
           const rawList: Species[] = Array.isArray(res) ? res : res.data || [];
@@ -371,21 +392,21 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
 
             {/* Type-to-Search Combobox Pickers for Species #1 and Species #2 */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-950/60 p-4 rounded-xl border border-slate-800 shadow-inner">
-              <SpeciesCombobox
+              <SpeciesSearchInput
                 label="Select Species 1:"
                 selectedSpecies={species1}
                 onSelect={handleSelectFirst}
                 availableList={availableList}
-                placeholder="Type to search species 1..."
+                placeholder="Type species 1 (e.g. Diplodocus, T-Rex)..."
                 disabled={loading}
               />
 
-              <SpeciesCombobox
+              <SpeciesSearchInput
                 label="Select Species 2:"
                 selectedSpecies={species2}
                 onSelect={handleSelectSecond}
                 availableList={availableList}
-                placeholder="Type to search species 2..."
+                placeholder="Type species 2 (e.g. Triceratops, Spino)..."
                 disabled={loading}
               />
             </div>
@@ -426,7 +447,7 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
                         <Scale className="h-3 w-3" /> Length
                       </span>
                       <span className="font-extrabold text-blue-400">
-                        {species1.lengthM ? `${species1.lengthM} m` : 'N/A'}
+                        {formatFeet(species1.lengthM)}
                       </span>
                     </div>
                     <div className="flex justify-between border-b border-slate-850 pb-1.5">
@@ -434,7 +455,7 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
                         <Scale className="h-3 w-3" /> Height
                       </span>
                       <span className="font-extrabold text-blue-400">
-                        {species1.heightM ? `${species1.heightM} m` : 'N/A'}
+                        {formatFeet(species1.heightM)}
                       </span>
                     </div>
                     <div className="flex justify-between border-b border-slate-850 pb-1.5">
@@ -505,7 +526,7 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
                         <Scale className="h-3 w-3" /> Length
                       </span>
                       <span className="font-extrabold text-blue-400">
-                        {species2.lengthM ? `${species2.lengthM} m` : 'N/A'}
+                        {formatFeet(species2.lengthM)}
                       </span>
                     </div>
                     <div className="flex justify-between border-b border-slate-850 pb-1.5">
@@ -513,7 +534,7 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
                         <Scale className="h-3 w-3" /> Height
                       </span>
                       <span className="font-extrabold text-blue-400">
-                        {species2.heightM ? `${species2.heightM} m` : 'N/A'}
+                        {formatFeet(species2.heightM)}
                       </span>
                     </div>
                     <div className="flex justify-between border-b border-slate-850 pb-1.5">

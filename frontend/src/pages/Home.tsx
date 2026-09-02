@@ -5,6 +5,7 @@ import { fetchCreatureOfTheDay, fetchSpecies, Species } from '../services/api.js
 import ThreeDFossilStarfield from '../components/ThreeDFossilStarfield.js';
 import { Calendar, ArrowRight, Dna, Compass, ShieldAlert, Sparkles, FileText, Layers, Loader2 } from 'lucide-react';
 import { formatMass } from '../utils/formatMass.js';
+import { formatFeet } from '../utils/formatDimensions.js';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 
 export default function Home() {
@@ -236,7 +237,7 @@ export default function Home() {
                             <span className="h-1.5 w-1.5 bg-amber-400 rounded-full shrink-0" /> Length
                           </div>
                           <div className="text-lg font-black text-slate-100">
-                            {creature.lengthM ? `${creature.lengthM}m` : 'N/A'}
+                            {formatFeet(creature.lengthM)}
                           </div>
                         </div>
 
@@ -245,7 +246,7 @@ export default function Home() {
                             <span className="h-1.5 w-1.5 bg-amber-400 rounded-full shrink-0" /> Height
                           </div>
                           <div className="text-lg font-black text-slate-100">
-                            {creature.heightM ? `${creature.heightM}m` : 'N/A'}
+                            {formatFeet(creature.heightM)}
                           </div>
                         </div>
 

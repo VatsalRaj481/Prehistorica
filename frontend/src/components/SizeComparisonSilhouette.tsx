@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { formatFeet } from '../utils/formatDimensions.js';
 
 interface SizeComparisonSilhouetteProps {
   speciesName?: string;
@@ -282,7 +283,7 @@ export default function SizeComparisonSilhouette({
                 fontSize="11"
                 fontWeight="extrabold"
               >
-                {targetLength}m length
+                {formatFeet(targetLength)} length
               </text>
             </g>
           </motion.g>
@@ -292,11 +293,11 @@ export default function SizeComparisonSilhouette({
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 text-xs">
         <div className="bg-slate-950/60 p-2.5 rounded-lg border border-slate-850 space-y-0.5">
           <span className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Length</span>
-          <p className="font-extrabold text-emerald-400">{targetLength} m</p>
+          <p className="font-extrabold text-emerald-400">{formatFeet(targetLength)}</p>
         </div>
         <div className="bg-slate-950/60 p-2.5 rounded-lg border border-slate-850 space-y-0.5">
           <span className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Height</span>
-          <p className="font-extrabold text-emerald-400">{targetHeight} m</p>
+          <p className="font-extrabold text-emerald-400">{formatFeet(targetHeight)}</p>
         </div>
         <div className="bg-slate-950/60 p-2.5 rounded-lg border border-slate-850 space-y-0.5">
           <span className="text-[10px] text-slate-500 uppercase font-bold tracking-wider">Estimated Mass</span>

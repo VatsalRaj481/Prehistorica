@@ -7,6 +7,7 @@ import ThreeDScaleViewer from '../components/ThreeDScaleViewer.js';
 import MediaGallery from '../components/MediaGallery.js';
 import { Calendar, Compass, ArrowLeft, Dna, FileText, Scale, BookOpen, AlertCircle, Bookmark, BookmarkCheck, ExternalLink, Globe, Zap, Layers } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
+import { formatFeetLong } from '../utils/formatDimensions.js';
 
 export default function SpeciesDetail() {
   const { id } = useParams<{ id: string }>();
@@ -211,7 +212,7 @@ export default function SpeciesDetail() {
             <Scale className="h-3.5 w-3.5 text-amber-400" /> Total Length
           </span>
           <p className="text-3xl font-mono font-black text-amber-400">
-            {species.lengthM ? `${species.lengthM} Meters` : 'Unverified'}
+            {formatFeetLong(species.lengthM)}
           </p>
         </div>
 
@@ -220,7 +221,7 @@ export default function SpeciesDetail() {
             <Scale className="h-3.5 w-3.5 text-amber-400" /> Standing Height
           </span>
           <p className="text-3xl font-mono font-black text-amber-400">
-            {species.heightM ? `${species.heightM} Meters` : 'Unverified'}
+            {formatFeetLong(species.heightM)}
           </p>
         </div>
 
