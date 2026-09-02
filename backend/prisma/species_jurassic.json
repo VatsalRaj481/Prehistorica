@@ -711,7 +711,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Archosauria\",\"family\":\"Apatosaurusidae\",\"genus\":\"Apatosaurus\",\"species\":\"Apatosaurus ajax\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/9/9c/Apatosaurus_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3AApatosaurus_TD.png\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/9/9c/Apatosaurus_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Apatosaurus_TD.png\"}]",
     "discoveryHistory": "• Discovered and named by O.C. Marsh in 1877 in Colorado.\n• For over a century, its skeleton was mounted with the wrong skull (that of a Camarasaurus).\n• A correct skull was finally mounted on skeletons in the late 1970s.",
     "interestingFacts": "[\"It had a very robust, heavily built skeleton compared to Diplodocus.\",\"Its tail may have been able to crack like a whip, producing a loud sound.\",\"It was an abundant herbivore in the Morrison Formation.\"]",
     "sizeNotes": "Medium-sized for its group.",
