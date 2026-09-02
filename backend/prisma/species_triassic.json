@@ -1755,7 +1755,7 @@
     "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Synapsida\",\"order\":\"Archosauria\",\"family\":\"Arizonasaurusidae\",\"genus\":\"Arizonasaurus\",\"species\":\"Arizonasaurus babbitti\",\"clade\":\"Poposauroid\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/120-Arizonasaurus.png\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Arizonasaurus_babbitti.png\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/b/b8/Arizonasaurus_babbiti.png\",\"type\":\"art\",\"credit\":\"Smokeybjb / Nobu Tamura (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Arizonasaurus_babbiti.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/e1/Arizonasaurus_skeletal.png\",\"type\":\"photo\",\"credit\":\"Skeletal reconstruction diagram (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Arizonasaurus_skeletal.png\"}]",
     "discoveryHistory": "• Found in the Moenkopi Formation, Arizona.\n• Described by Samuel Paul Welles in 1947.\n• A complete skeleton was later described by Sterling Nesbitt.",
     "interestingFacts": "[\"A sail-backed poposauroid.\",\"Sail may have been used for thermoregulation or display.\",\"Older than many other famous Triassic archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
