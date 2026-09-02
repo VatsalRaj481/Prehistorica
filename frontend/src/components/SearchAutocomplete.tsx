@@ -72,13 +72,13 @@ export default function SearchAutocomplete() {
   };
 
   return (
-    <div ref={wrapperRef} className="relative w-full max-w-sm">
+    <div ref={wrapperRef} className="relative w-full max-w-xs sm:max-w-sm font-mono">
       <form onSubmit={handleSubmit} className="relative">
         <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
           {loading ? (
-            <Loader2 className="h-4 w-4 text-blue-400 animate-spin" />
+            <Loader2 className="h-3.5 w-3.5 text-amber-400 animate-spin" />
           ) : (
-            <Search className="h-4 w-4 text-slate-500" />
+            <Search className="h-3.5 w-3.5 text-slate-500" />
           )}
         </span>
         <input
@@ -86,28 +86,28 @@ export default function SearchAutocomplete() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => query.trim().length >= 2 && setIsOpen(true)}
-          placeholder="Search fauna, clade, formation..."
-          className="block w-full pl-9 pr-3 py-1.5 bg-slate-900 border border-slate-800 rounded-xl text-xs placeholder-slate-500 text-slate-200 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+          placeholder="Search fauna, clade, era..."
+          className="block w-full pl-8 pr-3 py-1.5 bg-slate-900/90 border border-white/[0.08] rounded-lg text-xs placeholder-slate-500 text-slate-200 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500/30 transition-all font-mono"
         />
       </form>
 
       {/* Autocomplete Dropdown List */}
       {isOpen && suggestions.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-slate-800 rounded-xl shadow-2xl overflow-hidden z-50 divide-y divide-slate-850">
+        <div className="absolute top-full left-0 right-0 mt-2 bg-slate-900 border border-white/[0.12] rounded-xl shadow-2xl overflow-hidden z-50 divide-y divide-white/[0.04]">
           {suggestions.map((item) => {
             const names = getSpeciesDisplayNames(item);
             return (
               <button
                 key={item.id}
                 onClick={() => handleSelect(item.id)}
-                className="w-full text-left p-3 hover:bg-slate-800/80 transition-colors flex items-center gap-3 group cursor-pointer"
+                className="w-full text-left p-2.5 hover:bg-slate-800/80 transition-colors flex items-center gap-2.5 group cursor-pointer"
               >
-                <div className="h-10 w-10 rounded-lg bg-slate-950 border border-slate-800 overflow-hidden shrink-0">
+                <div className="h-9 w-9 rounded-md bg-slate-950 border border-white/[0.08] overflow-hidden shrink-0">
                   {item.reconstructionImageUrl ? (
                     <img src={item.reconstructionImageUrl} alt="" className="w-full h-full object-cover" />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-slate-650">
-                      <Dna className="h-4 w-4" />
+                    <div className="w-full h-full flex items-center justify-center text-slate-600">
+                      <Dna className="h-3.5 w-3.5" />
                     </div>
                   )}
                 </div>
@@ -115,8 +115,8 @@ export default function SearchAutocomplete() {
                   <div className="text-xs font-bold uppercase text-slate-100 group-hover:text-amber-400 transition-colors truncate font-sans">
                     {names.heading}
                   </div>
-                  <div className="text-[10px] text-amber-400 italic font-serif truncate">
-                    {names.subheading} &bull; <span className="text-slate-400 not-italic font-mono">{item.clade}</span>
+                  <div className="text-[10px] text-amber-400/90 italic font-mono truncate">
+                    {names.subheading} &bull; <span className="text-slate-400 not-italic">{item.clade}</span>
                   </div>
                 </div>
                 <ArrowRight className="h-3.5 w-3.5 text-slate-600 group-hover:text-amber-400 transition-colors shrink-0" />
@@ -125,12 +125,14 @@ export default function SearchAutocomplete() {
           })}
           <button
             onClick={handleSubmit}
-            className="w-full p-2.5 bg-slate-950 text-center text-xs font-semibold text-blue-400 hover:text-blue-300 transition-colors flex items-center justify-center gap-1"
+            className="w-full p-2.5 bg-slate-950 text-center text-xs font-bold font-mono uppercase tracking-wider text-amber-400 hover:text-amber-300 transition-colors flex items-center justify-center gap-1.5"
           >
-            See all matching species for "{query}" <ArrowRight className="h-3 w-3" />
+            <span>View all matches for "{query}"</span>
+            <ArrowRight className="h-3 w-3" />
           </button>
         </div>
       )}
     </div>
   );
 }
+

@@ -1,102 +1,113 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
 
 @theme {
-  --color-slate-950: #070A12;
-  --color-slate-900: #0D1322;
-  --color-slate-850: #151D30;
-  --color-slate-800: #1E293B;
-  --color-slate-700: #334155;
-  --color-slate-600: #475569;
-  --color-slate-500: #64748B;
-  --color-slate-400: #94A3B8;
-  --color-slate-300: #CBD5E1;
-  --color-slate-200: #E2E8F0;
-  --color-slate-100: #F8FAFC;
+  --color-slate-950: #080C16;
+  --color-slate-900: #0E1526;
+  --color-slate-850: #141E34;
+  --color-slate-800: #1D2A44;
+  --color-slate-700: #2E3E5E;
+  --color-slate-600: #485A7E;
+  --color-slate-500: #6B7C9D;
+  --color-slate-400: #9AA8C2;
+  --color-slate-300: #CCD6E7;
+  --color-slate-200: #E4EAF4;
+  --color-slate-100: #F3F6FB;
 
   --color-amber-600: #D97706;
   --color-amber-500: #F59E0B;
   --color-amber-400: #FBBF24;
   --color-amber-300: #FDE68A;
 
-  --font-sans: "Outfit", "Inter", sans-serif;
+  --font-sans: "Outfit", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "Space Grotesk", monospace;
-  --font-serif: "Cinzel", Georgia, serif;
 }
 
 :root {
-  --map-height: 500px;
+  --map-height: 520px;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Outfit', 'Inter', sans-serif;
-  background-color: #070A12;
-  color: #CBD5E1;
+  font-family: var(--font-sans);
+  background-color: #080C16;
+  color: #CCD6E7;
   overflow-x: hidden;
   font-size: 16px;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: 
-    radial-gradient(ellipse at 50% 0%, rgba(245, 158, 11, 0.04) 0%, transparent 65%),
-    linear-gradient(to bottom, #070A12 0%, #0B101D 100%);
+    radial-gradient(ellipse at 50% 0%, rgba(217, 119, 6, 0.05) 0%, transparent 60%),
+    linear-gradient(to bottom, #080C16 0%, #0B101D 100%);
   background-attachment: fixed;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Outfit', 'Inter', sans-serif;
+  font-family: var(--font-sans);
   font-weight: 800;
-  color: #F8FAFC;
-  letter-spacing: -0.02em;
+  color: #F3F6FB;
+  letter-spacing: -0.025em;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Custom subtle scrollbar */
+/* Curatorial Archival Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #070A12;
+  background: #080C16;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1C273C;
-  border-radius: 4px;
+  background: #1D2A44;
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #F59E0B;
+  background: #D97706;
 }
 
-/* Custom background grid texture */
+/* Subtle Architectural Grid Texture */
 .bg-fossil-grid {
-  background-size: 32px 32px;
+  background-size: 36px 36px;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
 }
 
-/* Glassmorphism helpers */
+/* Curatorial Exhibition Panels */
 .glass-panel {
-  background: rgba(13, 19, 34, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(14, 21, 38, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-panel-amber {
-  background: rgba(245, 158, 11, 0.04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(245, 158, 11, 0.2);
+  background: rgba(217, 119, 6, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(217, 119, 6, 0.25);
 }
 
-/* Custom styles for Leaflet to fit Museum Pavilion theme */
+/* Museum Plinth Surface */
+.museum-card {
+  background: #0E1526;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.museum-card:hover {
+  border-color: rgba(217, 119, 6, 0.35);
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.6);
+}
+
+/* Custom styles for Leaflet */
 .leaflet-container {
-  background-color: #070A12 !important;
-  font-family: 'Space Grotesk', monospace !important;
+  background-color: #080C16 !important;
+  font-family: var(--font-mono) !important;
   border-radius: 12px !important;
 }
 
@@ -108,47 +119,47 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .leaflet-bar a {
-  background-color: #0D1322 !important;
-  color: #F8FAFC !important;
+  background-color: #0E1526 !important;
+  color: #F3F6FB !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   transition: all 0.2s ease;
 }
 
 .leaflet-bar a:hover {
-  background-color: #151D30 !important;
+  background-color: #141E34 !important;
   color: #FBBF24 !important;
 }
 
 .leaflet-popup-content-wrapper {
-  background-color: #0D1322 !important;
-  color: #F8FAFC !important;
+  background-color: #0E1526 !important;
+  color: #F3F6FB !important;
   border-radius: 12px !important;
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.8) !important;
-  font-family: 'Space Grotesk', monospace !important;
+  border: 1px solid rgba(217, 119, 6, 0.35);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.85) !important;
+  font-family: var(--font-mono) !important;
 }
 
 .leaflet-popup-tip {
-  background-color: #0D1322 !important;
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  background-color: #0E1526 !important;
+  border: 1px solid rgba(217, 119, 6, 0.35);
 }
 
 /* Custom styling for timeline slider tracks */
 input[type="range"]::-webkit-slider-runnable-track {
-  background: #151D30;
+  background: #141E34;
   border-radius: 4px;
   height: 6px;
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 input[type="range"]::-webkit-slider-thumb {
-  background: #F59E0B;
+  background: #D97706;
   border-radius: 50%;
   width: 18px;
   height: 18px;
   margin-top: -6px;
   cursor: pointer;
-  box-shadow: 0 0 12px rgba(245, 158, 11, 0.6);
+  box-shadow: 0 0 12px rgba(217, 119, 6, 0.6);
   transition: transform 0.15s ease, background 0.15s ease;
 }
 

@@ -60,7 +60,7 @@ export default function SpeciesDetail() {
   };
 
   const pageVariants: Variants = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 15 },
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 12 },
     show: {
       opacity: 1,
       y: 0,
@@ -71,11 +71,11 @@ export default function SpeciesDetail() {
   if (loading) {
     return (
       <div className="animate-pulse space-y-8 py-6">
-        <div className="h-6 w-48 bg-slate-900 rounded-none border border-slate-800" />
-        <div className="h-[450px] bg-slate-950 rounded-none border border-slate-800" />
+        <div className="h-6 w-48 bg-slate-900 rounded border border-white/[0.06]" />
+        <div className="h-[450px] bg-slate-950 rounded-xl border border-white/[0.06]" />
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-6 h-96 bg-slate-900 rounded-none border border-slate-800" />
-          <div className="lg:col-span-6 h-96 bg-slate-900 rounded-none border border-slate-800" />
+          <div className="lg:col-span-6 h-96 bg-slate-900 rounded-xl border border-white/[0.06]" />
+          <div className="lg:col-span-6 h-96 bg-slate-900 rounded-xl border border-white/[0.06]" />
         </div>
       </div>
     );
@@ -83,13 +83,13 @@ export default function SpeciesDetail() {
 
   if (error || !species) {
     return (
-      <div className="bg-slate-950 border border-red-500/20 rounded-none p-12 text-center text-red-400 flex flex-col items-center gap-4 shadow-2xl">
-        <AlertCircle className="h-12 w-12 text-red-500" />
-        <h2 className="text-xl font-bold font-mono uppercase tracking-widest">Specimen Record Unavailable</h2>
-        <p className="text-sm max-w-md text-slate-400">{error || 'The requested prehistoric species exhibit could not be located.'}</p>
+      <div className="bg-slate-950 border border-red-500/20 rounded-xl p-12 text-center text-red-400 flex flex-col items-center gap-4 shadow-2xl font-mono">
+        <AlertCircle className="h-10 w-10 text-red-400" />
+        <h2 className="text-lg font-bold uppercase tracking-wider font-sans">Specimen Record Unavailable</h2>
+        <p className="text-xs max-w-md text-slate-400 font-sans">{error || 'The requested prehistoric species exhibit could not be located.'}</p>
         <Link
           to="/browse"
-          className="mt-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-amber-400 text-xs font-mono font-bold uppercase tracking-wider rounded-none border border-slate-700 transition-colors flex items-center gap-2"
+          className="mt-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-850 text-amber-400 text-xs font-mono font-bold uppercase tracking-wider rounded-lg border border-white/[0.08] transition-colors flex items-center gap-2"
         >
           <ArrowLeft className="h-4 w-4" /> Return to Catalog Index
         </Link>
@@ -105,29 +105,29 @@ export default function SpeciesDetail() {
       className="space-y-10"
     >
       {/* Top Museum Navigation & Catalog Reference Header */}
-      <div className="flex flex-wrap justify-between items-center border-b border-white/10 pb-4 gap-4">
-        <div className="flex items-center gap-4 text-xs font-mono text-slate-400">
+      <div className="flex flex-wrap justify-between items-center border-b border-white/[0.08] pb-4 gap-4 font-mono">
+        <div className="flex items-center gap-4 text-xs text-slate-400">
           <motion.div whileTap={{ scale: 0.94 }}>
             <Link
               to="/browse"
               className="inline-flex items-center gap-2 text-slate-300 hover:text-amber-400 transition-colors font-bold uppercase tracking-wider"
             >
-              <ArrowLeft className="h-4 w-4 text-amber-400" /> Back to Catalog Index
+              <ArrowLeft className="h-4 w-4 text-amber-400" /> Catalog Index
             </Link>
           </motion.div>
           <span className="text-slate-700">|</span>
-          <span className="text-amber-400/90 font-bold uppercase tracking-widest">
+          <span className="text-amber-400 font-bold uppercase tracking-widest text-[11px]">
             Specimen #{species.id.toString().padStart(4, '0')}
           </span>
         </div>
 
         <motion.button
-          whileTap={{ scale: 0.92 }}
+          whileTap={{ scale: 0.94 }}
           onClick={toggleBookmark}
-          className={`px-4 py-2 rounded-lg border text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shadow-md ${
+          className={`px-3.5 py-2 rounded-lg border text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shadow-sm ${
             isBookmarked
-              ? 'bg-amber-500/15 border-amber-500/50 text-amber-300'
-              : 'bg-slate-900/80 border-white/10 text-slate-300 hover:text-white hover:border-amber-500/40'
+              ? 'bg-amber-500/15 border-amber-500/40 text-amber-300'
+              : 'bg-slate-900/90 border-white/[0.08] text-slate-300 hover:text-white hover:border-amber-500/40'
           }`}
         >
           {isBookmarked ? (
@@ -146,29 +146,29 @@ export default function SpeciesDetail() {
       {(() => {
         const names = getSpeciesDisplayNames(species);
         return (
-          <div className="space-y-4 border-l-2 border-amber-500 pl-6">
-            <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono">
-              <span className="px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 font-bold uppercase tracking-widest flex items-center gap-1.5 rounded-full">
+          <div className="space-y-4 border-l-2 border-amber-500 pl-5">
+            <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
+              <span className="px-3 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-400 font-bold uppercase tracking-widest flex items-center gap-1.5 rounded-md">
                 <Calendar className="h-3.5 w-3.5" />
                 {species.timePeriod} &bull; {species.myaStart}–{species.myaEnd} MYA
               </span>
-              <span className="px-3 py-1 bg-slate-900/80 border border-white/10 text-slate-300 font-bold uppercase tracking-widest rounded-full">
+              <span className="px-3 py-1 bg-slate-900 border border-white/[0.08] text-slate-300 font-bold uppercase tracking-widest rounded-md">
                 Clade: {species.clade}
               </span>
-              <span className="px-3 py-1 bg-slate-900/80 border border-white/10 text-amber-300/90 font-bold uppercase tracking-widest rounded-full">
+              <span className="px-3 py-1 bg-slate-900 border border-white/[0.08] text-amber-300/90 font-bold uppercase tracking-widest rounded-md">
                 Status: {species.taxonomicStatus}
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-slate-100 uppercase break-words leading-none font-sans">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-100 uppercase break-words leading-none font-sans">
               {names.heading}
             </h1>
-            <p className="text-xl italic font-serif text-amber-400">
+            <p className="text-lg italic font-mono text-amber-400">
               {names.subheading}
             </p>
 
             {species.nameMeaning && (
-              <p className="text-xs font-mono text-slate-400 leading-relaxed border-t border-white/10 pt-3">
+              <p className="text-xs font-mono text-slate-400 leading-relaxed border-t border-white/[0.08] pt-3">
                 <strong className="font-bold text-amber-400 uppercase tracking-widest">Etymology & Translation:</strong> "{species.nameMeaning}"
               </p>
             )}
@@ -176,7 +176,7 @@ export default function SpeciesDetail() {
         );
       })()}
 
-      {/* Modern Museum Pavilion Exhibit Hero 3D Stage */}
+      {/* 3D Scale Specimen Stage */}
       {(() => {
         let mediaArr: any[] = [];
         try { mediaArr = typeof species.media === 'string' ? JSON.parse(species.media) : (species.media || []); } catch (e) {}
@@ -189,7 +189,7 @@ export default function SpeciesDetail() {
                 <Layers className="h-4 w-4 text-amber-400" /> Interactive Scale Specimen Stage
               </span>
               <span className="text-amber-400/90 font-bold uppercase tracking-widest text-[10px]">
-                Rendered at 1:1 Scale
+                1:1 Physical Scale Simulation
               </span>
             </div>
 
@@ -205,31 +205,31 @@ export default function SpeciesDetail() {
         );
       })()}
 
-      {/* Stark Architectural Metrics Banner */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="glass-panel p-6 rounded-xl space-y-1.5 text-center border border-white/10 shadow-lg">
-          <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
+      {/* Architectural Metrics Banner */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono">
+        <div className="museum-card p-5 rounded-xl space-y-1 text-center shadow-lg">
+          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
             <Scale className="h-3.5 w-3.5 text-amber-400" /> Total Length
           </span>
-          <p className="text-3xl font-mono font-black text-amber-400">
+          <p className="text-2xl sm:text-3xl font-black text-amber-400">
             {formatFeetLong(species.lengthM)}
           </p>
         </div>
 
-        <div className="glass-panel p-6 rounded-xl space-y-1.5 text-center border border-white/10 shadow-lg">
-          <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
+        <div className="museum-card p-5 rounded-xl space-y-1 text-center shadow-lg">
+          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
             <Scale className="h-3.5 w-3.5 text-amber-400" /> Standing Height
           </span>
-          <p className="text-3xl font-mono font-black text-amber-400">
+          <p className="text-2xl sm:text-3xl font-black text-amber-400">
             {formatFeetLong(species.heightM)}
           </p>
         </div>
 
-        <div className="glass-panel p-6 rounded-xl space-y-1.5 text-center border border-white/10 shadow-lg">
-          <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
+        <div className="museum-card p-5 rounded-xl space-y-1 text-center shadow-lg">
+          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
             <Scale className="h-3.5 w-3.5 text-amber-400" /> Estimated Mass
           </span>
-          <p className="text-3xl font-mono font-black text-amber-400">
+          <p className="text-2xl sm:text-3xl font-black text-amber-400">
             {species.weightKg ? `${species.weightKg.toLocaleString()} KG` : 'Disputed'}
           </p>
         </div>
@@ -239,9 +239,9 @@ export default function SpeciesDetail() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10">
         {/* Left Column: Media Reconstruction & Visual Archive */}
         <div className="lg:col-span-6 space-y-6">
-          <div className="glass-panel rounded-2xl p-5 border border-white/10 space-y-4 shadow-xl">
-            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/10 pb-3">
-              <FileText className="h-4 w-4 text-amber-400" /> Specimen Visual Reconstruction
+          <div className="glass-panel rounded-xl p-5 border border-white/[0.08] space-y-4 shadow-xl">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-3">
+              <FileText className="h-4 w-4 text-amber-400" /> Specimen Visual Archive
             </h3>
 
             <MediaGallery
@@ -253,17 +253,17 @@ export default function SpeciesDetail() {
           </div>
 
           {/* Discovery & Geographic Range Panel */}
-          <div className="glass-panel rounded-2xl p-6 border border-white/10 space-y-4 shadow-xl">
-            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/10 pb-3">
+          <div className="glass-panel rounded-xl p-6 border border-white/[0.08] space-y-4 shadow-xl">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-3">
               <Compass className="h-4 w-4 text-amber-400" /> Field Discovery & Provenance
             </h3>
 
             <div className="space-y-4 text-xs font-mono">
               <div className="space-y-1.5">
                 <span className="text-slate-400 uppercase font-bold text-[10px] tracking-widest flex items-center gap-1.5">
-                  <Globe className="h-3.5 w-3.5 text-emerald-400" /> Geological Range & Formation
+                  <Globe className="h-3.5 w-3.5 text-amber-400" /> Geological Range & Formation
                 </span>
-                <p className="text-slate-200 leading-relaxed bg-slate-900/80 p-3.5 rounded-lg border border-white/10 font-sans text-xs">
+                <p className="text-slate-200 leading-relaxed bg-slate-900/90 p-3.5 rounded-lg border border-white/[0.06] font-sans text-xs">
                   {species.geographicRange?.region || species.country || 'Global distribution'} &bull; Formation:{' '}
                   <span className="text-amber-400 font-bold font-mono">{species.fossilFormation || 'Unspecified'}</span>
                 </p>
@@ -273,7 +273,7 @@ export default function SpeciesDetail() {
                 <span className="text-slate-400 uppercase font-bold text-[10px] tracking-widest flex items-center gap-1.5">
                   <Compass className="h-3.5 w-3.5 text-amber-400" /> Excavation Log Notes
                 </span>
-                <p className="text-slate-300 leading-relaxed bg-slate-900/80 p-3.5 rounded-lg border border-white/10 font-serif italic text-xs">
+                <p className="text-slate-300 leading-relaxed bg-slate-900/90 p-3.5 rounded-lg border border-white/[0.06] italic font-sans text-xs">
                   "{species.discoveryHistory || 'Fossilized specimens cataloged in official paleontology archives.'}"
                 </p>
               </div>
@@ -284,8 +284,8 @@ export default function SpeciesDetail() {
         {/* Right Column: Taxonomy Rank, Scientific Facts & Literature */}
         <div className="lg:col-span-6 space-y-6">
           {/* Architectural Taxonomic Hierarchy */}
-          <div className="glass-panel rounded-2xl p-6 border border-white/10 space-y-4 shadow-xl">
-            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/10 pb-3">
+          <div className="glass-panel rounded-xl p-6 border border-white/[0.08] space-y-4 shadow-xl">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-3">
               <Dna className="h-4 w-4 text-amber-400" /> Structural Taxonomic Hierarchy
             </h3>
 
@@ -297,8 +297,8 @@ export default function SpeciesDetail() {
 
           {/* Scientific Key Facts Monograph */}
           {species.interestingFacts && species.interestingFacts.length > 0 && (
-            <div className="glass-panel rounded-2xl p-6 border border-white/10 space-y-4 shadow-xl">
-              <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/10 pb-3">
+            <div className="glass-panel rounded-xl p-6 border border-white/[0.08] space-y-4 shadow-xl">
+              <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-3">
                 <Zap className="h-4 w-4 text-amber-400" /> Key Scientific Diagnostic Features
               </h3>
 
@@ -306,9 +306,9 @@ export default function SpeciesDetail() {
                 {species.interestingFacts.map((fact, i) => (
                   <div
                     key={i}
-                    className="p-3.5 bg-slate-900/80 rounded-xl border border-white/10 text-xs font-sans text-slate-300 leading-relaxed flex items-start gap-3 shadow-sm"
+                    className="p-3.5 bg-slate-900/90 rounded-lg border border-white/[0.06] text-xs font-sans text-slate-300 leading-relaxed flex items-start gap-3 shadow-sm"
                   >
-                    <span className="text-amber-400 font-bold font-mono text-sm shrink-0">#{i + 1}</span>
+                    <span className="text-amber-400 font-bold font-mono text-xs shrink-0">#{i + 1}</span>
                     <span>{fact}</span>
                   </div>
                 ))}
@@ -318,8 +318,8 @@ export default function SpeciesDetail() {
 
           {/* Academic Citations & Literature */}
           {species.sources && species.sources.length > 0 && (
-            <div className="glass-panel rounded-2xl p-6 border border-white/10 space-y-4 shadow-xl">
-              <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/10 pb-3">
+            <div className="glass-panel rounded-xl p-6 border border-white/[0.08] space-y-4 shadow-xl">
+              <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-3">
                 <BookOpen className="h-4 w-4 text-amber-400" /> Verified Academic Citations
               </h3>
 
@@ -327,7 +327,7 @@ export default function SpeciesDetail() {
                 {species.sources.map((src, i) => (
                   <div
                     key={i}
-                    className="p-3 bg-slate-900/80 rounded-lg border border-white/10 text-xs font-mono text-slate-400 flex items-center justify-between gap-3"
+                    className="p-3 bg-slate-900/90 rounded-lg border border-white/[0.06] text-xs font-mono text-slate-400 flex items-center justify-between gap-3"
                   >
                     <span className="truncate">{src.citation}</span>
                     {src.url && (
@@ -351,17 +351,17 @@ export default function SpeciesDetail() {
 
       {/* Full-Width Horizontal Coexisting Species Ribbon */}
       {species.relatedSpecies && species.relatedSpecies.length > 0 && (
-        <div className="glass-panel rounded-2xl p-6 border border-white/10 space-y-4 shadow-2xl">
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3 font-mono">
+        <div className="glass-panel rounded-xl p-6 border border-white/[0.08] space-y-4 shadow-2xl">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.08] pb-3 font-mono">
             <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">
               <Compass className="h-4 w-4 text-amber-400" /> Lived Alongside / Coexisting Species
             </h3>
             <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">
-              Scroll Horizontally &bull; Same Formation / Era &amp; Region
+              Same Formation &bull; Era &amp; Region
             </span>
           </div>
 
-          <div className="flex gap-4 overflow-x-auto pb-4 pt-2 snap-x scrollbar-thin scrollbar-thumb-amber-500/30 scrollbar-track-slate-900 font-mono">
+          <div className="flex gap-4 overflow-x-auto pb-4 pt-2 snap-x font-mono">
             {species.relatedSpecies.map((rel: any) => {
               const imgUrl = rel.reconstructionImageUrl || rel.media?.[0]?.url || 'https://images.unsplash.com/photo-1551085254-e96b210df58a?q=80&w=1200&auto=format&fit=crop';
               const names = getSpeciesDisplayNames(rel);
@@ -369,16 +369,16 @@ export default function SpeciesDetail() {
                 <Link
                   key={rel.id}
                   to={`/species/${rel.id}`}
-                  className="group glass-panel rounded-xl border border-white/10 hover:border-amber-500/40 transition-all p-3 flex flex-col justify-between w-64 sm:w-72 shrink-0 snap-start shadow-lg overflow-hidden"
+                  className="group museum-card rounded-xl p-3 flex flex-col justify-between w-64 sm:w-72 shrink-0 snap-start shadow-lg overflow-hidden"
                 >
-                  <div className="relative h-36 w-full bg-slate-900 rounded-lg overflow-hidden mb-3 border border-white/10">
+                  <div className="relative h-36 w-full bg-slate-950 rounded-lg overflow-hidden mb-3 border border-white/[0.06]">
                     <img
                       src={imgUrl}
                       alt={rel.name}
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    <div className="absolute top-2 right-2 px-2 py-0.5 bg-slate-950/90 backdrop-blur-md rounded text-[9px] font-mono font-bold uppercase tracking-widest text-amber-400 border border-white/10">
+                    <div className="absolute top-2 right-2 px-2 py-0.5 bg-slate-950/90 backdrop-blur-md rounded text-[9px] font-mono font-bold uppercase tracking-widest text-amber-400 border border-white/[0.08]">
                       {rel.clade || 'Prehistoric'}
                     </div>
                   </div>
@@ -386,10 +386,10 @@ export default function SpeciesDetail() {
                     <h4 className="text-xs font-bold font-sans text-slate-100 group-hover:text-amber-400 transition-colors uppercase truncate">
                       {names.heading}
                     </h4>
-                    <p className="text-[10px] font-serif italic text-amber-400 truncate">
+                    <p className="text-[10px] font-mono text-amber-400 truncate">
                       {names.subheading}
                     </p>
-                    <div className="flex items-center justify-between text-[9px] font-mono text-slate-400 pt-2 border-t border-white/10">
+                    <div className="flex items-center justify-between text-[9px] font-mono text-slate-400 pt-2 border-t border-white/[0.06]">
                       <span className="truncate">{rel.timePeriod || 'Prehistoric'}</span>
                       <span className="text-amber-400 uppercase tracking-wider font-bold">
                         {rel.fossilFormation ? rel.fossilFormation.split(' ')[0] : 'Coexisted'}
@@ -405,3 +405,4 @@ export default function SpeciesDetail() {
     </motion.div>
   );
 }
+

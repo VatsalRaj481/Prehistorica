@@ -30,47 +30,50 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="glass-panel sticky top-0 z-50 backdrop-blur-xl border-b border-white/10 shadow-2xl">
+      <header className="glass-panel sticky top-0 z-50 backdrop-blur-xl border-b border-white/[0.08] shadow-2xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 gap-4">
             <div className="flex items-center gap-6">
               <Link to="/" className="flex items-center gap-3 shrink-0 group">
                 <div className="p-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 group-hover:border-amber-500/40 transition-colors">
-                  <DinoLogoMark className="h-7 w-7 shrink-0 group-hover:scale-105 transition-transform" />
+                  <DinoLogoMark className="h-6 w-6 shrink-0 group-hover:scale-105 transition-transform" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-base sm:text-lg font-black tracking-wider bg-gradient-to-r from-amber-400 via-amber-200 to-yellow-400 bg-clip-text text-transparent uppercase font-mono leading-none">
-                    PREHISTORICA
-                  </span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-base sm:text-lg font-black tracking-wider text-slate-100 uppercase font-mono leading-none">
+                      PREHISTORICA
+                    </span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0" />
+                  </div>
                   <span className="text-[9px] font-mono tracking-widest text-slate-400 uppercase">
-                    ENCYCLOPEDIA PAVILION
+                    ARCHIVAL PAVILION
                   </span>
                 </div>
               </Link>
 
               {/* Desktop Navigation Links */}
-              <div className="hidden md:flex space-x-4 items-center font-mono">
+              <nav className="hidden md:flex space-x-2 items-center font-mono">
                 <Link
                   to="/"
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-md text-xs uppercase tracking-wider ${isActive('/')}`}
+                  className={`px-3 py-1.5 rounded-md text-xs uppercase tracking-wider transition-colors ${isActive('/')}`}
                 >
                   Home
                 </Link>
                 <Link
                   to="/browse"
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-md text-xs uppercase tracking-wider ${isActive('/browse')}`}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs uppercase tracking-wider transition-colors ${isActive('/browse')}`}
                 >
                   <Search className="h-3.5 w-3.5 text-amber-400" />
                   Browse Catalog
                 </Link>
                 <Link
                   to="/map"
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-md text-xs uppercase tracking-wider ${isActive('/map')}`}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs uppercase tracking-wider transition-colors ${isActive('/map')}`}
                 >
                   <Map className="h-3.5 w-3.5 text-amber-400" />
                   Time-Map
                 </Link>
-              </div>
+              </nav>
             </div>
 
             {/* Desktop Right Side Search & Compare */}
@@ -79,21 +82,22 @@ export default function Navbar() {
                 <SearchAutocomplete />
               </div>
 
-              <button
+              <motion.button
+                whileTap={{ scale: 0.96 }}
                 onClick={() => setIsCompareOpen(true)}
-                className="px-3.5 py-2 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-white/10 hover:border-amber-500/40 text-xs font-mono font-bold uppercase tracking-wider text-slate-200 hover:text-white flex items-center gap-2 transition-all cursor-pointer shrink-0 shadow-sm"
+                className="px-3.5 py-2 rounded-lg bg-slate-900/90 hover:bg-slate-850 border border-white/[0.08] hover:border-amber-500/40 text-xs font-mono font-bold uppercase tracking-wider text-slate-200 hover:text-white flex items-center gap-2 transition-all cursor-pointer shrink-0 shadow-sm"
                 title="Compare 2 species side-by-side"
               >
                 <ArrowRightLeft className="h-3.5 w-3.5 text-amber-400" />
                 <span className="hidden lg:inline">Compare</span>
-              </button>
+              </motion.button>
             </div>
 
             {/* Mobile Controls: Search & Hamburger Toggle */}
             <div className="flex items-center gap-2 sm:hidden">
               <button
                 onClick={() => setIsCompareOpen(true)}
-                className="p-2 rounded-lg bg-slate-900 border border-white/10 text-amber-400 flex items-center justify-center cursor-pointer"
+                className="p-2 rounded-lg bg-slate-900 border border-white/10 text-amber-400 flex items-center justify-center cursor-pointer active:scale-95"
                 title="Compare Tool"
               >
                 <ArrowRightLeft className="h-4 w-4" />
@@ -101,7 +105,7 @@ export default function Navbar() {
 
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 rounded-lg bg-slate-900 border border-white/10 text-slate-300 hover:text-white flex items-center justify-center cursor-pointer"
+                className="p-2 rounded-lg bg-slate-900 border border-white/10 text-slate-300 hover:text-white flex items-center justify-center cursor-pointer active:scale-95"
                 title="Toggle Menu"
               >
                 {isMobileMenuOpen ? <X className="h-5 w-5 text-amber-400" /> : <Menu className="h-5 w-5" />}
@@ -118,7 +122,7 @@ export default function Navbar() {
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden border-t border-white/10 bg-slate-950/95 px-4 py-4 space-y-4 overflow-hidden font-mono"
+              className="md:hidden border-t border-white/[0.08] bg-slate-950/98 px-4 py-4 space-y-4 overflow-hidden font-mono"
             >
               {/* Search Bar on Mobile */}
               <div className="w-full">
@@ -137,21 +141,21 @@ export default function Navbar() {
                   to="/browse"
                   className={`flex items-center gap-2 px-3 py-2.5 rounded-lg transition-colors ${isMobileActive('/browse')}`}
                 >
-                  <Search className="h-4 w-4 text-amber-500" />
+                  <Search className="h-4 w-4 text-amber-400" />
                   Browse Catalog
                 </Link>
                 <Link
                   to="/map"
                   className={`flex items-center gap-2 px-3 py-2.5 rounded-lg transition-colors ${isMobileActive('/map')}`}
                 >
-                  <Map className="h-4 w-4 text-amber-500" />
+                  <Map className="h-4 w-4 text-amber-400" />
                   Interactive Time-Map
                 </Link>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </nav>
+      </header>
 
       {/* Side-by-side Compare Modal */}
       <CompareModal

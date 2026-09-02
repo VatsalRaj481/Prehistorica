@@ -53,10 +53,10 @@ export default function TaxonomyBreadcrumbs({ taxonomy, taxonomicClassification 
           <motion.div key={r.label} variants={itemVariants} whileTap={{ scale: 0.96 }}>
             <Link
               to={`/browse?search=${encodeURIComponent(r.val)}`}
-              className={`p-2.5 rounded-none border transition-all flex flex-col gap-0.5 block ${
+              className={`p-2.5 rounded-lg border transition-all flex flex-col gap-0.5 block ${
                 i === ranks.length - 1
-                  ? 'bg-amber-500/10 border-amber-500/50 text-amber-300 font-bold'
-                  : 'bg-slate-900 border-slate-800 text-slate-300 hover:border-amber-500/50 hover:text-white'
+                  ? 'bg-amber-500/10 border-amber-500/40 text-amber-300 font-bold'
+                  : 'bg-slate-900/90 border-white/[0.08] text-slate-300 hover:border-amber-500/40 hover:text-white'
               }`}
               title={`${r.label}: ${r.val}`}
             >
@@ -84,7 +84,7 @@ export default function TaxonomyBreadcrumbs({ taxonomy, taxonomicClassification 
           <motion.div variants={itemVariants} whileTap={{ scale: 0.96 }}>
             <Link
               to={`/browse?search=${encodeURIComponent(p)}`}
-              className="px-3 py-1.5 rounded-none bg-slate-900 border border-slate-800 text-slate-300 hover:text-amber-400 hover:border-amber-500/50 transition-all font-semibold"
+              className="px-3 py-1.5 rounded-lg bg-slate-900/90 border border-white/[0.08] text-slate-300 hover:text-amber-400 hover:border-amber-500/40 transition-all font-semibold"
             >
               {p}
             </Link>
@@ -95,3 +95,4 @@ export default function TaxonomyBreadcrumbs({ taxonomy, taxonomicClassification 
     </motion.div>
   );
 }
+

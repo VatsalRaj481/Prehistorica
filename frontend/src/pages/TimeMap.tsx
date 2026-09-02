@@ -72,7 +72,7 @@ function ChangeView({ center, zoom }: { center: [number, number]; zoom: number }
 
 const getEraColor = (eraName: string) => {
   if (['Cambrian', 'Devonian', 'Carboniferous', 'Permian'].includes(eraName)) {
-    return '#3B82F6';
+    return '#38BDF8';
   }
   if (eraName === 'Triassic') return '#D97706';
   if (eraName === 'Jurassic') return '#10B981';
@@ -87,12 +87,12 @@ const createMapMarkerIcon = (name: string, isSelected: boolean, eraColor: string
   return L.divIcon({
     className: 'custom-leaflet-marker',
     html: `
-      <div style="--era-color: ${eraColor};" class="flex items-center gap-1.5 px-3 py-1.5 rounded-none border shadow-2xl font-mono font-bold text-xs transition-all duration-200 uppercase tracking-widest whitespace-nowrap min-w-[80px] justify-center ${
+      <div style="--era-color: ${eraColor};" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border shadow-2xl font-mono font-bold text-xs transition-all duration-200 uppercase tracking-wider whitespace-nowrap min-w-[80px] justify-center ${
         isSelected
-          ? 'bg-slate-950 text-amber-400 border-amber-500 scale-110 shadow-[0_0_20px_var(--era-color)] z-50'
-          : 'bg-slate-950 text-slate-300 border-slate-800 hover:border-amber-500/50 hover:text-white'
+          ? 'bg-slate-950 text-amber-400 border-amber-500 scale-105 shadow-[0_0_20px_var(--era-color)] z-50'
+          : 'bg-slate-950 text-slate-300 border-white/10 hover:border-amber-500/50 hover:text-white'
       }">
-        <span class="w-2 h-2 rounded-none" style="background-color: ${eraColor};"></span>
+        <span class="w-2 h-2 rounded-full" style="background-color: ${eraColor};"></span>
         <span>${name}</span>
       </div>
     `,
@@ -171,22 +171,22 @@ export default function TimeMap() {
     <div className="space-y-6">
       {/* Header Bar */}
       <motion.div
-        initial={shouldReduceMotion ? false : { opacity: 0, y: -10 }}
+        initial={shouldReduceMotion ? false : { opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-        className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800/80 pb-5"
+        className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/[0.08] pb-5 font-mono"
       >
         <div>
-          <h1 className="text-4xl font-black text-slate-100 uppercase tracking-tight flex items-center gap-2">
-            <Compass className="h-7 w-7 text-amber-500" /> Geologic Excavation Time-Map
+          <h1 className="text-3xl sm:text-4xl font-black text-slate-100 uppercase tracking-tight flex items-center gap-2 font-sans">
+            <Compass className="h-6 w-6 text-amber-500" /> Geologic Excavation Time-Map
           </h1>
-          <p className="text-xs font-mono text-slate-400 mt-1">
+          <p className="text-xs text-slate-400 mt-1 font-mono">
             Navigate Earth's ancient paleocontinents and unearth location-verified fossil formations.
           </p>
         </div>
 
         <div className="flex items-center gap-2 font-mono text-xs">
-          <span className="px-3 py-1.5 bg-slate-950 border border-slate-800 text-slate-300 font-bold uppercase tracking-widest shadow-md">
+          <span className="px-3 py-1.5 bg-slate-900 border border-white/[0.08] text-slate-300 font-bold uppercase tracking-wider rounded-lg shadow-sm">
             Era: <strong style={{ color: eraColor }}>{currentEra.name}</strong> ({currentEra.range})
           </span>
         </div>
@@ -194,20 +194,20 @@ export default function TimeMap() {
 
       {/* Geologic Era Timeline Scrubber */}
       <motion.div
-        initial={shouldReduceMotion ? false : { opacity: 0, y: 10 }}
+        initial={shouldReduceMotion ? false : { opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-        className="glass-panel rounded-2xl p-6 border border-white/10 shadow-2xl space-y-4 font-mono"
+        className="glass-panel rounded-xl p-5 sm:p-6 border border-white/[0.08] shadow-2xl space-y-4 font-mono"
       >
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-3">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/[0.08] pb-3">
           <div className="space-y-0.5">
             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Geologic Era Scrubber</span>
-            <h2 className="text-xl font-black text-slate-100 uppercase tracking-wide font-sans">
+            <h2 className="text-lg sm:text-xl font-black text-slate-100 uppercase tracking-wide font-sans">
               {currentEra.name} Period
             </h2>
           </div>
           <div className="flex items-center gap-2">
-            <span className="px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold uppercase tracking-widest">
+            <span className="px-3 py-1 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold uppercase tracking-wider">
               {currentEra.range}
             </span>
             <span className="text-xs text-slate-300 hidden sm:inline">&bull; {currentEra.desc}</span>
@@ -215,14 +215,14 @@ export default function TimeMap() {
         </div>
 
         {/* Range Slider & Quick Era Pills */}
-        <div className="space-y-4 pt-2">
+        <div className="space-y-4 pt-1">
           <input
             type="range"
             min={0}
             max={ERAS.length - 1}
             value={selectedEraIndex}
             onChange={(e) => handleEraChange(parseInt(e.target.value, 10))}
-            className="w-full h-2 bg-slate-900 rounded-lg appearance-none cursor-pointer border border-white/10"
+            className="w-full h-2 bg-slate-900 rounded-lg appearance-none cursor-pointer border border-white/[0.08]"
           />
 
           <div className="flex gap-2 overflow-x-auto pb-2 pt-1 scrollbar-none">
@@ -236,11 +236,11 @@ export default function TimeMap() {
                   onClick={() => handleEraChange(idx)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider border transition-all cursor-pointer shrink-0 flex items-center gap-1.5 ${
                     isSelected
-                      ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-lg'
-                      : 'bg-slate-900/80 border-white/10 text-slate-300 hover:bg-slate-800 hover:text-white'
+                      ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-md'
+                      : 'bg-slate-900/90 border-white/[0.08] text-slate-300 hover:bg-slate-850 hover:text-white'
                   }`}
                 >
-                  <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: isSelected ? '#070A12' : badgeColor }} />
+                  <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: isSelected ? '#080C16' : badgeColor }} />
                   <span>{era.name}</span>
                 </motion.button>
               );
@@ -252,7 +252,7 @@ export default function TimeMap() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Left Interactive Map Section */}
         <div className="lg:col-span-7 space-y-4 font-mono">
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.08] pb-3">
             <h3 className="text-xs font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">
               <MapPin className="h-4 w-4 text-amber-400" /> Continent Focus Viewport
             </h3>
@@ -264,10 +264,10 @@ export default function TimeMap() {
                   key={c.name}
                   whileTap={{ scale: 0.94 }}
                   onClick={() => handleLocationChange(c.name)}
-                  className={`px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider border transition-all cursor-pointer ${
+                  className={`px-3 py-1 rounded-lg text-[11px] font-bold uppercase tracking-wider border transition-all cursor-pointer ${
                     selectedLocation === c.name
-                      ? 'bg-amber-500/20 border-amber-500/50 text-amber-300 shadow-md'
-                      : 'bg-slate-900/80 border-white/10 text-slate-400 hover:bg-slate-800 hover:text-white'
+                      ? 'bg-amber-500/20 border-amber-500/50 text-amber-300 shadow-sm'
+                      : 'bg-slate-900/90 border-white/[0.08] text-slate-400 hover:bg-slate-850 hover:text-white'
                   }`}
                 >
                   {c.name}
@@ -276,13 +276,13 @@ export default function TimeMap() {
             </div>
           </div>
 
-          <div className="relative h-[440px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-950">
+          <div className="relative h-[440px] rounded-xl overflow-hidden border border-white/[0.08] shadow-2xl bg-slate-950">
             <MapContainer
               center={activeContinentObj.coords}
               zoom={activeContinentObj.zoom}
               scrollWheelZoom={false}
               className="w-full h-full z-10"
-              style={{ background: '#070A12' }}
+              style={{ background: '#080C16' }}
             >
               <ChangeView center={activeContinentObj.coords} zoom={activeContinentObj.zoom} />
 
@@ -311,7 +311,7 @@ export default function TimeMap() {
               })}
             </MapContainer>
 
-            <div className="absolute top-4 left-4 z-20 bg-slate-950/90 backdrop-blur-md border border-white/10 px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-300 shadow-xl pointer-events-none uppercase tracking-wider">
+            <div className="absolute top-4 left-4 z-20 bg-slate-950/90 backdrop-blur-md border border-white/[0.08] px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-300 shadow-xl pointer-events-none uppercase tracking-wider">
               Region: <span className="text-amber-400">{selectedLocation}</span>
               {selectedFormation && (
                 <span className="ml-1.5 text-emerald-400">&bull; {selectedFormation}</span>
@@ -322,7 +322,7 @@ export default function TimeMap() {
 
         {/* Right Fossil Discoveries Column */}
         <div className="lg:col-span-5 space-y-4 font-mono">
-          <div className="flex items-center justify-between border-b border-white/10 pb-3">
+          <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
             <h3 className="text-xs font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">
               <Dna className="h-4 w-4 text-amber-400" />
               <span>Fossil Discoveries ({speciesList.length})</span>
@@ -339,16 +339,16 @@ export default function TimeMap() {
           </div>
 
           {loading ? (
-            <div className="h-96 glass-panel rounded-2xl border border-white/10 flex flex-col items-center justify-center text-slate-400 gap-2">
+            <div className="h-96 glass-panel rounded-xl border border-white/[0.08] flex flex-col items-center justify-center text-slate-400 gap-2">
               <Loader2 className="h-7 w-7 animate-spin text-amber-400" />
               <span className="text-xs font-bold uppercase tracking-wider">Unearthing records...</span>
             </div>
           ) : error ? (
-            <div className="glass-panel rounded-2xl border border-red-500/30 p-6 text-center text-red-400 text-xs">
+            <div className="glass-panel rounded-xl border border-red-500/30 p-6 text-center text-red-400 text-xs">
               {error}
             </div>
           ) : speciesList.length === 0 ? (
-            <div className="glass-panel rounded-2xl border border-white/10 p-10 text-center text-slate-400 flex flex-col items-center gap-2 shadow-xl">
+            <div className="glass-panel rounded-xl border border-white/[0.08] p-10 text-center text-slate-400 flex flex-col items-center gap-2 shadow-xl">
               <Info className="h-8 w-8 text-amber-400" />
               <p className="font-bold text-sm text-slate-200 uppercase tracking-widest font-sans">No Species Records</p>
               <p className="text-xs text-slate-400 max-w-xs font-sans">
@@ -364,14 +364,14 @@ export default function TimeMap() {
                   <motion.div
                     key={species.id}
                     whileHover={shouldReduceMotion ? {} : { x: 3, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
-                    whileTap={{ scale: 0.97 }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     <Link
                       to={`/species/${species.id}`}
-                      className="group glass-panel rounded-xl border border-white/10 p-3.5 hover:border-amber-500/40 transition-all flex items-center justify-between gap-3 shadow-md overflow-hidden"
+                      className="group museum-card rounded-xl p-3.5 flex items-center justify-between gap-3 shadow-md overflow-hidden"
                     >
                       <div className="flex items-center gap-3 min-w-0">
-                        <div className="h-12 w-12 bg-slate-900/80 rounded-lg border border-white/10 shrink-0 flex items-center justify-center p-1 overflow-hidden">
+                        <div className="h-12 w-12 bg-slate-950/90 rounded-lg border border-white/[0.08] shrink-0 flex items-center justify-center p-1 overflow-hidden">
                           {species.reconstructionImageUrl ? (
                             <img
                               src={species.reconstructionImageUrl}
@@ -386,7 +386,7 @@ export default function TimeMap() {
                           <h4 className="text-sm font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors truncate tracking-tight font-sans">
                             {names.heading}
                           </h4>
-                          <p className="text-xs italic font-serif text-amber-400 truncate">
+                          <p className="text-xs italic font-mono text-amber-400 truncate">
                             {names.subheading}
                           </p>
                           <div className="flex items-center gap-2 text-[10px] text-slate-400">
@@ -409,3 +409,4 @@ export default function TimeMap() {
     </div>
   );
 }
+
