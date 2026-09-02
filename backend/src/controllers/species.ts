@@ -8,6 +8,18 @@ const prisma = new PrismaClient();
 function parseJson(val: any, fallback: any) {
   if (!val) return fallback;
   if (typeof val !== 'string') return val;
+  const trimmed = val.trim();
+  // Check if string is Postgres array format e.g. {"item 1", "item 2"}
+  if (trimmed.startsWith('{') && trimmed.endsWith('}') && !trimmed.includes('":"')) {
+    try {
+      const items = trimmed
+        .slice(1, -1)
+        .match(/("(?:[^"\\]|\\.)*"|[^,]+)/g);
+      if (items) {
+        return items.map(s => s.replace(/^"|"$/g, '').replace(/\\"/g, '"').trim());
+      }
+    } catch {}
+  }
   try {
     return JSON.parse(val);
   } catch {
