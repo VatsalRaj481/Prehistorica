@@ -1668,7 +1668,7 @@
     "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Blue Lias Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Archosauria\",\"family\":\"Dimorphodonidae\",\"genus\":\"Dimorphodon\",\"species\":\"Dimorphodon macronyx\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/205-Dimorphodon.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/e/ec/Dimorphodon.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/4/49/Dimorphodon_fossil.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/4/49/Dimorphodon_fossil.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/3/36/Dimorphodon2DB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Dimorphodon2DB.jpg\"}]",
     "discoveryHistory": "• Discovered by Mary Anning in Dorset, England, in 1828.\n• Described by Richard Owen in 1859.\n• One of the first pterosaurs ever found.\n• Name means two-form tooth, referring to its differentiated teeth.",
     "interestingFacts": "[\"Had a remarkably large, deep skull resembling that of a puffin.\",\"Possessed two distinct types of teeth in its jaws.\",\"Its wings were relatively short, suggesting it was not an oceanic soarer.\"]",
     "sizeNotes": "Medium-sized for its group.",
