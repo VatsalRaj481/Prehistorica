@@ -247,7 +247,7 @@
     "geographicRange": "{\"region\":\"Antarctica\",\"country\":\"Antarctica\",\"fossilFormation\":\"Hanson Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Archosauria\",\"family\":\"Cryolophosaurusidae\",\"genus\":\"Cryolophosaurus\",\"species\":\"Cryolophosaurus ellioti\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/148-Cryolophosaurus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/7/7c/Cryolophosaurus.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/3/3e/Cryolophosaurus_skeleton.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/3/3e/Cryolophosaurus_skeleton.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/5/55/CryolophosaurusDB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:CryolophosaurusDB.jpg\"}]",
     "discoveryHistory": "• Discovered in 1990-91 during a field expedition in Antarctica led by William Hammer.\n• Officially named in 1994, it was the first meat-eating dinosaur found in Antarctica.\n• Additional material was recovered during subsequent expeditions in the 2000s.",
     "interestingFacts": "[\"Known as 'Elvisaurus' due to its pompadour-like crest.\",\"It lived in a relatively temperate Antarctic climate.\",\"It is the largest known Early Jurassic theropod.\"]",
     "sizeNotes": "Medium-sized for its group.",
