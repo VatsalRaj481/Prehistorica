@@ -1146,7 +1146,7 @@
     "geographicRange": "{\"region\":\"North Africa\",\"country\":\"Egypt\",\"fossilFormation\":\"Birket Qarun Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Squamata\",\"family\":\"Madtsoiidae\",\"genus\":\"Gigantophis\",\"species\":\"Gigantophis garstini\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/1616-perfect-art.png\",\"type\":\"art\",\"credit\":\"Joerim (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Gigantophis_JWArtwork.png\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/4/4b/Gigantophis_JWArtwork.png\",\"type\":\"art\",\"credit\":\"Joerim (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Gigantophis_JWArtwork.png\"}]",
     "discoveryHistory": "Discovered in 1901 by British paleontologist Charles William Andrews in the Eocene Birket Qarun Formation of the Fayum Depression in Egypt.",
     "interestingFacts": "[\"For over a century until the discovery of Titanoboa in 2009, Gigantophis was considered the largest known snake to have ever existed.\",\"Historically estimated at 9 to 10 meters, a 2004 reassessment by Jason Head et al. revised its estimated length downward to approximately 6.9 ± 0.3 meters.\",\"Belongs to the extinct family Madtsoiidae, sharing a deep evolutionary lineage with other giant Paleogene snakes such as Vasuki and Madtsoia.\"]",
     "sizeNotes": "Historically estimated at 9–10m; revised in 2004 to ~6.9m.",
