@@ -251,6 +251,74 @@ export async function searchAutocomplete(req: Request, res: Response, next: Next
   }
 }
 
+// 2.5 GET /api/species/roster (Lightweight roster for search, selectors, and dropdowns)
+export async function getSpeciesRoster(req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    const rawList = await prisma.species.findMany({
+      select: {
+        id: true,
+        name: true,
+        scientificName: true,
+        clade: true,
+        timePeriod: true,
+        media: true,
+        geographicRange: true,
+        sizeEstimate: true
+      },
+      orderBy: { name: 'asc' }
+    });
+
+    const roster = rawList.map(s => {
+      let reconstructionImageUrl: string | null = null;
+      if (s.media) {
+        try {
+          const parsedMedia = parseJson(s.media, []);
+          if (Array.isArray(parsedMedia) && parsedMedia.length > 0) {
+            reconstructionImageUrl = parsedMedia[0]?.url || null;
+          }
+        } catch {}
+      }
+
+      let fossilFormation: string | null = null;
+      if (s.geographicRange) {
+        try {
+          const geo = parseJson(s.geographicRange, {});
+          fossilFormation = geo?.fossilFormation || null;
+        } catch {}
+      }
+
+      let lengthM: number | null = null;
+      let heightM: number | null = null;
+      let weightKg: number | null = null;
+      if (s.sizeEstimate) {
+        try {
+          const size = parseJson(s.sizeEstimate, {});
+          lengthM = size?.length?.value ?? null;
+          heightM = size?.height?.value ?? null;
+          weightKg = size?.weight?.value ?? null;
+        } catch {}
+      }
+
+      return {
+        id: s.id,
+        name: s.name,
+        scientificName: s.scientificName,
+        clade: s.clade,
+        timePeriod: s.timePeriod,
+        fossilFormation,
+        reconstructionImageUrl,
+        lengthM,
+        heightM,
+        weightKg
+      };
+    });
+
+    res.json(roster);
+  } catch (error) {
+    next(error);
+  }
+}
+
 // 3. GET /api/species/compare?ids=1,2
 export async function compareSpecies(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
@@ -267,7 +335,12 @@ export async function compareSpecies(req: Request, res: Response, next: NextFunc
     });
 
     const speciesList = rawMatches.map(formatSpeciesRecord);
-    res.json(speciesList);
+
+    // Ensure order matches the requested idList
+    const speciesMap = new Map(speciesList.map(s => [s.id, s]));
+    const orderedList = idList.map(id => speciesMap.get(id)).filter(Boolean);
+
+    res.json(orderedList);
   } catch (error) {
     next(error);
   }

@@ -220,13 +220,90 @@ export async function fetchSpeciesAutocomplete(q: string): Promise<AutocompleteI
   return response.json();
 }
 
+export interface SpeciesRosterItem {
+  id: number;
+  name: string;
+  scientificName: string;
+  clade: string;
+  timePeriod: string;
+  fossilFormation?: string | null;
+  reconstructionImageUrl?: string | null;
+  lengthM?: number | null;
+  heightM?: number | null;
+  weightKg?: number | null;
+}
+
+let rosterCache: SpeciesRosterItem[] | null = null;
+let rosterPromise: Promise<SpeciesRosterItem[]> | null = null;
+
+export async function fetchSpeciesRoster(): Promise<SpeciesRosterItem[]> {
+  if (rosterCache) return rosterCache;
+  if (rosterPromise) return rosterPromise;
+
+  rosterPromise = (async () => {
+    try {
+      const response = await fetchWithRetry(`${API_BASE}/species/roster`);
+      if (response.ok) {
+        const data = await response.json();
+        if (Array.isArray(data) && data.length > 0) {
+          rosterCache = data;
+          return data;
+        }
+      }
+    } catch {
+      // Fallback if /species/roster fails or is deploying
+    }
+
+    try {
+      const fallbackRes = await fetchSpecies({ limit: 1000 });
+      const rawList = Array.isArray(fallbackRes) ? fallbackRes : (fallbackRes as any).data || [];
+      const mapped: SpeciesRosterItem[] = rawList.map((s: any) => ({
+        id: s.id,
+        name: s.name,
+        scientificName: s.scientificName,
+        clade: s.clade,
+        timePeriod: s.timePeriod,
+        fossilFormation: s.fossilFormation,
+        reconstructionImageUrl: s.reconstructionImageUrl,
+        lengthM: s.lengthM,
+        heightM: s.heightM,
+        weightKg: s.weightKg
+      }));
+      rosterCache = mapped;
+      return mapped;
+    } finally {
+      rosterPromise = null;
+    }
+  })();
+
+  return rosterPromise;
+}
+
+const speciesCompareCache = new Map<number, Species>();
+
+export function primeSpeciesCache(species: Species): void {
+  if (species && species.id) {
+    speciesCompareCache.set(species.id, species);
+  }
+}
+
 export async function fetchSpeciesCompare(ids: number[]): Promise<Species[]> {
   if (!ids || ids.length === 0) return [];
-  const response = await fetchWithRetry(`${API_BASE}/species/compare?ids=${ids.join(',')}`);
-  if (!response.ok) {
-    throw new Error('Failed to fetch species comparison data');
+
+  const missingIds = ids.filter(id => !speciesCompareCache.has(id));
+
+  if (missingIds.length > 0) {
+    const response = await fetchWithRetry(`${API_BASE}/species/compare?ids=${missingIds.join(',')}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch species comparison data');
+    }
+    const fetchedSpecies: Species[] = await response.json();
+    for (const s of fetchedSpecies) {
+      speciesCompareCache.set(s.id, s);
+    }
   }
-  return response.json();
+
+  return ids.map(id => speciesCompareCache.get(id)).filter(Boolean) as Species[];
 }
 
 

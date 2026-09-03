@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import { getSpecies, getSpeciesById, getCreatureOfTheDay, searchAutocomplete, compareSpecies } from '../controllers/species.js';
+import { getSpecies, getSpeciesById, getCreatureOfTheDay, searchAutocomplete, compareSpecies, getSpeciesRoster } from '../controllers/species.js';
 
 const router = Router();
 
@@ -8,6 +8,7 @@ router.get('/health', (req: Request, res: Response) => {
 });
 
 router.get('/species', getSpecies);
+router.get('/species/roster', getSpeciesRoster);
 router.get('/species/creature-of-the-day', getCreatureOfTheDay);
 router.get('/species/feature/creature-of-the-day', getCreatureOfTheDay);
 router.get('/species/search/autocomplete', searchAutocomplete);
