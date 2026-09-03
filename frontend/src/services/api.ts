@@ -73,6 +73,14 @@ export interface Species {
   sources?: SourceCitation[];
   placeholder?: boolean;
   isMapFallback?: boolean;
+  comparisonSilhouette?: {
+    url?: string | null;
+    sourceUrl?: string | null;
+    license?: string | null;
+    credit?: string | null;
+    taxon?: string | null;
+    taxonMatch?: 'species-specific' | 'generic approximation, not species-specific' | string | null;
+  } | null;
   createdAt: string;
   updatedAt: string;
   relatedSpecies?: Species[];

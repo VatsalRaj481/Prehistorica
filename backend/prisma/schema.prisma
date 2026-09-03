@@ -80,6 +80,9 @@ model Species {
   sizeEstimate            String?           // Stored as JSON string: { length: { value, unit, confidence }, height: { value, unit, confidence }, weight: { value, unit, confidence } }
   sizeComparisonToHuman   Boolean           @default(true)
 
+  // 2D Scale Comparison Silhouette (PhyloPic) — Additive only
+  comparisonSilhouette   String?           // Stored as JSON string: { url, sourceUrl, license, credit, taxonMatch, taxon }
+
   extinctionEvent         String?           // e.g., "K-Pg extinction"
   closestLivingRelatives  String            @default("[]") // Stored as JSON string array
 

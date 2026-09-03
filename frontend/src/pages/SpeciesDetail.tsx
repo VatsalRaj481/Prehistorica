@@ -3,9 +3,9 @@ import { useParams, Link } from 'react-router-dom';
 import { motion, useReducedMotion, Variants } from 'framer-motion';
 import { fetchSpeciesById, Species } from '../services/api.js';
 import TaxonomyBreadcrumbs from '../components/TaxonomyBreadcrumbs.js';
-import ThreeDScaleViewer from '../components/ThreeDScaleViewer.js';
+import TwoDScaleViewer from '../components/TwoDScaleViewer.js';
 import MediaGallery from '../components/MediaGallery.js';
-import { Calendar, Compass, ArrowLeft, Dna, FileText, Scale, BookOpen, AlertCircle, Bookmark, BookmarkCheck, ExternalLink, Globe, Zap, Layers } from 'lucide-react';
+import { Calendar, Compass, ArrowLeft, Dna, FileText, Scale, BookOpen, AlertCircle, Bookmark, BookmarkCheck, ExternalLink, Globe, Zap } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 import { formatFeetLong } from '../utils/formatDimensions.js';
 
@@ -177,33 +177,16 @@ export default function SpeciesDetail() {
       })()}
 
       {/* 3D Scale Specimen Stage */}
-      {(() => {
-        let mediaArr: any[] = [];
-        try { mediaArr = typeof species.media === 'string' ? JSON.parse(species.media) : (species.media || []); } catch (e) {}
-        const primaryArtUrl = mediaArr.find((m: any) => m.type === 'art')?.url || mediaArr[0]?.url || species.reconstructionImageUrl || null;
-
-        return (
-          <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs font-mono text-slate-400 pb-1">
-              <span className="flex items-center gap-2 text-slate-300 font-bold uppercase tracking-wider">
-                <Layers className="h-4 w-4 text-amber-400" /> Interactive Scale Specimen Stage
-              </span>
-              <span className="text-amber-400/90 font-bold uppercase tracking-widest text-[10px]">
-                1:1 Physical Scale Simulation
-              </span>
-            </div>
-
-            <ThreeDScaleViewer
-              speciesName={species.name}
-              lengthM={species.lengthM}
-              heightM={species.heightM}
-              weightKg={species.weightKg}
-              clade={species.clade}
-              imageUrl={primaryArtUrl}
-            />
-          </div>
-        );
-      })()}
+      {/* 2D Silhouette Scale Comparison Stage */}
+      <TwoDScaleViewer
+        speciesName={species.name}
+        scientificName={species.scientificName}
+        lengthM={species.lengthM}
+        heightM={species.heightM}
+        weightKg={species.weightKg}
+        clade={species.clade}
+        silhouette={species.comparisonSilhouette}
+      />
 
       {/* Architectural Metrics Banner */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono">

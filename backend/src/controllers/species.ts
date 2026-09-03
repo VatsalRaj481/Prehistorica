@@ -56,7 +56,8 @@ function formatSpeciesRecord(s: any) {
     sizeEstimate: sizeObj,
     geographicRange: geoObj,
     closestLivingRelatives: parseJson(s.closestLivingRelatives, []),
-    sources: parseJson(s.sources, [])
+    sources: parseJson(s.sources, []),
+    comparisonSilhouette: parseJson(s.comparisonSilhouette, null)
   };
 }
 
