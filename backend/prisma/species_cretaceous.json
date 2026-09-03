@@ -15,7 +15,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Hell Creek Formation (Montana, SD)\"}",
     "taxonomy": "{\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Tyrannosauridae\",\"family\":\"Tyrannosauridae\",\"species\":\"Tyrannosaurus rex\",\"genus\":\"Tyrannosaurus\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/24-Tyrannosaurus.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Tyrannosaurus_BW.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/d/d2/Tyrannosaurus_rex_Reconstruction_by_Nobu_Tamura.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Tyrannosaurus_rex_Reconstruction_by_Nobu_Tamura.jpg\"}]",
     "discoveryHistory": "First discovered by Arthur Lakes in Colorado (1874), later named and described by Henry Fairfield Osborn in 1905.",
     "interestingFacts": "{\"Had one of the strongest bite forces among all terrestrial animals, estimated at 35,000 to 57,000 Newtons.\",\"Its tiny two-clawed arms were surprisingly strong, capable of lifting around 200 kilograms each.\",\"Whether it had feathers is still debated, though direct fossil impressions show predominantly scaly skin.\"}",
     "sizeNotes": "Estimates range from 8,400 to 14,000 kg depending on study.",
