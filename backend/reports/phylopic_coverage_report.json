@@ -5626,14 +5626,14 @@
       "clade": "Marine_Reptile",
       "status": "generic",
       "match": {
-        "uuid": "40db43fb-581f-4743-8c79-bec7ff2ced43",
-        "pageUrl": "https://www.phylopic.org/images/40db43fb-581f-4743-8c79-bec7ff2ced43",
-        "downloadUrl": "https://images.phylopic.org/images/40db43fb-581f-4743-8c79-bec7ff2ced43/source.svg",
-        "taxon": "Marine Reptile (Clade Representative: Rhomaleosaurus cramptoni)",
-        "license": "Attribution 3.0 Unported",
-        "uploadedBy": "Scott Hartman",
+        "uuid": "8f252288-5164-4105-b322-e417bf39fe2d",
+        "pageUrl": "https://www.phylopic.org/images/8f252288-5164-4105-b322-e417bf39fe2d",
+        "downloadUrl": "https://images.phylopic.org/images/8f252288-5164-4105-b322-e417bf39fe2d/source.svg",
+        "taxon": "Nothosauridae (Representative: Nothosaurus mirabilis)",
+        "license": "CC0 1.0 Universal Public Domain Dedication",
+        "uploadedBy": "Dan Niel",
         "taxonMatch": "generic approximation, not species-specific",
-        "matchTier": "clade"
+        "matchTier": "family"
       }
     },
     {
@@ -5643,14 +5643,14 @@
       "clade": "Marine_Reptile",
       "status": "generic",
       "match": {
-        "uuid": "40db43fb-581f-4743-8c79-bec7ff2ced43",
-        "pageUrl": "https://www.phylopic.org/images/40db43fb-581f-4743-8c79-bec7ff2ced43",
-        "downloadUrl": "https://images.phylopic.org/images/40db43fb-581f-4743-8c79-bec7ff2ced43/source.svg",
-        "taxon": "Marine Reptile (Clade Representative: Rhomaleosaurus cramptoni)",
-        "license": "Attribution 3.0 Unported",
-        "uploadedBy": "Scott Hartman",
+        "uuid": "8f252288-5164-4105-b322-e417bf39fe2d",
+        "pageUrl": "https://www.phylopic.org/images/8f252288-5164-4105-b322-e417bf39fe2d",
+        "downloadUrl": "https://images.phylopic.org/images/8f252288-5164-4105-b322-e417bf39fe2d/source.svg",
+        "taxon": "Nothosauroidea (Representative: Nothosaurus mirabilis)",
+        "license": "CC0 1.0 Universal Public Domain Dedication",
+        "uploadedBy": "Dan Niel",
         "taxonMatch": "generic approximation, not species-specific",
-        "matchTier": "clade"
+        "matchTier": "family"
       }
     },
     {
@@ -5677,14 +5677,14 @@
       "clade": "Marine_Reptile",
       "status": "generic",
       "match": {
-        "uuid": "40db43fb-581f-4743-8c79-bec7ff2ced43",
-        "pageUrl": "https://www.phylopic.org/images/40db43fb-581f-4743-8c79-bec7ff2ced43",
-        "downloadUrl": "https://images.phylopic.org/images/40db43fb-581f-4743-8c79-bec7ff2ced43/source.svg",
-        "taxon": "Marine Reptile (Clade Representative: Rhomaleosaurus cramptoni)",
+        "uuid": "83c83962-d551-42dd-a3b2-99346a89fc99",
+        "pageUrl": "https://www.phylopic.org/images/83c83962-d551-42dd-a3b2-99346a89fc99",
+        "downloadUrl": "https://images.phylopic.org/images/83c83962-d551-42dd-a3b2-99346a89fc99/source.svg",
+        "taxon": "Shastasauridae (Representative: Shastasaurus sikanniensis)",
         "license": "Attribution 3.0 Unported",
-        "uploadedBy": "Scott Hartman",
+        "uploadedBy": "Gareth Monger",
         "taxonMatch": "generic approximation, not species-specific",
-        "matchTier": "clade"
+        "matchTier": "family"
       }
     },
     {
@@ -7836,14 +7836,14 @@
       "clade": "Marine_Reptile",
       "status": "generic",
       "match": {
-        "uuid": "40db43fb-581f-4743-8c79-bec7ff2ced43",
-        "pageUrl": "https://www.phylopic.org/images/40db43fb-581f-4743-8c79-bec7ff2ced43",
-        "downloadUrl": "https://images.phylopic.org/images/40db43fb-581f-4743-8c79-bec7ff2ced43/source.svg",
-        "taxon": "Marine Reptile (Clade Representative: Rhomaleosaurus cramptoni)",
-        "license": "Attribution 3.0 Unported",
-        "uploadedBy": "Scott Hartman",
+        "uuid": "570767d9-cc21-4aae-9281-128d04ccf193",
+        "pageUrl": "https://www.phylopic.org/images/570767d9-cc21-4aae-9281-128d04ccf193",
+        "downloadUrl": "https://images.phylopic.org/images/570767d9-cc21-4aae-9281-128d04ccf193/source.svg",
+        "taxon": "Testudines (Representative: Santanachelys gaffneyi)",
+        "license": "Attribution-ShareAlike 3.0 Unported",
+        "uploadedBy": "T. Michael Keesey",
         "taxonMatch": "generic approximation, not species-specific",
-        "matchTier": "clade"
+        "matchTier": "family"
       }
     },
     {
