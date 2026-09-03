@@ -45,3 +45,6 @@ backend/*.json
 backend/backups/
 !backend/scripts/species-template.json
 backend/species_names_audit.txt
+
+# Audit & Migration Reports (kept locally only)
+backend/reports/
