@@ -52,32 +52,24 @@ export default function TwoDScaleViewer({
   const references: Record<ReferenceType, ReferenceConfig> = {
     human: {
       name: 'Human',
-      lengthM: 0.5,
+      lengthM: 0.6,
       heightM: 1.8,
-      label: '1.8m Human',
+      label: '1.8m Human (Homo sapiens)',
       renderPath: (scale, groundY, startX) => {
         const hPx = 1.8 * scale;
-        const wPx = 0.5 * scale;
+        const wPx = 0.6 * scale;
         const y = groundY - hPx;
         return (
           <g key="human" transform={`translate(${startX}, ${y})`}>
-            {/* Architectural human silhouette */}
-            <circle cx={wPx / 2} cy={hPx * 0.1} r={wPx * 0.28} fill="#CBD5E1" />
-            <path
-              d={`M ${wPx * 0.2} ${hPx * 0.24} 
-                  C ${wPx * 0.15} ${hPx * 0.24}, ${wPx * 0.1} ${hPx * 0.35}, ${wPx * 0.1} ${hPx * 0.5} 
-                  L ${wPx * 0.25} ${hPx * 0.55} 
-                  L ${wPx * 0.28} ${hPx * 0.98} 
-                  L ${wPx * 0.45} ${hPx * 0.98} 
-                  L ${wPx * 0.48} ${hPx * 0.6} 
-                  L ${wPx * 0.52} ${hPx * 0.6} 
-                  L ${wPx * 0.55} ${hPx * 0.98} 
-                  L ${wPx * 0.72} ${hPx * 0.98} 
-                  L ${wPx * 0.75} ${hPx * 0.55} 
-                  L ${wPx * 0.9} ${hPx * 0.5} 
-                  C ${wPx * 0.9} ${hPx * 0.35}, ${wPx * 0.85} ${hPx * 0.24}, ${wPx * 0.8} ${hPx * 0.24} 
-                  Z`}
-              fill="#CBD5E1"
+            {/* Self-hosted PhyloPic Human Silhouette (Homo sapiens by Guillaume Dera, CC0 1.0) */}
+            <image
+              href="https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/reference-human.svg"
+              x="0"
+              y="0"
+              width={wPx}
+              height={hPx}
+              preserveAspectRatio="xMidYMid meet"
+              filter="url(#chalkSlateTint)"
             />
           </g>
         );
@@ -139,34 +131,25 @@ export default function TwoDScaleViewer({
       }
     },
     elephant: {
-      name: 'Elephant',
-      lengthM: 6.0,
+      name: 'African Bush Elephant',
+      lengthM: 6.5,
       heightM: 3.3,
-      label: '3.3m Elephant',
+      label: '3.3m African Bush Elephant (Loxodonta africana)',
       renderPath: (scale, groundY, startX) => {
         const hPx = 3.3 * scale;
-        const wPx = 6.0 * scale;
+        const wPx = 6.5 * scale;
         const y = groundY - hPx;
         return (
           <g key="elephant" transform={`translate(${startX}, ${y})`}>
-            {/* Elephant body shape */}
-            <path
-              d={`M ${wPx * 0.9} ${hPx * 0.55} 
-                  C ${wPx * 0.85} ${hPx * 0.25}, ${wPx * 0.7} ${hPx * 0.1}, ${wPx * 0.5} ${hPx * 0.15} 
-                  C ${wPx * 0.35} ${hPx * 0.15}, ${wPx * 0.2} ${hPx * 0.3}, ${wPx * 0.15} ${hPx * 0.45} 
-                  L ${wPx * 0.05} ${hPx * 0.7} 
-                  L ${wPx * 0.02} ${hPx * 0.95} 
-                  L ${wPx * 0.08} ${hPx * 0.95} 
-                  L ${wPx * 0.12} ${hPx * 0.7} 
-                  L ${wPx * 0.18} ${hPx * 0.98} 
-                  L ${wPx * 0.28} ${hPx * 0.98} 
-                  L ${wPx * 0.32} ${hPx * 0.65} 
-                  L ${wPx * 0.65} ${hPx * 0.65} 
-                  L ${wPx * 0.7} ${hPx * 0.98} 
-                  L ${wPx * 0.8} ${hPx * 0.98} 
-                  L ${wPx * 0.84} ${hPx * 0.55} 
-                  Z`}
-              fill="#94A3B8"
+            {/* Self-hosted PhyloPic African Bush Elephant (Loxodonta africana by Guillaume Dera, CC0 1.0) */}
+            <image
+              href="https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/reference-african-bush-elephant.svg"
+              x="0"
+              y="0"
+              width={wPx}
+              height={hPx}
+              preserveAspectRatio="xMidYMid meet"
+              filter="url(#chalkSlateTint)"
             />
           </g>
         );
@@ -384,6 +367,17 @@ export default function TwoDScaleViewer({
                 values="0 0 0 0 0.96
                         0 0 0 0 0.62
                         0 0 0 0 0.04
+                        0 0 0 1 0"
+              />
+            </filter>
+
+            {/* Uniform Chalk Slate Filter for Reference Figures */}
+            <filter id="chalkSlateTint" colorInterpolationFilters="sRGB">
+              <feColorMatrix
+                type="matrix"
+                values="0 0 0 0 0.82
+                        0 0 0 0 0.86
+                        0 0 0 0 0.90
                         0 0 0 1 0"
               />
             </filter>
