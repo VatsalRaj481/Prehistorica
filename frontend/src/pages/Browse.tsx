@@ -221,44 +221,51 @@ export default function Browse() {
           </p>
         </div>
 
-        {/* Mobile filter toggle */}
-        <div className="flex items-center gap-2 md:hidden">
+        {/* Mobile filter icon button: compact icon with active filter badge (Apple HIG 44pt min target) */}
+        <div className="flex items-center gap-2 lg:hidden">
           <motion.button
-            whileTap={{ scale: 0.94 }}
+            whileTap={{ scale: 0.92 }}
             onClick={() => setShowMobileFilters(!showMobileFilters)}
-            className="px-4 py-2.5 bg-slate-900 border border-amber-500/40 text-amber-400 font-bold hover:text-white flex items-center justify-center cursor-pointer font-mono text-xs uppercase tracking-wider rounded-lg shadow-lg"
+            className="relative min-h-[44px] min-w-[44px] p-2.5 sm:px-4 sm:py-2.5 bg-slate-900 border border-amber-500/40 text-amber-400 font-bold hover:text-white flex items-center justify-center cursor-pointer font-mono text-xs uppercase tracking-wider rounded-xl shadow-lg transition-colors"
             title="Toggle Filters"
+            aria-label="Toggle Catalog Filters"
           >
-            <SlidersHorizontal className="h-4 w-4 mr-2 text-amber-500" /> Catalog Filters
+            <SlidersHorizontal className="h-5 w-5 sm:h-4 sm:w-4 sm:mr-2 text-amber-500" />
+            <span className="hidden sm:inline">Catalog Filters</span>
+            {hasActiveFilters && (
+              <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-amber-400 ring-2 ring-slate-950 animate-pulse" />
+            )}
           </motion.button>
         </div>
       </motion.div>
 
-      {/* Mobile Filter Drawer Overlay */}
+      {/* Mobile / Tablet Filter Drawer Overlay with Apple Scroll Containment */}
       <AnimatePresence>
         {showMobileFilters && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md flex flex-col p-4 sm:p-6 overflow-y-auto md:hidden font-mono"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+            className="fixed inset-0 z-50 bg-slate-950/98 backdrop-blur-xl flex flex-col p-4 sm:p-6 overflow-y-auto lg:hidden font-mono overscroll-contain"
           >
             <div className="flex items-center justify-between border-b border-white/[0.08] pb-4 mb-4">
               <h2 className="text-sm font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">
                 <SlidersHorizontal className="h-4 w-4 text-amber-500" /> Catalog Filters
               </h2>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 {hasActiveFilters && (
                   <button
                     onClick={clearFilters}
-                    className="text-xs text-amber-400 hover:underline font-bold uppercase tracking-wider"
+                    className="min-h-[44px] px-3 py-2 text-xs text-amber-400 hover:underline font-bold uppercase tracking-wider flex items-center active:scale-95 transition-transform"
                   >
                     Reset
                   </button>
                 )}
                 <button
                   onClick={() => setShowMobileFilters(false)}
-                  className="p-2 bg-slate-900 border border-white/[0.08] text-slate-400 hover:text-white rounded"
+                  className="min-h-[44px] min-w-[44px] p-2.5 bg-slate-900 border border-white/[0.08] text-slate-400 hover:text-white rounded-xl flex items-center justify-center active:scale-95 transition-transform"
+                  aria-label="Close Filter Drawer"
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -401,12 +408,12 @@ export default function Browse() {
       </AnimatePresence>
 
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-4 gap-8">
-        {/* Left Filter Sidebar */}
+        {/* Left Filter Sidebar: Only displayed on desktop (hidden on mobile/tablet) */}
         <motion.aside
           initial={shouldReduceMotion ? false : { opacity: 0, x: -12 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-          className="lg:col-span-1 glass-panel rounded-xl p-5 border border-white/[0.08] shadow-xl space-y-5 h-fit font-mono text-xs"
+          className="hidden lg:block lg:col-span-1 glass-panel rounded-xl p-5 border border-white/[0.08] shadow-xl space-y-5 h-fit font-mono text-xs"
         >
           <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
             <div className="flex items-center gap-2">
@@ -552,8 +559,8 @@ export default function Browse() {
           </div>
         </motion.aside>
 
-        {/* Right Species Grid & Pagination */}
-        <div className="lg:col-span-3 space-y-6">
+        {/* Right Species Grid & Pagination: Spans full width on mobile/tablet */}
+        <div className="col-span-1 lg:col-span-3 space-y-6">
           {/* Active Filter Badges */}
           <AnimatePresence>
             {hasActiveFilters && (

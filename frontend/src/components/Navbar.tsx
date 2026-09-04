@@ -55,20 +55,20 @@ export default function Navbar() {
               <nav className="hidden md:flex space-x-2 items-center font-mono">
                 <Link
                   to="/"
-                  className={`px-3 py-1.5 rounded-md text-xs uppercase tracking-wider transition-colors ${isActive('/')}`}
+                  className={`px-3 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 ${isActive('/')}`}
                 >
                   Home
                 </Link>
                 <Link
                   to="/browse"
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs uppercase tracking-wider transition-colors ${isActive('/browse')}`}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 ${isActive('/browse')}`}
                 >
                   <Search className="h-3.5 w-3.5 text-amber-400" />
                   Browse Catalog
                 </Link>
                 <Link
                   to="/map"
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs uppercase tracking-wider transition-colors ${isActive('/map')}`}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 ${isActive('/map')}`}
                 >
                   <Map className="h-3.5 w-3.5 text-amber-400" />
                   Time-Map
@@ -93,20 +93,22 @@ export default function Navbar() {
               </motion.button>
             </div>
 
-            {/* Mobile Controls: Search & Hamburger Toggle */}
+            {/* Mobile Controls: Search & Hamburger Toggle (Apple HIG 44x44pt Target Compliant) */}
             <div className="flex items-center gap-2 sm:hidden">
               <button
                 onClick={() => setIsCompareOpen(true)}
-                className="p-2 rounded-lg bg-slate-900 border border-white/10 text-amber-400 flex items-center justify-center cursor-pointer active:scale-95"
+                className="min-h-[44px] min-w-[44px] p-2.5 rounded-xl bg-slate-900 border border-white/10 text-amber-400 flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
                 title="Compare Tool"
+                aria-label="Open Species Comparison Tool"
               >
                 <ArrowRightLeft className="h-4 w-4" />
               </button>
 
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 rounded-lg bg-slate-900 border border-white/10 text-slate-300 hover:text-white flex items-center justify-center cursor-pointer active:scale-95"
+                className="min-h-[44px] min-w-[44px] p-2.5 rounded-xl bg-slate-900 border border-white/10 text-slate-300 hover:text-white flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
                 title="Toggle Menu"
+                aria-label="Toggle Navigation Menu"
               >
                 {isMobileMenuOpen ? <X className="h-5 w-5 text-amber-400" /> : <Menu className="h-5 w-5" />}
               </button>
@@ -114,15 +116,15 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Dropdown Navigation Drawer */}
+        {/* Mobile Dropdown Navigation Drawer with Critically Damped Spring */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="md:hidden border-t border-white/[0.08] bg-slate-950/98 px-4 py-4 space-y-4 overflow-visible font-mono"
+              transition={{ type: 'spring', bounce: 0, duration: 0.35 }}
+              className="md:hidden border-t border-white/[0.08] bg-slate-950/98 px-4 py-4 space-y-4 overflow-visible font-mono overscroll-contain"
             >
               {/* Search Bar on Mobile */}
               <div className="w-full">

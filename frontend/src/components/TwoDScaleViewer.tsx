@@ -298,7 +298,7 @@ export default function TwoDScaleViewer({
                 </span>
               )}
             </div>
-            <p className="text-[10px] sm:text-[11px] font-mono text-slate-400">
+            <p className="text-[10px] sm:text-[11px] font-mono text-slate-400 tabular-nums">
               Length: <span className="text-amber-400 font-bold">{safeLength}m</span> ({formatFeet(safeLength)}) &bull; Height:{' '}
               <span className="text-amber-400 font-bold">{safeHeight}m</span> ({formatFeet(safeHeight)})
               {weightKg ? ` • Mass: ${formatMass(weightKg)}` : ''}
@@ -312,12 +312,13 @@ export default function TwoDScaleViewer({
               <motion.button
                 whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('human')}
-                className={`px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                className={`min-h-[36px] px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
                   refType === 'human'
                     ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
                     : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
                 }`}
                 title="Compare with Human (1.8m)"
+                aria-label="Compare with Human scale"
               >
                 <User className="h-3.5 w-3.5 shrink-0" />
                 <span className="text-[10px] sm:text-[11px]">Human (1.8m)</span>
@@ -326,12 +327,13 @@ export default function TwoDScaleViewer({
               <motion.button
                 whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('car')}
-                className={`px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                className={`min-h-[36px] px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
                   refType === 'car'
                     ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
                     : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
                 }`}
                 title="Compare with Vehicle (4.5m)"
+                aria-label="Compare with Vehicle scale"
               >
                 <Car className="h-3.5 w-3.5 shrink-0" />
                 <span className="text-[10px] sm:text-[11px]">Car (4.5m)</span>
@@ -340,12 +342,13 @@ export default function TwoDScaleViewer({
               <motion.button
                 whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('bus')}
-                className={`px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                className={`min-h-[36px] px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
                   refType === 'bus'
                     ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
                     : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
                 }`}
                 title="Compare with Transit Bus (11.5m)"
+                aria-label="Compare with Bus scale"
               >
                 <Bus className="h-3.5 w-3.5 shrink-0" />
                 <span className="hidden sm:inline text-[10px] sm:text-[11px]">Bus (11.5m)</span>
@@ -354,12 +357,13 @@ export default function TwoDScaleViewer({
               <motion.button
                 whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('elephant')}
-                className={`px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                className={`min-h-[36px] px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
                   refType === 'elephant'
                     ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
                     : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
                 }`}
                 title="Compare with African Elephant (3.3m)"
+                aria-label="Compare with African Elephant scale"
               >
                 <Layers className="h-3.5 w-3.5 shrink-0" />
                 <span className="hidden md:inline text-[10px] sm:text-[11px]">Elephant (3.3m)</span>
@@ -370,12 +374,13 @@ export default function TwoDScaleViewer({
             <motion.button
               whileTap={{ scale: 0.94 }}
               onClick={() => setShowCalipers(!showCalipers)}
-              className={`p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer shadow-lg shrink-0 ${
+              className={`min-h-[38px] min-w-[38px] p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center shrink-0 ${
                 showCalipers
                   ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
                   : 'bg-slate-950/90 border-white/[0.08] text-slate-400 hover:text-white'
               }`}
               title="Toggle Architectural Caliper Lines"
+              aria-label="Toggle Architectural Caliper Lines"
             >
               <Ruler className="h-4 w-4" />
             </motion.button>
@@ -384,12 +389,13 @@ export default function TwoDScaleViewer({
             <motion.button
               whileTap={{ scale: 0.94 }}
               onClick={() => setShowGrid(!showGrid)}
-              className={`p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer shadow-lg shrink-0 ${
+              className={`min-h-[38px] min-w-[38px] p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center shrink-0 ${
                 showGrid
                   ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
                   : 'bg-slate-950/90 border-white/[0.08] text-slate-400 hover:text-white'
               }`}
               title="Toggle Metric Grid"
+              aria-label="Toggle Metric Grid"
             >
               <Eye className="h-4 w-4" />
             </motion.button>
@@ -398,12 +404,13 @@ export default function TwoDScaleViewer({
             <motion.button
               whileTap={{ scale: 0.94 }}
               onClick={() => setFaceCreature(!faceCreature)}
-              className={`p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center gap-1.5 shrink-0 ${
+              className={`min-h-[38px] min-w-[38px] p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center gap-1.5 shrink-0 ${
                 faceCreature
                   ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
                   : 'bg-slate-950/90 border-white/[0.08] text-slate-400 hover:text-white'
               }`}
               title={faceCreature ? "Orientation: Facing Creature (click for Parallel)" : "Orientation: Parallel (Both Left) (click to Face Creature)"}
+              aria-label="Toggle figure orientation"
             >
               <ArrowLeftRight className="h-4 w-4" />
             </motion.button>
