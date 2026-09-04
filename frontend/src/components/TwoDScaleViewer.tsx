@@ -55,7 +55,7 @@ export default function TwoDScaleViewer({
       name: 'Human',
       lengthM: 0.95,
       heightM: 1.8,
-      label: '1.8m Human (Homo sapiens)',
+      label: '1.8m Human',
       renderPath: (scale, groundY, startX, flip) => {
         const hPx = 1.8 * scale;
         const wPx = 0.95 * scale;
@@ -160,7 +160,7 @@ export default function TwoDScaleViewer({
       name: 'African Bush Elephant',
       lengthM: 4.71,
       heightM: 3.3,
-      label: '3.3m African Bush Elephant (Loxodonta africana)',
+      label: '3.3m African Elephant',
       renderPath: (scale, groundY, startX, flip) => {
         const hPx = 3.3 * scale;
         const wPx = 4.71 * scale;
@@ -216,7 +216,9 @@ export default function TwoDScaleViewer({
     return Math.min(scaleX, scaleY);
   }, [availableWidth, availableHeight, totalSpanMeters, maxVerticalMeters]);
 
-  const refStartX = paddingLeft + 15;
+  const totalSpanPx = totalSpanMeters * scale;
+  const stageMarginLeft = paddingLeft + Math.max(50, (availableWidth - totalSpanPx) / 2);
+  const refStartX = stageMarginLeft;
   const refWidthPx = activeRef.lengthM * scale;
   const creatureStartX = refStartX + refWidthPx + gapMeters * scale;
   const creatureWidthPx = safeLength * scale;
@@ -644,18 +646,32 @@ export default function TwoDScaleViewer({
                 </text>
               </g>
 
-              {/* Reference Dimension Label */}
-              <text
-                x={refStartX + refWidthPx / 2}
-                y={groundY - activeRef.heightM * scale - 8}
-                textAnchor="middle"
-                fill="#CBD5E1"
-                fontSize="9.5"
-                fontFamily="monospace"
-                fontWeight="bold"
-              >
-                {activeRef.label}
-              </text>
+              {/* Reference Dimension Badge with dark glass backdrop */}
+              <g transform={`translate(${refStartX + refWidthPx / 2}, ${groundY - activeRef.heightM * scale - 12})`}>
+                <rect
+                  x="-42"
+                  y="-11"
+                  width="84"
+                  height="16"
+                  rx="4"
+                  fill="#070B14"
+                  fillOpacity="0.92"
+                  stroke="rgba(255, 255, 255, 0.18)"
+                  strokeWidth="0.8"
+                />
+                <text
+                  x="0"
+                  y="1"
+                  dominantBaseline="middle"
+                  textAnchor="middle"
+                  fill="#E2E8F0"
+                  fontSize="9"
+                  fontFamily="monospace"
+                  fontWeight="bold"
+                >
+                  {activeRef.label}
+                </text>
+              </g>
             </g>
           )}
         </svg>
