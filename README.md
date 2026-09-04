@@ -1,7 +1,10 @@
-# 🏛️ PREHISTORICA — The Modern Museum Pavilion Encyclopedia
-
-> **A premium, full-stack, architectural digital museum dedicated to cataloging and visualizing Earth's prehistoric fauna.**
-> *Spanning 540 million years of natural history across 462 verified species, 31 global fossil formations, and 10 geologic eras.*
+<div align="center">
+  <img src="frontend/public/logo.png" alt="Prehistorica Museum Crest" width="160" />
+  <h1>🏛️ PREHISTORICA</h1>
+  <h3>The Modern Museum Pavilion Encyclopedia</h3>
+  <p><strong>A premium, full-stack, architectural digital museum dedicated to cataloging and visualizing Earth's prehistoric fauna.</strong></p>
+  <p><em>Spanning 540 million years of natural history across 502 verified species, 31 global fossil formations, and 10 geologic eras.</em></p>
+</div>
 
 ---
 
@@ -9,9 +12,10 @@
 
 ### 🎨 Explicit Art Direction — Rejecting Generic SaaS Aesthetics
 Built around **The Modern Museum Pavilion** visual language. **Prehistorica** explicitly rejects generic AI-generated dark dashboards, blurred frosted glass, and uniform grid boxes:
+- **Official Museum Crest**: Distinctive hand-crafted archival seal depicting iconic prehistoric clades (Pterosauria, Tyrannosauroidea, Ceratopsia, early Synapsida) surrounding an ammonite fossil shield with laurel bone knotwork.
 - **Editorial Typographic Hierarchy**: Monospaced exhibit tags, serif scientific nomenclature, and high-contrast amber headers.
 - **Asymmetric Spatial Focus**: 1–2 dominant architectural elements per screen with varied scale and broken grid rhythm.
-- **Low-Poly 3D Specimen Viewport**: Built with React Three Fiber / Three.js, featuring 1:1 scale rendering against a 1.8m architectural human reference figure, orbit lighting, and mesh wireframe toggle.
+- **Dual Scale Stages (2D & 3D)**: Both 3D interactive mesh viewports and 1:1 physical metric projection stages for direct comparative anatomy.
 - **Fossil Starfield Particle Stage**: Interactive 3D ambient particle system creating a deep museum atmosphere.
 
 ---
@@ -19,26 +23,32 @@ Built around **The Modern Museum Pavilion** visual language. **Prehistorica** ex
 ## 🦖 Key Features
 
 ### 1. 🔍 Catalog Pavilion & Architectural Search
-- **462 Verified Species**: Comprehensive database covering Theropods, Sauropods, Pterosaurs, Marine Reptiles, Early Synapsids, Amphibians, and Megafauna.
+- **502 Verified Species**: Comprehensive database covering Theropods, Sauropods, Ornithischians, Pterosaurs, Marine Reptiles, Early Synapsids, Amphibians, and Invertebrates.
 - **Combinable Filters**: Search across taxonomic clade, dietary type (carnivore, herbivore, omnivore, piscivore, filter-feeder), habitat (terrestrial, semi-aquatic, freshwater, aerial, marine), geologic era, geographic region, and size scale.
 - **Collapsible Mobile Drawer**: Mobile-first filter panel with slide-over drawer navigation for 375px/428px touchscreens.
+- **Enriched Scientific Fact Banks**: 100% of species cataloged with 4–5 verified, peer-reviewed paleontological and anatomical facts.
 
-### 2. 🎨 Verified Paleoart Media Hierarchy (441 Tier 1 Reconstructions)
+### 2. 🎨 Verified Paleoart Media Hierarchy
 - **Strict Tier Classification**:
-  - **Tier 1 (95.5% | 441 Species)**: Full-color life reconstructions and paleoart showing the living animal in naturalistic pose.
-  - **Tier 2 (0.9% | 4 Species)**: Monochrome / silhouette life restorations.
-  - **Tier 3 (2.2% | 10 Species)**: Authentic skeletal mounts, fossil photographs, and holotype diagrams (used only when no life art exists).
-  - **Tier 4 (1.5% | 7 Species)**: Pending placeholders for rare species with zero public domain artwork on Wikimedia Commons.
+  - **Tier 1**: Full-color life reconstructions and paleoart showing the living animal in naturalistic pose.
+  - **Tier 2**: Monochrome / silhouette life restorations.
+  - **Tier 3**: Authentic skeletal mounts, fossil photographs, and holotype diagrams (used when no life art exists).
+  - **Tier 4**: Pending placeholders for rare species with zero public domain artwork on Wikimedia Commons.
 - **Licensing & Attribution Compliance**: 100% CC-BY, CC-BY-SA, and Public Domain attribution metadata preserved and displayed on every specimen profile.
 - **Supabase Storage Integration**: Self-hosted image pipeline storing high-res media directly inside public Supabase Storage buckets (`species-media/`).
 
-### 3. 🗺️ Interactive Geologic Time-Map & Global Formations
+### 3. 📐 Dual-Stage Scale Comparison System
+- **2D Metric Projection Stage**:
+  - 1:1 calibrated physical scale projection with dynamic architectural caliper dimension lines.
+  - Interactive reference model switcher: **Human (1.8m)**, **Sedan Vehicle (4.5m)**, **Transit Bus (11.5m)**, and **African Bush Elephant (3.3m)**.
+  - Metric grid toggle, orientation flip (parallel vs. facing creature), and smart occlusion handling to prevent dimension badge overlapping.
+- **Low-Poly 3D Specimen Viewport**: Built with React Three Fiber / Three.js, featuring 1:1 scale rendering against a 1.8m architectural human reference figure, orbit lighting, and mesh wireframe toggle.
+- **Side-by-Side Specimen Comparison Tool**: Modal allowing visitors to compare any two cataloged species simultaneously with comparative metric differential bars.
+
+### 4. 🗺️ Interactive Geologic Time-Map & Global Formations
 - **10 Geologic Eras**: Cambrian, Devonian, Carboniferous, Permian, Triassic, Jurassic, Cretaceous, Eocene, Neogene, and Pleistocene.
 - **31 Global Fossil Formations**: Interactive Leaflet dark-matter map pins mapping native fossil formations (Hell Creek, Solnhofen, Dinosaur Park, Yixian, Djadochta, Kem Kem Beds, Karoo Basin, and more).
 - **Indian Subcontinent Showcase**: Special coverage of iconic Indian species (*Rajasaurus narmadensis*, *Shringasaurus indicus*, *Vasuki indicus*, *Barapasaurus*, *Isisaurus*, *Indosuchus*) mapped to the *Lameta Formation*, *Kota Formation*, *Denwa Formation*, and *Siwalik Hills*.
-
-### 4. ⚖️ Side-by-Side Specimen Comparison Tool
-- Interactive comparison modal allowing visitors to select any 2 species to analyze length, standing height, estimated mass, clade, geologic era, and fossil formation side-by-side.
 
 ### 5. 🔒 Database Security & Row-Level Security (RLS)
 - **RLS Enabled**: Fully protected PostgreSQL schema tables (`Species` and `SpeciesRelation`).
@@ -49,7 +59,7 @@ Built around **The Modern Museum Pavilion** visual language. **Prehistorica** ex
 ### 6. 🛡️ Permanent Safeguard & Anti-Regression Invariant
 > **This project's core rule: scripts that add species must NEVER modify existing rows. If you need to fix/update an existing species' data, that is a separate, manual, reviewed operation — never part of routine seeding or adding new species.**
 - **Insert-Only Guarantee**: `backend/prisma/seed.ts` and `backend/scripts/add-species.ts` strictly execute `create()` for genuinely new rows, and reject or skip existing records by normalized name, scientific name, or genus match.
-- **Automated Pre/Post Regression Check**: `backend/scripts/verify-no-regression.ts` captures an immutable SHA-256 snapshot of all protected fields (`media`, `taxonomy`, `interestingFacts`, `sources`, `sizeEstimate`, `diet`, `habitat`, `clade`, etc.) before any seed or add-species operation, and verifies all pre-existing records remain 100% untouched post-operation.
+- **Automated Pre/Post Regression Check**: `backend/scripts/verify-no-regression.ts` captures an immutable SHA-256 snapshot of all 24 protected fields (`media`, `taxonomy`, `interestingFacts`, `sources`, `sizeEstimate`, `diet`, `habitat`, `clade`, etc.) before any operation, and verifies all pre-existing records remain 100% untouched post-operation.
 - **Hard Failure on Regression**: If any existing record's fields are altered or deleted, the script fails loudly with exit code `1` and aborts.
 
 ### 7. 📱 Multi-Device Responsive Architecture
@@ -100,7 +110,7 @@ SUPABASE_SERVICE_ROLE_KEY="your-service-role-key"
 # 4. Generate Prisma Client
 npm run prisma:generate
 
-# 5. Seed the database with pre-compiled 462-species dataset
+# 5. Seed the database with the pre-compiled 502-species dataset
 npm run prisma:seed
 
 # 6. Start the Express server
@@ -137,7 +147,7 @@ npm run add-species -- ./path/to/new_species.json --dry-run
 # Commit new species to PostgreSQL (with automated duplicate rejection & snapshot integrity verification)
 npm run add-species -- ./path/to/new_species.json
 
-# Run standalone integrity check against current database
+# Run standalone integrity check against current database (502 records)
 npm run safeguard:check
 ```
 Reference `backend/scripts/species-template.json` for required schema standards.
@@ -150,31 +160,34 @@ Reference `backend/scripts/species-template.json` for required schema standards.
 Prehistorica/
 ├── backend/
 │   ├── prisma/
-│   │   ├── schema.prisma       # Database schema & RLS definitions
-│   │   ├── seed.ts             # Insert-only seed script with pre/post regression verification
-│   │   ├── species_triassic.json
-│   │   ├── species_jurassic.json
-│   │   ├── species_cretaceous.json
-│   │   └── species_others.json
+│   │   ├── schema.prisma                  # Database schema & RLS definitions
+│   │   ├── seed.ts                        # Insert-only seed script with pre/post regression verification
+│   │   ├── species_triassic.json          # Verified Triassic fauna dataset
+│   │   ├── species_jurassic.json          # Verified Jurassic fauna dataset
+│   │   ├── species_cretaceous.json        # Verified Cretaceous fauna dataset
+│   │   ├── species_others.json            # Paleozoic & Cenozoic fauna dataset
+│   │   └── species_full_export.json       # Complete 502-species master export
 │   ├── scripts/
-│   │   ├── add-species.ts          # Ingestion CLI with duplicate rejection & safeguard checks
-│   │   ├── verify-no-regression.ts # Anti-regression snapshot & verification engine
-│   │   ├── species-template.json
-│   │   ├── ingest_species_batch.js
-│   │   └── run_all_remaining_batches.js
+│   │   ├── add-species.ts                 # Ingestion CLI with duplicate rejection & safeguard checks
+│   │   ├── verify-no-regression.ts        # Anti-regression snapshot & verification engine
+│   │   └── species-template.json          # Reference JSON schema template
 │   ├── src/
-│   │   ├── app.ts
-│   │   ├── server.ts
-│   │   ├── controllers/
-│   │   └── routes/
+│   │   ├── app.ts                         # Express application setup
+│   │   ├── server.ts                      # Server entry point
+│   │   ├── controllers/                   # Species & formation query controllers
+│   │   └── routes/                        # API route endpoints
 │   ├── package.json
 │   └── tsconfig.json
 ├── frontend/
-│   ├── public/                 # SVG assets and icons
+│   ├── public/                            # High-DPI Logo, Multi-size Favicons & SVGs
+│   │   ├── logo.png                       # Master transparent museum crest
+│   │   ├── favicon.ico                    # Multi-resolution tab icon
+│   │   ├── favicon.svg                    # Vector tab icon
+│   │   └── apple-touch-icon.png           # iOS / macOS web clip icon
 │   ├── src/
-│   │   ├── components/         # Navbar, 3D Viewport, Media Gallery, Compare Modal, Starfield
-│   │   ├── pages/              # Home, Browse, SpeciesDetail, TimeMap
-│   │   ├── services/           # REST API client & TypeScript interfaces
+│   │   ├── components/                    # TwoDScaleViewer, ThreeDScaleViewer, Navbar, MediaGallery, CompareModal
+│   │   ├── pages/                         # Home, Browse, SpeciesDetail, TimeMap
+│   │   ├── services/                      # REST API client & TypeScript interfaces
 │   │   ├── App.tsx
 │   │   └── main.tsx
 │   ├── package.json
@@ -187,5 +200,5 @@ Prehistorica/
 
 ## 📜 License & Citation
 
-All software code is open under the **MIT License**.
+All software code is open under the **MIT License**.  
 All paleoart, illustrations, and media entries preserve their original licenses (`CC BY`, `CC BY-SA`, `Public Domain`) and individual artist credits cited on each specimen exhibit page.
