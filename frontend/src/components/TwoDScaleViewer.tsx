@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { User, Car, Bus, Layers, ExternalLink, ShieldCheck, AlertTriangle, Eye, Ruler } from 'lucide-react';
+import { User, Car, Bus, Layers, ExternalLink, ShieldCheck, AlertTriangle, Eye, Ruler, ArrowLeftRight } from 'lucide-react';
 import { formatMass } from '../utils/formatMass.js';
 import { formatFeet } from '../utils/formatDimensions.js';
 
@@ -29,7 +29,7 @@ interface ReferenceConfig {
   lengthM: number;
   heightM: number;
   label: string;
-  renderPath: (scale: number, groundY: number, startX: number) => JSX.Element;
+  renderPath: (scale: number, groundY: number, startX: number, flip: boolean) => JSX.Element;
 }
 
 export default function TwoDScaleViewer({
@@ -44,6 +44,7 @@ export default function TwoDScaleViewer({
   const [refType, setRefType] = useState<ReferenceType>('human');
   const [showGrid, setShowGrid] = useState(true);
   const [showCalipers, setShowCalipers] = useState(true);
+  const [faceCreature, setFaceCreature] = useState(false);
 
   const safeLength = lengthM && lengthM > 0 ? lengthM : 6;
   const safeHeight = heightM && heightM > 0 ? heightM : Math.max(1, safeLength * 0.35);
@@ -52,23 +53,30 @@ export default function TwoDScaleViewer({
   const references: Record<ReferenceType, ReferenceConfig> = {
     human: {
       name: 'Human',
-      lengthM: 0.6,
+      lengthM: 0.95,
       heightM: 1.8,
       label: '1.8m Human (Homo sapiens)',
-      renderPath: (scale, groundY, startX) => {
+      renderPath: (scale, groundY, startX, flip) => {
         const hPx = 1.8 * scale;
-        const wPx = 0.6 * scale;
+        const wPx = 0.95 * scale;
         const y = groundY - hPx;
         return (
-          <g key="human" transform={`translate(${startX}, ${y})`}>
-            {/* Self-hosted PhyloPic Human Silhouette (Homo sapiens by Guillaume Dera, CC0 1.0) */}
+          <g
+            key="human"
+            transform={
+              flip
+                ? `translate(${startX + wPx}, ${y}) scale(-1, 1)`
+                : `translate(${startX}, ${y})`
+            }
+          >
+            {/* Calibrated Self-hosted PhyloPic Human Silhouette (Homo sapiens by Guillaume Dera, CC0 1.0) */}
             <image
               href="https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/reference-human.svg"
               x="0"
               y="0"
               width={wPx}
               height={hPx}
-              preserveAspectRatio="xMidYMid meet"
+              preserveAspectRatio="xMidYMax meet"
               filter="url(#chalkSlateTint)"
             />
           </g>
@@ -80,12 +88,21 @@ export default function TwoDScaleViewer({
       lengthM: 4.5,
       heightM: 1.6,
       label: '4.5m Vehicle',
-      renderPath: (scale, groundY, startX) => {
+      renderPath: (scale, groundY, startX, flip) => {
         const hPx = 1.6 * scale;
         const wPx = 4.5 * scale;
         const y = groundY - hPx;
+        const wheelR = hPx * 0.16;
+        const wheelCenterY = hPx - wheelR;
         return (
-          <g key="car" transform={`translate(${startX}, ${y})`}>
+          <g
+            key="car"
+            transform={
+              flip
+                ? `translate(${startX + wPx}, ${y}) scale(-1, 1)`
+                : `translate(${startX}, ${y})`
+            }
+          >
             {/* Sedan car silhouette */}
             <path
               d={`M 0 ${hPx * 0.75} 
@@ -94,18 +111,18 @@ export default function TwoDScaleViewer({
                   C ${wPx * 0.4} ${hPx * 0.15}, ${wPx * 0.65} ${hPx * 0.15}, ${wPx * 0.7} ${hPx * 0.2} 
                   L ${wPx * 0.85} ${hPx * 0.55} 
                   L ${wPx * 0.98} ${hPx * 0.6} 
-                  C ${wPx} ${hPx * 0.65}, ${wPx} ${hPx * 0.85}, ${wPx * 0.95} ${hPx * 0.85} 
-                  L ${wPx * 0.85} ${hPx * 0.85} 
-                  A ${hPx * 0.2} ${hPx * 0.2} 0 0 0 ${wPx * 0.65} ${hPx * 0.85} 
-                  L ${wPx * 0.35} ${hPx * 0.85} 
-                  A ${hPx * 0.2} ${hPx * 0.2} 0 0 0 ${wPx * 0.15} ${hPx * 0.85} 
-                  L 0 ${hPx * 0.85} 
+                  C ${wPx} ${hPx * 0.65}, ${wPx} ${hPx * 0.82}, ${wPx * 0.95} ${hPx * 0.82} 
+                  L ${wPx * 0.85} ${hPx * 0.82} 
+                  A ${wheelR * 1.2} ${wheelR * 1.2} 0 0 0 ${wPx * 0.65} ${hPx * 0.82} 
+                  L ${wPx * 0.35} ${hPx * 0.82} 
+                  A ${wheelR * 1.2} ${wheelR * 1.2} 0 0 0 ${wPx * 0.15} ${hPx * 0.82} 
+                  L 0 ${hPx * 0.82} 
                   Z`}
               fill="#94A3B8"
             />
-            {/* Wheels */}
-            <circle cx={wPx * 0.25} cy={hPx * 0.85} r={hPx * 0.18} fill="#334155" />
-            <circle cx={wPx * 0.75} cy={hPx * 0.85} r={hPx * 0.18} fill="#334155" />
+            {/* Wheels calibrated to touch ground line exactly at hPx */}
+            <circle cx={wPx * 0.25} cy={wheelCenterY} r={wheelR} fill="#334155" />
+            <circle cx={wPx * 0.75} cy={wheelCenterY} r={wheelR} fill="#334155" />
           </g>
         );
       }
@@ -115,40 +132,56 @@ export default function TwoDScaleViewer({
       lengthM: 11.5,
       heightM: 3.0,
       label: '11.5m Bus',
-      renderPath: (scale, groundY, startX) => {
+      renderPath: (scale, groundY, startX, flip) => {
         const hPx = 3.0 * scale;
         const wPx = 11.5 * scale;
         const y = groundY - hPx;
+        const wheelR = hPx * 0.14;
+        const wheelCenterY = hPx - wheelR;
         return (
-          <g key="bus" transform={`translate(${startX}, ${y})`}>
-            {/* Bus silhouette */}
-            <rect x="0" y="0" width={wPx} height={hPx * 0.88} rx={hPx * 0.08} fill="#94A3B8" />
-            {/* Wheels */}
-            <circle cx={wPx * 0.2} cy={hPx * 0.88} r={hPx * 0.16} fill="#334155" />
-            <circle cx={wPx * 0.82} cy={hPx * 0.88} r={hPx * 0.16} fill="#334155" />
+          <g
+            key="bus"
+            transform={
+              flip
+                ? `translate(${startX + wPx}, ${y}) scale(-1, 1)`
+                : `translate(${startX}, ${y})`
+            }
+          >
+            {/* Bus silhouette body */}
+            <rect x="0" y="0" width={wPx} height={hPx - wheelR * 0.75} rx={hPx * 0.08} fill="#94A3B8" />
+            {/* Wheels calibrated to touch ground line exactly at hPx */}
+            <circle cx={wPx * 0.2} cy={wheelCenterY} r={wheelR} fill="#334155" />
+            <circle cx={wPx * 0.82} cy={wheelCenterY} r={wheelR} fill="#334155" />
           </g>
         );
       }
     },
     elephant: {
       name: 'African Bush Elephant',
-      lengthM: 6.5,
+      lengthM: 4.71,
       heightM: 3.3,
       label: '3.3m African Bush Elephant (Loxodonta africana)',
-      renderPath: (scale, groundY, startX) => {
+      renderPath: (scale, groundY, startX, flip) => {
         const hPx = 3.3 * scale;
-        const wPx = 6.5 * scale;
+        const wPx = 4.71 * scale;
         const y = groundY - hPx;
         return (
-          <g key="elephant" transform={`translate(${startX}, ${y})`}>
-            {/* Self-hosted PhyloPic African Bush Elephant (Loxodonta africana by Guillaume Dera, CC0 1.0) */}
+          <g
+            key="elephant"
+            transform={
+              flip
+                ? `translate(${startX + wPx}, ${y}) scale(-1, 1)`
+                : `translate(${startX}, ${y})`
+            }
+          >
+            {/* Calibrated Self-hosted PhyloPic African Bush Elephant (Loxodonta africana by Chuanxin Yu, CC0 1.0) */}
             <image
               href="https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/reference-african-bush-elephant.svg"
               x="0"
               y="0"
               width={wPx}
               height={hPx}
-              preserveAspectRatio="xMidYMid meet"
+              preserveAspectRatio="xMidYMax meet"
               filter="url(#chalkSlateTint)"
             />
           </g>
@@ -343,6 +376,19 @@ export default function TwoDScaleViewer({
             >
               <Eye className="h-4 w-4" />
             </button>
+
+            {/* Toggle Orientation: Face each other vs Parallel */}
+            <button
+              onClick={() => setFaceCreature(!faceCreature)}
+              className={`p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center gap-1.5 ${
+                faceCreature
+                  ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
+                  : 'bg-slate-950/90 border-white/[0.08] text-slate-400 hover:text-white'
+              }`}
+              title={faceCreature ? "Orientation: Facing Creature (click for Parallel)" : "Orientation: Parallel (Both Left) (click to Face Creature)"}
+            >
+              <ArrowLeftRight className="h-4 w-4" />
+            </button>
           </div>
         </div>
 
@@ -461,20 +507,20 @@ export default function TwoDScaleViewer({
             fill="rgba(217, 119, 6, 0.15)"
           />
 
-          {/* Scale Reference Model */}
-          {activeRef.renderPath(scale, groundY, refStartX)}
+          {/* Scale Reference Model standing flush on ground baseline */}
+          {activeRef.renderPath(scale, groundY, refStartX, faceCreature)}
 
           {/* Specimen Silhouette or Envelope Fallback */}
           {hasSilhouette ? (
             <g transform={`translate(${creatureStartX}, ${creatureY})`}>
-              {/* Silhouette SVG rendered with uniform amber theme color */}
+              {/* Silhouette SVG rendered flush on ground line via xMidYMax meet */}
               <image
                 href={silhouette?.url || ''}
                 x="0"
                 y="0"
                 width={creatureWidthPx}
                 height={creatureHeightPx}
-                preserveAspectRatio="xMidYMid meet"
+                preserveAspectRatio="xMidYMax meet"
                 filter="url(#amberTint)"
                 className="transition-all duration-300"
               />
@@ -650,6 +696,28 @@ export default function TwoDScaleViewer({
               <strong className="text-slate-200">{silhouette?.credit || 'Uncredited'}</strong> under{' '}
               <span className="text-amber-400/90 font-bold">{silhouette?.license || 'CC License'}</span>.
               Uniform curatorial amber fill applied for exhibit consistency.
+            </p>
+
+            {/* Reference Model Attribution */}
+            <p className="text-[10px] text-slate-500 pt-0.5">
+              Reference: <strong className="text-slate-400">{activeRef.name}</strong> &bull;{' '}
+              {refType === 'elephant' ? (
+                <>
+                  Silhouette of <em>Loxodonta africana</em> (African Bush Elephant) by Chuanxin Yu (CC0 1.0 Universal) via{' '}
+                  <a href="https://www.phylopic.org/images/910d853a-1a15-4953-a1d3-b81208994d35/loxodonta-africana" target="_blank" rel="noopener noreferrer" className="underline hover:text-amber-400">
+                    PhyloPic
+                  </a>.
+                </>
+              ) : refType === 'human' ? (
+                <>
+                  Silhouette of <em>Homo sapiens sapiens</em> by Guillaume Dera (CC0 1.0 Universal) via{' '}
+                  <a href="https://www.phylopic.org/images/b8c16fc6-d16b-4fac-8a04-67182448157e" target="_blank" rel="noopener noreferrer" className="underline hover:text-amber-400">
+                    PhyloPic
+                  </a>.
+                </>
+              ) : (
+                'Architectural metric standard.'
+              )}
             </p>
           </div>
         ) : (
