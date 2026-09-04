@@ -1,0 +1,1479 @@
+[
+  {
+    "id": 50,
+    "name": "Lisowicia",
+    "scientificName": "Lisowicia bojani",
+    "clade": "Early_Mammal_Synapsid",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 51,
+    "name": "Cynognathus",
+    "scientificName": "Cynognathus crateronotus",
+    "clade": "Early_Mammal_Synapsid",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 52,
+    "name": "Thrinaxodon",
+    "scientificName": "Thrinaxodon liorhinus",
+    "clade": "Early_Mammal_Synapsid",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 53,
+    "name": "Shonisaurus",
+    "scientificName": "Shonisaurus popularis",
+    "clade": "Marine_Reptile",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 54,
+    "name": "Cymbospondylus",
+    "scientificName": "Cymbospondylus petrinus",
+    "clade": "Marine_Reptile",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 55,
+    "name": "Peteinosaurus",
+    "scientificName": "Peteinosaurus zambellii",
+    "clade": "Pterosaur",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 60,
+    "name": "Eodromaeus",
+    "scientificName": "Eodromaeus murphi",
+    "clade": "Theropod",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 61,
+    "name": "Nyasasaurus",
+    "scientificName": "Nyasasaurus parringtoni",
+    "clade": "Archosauriform",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 62,
+    "name": "Procompsognathus",
+    "scientificName": "Procompsognathus triassicus",
+    "clade": "Theropod",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 63,
+    "name": "Liliensternus",
+    "scientificName": "Liliensternus liliensterni",
+    "clade": "Theropod",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 64,
+    "name": "Halticosaurus",
+    "scientificName": "Halticosaurus longotarsus",
+    "clade": "Theropod",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 65,
+    "name": "Gojirasaurus",
+    "scientificName": "Gojirasaurus quayi",
+    "clade": "Theropod",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 66,
+    "name": "Zupaysaurus",
+    "scientificName": "Zupaysaurus rougieri",
+    "clade": "Theropod",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 67,
+    "name": "Thecodontosaurus",
+    "scientificName": "Thecodontosaurus antiquus",
+    "clade": "Sauropodomorph",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 68,
+    "name": "Riojasaurus",
+    "scientificName": "Riojasaurus incertus",
+    "clade": "Sauropodomorph",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 70,
+    "name": "Isanosaurus",
+    "scientificName": "Isanosaurus attavipachi",
+    "clade": "Sauropodomorph",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 72,
+    "name": "Antetonitrus",
+    "scientificName": "Antetonitrus ingenipes",
+    "clade": "Sauropodomorph",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 73,
+    "name": "Lessemsaurus",
+    "scientificName": "Lessemsaurus sauropoides",
+    "clade": "Sauropodomorph",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 74,
+    "name": "Mussaurus",
+    "scientificName": "Mussaurus patagonicus",
+    "clade": "Sauropodomorph",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 75,
+    "name": "Coloradisaurus",
+    "scientificName": "Coloradisaurus brevis",
+    "clade": "Sauropodomorph",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 79,
+    "name": "Guaibasaurus",
+    "scientificName": "Guaibasaurus candelariensis",
+    "clade": "Sauropodomorph",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 80,
+    "name": "Silesaurus",
+    "scientificName": "Silesaurus opolensis",
+    "clade": "Silesaurid",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 81,
+    "name": "Asilisaurus",
+    "scientificName": "Asilisaurus kongwe",
+    "clade": "Silesaurid",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 82,
+    "name": "Marasuchus",
+    "scientificName": "Marasuchus lilloensis",
+    "clade": "Archosauriform",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 83,
+    "name": "Lagerpeton",
+    "scientificName": "Lagerpeton chanarensis",
+    "clade": "Archosauriform",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 84,
+    "name": "Ixalerpeton",
+    "scientificName": "Ixalerpeton polesinensis",
+    "clade": "Archosauriform",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 85,
+    "name": "Dromomeron",
+    "scientificName": "Dromomeron romeri",
+    "clade": "Archosauriform",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 86,
+    "name": "Euparkeria",
+    "scientificName": "Euparkeria capensis",
+    "clade": "Archosauriform",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 87,
+    "name": "Proterosuchus",
+    "scientificName": "Proterosuchus fergusi",
+    "clade": "Archosauriform",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 88,
+    "name": "Erythrosuchus",
+    "scientificName": "Erythrosuchus africanus",
+    "clade": "Archosauriform",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 89,
+    "name": "Garjainia",
+    "scientificName": "Garjainia prima",
+    "clade": "Archosauriform",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 90,
+    "name": "Vjushkovia",
+    "scientificName": "Vjushkovia triassica",
+    "clade": "Archosauriform",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 91,
+    "name": "Ticinosuchus",
+    "scientificName": "Ticinosuchus ferox",
+    "clade": "Rauisuchian",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 93,
+    "name": "Fasolasuchus",
+    "scientificName": "Fasolasuchus tenax",
+    "clade": "Rauisuchian",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 4,
+    "hasGeneric": true,
+    "currentFacts": [
+      "One of the apex organisms of its ecosystem.",
+      "Displays unique morphological adaptations for its era.",
+      "Fossils have contributed significantly to our understanding of the Triassic.",
+      "It coexisted with early dinosaurs and other archosaurs."
+    ]
+  },
+  {
+    "id": 94,
+    "name": "Prestosuchus",
+    "scientificName": "Prestosuchus chiniquensis",
+    "clade": "Rauisuchian",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It was a large apex predator.",
+      "It had an upright limb posture.",
+      "Closely related to early crocodilians."
+    ]
+  },
+  {
+    "id": 95,
+    "name": "Batrachotomus",
+    "scientificName": "Batrachotomus kupferzellensis",
+    "clade": "Rauisuchian",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Preyed on giant amphibians.",
+      "It was a heavily built rauisuchian.",
+      "Walked on four legs but could rear up."
+    ]
+  },
+  {
+    "id": 96,
+    "name": "Ornithosuchus",
+    "scientificName": "Ornithosuchus woodwardi",
+    "clade": "Archosauriform",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It had a distinctive crocodile-like ankle.",
+      "Known for its 'bird crocodile' skull shape.",
+      "Exhibited facultative bipedalism."
+    ]
+  },
+  {
+    "id": 98,
+    "name": "Smilosuchus",
+    "scientificName": "Smilosuchus gregorii",
+    "clade": "Phytosaur",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a heavy, robust snout.",
+      "Possessed a large cranial crest.",
+      "An apex predator in aquatic environments."
+    ]
+  },
+  {
+    "id": 99,
+    "name": "Phytosaurus",
+    "scientificName": "Phytosaurus cylindricodon",
+    "clade": "Phytosaur",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Name translates to 'plant reptile' due to mistaken tooth interpretation.",
+      "Actually a carnivorous aquatic predator.",
+      "Gave its name to the entire group of phytosaurs."
+    ]
+  },
+  {
+    "id": 100,
+    "name": "Machaeroprosopus",
+    "scientificName": "Machaeroprosopus buceros",
+    "clade": "Phytosaur",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a long, narrow snout for catching fish.",
+      "Lived in widespread river systems.",
+      "Its fossils are excellent biostratigraphic markers."
+    ]
+  },
+  {
+    "id": 101,
+    "name": "Leptosuchus",
+    "scientificName": "Leptosuchus crosbiensis",
+    "clade": "Phytosaur",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Possessed a relatively broad skull.",
+      "Armored with bony scutes.",
+      "A widespread Late Triassic predator."
+    ]
+  },
+  {
+    "id": 102,
+    "name": "Redondasaurus",
+    "scientificName": "Redondasaurus bermani",
+    "clade": "Phytosaur",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Very advanced phytosaur species.",
+      "Highly adapted for aquatic ambush.",
+      "Survived until the end-Triassic extinction event."
+    ]
+  },
+  {
+    "id": 103,
+    "name": "Mystriosuchus",
+    "scientificName": "Mystriosuchus planirostris",
+    "clade": "Phytosaur",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Highly adapted for marine life.",
+      "Snout was extremely elongated.",
+      "Some specimens found in full marine deposits."
+    ]
+  },
+  {
+    "id": 105,
+    "name": "Stagonolepis",
+    "scientificName": "Stagonolepis robertsoni",
+    "clade": "Aetosaur",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a pig-like rooting snout.",
+      "Body was heavily encased in rectangular scutes.",
+      "One of the best-understood early aetosaurs."
+    ]
+  },
+  {
+    "id": 106,
+    "name": "Aetosaurus",
+    "scientificName": "Aetosaurus ferratus",
+    "clade": "Aetosaur",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "One of the smallest known aetosaurs.",
+      "May have exhibited gregarious behavior.",
+      "Name means 'eagle lizard'."
+    ]
+  },
+  {
+    "id": 107,
+    "name": "Neoaetosauroides",
+    "scientificName": "Neoaetosauroides engaeus",
+    "clade": "Aetosaur",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Possessed teeth adapted for a soft diet or omnivory.",
+      "Had distinctively long limbs.",
+      "First aetosaur with well-preserved limb elements."
+    ]
+  },
+  {
+    "id": 108,
+    "name": "Longosuchus",
+    "scientificName": "Longosuchus meadei",
+    "clade": "Aetosaur",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had large curved spikes on its shoulders.",
+      "A relatively robust and slow-moving aetosaur.",
+      "Common in Late Triassic fossil assemblages."
+    ]
+  },
+  {
+    "id": 109,
+    "name": "Gracilisuchus",
+    "scientificName": "Gracilisuchus stipanicicorum",
+    "clade": "Archosauriform",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A very small, agile pseudosuchian.",
+      "Walked primarily on its hind legs.",
+      "Had a double row of scutes along its back."
+    ]
+  },
+  {
+    "id": 110,
+    "name": "Erpetosuchus",
+    "scientificName": "Erpetosuchus granti",
+    "clade": "Archosauriform",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Very small archosaur.",
+      "Had a specialized skull suggesting an insectivorous diet.",
+      "Shares features with early crocodilians."
+    ]
+  },
+  {
+    "id": 111,
+    "name": "Saltoposuchus",
+    "scientificName": "Saltoposuchus connectens",
+    "clade": "Crocodylomorph",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Name translates to 'leaping crocodile'.",
+      "Very lightly built and bipedal.",
+      "Covered with thin, elongated scutes."
+    ]
+  },
+  {
+    "id": 112,
+    "name": "Terrestrisuchus",
+    "scientificName": "Terrestrisuchus gracilis",
+    "clade": "Crocodylomorph",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Extremely slender, greyhound-like proportions.",
+      "A fully terrestrial early crocodylomorph.",
+      "Very small, measuring around half a meter in length."
+    ]
+  },
+  {
+    "id": 113,
+    "name": "Hesperosuchus",
+    "scientificName": "Hesperosuchus agilis",
+    "clade": "Crocodylomorph",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Agile terrestrial predator.",
+      "Had distinctively long hind legs.",
+      "Likely preyed on large insects and small vertebrates."
+    ]
+  },
+  {
+    "id": 114,
+    "name": "Sphenosuchus",
+    "scientificName": "Sphenosuchus acutus",
+    "clade": "Crocodylomorph",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A primitive crocodylomorph with a somewhat dog-like stance.",
+      "Had a highly specialized quadrate bone.",
+      "Fully terrestrial and fast-running."
+    ]
+  },
+  {
+    "id": 115,
+    "name": "Protosuchus",
+    "scientificName": "Protosuchus richardsoni",
+    "clade": "Crocodylomorph",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had short, powerful jaws.",
+      "Represented a transition toward amphibious crocodyliforms.",
+      "Heavily armored with dorsal and ventral scutes."
+    ]
+  },
+  {
+    "id": 116,
+    "name": "Effigia",
+    "scientificName": "Effigia okeeffeae",
+    "clade": "Poposauroid",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A remarkable example of convergent evolution with ornithomimid dinosaurs.",
+      "Completely toothless with a beak.",
+      "Bipedal and highly cursorial."
+    ]
+  },
+  {
+    "id": 117,
+    "name": "Shuvosaurus",
+    "scientificName": "Shuvosaurus inexpectatus",
+    "clade": "Poposauroid",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Another beaked, toothless pseudosuchian.",
+      "Closely related to Effigia.",
+      "Demonstrates high diversity among Triassic archosaurs."
+    ]
+  },
+  {
+    "id": 119,
+    "name": "Lotosaurus",
+    "scientificName": "Lotosaurus adentus",
+    "clade": "Poposauroid",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Possessed a prominent sail on its back.",
+      "Had a toothless, beaked mouth.",
+      "Believed to have been an herbivore."
+    ]
+  },
+  {
+    "id": 120,
+    "name": "Arizonasaurus",
+    "scientificName": "Arizonasaurus babbitti",
+    "clade": "Poposauroid",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A sail-backed poposauroid.",
+      "Sail may have been used for thermoregulation or display.",
+      "Older than many other famous Triassic archosaurs."
+    ]
+  },
+  {
+    "id": 121,
+    "name": "Sillosuchus",
+    "scientificName": "Sillosuchus sangregorioensis",
+    "clade": "Poposauroid",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A very large, bipedal predator.",
+      "Part of the unique South American Triassic fauna.",
+      "Had complex cervical vertebrae."
+    ]
+  },
+  {
+    "id": 122,
+    "name": "Sharovipteryx",
+    "scientificName": "Sharovipteryx mirabilis",
+    "clade": "Protorosaur",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had gliding membranes primarily on its hind limbs.",
+      "The only known 'hind-winged' glider.",
+      "Likely a leaper from tree to tree."
+    ]
+  },
+  {
+    "id": 123,
+    "name": "Longisquama",
+    "scientificName": "Longisquama insignis",
+    "clade": "Archosauriform",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Possessed incredibly long, feather-like dorsal scales.",
+      "Subject of intense debate regarding avian origins.",
+      "A highly unusual diapsid reptile."
+    ]
+  },
+  {
+    "id": 124,
+    "name": "Tanystropheus",
+    "scientificName": "Tanystropheus longobardicus",
+    "clade": "Protorosaur",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Neck was longer than its body and tail combined.",
+      "Neck consisted of only 12 or 13 extremely elongated vertebrae.",
+      "Likely an ambush predator in shallow waters."
+    ]
+  },
+  {
+    "id": 125,
+    "name": "Macrocnemus",
+    "scientificName": "Macrocnemus bassanii",
+    "clade": "Protorosaur",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A terrestrial or semi-aquatic prolacertiform.",
+      "Had long, slender hind limbs for running.",
+      "Related to Tanystropheus but with a shorter neck."
+    ]
+  },
+  {
+    "id": 126,
+    "name": "Dinocephalosaurus",
+    "scientificName": "Dinocephalosaurus orientalis",
+    "clade": "Protorosaur",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "First archosauromorph known to give live birth.",
+      "Neck had over 25 vertebrae.",
+      "Fully marine and incapable of coming on land."
+    ]
+  },
+  {
+    "id": 127,
+    "name": "Placodus",
+    "scientificName": "Placodus gigas",
+    "clade": "Marine_Reptile",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had thick, flat teeth for crushing shellfish.",
+      "Possessed heavy bones for ballast in water.",
+      "Looked somewhat like a marine iguana."
+    ]
+  },
+  {
+    "id": 128,
+    "name": "Cyamodus",
+    "scientificName": "Cyamodus rostratus",
+    "clade": "Marine_Reptile",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Carried a broad, turtle-like carapace.",
+      "Carapace was divided into two distinct sections.",
+      "Bottom feeder specialized in hard-shelled prey."
+    ]
+  },
+  {
+    "id": 129,
+    "name": "Henodus",
+    "scientificName": "Henodus chelyops",
+    "clade": "Marine_Reptile",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Possessed a very boxy, flat shell.",
+      "Had a single tooth on each side, relying mostly on a beak.",
+      "May have been a filter feeder."
+    ]
+  },
+  {
+    "id": 130,
+    "name": "Nothosaurus",
+    "scientificName": "Nothosaurus mirabilis",
+    "clade": "Marine_Reptile",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A semi-oceanic predator with a long neck and tail.",
+      "Had webbed toes instead of fully formed flippers.",
+      "Probably lived similarly to modern seals."
+    ]
+  },
+  {
+    "id": 131,
+    "name": "Lariosaurus",
+    "scientificName": "Lariosaurus balsami",
+    "clade": "Marine_Reptile",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "One of the smallest nothosaurs.",
+      "Forelimbs were modified into flippers, but hindlimbs retained toes.",
+      "Likely inhabited shallow coastal lagoons."
+    ]
+  },
+  {
+    "id": 132,
+    "name": "Ceresiosaurus",
+    "scientificName": "Ceresiosaurus calcagnii",
+    "clade": "Marine_Reptile",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A larger nothosaur with highly adapted flippers.",
+      "Excellent swimmer due to hyperphalangy in its digits.",
+      "A transitional form toward plesiosaurs."
+    ]
+  },
+  {
+    "id": 133,
+    "name": "Pistosaurus",
+    "scientificName": "Pistosaurus longaevus",
+    "clade": "Marine_Reptile",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a stiff spine and plesiosaur-like skull.",
+      "A key transitional fossil linking nothosaurs and plesiosaurs.",
+      "Fully marine, utilizing flipper-based locomotion."
+    ]
+  },
+  {
+    "id": 134,
+    "name": "Simosaurus",
+    "scientificName": "Simosaurus gaillardoti",
+    "clade": "Marine_Reptile",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a blunt, short snout unlike other nothosaurs.",
+      "Probably fed on hard-shelled organisms.",
+      "Lack of typical pointed teeth suggests a specialized diet."
+    ]
+  },
+  {
+    "id": 135,
+    "name": "Mixosaurus",
+    "scientificName": "Mixosaurus cornalianus",
+    "clade": "Marine_Reptile",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A transitional ichthyosaur with a straight tail.",
+      "Retained a distinct neck, unlike later forms.",
+      "Small and agile marine predator."
+    ]
+  },
+  {
+    "id": 136,
+    "name": "Besanosaurus",
+    "scientificName": "Besanosaurus leptorhynchus",
+    "clade": "Marine_Reptile",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A large shastasaurid ichthyosaur.",
+      "Lacked a dorsal fin.",
+      "Gave birth to live young tail-first, like modern cetaceans."
+    ]
+  },
+  {
+    "id": 137,
+    "name": "Shastasaurus",
+    "scientificName": "Shastasaurus pacificus",
+    "clade": "Marine_Reptile",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "One of the largest marine reptiles ever.",
+      "S. sikanniensis reached over 20 meters in length.",
+      "Likely a suction feeder lacking typical teeth."
+    ]
+  },
+  {
+    "id": 138,
+    "name": "Guanlingsaurus",
+    "scientificName": "Guanlingsaurus liangae",
+    "clade": "Marine_Reptile",
+    "timePeriod": "Triassic",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Characterized by a uniquely short and toothless snout.",
+      "An enormous marine reptile.",
+      "Adapted for suction feeding on soft-bodied cephalopods."
+    ]
+  },
+  {
+    "id": 139,
+    "name": "Eudimorphodon",
+    "scientificName": "Eudimorphodon ranzii",
+    "clade": "Pterosaur",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Possessed complex, multi-cusped teeth.",
+      "Had a diamond-shaped flap of skin at the end of its long tail.",
+      "Likely a piscivore (fish-eater)."
+    ]
+  },
+  {
+    "id": 140,
+    "name": "Preondactylus",
+    "scientificName": "Preondactylus buffarinii",
+    "clade": "Pterosaur",
+    "timePeriod": "Triassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "One of the most basal pterosaurs.",
+      "Had single-cusped teeth unlike Eudimorphodon.",
+      "Wingspan was less than half a meter."
+    ]
+  },
+  {
+    "id": 141,
+    "name": "Austriadactylus",
+    "scientificName": "Austriadactylus cristatus",
+    "clade": "Pterosaur",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 2,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Austriadactylus is an important Triassic species.",
+      "It tells us about early ecosystems."
+    ]
+  },
+  {
+    "id": 142,
+    "name": "Caviramus",
+    "scientificName": "Caviramus schesaplanensis",
+    "clade": "Pterosaur",
+    "timePeriod": "Triassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
+    "currentFactCount": 2,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Caviramus is an important Triassic species.",
+      "It tells us about early ecosystems."
+    ]
+  },
+  {
+    "id": 145,
+    "name": "Ceratosaurus",
+    "scientificName": "Ceratosaurus nasicornis",
+    "clade": "Theropod",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It had a prominent horn on its snout.",
+      "Ceratosaurus possessed osteoderms along its back.",
+      "It likely competed with Allosaurus for prey."
+    ]
+  },
+  {
+    "id": 147,
+    "name": "Megalosaurus",
+    "scientificName": "Megalosaurus bucklandii",
+    "clade": "Theropod",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Taynton Limestone Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Its name means 'Great Lizard'.",
+      "It was one of the original three genera used to define 'Dinosauria'.",
+      "True Megalosaurus fossils are only known from the Middle Jurassic of England."
+    ]
+  },
+  {
+    "id": 148,
+    "name": "Cryolophosaurus",
+    "scientificName": "Cryolophosaurus ellioti",
+    "clade": "Theropod",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Antarctica\",\"country\":\"Antarctica\",\"fossilFormation\":\"Hanson Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Known as 'Elvisaurus' due to its pompadour-like crest.",
+      "It lived in a relatively temperate Antarctic climate.",
+      "It is the largest known Early Jurassic theropod."
+    ]
+  },
+  {
+    "id": 149,
+    "name": "Monolophosaurus",
+    "scientificName": "Monolophosaurus jiangi",
+    "clade": "Theropod",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Shishugou Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It had a single large crest running down the midline of its snout.",
+      "The crest was heavily pneumatized (hollow).",
+      "It lived in an environment with deep lakes and rivers."
+    ]
+  },
+  {
+    "id": 150,
+    "name": "Torvosaurus",
+    "scientificName": "Torvosaurus tanneri",
+    "clade": "Theropod",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It was one of the largest predators of its time.",
+      "It had exceptionally powerful jaws and large teeth.",
+      "Torvosaurus competed with Allosaurus and Ceratosaurus in the Morrison Formation."
+    ]
+  }
+]

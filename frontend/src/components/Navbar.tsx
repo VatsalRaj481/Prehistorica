@@ -35,8 +35,8 @@ export default function Navbar() {
           <div className="flex justify-between items-center h-16 gap-4">
             <div className="flex items-center gap-6">
               <Link to="/" className="flex items-center gap-3 shrink-0 group">
-                <div className="p-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 group-hover:border-amber-500/40 transition-colors">
-                  <DinoLogoMark className="h-6 w-6 shrink-0 group-hover:scale-105 transition-transform" />
+                <div className="relative flex items-center justify-center p-0.5 rounded-xl bg-amber-500/5 group-hover:bg-amber-500/10 transition-colors">
+                  <DinoLogoMark className="h-9 w-9 sm:h-10 sm:w-10 drop-shadow-[0_2px_8px_rgba(245,158,11,0.25)] group-hover:scale-105 transition-transform duration-200" />
                 </div>
                 <div className="flex flex-col">
                   <div className="flex items-center gap-1.5">

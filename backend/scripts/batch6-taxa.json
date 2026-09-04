@@ -1,0 +1,329 @@
+[
+  {
+    "id": 567,
+    "name": "Pikaia gracilens",
+    "scientificName": "Pikaia gracilens",
+    "clade": "Other",
+    "timePeriod": "Middle Cambrian",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Burgess Shale\"}",
+    "currentFactCount": 2,
+    "hasGeneric": false,
+    "currentFacts": [
+      "One of the earliest known primitive chordates, a potential ancestor of all vertebrates.",
+      "Possessed a proto-backbone called a notochord."
+    ]
+  },
+  {
+    "id": 568,
+    "name": "Wiwaxia corrugata",
+    "scientificName": "Wiwaxia corrugata",
+    "clade": "Other",
+    "timePeriod": "Middle Cambrian",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Burgess Shale\"}",
+    "currentFactCount": 2,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Body covered in scales (sclerites) and long defensive spines.",
+      "Crept along the seafloor using a slug-like foot."
+    ]
+  },
+  {
+    "id": 569,
+    "name": "Bothriolepis canadensis",
+    "scientificName": "Bothriolepis canadensis",
+    "clade": "Other",
+    "timePeriod": "Late Devonian",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Escuminac Formation\"}",
+    "currentFactCount": 2,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Most widely distributed placoderm genus in the fossil record.",
+      "Had heavily armored pectoral fins that could walk on muddy beds."
+    ]
+  },
+  {
+    "id": 570,
+    "name": "Eusthenopteron foordi",
+    "scientificName": "Eusthenopteron foordi",
+    "clade": "Early_Tetrapod_Amphibian",
+    "timePeriod": "Late Devonian",
+    "diet": "carnivore",
+    "habitat": "semi_aquatic",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Escuminac Formation\"}",
+    "currentFactCount": 2,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A famous lobe-finned fish showing the transition from fish to land vertebrates.",
+      "Internal fin bones directly correlate to limb bones of tetrapods."
+    ]
+  },
+  {
+    "id": 571,
+    "name": "Hylonomus lyelli",
+    "scientificName": "Hylonomus lyelli",
+    "clade": "Other",
+    "timePeriod": "Carboniferous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Joggins Formation\"}",
+    "currentFactCount": 2,
+    "hasGeneric": false,
+    "currentFacts": [
+      "The earliest known undisputed reptile in Earth's history.",
+      "Laid amniotic eggs on dry land, breaking dependency on water."
+    ]
+  },
+  {
+    "id": 572,
+    "name": "Diplocaulus magnicornis",
+    "scientificName": "Diplocaulus magnicornis",
+    "clade": "Early_Tetrapod_Amphibian",
+    "timePeriod": "Early Permian",
+    "diet": "carnivore",
+    "habitat": "semi_aquatic",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"United States\",\"fossilFormation\":\"Arroyo Formation\"}",
+    "currentFactCount": 2,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a distinctive boomerang-shaped head created by massive bony horns.",
+      "Crescent shape of head may have generated lift when swimming."
+    ]
+  },
+  {
+    "id": 573,
+    "name": "Estemmenosuchus uralensis",
+    "scientificName": "Estemmenosuchus uralensis",
+    "clade": "Early_Mammal_Synapsid",
+    "timePeriod": "Middle Permian",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Russia\",\"fossilFormation\":\"Ocher Assembly\"}",
+    "currentFactCount": 2,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Featured complex bony horns and antlers on its head for display.",
+      "Mummified skin impressions suggest glandular, hairless skin."
+    ]
+  },
+  {
+    "id": 574,
+    "name": "Andrewsarchus mongoliensis",
+    "scientificName": "Andrewsarchus mongoliensis",
+    "clade": "Early_Mammal_Synapsid",
+    "timePeriod": "Eocene",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Mongolia\",\"fossilFormation\":\"Irdin Manha Formation\"}",
+    "currentFactCount": 2,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Only known from a single giant skull measuring 83 cm in length.",
+      "More closely related to hippos and whales than modern wolves."
+    ]
+  },
+  {
+    "id": 575,
+    "name": "Uintatherium anceps",
+    "scientificName": "Uintatherium anceps",
+    "clade": "Early_Mammal_Synapsid",
+    "timePeriod": "Eocene",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"United States\",\"fossilFormation\":\"Bridger Formation\"}",
+    "currentFactCount": 2,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had six distinctive bony knobs (horns) on its flat skull.",
+      "Males possessed large, saber-like canine teeth for defense."
+    ]
+  },
+  {
+    "id": 576,
+    "name": "Paraceratherium transouralicum",
+    "scientificName": "Paraceratherium transouralicum",
+    "clade": "Early_Mammal_Synapsid",
+    "timePeriod": "Oligocene",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Mongolia\",\"fossilFormation\":\"Hsanda Gol Formation\"}",
+    "currentFactCount": 2,
+    "hasGeneric": false,
+    "currentFacts": [
+      "The largest land mammal known to have ever lived on Earth.",
+      "Had a long neck allowing it to browse canopies up to 8m high."
+    ]
+  },
+  {
+    "id": 577,
+    "name": "Elasmotherium sibiricum",
+    "scientificName": "Elasmotherium sibiricum",
+    "clade": "Early_Mammal_Synapsid",
+    "timePeriod": "Pleistocene",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Russia\",\"fossilFormation\":\"Siberian Steppe deposits\"}",
+    "currentFactCount": 2,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Popularly known as the Siberian Unicorn due to a massive horn dome on its forehead.",
+      "Survived long enough to coexist with early human species."
+    ]
+  },
+  {
+    "id": 578,
+    "name": "Titanoboa cerrejonensis",
+    "scientificName": "Titanoboa cerrejonensis",
+    "clade": "Other",
+    "timePeriod": "Paleocene",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Colombia\",\"fossilFormation\":\"Cerrejon Formation\"}",
+    "currentFactCount": 2,
+    "hasGeneric": false,
+    "currentFacts": [
+      "The largest, longest, and heaviest snake ever discovered.",
+      "Fossils show it lived in a tropical rainforest hotter than today's tropics."
+    ]
+  },
+  {
+    "id": 579,
+    "name": "Moeritherium lyonsi",
+    "scientificName": "Moeritherium lyonsi",
+    "clade": "Early_Mammal_Synapsid",
+    "timePeriod": "Late Eocene",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Egypt\",\"fossilFormation\":\"Qasr el-Sagha Formation\"}",
+    "currentFactCount": 2,
+    "hasGeneric": false,
+    "currentFacts": [
+      "An early primitive relative of modern elephants, resembling a small tapir.",
+      "Fossil evidence suggests semi-aquatic habits similar to a pygmy hippo."
+    ]
+  },
+  {
+    "id": 844,
+    "name": "Stygimoloch",
+    "scientificName": "Stygimoloch spinifer",
+    "clade": "Ornithischian",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Hell Creek\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Stygimoloch is known for elaborate spikes and horns at the back of its thick skull dome.",
+      "Some paleontologists argue Stygimoloch may be a juvenile form of Pachycephalosaurus based on bone remodeling evidence.",
+      "Its name means \"horned devil from the river of death,\" a reference to the Hell Creek Formation where it was found."
+    ]
+  },
+  {
+    "id": 845,
+    "name": "Dracorex",
+    "scientificName": "Dracorex hogwartsia",
+    "clade": "Ornithischian",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Hell Creek\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Dracorex hogwartsia has a flat, spike-covered skull unlike typical domed pachycephalosaurs.",
+      "Its unusual name was voted by children at a museum and references the Harry Potter fictional school Hogwarts.",
+      "Jack Horner proposed Dracorex may be a juvenile Pachycephalosaurus, based on immature bone texture."
+    ]
+  },
+  {
+    "id": 882,
+    "name": "Rajasaurus narmadensis",
+    "scientificName": "Rajasaurus narmadensis",
+    "clade": "Theropod",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"India\",\"fossilFormation\":\"Lameta Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Possessed a unique bony horn on its forehead formed by the fusion of its nasal and frontal bones, used potentially for display or head-butting.",
+      "Lived in a highly volcanic, lake-dotted floodplain environment that also served as a massive communal nesting ground for various dinosaur species.",
+      "Had extremely short, stubby arms and a robust neck, similar to other abelisaurids like Carnotaurus, suggesting it relied on its powerful jaws for hunting."
+    ]
+  },
+  {
+    "id": 884,
+    "name": "Indosuchus",
+    "scientificName": "Indosuchus raptorius",
+    "clade": "Theropod",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"India\",\"fossilFormation\":\"Lameta Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a highly specialized narrow skull roof with frontals and parietals fused, forming a prominent crest.",
+      "Coexisted with other abelisaurids like Rajasaurus and Indosaurus, suggesting niche partitioning among Cretaceous Indian carnivores.",
+      "Its holotype specimen GSI K27/685 went missing from the GSI collections, making it a subject of taxonomic debate."
+    ]
+  },
+  {
+    "id": 922,
+    "name": "Vasuki",
+    "scientificName": "Vasuki indicus",
+    "clade": "Other",
+    "timePeriod": "Eocene",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"India\",\"fossilFormation\":\"Naredi Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Estimated to have reached a length of 10.9 to 15.2 meters (36 to 50 feet), rivaling the famous Paleocene Titanoboa for the title of the largest snake ever.",
+      "Had a very broad, cylindrical body and a heavy build, indicating it was a slow-moving ambush predator that lived in warm, marshy coastal swamps.",
+      "Lived during a period of global warming in the Eocene epoch, where high ambient temperatures enabled coldblooded ectotherms to reach such enormous sizes."
+    ]
+  },
+  {
+    "id": 923,
+    "name": "Sivatherium",
+    "scientificName": "Sivatherium giganteum",
+    "clade": "Early_Mammal_Synapsid",
+    "timePeriod": "Pleistocene",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"India\",\"fossilFormation\":\"Siwalik Hills\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "One of the largest ruminant mammals that ever lived, standing over 2.2 meters tall at the shoulder.",
+      "Had a short, robust neck and sturdy limbs, differing from modern giraffes, and possessed a massive skull topped with large, palm-like ossicones.",
+      "Known to have coexisted with early human ancestors, as depicted in ancient rock art in Sahara regions, surviving until about 10,000 years ago."
+    ]
+  },
+  {
+    "id": 924,
+    "name": "Stegodon ganesa",
+    "scientificName": "Stegodon ganesa",
+    "clade": "Early_Mammal_Synapsid",
+    "timePeriod": "Pleistocene",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"India\",\"fossilFormation\":\"Siwalik Hills\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Possessed enormous, nearly straight tusks that grew up to 4 meters in length, rivaling the animal's own body size.",
+      "The tusks were so closely spaced that the animal could not lower its trunk between them, likely resting it over them instead.",
+      "Coexisted with Pleistocene hominids and early humans in the Indian subcontinent, as evidenced by Paleolithic tools found nearby."
+    ]
+  }
+]

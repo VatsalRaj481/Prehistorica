@@ -1,25 +1,15 @@
-export default function DinoLogoMark({ className = "h-7 w-7" }: { className?: string }) {
+interface DinoLogoMarkProps {
+  className?: string;
+  alt?: string;
+}
+
+export default function DinoLogoMark({ className = "h-7 w-7", alt = "Prehistorica Museum Crest" }: DinoLogoMarkProps) {
   return (
-    <svg
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      <rect width="64" height="64" rx="14" fill="#090D16" />
-      <rect x="2" y="2" width="60" height="60" rx="12" stroke="#D97706" strokeWidth="2" strokeOpacity="0.6" />
-      <path d="M 14,24 L 38,16 L 50,22 L 52,34 L 46,38 L 48,46 L 38,48 L 34,44 L 26,46 L 14,36 Z" fill="url(#dino-mark-amber)" />
-      <path d="M 34,22 L 44,24 L 42,30 L 32,28 Z" fill="#090D16" />
-      <path d="M 22,26 L 28,26 L 26,32 L 20,30 Z" fill="#090D16" />
-      <polygon points="36,44 38,39 40,44" fill="#090D16" />
-      <polygon points="28,45 30,40 32,45" fill="#090D16" />
-      <polygon points="20,44 22,39 24,44" fill="#090D16" />
-      <defs>
-        <linearGradient id="dino-mark-amber" x1="14" y1="16" x2="52" y2="48" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#F59E0B" />
-          <stop offset="1" stopColor="#D97706" />
-        </linearGradient>
-      </defs>
-    </svg>
+    <img
+      src="/logo.png"
+      alt={alt}
+      className={`object-contain select-none shrink-0 ${className}`}
+      draggable={false}
+    />
   );
 }

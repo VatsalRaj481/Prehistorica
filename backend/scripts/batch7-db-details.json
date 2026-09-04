@@ -1,0 +1,1395 @@
+[
+  {
+    "id": 1615,
+    "name": "Shringasaurus",
+    "scientificName": "Shringasaurus indicus",
+    "clade": "Archosauriform",
+    "interestingFacts": "[\"Features a pair of prominent forward-facing horns over its eyes, similar to modern ceratopsians.\",\"Demonstrates sexual dimorphism with horns likely used in combat.\"]"
+  },
+  {
+    "id": 1616,
+    "name": "Gigantophis garstini",
+    "scientificName": "Gigantophis garstini",
+    "clade": "Other",
+    "interestingFacts": "[\"For over a century until the discovery of Titanoboa in 2009, Gigantophis was considered the largest known snake to have ever existed.\",\"Historically estimated at 9 to 10 meters, a 2004 reassessment by Jason Head et al. revised its estimated length downward to approximately 6.9 ± 0.3 meters.\",\"Belongs to the extinct family Madtsoiidae, sharing a deep evolutionary lineage with other giant Paleogene snakes such as Vasuki and Madtsoia.\"]"
+  },
+  {
+    "id": 1619,
+    "name": "Desmatosuchus haplocerus",
+    "scientificName": "Desmatosuchus haplocerus",
+    "clade": "Aetosaur",
+    "interestingFacts": "[\"Large 45 cm shoulder spines.\", \"Interlocking bony armor.\", \"Shovel snout for digging.\"]"
+  },
+  {
+    "id": 1620,
+    "name": "Placerias hesternus",
+    "scientificName": "Placerias hesternus",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Giant 1-ton dicynodont synapsid.\", \"Downward-pointing tusks.\", \"Herding behavior.\"]"
+  },
+  {
+    "id": 1621,
+    "name": "Typothorax coccinarum",
+    "scientificName": "Typothorax coccinarum",
+    "clade": "Aetosaur",
+    "interestingFacts": "[\"Broad turtle-like armor plates.\", \"Heavy body defense.\", \"Index fossil for Late Triassic.\"]"
+  },
+  {
+    "id": 1622,
+    "name": "Rutiodon carolinensis",
+    "scientificName": "Rutiodon carolinensis",
+    "clade": "Phytosaur",
+    "interestingFacts": "[\"6-meter aquatic archosaur.\", \"Raised nostril crest.\", \"Intermeshing fish-catching teeth.\"]"
+  },
+  {
+    "id": 1623,
+    "name": "Alwalkeria maleriensis",
+    "scientificName": "Alwalkeria maleriensis",
+    "clade": "Theropod",
+    "interestingFacts": "[\"One of oldest Indian dinosaurs.\", \"Heterogeneous teeth.\", \"Basal saurischian.\"]"
+  },
+  {
+    "id": 1624,
+    "name": "Jaklapallisaurus asymmetrica",
+    "scientificName": "Jaklapallisaurus asymmetrica",
+    "clade": "Sauropodomorph",
+    "interestingFacts": "[\"Unaysaurid plateosaurian.\", \"Asymmetric ankle bones.\", \"Gondwanan faunal interchange.\"]"
+  },
+  {
+    "id": 1625,
+    "name": "Nambalia rohui",
+    "scientificName": "Nambalia rohui",
+    "clade": "Sauropodomorph",
+    "interestingFacts": "[\"Guaibasaurid sauropodomorph.\", \"Red siltstone fossil beds.\", \"Evolutionary link to sauropods.\"]"
+  },
+  {
+    "id": 1626,
+    "name": "Parasuchus hislopi",
+    "scientificName": "Parasuchus hislopi",
+    "clade": "Phytosaur",
+    "interestingFacts": "[\"Highly complete phytosaur.\", \"Exhibited at ISI Kolkata.\", \"Raised nasal crest.\"]"
+  },
+  {
+    "id": 1627,
+    "name": "Metoposaurus maleriensis",
+    "scientificName": "Metoposaurus maleriensis",
+    "clade": "Early_Tetrapod_Amphibian",
+    "interestingFacts": "[\"Flat toilet-seat-shaped skull.\", \"Mass die-off drought deposits.\", \"Fully aquatic temnospondyl.\"]"
+  },
+  {
+    "id": 1628,
+    "name": "Exaeretodon statterneri",
+    "scientificName": "Exaeretodon statterneri",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Traversodontid cynodont.\", \"Secondary palate for chewing.\", \"Maternal care evidence.\"]"
+  },
+  {
+    "id": 1629,
+    "name": "Hyperodapedon huxleyi",
+    "scientificName": "Hyperodapedon huxleyi",
+    "clade": "Archosauriform",
+    "interestingFacts": "[\"Beaked rhynchosaur.\", \"Multiple tooth rows.\", \"Abundant Carnian herbivore.\"]"
+  },
+  {
+    "id": 1630,
+    "name": "Bambiraptor feinbergi",
+    "scientificName": "Bambiraptor feinbergi",
+    "clade": "Theropod",
+    "interestingFacts": "[\"High brain-to-body ratio.\", \"Opposable digit.\", \"95% complete skeleton.\"]"
+  },
+  {
+    "id": 1631,
+    "name": "Stenonychosaurus inequalis",
+    "scientificName": "Stenonychosaurus inequalis",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Large binocular eyes.\", \"Retractable sickle claw.\", \"Advanced encephalization.\"]"
+  },
+  {
+    "id": 1632,
+    "name": "Gryposaurus latidens",
+    "scientificName": "Gryposaurus latidens",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Arched nasal crest.\", \"Over 800 dental battery teeth.\", \"Abundant duckbill dinosaur.\"]"
+  },
+  {
+    "id": 1633,
+    "name": "Scolosaurus cutleri",
+    "scientificName": "Scolosaurus cutleri",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Bone-shattering tail club.\", \"Pointed flank spines.\", \"Preserved skin osteoderms.\"]"
+  },
+  {
+    "id": 1634,
+    "name": "Herrerasaurus ischigualastensis",
+    "scientificName": "Herrerasaurus ischigualastensis",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Earliest apex predator dinosaur.\", \"Flexible lower jaw joint.\", \"Five-digit hands.\"]"
+  },
+  {
+    "id": 1635,
+    "name": "Eoraptor lunensis",
+    "scientificName": "Eoraptor lunensis",
+    "clade": "Theropod",
+    "interestingFacts": "[\"One of the earliest true dinosaurs.\", \"Heterodont dentition.\", \"Lightweight runner.\"]"
+  },
+  {
+    "id": 1636,
+    "name": "Sanjuansaurus gordilloi",
+    "scientificName": "Sanjuansaurus gordilloi",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Contemporaneous with Herrerasaurus.\", \"Elongated hindlimbs.\", \"Herrerasaurid diversity.\"]"
+  },
+  {
+    "id": 1637,
+    "name": "Saurosuchus galilei",
+    "scientificName": "Saurosuchus galilei",
+    "clade": "Rauisuchian",
+    "interestingFacts": "[\"7-meter apex rauisuchian.\", \"1-meter deep skull.\", \"Pillar-erect hips.\"]"
+  },
+  {
+    "id": 1638,
+    "name": "Hyperodapedon sanjuanensis",
+    "scientificName": "Hyperodapedon sanjuanensis",
+    "clade": "Archosauriform",
+    "interestingFacts": "[\"Scissor-like tooth plates.\", \"Beaked snout.\", \"Massively abundant.\"]"
+  },
+  {
+    "id": 1639,
+    "name": "Exaeretodon frenguellii",
+    "scientificName": "Exaeretodon frenguellii",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Rodent-like incisors.\", \"Secondary palate.\", \"Mammal relative.\"]"
+  },
+  {
+    "id": 1640,
+    "name": "Elaphrosaurus bambergi",
+    "scientificName": "Elaphrosaurus bambergi",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Extremely long neck and slender body.\", \"Proportionally short forelimbs.\", \"Fast nocturnal runner.\"]"
+  },
+  {
+    "id": 1641,
+    "name": "Janenschia robusta",
+    "scientificName": "Janenschia robusta",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Oldest macronarian sauropod from Africa.\", \"Massive limb bones.\", \"Found in Tendaguru bonebed.\"]"
+  },
+  {
+    "id": 1642,
+    "name": "Dysalotosaurus lettowvorbecki",
+    "scientificName": "Dysalotosaurus lettowvorbecki",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Thousands of bones in single bonebed.\", \"Rapid juvenile growth rates.\", \"Agile bipedal runner.\"]"
+  },
+  {
+    "id": 1643,
+    "name": "Australodocus bohetii",
+    "scientificName": "Australodocus bohetii",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Diplodocoid from Gondwana.\", \"Slender neck vertebrae.\", \"Named for head local excavator Boheti.\"]"
+  },
+  {
+    "id": 1644,
+    "name": "Massospondylus carinatus",
+    "scientificName": "Massospondylus carinatus",
+    "clade": "Sauropodomorph",
+    "interestingFacts": "[\"Fossilized eggs containing embryos with tiny teeth.\", \"Swallowed gastroliths for digestion.\", \"Bipedal/quadrupedal transition.\"]"
+  },
+  {
+    "id": 1645,
+    "name": "Melanorosaurus readi",
+    "scientificName": "Melanorosaurus readi",
+    "clade": "Sauropodomorph",
+    "interestingFacts": "[\"Quadrupedal early sauropodomorph.\", \"Massive weight-bearing limb bones.\", \"Found in Upper Elliot beds.\"]"
+  },
+  {
+    "id": 1646,
+    "name": "Eocursor parvus",
+    "scientificName": "Eocursor parvus",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"One of the earliest known ornithischian dinosaurs.\", \"Extremely long grasping hands.\", \"Fast agile bipedal runner.\"]"
+  },
+  {
+    "id": 1647,
+    "name": "Deltadromeus agilis",
+    "scientificName": "Deltadromeus agilis",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Exceptionally long, slender leg bones.\", \"Built for extreme sprinting speed.\", \"Elongated body.\"]"
+  },
+  {
+    "id": 1648,
+    "name": "Rebbachisaurus garasbae",
+    "scientificName": "Rebbachisaurus garasbae",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Tall paddle-like ridge along back neural spines.\", \"Basal diplodocoid sauropod.\", \"Inhabited Kem Kem river system.\"]"
+  },
+  {
+    "id": 1649,
+    "name": "Onchopristis numidus",
+    "scientificName": "Onchopristis numidus",
+    "clade": "Other",
+    "interestingFacts": "[\"Giant 2.5-meter long saw-like rostrum.\", \"Barb-like teeth along sides of saw.\", \"Primary prey item for Spinosaurus.\"]"
+  },
+  {
+    "id": 1650,
+    "name": "Alanqa saharica",
+    "scientificName": "Alanqa saharica",
+    "clade": "Pterosaur",
+    "interestingFacts": "[\"Azhdarchid pterosaur.\", \"Bony eminence along jaw margin for crushing hard shell prey.\", \"Stork-like terrestrial hunter.\"]"
+  },
+  {
+    "id": 1651,
+    "name": "Siroccopteryx moroccensis",
+    "scientificName": "Siroccopteryx moroccensis",
+    "clade": "Pterosaur",
+    "interestingFacts": "[\"Anhanguerid pterosaur with terminal crest.\", \"Fine teeth for catching slippery fish.\", \"Inhabited North African rivers.\"]"
+  },
+  {
+    "id": 1652,
+    "name": "Aegisuchus witmeri",
+    "scientificName": "Aegisuchus witmeri",
+    "clade": "Crocodylomorph",
+    "interestingFacts": "[\"Nicknamed Shieldcroc due to flat vascularized shield on top of head.\", \"Skull estimated over 2 meters long.\", \"Flat duck-billed jaws.\"]"
+  },
+  {
+    "id": 1653,
+    "name": "Lystrosaurus murrayi",
+    "scientificName": "Lystrosaurus murrayi",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Surviving survivor of Permian-Triassic extinction.\", \"Made up over 95% of terrestrial vertebrates post-extinction.\", \"Barrel chest and tusked beak.\"]"
+  },
+  {
+    "id": 1654,
+    "name": "Moschops capensis",
+    "scientificName": "Moschops capensis",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Pachyostotic thick head roof up to 10 cm for headbutting.\", \"Massive quadrupedal dinocephalian synapsid.\", \"Heavy barrel body.\"]"
+  },
+  {
+    "id": 1655,
+    "name": "Diictodon feliceps",
+    "scientificName": "Diictodon feliceps",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Burrowing dicynodont synapsid with spiral burrows.\", \"Sexually dimorphic tusks.\", \"Extremely abundant in Karoo.\"]"
+  },
+  {
+    "id": 1656,
+    "name": "Gorgonops torvus",
+    "scientificName": "Gorgonops torvus",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Eponymous gorgonopsian saber-toothed synapsid.\", \"Enormous upper saber tusks.\", \"Fast semi-erect runner.\"]"
+  },
+  {
+    "id": 1657,
+    "name": "Rubidgea atrox",
+    "scientificName": "Rubidgea atrox",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Largest apex gorgonopsian saber-tooth in South Africa.\", \"Enormous heavy skull over 50 cm.\", \"Massive crushing jaw power.\"]"
+  },
+  {
+    "id": 1658,
+    "name": "Procynosuchus delaharpeae",
+    "scientificName": "Procynosuchus delaharpeae",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"One of the earliest semi-aquatic cynodonts.\", \"Flexible spine for otter-like swimming.\", \"Primitive mammal ancestor.\"]"
+  },
+  {
+    "id": 1659,
+    "name": "Anteosaurus magnificus",
+    "scientificName": "Anteosaurus magnificus",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Massive carnivorous dinocephalian synapsid.\", \"Thickened skull roof for head-butting rivals.\", \"Large curved incisors.\"]"
+  },
+  {
+    "id": 1660,
+    "name": "Australovenator wintonensis",
+    "scientificName": "Australovenator wintonensis",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Apex megaraptorid predator of Cretaceous Australia.\", \"Large scythe-like claws on hands.\", \"Lightweight agile runner.\"]"
+  },
+  {
+    "id": 1661,
+    "name": "Diamantinasaurus matildae",
+    "scientificName": "Diamantinasaurus matildae",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Robust stocky titanosaurian.\", \"Found alongside Australovenator in Matilda site.\", \"Advanced limb adaptations.\"]"
+  },
+  {
+    "id": 1662,
+    "name": "Savannasaurus elliottorum",
+    "scientificName": "Savannasaurus elliottorum",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Wide-hipped barrel-bodied titanosaur.\", \"Demonstrates sauropod dispersal via Antarctica.\", \"Extremely wide torso.\"]"
+  },
+  {
+    "id": 1663,
+    "name": "Australotitan cooperensis",
+    "scientificName": "Australotitan cooperensis",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Largest dinosaur species ever discovered in Australia.\", \"30-meter length and 6.5m hip height.\", \"Top 15 giant sauropods worldwide.\"]"
+  },
+  {
+    "id": 1664,
+    "name": "Isisfordia duncani",
+    "scientificName": "Isisfordia duncani",
+    "clade": "Crocodylomorph",
+    "interestingFacts": "[\"Oldest ancestor of modern true crocodiles (Eusuchia).\", \"Ball-and-socket vertebrae.\", \"Complete secondary palate.\"]"
+  },
+  {
+    "id": 1665,
+    "name": "Ferrodraco lentoni",
+    "scientificName": "Ferrodraco lentoni",
+    "clade": "Pterosaur",
+    "interestingFacts": "[\"Most complete pterosaur skeleton from Australia.\", \"Large crest at front of upper jaw.\", \"Anhanguerid fisherman.\"]"
+  },
+  {
+    "id": 1666,
+    "name": "Muttaburrasaurus langdoni",
+    "scientificName": "Muttaburrasaurus langdoni",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Hollow inflatable nasal chamber for vocal resonance.\", \"Shearing teeth for tough vegetation.\", \"Most famous Australian ornithopod.\"]"
+  },
+  {
+    "id": 1667,
+    "name": "Rapator ornithestoid",
+    "scientificName": "Rapator ornithestoid",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Opalized hand bone showing massive claw.\", \"Early Australian megaraptorid.\", \"Found in Lightning Ridge opal mines.\"]"
+  },
+  {
+    "id": 1668,
+    "name": "Fostoria dhimbangunmal",
+    "scientificName": "Fostoria dhimbangunmal",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Fossil herd of opalized iguanodontians.\", \"First opalized dinosaur herd in the world.\", \"Direct relative of Muttaburrasaurus.\"]"
+  },
+  {
+    "id": 1669,
+    "name": "Weewarrasaurus pobeni",
+    "scientificName": "Weewarrasaurus pobeni",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Preserved in solid precious opal.\", \"Small bipedal ornithopod.\", \"Found in Wee Warra opal mine.\"]"
+  },
+  {
+    "id": 1670,
+    "name": "Lightningclaw",
+    "scientificName": "Lightningclaw",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Largest theropod discovered in Australia prior to Australovenator.\", \"Opalized giant scythe claw.\", \"Megaraptorid predator.\"]"
+  },
+  {
+    "id": 1671,
+    "name": "Steropodon galmani",
+    "scientificName": "Steropodon galmani",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"First Mesozoic mammal found in Australia.\", \"Oldest ancestor of the platypus.\", \"Preserved in blue-green precious opal.\"]"
+  },
+  {
+    "id": 1672,
+    "name": "Kollikodon ritchiei",
+    "scientificName": "Kollikodon ritchiei",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Giant early monotreme mammal.\", \"Molar teeth with rounded crushing cusps.\", \"Opalized fossil specimen.\"]"
+  },
+  {
+    "id": 1729,
+    "name": "Mapusaurus roseae",
+    "scientificName": "Mapusaurus roseae",
+    "clade": "Theropod",
+    "interestingFacts": "[\"12.2m giant carcharodontosaur.\", \"Cooperative pack hunting.\", \"Bladelike flesh-carving teeth.\"]"
+  },
+  {
+    "id": 1730,
+    "name": "Buitreraptor gonzalezorum",
+    "scientificName": "Buitreraptor gonzalezorum",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Long slender snout.\", \"Tiny un-serrated teeth.\", \"Unenlagiine dromaeosaur.\"]"
+  },
+  {
+    "id": 1731,
+    "name": "Ekrixinatosaurus novasi",
+    "scientificName": "Ekrixinatosaurus novasi",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Deep boxy abelisaur skull.\", \"Vestigial tiny forearms.\", \"High bite force.\"]"
+  },
+  {
+    "id": 1732,
+    "name": "Andesaurus delgadoi",
+    "scientificName": "Andesaurus delgadoi",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Basal titanosaur.\", \"Diplodocid-like tail vertebrae.\", \"Massive body frame.\"]"
+  },
+  {
+    "id": 1733,
+    "name": "Bicentenaria argentina",
+    "scientificName": "Bicentenaria argentina",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Basal coelurosaur.\", \"Bonebed of 130+ bones.\", \"Named for Argentina Bicentennial.\"]"
+  },
+  {
+    "id": 1734,
+    "name": "Alnashetri cerropoliciensis",
+    "scientificName": "Alnashetri cerropoliciensis",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Tiny alvarezsaurid.\", \"Specialized digging arms.\", \"Slender sprinting legs.\"]"
+  },
+  {
+    "id": 1735,
+    "name": "Irritator challengeri",
+    "scientificName": "Irritator challengeri",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Received its name because paleontologists were immensely irritated by fossil poachers vandalizing the skull with plaster.\",\"A tooth belonging to Irritator was found embedded inside a fossilized pterosaur spine, confirming pterosaur predation.\",\"Possessed an exceptionally fast jaw closure mechanism, lowering its lower jaw sideways to swallow fish whole.\"]"
+  },
+  {
+    "id": 1736,
+    "name": "Santanaraptor placidus",
+    "scientificName": "Santanaraptor placidus",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Preserved mineralized soft tissue.\", \"Early tyrannosauroid relative.\", \"Basal coelurosaur.\"]"
+  },
+  {
+    "id": 1737,
+    "name": "Tropeognathus mesembrinus",
+    "scientificName": "Tropeognathus mesembrinus",
+    "clade": "Pterosaur",
+    "interestingFacts": "[\"Giant 8.2m wingspan.\", \"Large jaw keel crest.\", \"Skimming fisherman.\"]"
+  },
+  {
+    "id": 1738,
+    "name": "Cearadactylus atrox",
+    "scientificName": "Cearadactylus atrox",
+    "clade": "Pterosaur",
+    "interestingFacts": "[\"Spatulate front teeth.\", \"Kinked snout tip.\", \"Coastal pterosaur.\"]"
+  },
+  {
+    "id": 1739,
+    "name": "Araripesuchus gomesii",
+    "scientificName": "Araripesuchus gomesii",
+    "clade": "Crocodylomorph",
+    "interestingFacts": "[\"Dog-like terrestrial crocodile.\", \"Multicusped cheek teeth.\", \"Upright stance.\"]"
+  },
+  {
+    "id": 1740,
+    "name": "Brasileodactylus araripensis",
+    "scientificName": "Brasileodactylus araripensis",
+    "clade": "Pterosaur",
+    "interestingFacts": "[\"Long jaw with expanding front teeth.\", \"Low nasal crest.\", \"Concretion nodule fossil.\"]"
+  },
+  {
+    "id": 1741,
+    "name": "Tupuxuara longicristatus",
+    "scientificName": "Tupuxuara longicristatus",
+    "clade": "Pterosaur",
+    "interestingFacts": "[\"Massive head crest growing with age.\", \"Toothless beak.\", \"Skim feeding ability.\"]"
+  },
+  {
+    "id": 1742,
+    "name": "Ludodactylus sibbicki",
+    "scientificName": "Ludodactylus sibbicki",
+    "clade": "Pterosaur",
+    "interestingFacts": "[\"Teeth combined with backward crest.\", \"Unique leaf stuck in jaw specimen.\", \"Toy-like appearance.\"]"
+  },
+  {
+    "id": 1743,
+    "name": "Santanachelys gaffneyi",
+    "scientificName": "Santanachelys gaffneyi",
+    "clade": "Marine_Reptile",
+    "interestingFacts": "[\"Oldest known sea turtle.\", \"Retained distinct claws on flippers.\", \"Early salt gland development.\"]"
+  },
+  {
+    "id": 1744,
+    "name": "Cladocyclus gardneri",
+    "scientificName": "Cladocyclus gardneri",
+    "clade": "Invertebrate",
+    "interestingFacts": "[\"Large predatory ray-finned fish.\", \"Sharp fang-like teeth.\", \"Preserved in nodules.\"]"
+  },
+  {
+    "id": 1745,
+    "name": "Calamopleurus cylindrical",
+    "scientificName": "Calamopleurus cylindrical",
+    "clade": "Invertebrate",
+    "interestingFacts": "[\"Giant bowfin relative.\", \"Massive heavy skull.\", \"Lagoon apex predator.\"]"
+  },
+  {
+    "id": 1746,
+    "name": "Neovenator salerii",
+    "scientificName": "Neovenator salerii",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Apex carcharodontosaurian of Early Cretaceous Europe.\", \"Complex neurovascular organs on snout.\", \"Agile bipedal hunter.\"]"
+  },
+  {
+    "id": 1747,
+    "name": "Eotyrannus lengi",
+    "scientificName": "Eotyrannus lengi",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Early primitive tyrannosauroid.\", \"Elongated 3-fingered hands.\", \"Fused nasal bones.\"]"
+  },
+  {
+    "id": 1748,
+    "name": "Mantellisaurus atherfieldensis",
+    "scientificName": "Mantellisaurus atherfieldensis",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Gracile iguanodontian relative.\", \"Longer forelimbs enabling bipedal/quadrupedal stance.\", \"Conical thumb spike.\"]"
+  },
+  {
+    "id": 1749,
+    "name": "Iguanodon bernissartensis",
+    "scientificName": "Iguanodon bernissartensis",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Second dinosaur ever named.\", \"Large conical thumb spike for defense.\", \"Prehensile fifth finger.\"]"
+  },
+  {
+    "id": 1750,
+    "name": "Caulkicephalus trimicrodon",
+    "scientificName": "Caulkicephalus trimicrodon",
+    "clade": "Pterosaur",
+    "interestingFacts": "[\"Ornithocheirid pterosaur.\", \"Front teeth pointing forward for catching fish.\", \"Cranial ridge on snout.\"]"
+  },
+  {
+    "id": 1751,
+    "name": "Valdosaurus canaliculatus",
+    "scientificName": "Valdosaurus canaliculatus",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Small agile dryosaurid runner.\", \"Femur with deep anterior intercondylar groove.\", \"Fast bipedal herbivore.\"]"
+  },
+  {
+    "id": 1752,
+    "name": "Concavenator corcovatus",
+    "scientificName": "Concavenator corcovatus",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Had two unusually tall neural spines above its hips forming a pointed crest or hump on its back.\",\"Possessed quill knobs (apophysis) on its ulna, indicating the presence of proto-feather structures or displays on its arms.\",\"One of the best preserved carcharodontosaurids ever discovered in Europe.\"]"
+  },
+  {
+    "id": 1753,
+    "name": "Pelecanimimus polychrodon",
+    "scientificName": "Pelecanimimus polychrodon",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Over 220 tiny teeth in jaws.\", \"Soft tissue throat pouch preserved like a pelican.\", \"Primitive toothy ornithomimosaur.\"]"
+  },
+  {
+    "id": 1754,
+    "name": "Hypselospinus fittoni",
+    "scientificName": "Hypselospinus fittoni",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Elongated neural spines along back.\", \"Heavy-set iguanodontian.\", \"Extensive Wealden distribution.\"]"
+  },
+  {
+    "id": 1755,
+    "name": "Ornithopsis hulkei",
+    "scientificName": "Ornithopsis hulkei",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Extensively pneumatic hollow vertebrae.\", \"Early European brachiosaurid relative.\", \"Named based on bird-like bone honeycomb.\"]"
+  },
+  {
+    "id": 1756,
+    "name": "Kukufeldia tilgatensis",
+    "scientificName": "Kukufeldia tilgatensis",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Mandible with distinctive neurovascular foramina pattern.\", \"From historic Cuckfield quarry where Gideon Mantell worked.\", \"Basal Styracosterna.\"]"
+  },
+  {
+    "id": 1757,
+    "name": "Sinosauropteryx prima",
+    "scientificName": "Sinosauropteryx prima",
+    "clade": "Theropod",
+    "interestingFacts": "[\"First non-avian dinosaur discovered with preserved feathers.\", \"Melanosome analysis confirmed reddish-brown striped tail.\", \"Small compsognathid hunter.\"]"
+  },
+  {
+    "id": 1758,
+    "name": "Confuciusornis sanctus",
+    "scientificName": "Confuciusornis sanctus",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Toothless beak in an early bird.\", \"Pair of extremely long ribbon-like tail feathers in males.\", \"Thousands of complete fossilized specimens.\"]"
+  },
+  {
+    "id": 1759,
+    "name": "Beipiaosaurus inexpectus",
+    "scientificName": "Beipiaosaurus inexpectus",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Dense coat of filamentous proto-feathers.\", \"Long sickle claws on hands.\", \"Primitive basal therizinosaur.\"]"
+  },
+  {
+    "id": 1760,
+    "name": "Caudipteryx zhoui",
+    "scientificName": "Caudipteryx zhoui",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Symmetrical true vane feathers on short tail and arms.\", \"Swallowed gizzard stones (gastroliths) to grind food.\", \"Flightless feather display dinosaur.\"]"
+  },
+  {
+    "id": 1761,
+    "name": "Repenomamus giganteus",
+    "scientificName": "Repenomamus giganteus",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Largest known Mesozoic mammal.\", \"Fossilized stomach contained remains of a juvenile Psittacosaurus.\", \"Badger-like carnivore.\"]"
+  },
+  {
+    "id": 1762,
+    "name": "Liaoningosaurus paradoxus",
+    "scientificName": "Liaoningosaurus paradoxus",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"First aquatic carnivorous/piscivorous ankylosaur known.\", \"Fish skeletons preserved inside abdominal cavity.\", \"Plastron-like ventral bony shell.\"]"
+  },
+  {
+    "id": 1921,
+    "name": "Tapejara doeringi",
+    "scientificName": "Tapejara doeringi",
+    "clade": "Pterosaur",
+    "interestingFacts": "[\"Huge sail-like cranial crest.\", \"Toothless downturned beak.\", \"Frugivorous lifestyle.\"]"
+  },
+  {
+    "id": 2035,
+    "name": "Poposaurus gracilis",
+    "scientificName": "Poposaurus gracilis",
+    "clade": "Poposauroid",
+    "interestingFacts": "[\"Bipedal pseudosuchian archosaur.\", \"Convergent evolution with theropod posture.\", \"Found in Chinle and Popo Agie beds.\"]"
+  },
+  {
+    "id": 2036,
+    "name": "Stenopterygius quadriscissus",
+    "scientificName": "Stenopterygius quadriscissus",
+    "clade": "Marine_Reptile",
+    "interestingFacts": "[\"Preserved soft tissue outlines and dorsal fin.\", \"Pregnant specimens with embryos inside birth canal.\", \"Dolphin-like marine reptile.\"]"
+  },
+  {
+    "id": 2037,
+    "name": "Eurhinosaurus longirostris",
+    "scientificName": "Eurhinosaurus longirostris",
+    "clade": "Marine_Reptile",
+    "interestingFacts": "[\"Extreme sawfish-like upper jaw overhang.\", \"Upper jaw twice length of lower jaw.\", \"Slash hunter.\"]"
+  },
+  {
+    "id": 2038,
+    "name": "Dorygnathus banthensis",
+    "scientificName": "Dorygnathus banthensis",
+    "clade": "Pterosaur",
+    "interestingFacts": "[\"Long interlocking spear-like teeth.\", \"Vane-tipped long tail.\", \"Holzmaden shale pterosaur.\"]"
+  },
+  {
+    "id": 2039,
+    "name": "Campylognathoides zitteli",
+    "scientificName": "Campylognathoides zitteli",
+    "clade": "Pterosaur",
+    "interestingFacts": "[\"Short stout skull.\", \"Proportionally long wings.\", \"Preserved in black Posidonia shale.\"]"
+  },
+  {
+    "id": 2040,
+    "name": "Seirocrinus subangularis",
+    "scientificName": "Seirocrinus subangularis",
+    "clade": "Invertebrate",
+    "interestingFacts": "[\"Largest sea lily crinoid colonizing drift logs.\", \"Stems up to 15 meters long.\", \"Golden pyritized Holzmaden specimens.\"]"
+  },
+  {
+    "id": 2041,
+    "name": "Teleosaurus cadomensis",
+    "scientificName": "Teleosaurus cadomensis",
+    "clade": "Crocodylomorph",
+    "interestingFacts": "[\"Fully marine thalattosuchian crocodile.\", \"Interlocking armor plates.\", \"Slender fish-catching snout.\"]"
+  },
+  {
+    "id": 2042,
+    "name": "Pisanosaurus mertii",
+    "scientificName": "Pisanosaurus mertii",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Earliest known ornithischian dinosaur.\", \"Slender bipedal runner.\", \"Key evolutionary link.\"]"
+  },
+  {
+    "id": 2043,
+    "name": "Shunosaurus lii",
+    "scientificName": "Shunosaurus lii",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Tail tipped with heavy bony club equipped with two spikes.\", \"Complete skeletons exhibited in Zigong Dinosaur Museum.\", \"Abundant Middle Jurassic sauropod.\"]"
+  },
+  {
+    "id": 2044,
+    "name": "Datousaurus bashanensis",
+    "scientificName": "Datousaurus bashanensis",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Massive deep boxy skull with broad spoon teeth.\", \"Coexisted with Shunosaurus.\", \"High browser.\"]"
+  },
+  {
+    "id": 2045,
+    "name": "Agilisaurus louderbacki",
+    "scientificName": "Agilisaurus louderbacki",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Complete skeleton preserving clear bipedal proportions.\", \"Agile herbivorous runner.\", \"Basal neornithischian.\"]"
+  },
+  {
+    "id": 2046,
+    "name": "Xiaosaurus dashanpensis",
+    "scientificName": "Xiaosaurus dashanpensis",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Small primitive ornithischian.\", \"Lived alongside Agilisaurus.\", \"Fast bipedal herbivore.\"]"
+  },
+  {
+    "id": 2047,
+    "name": "Gasosaurus constructus",
+    "scientificName": "Gasosaurus constructus",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Predatory theropod of Dashanpu.\", \"Blade-like serrated teeth.\", \"Basal carnosaurian.\"]"
+  },
+  {
+    "id": 2048,
+    "name": "Huayangosaurus taibaii",
+    "scientificName": "Huayangosaurus taibaii",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Earliest well-known stegosaur.\", \"Retained premaxillary teeth in front of snout.\", \"Spike-like shoulder osteoderms.\"]"
+  },
+  {
+    "id": 2049,
+    "name": "Yandusaurus hongheensis",
+    "scientificName": "Yandusaurus hongheensis",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Slender Five-fingered hands.\", \"Agile hypsilophodontid runner.\", \"Zigong salt pit discovery.\"]"
+  },
+  {
+    "id": 2050,
+    "name": "Protoceratops andrewsi",
+    "scientificName": "Protoceratops andrewsi",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Found in combat lock with Velociraptor ('Fighting Dinosaurs' specimen).\", \"Broad neck frill without horn brows.\", \"Fossilized nests with eggs.\"]"
+  },
+  {
+    "id": 2052,
+    "name": "Pinacosaurus grangeri",
+    "scientificName": "Pinacosaurus grangeri",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Mass juvenile bonebeds buried by desert sandstorms.\", \"Complex breathing nasal passages.\", \"Bony tail club for defense.\"]"
+  },
+  {
+    "id": 2053,
+    "name": "Tarbosaurus bataar",
+    "scientificName": "Tarbosaurus bataar",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Asian equivalent of Tyrannosaurus rex.\", \"Proportionally smallest 2-fingered arms of any tyrannosaurid.\", \"Rigid locking lower jaw mechanism.\"]"
+  },
+  {
+    "id": 2054,
+    "name": "Therizinosaurus cheloniformis",
+    "scientificName": "Therizinosaurus cheloniformis",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Enormous 1-meter long scythe claws on forelimbs.\", \"Largest claws of any land animal in history.\", \"Pot-bellied herbivorous theropod.\"]"
+  },
+  {
+    "id": 2055,
+    "name": "Gallimimus bullatus",
+    "scientificName": "Gallimimus bullatus",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Largest known ostrich dinosaur (ornithomimid).\", \"Slender sprinting limbs built for high speed.\", \"Toothless keratinous beak.\"]"
+  },
+  {
+    "id": 2056,
+    "name": "Lufengosaurus huenei",
+    "scientificName": "Lufengosaurus huenei",
+    "clade": "Sauropodomorph",
+    "interestingFacts": "[\"First dinosaur displayed on a Chinese postage stamp.\", \"Abundant Massospondylid in Yunnan.\", \"Sharp thumb claw for defense.\"]"
+  },
+  {
+    "id": 2058,
+    "name": "Indosaurus matleyi",
+    "scientificName": "Indosaurus matleyi",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Thickened skull roof with small hornlets.\", \"Contemporaneous with Rajasaurus.\", \"Abelisaurid carnivore.\"]"
+  },
+  {
+    "id": 2059,
+    "name": "Barapasaurus tagorei",
+    "scientificName": "Barapasaurus tagorei",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"One of the earliest true sauropods in the world.\", \"Slender spoon-shaped teeth.\", \"Bonebed of over 300 bones.\"]"
+  },
+  {
+    "id": 2060,
+    "name": "Kotasaurus yamanpalliensis",
+    "scientificName": "Kotasaurus yamanpalliensis",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Primitive sauropod retaining prosauropod-like hips.\", \"Spoon teeth for chewing foliage.\", \"Found in red clay beds.\"]"
+  },
+  {
+    "id": 2061,
+    "name": "Spinosaurus aegyptiacus",
+    "scientificName": "Spinosaurus aegyptiacus",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Largest known carnivorous dinosaur species.\", \"1.8m tall dorsal sail supported by neural spines.\", \"Paddle-like tail for active swimming propel.\"]"
+  },
+  {
+    "id": 2062,
+    "name": "Carcharodontosaurus saharicus",
+    "scientificName": "Carcharodontosaurus saharicus",
+    "clade": "Theropod",
+    "interestingFacts": "[\"1.6m long skull with 20 cm shark-like serrated teeth.\", \"Rivaled T. rex in length.\", \"Apex terrestrial predator.\"]"
+  },
+  {
+    "id": 2063,
+    "name": "Heterodontosaurus tucki",
+    "scientificName": "Heterodontosaurus tucki",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Three distinct tooth types: incisors, canine tusks, and cheek teeth.\", \"Advanced chewing cheek battery.\", \"Filamentous integument bristles.\"]"
+  },
+  {
+    "id": 2064,
+    "name": "Kunbarrasaurus ieversae",
+    "scientificName": "Kunbarrasaurus ieversae",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Most complete fossil skeleton found in Australia.\", \"Preserved stomach contents (seeds, leaves, fern sporangia).\", \"Inner ear structure resembles turtle.\"]"
+  },
+  {
+    "id": 2161,
+    "name": "Lepidotes elvensis",
+    "scientificName": "Lepidotes elvensis",
+    "clade": "Invertebrate",
+    "interestingFacts": "[\"Thick peg-like crushing teeth.\", \"Heavy enamel ganoid scales.\", \"Found in Posidonia black shale.\"]"
+  },
+  {
+    "id": 2309,
+    "name": "Bagaceratops rozhdestvenskyi",
+    "scientificName": "Bagaceratops rozhdestvenskyi",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Small neoceratopsian with triangular frill.\", \"Prominent horn-like bump on snout.\", \"Gobi desert endemic.\"]"
+  },
+  {
+    "id": 2310,
+    "name": "Jingshanosaurus myankouensis",
+    "scientificName": "Jingshanosaurus myankouensis",
+    "clade": "Sauropodomorph",
+    "interestingFacts": "[\"One of the last large prosauropods.\", \"Complete skeleton with skull exhibited in Kunming.\", \"Quadrupedal browser.\"]"
+  },
+  {
+    "id": 2311,
+    "name": "Yunnanosaurus huangi",
+    "scientificName": "Yunnanosaurus huangi",
+    "clade": "Sauropodomorph",
+    "interestingFacts": "[\"Chisel-like self-sharpening teeth.\", \"Advanced prosauropod.\", \"Over 20 complete skeletons recovered.\"]"
+  },
+  {
+    "id": 2312,
+    "name": "Bienosaurus lufengensis",
+    "scientificName": "Bienosaurus lufengensis",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Basal armored thyreophoran.\", \"Rows of bony osteoderms on back.\", \"Early Jurassic Asian armored dinosaur.\"]"
+  },
+  {
+    "id": 2313,
+    "name": "Lukousaurus yini",
+    "scientificName": "Lukousaurus yini",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Small predatory archosaur with horn-like nasal crests.\", \"Basal theropod or crocodylomorph.\", \"Lufeng predator.\"]"
+  },
+  {
+    "id": 2314,
+    "name": "Eshanosaurus deguchiianus",
+    "scientificName": "Eshanosaurus deguchiianus",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Oldest putative therizinosaurid known.\", \"Left dentary jaw bone with specialized herbivorous teeth.\", \"Extends coelurosaur lineage into Early Jurassic.\"]"
+  },
+  {
+    "id": 2315,
+    "name": "Sinosaurus triassicus",
+    "scientificName": "Sinosaurus triassicus",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Apex predator of Early Jurassic China.\", \"Pair of double crests on top of head like Dilophosaurus.\", \"Deep strong jaws.\"]"
+  },
+  {
+    "id": 2316,
+    "name": "Isisaurus colberti",
+    "scientificName": "Isisaurus colberti",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Short vertical neck with robust forelimbs.\", \"Discovered in Dongargaon, Maharashtra.\", \"Fossilized dung (coprolites) contained angiosperm leaves.\"]"
+  },
+  {
+    "id": 2317,
+    "name": "Indochelys spatulata",
+    "scientificName": "Indochelys spatulata",
+    "clade": "Marine_Reptile",
+    "interestingFacts": "[\"Early aquatic turtle.\", \"Thick spatulate shell.\", \"Endemic to Early Jurassic India.\"]"
+  },
+  {
+    "id": 2318,
+    "name": "Dandakosaurus indicus",
+    "scientificName": "Dandakosaurus indicus",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Apex theropod predator of Kota Formation.\", \"Large ceratosaurian relative.\", \"Named after historic Dandakaranya forest.\"]"
+  },
+  {
+    "id": 2319,
+    "name": "Treposuchus indicus",
+    "scientificName": "Treposuchus indicus",
+    "clade": "Crocodylomorph",
+    "interestingFacts": "[\"Early teleosaurid aquatic crocodile.\", \"Elongated snout filled with needle teeth.\", \"Freshwater lagoon inhabitant.\"]"
+  },
+  {
+    "id": 2320,
+    "name": "Sivapithecus sivalensis",
+    "scientificName": "Sivapithecus sivalensis",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Direct ancestor of modern orangutans (Pongo).\", \"Concave facial profile and tall oval eye sockets.\", \"Thick tooth enamel for crushing tough seeds.\"]"
+  },
+  {
+    "id": 2321,
+    "name": "Gigantopithecus bilaspurensis",
+    "scientificName": "Gigantopithecus bilaspurensis",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Largest primate to ever live.\", \"Massive lower jaw with huge grinding molars.\", \"Forest floor browser.\"]"
+  },
+  {
+    "id": 2322,
+    "name": "Bramatherium megacephalum",
+    "scientificName": "Bramatherium megacephalum",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Massive extinct giraffid.\", \"Five crown ossicones forming a helmet crest.\", \"Stocky neck and body frame.\"]"
+  },
+  {
+    "id": 2323,
+    "name": "Hexaprotodon sivalensis",
+    "scientificName": "Hexaprotodon sivalensis",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Primitive hippopotamus with 6 incisors instead of 4.\", \"Semiaquatic river basin dweller.\", \"Widespread across Neogene India.\"]"
+  },
+  {
+    "id": 2324,
+    "name": "Archidiskodon planifrons",
+    "scientificName": "Archidiskodon planifrons",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Early mammoth ancestor.\", \"Curved tusks up to 3 meters.\", \"Transition to grassland grazing.\"]"
+  },
+  {
+    "id": 2325,
+    "name": "Bahariasaurus ingens",
+    "scientificName": "Bahariasaurus ingens",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Rivaled Spinosaurus and Carcharodontosaurus in length.\", \"Large slender theropod.\", \"Tragically lost holotype specimen.\"]"
+  },
+  {
+    "id": 2326,
+    "name": "Aegyptosaurus baharijensis",
+    "scientificName": "Aegyptosaurus baharijensis",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Primitive African titanosaur.\", \"Found in coastal mangrove swamp deposits.\", \"Fossils also destroyed in Munich 1944 bombing.\"]"
+  },
+  {
+    "id": 2327,
+    "name": "Stromerichthys lacustris",
+    "scientificName": "Stromerichthys lacustris",
+    "clade": "Invertebrate",
+    "interestingFacts": "[\"Giant bichir ray-finned fish.\", \"Heavy ganoid scales.\", \"Inhabited Bahariya freshwater estuaries.\"]"
+  },
+  {
+    "id": 2328,
+    "name": "Abrictosaurus consors",
+    "scientificName": "Abrictosaurus consors",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Early heterodontosaurid without prominent upper tusks.\", \"Slender bipedal runner.\", \"Found in Upper Elliot Formation.\"]"
+  },
+  {
+    "id": 2471,
+    "name": "Santanadactylus brasilensis",
+    "scientificName": "Santanadactylus brasilensis",
+    "clade": "Pterosaur",
+    "interestingFacts": "[\"Early anhanguerid pterosaur.\", \"Preserved in Araripe calcareous nodules.\", \"Slender wing bones.\"]"
+  },
+  {
+    "id": 2472,
+    "name": "Mamenchisaurus constructus",
+    "scientificName": "Mamenchisaurus constructus",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Extremely long neck making up half of body length.\", \"19 cervical neck vertebrae.\", \"Shaximiao apex browser.\"]"
+  },
+  {
+    "id": 2473,
+    "name": "Halszkaraptor escuilliei",
+    "scientificName": "Halszkaraptor escuilliei",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Amphibious swan-necked dromaeosaurid.\", \"Paddle-like forelimbs for swimming.\", \"Synchrotron micro-tomography discovery.\"]"
+  },
+  {
+    "id": 2474,
+    "name": "Shuvuuia deserti",
+    "scientificName": "Shuvuuia deserti",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Extreme low-frequency night hearing adaptations.\", \"Single stout claw on short arms for digging anthills.\", \"Keratinous beta-feather proteins preserved.\"]"
+  },
+  {
+    "id": 2475,
+    "name": "Talarurus plicatospineus",
+    "scientificName": "Talarurus plicatospineus",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Heavy bony tail club.\", \"Interlocking armored osteoderms.\", \"Found in Nemegt river beds.\"]"
+  },
+  {
+    "id": 2476,
+    "name": "Homalocephale calathocercos",
+    "scientificName": "Homalocephale calathocercos",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Flat-topped pachycephalosaur skull.\", \"Broad pelvis for live birth or large digestive tract.\", \"Found in Nemegt Basin.\"]"
+  },
+  {
+    "id": 2477,
+    "name": "Prenocephale prenes",
+    "scientificName": "Prenocephale prenes",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Thick domed skull roof surrounded by bony spikes.\", \"High visual capabilities.\", \"Agile bipedal runner.\"]"
+  },
+  {
+    "id": 2478,
+    "name": "Jainosaurus septentrionalis",
+    "scientificName": "Jainosaurus septentrionalis",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Large titanosaur from Jabalpur.\", \"Distinct braincase structure.\", \"Coexisted with Rajasaurus.\"]"
+  },
+  {
+    "id": 2479,
+    "name": "Lametasaurus indicus",
+    "scientificName": "Lametasaurus indicus",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Armor osteoderms found associated with theropod bones.\", \"Historic Indian abelisaurid taxon.\", \"Lameta Formation discovery.\"]"
+  },
+  {
+    "id": 2480,
+    "name": "Kotaichthys kartikeyai",
+    "scientificName": "Kotaichthys kartikeyai",
+    "clade": "Invertebrate",
+    "interestingFacts": "[\"Freshwater ray-finned fish.\", \"Found in Kota limestone beds of Telangana.\", \"Heavy ganoid scales.\"]"
+  },
+  {
+    "id": 2481,
+    "name": "Indobatrachus pusillus",
+    "scientificName": "Indobatrachus pusillus",
+    "clade": "Early_Tetrapod_Amphibian",
+    "interestingFacts": "[\"Early fossil frog specimen.\", \"Preserved complete skeleton in lake shale.\", \"Kota formation lake fauna.\"]"
+  },
+  {
+    "id": 2482,
+    "name": "Paralititan stromeri",
+    "scientificName": "Paralititan stromeri",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Colossal 42-ton titanosaur.\", \"Found in coastal mangrove tidal flat deposits.\", \"1.69m humerus bone.\"]"
+  },
+  {
+    "id": 2483,
+    "name": "Blikanasaurus cromptoni",
+    "scientificName": "Blikanasaurus cromptoni",
+    "clade": "Sauropodomorph",
+    "interestingFacts": "[\"Heavy stocky quadrupedal sauropodomorph lower limb.\", \"Found in Lower Elliot Formation.\", \"Early stage of sauropod gigantism.\"]"
+  },
+  {
+    "id": 2484,
+    "name": "Spinosaurus maroccanus",
+    "scientificName": "Spinosaurus maroccanus",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Moroccan spinosaur species based on cervical vertebrae length.\", \"Specialized fish-eating snout.\", \"Inhabited Kem Kem river deltas.\"]"
+  },
+  {
+    "id": 2641,
+    "name": "Yangchuanosaurus shangyouensis",
+    "scientificName": "Yangchuanosaurus shangyouensis",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Apex carnosaur predator of Late Jurassic China.\", \"Rugged facial crests on top of nose.\", \"Deep powerful jaws.\"]"
+  },
+  {
+    "id": 2642,
+    "name": "Opisthocoelicaudia skarzynskii",
+    "scientificName": "Opisthocoelicaudia skarzynskii",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Opposite cavity tail vertebrae for rigid tripod stance.\", \"Lacked clawed fingers on forelimbs.\", \"Complete skeleton minus skull.\"]"
+  },
+  {
+    "id": 2643,
+    "name": "Compsosuchus solus",
+    "scientificName": "Compsosuchus solus",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Small slender noasaurid theropod.\", \"Distinct hollow neck vertebrae.\", \"Cretaceous Indian predator.\"]"
+  },
+  {
+    "id": 2644,
+    "name": "Eocarcharia dinops",
+    "scientificName": "Eocarcharia dinops",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Heavy brow ridge over eye socket.\", \"Bladelike serrated teeth for flesh cutting.\", \"Early carcharodontosaurid.\"]"
+  },
+  {
+    "id": 2805,
+    "name": "Chungkingosaurus jiangbeiensis",
+    "scientificName": "Chungkingosaurus jiangbeiensis",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Smallest known stegosaurid from Shaximiao Formation.\", \"Multiple pairs of thagomizer tail spikes.\", \"Thick dorsal armor plates.\"]"
+  },
+  {
+    "id": 3152,
+    "name": "Squalicorax falcatus",
+    "scientificName": "Squalicorax falcatus",
+    "clade": "Other",
+    "interestingFacts": "[\"Known as the 'Crow Shark' due to its ubiquitous presence as a scavenger in Cretaceous seas.\",\"Fossilized Squalicorax teeth have been found embedded in the bones of terrestrial dinosaurs, proving it scavenged on carcasses washed out to sea.\",\"Possessed distinctive serrated, crescent-shaped teeth perfect for slicing through tough flesh and bone.\"]"
+  },
+  {
+    "id": 3153,
+    "name": "Zalmoxes robustus",
+    "scientificName": "Zalmoxes robustus",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Lived on Hațeg Island, an isolated landmass in Late Cretaceous Europe, leading to insular dwarfism.\",\"Possessed a surprisingly robust, heavy skull compared to its small overall body size.\",\"Served as a primary herbivorous prey species for the giant azhdarchid pterosaur Hatzegopteryx.\"]"
+  },
+  {
+    "id": 3154,
+    "name": "Geosaurus giganteus",
+    "scientificName": "Geosaurus giganteus",
+    "clade": "Crocodylomorph",
+    "interestingFacts": "[\"Completely lost heavy osteoderm armor to maximize aquatic agility and swimming speed.\",\"Transformed its legs into hydrofoil paddles and developed a fish-like hypocercal tail fin.\",\"Equipped with serrated, ziphodont teeth optimized for tearing prey rather than crushing shells.\"]"
+  },
+  {
+    "id": 3155,
+    "name": "Metriorhynchus geoffroyii",
+    "scientificName": "Metriorhynchus geoffroyii",
+    "clade": "Crocodylomorph",
+    "interestingFacts": "[\"Possessed large salt glands positioned above its eyes to excrete excess ocean salt.\",\"Gave live birth at sea (viviparity) as its limbs could no longer support walking on land.\",\"Had smooth skin without armor scales, reducing drag in the water.\"]"
+  },
+  {
+    "id": 3156,
+    "name": "Megaraptor namunhuaiquii",
+    "scientificName": "Megaraptor namunhuaiquii",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Its famous 35 cm sickle claw was originally misidentified as a giant foot claw like Velociraptor's.\",\"Head of the enigmatic Megaraptora clade, which dominated South American ecosystems after carcharodontosaurids declined.\",\"Possessed highly pneumatic (air-filled) bones, making it agile for an 8-meter long predator.\"]"
+  },
+  {
+    "id": 3157,
+    "name": "Maip macrothorax",
+    "scientificName": "Maip macrothorax",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Named 'Maip' after an evil mythological spirit of the Aonikenk (Tehuelche) people representing cold death.\",\"The largest megaraptoran ever discovered, outsizing Megaraptor and Australovenator.\",\"Had an unusually wide, heavy thoracic cavity ('macrothorax') housing large lung systems for high metabolism.\"]"
+  },
+  {
+    "id": 3158,
+    "name": "Lythronax argestes",
+    "scientificName": "Lythronax argestes",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Nickname 'Gore King' comes from its scientific name translating directly to 'King of Gore'.\",\"Possessed broad skull rear and narrow snout, giving it overlapping 3D binocular vision like T. rex 13 million years earlier.\",\"Proved that tyrannosaurid radiation occurred much earlier than previously assumed.\"]"
+  },
+  {
+    "id": 3159,
+    "name": "Moros intrepidus",
+    "scientificName": "Moros intrepidus",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Filled the 70-million-year gap in North American tyrannosaur evolution.\",\"Existed as a small, nimble predator when giant allosauroids (like Siats) were apex predators.\",\"Extremely long leg bones indicate superior running speed and cursorial agility.\"]"
+  },
+  {
+    "id": 3160,
+    "name": "Sauroposeidon proteles",
+    "scientificName": "Sauroposeidon proteles",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Its neck reached up to 12 meters (39 feet) in length, accounting for over one-third of its total body length.\",\"Cervical vertebrae were up to 1.4 meters long and filled with honeycombed internal air cells (trabecular bone).\",\"Stood as tall as a 6-story building, allowing it to browse vegetation inaccessible to any other creature.\"]"
+  },
+  {
+    "id": 3161,
+    "name": "Psephoderma alpinum",
+    "scientificName": "Psephoderma alpinum",
+    "clade": "Marine_Reptile",
+    "interestingFacts": "[\"Superficially resembled a marine turtle but belonged to the extinct placodont order of sauropterygians.\",\"Had two distinct protective carapace shields: one covering the shoulders/chest and a smaller one over the pelvis.\",\"Possessed toothless, narrow beaked jaws lined internally with flat, pavement-like crushing plates.\"]"
+  },
+  {
+    "id": 3162,
+    "name": "Vayuraptor agriculturalis",
+    "scientificName": "Vayuraptor agriculturalis",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Coexisted with another medium-sized theropod, Siamraptor, in Early Cretaceous Thailand.\",\"Ankle bones (astragalus and calcaneum) were fused together, enhancing biomechanical sprinting stability.\",\"Species name 'agriculturalis' honors local farmers who assisted in uncovering the fossil site.\"]"
+  },
+  {
+    "id": 3163,
+    "name": "Rhizodus hibberti",
+    "scientificName": "Rhizodus hibberti",
+    "clade": "Other",
+    "interestingFacts": "[\"Possessed enormous 22 cm (9 inch) tusk-like teeth anchored deeply into massive jaws.\",\"Could likely lung onto land or shallow swamp margins to snatch terrestrial amphibians, similar to modern crocodiles.\",\"Its skin was covered in heavy, overlapping cosmoid scales providing armor against rival aquatic predators.\"]"
+  },
+  {
+    "id": 3164,
+    "name": "Gillicus arcuatus",
+    "scientificName": "Gillicus arcuatus",
+    "clade": "Other",
+    "interestingFacts": "[\"Best known as the swallowed prey in the famous 14-foot Xiphactinus specimen at Hays, Kansas.\",\"Possessed numerous fine, needle-like gill rakers used to strain small marine organisms from sea water.\",\"Had deeply embedded, thin circular scales that reduced turbulence during swift schooling swims.\"]"
+  },
+  {
+    "id": 3165,
+    "name": "Yutyrannus huali",
+    "scientificName": "Yutyrannus huali",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Holds the record as the largest direct feather-bearing animal in Earth's history (9 meters long, 1.4 tonnes).\",\"Feathers were 20 cm long filamentous proto-feathers providing insulation in Liaoning's chilly 10°C climate.\",\"Possessed a high median crest along its snout used for species display and intra-species communication.\"]"
+  },
+  {
+    "id": 3166,
+    "name": "Nanotyrannus lancensis",
+    "scientificName": "Nanotyrannus lancensis",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Subject of one of the longest and most fiercely contested debates in paleontology history.\",\"Had significantly more teeth (up to 36 in upper jaw) and larger forelimbs than adult T. rex.\",\"Possessed extremely long, slender leg bones adapted for high-speed pursuit running.\"]"
+  },
+  {
+    "id": 3168,
+    "name": "Palaeoloxodon antiquus",
+    "scientificName": "Palaeoloxodon antiquus",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"One of the largest terrestrial mammals to ever walk the Earth, outsizing the Woolly Mammoth.\",\"Possessed long, nearly straight tusks reaching up to 3.8 meters in length.\",\"Coexisted with Neanderthals and early Homo sapiens, who actively hunted these leviathans with wooden spears.\"]"
+  },
+  {
+    "id": 3169,
+    "name": "Gryposuchus colombianus",
+    "scientificName": "Gryposuchus colombianus",
+    "clade": "Crocodylomorph",
+    "interestingFacts": "[\"Possessed an extremely elongated, narrow snout packed with over 80 inter-locking needle teeth.\",\"Inhabited the mega-wetlands of Miocene South America alongside giant caimans like Purussaurus.\",\"The hook-like curvature at the tip of its snout helped hold onto slippery, armor-plated prehistoric catfish.\"]"
+  },
+  {
+    "id": 3170,
+    "name": "Plesiosuchus manselii",
+    "scientificName": "Plesiosuchus manselii",
+    "clade": "Crocodylomorph",
+    "interestingFacts": "[\"The largest metriorhynchid crocodilian ever discovered, outgrowing Geosaurus and Metriorhynchus.\",\"Had wide-opening jaws with coarse serrations adapted for severing flesh from large marine vertebrates.\",\"Shared marine habitats with Dakosaurus, dividing ecological niches based on skull mechanics.\"]"
+  },
+  {
+    "id": 3171,
+    "name": "Suchodus durobrivensis",
+    "scientificName": "Suchodus durobrivensis",
+    "clade": "Crocodylomorph",
+    "interestingFacts": "[\"Possessed significantly shorter, stronger jaws than Metriorhynchus for crushing armored prey.\",\"Equipped with paddle-shaped limbs and a tail fin for pelagic sea life.\",\"Fossilized eye rings (sclerotic rings) show adaptations for deep diving.\"]"
+  },
+  {
+    "id": 3172,
+    "name": "Edestus heinrichi",
+    "scientificName": "Edestus heinrichi",
+    "clade": "Other",
+    "interestingFacts": "[\"Did not shed worn teeth; new teeth grew in from the back, pushing old teeth forward into protruding curved brackets.\",\"Jaws operated like a pair of hedge trimmers, thrashing up and down to slash prey.\",\"Belonged to Eugeneodontida, closely related to modern chimaeras rather than true sharks.\"]"
+  },
+  {
+    "id": 3173,
+    "name": "Pyroraptor olympius",
+    "scientificName": "Pyroraptor olympius",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Named 'Fire Thief' because its fossils were uncovered immediately after a major forest fire.\",\"Possessed a curved 6.5 cm sickle claw on the second toe of each foot for gripping prey.\",\"Fully covered in feathers with wing-like plumage along its forelimbs.\"]"
+  },
+  {
+    "id": 3175,
+    "name": "Dracovenator regenti",
+    "scientificName": "Dracovenator regenti",
+    "clade": "Theropod",
+    "interestingFacts": "[\"One of the earliest apex theropod dinosaurs discovered in southern Africa.\",\"Possessed paired bony crests running along the top of its skull.\",\"Targeted abundant early sauropodomorph dinosaurs as primary prey.\"]"
+  },
+  {
+    "id": 3176,
+    "name": "Sarcosaurus woodi",
+    "scientificName": "Sarcosaurus woodi",
+    "clade": "Theropod",
+    "interestingFacts": "[\"One of the earliest true Jurassic theropod dinosaurs discovered in the UK.\",\"Possessed a small nasal horn or crest similar to Ceratosaurus.\",\"Inhabited coastal mudflats alongside early marine reptiles.\"]"
+  },
+  {
+    "id": 3177,
+    "name": "Animantarx ramaljonesi",
+    "scientificName": "Animantarx ramaljonesi",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"First dinosaur discovered exclusively via radiological radiation detection technology.\",\"Possessed a heavily armored skull with small horn-like projections behind the eyes.\",\"Lacked a tail club, relying instead on shoulder spikes and fused armor plates.\"]"
+  },
+  {
+    "id": 3178,
+    "name": "Segnosaurus galbinensis",
+    "scientificName": "Segnosaurus galbinensis",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Bizarre theropod that evolved away from meat-eating to become a strict herbivore.\",\"Possessed a massive pot belly to ferment tough plant vegetation.\",\"Equipped with elongated, curved hand claws used to pull down tree branches.\"]"
+  },
+  {
+    "id": 3179,
+    "name": "Bajadasaurus pronuspinax",
+    "scientificName": "Bajadasaurus pronuspinax",
+    "clade": "Sauropod",
+    "interestingFacts": "[\"Possessed extremely long, thin neural spines along its neck that curved forward over its head.\",\"The neck spines were likely covered in keratin sheaths, acting as defensive spikes against predators while grazing.\",\"Eyes were positioned high on its skull, allowing it to look out for predators while lowering its snout to eat.\"]"
+  },
+  {
+    "id": 3180,
+    "name": "Fukuiraptor kitadaniensis",
+    "scientificName": "Fukuiraptor kitadaniensis",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Initially thought to be a dromaeosaurid due to a large hand claw, later recognized as a megaraptoran.\",\"The state dinosaur mascot of Fukui Prefecture, Japan.\",\"Possessed large hand claws used to grasp prey.\"]"
+  },
+  {
+    "id": 3181,
+    "name": "Fukuisaurus tetoriensis",
+    "scientificName": "Fukuisaurus tetoriensis",
+    "clade": "Ornithischian",
+    "interestingFacts": "[\"Skull lacked the kinetic flexibility seen in advanced hadrosaurs, chewing with a rigid maxilla.\",\"Coexisted with Fukuiraptor, Fukuititan, and Koshisaurus in Early Cretaceous Japan.\",\"Equipped with a sharp beak for clipping tough vegetation.\"]"
+  },
+  {
+    "id": 3182,
+    "name": "Leedsichthys problematicus",
+    "scientificName": "Leedsichthys problematicus",
+    "clade": "Other",
+    "interestingFacts": "[\"Holds the record as the largest bony fish in Earth's history, rivaling modern baleen whales in ecological role.\",\"Possessed over 40,000 delicate mesh-like gill raker teeth to filter microscopic plankton.\",\"Bite marks on Leedsichthys fins show it was hunted by giant marine predators like Liopleurodon and Metriorhynchus.\"]"
+  },
+  {
+    "id": 3183,
+    "name": "Suchomimus tenerensis",
+    "scientificName": "Suchomimus tenerensis",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Possessed a narrow 1.2-meter long crocodile-like skull lined with 100 conical teeth.\",\"Had a massive 30 cm sickle claw on its thumb used to spear fish.\",\"Featured a low neural spine sail reaching up to 60 cm high along its back.\"]"
+  },
+  {
+    "id": 3184,
+    "name": "Oxalaia quilombensis",
+    "scientificName": "Oxalaia quilombensis",
+    "clade": "Theropod",
+    "interestingFacts": "[\"Named after Oxalá, the principal deity in the Afro-Brazilian Candomblé pantheon.\",\"The largest carnivorous dinosaur recorded from Brazil.\",\"Close relative of North African Spinosaurus, featuring double functional replacement teeth.\"]"
+  },
+  {
+    "id": 3185,
+    "name": "Tropaeognathus mesembrinus",
+    "scientificName": "Tropaeognathus mesembrinus",
+    "clade": "Pterosaur",
+    "interestingFacts": "[\"One of the largest pre-azhdarchid flying reptiles known, with an 8.2-meter wingspan.\",\"Possessed large convex keel-like crests on the tips of both upper and lower jaws.\",\"Crests acted as rudders to stabilize jaws while dipping into water at high speed to catch fish.\"]"
+  },
+  {
+    "id": 3186,
+    "name": "Coloborhynchus clavirostris",
+    "scientificName": "Coloborhynchus clavirostris",
+    "clade": "Pterosaur",
+    "interestingFacts": "[\"Featured a unique flattened front snout tip with teeth projecting forward at odd angles.\",\"Equipped with a prominent crest along the front upper jaw.\",\"Earliest recognized anhanguerid pterosaur in the European fossil record.\"]"
+  },
+  {
+    "id": 3187,
+    "name": "Arctodus simus",
+    "scientificName": "Arctodus simus",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Stood over 3.4 meters (11 feet) tall on its hind legs, making it the largest terrestrial mammalian carnivore in North America.\",\"Used its massive size to bully smaller predators like saber-toothed cats (Smilodon) away from fresh kills.\",\"Possessed unusually long, slender legs allowing it to pace efficiently across vast distances.\"]"
+  },
+  {
+    "id": 3188,
+    "name": "Purussaurus brasiliensis",
+    "scientificName": "Purussaurus brasiliensis",
+    "clade": "Crocodylomorph",
+    "interestingFacts": "[\"Possessed one of the strongest bite forces of any animal in Earth's history (~69,000 Newtons / 7 tonnes force).\",\"Its massive skull measured 1.4 meters long and was immensely broad for crushing thick mammalian bones.\",\"Consumed over 40 kilograms of meat per day to maintain its giant metabolic needs.\"]"
+  },
+  {
+    "id": 3189,
+    "name": "Josephoartigasia monesi",
+    "scientificName": "Josephoartigasia monesi",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Holds the Guinness World Record as the largest rodent to ever exist on Earth.\",\"Possessed enormous 30 cm incisors with a bite force equivalent to a tiger, used for digging or defense.\",\"Replaced traditional ungulate herbivore niches in prehistoric South American river estuaries.\"]"
+  },
+  {
+    "id": 3190,
+    "name": "Livyatan melvillei",
+    "scientificName": "Livyatan melvillei",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Possessed the largest functional biting teeth of any known animal in Earth's history (36 cm long and 12 cm wide).\",\"Unlike modern sperm whales which feed on squid using toothless upper jaws, Livyatan had huge teeth in BOTH upper and lower jaws.\",\"Coexisted and directly competed with Megalodon for marine mammalian prey in Miocene oceans.\"]"
+  },
+  {
+    "id": 3191,
+    "name": "Kelenken guillermoi",
+    "scientificName": "Kelenken guillermoi",
+    "clade": "Other",
+    "interestingFacts": "[\"Possessed the largest head of any known bird in history, with a skull measuring 71.6 cm (28 inches) long.\",\"Could sprint at estimated speeds exceeding 45 km/h to run down prehistoric mammals.\",\"Killed prey by striking downwards with its massive eagle-like hooked beak like an axe.\"]"
+  },
+  {
+    "id": 3192,
+    "name": "Varanus priscus",
+    "scientificName": "Varanus priscus",
+    "clade": "Other",
+    "interestingFacts": "[\"The largest terrestrial venomous squamate reptile in Earth's history.\",\"Possessed venom glands in its lower jaws similar to its smaller living relative, the Komodo Dragon.\",\"Serrated recumbent teeth allowed it to tear open heavy hide of giant extinct marsupials.\"]"
+  },
+  {
+    "id": 3193,
+    "name": "Daeodon shoshonensis",
+    "scientificName": "Daeodon shoshonensis",
+    "clade": "Early_Mammal_Synapsid",
+    "interestingFacts": "[\"Nicknamed the 'Hell Pig', though genetically closer to hippos and whales than true pigs.\",\"Possessed a massive 90 cm (3 foot) skull with heavy bony cheek flanges (jugal flanges) for muscle attachment.\",\"Heavily worn teeth show it routinely cracked open giant animal bones to extract nutrient-rich marrow.\"]"
+  }
+]

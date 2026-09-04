@@ -1,0 +1,376 @@
+[
+  {
+    "id": 447,
+    "name": "Giganotosaurus",
+    "scientificName": "Giganotosaurus carolinii",
+    "clade": "Theropod",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Argentina\",\"fossilFormation\":\"Candeleros\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It had highly serrated teeth ideal for slicing flesh.",
+      "Possessed an elongated skull with an underdeveloped sense of smell compared to T. rex.",
+      "Likely preyed on giant titanosaur sauropods."
+    ]
+  },
+  {
+    "id": 449,
+    "name": "Deinonychus",
+    "scientificName": "Deinonychus antirrhopus",
+    "clade": "Theropod",
+    "timePeriod": "Early Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Cloverly\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Its name means 'terrible claw', referring to the large sickle claw on its foot.",
+      "Provided crucial evidence for the evolutionary link between dinosaurs and birds.",
+      "Often found in groups, suggesting possible pack-hunting behavior."
+    ]
+  },
+  {
+    "id": 452,
+    "name": "Albertosaurus",
+    "scientificName": "Albertosaurus sarcophagus",
+    "clade": "Theropod",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Horseshoe Canyon\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "The bonebed discovery suggests it may have lived and hunted in packs.",
+      "Was lighter and faster than the closely related Tyrannosaurus rex.",
+      "Grew at a rapid pace, reaching mature size in less than 20 years."
+    ]
+  },
+  {
+    "id": 453,
+    "name": "Utahraptor",
+    "scientificName": "Utahraptor ostrommaysi",
+    "clade": "Theropod",
+    "timePeriod": "Early Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Cedar Mountain\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "The largest known member of the dromaeosaurid family.",
+      "Its massive sickle claw could reach up to 9.4 inches in length.",
+      "Built for power rather than speed, unlike smaller raptors."
+    ]
+  },
+  {
+    "id": 455,
+    "name": "Oviraptor",
+    "scientificName": "Oviraptor philoceratops",
+    "clade": "Theropod",
+    "timePeriod": "Late Cretaceous",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Mongolia\",\"fossilFormation\":\"Djadochta\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a short, parrot-like beak with no teeth.",
+      "Likely possessed a crest on its head, similar to a modern cassowary.",
+      "Its brooding posture strongly resembles that of modern birds."
+    ]
+  },
+  {
+    "id": 457,
+    "name": "Majungasaurus",
+    "scientificName": "Majungasaurus crenatissimus",
+    "clade": "Theropod",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Madagascar\",\"fossilFormation\":\"Maevarano\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Provides the first unambiguous evidence of dinosaur cannibalism.",
+      "Had a distinctive dome on its skull, unique among theropods.",
+      "Possessed robust, muscular hind legs but very short arms."
+    ]
+  },
+  {
+    "id": 458,
+    "name": "Baryonyx",
+    "scientificName": "Baryonyx walkeri",
+    "clade": "Theropod",
+    "timePeriod": "Early Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Wealden\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a long, narrow snout resembling that of a crocodile.",
+      "Its large thumb claw was likely used to hook fish out of water.",
+      "Represents one of the earliest known spinosaurid dinosaurs."
+    ]
+  },
+  {
+    "id": 459,
+    "name": "Acrocanthosaurus",
+    "scientificName": "Acrocanthosaurus atokensis",
+    "clade": "Theropod",
+    "timePeriod": "Early Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Antlers\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Characterized by tall neural spines along its back and neck.",
+      "Likely the apex predator of the Early Cretaceous in North America.",
+      "Its tracks have been found alongside those of giant sauropods in Texas."
+    ]
+  },
+  {
+    "id": 460,
+    "name": "Dromaeosaurus",
+    "scientificName": "Dromaeosaurus albertensis",
+    "clade": "Theropod",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Dinosaur Park\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a heavily built skull with a stronger bite force than Velociraptor.",
+      "Relied on its jaws rather than its claws to kill prey.",
+      "Was one of the first 'raptor' dinosaurs discovered."
+    ]
+  },
+  {
+    "id": 461,
+    "name": "Troodon",
+    "scientificName": "Troodon formosus",
+    "clade": "Theropod",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Judith River\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had one of the largest brain-to-body size ratios of any dinosaur.",
+      "Possessed large, forward-facing eyes, suggesting excellent nocturnal vision.",
+      "Its serrated teeth suggest an omnivorous diet."
+    ]
+  },
+  {
+    "id": 462,
+    "name": "Gorgosaurus",
+    "scientificName": "Gorgosaurus libratus",
+    "clade": "Theropod",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Dinosaur Park\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Coexisted with another tyrannosaurid, Daspletosaurus.",
+      "Had a lighter and more gracile build compared to T. rex.",
+      "Possessed a small horn-like crest in front of its eyes."
+    ]
+  },
+  {
+    "id": 463,
+    "name": "Daspletosaurus",
+    "scientificName": "Daspletosaurus torosus",
+    "clade": "Theropod",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Oldman\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Was heavier and more robust than its contemporary, Gorgosaurus.",
+      "Considered by some scientists to be a direct ancestor of Tyrannosaurus rex.",
+      "Had proportionally larger teeth than T. rex."
+    ]
+  },
+  {
+    "id": 466,
+    "name": "Styracosaurus",
+    "scientificName": "Styracosaurus albertensis",
+    "clade": "Ornithischian",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Dinosaur Park\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Characterized by a spectacular frill adorned with up to six long spikes.",
+      "Its nose horn could grow up to two feet long.",
+      "Despite its fearsome appearance, it was a strict herbivore."
+    ]
+  },
+  {
+    "id": 467,
+    "name": "Pachyrhinosaurus",
+    "scientificName": "Pachyrhinosaurus lakustai",
+    "clade": "Ornithischian",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Wapiti\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Lacked horns on its face, instead having massive bony bosses.",
+      "The bosses were likely used in head-butting combat.",
+      "Adapted to cold environments, with some fossils found near the Arctic Circle."
+    ]
+  },
+  {
+    "id": 468,
+    "name": "Centrosaurus",
+    "scientificName": "Centrosaurus apertus",
+    "clade": "Ornithischian",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Dinosaur Park\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a single large horn on its snout and small hornlets on its frill.",
+      "Lived in vast herds, potentially numbering in the thousands.",
+      "Many died in mass drowning events while crossing flooded rivers."
+    ]
+  },
+  {
+    "id": 469,
+    "name": "Chasmosaurus",
+    "scientificName": "Chasmosaurus belli",
+    "clade": "Ornithischian",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Dinosaur Park\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Its frill had massive openings (fenestrae) to reduce weight.",
+      "The frill was likely brightly colored for display purposes.",
+      "Possessed small brow horns compared to later relatives like Triceratops."
+    ]
+  },
+  {
+    "id": 470,
+    "name": "Psittacosaurus",
+    "scientificName": "Psittacosaurus mongoliensis",
+    "clade": "Ornithischian",
+    "timePeriod": "Early Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Yixian\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Preserved fossils reveal it had long quill-like bristles on its tail.",
+      "We know its exact color pattern due to fossilized melanosomes.",
+      "It swallowed stones (gastroliths) to help grind up tough plant matter."
+    ]
+  },
+  {
+    "id": 471,
+    "name": "Pentaceratops",
+    "scientificName": "Pentaceratops sternbergii",
+    "clade": "Ornithischian",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Kirtland\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Its name means 'five-horned face', including its two elongated cheek bones.",
+      "Has one of the largest skulls of any known land animal.",
+      "Lived further south than many of its northern ceratopsian relatives."
+    ]
+  },
+  {
+    "id": 472,
+    "name": "Diabloceratops",
+    "scientificName": "Diabloceratops eatoni",
+    "clade": "Ornithischian",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Wahweap\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Named for the pair of devil-like horns curving up from the back of its frill.",
+      "Had a shorter, deeper snout than most other ceratopsians.",
+      "Helped prove that early ceratopsids diversified in southern Laramidia."
+    ]
+  },
+  {
+    "id": 473,
+    "name": "Kosmoceratops",
+    "scientificName": "Kosmoceratops richardsoni",
+    "clade": "Ornithischian",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Kaiparowits\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Possessed 15 distinct horns or horn-like structures on its skull.",
+      "Its name translates to 'ornate horned face'.",
+      "The frill horns curled completely downward and forward."
+    ]
+  },
+  {
+    "id": 474,
+    "name": "Zuniceratops",
+    "scientificName": "Zuniceratops christopheri",
+    "clade": "Ornithischian",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Moreno Hill\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "The earliest known ceratopsian to feature true brow horns.",
+      "Lacked a solid frill, retaining a lighter, fenestrated structure.",
+      "Shows that large brow horns evolved before massive size in ceratopsians."
+    ]
+  },
+  {
+    "id": 475,
+    "name": "Sinoceratops",
+    "scientificName": "Sinoceratops zhuchengensis",
+    "clade": "Ornithischian",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Xingezhuang\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Features a frill adorned with forward-curving hornlets.",
+      "Lacked brow horns, but had a prominent nasal horn.",
+      "Its presence in Asia challenged prior theories of ceratopsid migration."
+    ]
+  }
+]

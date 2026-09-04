@@ -1,0 +1,903 @@
+[
+  {
+    "id": 476,
+    "name": "Einiosaurus",
+    "scientificName": "Einiosaurus procurvicornis",
+    "clade": "Ornithischian",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Two Medicine\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Distinctive for a prominent nasal horn that curved forward like a bottle opener.",
+      "Its name means 'buffalo lizard' in the Blackfoot language.",
+      "Only adults possessed the heavily curved horn; juveniles had straight ones."
+    ]
+  },
+  {
+    "id": 477,
+    "name": "Achelousaurus",
+    "scientificName": "Achelousaurus horneri",
+    "clade": "Ornithischian",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Two Medicine\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had bony bosses on its snout and above its eyes instead of sharp horns.",
+      "Named after Achelous, a Greek river deity who had a horn torn off.",
+      "Fossils show a clear progression of horn loss within its lineage."
+    ]
+  },
+  {
+    "id": 478,
+    "name": "Nasutoceratops",
+    "scientificName": "Nasutoceratops titusi",
+    "clade": "Ornithischian",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Kaiparowits\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Featured an unusually short, thick snout.",
+      "Possessed curved brow horns that resembled those of modern cattle.",
+      "Its deep snout indicates it ate tough, fibrous vegetation."
+    ]
+  },
+  {
+    "id": 481,
+    "name": "Edmontosaurus",
+    "scientificName": "Edmontosaurus annectens",
+    "clade": "Other",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Hell Creek\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Fossilized 'mummies' show detailed skin impressions and even a fleshy head comb.",
+      "Replaced its teeth continuously in a massive dental battery.",
+      "Was one of the main prey items for Tyrannosaurus rex."
+    ]
+  },
+  {
+    "id": 482,
+    "name": "Corythosaurus",
+    "scientificName": "Corythosaurus casuarius",
+    "clade": "Other",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Dinosaur Park\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Its large, plate-like crest resembled a Corinthian helmet.",
+      "The crest was hollow and likely used for vocalization.",
+      "Lived alongside a vast diversity of other hadrosaurs."
+    ]
+  },
+  {
+    "id": 483,
+    "name": "Maiasaura",
+    "scientificName": "Maiasaura peeblesorum",
+    "clade": "Other",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Two Medicine\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Provided the first solid evidence that dinosaurs cared for their young.",
+      "Hatchlings stayed in the nest and were fed by parents until they grew strong.",
+      "Lived in massive nesting colonies, much like modern seabirds."
+    ]
+  },
+  {
+    "id": 484,
+    "name": "Tsintaosaurus",
+    "scientificName": "Tsintaosaurus spinorhinus",
+    "clade": "Other",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Wangshi\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Early reconstructions gave it a unicorn-like spike pointing directly up.",
+      "Recent studies show the crest was actually part of a larger, paddle-like structure.",
+      "Was one of the most prominent hadrosaurs in Late Cretaceous Asia."
+    ]
+  },
+  {
+    "id": 485,
+    "name": "Lambeosaurus",
+    "scientificName": "Lambeosaurus lambei",
+    "clade": "Other",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Dinosaur Park\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Possessed a bizarre crest shaped like a hatchet with a backward-pointing prong.",
+      "Its crest was hollow, serving as a resonating chamber.",
+      "Crest shape varied significantly based on age and sex."
+    ]
+  },
+  {
+    "id": 487,
+    "name": "Ouranosaurus",
+    "scientificName": "Ouranosaurus nigeriensis",
+    "clade": "Other",
+    "timePeriod": "Early Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Niger\",\"fossilFormation\":\"Echkar\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Characterized by elongated neural spines forming a prominent sail on its back.",
+      "Its sail may have been used for thermoregulation or display.",
+      "Had a specialized thumb spike and a flattened, duck-like bill."
+    ]
+  },
+  {
+    "id": 488,
+    "name": "Saurolophus",
+    "scientificName": "Saurolophus osborni",
+    "clade": "Other",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Horseshoe Canyon\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "One of the few dinosaur genera found on multiple continents (North America and Asia).",
+      "Had a solid, spike-like crest extending backward from its skull.",
+      "Skin impressions suggest a frill running down its back."
+    ]
+  },
+  {
+    "id": 489,
+    "name": "Olorotitan",
+    "scientificName": "Olorotitan arharensis",
+    "clade": "Other",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Russia\",\"fossilFormation\":\"Udurchukan\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Possessed a large, hatchet- or fan-shaped hollow crest.",
+      "Had a very long neck with 18 vertebrae, more than most hadrosaurs.",
+      "Its discovery proved that lambeosaurines diversified in Asia late in the Cretaceous."
+    ]
+  },
+  {
+    "id": 490,
+    "name": "Shantungosaurus",
+    "scientificName": "Shantungosaurus giganteus",
+    "clade": "Other",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Wangshi\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "The largest known non-sauropod dinosaur, reaching up to 16.6 meters in length.",
+      "Its skull alone was over 1.6 meters long.",
+      "Lacked a cranial crest despite its immense size."
+    ]
+  },
+  {
+    "id": 491,
+    "name": "Tenontosaurus",
+    "scientificName": "Tenontosaurus tilletti",
+    "clade": "Other",
+    "timePeriod": "Early Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Cloverly\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Its tail accounted for nearly two-thirds of its total body length.",
+      "Frequently found alongside the teeth and skeletons of the predator Deinonychus.",
+      "Maintained a network of strong ossified tendons along its spine and tail."
+    ]
+  },
+  {
+    "id": 492,
+    "name": "Hypsilophodon",
+    "scientificName": "Hypsilophodon foxii",
+    "clade": "Other",
+    "timePeriod": "Early Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Wessex\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Was a small, highly agile bipedal runner.",
+      "Had a specialized beak for snipping off vegetation.",
+      "Maintained a stiff tail for balance while running."
+    ]
+  },
+  {
+    "id": 493,
+    "name": "Thescelosaurus",
+    "scientificName": "Thescelosaurus neglectus",
+    "clade": "Other",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Hell Creek\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A specimen dubbed 'Willo' was once thought to contain a fossilized heart.",
+      "Had a surprisingly heavy build with robust legs.",
+      "Possibly dwelled near rivers and streams."
+    ]
+  },
+  {
+    "id": 495,
+    "name": "Edmontonia",
+    "scientificName": "Edmontonia longiceps",
+    "clade": "Ornithischian",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Horseshoe Canyon\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Edmontonia was one of the largest nodosaurs, heavily armored but lacking a tail club unlike ankylosaurs.",
+      "It had large shoulder spikes that may have been used in combat with rivals of its own species.",
+      "Its name means \"from Edmonton,\" after the Edmonton Formation in Alberta, Canada."
+    ]
+  },
+  {
+    "id": 496,
+    "name": "Borealopelta",
+    "scientificName": "Borealopelta markmitchelli",
+    "clade": "Ornithischian",
+    "timePeriod": "Early Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Clearwater\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Borealopelta is the best-preserved ankylosaur ever found — so well preserved its original reddish-brown skin pigmentation (melanin) was identified.",
+      "The specimen was found by accident in an Alberta oil sands mine in 2011, and took 6 years to prepare.",
+      "It counter-shaded darker on top and lighter on bottom, suggesting it lived in environments with large predators that hunted by sight."
+    ]
+  },
+  {
+    "id": 497,
+    "name": "Euoplocephalus",
+    "scientificName": "Euoplocephalus tutus",
+    "clade": "Ornithischian",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Dinosaur Park\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Euoplocephalus is the best-known ankylosaur, with over 40 specimens making it one of the most studied armored dinosaurs.",
+      "Even its eyelids were armored with bony plates, making it extraordinarily well-protected.",
+      "Its massive tail club could swing with enough force to break the leg bones of a large theropod."
+    ]
+  },
+  {
+    "id": 498,
+    "name": "Sauropelta",
+    "scientificName": "Sauropelta edwardsorum",
+    "clade": "Ornithischian",
+    "timePeriod": "Early Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Cloverly\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Sauropelta was a large nodosaur from Early Cretaceous North America with prominent, forward-pointing shoulder spines.",
+      "Unlike ankylosaurs, it lacked a tail club, relying entirely on its body armor and spines for defense.",
+      "It is one of the best-known nodosaurs, with several complete or near-complete specimens found in Montana and Wyoming."
+    ]
+  },
+  {
+    "id": 499,
+    "name": "Nodosaurus",
+    "scientificName": "Nodosaurus textilis",
+    "clade": "Ornithischian",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Frontier\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Nodosaurus was one of the first ankylosaurs discovered in North America, found in Wyoming in 1889 by Othniel Charles Marsh.",
+      "Its name means \"node lizard,\" referring to the bony nodes studding its skin.",
+      "It was a slow-moving herbivore that relied entirely on passive armor for defense, lacking any offensive weapons."
+    ]
+  },
+  {
+    "id": 501,
+    "name": "Tarchia",
+    "scientificName": "Tarchia kielanae",
+    "clade": "Ornithischian",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Mongolia\",\"fossilFormation\":\"Barun Goyot\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Tarchia was the largest and last surviving ankylosaur in Mongolia, with a massive tail club used as a weapon.",
+      "Its name means \"brainy one\" because it had a proportionally large braincase compared to other ankylosaurs.",
+      "It lived alongside Tarbosaurus and its armor and club were key defenses against such predators."
+    ]
+  },
+  {
+    "id": 502,
+    "name": "Polacanthus",
+    "scientificName": "Polacanthus foxii",
+    "clade": "Ornithischian",
+    "timePeriod": "Early Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Wessex\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Polacanthus was an Early Cretaceous ankylosaur from England, one of the first armored dinosaurs found in Europe.",
+      "Its armor included large, keeled spines over the shoulders and a broad pelvic shield of fused osteoderms.",
+      "The rear half of the skeleton was found first in 1865 and remained enigmatic for years before additional material was discovered."
+    ]
+  },
+  {
+    "id": 503,
+    "name": "Gastonia",
+    "scientificName": "Gastonia burgei",
+    "clade": "Ornithischian",
+    "timePeriod": "Early Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Cedar Mountain\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Gastonia was a heavily armored ankylosaur from Early Cretaceous Utah with elaborate shoulder spines.",
+      "It is named after Robert Gaston, who discovered the original specimens.",
+      "Gastonia lived alongside the predator Utahraptor and its armor was likely a defense against such large predators."
+    ]
+  },
+  {
+    "id": 504,
+    "name": "Pachycephalosaurus",
+    "scientificName": "Pachycephalosaurus wyomingensis",
+    "clade": "Other",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Hell Creek\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Featured a domed skull up to 10 inches thick.",
+      "May have used its head for flank-butting or intraspecific combat.",
+      "Close relative to Stygimoloch and Dracorex, which might be juvenile forms."
+    ]
+  },
+  {
+    "id": 505,
+    "name": "Stegoceras",
+    "scientificName": "Stegoceras validum",
+    "clade": "Other",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Dinosaur Park\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Stegoceras was a small pachycephalosaur with a dome of solid bone up to 2.5 cm thick, used in head-butting behavior.",
+      "Analysis of bone microstructure confirms the dome grew through life and was used in physical combat.",
+      "It is one of the most common pachycephalosaurs, with dozens of specimens from the Judith River Formation in Alberta."
+    ]
+  },
+  {
+    "id": 509,
+    "name": "Argentinosaurus",
+    "scientificName": "Argentinosaurus huinculensis",
+    "clade": "Sauropod",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Argentina\",\"fossilFormation\":\"Huincul\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Argentinosaurus may be the largest animal to ever walk the Earth, estimated at 70–80 tonnes and 30–40 meters long.",
+      "Each of its back vertebrae was nearly 1.6 meters tall — larger than a grown human.",
+      "Discovered in Argentina in 1987, its size is still debated as only fragmentary remains are known."
+    ]
+  },
+  {
+    "id": 510,
+    "name": "Alamosaurus",
+    "scientificName": "Alamosaurus sanjuanensis",
+    "clade": "Sauropod",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Ojo Alamo\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Alamosaurus was one of the last sauropods in North America, surviving right up to the K-Pg extinction.",
+      "At up to 30 meters long, it may have been one of the largest animals to ever walk North America.",
+      "Named after Ojo Alamo, New Mexico, where its fossils were first found."
+    ]
+  },
+  {
+    "id": 511,
+    "name": "Saltasaurus",
+    "scientificName": "Saltasaurus loricatus",
+    "clade": "Sauropod",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Argentina\",\"fossilFormation\":\"Lecho\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Saltasaurus was one of the first sauropods discovered with bony armor (osteoderms) embedded in its skin.",
+      "Its discovery challenged the assumption that sauropods were unarmored.",
+      "It laid eggs in communal nesting sites, with nests containing up to 25 eggs."
+    ]
+  },
+  {
+    "id": 512,
+    "name": "Amargasaurus",
+    "scientificName": "Amargasaurus cazaui",
+    "clade": "Sauropod",
+    "timePeriod": "Early Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Argentina\",\"fossilFormation\":\"La Amarga\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Amargasaurus had two rows of tall neural spines along its neck, which may have supported a sail or acted as display structures.",
+      "It is one of the most distinctive sauropods known, immediately recognizable by its neck ornamentation.",
+      "Found in the Amargа formation in Argentina, it lived around 130 million years ago."
+    ]
+  },
+  {
+    "id": 513,
+    "name": "Dreadnoughtus",
+    "scientificName": "Dreadnoughtus schrani",
+    "clade": "Sauropod",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Argentina\",\"fossilFormation\":\"Cerro Fortaleza\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Dreadnoughtus is known from one of the most complete gigantic titanosaur skeletons ever found, preserving over 70% of the non-skull skeleton.",
+      "Estimated at 65 tonnes and 26 meters long, the specimen was still growing at time of death.",
+      "Its name means \"fears nothing,\" a reference to the dreadnought-class battleship."
+    ]
+  },
+  {
+    "id": 514,
+    "name": "Patagotitan",
+    "scientificName": "Patagotitan mayorum",
+    "clade": "Sauropod",
+    "timePeriod": "Early Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Argentina\",\"fossilFormation\":\"Cerro Barcino\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Patagotitan mayorum may be the largest dinosaur ever described, estimated at 69 tonnes and 37 meters long.",
+      "It is known from six individuals found on a single farm in Argentina in 2012, making it one of the most complete giant sauropod records.",
+      "Its femur (thigh bone) alone was 2.4 meters long — taller than most humans."
+    ]
+  },
+  {
+    "id": 516,
+    "name": "Rapetosaurus",
+    "scientificName": "Rapetosaurus krausei",
+    "clade": "Sauropod",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Madagascar\",\"fossilFormation\":\"Maevarano\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Rapetosaurus is one of the most completely known titanosaurs from the Cretaceous of Madagascar.",
+      "A juvenile specimen preserved almost the entire skeleton, giving researchers rare insight into titanosaur growth.",
+      "Its name means \"mischievous giant lizard\" in Malagasy."
+    ]
+  },
+  {
+    "id": 518,
+    "name": "Magyarosaurus",
+    "scientificName": "Magyarosaurus dacus",
+    "clade": "Sauropod",
+    "timePeriod": "Late Cretaceous",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Romania\",\"fossilFormation\":\"Sânpetru\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Magyarosaurus was a dwarf titanosaur from Late Cretaceous Romania, only 5–6 meters long due to island dwarfism.",
+      "It lived on the Hateg Island and represents one of the best-documented cases of insular dwarfism in dinosaurs.",
+      "Named after Magyar (Hungarian), it was discovered in Transylvania in the early 20th century."
+    ]
+  },
+  {
+    "id": 522,
+    "name": "Tupandactylus",
+    "scientificName": "Tupandactylus imperator",
+    "clade": "Pterosaur",
+    "timePeriod": "Early Cretaceous",
+    "diet": "herbivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Brazil\",\"fossilFormation\":\"Crato\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Tupandactylus had one of the most elaborate head crests of any pterosaur, made of both bone and a large soft tissue sail.",
+      "Named after Tupã, a Guaraní thunder deity, it was discovered in Early Cretaceous rocks of Brazil.",
+      "It had a toothless beak and short neck, suggesting it may have been a fruit or seed eater."
+    ]
+  },
+  {
+    "id": 523,
+    "name": "Pterodaustro",
+    "scientificName": "Pterodaustro guinazui",
+    "clade": "Pterosaur",
+    "timePeriod": "Early Cretaceous",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Argentina\",\"fossilFormation\":\"Lagarcito\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Pterodaustro had over 1,000 long, fine teeth forming a comb-like filter that it used to strain small crustaceans from water — similar to a flamingo.",
+      "Its pink coloration has been proposed based on the carotenoid-rich diet it likely shared with flamingos.",
+      "It is the earliest known filter-feeding pterosaur, from Early Cretaceous Argentina."
+    ]
+  },
+  {
+    "id": 524,
+    "name": "Nyctosaurus",
+    "scientificName": "Nyctosaurus gracilis",
+    "clade": "Pterosaur",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Niobrara\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Nyctosaurus had a remarkable antler-like bony crest on its skull, with two prongs in a Y-shape, used for display.",
+      "Unlike most pterosaurs, adult Nyctosaurus lost its wing claws, making it more dependent on soaring flight.",
+      "It was a highly specialized ocean-going pterosaur, adapted for a life at sea similar to modern albatrosses."
+    ]
+  },
+  {
+    "id": 525,
+    "name": "Ornithocheirus",
+    "scientificName": "Ornithocheirus simus",
+    "clade": "Pterosaur",
+    "timePeriod": "Early Cretaceous",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Cambridge Greensand\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Ornithocheirus was a large Cretaceous pterosaur with a wingspan estimated at 4–6 meters and a distinctive crest on its snout.",
+      "It was a highly capable flier, likely crossing oceanic distances in search of fish.",
+      "Fossils are known from England, Brazil, and Morocco, suggesting a wide range."
+    ]
+  },
+  {
+    "id": 526,
+    "name": "Anhanguera",
+    "scientificName": "Anhanguera blittersdorffi",
+    "clade": "Pterosaur",
+    "timePeriod": "Early Cretaceous",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Brazil\",\"fossilFormation\":\"Santana\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Anhanguera was a large pterosaur from Early Cretaceous Brazil with twin, rounded crests on its upper and lower jaws.",
+      "Biomechanical analysis shows its jaws were well-suited for snatching fish from the water surface while in flight.",
+      "Its name means \"old devil\" in the Tupi language."
+    ]
+  },
+  {
+    "id": 527,
+    "name": "Hatzegopteryx",
+    "scientificName": "Hatzegopteryx thambema",
+    "clade": "Pterosaur",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Romania\",\"fossilFormation\":\"Densuș-Ciula\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Hatzegopteryx was one of the largest flying animals ever, with a wingspan of 10–12 meters and a skull nearly 3 meters long.",
+      "It lived on the Hateg Island and, lacking large predatory dinosaurs there, likely filled the apex predator niche itself.",
+      "Recent analysis suggests it had a short, robust neck, making it more suited for terrestrial hunting than previously thought."
+    ]
+  },
+  {
+    "id": 528,
+    "name": "Azhdarcho",
+    "scientificName": "Azhdarcho lancicollis",
+    "clade": "Pterosaur",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Uzbekistan\",\"fossilFormation\":\"Bissekty\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Azhdarcho was a large azhdarchid pterosaur from Late Cretaceous Uzbekistan, related to Quetzalcoatlus.",
+      "It gave its name to the Azhdarchidae family, one of the last and largest pterosaur lineages.",
+      "Its name comes from \"Azhdar,\" a dragon from Central Asian mythology."
+    ]
+  },
+  {
+    "id": 531,
+    "name": "Kronosaurus",
+    "scientificName": "Kronosaurus queenslandicus",
+    "clade": "Other",
+    "timePeriod": "Early Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Australia\",\"country\":\"Australia\",\"fossilFormation\":\"Toolebuc\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Kronosaurus was one of the largest pliosaurs, with a skull up to 3 meters long and large, conical teeth for gripping large prey.",
+      "Named after Kronos (the Greek Titan), it was a top predator of Early Cretaceous seas around Australia and Colombia.",
+      "A famous specimen nicknamed \"The Plesiosaur\" was controversially reconstructed at Harvard with extra vertebrae."
+    ]
+  },
+  {
+    "id": 532,
+    "name": "Tylosaurus",
+    "scientificName": "Tylosaurus proriger",
+    "clade": "Marine_Reptile",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "marine",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Niobrara\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Tylosaurus was one of the largest mosasaurs, reaching over 14 meters with a distinctively cylindrical, club-like snout tip.",
+      "Fossils of Tylosaurus have been found with the remains of other mosasaurs, fish, birds, and diving birds inside their stomachs.",
+      "Named from Greek meaning \"knob lizard,\" it patrolled the Western Interior Seaway of North America."
+    ]
+  },
+  {
+    "id": 533,
+    "name": "Aristonectes",
+    "scientificName": "Aristonectes quiriquinensis",
+    "clade": "Other",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Chile\",\"fossilFormation\":\"Quiriquina\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Aristonectes was a polycotylid plesiosaur with an extremely long neck proportionally, up to 30 neck vertebrae.",
+      "It lived in the Late Cretaceous of South America and had many small, interlocking teeth for catching fish.",
+      "Its name means \"best swimmer\" in Greek."
+    ]
+  },
+  {
+    "id": 534,
+    "name": "Prognathodon",
+    "scientificName": "Prognathodon solvayi",
+    "clade": "Marine_Reptile",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "marine",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Belgium\",\"fossilFormation\":\"Maastricht\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Prognathodon was a large mosasaur with massive, rounded crushing teeth adapted for eating hard-shelled prey like ammonites and turtles.",
+      "It could reach 10 meters in length and was one of the largest mosasaurs of the Late Cretaceous.",
+      "Fossils have been found in North Africa, Europe, and North America."
+    ]
+  },
+  {
+    "id": 535,
+    "name": "Platecarpus",
+    "scientificName": "Platecarpus tympaniticus",
+    "clade": "Marine_Reptile",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "marine",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Niobrara\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Platecarpus was a mosasaur that could reach 7 meters long and had a shark-like tail for fast swimming.",
+      "Its name means \"flat wrist,\" referring to its paddle-like limbs adapted for marine life.",
+      "Platecarpus had large eyes well-suited for hunting in dim underwater conditions."
+    ]
+  },
+  {
+    "id": 536,
+    "name": "Dolichorhynchops",
+    "scientificName": "Dolichorhynchops osborni",
+    "clade": "Other",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Niobrara\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Dolichorhynchops was a small polycotylid plesiosaur with a very long neck and small head, unlike most pliosaurs.",
+      "It is known from exceptionally complete specimens, including a juvenile, giving insights into plesiosaur growth.",
+      "Its name means \"long-snouted face.\""
+    ]
+  },
+  {
+    "id": 537,
+    "name": "Archelon",
+    "scientificName": "Archelon ischyros",
+    "clade": "Other",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Pierre Shale\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Archelon was the largest known turtle that ever lived, reaching 4.6 meters in length and weighing over 2 tonnes.",
+      "Unlike modern turtles, it had a leathery shell supported by a bony framework rather than solid bone plates.",
+      "Its large, hooked beak was well-suited for crushing jellyfish and soft-bodied prey."
+    ]
+  },
+  {
+    "id": 538,
+    "name": "Deinosuchus",
+    "scientificName": "Deinosuchus riograndensis",
+    "clade": "Other",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Aguja\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Deinosuchus was a giant crocodilian up to 12 meters long, capable of preying on large dinosaurs.",
+      "Bite marks matching its teeth have been found on hadrosaur and tyrannosaur bones.",
+      "Its name means \"terrible crocodile.\" It lived in the Late Cretaceous swamps of eastern North America."
+    ]
+  },
+  {
+    "id": 539,
+    "name": "Xiphactinus",
+    "scientificName": "Xiphactinus audax",
+    "clade": "Other",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Niobrara\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Xiphactinus was a large predatory fish up to 6 meters long, one of the largest bony fish of the Cretaceous.",
+      "A famous specimen preserves a 1.8-meter Gillicus fish inside its stomach, swallowed whole.",
+      "Its name means \"sword ray,\" referring to its large, fang-like teeth."
+    ]
+  },
+  {
+    "id": 540,
+    "name": "Cretoxyrhina",
+    "scientificName": "Cretoxyrhina mantelli",
+    "clade": "Other",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Niobrara\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Cretoxyrhina mantelli, known as the \"Ginsu shark,\" was one of the largest sharks of the Cretaceous, reaching 7 meters.",
+      "Its serrated, blade-like teeth allowed it to slice through prey, earning its nickname from the Ginsu kitchen knife.",
+      "Bite marks matching its teeth have been found on mosasaur, plesiosaur, and large fish fossils."
+    ]
+  },
+  {
+    "id": 541,
+    "name": "Baculites",
+    "scientificName": "Baculites compressus",
+    "clade": "Invertebrate",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Global\",\"country\":\"USA\",\"fossilFormation\":\"Pierre Shale\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Baculites was an ammonite with an unusual straight shell (orthocone) rather than the typical coiled form.",
+      "It could grow up to 2 meters long and was an extremely abundant predator in the Western Interior Seaway.",
+      "Billions of Baculites fossils have been found in Cretaceous shales, making it one of the best-documented ammonites."
+    ]
+  },
+  {
+    "id": 542,
+    "name": "Jeletzkytes",
+    "scientificName": "Jeletzkytes nebrascensis",
+    "clade": "Invertebrate",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Fox Hills\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Jeletzkytes was an ammonite from the Late Cretaceous Western Interior Seaway of North America.",
+      "It is notable for its tightly coiled shell with fine ribbing and tubercles on its surface.",
+      "Jeletzkytes is commonly found in the Pierre Shale Formation in the Dakotas."
+    ]
+  },
+  {
+    "id": 543,
+    "name": "Tusoteuthis",
+    "scientificName": "Tusoteuthis longa",
+    "clade": "Invertebrate",
+    "timePeriod": "Late Cretaceous",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Pierre Shale\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Tusoteuthis was a giant squid-like cephalopod from the Late Cretaceous with tentacles estimated at 2 meters long.",
+      "It is known primarily from its hard gladius (internal shell) preserved in marine sediments of the Western Interior Seaway.",
+      "It may have preyed on small mosasaurs and was itself likely preyed upon by large mosasaurs."
+    ]
+  }
+]

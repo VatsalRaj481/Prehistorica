@@ -76,9 +76,9 @@ export default function Home() {
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-8 space-y-5 text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono font-bold tracking-widest uppercase">
-              <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse shrink-0" />
-              Deep Time Archive &bull; 541 &ndash; 0.01 MYA
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono font-bold tracking-widest uppercase shadow-sm">
+              <img src="/logo.png" alt="Prehistorica Emblem" className="h-4 w-4 object-contain shrink-0 drop-shadow" />
+              <span>Deep Time Archive &bull; 541 &ndash; 0.01 MYA</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-100 uppercase leading-[1.05] font-sans">
@@ -112,7 +112,10 @@ export default function Home() {
           {/* Curatorial Archive Stats Ticker */}
           <div className="lg:col-span-4 bg-slate-900/60 border border-white/[0.08] rounded-xl p-5 space-y-4 font-mono shadow-xl">
             <div className="text-[10px] text-amber-400 font-bold uppercase tracking-widest border-b border-white/[0.06] pb-2 flex items-center justify-between">
-              <span>Collection Dossier</span>
+              <div className="flex items-center gap-1.5">
+                <img src="/logo.png" alt="Prehistorica Seal" className="h-3.5 w-3.5 object-contain shrink-0" />
+                <span>Collection Dossier</span>
+              </div>
               <Database className="h-3.5 w-3.5 text-amber-400" />
             </div>
             

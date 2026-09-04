@@ -1,0 +1,1379 @@
+[
+  {
+    "id": 151,
+    "name": "Ornitholestes",
+    "scientificName": "Ornitholestes hermanni",
+    "clade": "Theropod",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Its name means 'bird robber'.",
+      "It was a small, fast, and agile predator.",
+      "Contrary to early restorations, it likely did not have a horn on its nose."
+    ]
+  },
+  {
+    "id": 152,
+    "name": "Compsognathus",
+    "scientificName": "Compsognathus longipes",
+    "clade": "Theropod",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Germany\",\"fossilFormation\":\"Solnhofen Limestone\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It was a very small, bipedal carnivore.",
+      "Its fossils were found with the remains of small lizards in their stomachs.",
+      "It lived on an archipelago in a shallow tropical sea."
+    ]
+  },
+  {
+    "id": 153,
+    "name": "Guanlong",
+    "scientificName": "Guanlong wucaii",
+    "clade": "Theropod",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Shishugou Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It is one of the earliest known tyrannosauroids.",
+      "It possessed a large, fragile crest on its head.",
+      "Its name means 'crowned dragon'."
+    ]
+  },
+  {
+    "id": 154,
+    "name": "Proceratosaurus",
+    "scientificName": "Proceratosaurus bradleyi",
+    "clade": "Theropod",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"White Limestone Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It possessed a small crest on its snout.",
+      "It is one of the oldest known members of the tyrannosaur lineage.",
+      "Only a partial skull has been found."
+    ]
+  },
+  {
+    "id": 155,
+    "name": "Metriacanthosaurus",
+    "scientificName": "Metriacanthosaurus parkeri",
+    "clade": "Theropod",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Oxford Clay Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Its name means 'moderately-spined lizard'.",
+      "It had tall neural spines on its back, though not forming a full sail.",
+      "It was a medium-sized apex predator of its ecosystem."
+    ]
+  },
+  {
+    "id": 157,
+    "name": "Eustreptospondylus",
+    "scientificName": "Eustreptospondylus oxoniensis",
+    "clade": "Theropod",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Oxford Clay Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It lived in an island environment.",
+      "It may have scavenged marine carcasses that washed ashore.",
+      "The single known specimen is considered a subadult."
+    ]
+  },
+  {
+    "id": 158,
+    "name": "Piatnitzkysaurus",
+    "scientificName": "Piatnitzkysaurus floresi",
+    "clade": "Theropod",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Argentina\",\"fossilFormation\":\"Cañadón Asfalto Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It was a medium-sized bipedal predator.",
+      "It represents one of the few known Middle Jurassic theropods from South America.",
+      "It shares primitive traits with basal tetanurans."
+    ]
+  },
+  {
+    "id": 159,
+    "name": "Marshosaurus",
+    "scientificName": "Marshosaurus bicentesimus",
+    "clade": "Theropod",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It was a medium-sized predator in the Morrison Formation.",
+      "It was rarer than competitors like Allosaurus.",
+      "Its exact taxonomic position within tetanurans is debated."
+    ]
+  },
+  {
+    "id": 160,
+    "name": "Stokesosaurus",
+    "scientificName": "Stokesosaurus clevelandi",
+    "clade": "Theropod",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It is an early member of the tyrannosauroid family.",
+      "It was a small, agile predator.",
+      "Similar fossils found in England were later reclassified as a separate genus, Juratyrant."
+    ]
+  },
+  {
+    "id": 161,
+    "name": "Tanycolagreus",
+    "scientificName": "Tanycolagreus topwilsoni",
+    "clade": "Theropod",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Its name means 'long-limbed hunter'.",
+      "It was slightly larger and more robust than its relative Ornitholestes.",
+      "It had a long, low skull compared to other small theropods."
+    ]
+  },
+  {
+    "id": 162,
+    "name": "Sciurumimus",
+    "scientificName": "Sciurumimus albersdoerferi",
+    "clade": "Theropod",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Germany\",\"fossilFormation\":\"Rögling Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "The fossil preserves filamentous feathers, especially along the tail.",
+      "Its name means 'squirrel mimic' due to its bushy tail.",
+      "Initially thought to be a megalosauroid, it may be a primitive coelurosaur."
+    ]
+  },
+  {
+    "id": 163,
+    "name": "Juravenator",
+    "scientificName": "Juravenator starki",
+    "clade": "Theropod",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Germany\",\"fossilFormation\":\"Painten Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Its fossil shows patches of scaly skin, suggesting a lack of feathers in some areas.",
+      "It had unusually large eyes, suited for nocturnal hunting.",
+      "It was a very small, agile predator."
+    ]
+  },
+  {
+    "id": 165,
+    "name": "Diplodocus",
+    "scientificName": "Diplodocus carnegii",
+    "clade": "Sauropod",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It had an exceptionally long, whip-like tail.",
+      "Its center of gravity allowed it to rear up on its hind legs.",
+      "Its teeth were peg-like and restricted to the front of the jaw."
+    ]
+  },
+  {
+    "id": 166,
+    "name": "Apatosaurus",
+    "scientificName": "Apatosaurus ajax",
+    "clade": "Sauropod",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It had a very robust, heavily built skeleton compared to Diplodocus.",
+      "Its tail may have been able to crack like a whip, producing a loud sound.",
+      "It was an abundant herbivore in the Morrison Formation."
+    ]
+  },
+  {
+    "id": 167,
+    "name": "Brontosaurus",
+    "scientificName": "Brontosaurus excelsus",
+    "clade": "Sauropod",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Its name means 'thunder lizard'.",
+      "It had a slightly thinner and less robust neck than Apatosaurus.",
+      "It is one of the most culturally famous dinosaur names."
+    ]
+  },
+  {
+    "id": 168,
+    "name": "Camarasaurus",
+    "scientificName": "Camarasaurus supremus",
+    "clade": "Sauropod",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It had a boxy, blunt skull with large, spoon-shaped teeth.",
+      "Its name means 'chambered lizard', referring to hollow chambers in its vertebrae.",
+      "It likely fed on tough, fibrous vegetation."
+    ]
+  },
+  {
+    "id": 169,
+    "name": "Giraffatitan",
+    "scientificName": "Giraffatitan brancai",
+    "clade": "Sauropod",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Tanzania\",\"fossilFormation\":\"Tendaguru Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It is one of the tallest known dinosaurs.",
+      "A famous, nearly complete skeleton is mounted in the natural history museum in Berlin.",
+      "It was adapted for high-browsing on conifer trees."
+    ]
+  },
+  {
+    "id": 170,
+    "name": "Barosaurus",
+    "scientificName": "Barosaurus lentus",
+    "clade": "Sauropod",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It is closely related to Diplodocus but had a significantly longer neck.",
+      "Its neck vertebrae were exceptionally elongated.",
+      "A famous mount at the AMNH shows it rearing up to defend against an Allosaurus."
+    ]
+  },
+  {
+    "id": 171,
+    "name": "Dicraeosaurus",
+    "scientificName": "Dicraeosaurus hansemanni",
+    "clade": "Sauropod",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Tanzania\",\"fossilFormation\":\"Tendaguru Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It had tall, bifurcated (Y-shaped) neural spines on its neck and back.",
+      "It had a relatively short neck for a sauropod.",
+      "It was a low-browser in an ecosystem dominated by taller sauropods."
+    ]
+  },
+  {
+    "id": 174,
+    "name": "Omeisaurus",
+    "scientificName": "Omeisaurus junghsiensis",
+    "clade": "Sauropod",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Lower Shaximiao Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It had a long, heavily built neck.",
+      "Some species assigned to it may have had a tail club.",
+      "It was a common large herbivore in its ecosystem."
+    ]
+  },
+  {
+    "id": 175,
+    "name": "Vulcanodon",
+    "scientificName": "Vulcanodon karibaensis",
+    "clade": "Sauropod",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Zimbabwe\",\"fossilFormation\":\"Vulcanodon Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It is one of the earliest known true sauropods.",
+      "Its forelimbs retained some primitive traits while its hindlimbs were column-like.",
+      "It lived in a volcanic landscape."
+    ]
+  },
+  {
+    "id": 176,
+    "name": "Patagosaurus",
+    "scientificName": "Patagosaurus fariasi",
+    "clade": "Sauropod",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"South America\",\"country\":\"Argentina\",\"fossilFormation\":\"Cañadón Asfalto Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It was a basal eusauropod with a relatively short neck.",
+      "Adults and juveniles were found together, indicating herd living.",
+      "It was a dominant herbivore in its South American ecosystem."
+    ]
+  },
+  {
+    "id": 177,
+    "name": "Cetiosaurus",
+    "scientificName": "Cetiosaurus oxoniensis",
+    "clade": "Sauropod",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Forest Marble Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Its vertebrae lacked the complex hollow air sacs seen in later sauropods.",
+      "It was a primitive sauropod weighing roughly 15 tons.",
+      "It serves as an important baseline for understanding early sauropod evolution."
+    ]
+  },
+  {
+    "id": 178,
+    "name": "Spinophorosaurus",
+    "scientificName": "Spinophorosaurus nigerensis",
+    "clade": "Sauropod",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Niger\",\"fossilFormation\":\"Irhazer Shale\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It originally was thought to have a spiked tail club (thagomizer), but the spikes were later re-identified as collarbones.",
+      "It is one of the best-preserved early sauropods.",
+      "Its anatomy provides a crucial link between basal sauropodomorphs and eusauropods."
+    ]
+  },
+  {
+    "id": 179,
+    "name": "Haplocanthosaurus",
+    "scientificName": "Haplocanthosaurus priscus",
+    "clade": "Sauropod",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It is considered a primitive macronarian sauropod.",
+      "It lacked the extreme specialized features of Diplodocus or Camarasaurus.",
+      "It was one of the smaller sauropods of the Morrison Formation."
+    ]
+  },
+  {
+    "id": 180,
+    "name": "Supersaurus",
+    "scientificName": "Supersaurus vivianae",
+    "clade": "Sauropod",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It is among the longest dinosaurs ever discovered.",
+      "It was a diplodocid, closely related to Apatosaurus.",
+      "Its neck vertebrae were exceptionally elongated and robust."
+    ]
+  },
+  {
+    "id": 181,
+    "name": "Suuwassea",
+    "scientificName": "Suuwassea emilieae",
+    "clade": "Sauropod",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It is a primitive member of the dicraeosaurid family.",
+      "It possessed an extra opening (foramen) in its skull of unknown function.",
+      "It provides evidence for early diplodocoid radiation in North America."
+    ]
+  },
+  {
+    "id": 182,
+    "name": "Jobaria",
+    "scientificName": "Jobaria tiguidensis",
+    "clade": "Sauropod",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Niger\",\"fossilFormation\":\"Tiourarén Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It had a relatively short, primitive neck compared to later sauropods.",
+      "Its spoon-shaped teeth were adapted for nipping branches.",
+      "It was the most common large herbivore in its African environment."
+    ]
+  },
+  {
+    "id": 183,
+    "name": "Bellusaurus",
+    "scientificName": "Bellusaurus sui",
+    "clade": "Sauropod",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Shishugou Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "The mass grave suggests a herd perished together in a flash flood.",
+      "All known specimens are juveniles.",
+      "It was a small macronarian sauropod."
+    ]
+  },
+  {
+    "id": 185,
+    "name": "Dryosaurus",
+    "scientificName": "Dryosaurus altus",
+    "clade": "Ornithischian",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It was a fast, agile bipedal runner.",
+      "It lacked the thumb spikes seen in later iguanodonts.",
+      "It was a highly successful, small herbivore of the Morrison Formation."
+    ]
+  },
+  {
+    "id": 186,
+    "name": "Camptosaurus",
+    "scientificName": "Camptosaurus dispar",
+    "clade": "Ornithischian",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It was a heavily built ornithopod that could walk on two or four legs.",
+      "It possessed a small, hooved thumb on its hands.",
+      "Its beak was toothless, but it had tightly packed cheek teeth."
+    ]
+  },
+  {
+    "id": 187,
+    "name": "Kentrosaurus",
+    "scientificName": "Kentrosaurus aethiopicus",
+    "clade": "Ornithischian",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Tanzania\",\"fossilFormation\":\"Tendaguru Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Its back was covered in pairs of plates that transitioned into long spikes near the tail.",
+      "It featured a prominent spike pointing backward from each shoulder.",
+      "It was smaller and more primitively built than Stegosaurus."
+    ]
+  },
+  {
+    "id": 189,
+    "name": "Scutellosaurus",
+    "scientificName": "Scutellosaurus lawleri",
+    "clade": "Ornithischian",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Kayenta Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It is one of the earliest known armored dinosaurs.",
+      "It was a small, lightly built, bipedal herbivore.",
+      "Its body was covered in parallel rows of small bony scutes."
+    ]
+  },
+  {
+    "id": 190,
+    "name": "Scelidosaurus",
+    "scientificName": "Scelidosaurus harrisonii",
+    "clade": "Ornithischian",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Blue Lias Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It was covered in rows of keeled bony armor.",
+      "It is considered an early relative of both ankylosaurs and stegosaurs.",
+      "It was a quadrupedal browser with a small head and leaf-shaped teeth."
+    ]
+  },
+  {
+    "id": 192,
+    "name": "Gargoyleosaurus",
+    "scientificName": "Gargoyleosaurus parkpinorum",
+    "clade": "Ornithischian",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It is one of the earliest and most complete known ankylosaurs.",
+      "Its heavily armored skull had prominent horns on the rear corners.",
+      "It had a complex network of nasal passages."
+    ]
+  },
+  {
+    "id": 193,
+    "name": "Othnielosaurus",
+    "scientificName": "Othnielosaurus consors",
+    "clade": "Ornithischian",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It was a small, swift, bipedal herbivore.",
+      "It possessed enameled teeth well-adapted to chewing tough vegetation.",
+      "Its name honors paleontologist Othniel Charles Marsh."
+    ]
+  },
+  {
+    "id": 194,
+    "name": "Lesothosaurus",
+    "scientificName": "Lesothosaurus diagnosticus",
+    "clade": "Ornithischian",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Africa\",\"country\":\"Lesotho\",\"fossilFormation\":\"Elliot Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "One of the earliest known ornithischian dinosaurs.",
+      "It had a small, slender body built for fast running.",
+      "Its teeth were leaf-shaped, adapted for slicing plant material."
+    ]
+  },
+  {
+    "id": 196,
+    "name": "Hexinlusaurus",
+    "scientificName": "Hexinlusaurus multidens",
+    "clade": "Ornithischian",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Lower Shaximiao Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A small, basal neornithischian dinosaur.",
+      "It had prominent ridges on its teeth for grinding.",
+      "Coexisted with larger dinosaurs like Shunosaurus."
+    ]
+  },
+  {
+    "id": 197,
+    "name": "Chialingosaurus",
+    "scientificName": "Chialingosaurus kuani",
+    "clade": "Ornithischian",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Upper Shaximiao Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "It was a very slender and primitive stegosaur.",
+      "Named after the Jialing River in Sichuan.",
+      "Its plates were narrower and more spine-like compared to later stegosaurs."
+    ]
+  },
+  {
+    "id": 198,
+    "name": "Tuojiangosaurus",
+    "scientificName": "Tuojiangosaurus multispinus",
+    "clade": "Ornithischian",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Upper Shaximiao Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Featured 15 pairs of pointed plates along its back.",
+      "Had a distinctive pair of spikes on its shoulders.",
+      "Bore a thagomizer with four large spikes at the end of its tail."
+    ]
+  },
+  {
+    "id": 199,
+    "name": "Dacentrurus",
+    "scientificName": "Dacentrurus armatus",
+    "clade": "Ornithischian",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Kimmeridge Clay\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Possessed paired spikes rather than plates along most of its back and tail.",
+      "Its front limbs were relatively long for a stegosaur.",
+      "The pelvis was exceptionally broad to accommodate a large gut."
+    ]
+  },
+  {
+    "id": 200,
+    "name": "Miragaia",
+    "scientificName": "Miragaia longicollum",
+    "clade": "Ornithischian",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Portugal\",\"fossilFormation\":\"Lourinhã Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had an unusually long neck with at least 17 vertebrae.",
+      "Its neck length rivaled some sauropods.",
+      "Its back was adorned with paired triangular plates."
+    ]
+  },
+  {
+    "id": 201,
+    "name": "Hesperosaurus",
+    "scientificName": "Hesperosaurus mjosi",
+    "clade": "Ornithischian",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Closely related to Stegosaurus but had broader, oval-shaped plates.",
+      "Its skull was proportionately wider than that of Stegosaurus.",
+      "Lived slightly earlier than most Stegosaurus species."
+    ]
+  },
+  {
+    "id": 202,
+    "name": "Fruitadens",
+    "scientificName": "Fruitadens haagarorum",
+    "clade": "Ornithischian",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "One of the smallest known ornithischian dinosaurs.",
+      "Had canine-like tusks in its lower jaw.",
+      "Likely an omnivore, eating both plants and small animals or insects."
+    ]
+  },
+  {
+    "id": 203,
+    "name": "Nanosaurus",
+    "scientificName": "Nanosaurus agilis",
+    "clade": "Ornithischian",
+    "timePeriod": "Jurassic",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A small, agile, bipedal dinosaur.",
+      "Othnielosaurus is often considered a synonym of Nanosaurus.",
+      "Used speed to escape from contemporary predators like Allosaurus."
+    ]
+  },
+  {
+    "id": 204,
+    "name": "Rhamphorhynchus",
+    "scientificName": "Rhamphorhynchus muensteri",
+    "clade": "Pterosaur",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Germany\",\"fossilFormation\":\"Solnhofen Limestone\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a long, stiff tail ending in a diamond-shaped vane.",
+      "Its jaws were filled with sharp, forward-pointing teeth for catching fish.",
+      "Lacked a bony crest on its head."
+    ]
+  },
+  {
+    "id": 205,
+    "name": "Dimorphodon",
+    "scientificName": "Dimorphodon macronyx",
+    "clade": "Pterosaur",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Blue Lias Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a remarkably large, deep skull resembling that of a puffin.",
+      "Possessed two distinct types of teeth in its jaws.",
+      "Its wings were relatively short, suggesting it was not an oceanic soarer."
+    ]
+  },
+  {
+    "id": 206,
+    "name": "Pterodactylus",
+    "scientificName": "Pterodactylus antiquus",
+    "clade": "Pterosaur",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Germany\",\"fossilFormation\":\"Solnhofen Limestone\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a long, pointed beak filled with small teeth.",
+      "It was a short-tailed pterosaur (pterodactyloid).",
+      "Likely fed on small fish and invertebrates."
+    ]
+  },
+  {
+    "id": 207,
+    "name": "Anurognathus",
+    "scientificName": "Anurognathus ammoni",
+    "clade": "Pterosaur",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Germany\",\"fossilFormation\":\"Solnhofen Limestone\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a very short skull and broad, frog-like mouth.",
+      "Unlike its relatives, it had a very short tail.",
+      "Likely an aerial insectivore, similar to modern nightjars."
+    ]
+  },
+  {
+    "id": 210,
+    "name": "Scaphognathus",
+    "scientificName": "Scaphognathus crassirostris",
+    "clade": "Pterosaur",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Germany\",\"fossilFormation\":\"Solnhofen Limestone\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a broader, more robust skull than its relative Rhamphorhynchus.",
+      "Its teeth were vertically oriented rather than pointing forward.",
+      "Its brain was relatively large compared to other early pterosaurs."
+    ]
+  },
+  {
+    "id": 211,
+    "name": "Sordes",
+    "scientificName": "Sordes pilosus",
+    "clade": "Pterosaur",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"Kazakhstan\",\"fossilFormation\":\"Karabastau Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Provided the first undeniable proof that pterosaurs were covered in fluff.",
+      "Had a thick coat of pycnofibers over its body and part of its wings.",
+      "Was a small, long-tailed pterosaur."
+    ]
+  },
+  {
+    "id": 212,
+    "name": "Darwinopterus",
+    "scientificName": "Darwinopterus modularis",
+    "clade": "Pterosaur",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Tiaojishan Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A crucial missing link showing modular evolution in pterosaurs.",
+      "Had a long tail like early pterosaurs, but the skull of advanced ones.",
+      "Exhibited clear sexual dimorphism, with males having head crests."
+    ]
+  },
+  {
+    "id": 213,
+    "name": "Wukongopterus",
+    "scientificName": "Wukongopterus lii",
+    "clade": "Pterosaur",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Tiaojishan Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Part of the transitional group connecting basal and advanced pterosaurs.",
+      "Had a robust tail and elongated cervical vertebrae.",
+      "Likely arboreal, navigating through dense forest environments."
+    ]
+  },
+  {
+    "id": 214,
+    "name": "Kunpengopterus",
+    "scientificName": "Kunpengopterus sinensis",
+    "clade": "Pterosaur",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Tiaojishan Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Recently discovered to possess an opposable thumb.",
+      "The opposable thumb suggests it lived and climbed in trees.",
+      "It lacked a bony crest on its head."
+    ]
+  },
+  {
+    "id": 215,
+    "name": "Ctenochasma",
+    "scientificName": "Ctenochasma roemeri",
+    "clade": "Pterosaur",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Germany\",\"fossilFormation\":\"Solnhofen Limestone\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had hundreds of long, thin teeth forming a comb-like structure.",
+      "Used its unique jaws to filter-feed on small aquatic organisms.",
+      "Was a fully flying equivalent to modern flamingos."
+    ]
+  },
+  {
+    "id": 216,
+    "name": "Gnathosaurus",
+    "scientificName": "Gnathosaurus subulatus",
+    "clade": "Pterosaur",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Germany\",\"fossilFormation\":\"Solnhofen Limestone\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Its jaws broadened at the tip into a spoon-like shape.",
+      "Possessed over 130 needle-like teeth.",
+      "Fed by sweeping its jaws through mud to catch small invertebrates."
+    ]
+  },
+  {
+    "id": 217,
+    "name": "Cycnorhamphus",
+    "scientificName": "Cycnorhamphus suevicus",
+    "clade": "Pterosaur",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Germany\",\"fossilFormation\":\"Solnhofen Limestone\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had unusual jaws with a distinctive upward curve or kink.",
+      "Likely used its specialized jaws to crush hard-shelled prey.",
+      "Lacked teeth in the front portion of its mouth."
+    ]
+  },
+  {
+    "id": 218,
+    "name": "Germanodactylus",
+    "scientificName": "Germanodactylus cristatus",
+    "clade": "Pterosaur",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"Germany\",\"fossilFormation\":\"Solnhofen Limestone\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a prominent bony crest running along the top of its skull.",
+      "Its jaws were mostly toothless at the very front.",
+      "Likely hunted fish, similar to modern terns."
+    ]
+  },
+  {
+    "id": 219,
+    "name": "Pterorhynchus",
+    "scientificName": "Pterorhynchus wellnhoferi",
+    "clade": "Pterosaur",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Daohugou Beds\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Preserved an intricate, sail-like crest made of keratin.",
+      "Had long hair-like pycnofibers with distinct tufts.",
+      "Its tail vane was reinforced by elongated scales."
+    ]
+  },
+  {
+    "id": 220,
+    "name": "Harpactognathus",
+    "scientificName": "Harpactognathus gentryii",
+    "clade": "Pterosaur",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "One of the few large pterosaurs known from the Morrison Formation.",
+      "Had a significant bony crest extending to the tip of its snout.",
+      "Its wingspan is estimated to have been around 2.5 meters."
+    ]
+  },
+  {
+    "id": 221,
+    "name": "Mesadactylus",
+    "scientificName": "Mesadactylus ornithosphyos",
+    "clade": "Pterosaur",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "One of the earliest recognized pterodactyloid pterosaurs in North America.",
+      "Was quite small, with an estimated wingspan under 1 meter.",
+      "Its isolated bones were initially confused with bird remains."
+    ]
+  },
+  {
+    "id": 222,
+    "name": "Jianchangnathus",
+    "scientificName": "Jianchangnathus robustus",
+    "clade": "Pterosaur",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Tiaojishan Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a highly robust lower jaw with a prominent chin.",
+      "Only three teeth were present in each maxilla.",
+      "Its tail was relatively straight and rigid."
+    ]
+  },
+  {
+    "id": 223,
+    "name": "Fenghuangopterus",
+    "scientificName": "Fenghuangopterus lii",
+    "clade": "Pterosaur",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Tiaojishan Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A member of the scaphognathine group of pterosaurs.",
+      "Had a blunt, short skull packed with vertically oriented teeth.",
+      "Provides key insights into early pterosaur diversity in Asia."
+    ]
+  },
+  {
+    "id": 224,
+    "name": "Liopleurodon",
+    "scientificName": "Liopleurodon ferox",
+    "clade": "Other",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Oxford Clay\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A formidable apex predator of the Jurassic seas.",
+      "Though famously portrayed as 25 meters long, it actually reached about 6-7 meters.",
+      "Had an exceptionally powerful bite force."
+    ]
+  },
+  {
+    "id": 225,
+    "name": "Plesiosaurus",
+    "scientificName": "Plesiosaurus dolichodeirus",
+    "clade": "Other",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Lias Group\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Characterized by a small head, long neck, and four large flippers.",
+      "Moved through the water by flying with its flippers, like modern sea turtles.",
+      "Its diet consisted mainly of fish and small cephalopods."
+    ]
+  },
+  {
+    "id": 226,
+    "name": "Ichthyosaurus",
+    "scientificName": "Ichthyosaurus communis",
+    "clade": "Other",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Blue Lias\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Convergent evolution gave it a body shape strikingly similar to a modern dolphin.",
+      "Gave birth to live young at sea, as proven by fossilized mothers with embryos.",
+      "Had massive eyes reinforced by bony rings for deep-water vision."
+    ]
+  },
+  {
+    "id": 227,
+    "name": "Ophthalmosaurus",
+    "scientificName": "Ophthalmosaurus icenicus",
+    "clade": "Other",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Oxford Clay\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had the largest eyes relative to body size of any known vertebrate.",
+      "Its enormous eyes suggest it hunted in deep, dark waters.",
+      "Possessed a teardrop-shaped body built for high-speed swimming."
+    ]
+  },
+  {
+    "id": 228,
+    "name": "Cryptoclidus",
+    "scientificName": "Cryptoclidus eurymerus",
+    "clade": "Other",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Oxford Clay\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a surprisingly fragile skull for a marine predator.",
+      "Its jaws were lined with dozens of interlocking, needle-like teeth.",
+      "Likely fed by trapping small fish and soft-bodied squid."
+    ]
+  },
+  {
+    "id": 229,
+    "name": "Rhomaleosaurus",
+    "scientificName": "Rhomaleosaurus cramptoni",
+    "clade": "Other",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Whitby Mudstone\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A large, robust pliosaur with a powerful build.",
+      "Had an internal nasal passage that allowed it to smell underwater.",
+      "Hunted other large marine reptiles as well as big fish."
+    ]
+  },
+  {
+    "id": 230,
+    "name": "Macroplata",
+    "scientificName": "Macroplata tenuiceps",
+    "clade": "Other",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Blue Lias\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had an unusually long neck for an early pliosaur.",
+      "Its skull was robust and crocodilian in shape.",
+      "Reached about 4.5 meters in length."
+    ]
+  },
+  {
+    "id": 231,
+    "name": "Peloneustes",
+    "scientificName": "Peloneustes philarchus",
+    "clade": "Other",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Oxford Clay\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "A relatively small pliosaur, measuring around 3 meters long.",
+      "Had fewer, more robust teeth than its relatives.",
+      "Specialized in hunting hard-shelled prey like ammonites and belemnites."
+    ]
+  },
+  {
+    "id": 232,
+    "name": "Pliosaurus",
+    "scientificName": "Pliosaurus brachydeirus",
+    "clade": "Other",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Kimmeridge Clay\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "An enormous apex predator of the Late Jurassic.",
+      "Its skull could reach over 2 meters in length.",
+      "Its bite force was powerful enough to crush a car."
+    ]
+  },
+  {
+    "id": 233,
+    "name": "Simolestes",
+    "scientificName": "Simolestes vorax",
+    "clade": "Other",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Oxford Clay\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had a remarkably short, blunt snout.",
+      "Its jaw muscles were exceptionally large, giving it a very powerful bite.",
+      "Likely specialized in twisting chunks of flesh off large prey."
+    ]
+  },
+  {
+    "id": 234,
+    "name": "Temnodontosaurus",
+    "scientificName": "Temnodontosaurus platyodon",
+    "clade": "Other",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Blue Lias\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "One of the largest known ichthyosaurs, reaching up to 12 meters.",
+      "An apex predator that fed on other marine reptiles and large cephalopods.",
+      "Possessed large, robust teeth with distinct cutting edges."
+    ]
+  },
+  {
+    "id": 237,
+    "name": "Excalibosaurus",
+    "scientificName": "Excalibosaurus costini",
+    "clade": "Other",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Lower Lias\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Like Eurhinosaurus, it had an extremely elongated upper jaw.",
+      "Its front flippers were much shorter than those of its relatives.",
+      "Helps document the evolutionary transition of swordfish-like ichthyosaurs."
+    ]
+  },
+  {
+    "id": 238,
+    "name": "Morganucodon",
+    "scientificName": "Morganucodon watsoni",
+    "clade": "Early_Mammal_Synapsid",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\" fissure fills\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "One of the earliest and most transitional forms between cynodonts and true mammals.",
+      "Had a double jaw joint, a hallmark of early mammalian evolution.",
+      "Was a tiny, shrew-like animal that hunted insects at night."
+    ]
+  },
+  {
+    "id": 239,
+    "name": "Castorocauda",
+    "scientificName": "Castorocauda lutrasimilis",
+    "clade": "Early_Mammal_Synapsid",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Tiaojishan Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "The earliest known mammal-like animal with a beaver-like tail and webbed feet.",
+      "Provides evidence that early mammaliaforms were highly specialized, not just generalized shrews.",
+      "Preserves the oldest known evidence of mammalian hair."
+    ]
+  },
+  {
+    "id": 240,
+    "name": "Volaticotherium",
+    "scientificName": "Volaticotherium antiquum",
+    "clade": "Early_Mammal_Synapsid",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Tiaojishan Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "The earliest known gliding mammal-like animal.",
+      "Pushed back the origin of mammalian gliding flight by 70 million years.",
+      "Had sharp teeth adapted for a purely insectivorous diet."
+    ]
+  },
+  {
+    "id": 241,
+    "name": "Fruitafossor",
+    "scientificName": "Fruitafossor windscheffeli",
+    "clade": "Early_Mammal_Synapsid",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "Had remarkably strong forelimbs adapted for digging, like a modern mole or aardvark.",
+      "Its tube-like, rootless teeth were perfectly suited for eating colonial insects like termites.",
+      "Shows that early mammals were highly ecologically diverse."
+    ]
+  },
+  {
+    "id": 242,
+    "name": "Juramaia",
+    "scientificName": "Juramaia sinensis",
+    "clade": "Early_Mammal_Synapsid",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Tiaojishan Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "The earliest known eutherian (placental) mammal.",
+      "Pushed back the divergence date of placental and marsupial mammals by 35 million years.",
+      "Its forelimbs indicate it was an agile tree climber."
+    ]
+  },
+  {
+    "id": 243,
+    "name": "Agilodocodon",
+    "scientificName": "Agilodocodon scansorius",
+    "clade": "Early_Mammal_Synapsid",
+    "timePeriod": "Jurassic",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Tiaojishan Formation\"}",
+    "currentFactCount": 3,
+    "hasGeneric": false,
+    "currentFacts": [
+      "An early mammaliaform that was highly adapted for living in trees.",
+      "Its teeth suggest it had a specialized diet of tree sap.",
+      "Possessed highly flexible wrists and elbows for grasping branches."
+    ]
+  }
+]

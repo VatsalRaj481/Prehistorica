@@ -227,6 +227,13 @@ export default function TwoDScaleViewer({
   const creatureHeightPx = safeHeight * scale;
   const creatureY = groundY - creatureHeightPx;
 
+  // Reference Dimension Badge position & check if hidden behind top-left specimen info card or top edge
+  const refBadgeX = refStartX + refWidthPx / 2;
+  const refBadgeY = groundY - activeRef.heightM * scale - 12;
+  // The specimen card at top-left spans up to ~480px horizontally and ~150px vertically.
+  // If the reference badge falls in this zone or near the top-left canvas bounds, it gets hidden/obscured in the top left.
+  const isBadgeHiddenInTopLeft = (refBadgeY < 150 && refBadgeX < 480) || refBadgeY < 35 || refBadgeX < 50;
+
   // Metric Grid Steps
   const gridSteps = useMemo(() => {
     const maxM = Math.ceil(totalSpanMeters + 2);
@@ -665,41 +672,43 @@ export default function TwoDScaleViewer({
                 </text>
               </g>
 
-              {/* Reference Dimension Badge with dark glass backdrop */}
-              <AnimatePresence mode="wait">
-                <motion.g
-                  key={`badge-${refType}`}
-                  initial={shouldReduceMotion ? false : { opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={shouldReduceMotion ? undefined : { opacity: 0, y: -6 }}
-                  transition={{ duration: 0.2 }}
-                  transform={`translate(${refStartX + refWidthPx / 2}, ${groundY - activeRef.heightM * scale - 12})`}
-                >
-                  <rect
-                    x="-42"
-                    y="-11"
-                    width="84"
-                    height="16"
-                    rx="4"
-                    fill="#070B14"
-                    fillOpacity="0.92"
-                    stroke="rgba(255, 255, 255, 0.18)"
-                    strokeWidth="0.8"
-                  />
-                  <text
-                    x="0"
-                    y="1"
-                    dominantBaseline="middle"
-                    textAnchor="middle"
-                    fill="#E2E8F0"
-                    fontSize="9"
-                    fontFamily="monospace"
-                    fontWeight="bold"
-                  >
-                    {activeRef.label}
-                  </text>
-                </motion.g>
-              </AnimatePresence>
+              {/* Reference Dimension Badge with dark glass backdrop (hidden if it gets obscured in the top left) */}
+              {!isBadgeHiddenInTopLeft && (
+                <AnimatePresence mode="wait">
+                  <g key={`badge-wrap-${refType}`} transform={`translate(${refBadgeX}, ${refBadgeY})`}>
+                    <motion.g
+                      initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.92 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={shouldReduceMotion ? undefined : { opacity: 0, scale: 0.92 }}
+                      transition={{ duration: 0.18 }}
+                    >
+                      <rect
+                        x="-42"
+                        y="-11"
+                        width="84"
+                        height="16"
+                        rx="4"
+                        fill="#070B14"
+                        fillOpacity="0.92"
+                        stroke="rgba(255, 255, 255, 0.18)"
+                        strokeWidth="0.8"
+                      />
+                      <text
+                        x="0"
+                        y="1"
+                        dominantBaseline="middle"
+                        textAnchor="middle"
+                        fill="#E2E8F0"
+                        fontSize="9"
+                        fontFamily="monospace"
+                        fontWeight="bold"
+                      >
+                        {activeRef.label}
+                      </text>
+                    </motion.g>
+                  </g>
+                </AnimatePresence>
+              )}
             </g>
           )}
         </svg>
