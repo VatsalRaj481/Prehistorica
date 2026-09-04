@@ -78,7 +78,6 @@ Built around **The Modern Museum Pavilion** visual language. **Prehistorica** ex
 - **Comprehensive Motion Accessibility**: Full support for `prefers-reduced-motion` (disabling non-vestibular physical translations), `prefers-reduced-transparency` (rendering solid surfaces), and `prefers-contrast` (sharpening borders).
 
 ### 9. 🌊 Fluid Scroll Animations & Interactive Motion
-- **Scroll Reading Progress Hairline (`ScrollProgressBar.tsx`)**: Spring-damped amber gradient indicator pinned under the glass navbar (`top-16`), providing fluid momentum-aware reading tracking across specimen dossiers.
 - **Back-to-Top Floating Quick Action (`ScrollToTop.tsx`)**: Glassmorphic action pill that springs into view after 380px of scroll, featuring tactile compression and interruptible smooth scrolling.
 - **Viewport-Triggered Reveals (`whileInView`)**:
   - **Landing Pavilion**: Gentle hero scroll depth parallax & dissolve falloff, with spring reveals on the *Specimen of the Day* and *Museum Access Portals*.
@@ -201,7 +200,7 @@ Prehistorica/
 │   │   ├── favicon.svg                    # Vector tab icon
 │   │   └── apple-touch-icon.png           # iOS / macOS web clip icon
 │   ├── src/
-│   │   ├── components/                    # TwoDScaleViewer, ThreeDScaleViewer, ScrollProgressBar, ScrollToTop, Navbar, MediaGallery, CompareModal
+│   │   ├── components/                    # TwoDScaleViewer, ThreeDScaleViewer, ScrollToTop, Navbar, MediaGallery, CompareModal
 │   │   ├── pages/                         # Home, Browse, SpeciesDetail, TimeMap
 │   │   ├── services/                      # REST API client & TypeScript interfaces
 │   │   ├── App.tsx

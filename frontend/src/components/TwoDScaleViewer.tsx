@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { User, Car, Bus, Layers, ExternalLink, ShieldCheck, AlertTriangle, Eye, Ruler, ArrowLeftRight } from 'lucide-react';
 import { formatMass } from '../utils/formatMass.js';
@@ -46,7 +46,23 @@ export default function TwoDScaleViewer({
   const [showGrid, setShowGrid] = useState(true);
   const [showCalipers, setShowCalipers] = useState(true);
   const [faceCreature, setFaceCreature] = useState(false);
+  const [silhouetteAspect, setSilhouetteAspect] = useState<number | null>(null);
   const shouldReduceMotion = useReducedMotion();
+
+  // Dynamically load image natural aspect ratio so silhouette is scaled accurately without clipping or empty bounding boxes
+  useEffect(() => {
+    if (!silhouette?.url) {
+      setSilhouetteAspect(null);
+      return;
+    }
+    const img = new Image();
+    img.onload = () => {
+      if (img.naturalWidth > 0 && img.naturalHeight > 0) {
+        setSilhouetteAspect(img.naturalWidth / img.naturalHeight);
+      }
+    };
+    img.src = silhouette.url;
+  }, [silhouette?.url]);
 
   const safeLength = lengthM && lengthM > 0 ? lengthM : 6;
   const safeHeight = heightM && heightM > 0 ? heightM : Math.max(1, safeLength * 0.35);
@@ -194,12 +210,17 @@ export default function TwoDScaleViewer({
 
   const activeRef = references[refType];
 
+  // Effective aspect ratio of the creature silhouette or fallback box
+  const effectiveAspect = silhouetteAspect || (safeLength / safeHeight);
+  const naturalCreatureHeightM = safeLength / effectiveAspect;
+  const effectiveCreatureHeightM = Math.max(safeHeight, naturalCreatureHeightM);
+
   // Stage physical layout calculations
   const viewBoxWidth = 1000;
-  const viewBoxHeight = 440;
-  const paddingBottom = 55;
-  const paddingTop = 75;
-  const paddingLeft = 65;
+  const viewBoxHeight = 400;
+  const paddingBottom = 46;
+  const paddingTop = 36;
+  const paddingLeft = 55;
   const paddingRight = 45;
 
   const groundY = viewBoxHeight - paddingBottom;
@@ -209,7 +230,7 @@ export default function TwoDScaleViewer({
   // Total horizontal span: Reference figure + gap + Creature length
   const gapMeters = 1.2;
   const totalSpanMeters = activeRef.lengthM + gapMeters + safeLength;
-  const maxVerticalMeters = Math.max(activeRef.heightM, safeHeight) * 1.2;
+  const maxVerticalMeters = Math.max(activeRef.heightM, effectiveCreatureHeightM) * 1.15;
 
   // Scale: pixels per meter (keep aspect ratio 1:1)
   const scale = useMemo(() => {
@@ -219,20 +240,26 @@ export default function TwoDScaleViewer({
   }, [availableWidth, availableHeight, totalSpanMeters, maxVerticalMeters]);
 
   const totalSpanPx = totalSpanMeters * scale;
-  const stageMarginLeft = paddingLeft + Math.max(50, (availableWidth - totalSpanPx) / 2);
+  const stageMarginLeft = paddingLeft + Math.max(25, (availableWidth - totalSpanPx) / 2);
   const refStartX = stageMarginLeft;
   const refWidthPx = activeRef.lengthM * scale;
   const creatureStartX = refStartX + refWidthPx + gapMeters * scale;
-  const creatureWidthPx = safeLength * scale;
-  const creatureHeightPx = safeHeight * scale;
-  const creatureY = groundY - creatureHeightPx;
 
-  // Reference Dimension Badge position & check if hidden behind top-left specimen info card or top edge
+  // Calculate creature dimensions matching true aspect ratio
+  let creatureWidthPx = safeLength * scale;
+  let creatureHeightPx = creatureWidthPx / effectiveAspect;
+
+  if (creatureHeightPx > availableHeight * 0.94) {
+    creatureHeightPx = availableHeight * 0.94;
+    creatureWidthPx = creatureHeightPx * effectiveAspect;
+  }
+
+  const creatureY = groundY - creatureHeightPx;
+  const renderedHeightM = Number((creatureHeightPx / scale).toFixed(1));
+
+  // Reference Dimension Badge position above reference figure
   const refBadgeX = refStartX + refWidthPx / 2;
-  const refBadgeY = groundY - activeRef.heightM * scale - 12;
-  // The specimen card at top-left spans up to ~480px horizontally and ~150px vertically.
-  // If the reference badge falls in this zone or near the top-left canvas bounds, it gets hidden/obscured in the top left.
-  const isBadgeHiddenInTopLeft = (refBadgeY < 150 && refBadgeX < 480) || refBadgeY < 35 || refBadgeX < 50;
+  const refBadgeY = Math.max(16, groundY - activeRef.heightM * scale - 12);
 
   // Metric Grid Steps
   const gridSteps = useMemo(() => {
@@ -267,13 +294,13 @@ export default function TwoDScaleViewer({
 
   return (
     <div className="w-full space-y-3 font-sans">
-      {/* 2D Museum Stage Canvas Container */}
-      <div className="relative w-full h-[380px] sm:h-[440px] md:h-[480px] bg-[#070B14] border border-white/[0.08] rounded-2xl overflow-hidden shadow-2xl select-none flex flex-col justify-between">
+      {/* 2D Museum Stage Card Container */}
+      <div className="w-full bg-[#070B14] border border-white/[0.08] rounded-2xl overflow-hidden shadow-2xl select-none flex flex-col">
         
-        {/* Stage Header Overlay */}
-        <div className="absolute top-2.5 left-2.5 right-2.5 sm:top-3.5 sm:left-3.5 sm:right-3.5 z-20 flex flex-col sm:flex-row sm:items-start justify-between gap-2 pointer-events-none">
+        {/* Dedicated Stage Header & Controls Bar (Decoupled from SVG stage to prevent mobile overlay cutoffs) */}
+        <div className="p-3 sm:p-4 border-b border-white/[0.08] bg-slate-950/80 backdrop-blur-md flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           {/* Specimen Badge & Readout */}
-          <div className="bg-slate-950/90 backdrop-blur-md px-3 py-2 sm:px-3.5 sm:py-2.5 border border-white/[0.08] rounded-xl pointer-events-auto max-w-full sm:max-w-md shadow-xl space-y-1">
+          <div className="space-y-1 min-w-0">
             <div className="flex items-center gap-1.5 sm:gap-2">
               <span className="h-2 w-2 rounded-full bg-amber-400 animate-pulse shrink-0" />
               <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-amber-400">
@@ -283,13 +310,13 @@ export default function TwoDScaleViewer({
                 &bull; 1:1 Metric Projection
               </span>
               {clade && (
-                <span className="text-[9px] font-mono text-amber-500/80 uppercase tracking-wider hidden md:inline truncate max-w-[120px]">
+                <span className="text-[9px] font-mono text-amber-500/80 uppercase tracking-wider hidden md:inline truncate max-w-[140px]">
                   &bull; {clade.replace(/_/g, ' ')}
                 </span>
               )}
             </div>
             <div className="flex items-baseline gap-2">
-              <h4 className="text-xs sm:text-base font-black text-slate-100 uppercase tracking-tight font-mono truncate">
+              <h4 className="text-sm sm:text-base font-black text-slate-100 uppercase tracking-tight font-mono truncate">
                 {speciesName}
               </h4>
               {scientificName && (
@@ -305,14 +332,14 @@ export default function TwoDScaleViewer({
             </p>
           </div>
 
-          {/* Controls: Reference Switcher & Calipers Toggle */}
-          <div className="flex items-center gap-1.5 pointer-events-auto self-end sm:self-auto overflow-x-auto max-w-full pb-0.5">
+          {/* Controls: Reference Switcher & Toggles */}
+          <div className="flex items-center gap-1.5 self-start sm:self-auto overflow-x-auto max-w-full pb-1 sm:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {/* Reference Target Switcher */}
-            <div className="flex items-center bg-slate-950/90 backdrop-blur-md border border-white/[0.08] rounded-xl p-1 gap-1 shadow-lg shrink-0">
+            <div className="flex items-center bg-slate-900/90 border border-white/[0.08] rounded-xl p-1 gap-1 shadow-lg shrink-0">
               <motion.button
                 whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('human')}
-                className={`min-h-[36px] px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                className={`min-h-[34px] px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
                   refType === 'human'
                     ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
                     : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
@@ -327,7 +354,7 @@ export default function TwoDScaleViewer({
               <motion.button
                 whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('car')}
-                className={`min-h-[36px] px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                className={`min-h-[34px] px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
                   refType === 'car'
                     ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
                     : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
@@ -342,7 +369,7 @@ export default function TwoDScaleViewer({
               <motion.button
                 whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('bus')}
-                className={`min-h-[36px] px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                className={`min-h-[34px] px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
                   refType === 'bus'
                     ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
                     : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
@@ -357,7 +384,7 @@ export default function TwoDScaleViewer({
               <motion.button
                 whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('elephant')}
-                className={`min-h-[36px] px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                className={`min-h-[34px] px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
                   refType === 'elephant'
                     ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
                     : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
@@ -374,10 +401,10 @@ export default function TwoDScaleViewer({
             <motion.button
               whileTap={{ scale: 0.94 }}
               onClick={() => setShowCalipers(!showCalipers)}
-              className={`min-h-[38px] min-w-[38px] p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center shrink-0 ${
+              className={`min-h-[34px] min-w-[34px] p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center shrink-0 ${
                 showCalipers
                   ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
-                  : 'bg-slate-950/90 border-white/[0.08] text-slate-400 hover:text-white'
+                  : 'bg-slate-900/90 border-white/[0.08] text-slate-400 hover:text-white'
               }`}
               title="Toggle Architectural Caliper Lines"
               aria-label="Toggle Architectural Caliper Lines"
@@ -389,10 +416,10 @@ export default function TwoDScaleViewer({
             <motion.button
               whileTap={{ scale: 0.94 }}
               onClick={() => setShowGrid(!showGrid)}
-              className={`min-h-[38px] min-w-[38px] p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center shrink-0 ${
+              className={`min-h-[34px] min-w-[34px] p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center shrink-0 ${
                 showGrid
                   ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
-                  : 'bg-slate-950/90 border-white/[0.08] text-slate-400 hover:text-white'
+                  : 'bg-slate-900/90 border-white/[0.08] text-slate-400 hover:text-white'
               }`}
               title="Toggle Metric Grid"
               aria-label="Toggle Metric Grid"
@@ -404,10 +431,10 @@ export default function TwoDScaleViewer({
             <motion.button
               whileTap={{ scale: 0.94 }}
               onClick={() => setFaceCreature(!faceCreature)}
-              className={`min-h-[38px] min-w-[38px] p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center gap-1.5 shrink-0 ${
+              className={`min-h-[34px] min-w-[34px] p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center gap-1.5 shrink-0 ${
                 faceCreature
                   ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
-                  : 'bg-slate-950/90 border-white/[0.08] text-slate-400 hover:text-white'
+                  : 'bg-slate-900/90 border-white/[0.08] text-slate-400 hover:text-white'
               }`}
               title={faceCreature ? "Orientation: Facing Creature (click for Parallel)" : "Orientation: Parallel (Both Left) (click to Face Creature)"}
               aria-label="Toggle figure orientation"
@@ -417,313 +444,313 @@ export default function TwoDScaleViewer({
           </div>
         </div>
 
+        {/* Dedicated SVG Drawing Canvas Stage */}
+        <div className="relative w-full h-[280px] sm:h-[360px] md:h-[400px]">
+          <svg
+            viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`}
+            className="w-full h-full"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            <defs>
+              {/* Museum exhibit background radial gradient */}
+              <radialGradient id="stageGlow" cx="50%" cy="80%" r="70%">
+                <stop offset="0%" stopColor="#1E1B18" stopOpacity="0.7" />
+                <stop offset="60%" stopColor="#0A0E1A" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#050810" stopOpacity="1.0" />
+              </radialGradient>
 
-
-        {/* SVG Drawing Canvas */}
-        <svg
-          viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`}
-          className="w-full h-full"
-          preserveAspectRatio="xMidYMid meet"
-        >
-          <defs>
-            {/* Museum exhibit background radial gradient */}
-            <radialGradient id="stageGlow" cx="50%" cy="80%" r="70%">
-              <stop offset="0%" stopColor="#1E1B18" stopOpacity="0.7" />
-              <stop offset="60%" stopColor="#0A0E1A" stopOpacity="0.9" />
-              <stop offset="100%" stopColor="#050810" stopOpacity="1.0" />
-            </radialGradient>
-
-            {/* Uniform Amber Tint Filter for Any Silhouette Source */}
-            <filter id="amberTint" colorInterpolationFilters="sRGB">
-              <feColorMatrix
-                type="matrix"
-                values="0 0 0 0 0.96
-                        0 0 0 0 0.62
-                        0 0 0 0 0.04
-                        0 0 0 1 0"
-              />
-            </filter>
-
-            {/* Uniform Chalk Slate Filter for Reference Figures */}
-            <filter id="chalkSlateTint" colorInterpolationFilters="sRGB">
-              <feColorMatrix
-                type="matrix"
-                values="0 0 0 0 0.82
-                        0 0 0 0 0.86
-                        0 0 0 0 0.90
-                        0 0 0 1 0"
-              />
-            </filter>
-
-            {/* Arrow marker for caliper dimension lines */}
-            <marker id="arrowAmber" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-              <path d="M 0 1.5 L 4.5 3 L 0 4.5 Z" fill="#F59E0B" />
-            </marker>
-          </defs>
-
-          {/* Background */}
-          <rect width={viewBoxWidth} height={viewBoxHeight} fill="url(#stageGlow)" />
-
-          {/* Architectural Metric Grid */}
-          {showGrid && (
-            <g opacity="0.35">
-              {/* Horizontal height grid lines */}
-              {verticalGridSteps.map((m) => {
-                const y = groundY - m * scale;
-                if (y < paddingTop - 10) return null;
-                return (
-                  <g key={`v-grid-${m}`}>
-                    <line
-                      x1={paddingLeft - 10}
-                      y1={y}
-                      x2={viewBoxWidth - paddingRight}
-                      y2={y}
-                      stroke="#334155"
-                      strokeWidth={m % 5 === 0 ? "1.2" : "0.6"}
-                      strokeDasharray={m === 0 ? undefined : "3,3"}
-                    />
-                    <text
-                      x={paddingLeft - 18}
-                      y={y + 3}
-                      fill="#64748B"
-                      fontSize="9"
-                      fontFamily="monospace"
-                      textAnchor="end"
-                    >
-                      {m}m
-                    </text>
-                  </g>
-                );
-              })}
-
-              {/* Vertical length grid lines */}
-              {gridSteps.map((m) => {
-                const x = refStartX + m * scale;
-                if (x > viewBoxWidth - paddingRight) return null;
-                return (
-                  <line
-                    key={`h-grid-${m}`}
-                    x1={x}
-                    y1={paddingTop}
-                    x2={x}
-                    y2={groundY}
-                    stroke="#1E293B"
-                    strokeWidth="0.8"
-                    strokeDasharray="2,4"
-                  />
-                );
-              })}
-            </g>
-          )}
-
-          {/* Museum Stage Ground Baseline */}
-          <line
-            x1={paddingLeft - 15}
-            y1={groundY}
-            x2={viewBoxWidth - paddingRight + 15}
-            y2={groundY}
-            stroke="#D97706"
-            strokeWidth="2"
-          />
-          {/* Subtle Ground Horizon Shadow */}
-          <rect
-            x={paddingLeft - 15}
-            y={groundY}
-            width={viewBoxWidth - paddingLeft - paddingRight + 30}
-            height="6"
-            fill="rgba(217, 119, 6, 0.15)"
-          />
-
-          {/* Scale Reference Model standing flush on ground baseline */}
-          <AnimatePresence mode="wait">
-            <motion.g
-              key={`${refType}-${faceCreature}`}
-              initial={shouldReduceMotion ? false : { opacity: 0, x: -12 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={shouldReduceMotion ? undefined : { opacity: 0, x: 12 }}
-              transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-            >
-              {activeRef.renderPath(scale, groundY, refStartX, faceCreature)}
-            </motion.g>
-          </AnimatePresence>
-
-          {/* Specimen Silhouette or Envelope Fallback */}
-          {hasSilhouette ? (
-            <g transform={`translate(${creatureStartX}, ${creatureY})`}>
-              {/* Silhouette SVG rendered flush on ground line via xMidYMax meet */}
-              <image
-                href={silhouette?.url || ''}
-                x="0"
-                y="0"
-                width={creatureWidthPx}
-                height={creatureHeightPx}
-                preserveAspectRatio="xMidYMax meet"
-                filter="url(#amberTint)"
-                className="transition-all duration-300"
-              />
-            </g>
-          ) : (
-            /* Part 6 Fallback: Stats-Only Physical Bounding Caliper Stage */
-            <g transform={`translate(${creatureStartX}, ${creatureY})`}>
-              <rect
-                x="0"
-                y="0"
-                width={creatureWidthPx}
-                height={creatureHeightPx}
-                fill="rgba(245, 158, 11, 0.06)"
-                stroke="#F59E0B"
-                strokeWidth="1.5"
-                strokeDasharray="6,4"
-                rx="6"
-              />
-              <text
-                x={creatureWidthPx / 2}
-                y={creatureHeightPx / 2 - 8}
-                textAnchor="middle"
-                fill="#FBBF24"
-                fontSize="11"
-                fontFamily="monospace"
-                fontWeight="bold"
-                letterSpacing="0.08em"
-              >
-                PHYSICAL ENVELOPE ONLY
-              </text>
-              <text
-                x={creatureWidthPx / 2}
-                y={creatureHeightPx / 2 + 10}
-                textAnchor="middle"
-                fill="#94A3B8"
-                fontSize="9"
-                fontFamily="monospace"
-              >
-                Silhouette unavailable &bull; Scaled {safeLength}m &times; {safeHeight}m
-              </text>
-            </g>
-          )}
-
-          {/* Caliper Dimension Lines & Dimension Text */}
-          {showCalipers && (
-            <g>
-              {/* Horizontal Length Caliper under baseline */}
-              <g transform={`translate(0, ${groundY + 22})`}>
-                <line
-                  x1={creatureStartX}
-                  y1="0"
-                  x2={creatureStartX + creatureWidthPx}
-                  y2="0"
-                  stroke="#F59E0B"
-                  strokeWidth="1.2"
+              {/* Uniform Amber Tint Filter for Any Silhouette Source */}
+              <filter id="amberTint" colorInterpolationFilters="sRGB">
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0.96
+                          0 0 0 0 0.62
+                          0 0 0 0 0.04
+                          0 0 0 1 0"
                 />
-                <line
-                  x1={creatureStartX}
-                  y1="-5"
-                  x2={creatureStartX}
-                  y2="5"
-                  stroke="#F59E0B"
-                  strokeWidth="1.2"
-                />
-                <line
-                  x1={creatureStartX + creatureWidthPx}
-                  y1="-5"
-                  x2={creatureStartX + creatureWidthPx}
-                  y2="5"
-                  stroke="#F59E0B"
-                  strokeWidth="1.2"
-                />
-                <text
-                  x={creatureStartX + creatureWidthPx / 2}
-                  y="14"
-                  textAnchor="middle"
-                  fill="#FBBF24"
-                  fontSize="10"
-                  fontFamily="monospace"
-                  fontWeight="bold"
-                >
-                  Length: {safeLength}m ({formatFeet(safeLength)})
-                </text>
-              </g>
+              </filter>
 
-              {/* Vertical Height Caliper to the right of creature */}
-              <g transform={`translate(${creatureStartX + creatureWidthPx + 14}, 0)`}>
-                <line
-                  x1="0"
-                  y1={creatureY}
-                  x2="0"
-                  y2={groundY}
-                  stroke="#F59E0B"
-                  strokeWidth="1.2"
+              {/* Uniform Chalk Slate Filter for Reference Figures */}
+              <filter id="chalkSlateTint" colorInterpolationFilters="sRGB">
+                <feColorMatrix
+                  type="matrix"
+                  values="0 0 0 0 0.82
+                          0 0 0 0 0.86
+                          0 0 0 0 0.90
+                          0 0 0 1 0"
                 />
-                <line
-                  x1="-4"
-                  y1={creatureY}
-                  x2="4"
-                  y2={creatureY}
-                  stroke="#F59E0B"
-                  strokeWidth="1.2"
-                />
-                <line
-                  x1="-4"
-                  y1={groundY}
-                  x2="4"
-                  y2={groundY}
-                  stroke="#F59E0B"
-                  strokeWidth="1.2"
-                />
-                <text
-                  x="8"
-                  y={creatureY + creatureHeightPx / 2 + 3}
-                  fill="#FBBF24"
-                  fontSize="10"
-                  fontFamily="monospace"
-                  fontWeight="bold"
-                >
-                  {safeHeight}m
-                </text>
-              </g>
+              </filter>
 
-              {/* Reference Dimension Badge with dark glass backdrop (hidden if it gets obscured in the top left) */}
-              {!isBadgeHiddenInTopLeft && (
-                <AnimatePresence mode="wait">
-                  <g key={`badge-wrap-${refType}`} transform={`translate(${refBadgeX}, ${refBadgeY})`}>
-                    <motion.g
-                      initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.92 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={shouldReduceMotion ? undefined : { opacity: 0, scale: 0.92 }}
-                      transition={{ duration: 0.18 }}
-                    >
-                      <rect
-                        x="-42"
-                        y="-11"
-                        width="84"
-                        height="16"
-                        rx="4"
-                        fill="#070B14"
-                        fillOpacity="0.92"
-                        stroke="rgba(255, 255, 255, 0.18)"
-                        strokeWidth="0.8"
+              {/* Arrow marker for caliper dimension lines */}
+              <marker id="arrowAmber" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                <path d="M 0 1.5 L 4.5 3 L 0 4.5 Z" fill="#F59E0B" />
+              </marker>
+            </defs>
+
+            {/* Background */}
+            <rect width={viewBoxWidth} height={viewBoxHeight} fill="url(#stageGlow)" />
+
+            {/* Architectural Metric Grid */}
+            {showGrid && (
+              <g opacity="0.35">
+                {/* Horizontal height grid lines */}
+                {verticalGridSteps.map((m) => {
+                  const y = groundY - m * scale;
+                  if (y < paddingTop - 10) return null;
+                  return (
+                    <g key={`v-grid-${m}`}>
+                      <line
+                        x1={paddingLeft - 10}
+                        y1={y}
+                        x2={viewBoxWidth - paddingRight}
+                        y2={y}
+                        stroke="#334155"
+                        strokeWidth={m % 5 === 0 ? "1.2" : "0.6"}
+                        strokeDasharray={m === 0 ? undefined : "3,3"}
                       />
                       <text
-                        x="0"
-                        y="1"
-                        dominantBaseline="middle"
-                        textAnchor="middle"
-                        fill="#E2E8F0"
+                        x={paddingLeft - 16}
+                        y={y + 3}
+                        fill="#64748B"
                         fontSize="9"
                         fontFamily="monospace"
-                        fontWeight="bold"
+                        textAnchor="end"
                       >
-                        {activeRef.label}
+                        {m}m
                       </text>
-                    </motion.g>
-                  </g>
-                </AnimatePresence>
-              )}
-            </g>
-          )}
-        </svg>
+                    </g>
+                  );
+                })}
 
-        {/* Bottom Architectural Caption Overlay */}
-        <div className="px-4 py-2 bg-slate-950/95 border-t border-white/[0.08] flex items-center justify-between text-[10px] font-mono text-slate-400 z-10">
+                {/* Vertical length grid lines */}
+                {gridSteps.map((m) => {
+                  const x = refStartX + m * scale;
+                  if (x > viewBoxWidth - paddingRight) return null;
+                  return (
+                    <line
+                      key={`h-grid-${m}`}
+                      x1={x}
+                      y1={paddingTop}
+                      x2={x}
+                      y2={groundY}
+                      stroke="#1E293B"
+                      strokeWidth="0.8"
+                      strokeDasharray="2,4"
+                    />
+                  );
+                })}
+              </g>
+            )}
+
+            {/* Museum Stage Ground Baseline */}
+            <line
+              x1={paddingLeft - 15}
+              y1={groundY}
+              x2={viewBoxWidth - paddingRight + 15}
+              y2={groundY}
+              stroke="#D97706"
+              strokeWidth="2"
+            />
+            {/* Subtle Ground Horizon Shadow */}
+            <rect
+              x={paddingLeft - 15}
+              y={groundY}
+              width={viewBoxWidth - paddingLeft - paddingRight + 30}
+              height="6"
+              fill="rgba(217, 119, 6, 0.15)"
+            />
+
+            {/* Scale Reference Model standing flush on ground baseline */}
+            <AnimatePresence mode="wait">
+              <motion.g
+                key={`${refType}-${faceCreature}`}
+                initial={shouldReduceMotion ? false : { opacity: 0, x: -12 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={shouldReduceMotion ? undefined : { opacity: 0, x: 12 }}
+                transition={{ type: 'spring', stiffness: 350, damping: 28 }}
+              >
+                {activeRef.renderPath(scale, groundY, refStartX, faceCreature)}
+              </motion.g>
+            </AnimatePresence>
+
+            {/* Specimen Silhouette or Envelope Fallback */}
+            {hasSilhouette ? (
+              <g transform={`translate(${creatureStartX}, ${creatureY})`}>
+                {/* Silhouette SVG rendered with true aspect ratio calibrated to ground */}
+                <image
+                  href={silhouette?.url || ''}
+                  x="0"
+                  y="0"
+                  width={creatureWidthPx}
+                  height={creatureHeightPx}
+                  preserveAspectRatio="xMidYMax meet"
+                  filter="url(#amberTint)"
+                  className="transition-all duration-300"
+                />
+              </g>
+            ) : (
+              /* Stats-Only Physical Bounding Caliper Stage */
+              <g transform={`translate(${creatureStartX}, ${creatureY})`}>
+                <rect
+                  x="0"
+                  y="0"
+                  width={creatureWidthPx}
+                  height={creatureHeightPx}
+                  fill="rgba(245, 158, 11, 0.06)"
+                  stroke="#F59E0B"
+                  strokeWidth="1.5"
+                  strokeDasharray="6,4"
+                  rx="6"
+                />
+                <text
+                  x={creatureWidthPx / 2}
+                  y={creatureHeightPx / 2 - 8}
+                  textAnchor="middle"
+                  fill="#FBBF24"
+                  fontSize="11"
+                  fontFamily="monospace"
+                  fontWeight="bold"
+                  letterSpacing="0.08em"
+                >
+                  PHYSICAL ENVELOPE ONLY
+                </text>
+                <text
+                  x={creatureWidthPx / 2}
+                  y={creatureHeightPx / 2 + 10}
+                  textAnchor="middle"
+                  fill="#94A3B8"
+                  fontSize="9"
+                  fontFamily="monospace"
+                >
+                  Silhouette unavailable &bull; Scaled {safeLength}m &times; {safeHeight}m
+                </text>
+              </g>
+            )}
+
+            {/* Caliper Dimension Lines & Dimension Text */}
+            {showCalipers && (
+              <g>
+                {/* Horizontal Length Caliper under baseline */}
+                <g transform={`translate(0, ${groundY + 18})`}>
+                  <line
+                    x1={creatureStartX}
+                    y1="0"
+                    x2={creatureStartX + creatureWidthPx}
+                    y2="0"
+                    stroke="#F59E0B"
+                    strokeWidth="1.2"
+                  />
+                  <line
+                    x1={creatureStartX}
+                    y1="-4"
+                    x2={creatureStartX}
+                    y2="4"
+                    stroke="#F59E0B"
+                    strokeWidth="1.2"
+                  />
+                  <line
+                    x1={creatureStartX + creatureWidthPx}
+                    y1="-4"
+                    x2={creatureStartX + creatureWidthPx}
+                    y2="4"
+                    stroke="#F59E0B"
+                    strokeWidth="1.2"
+                  />
+                  <text
+                    x={creatureStartX + creatureWidthPx / 2}
+                    y="14"
+                    textAnchor="middle"
+                    fill="#FBBF24"
+                    fontSize="10"
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                  >
+                    Length: {safeLength}m ({formatFeet(safeLength)})
+                  </text>
+                </g>
+
+                {/* Vertical Height Caliper to the right of creature */}
+                <g transform={`translate(${creatureStartX + creatureWidthPx + 14}, 0)`}>
+                  <line
+                    x1="0"
+                    y1={creatureY}
+                    x2="0"
+                    y2={groundY}
+                    stroke="#F59E0B"
+                    strokeWidth="1.2"
+                  />
+                  <line
+                    x1="-4"
+                    y1={creatureY}
+                    x2="4"
+                    y2={creatureY}
+                    stroke="#F59E0B"
+                    strokeWidth="1.2"
+                  />
+                  <line
+                    x1="-4"
+                    y1={groundY}
+                    x2="4"
+                    y2={groundY}
+                    stroke="#F59E0B"
+                    strokeWidth="1.2"
+                  />
+                  <text
+                    x="8"
+                    y={creatureY + creatureHeightPx / 2 + 3}
+                    fill="#FBBF24"
+                    fontSize="10"
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                  >
+                    {renderedHeightM}m
+                  </text>
+                </g>
+
+                {/* Reference Dimension Badge with dark glass backdrop */}
+                {refBadgeY >= 14 && (
+                  <AnimatePresence mode="wait">
+                    <g key={`badge-wrap-${refType}`} transform={`translate(${refBadgeX}, ${refBadgeY})`}>
+                      <motion.g
+                        initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.92 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={shouldReduceMotion ? undefined : { opacity: 0, scale: 0.92 }}
+                        transition={{ duration: 0.18 }}
+                      >
+                        <rect
+                          x="-42"
+                          y="-11"
+                          width="84"
+                          height="16"
+                          rx="4"
+                          fill="#070B14"
+                          fillOpacity="0.92"
+                          stroke="rgba(255, 255, 255, 0.18)"
+                          strokeWidth="0.8"
+                        />
+                        <text
+                          x="0"
+                          y="1"
+                          dominantBaseline="middle"
+                          textAnchor="middle"
+                          fill="#E2E8F0"
+                          fontSize="9"
+                          fontFamily="monospace"
+                          fontWeight="bold"
+                        >
+                          {activeRef.label}
+                        </text>
+                      </motion.g>
+                    </g>
+                  </AnimatePresence>
+                )}
+              </g>
+            )}
+          </svg>
+        </div>
+
+        {/* Bottom Architectural Caption */}
+        <div className="px-4 py-2 bg-slate-950/95 border-t border-white/[0.08] flex items-center justify-between text-[10px] font-mono text-slate-400">
           <span className="flex items-center gap-1.5 uppercase font-bold text-slate-300">
             <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
             2D Isometric Scale Stage
