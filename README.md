@@ -69,15 +69,15 @@ Built around **The Modern Museum Pavilion** visual language. **Prehistorica** ex
   - **Tablet**: 768px (iPad / Android Tablet)
   - **Desktop**: 1440px (High-DPI Desktop Monitors)
 
-### 8. 🍏 Apple Design Principles & HIG Standards
+### 8. 🏛️ Fluid Motion Architecture & Ergonomic Standards
 - **Critically Damped Spring Physics**: Driven by Framer Motion springs (`stiffness: 350, damping: 28–30`), eliminating rigid linear easings in favor of interruptible, velocity-aware motion.
 - **Translucent Glass Architecture**: Museum exhibition panels feature `backdrop-filter: blur(20px) saturate(180%)` with top-rim specular highlights (`box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12)`), preventing background desaturation when artwork scrolls beneath.
-- **Apple HIG Touch Target Compliance**: All mobile interactive elements meet or exceed the **44×44pt** minimum tap target standard with instant pointer-down press feedback (`whileTap={{ scale: 0.92–0.96 }}`).
+- **Ergonomic Touch Target Compliance**: All mobile interactive elements meet or exceed the **44×44pt** minimum tap target standard with instant pointer-down press feedback (`whileTap={{ scale: 0.92–0.96 }}`).
 - **Scroll Boundary Containment**: Enforces `overscroll-behavior: contain` on slide-over drawers to eliminate background page scroll-chaining.
 - **Optical Typography & Tabular Numerics**: Headings use negative optical tracking (`-0.025em`) while small labels apply wide tracking (`0.08–0.1em`). Metric dimension calipers use `font-variant-numeric: tabular-nums` to eliminate horizontal number shifting.
 - **Comprehensive Motion Accessibility**: Full support for `prefers-reduced-motion` (disabling non-vestibular physical translations), `prefers-reduced-transparency` (rendering solid surfaces), and `prefers-contrast` (sharpening borders).
 
-### 9. 🌊 Apple-Grade Scroll Animations & Interactive Motion
+### 9. 🌊 Fluid Scroll Animations & Interactive Motion
 - **Scroll Reading Progress Hairline (`ScrollProgressBar.tsx`)**: Spring-damped amber gradient indicator pinned under the glass navbar (`top-16`), providing fluid momentum-aware reading tracking across specimen dossiers.
 - **Back-to-Top Floating Quick Action (`ScrollToTop.tsx`)**: Glassmorphic action pill that springs into view after 380px of scroll, featuring tactile compression and interruptible smooth scrolling.
 - **Viewport-Triggered Reveals (`whileInView`)**:

@@ -4,7 +4,7 @@ export default function ScrollProgressBar() {
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll();
 
-  // Apple-grade critically damped spring for smooth momentum tracking
+  // Critically damped spring for smooth momentum tracking
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 280,
     damping: 30,

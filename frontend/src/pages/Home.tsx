@@ -16,7 +16,7 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const shouldReduceMotion = useReducedMotion();
 
-  // Gentle Apple-style scroll depth parallax on landing hero
+  // Gentle scroll depth parallax on landing hero
   const { scrollY } = useScroll();
   const heroY = useTransform(scrollY, [0, 400], [0, shouldReduceMotion ? 0 : 25]);
   const heroOpacity = useTransform(scrollY, [0, 450], [1, 0.88]);

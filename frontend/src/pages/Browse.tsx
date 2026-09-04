@@ -221,7 +221,7 @@ export default function Browse() {
           </p>
         </div>
 
-        {/* Mobile filter icon button: compact icon with active filter badge (Apple HIG 44pt min target) */}
+        {/* Mobile filter icon button: compact icon with active filter badge (44pt min target) */}
         <div className="flex items-center gap-2 lg:hidden">
           <motion.button
             whileTap={{ scale: 0.92 }}
@@ -239,7 +239,7 @@ export default function Browse() {
         </div>
       </motion.div>
 
-      {/* Mobile / Tablet Filter Drawer Overlay with Apple Scroll Containment */}
+      {/* Mobile / Tablet Filter Drawer Overlay with Scroll Containment */}
       <AnimatePresence>
         {showMobileFilters && (
           <motion.div

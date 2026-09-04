@@ -93,7 +93,7 @@ export default function Navbar() {
               </motion.button>
             </div>
 
-            {/* Mobile Controls: Search & Hamburger Toggle (Apple HIG 44x44pt Target Compliant) */}
+            {/* Mobile Controls: Search & Hamburger Toggle (44x44pt Target Compliant) */}
             <div className="flex items-center gap-2 sm:hidden">
               <button
                 onClick={() => setIsCompareOpen(true)}
