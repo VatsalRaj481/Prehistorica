@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useReducedMotion, Variants } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useTransform, Variants } from 'framer-motion';
 import { fetchCreatureOfTheDay, fetchSpecies, Species } from '../services/api.js';
 import ThreeDFossilStarfield from '../components/ThreeDFossilStarfield.js';
 import SpotlightCard from '../components/SpotlightCard.js';
@@ -15,6 +15,11 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const shouldReduceMotion = useReducedMotion();
+
+  // Gentle Apple-style scroll depth parallax on landing hero
+  const { scrollY } = useScroll();
+  const heroY = useTransform(scrollY, [0, 400], [0, shouldReduceMotion ? 0 : 25]);
+  const heroOpacity = useTransform(scrollY, [0, 450], [1, 0.88]);
 
   useEffect(() => {
     document.title = 'Prehistorica | Museum Exhibit Pavilion & Deep Time Archives';
@@ -67,11 +72,12 @@ export default function Home() {
       {/* 3D Particle Fossil Canvas Background */}
       <ThreeDFossilStarfield />
 
-      {/* Curatorial Museum Hero Section */}
+      {/* Curatorial Museum Hero Section with Subtle Parallax Falloff */}
       <motion.section
         variants={heroVariants}
         initial="hidden"
         animate="show"
+        style={{ y: heroY, opacity: heroOpacity }}
         className="relative z-10 max-w-5xl mx-auto pt-6 pb-12 space-y-8 border-b border-white/[0.08]"
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -141,8 +147,14 @@ export default function Home() {
         </div>
       </motion.section>
 
-      {/* Feature Exhibit: Specimen of the Day */}
-      <section className="relative z-10 space-y-6">
+      {/* Feature Exhibit: Specimen of the Day (Scroll Viewport Reveal) */}
+      <motion.section
+        initial={shouldReduceMotion ? false : { opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.12 }}
+        transition={{ type: 'spring', stiffness: 320, damping: 28 }}
+        className="relative z-10 space-y-6"
+      >
         <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 font-mono">
           <div className="flex items-center gap-2.5">
             <div className="p-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20">
@@ -304,10 +316,16 @@ export default function Home() {
               })()}            </div>
           </SpotlightCard>
         )}
-      </section>
+      </motion.section>
 
-      {/* Curatorial Museum Access Portals */}
-      <section className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 font-mono">
+      {/* Curatorial Museum Access Portals (Scroll Viewport Reveal) */}
+      <motion.section
+        initial={shouldReduceMotion ? false : { opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.12 }}
+        transition={{ type: 'spring', stiffness: 320, damping: 28 }}
+        className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 font-mono"
+      >
         {/* Portal 1: Catalog Index */}
         <Link to="/browse" className="block group">
           <SpotlightCard
@@ -373,7 +391,7 @@ export default function Home() {
             </div>
           </SpotlightCard>
         </Link>
-      </section>
+      </motion.section>
     </div>
   );
 }

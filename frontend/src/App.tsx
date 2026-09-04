@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar.js';
 import Footer from './components/Footer.js';
+import ScrollProgressBar from './components/ScrollProgressBar.js';
+import ScrollToTop from './components/ScrollToTop.js';
 import Home from './pages/Home.js';
 import Browse from './pages/Browse.js';
 import SpeciesDetail from './pages/SpeciesDetail.js';
@@ -16,6 +18,7 @@ export default function App() {
   return (
     <Router>
       <Navbar />
+      <ScrollProgressBar />
       <main className="flex-grow max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -25,6 +28,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <ScrollToTop />
     </Router>
   );
 }

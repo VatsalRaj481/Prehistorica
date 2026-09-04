@@ -673,6 +673,9 @@ export default function Browse() {
                       key={species.id}
                       layout={shouldReduceMotion ? false : true}
                       variants={cardVariants}
+                      initial="hidden"
+                      whileInView="show"
+                      viewport={{ once: true, amount: 0.1 }}
                       whileHover={shouldReduceMotion ? {} : { y: -4, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
                       whileTap={{ scale: 0.98 }}
                       transition={{

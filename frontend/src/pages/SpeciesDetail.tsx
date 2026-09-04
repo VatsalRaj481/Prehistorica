@@ -176,24 +176,37 @@ export default function SpeciesDetail() {
         );
       })()}
 
-      {/* 2D Silhouette Scale Comparison Stage */}
-      <TwoDScaleViewer
-        speciesName={species.name}
-        scientificName={species.scientificName}
-        lengthM={species.lengthM}
-        heightM={species.heightM}
-        weightKg={species.weightKg}
-        clade={species.clade}
-        silhouette={species.comparisonSilhouette}
-      />
+      {/* 2D Silhouette Scale Comparison Stage (Scroll Viewport Reveal) */}
+      <motion.div
+        initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.08 }}
+        transition={{ type: 'spring', stiffness: 320, damping: 28 }}
+      >
+        <TwoDScaleViewer
+          speciesName={species.name}
+          scientificName={species.scientificName}
+          lengthM={species.lengthM}
+          heightM={species.heightM}
+          weightKg={species.weightKg}
+          clade={species.clade}
+          silhouette={species.comparisonSilhouette}
+        />
+      </motion.div>
 
-      {/* Architectural Metrics Banner */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono">
+      {/* Architectural Metrics Banner (Scroll Viewport Reveal) */}
+      <motion.div
+        initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.08 }}
+        transition={{ type: 'spring', stiffness: 320, damping: 28 }}
+        className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono"
+      >
         <div className="museum-card py-3.5 px-4 rounded-xl space-y-1 text-center shadow-md border border-white/[0.06]">
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
             <Scale className="h-3.5 w-3.5 text-amber-400" /> Total Length
           </span>
-          <p className="text-xl sm:text-2xl font-black text-amber-400">
+          <p className="text-xl sm:text-2xl font-black text-amber-400 tabular-nums">
             {formatFeetLong(species.lengthM)}
           </p>
         </div>
@@ -202,7 +215,7 @@ export default function SpeciesDetail() {
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
             <Scale className="h-3.5 w-3.5 text-amber-400" /> Standing Height
           </span>
-          <p className="text-xl sm:text-2xl font-black text-amber-400">
+          <p className="text-xl sm:text-2xl font-black text-amber-400 tabular-nums">
             {formatFeetLong(species.heightM)}
           </p>
         </div>
@@ -211,14 +224,20 @@ export default function SpeciesDetail() {
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
             <Scale className="h-3.5 w-3.5 text-amber-400" /> Estimated Mass
           </span>
-          <p className="text-xl sm:text-2xl font-black text-amber-400">
+          <p className="text-xl sm:text-2xl font-black text-amber-400 tabular-nums">
             {species.weightKg ? `${species.weightKg.toLocaleString()} KG` : 'Disputed'}
           </p>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Specimen Deep Dive Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
+      {/* Specimen Deep Dive Grid (Scroll Viewport Reveal) */}
+      <motion.div
+        initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.05 }}
+        transition={{ type: 'spring', stiffness: 320, damping: 28 }}
+        className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8"
+      >
         {/* Left Column: Media Reconstruction & Visual Archive */}
         <div className="lg:col-span-6 space-y-5">
           <div className="glass-panel rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
@@ -343,11 +362,17 @@ export default function SpeciesDetail() {
             </div>
           )}
         </div>
-      </div>
+      </motion.div>
 
-      {/* Full-Width Horizontal Coexisting Species Ribbon */}
+      {/* Full-Width Horizontal Coexisting Species Ribbon (Scroll Viewport Reveal) */}
       {species.relatedSpecies && species.relatedSpecies.length > 0 && (
-        <div className="glass-panel rounded-xl p-6 border border-white/[0.08] space-y-4 shadow-2xl">
+        <motion.div
+          initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.08 }}
+          transition={{ type: 'spring', stiffness: 320, damping: 28 }}
+          className="glass-panel rounded-xl p-6 border border-white/[0.08] space-y-4 shadow-2xl"
+        >
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.08] pb-3 font-mono">
             <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">
               <Compass className="h-4 w-4 text-amber-400" /> Lived Alongside / Coexisting Species
@@ -396,7 +421,7 @@ export default function SpeciesDetail() {
               );
             })}
           </div>
-        </div>
+        </motion.div>
       )}
     </motion.div>
   );
