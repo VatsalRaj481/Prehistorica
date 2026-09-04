@@ -122,7 +122,7 @@ export default function Navbar() {
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden border-t border-white/[0.08] bg-slate-950/98 px-4 py-4 space-y-4 overflow-hidden font-mono"
+              className="md:hidden border-t border-white/[0.08] bg-slate-950/98 px-4 py-4 space-y-4 overflow-visible font-mono"
             >
               {/* Search Bar on Mobile */}
               <div className="w-full">

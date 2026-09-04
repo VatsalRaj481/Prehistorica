@@ -146,29 +146,29 @@ export default function SpeciesDetail() {
       {(() => {
         const names = getSpeciesDisplayNames(species);
         return (
-          <div className="space-y-4 border-l-2 border-amber-500 pl-5">
-            <div className="flex flex-wrap items-center gap-2 text-xs font-mono">
-              <span className="px-3 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-400 font-bold uppercase tracking-widest flex items-center gap-1.5 rounded-md">
+          <div className="space-y-3 sm:space-y-4 border-l-2 border-amber-500 pl-3 sm:pl-5">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs font-mono">
+              <span className="px-2.5 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-400 font-bold uppercase tracking-widest flex items-center gap-1.5 rounded-md text-[10px] sm:text-xs">
                 <Calendar className="h-3.5 w-3.5" />
                 {species.timePeriod} &bull; {species.myaStart}–{species.myaEnd} MYA
               </span>
-              <span className="px-3 py-1 bg-slate-900 border border-white/[0.08] text-slate-300 font-bold uppercase tracking-widest rounded-md">
+              <span className="px-2.5 py-1 bg-slate-900 border border-white/[0.08] text-slate-300 font-bold uppercase tracking-widest rounded-md text-[10px] sm:text-xs">
                 Clade: {species.clade}
               </span>
-              <span className="px-3 py-1 bg-slate-900 border border-white/[0.08] text-amber-300/90 font-bold uppercase tracking-widest rounded-md">
+              <span className="px-2.5 py-1 bg-slate-900 border border-white/[0.08] text-amber-300/90 font-bold uppercase tracking-widest rounded-md text-[10px] sm:text-xs">
                 Status: {species.taxonomicStatus}
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-100 uppercase break-words leading-none font-sans">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-100 uppercase break-words leading-tight sm:leading-none font-sans">
               {names.heading}
             </h1>
-            <p className="text-lg italic font-mono text-amber-400">
+            <p className="text-sm sm:text-lg italic font-mono text-amber-400">
               {names.subheading}
             </p>
 
             {species.nameMeaning && (
-              <p className="text-xs font-mono text-slate-400 leading-relaxed border-t border-white/[0.08] pt-3">
+              <p className="text-xs font-mono text-slate-400 leading-relaxed border-t border-white/[0.08] pt-2 sm:pt-3">
                 <strong className="font-bold text-amber-400 uppercase tracking-widest">Etymology & Translation:</strong> "{species.nameMeaning}"
               </p>
             )}

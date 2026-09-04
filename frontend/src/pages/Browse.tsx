@@ -213,8 +213,8 @@ export default function Browse() {
         className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/[0.08] pb-5 font-mono"
       >
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black text-slate-100 uppercase tracking-tight flex items-center gap-2 font-sans">
-            <Filter className="h-6 w-6 text-amber-500" /> Fauna Catalog Index
+          <h1 className="text-2xl sm:text-4xl font-black text-slate-100 uppercase tracking-tight flex items-center gap-2 font-sans">
+            <Filter className="h-5 w-5 sm:h-6 sm:w-6 text-amber-500 shrink-0" /> Fauna Catalog Index
           </h1>
           <p className="text-xs text-slate-400 mt-1">
             Archival search across <strong className="text-amber-400">{pagination.total > 0 ? `${pagination.total}+` : '460+'}</strong> verified prehistoric specimens.
@@ -735,8 +735,8 @@ export default function Browse() {
 
               {/* Pagination Controls */}
               {pagination.totalPages > 1 && (
-                <div className="flex items-center justify-between border-t border-white/[0.08] pt-6 font-mono text-xs">
-                  <span className="text-slate-400">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/[0.08] pt-6 font-mono text-xs">
+                  <span className="text-slate-400 text-center sm:text-left">
                     Page <strong className="text-amber-400">{page}</strong> / <strong className="text-slate-200">{pagination.totalPages}</strong> ({pagination.total} total specimens)
                   </span>
 

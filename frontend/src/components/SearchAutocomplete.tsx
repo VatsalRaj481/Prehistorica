@@ -72,7 +72,7 @@ export default function SearchAutocomplete() {
   };
 
   return (
-    <div ref={wrapperRef} className="relative w-full max-w-xs sm:max-w-sm font-mono">
+    <div ref={wrapperRef} className="relative w-full sm:max-w-xs md:max-w-sm font-mono">
       <form onSubmit={handleSubmit} className="relative">
         <span className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
           {loading ? (

@@ -268,13 +268,13 @@ export default function TwoDScaleViewer({
   return (
     <div className="w-full space-y-3 font-sans">
       {/* 2D Museum Stage Canvas Container */}
-      <div className="relative w-full h-[360px] sm:h-[440px] bg-[#070B14] border border-white/[0.08] rounded-2xl overflow-hidden shadow-2xl select-none flex flex-col justify-between">
+      <div className="relative w-full h-[380px] sm:h-[440px] md:h-[480px] bg-[#070B14] border border-white/[0.08] rounded-2xl overflow-hidden shadow-2xl select-none flex flex-col justify-between">
         
         {/* Stage Header Overlay */}
-        <div className="absolute top-3.5 left-3.5 right-3.5 z-20 flex flex-wrap items-start justify-between gap-2.5 pointer-events-none">
+        <div className="absolute top-2.5 left-2.5 right-2.5 sm:top-3.5 sm:left-3.5 sm:right-3.5 z-20 flex flex-col sm:flex-row sm:items-start justify-between gap-2 pointer-events-none">
           {/* Specimen Badge & Readout */}
-          <div className="bg-slate-950/90 backdrop-blur-md px-3.5 py-2.5 border border-white/[0.08] rounded-xl pointer-events-auto max-w-full sm:max-w-md shadow-xl space-y-1">
-            <div className="flex items-center gap-2">
+          <div className="bg-slate-950/90 backdrop-blur-md px-3 py-2 sm:px-3.5 sm:py-2.5 border border-white/[0.08] rounded-xl pointer-events-auto max-w-full sm:max-w-md shadow-xl space-y-1">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               <span className="h-2 w-2 rounded-full bg-amber-400 animate-pulse shrink-0" />
               <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-amber-400">
                 2D Scale Comparison Stage
@@ -283,13 +283,13 @@ export default function TwoDScaleViewer({
                 &bull; 1:1 Metric Projection
               </span>
               {clade && (
-                <span className="text-[9px] font-mono text-amber-500/80 uppercase tracking-wider hidden sm:inline">
+                <span className="text-[9px] font-mono text-amber-500/80 uppercase tracking-wider hidden md:inline truncate max-w-[120px]">
                   &bull; {clade.replace(/_/g, ' ')}
                 </span>
               )}
             </div>
             <div className="flex items-baseline gap-2">
-              <h4 className="text-sm sm:text-base font-black text-slate-100 uppercase tracking-tight font-mono truncate">
+              <h4 className="text-xs sm:text-base font-black text-slate-100 uppercase tracking-tight font-mono truncate">
                 {speciesName}
               </h4>
               {scientificName && (
@@ -298,7 +298,7 @@ export default function TwoDScaleViewer({
                 </span>
               )}
             </div>
-            <p className="text-[11px] font-mono text-slate-400">
+            <p className="text-[10px] sm:text-[11px] font-mono text-slate-400">
               Length: <span className="text-amber-400 font-bold">{safeLength}m</span> ({formatFeet(safeLength)}) &bull; Height:{' '}
               <span className="text-amber-400 font-bold">{safeHeight}m</span> ({formatFeet(safeHeight)})
               {weightKg ? ` • Mass: ${formatMass(weightKg)}` : ''}
@@ -306,63 +306,63 @@ export default function TwoDScaleViewer({
           </div>
 
           {/* Controls: Reference Switcher & Calipers Toggle */}
-          <div className="flex flex-wrap items-center gap-1.5 pointer-events-auto">
+          <div className="flex items-center gap-1.5 pointer-events-auto self-end sm:self-auto overflow-x-auto max-w-full pb-0.5">
             {/* Reference Target Switcher */}
-            <div className="flex items-center bg-slate-950/90 backdrop-blur-md border border-white/[0.08] rounded-xl p-1 gap-1 shadow-lg">
+            <div className="flex items-center bg-slate-950/90 backdrop-blur-md border border-white/[0.08] rounded-xl p-1 gap-1 shadow-lg shrink-0">
               <motion.button
                 whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('human')}
-                className={`px-2.5 py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                className={`px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
                   refType === 'human'
                     ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
                     : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
                 }`}
                 title="Compare with Human (1.8m)"
               >
-                <User className="h-3.5 w-3.5" />
-                <span className="text-[11px]">Human (1.8m)</span>
+                <User className="h-3.5 w-3.5 shrink-0" />
+                <span className="text-[10px] sm:text-[11px]">Human (1.8m)</span>
               </motion.button>
 
               <motion.button
                 whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('car')}
-                className={`px-2.5 py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                className={`px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
                   refType === 'car'
                     ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
                     : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
                 }`}
                 title="Compare with Vehicle (4.5m)"
               >
-                <Car className="h-3.5 w-3.5" />
-                <span className="hidden sm:inline text-[11px]">Car (4.5m)</span>
+                <Car className="h-3.5 w-3.5 shrink-0" />
+                <span className="text-[10px] sm:text-[11px]">Car (4.5m)</span>
               </motion.button>
 
               <motion.button
                 whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('bus')}
-                className={`px-2.5 py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                className={`px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
                   refType === 'bus'
                     ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
                     : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
                 }`}
                 title="Compare with Transit Bus (11.5m)"
               >
-                <Bus className="h-3.5 w-3.5" />
-                <span className="hidden md:inline text-[11px]">Bus (11.5m)</span>
+                <Bus className="h-3.5 w-3.5 shrink-0" />
+                <span className="hidden sm:inline text-[10px] sm:text-[11px]">Bus (11.5m)</span>
               </motion.button>
 
               <motion.button
                 whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('elephant')}
-                className={`px-2.5 py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                className={`px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
                   refType === 'elephant'
                     ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
                     : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
                 }`}
                 title="Compare with African Elephant (3.3m)"
               >
-                <Layers className="h-3.5 w-3.5" />
-                <span className="hidden md:inline text-[11px]">Elephant (3.3m)</span>
+                <Layers className="h-3.5 w-3.5 shrink-0" />
+                <span className="hidden md:inline text-[10px] sm:text-[11px]">Elephant (3.3m)</span>
               </motion.button>
             </div>
 
@@ -370,7 +370,7 @@ export default function TwoDScaleViewer({
             <motion.button
               whileTap={{ scale: 0.94 }}
               onClick={() => setShowCalipers(!showCalipers)}
-              className={`p-2 rounded-xl border transition-all cursor-pointer shadow-lg ${
+              className={`p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer shadow-lg shrink-0 ${
                 showCalipers
                   ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
                   : 'bg-slate-950/90 border-white/[0.08] text-slate-400 hover:text-white'
@@ -384,7 +384,7 @@ export default function TwoDScaleViewer({
             <motion.button
               whileTap={{ scale: 0.94 }}
               onClick={() => setShowGrid(!showGrid)}
-              className={`p-2 rounded-xl border transition-all cursor-pointer shadow-lg ${
+              className={`p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer shadow-lg shrink-0 ${
                 showGrid
                   ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
                   : 'bg-slate-950/90 border-white/[0.08] text-slate-400 hover:text-white'
@@ -398,7 +398,7 @@ export default function TwoDScaleViewer({
             <motion.button
               whileTap={{ scale: 0.94 }}
               onClick={() => setFaceCreature(!faceCreature)}
-              className={`p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center gap-1.5 ${
+              className={`p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center gap-1.5 shrink-0 ${
                 faceCreature
                   ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
                   : 'bg-slate-950/90 border-white/[0.08] text-slate-400 hover:text-white'
@@ -409,6 +409,8 @@ export default function TwoDScaleViewer({
             </motion.button>
           </div>
         </div>
+
+
 
         {/* SVG Drawing Canvas */}
         <svg

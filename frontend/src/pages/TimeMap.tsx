@@ -258,13 +258,13 @@ export default function TimeMap() {
             </h3>
 
             {/* Continent Selector Pills */}
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-1.5 max-w-full">
               {CONTINENTS.map((c) => (
                 <motion.button
                   key={c.name}
                   whileTap={{ scale: 0.94 }}
                   onClick={() => handleLocationChange(c.name)}
-                  className={`px-3 py-1 rounded-lg text-[11px] font-bold uppercase tracking-wider border transition-all cursor-pointer ${
+                  className={`px-2.5 py-1 rounded-lg text-[10px] sm:text-[11px] font-bold uppercase tracking-wider border transition-all cursor-pointer ${
                     selectedLocation === c.name
                       ? 'bg-amber-500/20 border-amber-500/50 text-amber-300 shadow-sm'
                       : 'bg-slate-900/90 border-white/[0.08] text-slate-400 hover:bg-slate-850 hover:text-white'
@@ -276,7 +276,7 @@ export default function TimeMap() {
             </div>
           </div>
 
-          <div className="relative h-[440px] rounded-xl overflow-hidden border border-white/[0.08] shadow-2xl bg-slate-950">
+          <div className="relative h-[340px] sm:h-[420px] md:h-[480px] rounded-xl overflow-hidden border border-white/[0.08] shadow-2xl bg-slate-950">
             <MapContainer
               center={activeContinentObj.coords}
               zoom={activeContinentObj.zoom}
