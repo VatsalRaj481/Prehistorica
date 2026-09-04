@@ -353,7 +353,7 @@ export default function Home() {
             </div>
 
             <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors">
-              <span>Explore Catalog</span>
+              <span>Filter All Specimens</span>
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </SpotlightCard>
