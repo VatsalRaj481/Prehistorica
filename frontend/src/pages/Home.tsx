@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useReducedMotion, Variants } from 'framer-motion';
 import { fetchCreatureOfTheDay, fetchSpecies, Species } from '../services/api.js';
 import ThreeDFossilStarfield from '../components/ThreeDFossilStarfield.js';
+import SpotlightCard from '../components/SpotlightCard.js';
 import { Calendar, ArrowRight, Dna, Compass, ShieldAlert, FileText, Layers, Loader2, Globe, Database } from 'lucide-react';
 import { formatMass } from '../utils/formatMass.js';
 import { formatFeet } from '../utils/formatDimensions.js';
@@ -199,7 +200,7 @@ export default function Home() {
             <p className="font-bold text-sm">{error || 'Creature record not found'}</p>
           </div>
         ) : (
-          <motion.div
+          <SpotlightCard
             variants={cardVariants}
             initial="hidden"
             animate="show"
@@ -297,72 +298,77 @@ export default function Home() {
                     </div>
                   </div>
                 );
-              })()}
-            </div>
-          </motion.div>
+              })()}            </div>
+          </SpotlightCard>
         )}
       </section>
 
       {/* Curatorial Museum Access Portals */}
       <section className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 font-mono">
         {/* Portal 1: Catalog Index */}
-        <Link
-          to="/browse"
-          className="group relative glass-panel rounded-xl hover:border-amber-500/40 p-6 sm:p-7 transition-all duration-300 shadow-xl flex flex-col justify-between space-y-5"
-        >
-          <div className="space-y-3">
-            <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5">
-              <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest">
-                ARCHIVE INDEX
-              </span>
-              <span className="text-xs text-slate-400 font-bold">
-                {formattedTotal} SPECIMENS
-              </span>
+        <Link to="/browse" className="block group">
+          <SpotlightCard
+            whileHover={{ y: -4 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+            className="glass-panel rounded-xl hover:border-amber-500/40 p-6 sm:p-7 transition-colors shadow-xl flex flex-col justify-between space-y-5 h-full"
+          >
+            <div className="space-y-3">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5">
+                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest">
+                  ARCHIVE INDEX
+                </span>
+                <span className="text-xs text-slate-400 font-bold">
+                  {formattedTotal} SPECIMENS
+                </span>
+              </div>
+
+              <h3 className="text-2xl font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans">
+                Fauna Catalog & Filter Pavilion
+              </h3>
+
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+                Filter cataloged prehistoric species by period, diet, habitat, and taxonomic clade with interactive 1:1 scale inspection and human reference models.
+              </p>
             </div>
 
-            <h3 className="text-2xl font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans">
-              Fauna Catalog & Filter Pavilion
-            </h3>
-
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
-              Filter cataloged prehistoric species by period, diet, habitat, and taxonomic clade with interactive 1:1 scale inspection and human reference models.
-            </p>
-          </div>
-
-          <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors">
-            <span>Explore Catalog</span>
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </div>
+            <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors">
+              <span>Explore Catalog</span>
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </SpotlightCard>
         </Link>
 
         {/* Portal 2: Time Map */}
-        <Link
-          to="/map"
-          className="group relative glass-panel rounded-xl hover:border-amber-500/40 p-6 sm:p-7 transition-all duration-300 shadow-xl flex flex-col justify-between space-y-5"
-        >
-          <div className="space-y-3">
-            <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5">
-              <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5">
-                <Globe className="h-3 w-3" /> PALEOGEOGRAPHY
-              </span>
-              <span className="text-xs text-slate-400 font-bold">
-                GEOLOGICAL STRATA
-              </span>
+        <Link to="/map" className="block group">
+          <SpotlightCard
+            whileHover={{ y: -4 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+            className="glass-panel rounded-xl hover:border-amber-500/40 p-6 sm:p-7 transition-colors shadow-xl flex flex-col justify-between space-y-5 h-full"
+          >
+            <div className="space-y-3">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5">
+                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5">
+                  <Globe className="h-3 w-3" /> PALEOGEOGRAPHY
+                </span>
+                <span className="text-xs text-slate-400 font-bold">
+                  GEOLOGICAL STRATA
+                </span>
+              </div>
+
+              <h3 className="text-2xl font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans">
+                Geological Time-Map
+              </h3>
+
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+                Explore major fossil sites around the globe dynamically filtered by geological time period from Cambrian marine explosion to Pleistocene megafauna.
+              </p>
             </div>
 
-            <h3 className="text-2xl font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans">
-              Geological Time-Map
-            </h3>
-
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
-              Explore major fossil sites around the globe dynamically filtered by geological time period from Cambrian marine explosion to Pleistocene megafauna.
-            </p>
-          </div>
-
-          <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors">
-            <span>Open Geological Map</span>
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </div>
+            <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors">
+              <span>Open Geological Map</span>
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </SpotlightCard>
         </Link>
       </section>
     </div>

@@ -2,9 +2,11 @@ import { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Species, fetchSpeciesCompare, fetchSpeciesRoster, SpeciesRosterItem, primeSpeciesCache } from '../services/api.js';
-import { X, ArrowRightLeft, Scale, Calendar, Dna, MapPin, ChevronDown, Check, ExternalLink } from 'lucide-react';
+import { X, ArrowRightLeft, Scale, Calendar, Dna, MapPin, ChevronDown, Check, ExternalLink, BarChart2 } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 import { formatFeet } from '../utils/formatDimensions.js';
+import { formatMass } from '../utils/formatMass.js';
+import SpotlightCard from './SpotlightCard.js';
 
 interface CompareModalProps {
   initialSpecies?: Species | null;
@@ -19,6 +21,246 @@ const formatClade = (cladeStr?: string | null) => {
   if (cladeStr === 'Early_Tetrapod_Amphibian') return 'Early Tetrapod / Amphibian';
   return cladeStr.replace(/_/g, ' ');
 };
+
+interface ComparativeMetricBarProps {
+  label: string;
+  name1: string;
+  val1: number | null | undefined;
+  display1: string;
+  name2: string;
+  val2: number | null | undefined;
+  display2: string;
+  shouldReduceMotion?: boolean | null;
+}
+
+function ComparativeMetricBar({
+  label,
+  name1,
+  val1,
+  display1,
+  name2,
+  val2,
+  display2,
+  shouldReduceMotion
+}: ComparativeMetricBarProps) {
+  const v1 = val1 && val1 > 0 ? val1 : 0;
+  const v2 = val2 && val2 > 0 ? val2 : 0;
+  const maxVal = Math.max(v1, v2, 0.001);
+  const pct1 = Math.round((v1 / maxVal) * 100);
+  const pct2 = Math.round((v2 / maxVal) * 100);
+
+  let differenceBadge: string | null = null;
+  if (v1 > 0 && v2 > 0) {
+    if (v1 > v2) {
+      const diffPct = Math.round(((v1 - v2) / v2) * 100);
+      differenceBadge = `${name1} +${diffPct}%`;
+    } else if (v2 > v1) {
+      const diffPct = Math.round(((v2 - v1) / v1) * 100);
+      differenceBadge = `${name2} +${diffPct}%`;
+    } else {
+      differenceBadge = 'Equal';
+    }
+  }
+
+  return (
+    <div className="space-y-2 p-3.5 rounded-xl bg-slate-950/70 border border-white/[0.06] text-xs font-mono shadow-inner">
+      <div className="flex items-center justify-between">
+        <span className="text-slate-400 font-bold uppercase tracking-wider text-[11px]">{label}</span>
+        {differenceBadge && (
+          <span className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300 font-bold text-[10px]">
+            {differenceBadge}
+          </span>
+        )}
+      </div>
+
+      <div className="space-y-2 pt-1">
+        {/* Species 1 Bar */}
+        <div className="space-y-1">
+          <div className="flex items-center justify-between text-[11px]">
+            <span className="text-amber-400 font-bold truncate max-w-[200px]">{name1}</span>
+            <span className="text-slate-200 font-bold">{display1}</span>
+          </div>
+          <div className="h-2 w-full bg-slate-900 rounded-full overflow-hidden border border-white/[0.04]">
+            <motion.div
+              initial={shouldReduceMotion ? false : { width: 0 }}
+              animate={{ width: `${pct1}%` }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              className="h-full bg-gradient-to-r from-amber-600 to-amber-400 rounded-full"
+            />
+          </div>
+        </div>
+
+        {/* Species 2 Bar */}
+        <div className="space-y-1">
+          <div className="flex items-center justify-between text-[11px]">
+            <span className="text-sky-400 font-bold truncate max-w-[200px]">{name2}</span>
+            <span className="text-slate-200 font-bold">{display2}</span>
+          </div>
+          <div className="h-2 w-full bg-slate-900 rounded-full overflow-hidden border border-white/[0.04]">
+            <motion.div
+              initial={shouldReduceMotion ? false : { width: 0 }}
+              animate={{ width: `${pct2}%` }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              className="h-full bg-gradient-to-r from-sky-600 to-sky-400 rounded-full"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+interface DualSilhouetteStageProps {
+  s1: Species;
+  s2: Species;
+  shouldReduceMotion?: boolean | null;
+}
+
+function DualSilhouetteStage({ s1, s2, shouldReduceMotion }: DualSilhouetteStageProps) {
+  const safeL1 = s1.lengthM && s1.lengthM > 0 ? s1.lengthM : 6;
+  const safeH1 = s1.heightM && s1.heightM > 0 ? s1.heightM : Math.max(1, safeL1 * 0.35);
+
+  const safeL2 = s2.lengthM && s2.lengthM > 0 ? s2.lengthM : 6;
+  const safeH2 = s2.heightM && s2.heightM > 0 ? s2.heightM : Math.max(1, safeL2 * 0.35);
+
+  const gapM = 1.8;
+  const totalSpanM = safeL1 + gapM + safeL2;
+  const maxHM = Math.max(safeH1, safeH2, 1.8) * 1.25;
+
+  const viewBoxW = 800;
+  const viewBoxH = 220;
+  const groundY = 175;
+  const padX = 50;
+
+  const availW = viewBoxW - padX * 2;
+  const availH = groundY - 35;
+
+  const scale = Math.min(availW / totalSpanM, availH / maxHM);
+
+  const w1 = safeL1 * scale;
+  const h1 = safeH1 * scale;
+  const w2 = safeL2 * scale;
+  const h2 = safeH2 * scale;
+
+  const totalW = totalSpanM * scale;
+  const startX = padX + (availW - totalW) / 2;
+
+  const x1 = startX;
+  const y1 = groundY - h1;
+
+  const x2 = startX + w1 + gapM * scale;
+  const y2 = groundY - h2;
+
+  const s1Sil = s1.comparisonSilhouette?.url;
+  const s2Sil = s2.comparisonSilhouette?.url;
+
+  return (
+    <div className="rounded-xl bg-slate-950/80 border border-white/[0.08] overflow-hidden shadow-inner font-mono text-xs">
+      <div className="px-4 py-2.5 bg-slate-900/90 border-b border-white/[0.06] flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Scale className="h-4 w-4 text-amber-400" />
+          <span className="font-bold text-slate-100 uppercase tracking-wide text-[11px] font-sans">
+            Direct 1:1 Physical Scale Stage
+          </span>
+        </div>
+        <div className="flex items-center gap-3 text-[10px]">
+          <span className="flex items-center gap-1.5 text-amber-400 font-bold">
+            <span className="h-2 w-2 rounded-full bg-amber-400" /> {s1.name}
+          </span>
+          <span className="flex items-center gap-1.5 text-sky-400 font-bold">
+            <span className="h-2 w-2 rounded-full bg-sky-400" /> {s2.name}
+          </span>
+        </div>
+      </div>
+
+      <div className="relative h-56 w-full flex items-center justify-center p-2">
+        <svg
+          viewBox={`0 0 ${viewBoxW} ${viewBoxH}`}
+          className="w-full h-full"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <defs>
+            <filter id="modalAmberTint" colorInterpolationFilters="sRGB">
+              <feColorMatrix
+                type="matrix"
+                values="0 0 0 0 0.96
+                        0 0 0 0 0.62
+                        0 0 0 0 0.04
+                        0 0 0 1 0"
+              />
+            </filter>
+            <filter id="modalSkyTint" colorInterpolationFilters="sRGB">
+              <feColorMatrix
+                type="matrix"
+                values="0 0 0 0 0.22
+                        0 0 0 0 0.74
+                        0 0 0 0 0.97
+                        0 0 0 1 0"
+              />
+            </filter>
+          </defs>
+
+          {/* Ground Baseline */}
+          <line x1="20" y1={groundY} x2={viewBoxW - 20} y2={groundY} stroke="#334155" strokeWidth="1.5" />
+
+          {/* Species 1 Silhouette */}
+          <motion.g
+            key={`s1-${s1.id}`}
+            initial={shouldReduceMotion ? false : { opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ type: 'spring', stiffness: 350, damping: 28 }}
+            transform={`translate(${x1}, ${y1})`}
+          >
+            {s1Sil ? (
+              <image
+                href={s1Sil}
+                x="0"
+                y="0"
+                width={w1}
+                height={h1}
+                preserveAspectRatio="xMidYMax meet"
+                filter="url(#modalAmberTint)"
+              />
+            ) : (
+              <rect x="0" y="0" width={w1} height={h1} fill="rgba(245, 158, 11, 0.15)" stroke="#F59E0B" strokeWidth="1.2" rx="4" />
+            )}
+          </motion.g>
+
+          {/* Species 2 Silhouette (facing left) */}
+          <motion.g
+            key={`s2-${s2.id}`}
+            initial={shouldReduceMotion ? false : { opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ type: 'spring', stiffness: 350, damping: 28 }}
+            transform={`translate(${x2 + w2}, ${y2}) scale(-1, 1)`}
+          >
+            {s2Sil ? (
+              <image
+                href={s2Sil}
+                x="0"
+                y="0"
+                width={w2}
+                height={h2}
+                preserveAspectRatio="xMidYMax meet"
+                filter="url(#modalSkyTint)"
+              />
+            ) : (
+              <rect x="0" y="0" width={w2} height={h2} fill="rgba(56, 189, 248, 0.15)" stroke="#38BDF8" strokeWidth="1.2" rx="4" />
+            )}
+          </motion.g>
+
+          {/* Labels & Calipers */}
+          <text x={x1 + w1 / 2} y={groundY + 18} textAnchor="middle" fill="#FBBF24" fontSize="10" fontFamily="monospace" fontWeight="bold">
+            {s1.name}: {safeL1}m
+          </text>
+          <text x={x2 + w2 / 2} y={groundY + 18} textAnchor="middle" fill="#38BDF8" fontSize="10" fontFamily="monospace" fontWeight="bold">
+            {s2.name}: {safeL2}m
+          </text>
+        </svg>
+      </div>
+    </div>
+  );
+}
 
 interface SpeciesSearchInputProps {
   label: string;
@@ -388,8 +630,9 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-2">
               {species1 ? (
-                <div
+                <SpotlightCard
                   onClick={() => handleCardClick(species1.id)}
+                  spotlightColor="rgba(245, 158, 11, 0.08)"
                   className={`space-y-4 museum-card p-4 rounded-xl shadow-inner relative transition-all duration-200 cursor-pointer hover:border-amber-500/50 hover:bg-slate-900/60 group ${loading1 ? 'opacity-60 pointer-events-none' : ''}`}
                   title={`Click to view details for ${species1.name}`}
                 >
@@ -471,7 +714,7 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
                       <span className="font-bold text-slate-200">{species1.fossilFormation || 'N/A'}</span>
                     </div>
                   </div>
-                </div>
+                </SpotlightCard>
               ) : (
                 <div className="bg-slate-950/60 border border-white/[0.06] rounded-xl p-8 flex flex-col items-center justify-center text-center text-slate-500">
                   <p className="text-xs font-semibold font-sans">Select Species 1 above.</p>
@@ -479,9 +722,10 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
               )}
 
               {species2 ? (
-                <div
+                <SpotlightCard
                   onClick={() => handleCardClick(species2.id)}
-                  className={`space-y-4 museum-card p-4 rounded-xl shadow-inner relative transition-all duration-200 cursor-pointer hover:border-amber-500/50 hover:bg-slate-900/60 group ${loading2 ? 'opacity-60 pointer-events-none' : ''}`}
+                  spotlightColor="rgba(56, 189, 248, 0.08)"
+                  className={`space-y-4 museum-card p-4 rounded-xl shadow-inner relative transition-all duration-200 cursor-pointer hover:border-sky-500/50 hover:bg-slate-900/60 group ${loading2 ? 'opacity-60 pointer-events-none' : ''}`}
                   title={`Click to view details for ${species2.name}`}
                 >
                   {loading2 && (
@@ -562,13 +806,68 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
                       <span className="font-bold text-slate-200">{species2.fossilFormation || 'N/A'}</span>
                     </div>
                   </div>
-                </div>
+                </SpotlightCard>
               ) : (
                 <div className="bg-slate-950/60 border border-white/[0.06] rounded-xl p-8 flex flex-col items-center justify-center text-center text-slate-500">
                   <p className="text-xs font-semibold font-sans">Select Species 2 above to compare side-by-side.</p>
                 </div>
               )}
             </div>
+
+            {/* When both species are loaded, render interactive comparative features */}
+            {species1 && species2 && (
+              <div className="space-y-5 pt-2 border-t border-white/[0.08]">
+                {/* 1. Direct 1:1 Scale Silhouette Comparison Stage */}
+                <DualSilhouetteStage
+                  s1={species1}
+                  s2={species2}
+                  shouldReduceMotion={shouldReduceMotion}
+                />
+
+                {/* 2. Animated Comparative Metrics Breakdown */}
+                <div className="space-y-2.5">
+                  <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-amber-400">
+                    <BarChart2 className="h-4 w-4" />
+                    <span>Comparative Metric Breakdown</span>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <ComparativeMetricBar
+                      label="Total Length"
+                      name1={species1.name}
+                      val1={species1.lengthM}
+                      display1={formatFeet(species1.lengthM)}
+                      name2={species2.name}
+                      val2={species2.lengthM}
+                      display2={formatFeet(species2.lengthM)}
+                      shouldReduceMotion={shouldReduceMotion}
+                    />
+
+                    <ComparativeMetricBar
+                      label="Standing Height"
+                      name1={species1.name}
+                      val1={species1.heightM}
+                      display1={formatFeet(species1.heightM)}
+                      name2={species2.name}
+                      val2={species2.heightM}
+                      display2={formatFeet(species2.heightM)}
+                      shouldReduceMotion={shouldReduceMotion}
+                    />
+
+                    <ComparativeMetricBar
+                      label="Estimated Mass"
+                      name1={species1.name}
+                      val1={species1.weightKg}
+                      display1={formatMass(species1.weightKg)}
+                      name2={species2.name}
+                      val2={species2.weightKg}
+                      display2={formatMass(species2.weightKg)}
+                      shouldReduceMotion={shouldReduceMotion}
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
           </motion.div>
         </motion.div>
       )}

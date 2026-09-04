@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion, Variants } from 'framer-motion';
 import { fetchSpecies, Species } from '../services/api.js';
 import ThreeDFossilStarfield from '../components/ThreeDFossilStarfield.js';
+import SpotlightCard from '../components/SpotlightCard.js';
 import { SlidersHorizontal, ArrowRight, Dna, Info, X, ChevronLeft, ChevronRight, Filter } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 import { formatFeet } from '../utils/formatDimensions.js';
@@ -661,15 +662,20 @@ export default function Browse() {
                 {speciesList.map((species) => {
                   const names = getSpeciesDisplayNames(species);
                   return (
-                    <motion.div
+                    <SpotlightCard
                       key={species.id}
+                      layout={shouldReduceMotion ? false : true}
                       variants={cardVariants}
                       whileHover={shouldReduceMotion ? {} : { y: -4, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
                       whileTap={{ scale: 0.98 }}
+                      transition={{
+                        layout: { type: 'spring', stiffness: 350, damping: 30 }
+                      }}
+                      className="museum-card rounded-xl flex flex-col justify-between h-full shadow-xl"
                     >
                       <Link
                         to={`/species/${species.id}`}
-                        className="group museum-card rounded-xl flex flex-col justify-between h-full shadow-xl overflow-hidden"
+                        className="group flex flex-col justify-between h-full"
                       >
                         <div>
                           {/* Thumbnail Image */}
@@ -722,7 +728,7 @@ export default function Browse() {
                           </span>
                         </div>
                       </Link>
-                    </motion.div>
+                    </SpotlightCard>
                   );
                 })}
               </motion.div>

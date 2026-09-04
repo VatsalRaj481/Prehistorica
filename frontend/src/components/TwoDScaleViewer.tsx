@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { User, Car, Bus, Layers, ExternalLink, ShieldCheck, AlertTriangle, Eye, Ruler, ArrowLeftRight } from 'lucide-react';
 import { formatMass } from '../utils/formatMass.js';
 import { formatFeet } from '../utils/formatDimensions.js';
@@ -45,6 +46,7 @@ export default function TwoDScaleViewer({
   const [showGrid, setShowGrid] = useState(true);
   const [showCalipers, setShowCalipers] = useState(true);
   const [faceCreature, setFaceCreature] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   const safeLength = lengthM && lengthM > 0 ? lengthM : 6;
   const safeHeight = heightM && heightM > 0 ? heightM : Math.max(1, safeLength * 0.35);
@@ -300,7 +302,8 @@ export default function TwoDScaleViewer({
           <div className="flex flex-wrap items-center gap-1.5 pointer-events-auto">
             {/* Reference Target Switcher */}
             <div className="flex items-center bg-slate-950/90 backdrop-blur-md border border-white/[0.08] rounded-xl p-1 gap-1 shadow-lg">
-              <button
+              <motion.button
+                whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('human')}
                 className={`px-2.5 py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
                   refType === 'human'
@@ -311,9 +314,10 @@ export default function TwoDScaleViewer({
               >
                 <User className="h-3.5 w-3.5" />
                 <span className="text-[11px]">Human (1.8m)</span>
-              </button>
+              </motion.button>
 
-              <button
+              <motion.button
+                whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('car')}
                 className={`px-2.5 py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
                   refType === 'car'
@@ -324,9 +328,10 @@ export default function TwoDScaleViewer({
               >
                 <Car className="h-3.5 w-3.5" />
                 <span className="hidden sm:inline text-[11px]">Car (4.5m)</span>
-              </button>
+              </motion.button>
 
-              <button
+              <motion.button
+                whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('bus')}
                 className={`px-2.5 py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
                   refType === 'bus'
@@ -337,9 +342,10 @@ export default function TwoDScaleViewer({
               >
                 <Bus className="h-3.5 w-3.5" />
                 <span className="hidden md:inline text-[11px]">Bus (11.5m)</span>
-              </button>
+              </motion.button>
 
-              <button
+              <motion.button
+                whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('elephant')}
                 className={`px-2.5 py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
                   refType === 'elephant'
@@ -350,11 +356,12 @@ export default function TwoDScaleViewer({
               >
                 <Layers className="h-3.5 w-3.5" />
                 <span className="hidden md:inline text-[11px]">Elephant (3.3m)</span>
-              </button>
+              </motion.button>
             </div>
 
             {/* Toggle Calipers */}
-            <button
+            <motion.button
+              whileTap={{ scale: 0.94 }}
               onClick={() => setShowCalipers(!showCalipers)}
               className={`p-2 rounded-xl border transition-all cursor-pointer shadow-lg ${
                 showCalipers
@@ -364,10 +371,11 @@ export default function TwoDScaleViewer({
               title="Toggle Architectural Caliper Lines"
             >
               <Ruler className="h-4 w-4" />
-            </button>
+            </motion.button>
 
             {/* Toggle Grid */}
-            <button
+            <motion.button
+              whileTap={{ scale: 0.94 }}
               onClick={() => setShowGrid(!showGrid)}
               className={`p-2 rounded-xl border transition-all cursor-pointer shadow-lg ${
                 showGrid
@@ -377,10 +385,11 @@ export default function TwoDScaleViewer({
               title="Toggle Metric Grid"
             >
               <Eye className="h-4 w-4" />
-            </button>
+            </motion.button>
 
             {/* Toggle Orientation: Face each other vs Parallel */}
-            <button
+            <motion.button
+              whileTap={{ scale: 0.94 }}
               onClick={() => setFaceCreature(!faceCreature)}
               className={`p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center gap-1.5 ${
                 faceCreature
@@ -390,7 +399,7 @@ export default function TwoDScaleViewer({
               title={faceCreature ? "Orientation: Facing Creature (click for Parallel)" : "Orientation: Parallel (Both Left) (click to Face Creature)"}
             >
               <ArrowLeftRight className="h-4 w-4" />
-            </button>
+            </motion.button>
           </div>
         </div>
 
@@ -510,7 +519,17 @@ export default function TwoDScaleViewer({
           />
 
           {/* Scale Reference Model standing flush on ground baseline */}
-          {activeRef.renderPath(scale, groundY, refStartX, faceCreature)}
+          <AnimatePresence mode="wait">
+            <motion.g
+              key={`${refType}-${faceCreature}`}
+              initial={shouldReduceMotion ? false : { opacity: 0, x: -12 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={shouldReduceMotion ? undefined : { opacity: 0, x: 12 }}
+              transition={{ type: 'spring', stiffness: 350, damping: 28 }}
+            >
+              {activeRef.renderPath(scale, groundY, refStartX, faceCreature)}
+            </motion.g>
+          </AnimatePresence>
 
           {/* Specimen Silhouette or Envelope Fallback */}
           {hasSilhouette ? (
@@ -647,31 +666,40 @@ export default function TwoDScaleViewer({
               </g>
 
               {/* Reference Dimension Badge with dark glass backdrop */}
-              <g transform={`translate(${refStartX + refWidthPx / 2}, ${groundY - activeRef.heightM * scale - 12})`}>
-                <rect
-                  x="-42"
-                  y="-11"
-                  width="84"
-                  height="16"
-                  rx="4"
-                  fill="#070B14"
-                  fillOpacity="0.92"
-                  stroke="rgba(255, 255, 255, 0.18)"
-                  strokeWidth="0.8"
-                />
-                <text
-                  x="0"
-                  y="1"
-                  dominantBaseline="middle"
-                  textAnchor="middle"
-                  fill="#E2E8F0"
-                  fontSize="9"
-                  fontFamily="monospace"
-                  fontWeight="bold"
+              <AnimatePresence mode="wait">
+                <motion.g
+                  key={`badge-${refType}`}
+                  initial={shouldReduceMotion ? false : { opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={shouldReduceMotion ? undefined : { opacity: 0, y: -6 }}
+                  transition={{ duration: 0.2 }}
+                  transform={`translate(${refStartX + refWidthPx / 2}, ${groundY - activeRef.heightM * scale - 12})`}
                 >
-                  {activeRef.label}
-                </text>
-              </g>
+                  <rect
+                    x="-42"
+                    y="-11"
+                    width="84"
+                    height="16"
+                    rx="4"
+                    fill="#070B14"
+                    fillOpacity="0.92"
+                    stroke="rgba(255, 255, 255, 0.18)"
+                    strokeWidth="0.8"
+                  />
+                  <text
+                    x="0"
+                    y="1"
+                    dominantBaseline="middle"
+                    textAnchor="middle"
+                    fill="#E2E8F0"
+                    fontSize="9"
+                    fontFamily="monospace"
+                    fontWeight="bold"
+                  >
+                    {activeRef.label}
+                  </text>
+                </motion.g>
+              </AnimatePresence>
             </g>
           )}
         </svg>
