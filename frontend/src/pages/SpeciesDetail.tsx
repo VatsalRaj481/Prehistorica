@@ -176,7 +176,6 @@ export default function SpeciesDetail() {
         );
       })()}
 
-      {/* 3D Scale Specimen Stage */}
       {/* 2D Silhouette Scale Comparison Stage */}
       <TwoDScaleViewer
         speciesName={species.name}

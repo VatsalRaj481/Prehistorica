@@ -134,7 +134,7 @@ export default function Home() {
               </div>
               <div className="flex items-center justify-between py-1">
                 <span className="text-slate-400">Scale Inspection</span>
-                <span className="text-amber-400 font-bold">1:1 Physical 3D</span>
+                <span className="text-amber-400 font-bold">1:1 Metric 2D Stage</span>
               </div>
             </div>
           </div>
@@ -295,7 +295,7 @@ export default function Home() {
                           to={`/species/${creature.id}`}
                           className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black uppercase tracking-wider text-xs rounded-lg flex items-center gap-1.5 transition-all shadow-md cursor-pointer"
                         >
-                          Inspect 3D Specimen <ArrowRight className="h-3.5 w-3.5" />
+                          Inspect 2D Scale Stage <ArrowRight className="h-3.5 w-3.5" />
                         </Link>
                       </motion.div>
                     </div>

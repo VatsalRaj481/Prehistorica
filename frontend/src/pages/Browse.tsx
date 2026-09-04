@@ -724,7 +724,7 @@ export default function Browse() {
                             </span>
                           </div>
                           <span className="flex items-center gap-1 group-hover:text-amber-400 transition-colors shrink-0 font-bold uppercase tracking-wider text-[10px]">
-                            Inspect 3D <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
+                            Inspect Specimen <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
                           </span>
                         </div>
                       </Link>
