@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { Species, fetchSpeciesCompare, fetchSpeciesRoster, SpeciesRosterItem, primeSpeciesCache } from '../services/api.js';
-import { X, ArrowRightLeft, Scale, Calendar, Dna, MapPin, ChevronDown, Check } from 'lucide-react';
+import { X, ArrowRightLeft, Scale, Calendar, Dna, MapPin, ChevronDown, Check, ExternalLink } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 import { formatFeet } from '../utils/formatDimensions.js';
 
@@ -138,9 +139,6 @@ function SpeciesSearchInput({
         <label className="text-xs font-bold text-slate-300 uppercase tracking-wider block">
           {label}
         </label>
-        {selectedSpecies && !isFocused && (
-          <span className="text-[10px] text-amber-400 font-mono">Selected: {selectedSpecies.name}</span>
-        )}
       </div>
 
       <div className="relative">
@@ -259,12 +257,18 @@ function SpeciesSearchInput({
 }
 
 export default function CompareModal({ initialSpecies, isOpen, onClose }: CompareModalProps) {
+  const navigate = useNavigate();
   const [species1, setSpecies1] = useState<Species | null>(initialSpecies || null);
   const [species2, setSpecies2] = useState<Species | null>(null);
   const [availableList, setAvailableList] = useState<SpeciesRosterItem[]>([]);
   const [loading1, setLoading1] = useState(false);
   const [loading2, setLoading2] = useState(false);
   const shouldReduceMotion = useReducedMotion();
+
+  const handleCardClick = (id: number) => {
+    onClose();
+    navigate(`/species/${id}`);
+  };
 
   useEffect(() => {
     if (initialSpecies) {
@@ -384,7 +388,11 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-2">
               {species1 ? (
-                <div className={`space-y-4 museum-card p-4 rounded-xl shadow-inner relative transition-opacity duration-200 ${loading1 ? 'opacity-60 pointer-events-none' : ''}`}>
+                <div
+                  onClick={() => handleCardClick(species1.id)}
+                  className={`space-y-4 museum-card p-4 rounded-xl shadow-inner relative transition-all duration-200 cursor-pointer hover:border-amber-500/50 hover:bg-slate-900/60 group ${loading1 ? 'opacity-60 pointer-events-none' : ''}`}
+                  title={`Click to view details for ${species1.name}`}
+                >
                   {loading1 && (
                     <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-[1px] flex items-center justify-center rounded-xl z-20">
                       <div className="h-6 w-6 border-2 border-amber-400 border-t-transparent rounded-full animate-spin" />
@@ -395,7 +403,7 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
                       <img
                         src={species1.reconstructionImageUrl}
                         alt={species1.name}
-                        className="max-w-full max-h-full object-contain drop-shadow z-10"
+                        className="max-w-full max-h-full object-contain drop-shadow z-10 group-hover:scale-[1.02] transition-transform duration-200"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-xs text-slate-600">
@@ -407,9 +415,14 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
                   {(() => {
                     const names1 = getSpeciesDisplayNames(species1);
                     return (
-                      <div>
-                        <h3 className="text-base font-black uppercase text-slate-100 font-sans tracking-tight">{names1.heading}</h3>
-                        <p className="text-xs italic font-mono text-amber-400">{names1.subheading}</p>
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <h3 className="text-base font-black uppercase text-slate-100 font-sans tracking-tight group-hover:text-amber-400 transition-colors">
+                            {names1.heading}
+                          </h3>
+                          <p className="text-xs italic font-mono text-amber-400">{names1.subheading}</p>
+                        </div>
+                        <ExternalLink className="h-4 w-4 text-slate-500 group-hover:text-amber-400 transition-colors shrink-0 mt-0.5" />
                       </div>
                     );
                   })()}
@@ -466,7 +479,11 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
               )}
 
               {species2 ? (
-                <div className={`space-y-4 museum-card p-4 rounded-xl shadow-inner relative transition-opacity duration-200 ${loading2 ? 'opacity-60 pointer-events-none' : ''}`}>
+                <div
+                  onClick={() => handleCardClick(species2.id)}
+                  className={`space-y-4 museum-card p-4 rounded-xl shadow-inner relative transition-all duration-200 cursor-pointer hover:border-amber-500/50 hover:bg-slate-900/60 group ${loading2 ? 'opacity-60 pointer-events-none' : ''}`}
+                  title={`Click to view details for ${species2.name}`}
+                >
                   {loading2 && (
                     <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-[1px] flex items-center justify-center rounded-xl z-20">
                       <div className="h-6 w-6 border-2 border-amber-400 border-t-transparent rounded-full animate-spin" />
@@ -477,7 +494,7 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
                       <img
                         src={species2.reconstructionImageUrl}
                         alt={species2.name}
-                        className="max-w-full max-h-full object-contain drop-shadow z-10"
+                        className="max-w-full max-h-full object-contain drop-shadow z-10 group-hover:scale-[1.02] transition-transform duration-200"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-xs text-slate-600">
@@ -489,9 +506,14 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
                   {(() => {
                     const names2 = getSpeciesDisplayNames(species2);
                     return (
-                      <div>
-                        <h3 className="text-base font-black uppercase text-slate-100 font-sans tracking-tight">{names2.heading}</h3>
-                        <p className="text-xs italic font-mono text-amber-400">{names2.subheading}</p>
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <h3 className="text-base font-black uppercase text-slate-100 font-sans tracking-tight group-hover:text-amber-400 transition-colors">
+                            {names2.heading}
+                          </h3>
+                          <p className="text-xs italic font-mono text-amber-400">{names2.subheading}</p>
+                        </div>
+                        <ExternalLink className="h-4 w-4 text-slate-500 group-hover:text-amber-400 transition-colors shrink-0 mt-0.5" />
                       </div>
                     );
                   })()}
