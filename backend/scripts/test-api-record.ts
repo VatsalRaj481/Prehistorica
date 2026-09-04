@@ -10,7 +10,7 @@ function parseJson(val: any, fallback: any) {
 }
 
 async function verifyPrototypes() {
-  const ids = [458, 467, 1745];
+  const ids = [449, 458, 467, 1745];
   for (const id of ids) {
     const s = await prisma.species.findUnique({ where: { id } });
     if (!s) {
