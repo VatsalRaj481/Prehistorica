@@ -1,6 +1,6 @@
 export interface MediaItem {
   url: string;
-  type: 'photo' | 'art' | 'scale_diagram';
+  type: 'photo' | 'art' | 'scale_diagram' | 'fossil_specimen' | 'skeletal_reconstruction' | 'comparative_anatomy' | 'scientific_figure' | 'taxonomy_diagram' | 'placeholder' | string;
   credit: string;
   sourceUrl: string;
 }

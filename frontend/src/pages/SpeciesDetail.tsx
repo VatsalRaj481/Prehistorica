@@ -189,41 +189,41 @@ export default function SpeciesDetail() {
       />
 
       {/* Architectural Metrics Banner */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono">
-        <div className="museum-card p-5 rounded-xl space-y-1 text-center shadow-lg">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono">
+        <div className="museum-card py-3.5 px-4 rounded-xl space-y-1 text-center shadow-md border border-white/[0.06]">
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
             <Scale className="h-3.5 w-3.5 text-amber-400" /> Total Length
           </span>
-          <p className="text-2xl sm:text-3xl font-black text-amber-400">
+          <p className="text-xl sm:text-2xl font-black text-amber-400">
             {formatFeetLong(species.lengthM)}
           </p>
         </div>
 
-        <div className="museum-card p-5 rounded-xl space-y-1 text-center shadow-lg">
+        <div className="museum-card py-3.5 px-4 rounded-xl space-y-1 text-center shadow-md border border-white/[0.06]">
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
             <Scale className="h-3.5 w-3.5 text-amber-400" /> Standing Height
           </span>
-          <p className="text-2xl sm:text-3xl font-black text-amber-400">
+          <p className="text-xl sm:text-2xl font-black text-amber-400">
             {formatFeetLong(species.heightM)}
           </p>
         </div>
 
-        <div className="museum-card p-5 rounded-xl space-y-1 text-center shadow-lg">
+        <div className="museum-card py-3.5 px-4 rounded-xl space-y-1 text-center shadow-md border border-white/[0.06]">
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
             <Scale className="h-3.5 w-3.5 text-amber-400" /> Estimated Mass
           </span>
-          <p className="text-2xl sm:text-3xl font-black text-amber-400">
+          <p className="text-xl sm:text-2xl font-black text-amber-400">
             {species.weightKg ? `${species.weightKg.toLocaleString()} KG` : 'Disputed'}
           </p>
         </div>
       </div>
 
       {/* Specimen Deep Dive Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
         {/* Left Column: Media Reconstruction & Visual Archive */}
-        <div className="lg:col-span-6 space-y-6">
-          <div className="glass-panel rounded-xl p-5 border border-white/[0.08] space-y-4 shadow-xl">
-            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-3">
+        <div className="lg:col-span-6 space-y-5">
+          <div className="glass-panel rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-2.5">
               <FileText className="h-4 w-4 text-amber-400" /> Specimen Visual Archive
             </h3>
 
@@ -236,27 +236,27 @@ export default function SpeciesDetail() {
           </div>
 
           {/* Discovery & Geographic Range Panel */}
-          <div className="glass-panel rounded-xl p-6 border border-white/[0.08] space-y-4 shadow-xl">
-            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-3">
+          <div className="glass-panel rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-2.5">
               <Compass className="h-4 w-4 text-amber-400" /> Field Discovery & Provenance
             </h3>
 
-            <div className="space-y-4 text-xs font-mono">
-              <div className="space-y-1.5">
+            <div className="space-y-3 text-xs font-mono">
+              <div className="space-y-1">
                 <span className="text-slate-400 uppercase font-bold text-[10px] tracking-widest flex items-center gap-1.5">
                   <Globe className="h-3.5 w-3.5 text-amber-400" /> Geological Range & Formation
                 </span>
-                <p className="text-slate-200 leading-relaxed bg-slate-900/90 p-3.5 rounded-lg border border-white/[0.06] font-sans text-xs">
+                <p className="text-slate-200 leading-relaxed bg-slate-900/90 p-3 rounded-lg border border-white/[0.06] font-sans text-xs">
                   {species.geographicRange?.region || species.country || 'Global distribution'} &bull; Formation:{' '}
                   <span className="text-amber-400 font-bold font-mono">{species.fossilFormation || 'Unspecified'}</span>
                 </p>
               </div>
 
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 <span className="text-slate-400 uppercase font-bold text-[10px] tracking-widest flex items-center gap-1.5">
                   <Compass className="h-3.5 w-3.5 text-amber-400" /> Excavation Log Notes
                 </span>
-                <p className="text-slate-300 leading-relaxed bg-slate-900/90 p-3.5 rounded-lg border border-white/[0.06] italic font-sans text-xs">
+                <p className="text-slate-300 leading-relaxed bg-slate-900/90 p-3 rounded-lg border border-white/[0.06] italic font-sans text-xs">
                   "{species.discoveryHistory || 'Fossilized specimens cataloged in official paleontology archives.'}"
                 </p>
               </div>
@@ -265,10 +265,10 @@ export default function SpeciesDetail() {
         </div>
 
         {/* Right Column: Taxonomy Rank, Scientific Facts & Literature */}
-        <div className="lg:col-span-6 space-y-6">
+        <div className="lg:col-span-6 space-y-5">
           {/* Architectural Taxonomic Hierarchy */}
-          <div className="glass-panel rounded-xl p-6 border border-white/[0.08] space-y-4 shadow-xl">
-            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-3">
+          <div className="glass-panel rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-2.5">
               <Dna className="h-4 w-4 text-amber-400" /> Structural Taxonomic Hierarchy
             </h3>
 
@@ -280,29 +280,43 @@ export default function SpeciesDetail() {
 
           {/* Scientific Key Facts Monograph */}
           {species.interestingFacts && species.interestingFacts.length > 0 && (
-            <div className="glass-panel rounded-xl p-6 border border-white/[0.08] space-y-4 shadow-xl">
-              <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-3">
-                <Zap className="h-4 w-4 text-amber-400" /> Key Scientific Diagnostic Features
-              </h3>
+            <div className="glass-panel rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5">
+                <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">
+                  <Zap className="h-4 w-4 text-amber-400" /> Key Scientific Diagnostic Features
+                </h3>
+                <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">
+                  {species.interestingFacts.length} traits
+                </span>
+              </div>
 
-              <div className="space-y-2.5">
-                {species.interestingFacts.map((fact, i) => (
-                  <div
-                    key={i}
-                    className="p-3.5 bg-slate-900/90 rounded-lg border border-white/[0.06] text-xs font-sans text-slate-300 leading-relaxed flex items-start gap-3 shadow-sm"
-                  >
-                    <span className="text-amber-400 font-bold font-mono text-xs shrink-0">#{i + 1}</span>
-                    <span>{fact}</span>
-                  </div>
-                ))}
+              <div className={`grid gap-2 ${
+                species.interestingFacts.length > 1 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1'
+              }`}>
+                {species.interestingFacts.map((fact, i) => {
+                  const isLastOdd = species.interestingFacts!.length % 2 !== 0 && i === species.interestingFacts!.length - 1;
+                  return (
+                    <div
+                      key={i}
+                      className={`p-2.5 px-3 bg-slate-900/80 hover:bg-slate-900/95 rounded-lg border border-white/[0.06] text-xs font-sans text-slate-300 leading-relaxed flex items-start gap-2.5 shadow-sm transition-colors ${
+                        isLastOdd ? 'sm:col-span-2' : ''
+                      }`}
+                    >
+                      <span className="px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 font-bold font-mono text-[10px] border border-amber-500/20 shrink-0 mt-0.5">
+                        #{i + 1}
+                      </span>
+                      <span className="text-[12px] leading-snug">{fact}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}
 
           {/* Academic Citations & Literature */}
           {species.sources && species.sources.length > 0 && (
-            <div className="glass-panel rounded-xl p-6 border border-white/[0.08] space-y-4 shadow-xl">
-              <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-3">
+            <div className="glass-panel rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
+              <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-2.5">
                 <BookOpen className="h-4 w-4 text-amber-400" /> Verified Academic Citations
               </h3>
 
@@ -310,7 +324,7 @@ export default function SpeciesDetail() {
                 {species.sources.map((src, i) => (
                   <div
                     key={i}
-                    className="p-3 bg-slate-900/90 rounded-lg border border-white/[0.06] text-xs font-mono text-slate-400 flex items-center justify-between gap-3"
+                    className="p-2.5 px-3 bg-slate-900/90 rounded-lg border border-white/[0.06] text-xs font-mono text-slate-400 flex items-center justify-between gap-3"
                   >
                     <span className="truncate">{src.citation}</span>
                     {src.url && (

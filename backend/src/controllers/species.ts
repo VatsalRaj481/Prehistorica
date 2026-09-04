@@ -45,8 +45,8 @@ function formatSpeciesRecord(s: any) {
     fossilFormation: s.fossilFormation || geoObj.fossilFormation || null,
     genus: s.genus || taxObj.genus || null,
     family: s.family || taxObj.family || null,
-    reconstructionImageUrl: s.reconstructionImageUrl || (mediaArr.length > 0 ? mediaArr[0].url : null),
-    fossilImageUrl: s.fossilImageUrl || (mediaArr.length > 1 ? mediaArr[1].url : null),
+    reconstructionImageUrl: s.reconstructionImageUrl || (mediaArr.find((m: any) => m.type === 'art' || m.type === 'life_reconstruction')?.url || null),
+    fossilImageUrl: s.fossilImageUrl || (mediaArr.find((m: any) => m.type === 'fossil_specimen' || m.type === 'photo')?.url || (mediaArr.length > 1 ? mediaArr[1].url : null)),
     lengthM: s.lengthM !== undefined && s.lengthM !== null ? s.lengthM : (sizeObj.length?.value || null),
     heightM: s.heightM !== undefined && s.heightM !== null ? s.heightM : (sizeObj.height?.value || null),
     weightKg: s.weightKg !== undefined && s.weightKg !== null ? s.weightKg : (sizeObj.weight?.value || null),
@@ -275,7 +275,8 @@ export async function getSpeciesRoster(req: Request, res: Response, next: NextFu
         try {
           const parsedMedia = parseJson(s.media, []);
           if (Array.isArray(parsedMedia) && parsedMedia.length > 0) {
-            reconstructionImageUrl = parsedMedia[0]?.url || null;
+            const artMedia = parsedMedia.find((m: any) => m.type === 'art' || m.type === 'life_reconstruction');
+            reconstructionImageUrl = artMedia?.url || null;
           }
         } catch {}
       }

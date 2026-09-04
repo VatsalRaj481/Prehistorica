@@ -18,7 +18,7 @@ export default function MediaGallery({
 }: MediaGalleryProps) {
   const shouldReduceMotion = useReducedMotion();
 
-  let items: MediaItem[] = media && media.length > 0 ? media : [];
+  let items: MediaItem[] = media && media.length > 0 ? [...media] : [];
 
   if (items.length === 0) {
     if (reconstructionImageUrl) {
@@ -37,6 +37,19 @@ export default function MediaGallery({
         sourceUrl: fossilImageUrl
       });
     }
+  }
+
+  const hasArt = items.some(m => m.type === 'art' || m.type === 'life_reconstruction');
+  if (!hasArt && items.length > 0) {
+    items = [
+      {
+        url: '',
+        type: 'placeholder',
+        credit: 'Life reconstruction artwork pending verification',
+        sourceUrl: ''
+      },
+      ...items
+    ];
   }
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -73,6 +86,8 @@ export default function MediaGallery({
     switch (type) {
       case 'art':
         return 'Life Reconstruction';
+      case 'placeholder':
+        return 'Artwork Pending';
       case 'taxonomy_diagram':
         return 'Taxonomy Diagram';
       case 'fossil_specimen':
@@ -94,7 +109,19 @@ export default function MediaGallery({
   return (
     <div className="bg-slate-950/90 border border-white/[0.08] rounded-xl overflow-hidden shadow-2xl font-mono">
       <div className="relative w-full aspect-[16/9] bg-slate-950 flex items-center justify-center p-4 sm:p-6 overflow-hidden">
-        {isFailed ? (
+        {activeItem.type === 'placeholder' ? (
+          <div className="text-center text-slate-400 flex flex-col items-center justify-center space-y-3 aspect-[16/9] w-full font-mono">
+            <div className="h-12 w-12 rounded-lg bg-slate-900 border border-white/[0.08] flex items-center justify-center text-amber-500 shadow-inner">
+              <Palette className="h-6 w-6" />
+            </div>
+            <div className="space-y-1">
+              <h3 className="text-xs font-bold text-slate-200 uppercase tracking-wider font-sans">Life reconstruction artwork pending</h3>
+              <p className="text-[11px] text-slate-500 max-w-sm mx-auto leading-relaxed">
+                No open-licensed life reconstruction artwork is currently cataloged for {speciesName}. Verified fossil specimens and diagrams are cataloged below.
+              </p>
+            </div>
+          </div>
+        ) : isFailed ? (
           <div className="text-center text-slate-400 flex flex-col items-center justify-center space-y-3 aspect-[16/9] w-full font-mono">
             <div className="h-10 w-10 rounded-lg bg-slate-900 border border-white/[0.08] flex items-center justify-center text-amber-500">
               <Palette className="h-5 w-5" />
@@ -160,19 +187,23 @@ export default function MediaGallery({
                   key={idx}
                   whileTap={{ scale: 0.92 }}
                   onClick={() => setActiveIndex(idx)}
-                  className={`relative h-10 w-10 rounded-md border overflow-hidden transition-all cursor-pointer ${
+                  className={`relative h-10 w-10 rounded-md border overflow-hidden transition-all cursor-pointer flex items-center justify-center ${
                     activeIndex === idx
                       ? 'border-amber-500 shadow-md ring-1 ring-amber-500'
                       : 'border-white/[0.08] opacity-60 hover:opacity-100'
-                  }`}
+                  } ${item.type === 'placeholder' ? 'bg-slate-900' : ''}`}
                 >
-                  <img
-                    src={thumbUrl}
-                    referrerPolicy="no-referrer"
-                    onError={() => handleImageError(item.url)}
-                    alt={`Thumbnail ${idx + 1}`}
-                    className="w-full h-full object-cover"
-                  />
+                  {item.type === 'placeholder' ? (
+                    <Palette className="h-4 w-4 text-amber-400" />
+                  ) : (
+                    <img
+                      src={thumbUrl}
+                      referrerPolicy="no-referrer"
+                      onError={() => handleImageError(item.url)}
+                      alt={`Thumbnail ${idx + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
                 </motion.button>
               );
             })}
