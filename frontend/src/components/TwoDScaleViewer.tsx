@@ -708,42 +708,45 @@ export default function TwoDScaleViewer({
                 </g>
 
                 {/* Reference Dimension Badge with dark glass backdrop */}
-                {refBadgeY >= 14 && (
-                  <AnimatePresence mode="wait">
-                    <g key={`badge-wrap-${refType}`} transform={`translate(${refBadgeX}, ${refBadgeY})`}>
-                      <motion.g
-                        initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.92 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={shouldReduceMotion ? undefined : { opacity: 0, scale: 0.92 }}
-                        transition={{ duration: 0.18 }}
-                      >
-                        <rect
-                          x="-42"
-                          y="-11"
-                          width="84"
-                          height="16"
-                          rx="4"
-                          fill="#070B14"
-                          fillOpacity="0.92"
-                          stroke="rgba(255, 255, 255, 0.18)"
-                          strokeWidth="0.8"
-                        />
-                        <text
-                          x="0"
-                          y="1"
-                          dominantBaseline="middle"
-                          textAnchor="middle"
-                          fill="#E2E8F0"
-                          fontSize="9"
-                          fontFamily="monospace"
-                          fontWeight="bold"
+                {refBadgeY >= 14 && (() => {
+                  const badgeWidth = Math.max(90, activeRef.label.length * 6.8 + 20);
+                  return (
+                    <AnimatePresence mode="wait">
+                      <g key={`badge-wrap-${refType}`} transform={`translate(${refBadgeX}, ${refBadgeY})`}>
+                        <motion.g
+                          initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.92 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={shouldReduceMotion ? undefined : { opacity: 0, scale: 0.92 }}
+                          transition={{ duration: 0.18 }}
                         >
-                          {activeRef.label}
-                        </text>
-                      </motion.g>
-                    </g>
-                  </AnimatePresence>
-                )}
+                          <rect
+                            x={-badgeWidth / 2}
+                            y="-11"
+                            width={badgeWidth}
+                            height="18"
+                            rx="5"
+                            fill="#070B14"
+                            fillOpacity="0.95"
+                            stroke="rgba(255, 255, 255, 0.22)"
+                            strokeWidth="0.8"
+                          />
+                          <text
+                            x="0"
+                            y="-2"
+                            dominantBaseline="central"
+                            textAnchor="middle"
+                            fill="#E2E8F0"
+                            fontSize="9"
+                            fontFamily="monospace"
+                            fontWeight="bold"
+                          >
+                            {activeRef.label}
+                          </text>
+                        </motion.g>
+                      </g>
+                    </AnimatePresence>
+                  );
+                })()}
               </g>
             )}
           </svg>

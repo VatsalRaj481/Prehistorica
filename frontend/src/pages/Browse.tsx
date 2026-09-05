@@ -128,12 +128,18 @@ export default function Browse() {
   const cladeOptions = [
     'Theropod',
     'Sauropod',
+    'Sauropodomorph',
     'Ornithischian',
     'Pterosaur',
     'Marine Reptile',
-    'Ichthyosaur',
-    'Ankylosaur',
+    'Crocodylomorph',
     'Early Mammal/Synapsid',
+    'Early Tetrapod/Amphibian',
+    'Archosauriform',
+    'Phytosaur',
+    'Aetosaur',
+    'Rauisuchian',
+    'Poposauroid',
     'Invertebrate',
     'Other'
   ];
@@ -603,6 +609,17 @@ export default function Browse() {
                     <button onClick={() => toggleArrayFilter('diet', d)} className="hover:text-white cursor-pointer"><X className="h-3 w-3" /></button>
                   </motion.span>
                 ))}
+                {selectedHabitats.map(h => (
+                  <motion.span
+                    key={h}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    className="px-2.5 py-1 rounded-md bg-slate-900 border border-white/[0.08] text-slate-300 flex items-center gap-1.5 font-bold capitalize"
+                  >
+                    Habitat: {h.replace('_', '-')}
+                    <button onClick={() => toggleArrayFilter('habitat', h)} className="hover:text-white cursor-pointer"><X className="h-3 w-3" /></button>
+                  </motion.span>
+                ))}
                 {selectedEra && (
                   <motion.span
                     key={selectedEra}
@@ -612,6 +629,28 @@ export default function Browse() {
                   >
                     Era: {selectedEra}
                     <button onClick={() => updateParams({ era: null })} className="hover:text-white cursor-pointer"><X className="h-3 w-3" /></button>
+                  </motion.span>
+                )}
+                {selectedLocation && (
+                  <motion.span
+                    key={selectedLocation}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    className="px-2.5 py-1 rounded-md bg-slate-900 border border-white/[0.08] text-slate-300 flex items-center gap-1.5 font-bold"
+                  >
+                    Region: {selectedLocation}
+                    <button onClick={() => updateParams({ location: null })} className="hover:text-white cursor-pointer"><X className="h-3 w-3" /></button>
+                  </motion.span>
+                )}
+                {sizeRange && (
+                  <motion.span
+                    key={sizeRange}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    className="px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-300 flex items-center gap-1.5 font-bold"
+                  >
+                    Size: {sizeRange === 'small' ? 'Small (< 2m)' : sizeRange === 'medium' ? 'Medium (2m - 10m)' : 'Giant (> 10m)'}
+                    <button onClick={() => updateParams({ size: null })} className="hover:text-white cursor-pointer"><X className="h-3 w-3" /></button>
                   </motion.span>
                 )}
                 <motion.button
@@ -660,7 +699,7 @@ export default function Browse() {
           ) : (
             <>
               <motion.div
-                key={`${search}-${selectedClades.join()}-${selectedDiets.join()}-${selectedEra}-${page}`}
+                key={`${search}-${selectedClades.join()}-${selectedDiets.join()}-${selectedHabitats.join()}-${selectedEra}-${selectedLocation}-${sizeRange}-${page}`}
                 variants={containerVariants}
                 initial="hidden"
                 animate="show"

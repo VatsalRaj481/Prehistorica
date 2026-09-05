@@ -70,6 +70,46 @@ function formatLocation(loc: string): string {
     .join(' ');
 }
 
+// Canonical map to normalize client clade queries and aliases to Prisma Clade enum values
+const CLADE_CANONICAL_MAP: Record<string, string> = {
+  // Direct Prisma Clade enum matches
+  'theropod': 'Theropod',
+  'sauropod': 'Sauropod',
+  'ornithischian': 'Ornithischian',
+  'pterosaur': 'Pterosaur',
+  'marine_reptile': 'Marine_Reptile',
+  'marine reptile': 'Marine_Reptile',
+  'early_mammal_synapsid': 'Early_Mammal_Synapsid',
+  'early mammal/synapsid': 'Early_Mammal_Synapsid',
+  'early mammal synapsid': 'Early_Mammal_Synapsid',
+  'early_tetrapod_amphibian': 'Early_Tetrapod_Amphibian',
+  'early tetrapod/amphibian': 'Early_Tetrapod_Amphibian',
+  'early tetrapod amphibian': 'Early_Tetrapod_Amphibian',
+  'invertebrate': 'Invertebrate',
+  'sauropodomorph': 'Sauropodomorph',
+  'aetosaur': 'Aetosaur',
+  'phytosaur': 'Phytosaur',
+  'rauisuchian': 'Rauisuchian',
+  'poposauroid': 'Poposauroid',
+  'crocodylomorph': 'Crocodylomorph',
+  'silesaurid': 'Silesaurid',
+  'archosauriform': 'Archosauriform',
+  'protorosaur': 'Protorosaur',
+  'other': 'Other',
+
+  // Common UI aliases and synonyms
+  'ichthyosaur': 'Marine_Reptile',
+  'ichthyosaurs': 'Marine_Reptile',
+  'ichthyosauria': 'Marine_Reptile',
+  'plesiosaur': 'Marine_Reptile',
+  'mosasaur': 'Marine_Reptile',
+  'ankylosaur': 'Ornithischian',
+  'ankylosauria': 'Ornithischian',
+  'ceratopsian': 'Ornithischian',
+  'hadrosaur': 'Ornithischian',
+  'stegosaur': 'Ornithischian'
+};
+
 // 1. GET /api/species (Filtered Roster, Search, and Pagination)
 export async function getSpecies(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
@@ -93,12 +133,24 @@ export async function getSpecies(req: Request, res: Response, next: NextFunction
 
     const where: any = {};
 
-    // Multi-select or single filter for clade
+    // Multi-select or single filter for clade with normalization & aliasing
     if (clade) {
       const cladeList = Array.isArray(clade)
         ? clade.map(c => String(c))
         : (clade as string).split(',').map(c => c.trim());
-      where.clade = { in: cladeList };
+
+      const normalizedClades: string[] = [];
+      for (const item of cladeList) {
+        const key = item.toLowerCase().replace(/[\s\/-]+/g, '_');
+        const resolved = CLADE_CANONICAL_MAP[key] || CLADE_CANONICAL_MAP[item.toLowerCase()];
+        if (resolved && !normalizedClades.includes(resolved)) {
+          normalizedClades.push(resolved);
+        }
+      }
+
+      if (normalizedClades.length > 0) {
+        where.clade = { in: normalizedClades };
+      }
     }
 
     // Multi-select or single filter for diet
@@ -118,9 +170,13 @@ export async function getSpecies(req: Request, res: Response, next: NextFunction
     }
 
     if (creature_type) {
-      where.clade = {
-        equals: creature_type as any
-      };
+      const key = String(creature_type).toLowerCase().replace(/[\s\/-]+/g, '_');
+      const resolved = CLADE_CANONICAL_MAP[key] || CLADE_CANONICAL_MAP[String(creature_type).toLowerCase()];
+      if (resolved) {
+        where.clade = {
+          equals: resolved as any
+        };
+      }
     }
 
     if (fossil_formation || country || location) {
@@ -165,35 +221,79 @@ export async function getSpecies(req: Request, res: Response, next: NextFunction
     const limitNum = parseInt(limit as string, 10) || 50;
     const skip = (pageNum - 1) * limitNum;
 
-    const [total, rawList] = await Promise.all([
-      prisma.species.count({ where }),
-      prisma.species.findMany({
+    const hasLengthFilter = min_length !== undefined || max_length !== undefined;
+    const minL = min_length !== undefined ? parseFloat(min_length as string) : -Infinity;
+    const maxL = max_length !== undefined ? parseFloat(max_length as string) : Infinity;
+
+    let total = 0;
+    let speciesList: any[] = [];
+
+    if (hasLengthFilter) {
+      // Query candidate species matching relational criteria, then filter by parsed length metric
+      const rawList = await prisma.species.findMany({
         where,
-        orderBy: { name: 'asc' },
-        skip: limit ? skip : undefined,
-        take: limit ? limitNum : undefined
-      })
-    ]);
-
-    let speciesList = rawList.map(formatSpeciesRecord);
-
-    if (fossil_formation) {
-      const cleanQuery = (fossil_formation as string).toLowerCase().replace(/\s+(formation|beds|limestone|group|basin|shale)$/i, '').trim();
-      
-      const directMatches: any[] = [];
-      const fallbackMatches: any[] = [];
-
-      speciesList.forEach(s => {
-        const form = (s.fossilFormation || s.geographicRange?.fossilFormation || '').toLowerCase();
-        const isDirect = form && (form.includes(cleanQuery) || cleanQuery.includes(form));
-        if (isDirect) {
-          directMatches.push({ ...s, isMapFallback: false });
-        } else {
-          fallbackMatches.push({ ...s, isMapFallback: true });
-        }
+        orderBy: { name: 'asc' }
       });
 
-      speciesList = [...directMatches, ...fallbackMatches];
+      let formattedList = rawList.map(formatSpeciesRecord);
+
+      formattedList = formattedList.filter(s => {
+        const len = s.lengthM;
+        if (len === null || len === undefined || isNaN(len)) return false;
+        return len >= minL && len <= maxL;
+      });
+
+      if (fossil_formation) {
+        const cleanQuery = (fossil_formation as string).toLowerCase().replace(/\s+(formation|beds|limestone|group|basin|shale)$/i, '').trim();
+        const directMatches: any[] = [];
+        const fallbackMatches: any[] = [];
+
+        formattedList.forEach(s => {
+          const form = (s.fossilFormation || s.geographicRange?.fossilFormation || '').toLowerCase();
+          const isDirect = form && (form.includes(cleanQuery) || cleanQuery.includes(form));
+          if (isDirect) {
+            directMatches.push({ ...s, isMapFallback: false });
+          } else {
+            fallbackMatches.push({ ...s, isMapFallback: true });
+          }
+        });
+
+        formattedList = [...directMatches, ...fallbackMatches];
+      }
+
+      total = formattedList.length;
+      speciesList = limit ? formattedList.slice(skip, skip + limitNum) : formattedList;
+    } else {
+      const [dbTotal, rawList] = await Promise.all([
+        prisma.species.count({ where }),
+        prisma.species.findMany({
+          where,
+          orderBy: { name: 'asc' },
+          skip: limit ? skip : undefined,
+          take: limit ? limitNum : undefined
+        })
+      ]);
+
+      total = dbTotal;
+      speciesList = rawList.map(formatSpeciesRecord);
+
+      if (fossil_formation) {
+        const cleanQuery = (fossil_formation as string).toLowerCase().replace(/\s+(formation|beds|limestone|group|basin|shale)$/i, '').trim();
+        const directMatches: any[] = [];
+        const fallbackMatches: any[] = [];
+
+        speciesList.forEach(s => {
+          const form = (s.fossilFormation || s.geographicRange?.fossilFormation || '').toLowerCase();
+          const isDirect = form && (form.includes(cleanQuery) || cleanQuery.includes(form));
+          if (isDirect) {
+            directMatches.push({ ...s, isMapFallback: false });
+          } else {
+            fallbackMatches.push({ ...s, isMapFallback: true });
+          }
+        });
+
+        speciesList = [...directMatches, ...fallbackMatches];
+      }
     }
 
     if (limit) {
