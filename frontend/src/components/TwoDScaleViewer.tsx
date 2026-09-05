@@ -721,7 +721,7 @@ export default function TwoDScaleViewer({
                         >
                           <rect
                             x={-badgeWidth / 2}
-                            y="-11"
+                            y="-9"
                             width={badgeWidth}
                             height="18"
                             rx="5"
@@ -732,7 +732,7 @@ export default function TwoDScaleViewer({
                           />
                           <text
                             x="0"
-                            y="-2"
+                            y="0"
                             dominantBaseline="central"
                             textAnchor="middle"
                             fill="#E2E8F0"

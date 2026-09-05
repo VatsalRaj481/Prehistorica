@@ -653,7 +653,7 @@
     "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Synapsida\",\"order\":\"Archosauria\",\"family\":\"Coloradisaurusidae\",\"genus\":\"Coloradisaurus\",\"species\":\"Coloradisaurus brevis\",\"clade\":\"Sauropodomorph\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/75-perfect-art.jpg\",\"type\":\"art\",\"credit\":\"Conty (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Plateosaurus_Scale.svg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/4/47/Coloradisaurus_skull_reconstruction.png\",\"type\":\"art\",\"credit\":\"Apaldetti et al. (2014) / Wikimedia Commons (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Coloradisaurus_skull_reconstruction.png\"}]",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
