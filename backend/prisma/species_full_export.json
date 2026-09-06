@@ -3585,7 +3585,7 @@
     "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Pterosauria\",\"family\":\"Rhamphorhynchidae\",\"genus\":\"Preondactylus\",\"species\":\"Preondactylus buffarinii\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/6/6d/Preondactylus_apatomerus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original\",\"type\":\"art\",\"credit\":\"Mike Hanson (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3APreondactylus%20apatomerus.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/140-Preondactylus.jpg\",\"type\":\"fossil_specimen\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/3/3b/Preondactylus.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/1/19/Preondactylus_NT.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Preondactylus_NT.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/140-Preondactylus.jpg\",\"type\":\"fossil_specimen\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/3/3b/Preondactylus.jpg\"}]",
     "discoveryHistory": "• Found in the Preone valley in Italy in 1982.\n• Described by Rupert Wild in 1984.\n• Specimen was discovered in a piece of bituminous limestone.",
     "interestingFacts": "[\"Excavated from the Dolomia di Forni formation of the Italian Alps, dating to the late Carnian or early Norian (~228 Ma).\",\"Retained primitive single-cusped conical teeth, differing sharply from the specialized multi-cusped dentition of contemporary Eudimorphodon.\",\"Possessed an extremely gracile, hollow skeletal frame with a wingspan of only 45 centimeters, making it an extraordinarily agile aerial acrobat.\",\"A famous fossil specimen was discovered preserved inside a fossilized regurgitated fish pellet (gastrolith/bromalite), showing it fell prey to large predatory fish.\"]",
     "sizeNotes": "Gracile basal pterosaur with a wingspan of approximately 45 cm (1.5 ft) and weight around 150 grams.",
@@ -3597,7 +3597,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Preondactylus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Preondactylus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.619Z",
-    "updatedAt": "2026-09-05T08:14:59.016Z"
+    "updatedAt": "2026-09-06T07:54:51.902Z"
   },
   {
     "id": 141,

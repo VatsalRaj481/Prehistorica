@@ -2335,7 +2335,7 @@
     "geographicRange": "{\"region\":\"Europe\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Synapsida\",\"order\":\"Archosauria\",\"family\":\"Preondactylusidae\",\"genus\":\"Preondactylus\",\"species\":\"Preondactylus buffarinii\",\"clade\":\"Pterosaur\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/140-Preondactylus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/3/3b/Preondactylus.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/4/41/Preondactylus_cast.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/4/41/Preondactylus_cast.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/1/19/Preondactylus_NT.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Preondactylus_NT.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/140-Preondactylus.jpg\",\"type\":\"fossil_specimen\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/3/3b/Preondactylus.jpg\"}]",
     "discoveryHistory": "• Found in the Preone valley in Italy in 1982.\n• Described by Rupert Wild in 1984.\n• Specimen was discovered in a piece of bituminous limestone.",
     "interestingFacts": "[\"One of the most basal pterosaurs.\",\"Had single-cusped teeth unlike Eudimorphodon.\",\"Wingspan was less than half a meter.\"]",
     "sizeNotes": "Gracile basal pterosaur with a wingspan of approximately 45 cm (1.5 ft) and weight around 150 grams.",
@@ -2346,7 +2346,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Preondactylus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Preondactylus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.619Z",
-    "updatedAt": "2026-08-27T08:36:08.368Z"
+    "updatedAt": "2026-09-06T07:54:52.641Z"
   },
   {
     "id": 141,
