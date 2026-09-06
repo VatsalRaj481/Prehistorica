@@ -151,7 +151,7 @@ export default function Home() {
       <motion.section
         initial={shouldReduceMotion ? false : { opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.12 }}
+        viewport={{ once: true, amount: 0.05 }}
         transition={{ type: 'spring', stiffness: 320, damping: 28 }}
         className="relative z-10 space-y-6"
       >
@@ -170,10 +170,10 @@ export default function Home() {
         </div>
 
         {loading ? (
-          <div className="relative glass-panel rounded-xl overflow-hidden shadow-2xl p-6 sm:p-8 animate-pulse">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <div className="relative glass-panel rounded-xl overflow-hidden shadow-2xl p-4 sm:p-8 animate-pulse">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
               {/* Image Viewport Skeleton */}
-              <div className="lg:col-span-7 relative h-72 sm:h-96 rounded-lg bg-slate-900/80 border border-white/10 flex flex-col items-center justify-center p-6 text-center">
+              <div className="lg:col-span-7 relative h-64 sm:h-96 rounded-lg bg-slate-900/80 border border-white/10 flex flex-col items-center justify-center p-6 text-center">
                 <Loader2 className="h-8 w-8 text-amber-400 animate-spin mb-3" />
                 <p className="font-mono text-slate-300 font-bold text-sm">
                   Connecting to museum archive database...
@@ -221,9 +221,9 @@ export default function Home() {
             animate="show"
             className="relative glass-panel rounded-xl overflow-hidden shadow-2xl hover:border-amber-500/40 transition-all duration-300 group"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 p-6 sm:p-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 p-4 sm:p-8">
               {/* Artwork / Specimen Image Viewport */}
-              <div className="lg:col-span-7 relative h-72 sm:h-96 rounded-lg bg-slate-950/80 border border-white/[0.08] flex items-center justify-center p-6 shadow-inner overflow-hidden">
+              <div className="lg:col-span-7 relative h-64 sm:h-96 rounded-lg bg-slate-950/80 border border-white/[0.08] flex items-center justify-center p-4 sm:p-6 shadow-inner overflow-hidden">
                 <div className="absolute inset-0 bg-fossil-grid opacity-30 pointer-events-none" />
                 {creature.reconstructionImageUrl ? (
                   <img
@@ -237,7 +237,7 @@ export default function Home() {
                     Reconstruction illustration uncataloged
                   </div>
                 )}
-                <div className="absolute top-3 left-3 bg-slate-950/90 backdrop-blur-md border border-amber-500/30 px-3 py-1 rounded text-xs font-mono font-bold text-amber-400 tracking-wider uppercase shadow-lg z-20">
+                <div className="absolute top-3 left-3 bg-slate-950/90 backdrop-blur-md border border-amber-500/30 px-2.5 py-1 rounded text-[11px] sm:text-xs font-mono font-bold text-amber-400 tracking-wider uppercase shadow-lg z-20">
                   {creature.timePeriod} ({creature.myaStart}–{creature.myaEnd} MYA)
                 </div>
               </div>
@@ -246,10 +246,10 @@ export default function Home() {
               {(() => {
                 const names = getSpeciesDisplayNames(creature);
                 return (
-                  <div className="lg:col-span-5 flex flex-col justify-between space-y-5">
-                    <div className="space-y-4">
-                      <div className="space-y-1 border-l-2 border-amber-500 pl-3.5">
-                        <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-slate-100 group-hover:text-amber-400 transition-colors font-sans">
+                  <div className="lg:col-span-5 flex flex-col justify-between space-y-4 sm:space-y-5">
+                    <div className="space-y-3 sm:space-y-4">
+                      <div className="space-y-1 border-l-2 border-amber-500 pl-3 sm:pl-3.5">
+                        <h3 className="text-xl sm:text-3xl font-black uppercase tracking-tight text-slate-100 group-hover:text-amber-400 transition-colors font-sans">
                           {names.heading}
                         </h3>
                         <p className="text-xs italic text-amber-400 font-mono">
@@ -258,7 +258,7 @@ export default function Home() {
                       </div>
 
                       {creature.interestingFacts && creature.interestingFacts.length > 0 && (
-                        <div className="p-3.5 bg-slate-950/60 border border-white/[0.08] rounded-lg text-xs font-mono text-slate-300 space-y-1 shadow-inner">
+                        <div className="p-3 sm:p-3.5 bg-slate-950/60 border border-white/[0.08] rounded-lg text-xs font-mono text-slate-300 space-y-1 shadow-inner">
                           <div className="font-bold flex items-center gap-1.5 text-amber-400 uppercase tracking-wider text-[10px]">
                             <FileText className="h-3 w-3 text-amber-400" /> Diagnostic Specimen Feature
                           </div>
@@ -267,45 +267,45 @@ export default function Home() {
                       )}
 
                       {/* Specimen Stat Tiles */}
-                      <div className="grid grid-cols-3 gap-2.5 border-y border-white/[0.08] py-3.5 font-mono">
-                        <div className="space-y-0.5 p-2 rounded bg-slate-900/60 border border-white/[0.04]">
+                      <div className="grid grid-cols-3 gap-2 sm:gap-2.5 border-y border-white/[0.08] py-3 font-mono">
+                        <div className="space-y-0.5 p-2 rounded bg-slate-900/60 border border-white/[0.04] text-center sm:text-left">
                           <div className="text-[9px] text-slate-400 uppercase font-bold tracking-wider">
                             Length
                           </div>
-                          <div className="text-base font-black text-slate-100">
+                          <div className="text-sm sm:text-base font-black text-slate-100 truncate">
                             {formatFeet(creature.lengthM)}
                           </div>
                         </div>
 
-                        <div className="space-y-0.5 p-2 rounded bg-slate-900/60 border border-white/[0.04]">
+                        <div className="space-y-0.5 p-2 rounded bg-slate-900/60 border border-white/[0.04] text-center sm:text-left">
                           <div className="text-[9px] text-slate-400 uppercase font-bold tracking-wider">
                             Height
                           </div>
-                          <div className="text-base font-black text-slate-100">
+                          <div className="text-sm sm:text-base font-black text-slate-100 truncate">
                             {formatFeet(creature.heightM)}
                           </div>
                         </div>
 
-                        <div className="space-y-0.5 p-2 rounded bg-slate-900/60 border border-white/[0.04]">
+                        <div className="space-y-0.5 p-2 rounded bg-slate-900/60 border border-white/[0.04] text-center sm:text-left">
                           <div className="text-[9px] text-slate-400 uppercase font-bold tracking-wider">
                             Mass
                           </div>
-                          <div className="text-base font-black text-amber-400">
+                          <div className="text-sm sm:text-base font-black text-amber-400 truncate">
                             {formatMass(creature.weightKg)}
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between font-mono">
+                    <div className="pt-3 border-t border-white/[0.08] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 font-mono">
                       <div className="flex items-center gap-2 text-xs text-slate-400">
                         <Layers className="h-3.5 w-3.5 text-amber-400" />
                         <span>Clade: <strong className="text-amber-300 font-bold">{creature.clade}</strong></span>
                       </div>
-                      <motion.div whileTap={{ scale: 0.94 }}>
+                      <motion.div whileTap={{ scale: 0.94 }} className="w-full sm:w-auto">
                         <Link
                           to={`/species/${creature.id}`}
-                          className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black uppercase tracking-wider text-xs rounded-lg flex items-center gap-1.5 transition-all shadow-md cursor-pointer"
+                          className="w-full sm:w-auto px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black uppercase tracking-wider text-xs rounded-lg flex items-center justify-center gap-1.5 transition-all shadow-md cursor-pointer"
                         >
                           Inspect 2D Scale Stage <ArrowRight className="h-3.5 w-3.5" />
                         </Link>
@@ -322,7 +322,7 @@ export default function Home() {
       <motion.section
         initial={shouldReduceMotion ? false : { opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.12 }}
+        viewport={{ once: true, amount: 0.05 }}
         transition={{ type: 'spring', stiffness: 320, damping: 28 }}
         className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 font-mono"
       >

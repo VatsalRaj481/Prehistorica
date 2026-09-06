@@ -298,7 +298,7 @@ export default function TwoDScaleViewer({
       <div className="w-full bg-[#070B14] border border-white/[0.08] rounded-2xl overflow-hidden shadow-2xl select-none flex flex-col">
         
         {/* Dedicated Stage Header & Controls Bar (Decoupled from SVG stage to prevent mobile overlay cutoffs) */}
-        <div className="p-3 sm:p-4 border-b border-white/[0.08] bg-slate-950/80 backdrop-blur-md flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="p-3 sm:p-4 border-b border-white/[0.08] bg-slate-950/80 backdrop-blur-md flex flex-col lg:flex-row lg:items-center justify-between gap-3">
           {/* Specimen Badge & Readout */}
           <div className="space-y-1 min-w-0">
             <div className="flex items-center gap-1.5 sm:gap-2">
@@ -333,13 +333,13 @@ export default function TwoDScaleViewer({
           </div>
 
           {/* Controls: Reference Switcher & Toggles */}
-          <div className="flex items-center gap-1.5 self-start sm:self-auto overflow-x-auto max-w-full pb-1 sm:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between lg:justify-end gap-2 w-full lg:w-auto">
             {/* Reference Target Switcher */}
-            <div className="flex items-center bg-slate-900/90 border border-white/[0.08] rounded-xl p-1 gap-1 shadow-lg shrink-0">
+            <div className="grid grid-cols-4 sm:flex items-center bg-slate-900/90 border border-white/[0.08] rounded-xl p-0.5 sm:p-1 gap-0.5 sm:gap-1 shadow-lg shrink-0">
               <motion.button
                 whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('human')}
-                className={`min-h-[34px] px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                className={`min-h-[36px] px-1 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 transition-all cursor-pointer ${
                   refType === 'human'
                     ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
                     : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
@@ -348,13 +348,15 @@ export default function TwoDScaleViewer({
                 aria-label="Compare with Human scale"
               >
                 <User className="h-3.5 w-3.5 shrink-0" />
-                <span className="text-[10px] sm:text-[11px]">Human (1.8m)</span>
+                <span className="text-[10px] sm:text-[11px] truncate">
+                  Human<span className="hidden xl:inline"> (1.8m)</span>
+                </span>
               </motion.button>
 
               <motion.button
                 whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('car')}
-                className={`min-h-[34px] px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                className={`min-h-[36px] px-1 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 transition-all cursor-pointer ${
                   refType === 'car'
                     ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
                     : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
@@ -363,13 +365,15 @@ export default function TwoDScaleViewer({
                 aria-label="Compare with Vehicle scale"
               >
                 <Car className="h-3.5 w-3.5 shrink-0" />
-                <span className="text-[10px] sm:text-[11px]">Car (4.5m)</span>
+                <span className="text-[10px] sm:text-[11px] truncate">
+                  Car<span className="hidden xl:inline"> (4.5m)</span>
+                </span>
               </motion.button>
 
               <motion.button
                 whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('bus')}
-                className={`min-h-[34px] px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                className={`min-h-[36px] px-1 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 transition-all cursor-pointer ${
                   refType === 'bus'
                     ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
                     : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
@@ -378,13 +382,15 @@ export default function TwoDScaleViewer({
                 aria-label="Compare with Bus scale"
               >
                 <Bus className="h-3.5 w-3.5 shrink-0" />
-                <span className="hidden sm:inline text-[10px] sm:text-[11px]">Bus (11.5m)</span>
+                <span className="text-[10px] sm:text-[11px] truncate">
+                  Bus<span className="hidden xl:inline"> (11.5m)</span>
+                </span>
               </motion.button>
 
               <motion.button
                 whileTap={{ scale: 0.94 }}
                 onClick={() => setRefType('elephant')}
-                className={`min-h-[34px] px-2 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center gap-1.5 transition-all cursor-pointer ${
+                className={`min-h-[36px] px-1 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 transition-all cursor-pointer ${
                   refType === 'elephant'
                     ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
                     : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
@@ -393,59 +399,61 @@ export default function TwoDScaleViewer({
                 aria-label="Compare with African Elephant scale"
               >
                 <Layers className="h-3.5 w-3.5 shrink-0" />
-                <span className="hidden md:inline text-[10px] sm:text-[11px]">Elephant (3.3m)</span>
+                <span className="text-[10px] sm:text-[11px] truncate">
+                  Elephant<span className="hidden xl:inline"> (3.3m)</span>
+                </span>
               </motion.button>
             </div>
 
-            {/* Toggle Calipers */}
-            <motion.button
-              whileTap={{ scale: 0.94 }}
-              onClick={() => setShowCalipers(!showCalipers)}
-              className={`min-h-[34px] min-w-[34px] p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center shrink-0 ${
-                showCalipers
-                  ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
-                  : 'bg-slate-900/90 border-white/[0.08] text-slate-400 hover:text-white'
-              }`}
-              title="Toggle Architectural Caliper Lines"
-              aria-label="Toggle Architectural Caliper Lines"
-            >
-              <Ruler className="h-4 w-4" />
-            </motion.button>
+            {/* Toggle Action Buttons: Calipers, Grid, Orientation */}
+            <div className="flex items-center justify-end gap-1.5 shrink-0">
+              <motion.button
+                whileTap={{ scale: 0.94 }}
+                onClick={() => setShowCalipers(!showCalipers)}
+                className={`min-h-[36px] min-w-[36px] p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center shrink-0 ${
+                  showCalipers
+                    ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
+                    : 'bg-slate-900/90 border-white/[0.08] text-slate-400 hover:text-white'
+                }`}
+                title="Toggle Architectural Caliper Lines"
+                aria-label="Toggle Architectural Caliper Lines"
+              >
+                <Ruler className="h-4 w-4" />
+              </motion.button>
 
-            {/* Toggle Grid */}
-            <motion.button
-              whileTap={{ scale: 0.94 }}
-              onClick={() => setShowGrid(!showGrid)}
-              className={`min-h-[34px] min-w-[34px] p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center shrink-0 ${
-                showGrid
-                  ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
-                  : 'bg-slate-900/90 border-white/[0.08] text-slate-400 hover:text-white'
-              }`}
-              title="Toggle Metric Grid"
-              aria-label="Toggle Metric Grid"
-            >
-              <Eye className="h-4 w-4" />
-            </motion.button>
+              <motion.button
+                whileTap={{ scale: 0.94 }}
+                onClick={() => setShowGrid(!showGrid)}
+                className={`min-h-[36px] min-w-[36px] p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center shrink-0 ${
+                  showGrid
+                    ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
+                    : 'bg-slate-900/90 border-white/[0.08] text-slate-400 hover:text-white'
+                }`}
+                title="Toggle Metric Grid"
+                aria-label="Toggle Metric Grid"
+              >
+                <Eye className="h-4 w-4" />
+              </motion.button>
 
-            {/* Toggle Orientation: Face each other vs Parallel */}
-            <motion.button
-              whileTap={{ scale: 0.94 }}
-              onClick={() => setFaceCreature(!faceCreature)}
-              className={`min-h-[34px] min-w-[34px] p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center gap-1.5 shrink-0 ${
-                faceCreature
-                  ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
-                  : 'bg-slate-900/90 border-white/[0.08] text-slate-400 hover:text-white'
-              }`}
-              title={faceCreature ? "Orientation: Facing Creature (click for Parallel)" : "Orientation: Parallel (Both Left) (click to Face Creature)"}
-              aria-label="Toggle figure orientation"
-            >
-              <ArrowLeftRight className="h-4 w-4" />
-            </motion.button>
+              <motion.button
+                whileTap={{ scale: 0.94 }}
+                onClick={() => setFaceCreature(!faceCreature)}
+                className={`min-h-[36px] min-w-[36px] p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center gap-1.5 shrink-0 ${
+                  faceCreature
+                    ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
+                    : 'bg-slate-900/90 border-white/[0.08] text-slate-400 hover:text-white'
+                }`}
+                title={faceCreature ? "Orientation: Facing Creature (click for Parallel)" : "Orientation: Parallel (Both Left) (click to Face Creature)"}
+                aria-label="Toggle figure orientation"
+              >
+                <ArrowLeftRight className="h-4 w-4" />
+              </motion.button>
+            </div>
           </div>
         </div>
 
         {/* Dedicated SVG Drawing Canvas Stage */}
-        <div className="relative w-full h-[280px] sm:h-[360px] md:h-[400px]">
+        <div className="relative w-full aspect-[5/2] max-h-[420px]">
           <svg
             viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`}
             className="w-full h-full"

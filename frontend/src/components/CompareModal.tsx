@@ -156,7 +156,7 @@ function DualSilhouetteStage({ s1, s2, shouldReduceMotion }: DualSilhouetteStage
 
   return (
     <div className="rounded-xl bg-slate-950/80 border border-white/[0.08] overflow-hidden shadow-inner font-mono text-xs">
-      <div className="px-4 py-2.5 bg-slate-900/90 border-b border-white/[0.06] flex items-center justify-between">
+      <div className="px-3 sm:px-4 py-2 sm:py-2.5 bg-slate-900/90 border-b border-white/[0.06] flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2">
           <Scale className="h-4 w-4 text-amber-400" />
           <span className="font-bold text-slate-100 uppercase tracking-wide text-[11px] font-sans">
@@ -164,16 +164,16 @@ function DualSilhouetteStage({ s1, s2, shouldReduceMotion }: DualSilhouetteStage
           </span>
         </div>
         <div className="flex items-center gap-3 text-[10px]">
-          <span className="flex items-center gap-1.5 text-amber-400 font-bold">
-            <span className="h-2 w-2 rounded-full bg-amber-400" /> {s1.name}
+          <span className="flex items-center gap-1.5 text-amber-400 font-bold truncate max-w-[120px] sm:max-w-none">
+            <span className="h-2 w-2 rounded-full bg-amber-400 shrink-0" /> {s1.name}
           </span>
-          <span className="flex items-center gap-1.5 text-sky-400 font-bold">
-            <span className="h-2 w-2 rounded-full bg-sky-400" /> {s2.name}
+          <span className="flex items-center gap-1.5 text-sky-400 font-bold truncate max-w-[120px] sm:max-w-none">
+            <span className="h-2 w-2 rounded-full bg-sky-400 shrink-0" /> {s2.name}
           </span>
         </div>
       </div>
 
-      <div className="relative h-56 w-full flex items-center justify-center p-2">
+      <div className="relative aspect-[800/220] max-h-[220px] w-full flex items-center justify-center p-1 sm:p-2">
         <svg
           viewBox={`0 0 ${viewBoxW} ${viewBoxH}`}
           className="w-full h-full"

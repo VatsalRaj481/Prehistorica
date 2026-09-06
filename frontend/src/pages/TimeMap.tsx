@@ -177,7 +177,7 @@ export default function TimeMap() {
         className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/[0.08] pb-5 font-mono"
       >
         <div>
-          <h1 className="text-3xl sm:text-4xl font-black text-slate-100 uppercase tracking-tight flex items-center gap-2 font-sans">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-100 uppercase tracking-tight flex items-center gap-2 font-sans">
             <Compass className="h-6 w-6 text-amber-500" /> Geologic Excavation Time-Map
           </h1>
           <p className="text-xs text-slate-400 mt-1 font-mono">
@@ -311,7 +311,7 @@ export default function TimeMap() {
               })}
             </MapContainer>
 
-            <div className="absolute top-4 left-4 z-20 bg-slate-950/90 backdrop-blur-md border border-white/[0.08] px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-300 shadow-xl pointer-events-none uppercase tracking-wider">
+            <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 bg-slate-950/90 backdrop-blur-md border border-white/[0.08] px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-lg text-[11px] sm:text-xs font-bold text-slate-300 shadow-xl pointer-events-none uppercase tracking-wider">
               Region: <span className="text-amber-400">{selectedLocation}</span>
               {selectedFormation && (
                 <span className="ml-1.5 text-emerald-400">&bull; {selectedFormation}</span>

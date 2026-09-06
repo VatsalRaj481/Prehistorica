@@ -1,0 +1,1988 @@
+[
+  {
+    "name": "Alioramus",
+    "scientificName": "Alioramus remotus",
+    "nameMeaning": "Different branch, remote",
+    "timePeriod": "Late Cretaceous",
+    "epoch": "Late Cretaceous (Maastrichtian)",
+    "myaStart": 70.0,
+    "myaEnd": 66.0,
+    "clade": "Theropod",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "dietDetails": "Carnivorous predator preying on small-to-medium dinosaurs, oviraptorosaurs, and juvenile ornithischians.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "K-Pg Extinction Event (66 MYA)",
+    "closestLivingRelatives": [
+      "Modern Birds (Aves)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/da/Alioramus_Life_Restoration.jpg",
+        "type": "art",
+        "credit": "Fred Wierum (CC BY 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alioramus_Life_Restoration.jpg"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "clade": "Dinosauria",
+      "order": "Saurischia",
+      "suborder": "Theropoda",
+      "family": "Tyrannosauridae",
+      "genus": "Alioramus",
+      "species": "Alioramus remotus"
+    },
+    "geographicRange": {
+      "continent": "Asia",
+      "region": "Gobi Desert",
+      "country": "Mongolia",
+      "fossilFormation": "Nemegt Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 5.5,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 1.8,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 500.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Based on subadult holotype PIN 3141/1, characterized by a slender gracile build and elongated skull.",
+    "discoveryHistory": "Discovered by a Soviet-Mongolian paleontological expedition in the Gobi Desert in the early 1970s and formally described by Sergei Kurzanov in 1976.",
+    "interestingFacts": [
+      "Distinguished by a prominent row of five bony crests or bumps along the bridge of its slender snout.",
+      "Possessed more teeth than any other tyrannosaurid (76 to 78 teeth), adapted for seizing smaller, agile prey.",
+      "Its slender proportions led researchers to suggest it occupied a distinct ecological niche compared to apex Tarbosaurus.",
+      "Histological analysis of Alioramus altai showed that even near-adult individuals maintained a long, gracile snout."
+    ],
+    "sources": [
+      {
+        "citation": "Kurzanov, S. M. (1976). A new late Cretaceous carnosaur from Nogon-Tsav, Mongolia. Trudy Sovmestnaya Sovetsko-Mongol'skaya Paleontologicheskaya Ekspeditsiya.",
+        "url": "https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=38605"
+      },
+      {
+        "citation": "Brusatte, S. L., Carr, T. D., Erickson, G. M., Bever, G. S., & Norell, M. A. (2009). A long-snouted, multi-horned tyrannosaurid from the Late Cretaceous of Mongolia. PNAS, 106(41), 17261-17266.",
+        "url": "https://doi.org/10.1073/pnas.0906911106"
+      }
+    ]
+  },
+  {
+    "name": "Saurornitholestes",
+    "scientificName": "Saurornitholestes langstoni",
+    "nameMeaning": "Lizard-bird thief",
+    "timePeriod": "Late Cretaceous",
+    "epoch": "Late Cretaceous (Campanian)",
+    "myaStart": 77.0,
+    "myaEnd": 75.0,
+    "clade": "Theropod",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "dietDetails": "Active carnivore preying on small mammals, lizards, frogs, and juvenile dinosaurs; also scavenged larger carcasses.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "K-Pg Extinction Event (66 MYA)",
+    "closestLivingRelatives": [
+      "Modern Birds (Aves)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Saurornitholestes_digging_Burrows_wahweap.jpg",
+        "type": "art",
+        "credit": "Emily Willoughby (CC BY 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Saurornitholestes_digging_Burrows_wahweap.jpg"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "clade": "Dinosauria",
+      "order": "Saurischia",
+      "suborder": "Theropoda",
+      "family": "Dromaeosauridae",
+      "genus": "Saurornitholestes",
+      "species": "Saurornitholestes langstoni"
+    },
+    "geographicRange": {
+      "continent": "North America",
+      "region": "Alberta / Montana",
+      "country": "Canada / United States",
+      "fossilFormation": "Dinosaur Park Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 1.8,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 0.6,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 10.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Lightly built dromaeosaurid with exceptionally long, slender hindlimbs and large sickle claws on the second toes.",
+    "discoveryHistory": "Discovered by Wann Langston Jr. in 1974 at Dinosaur Provincial Park, Alberta, and formally named by Hans-Dieter Sues in 1978.",
+    "interestingFacts": [
+      "One of the most abundant small theropods discovered in the Dinosaur Park Formation of Alberta.",
+      "A partial pterosaur bone (azhdarchid wing bone) was discovered with embedded Saurornitholestes teeth, indicating scavenging behavior.",
+      "Possessed specialized olfactory bulbs in the brain, suggesting a sharp sense of smell for tracking nocturnal prey.",
+      "Featured unusually large sickle claws relative to its body size compared to contemporary velociraptorines."
+    ],
+    "sources": [
+      {
+        "citation": "Sues, H.-D. (1978). A new small theropod dinosaur from the Judith River Formation of Alberta, Canada. Zoological Journal of the Linnean Society, 62(4), 381-400.",
+        "url": "https://doi.org/10.1111/j.1096-3642.1978.tb01043.x"
+      },
+      {
+        "citation": "Currie, P. J., & Evans, D. C. (2019). Cranial anatomy of new specimens of Saurornitholestes langstoni and palaeoecology of Alberta dromaeosaurids. The Anatomical Record, 303(4), 690-715.",
+        "url": "https://doi.org/10.1002/ar.24241"
+      }
+    ]
+  },
+  {
+    "name": "Deinocheirus",
+    "scientificName": "Deinocheirus mirificus",
+    "nameMeaning": "Terrible hand, wonderful",
+    "timePeriod": "Late Cretaceous",
+    "epoch": "Late Cretaceous (Maastrichtian)",
+    "myaStart": 70.0,
+    "myaEnd": 66.0,
+    "clade": "Theropod",
+    "diet": "omnivore",
+    "habitat": "semi_aquatic",
+    "dietDetails": "Bulk omnivore feeding on soft aquatic vegetation, water plants, freshwater fish, and small aquatic invertebrates.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "K-Pg Extinction Event (66 MYA)",
+    "closestLivingRelatives": [
+      "Modern Birds (Aves)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/98/Deinocheirus_Restoration.png",
+        "type": "art",
+        "credit": "PaleoNeolitic (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Deinocheirus_Restoration.png"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "clade": "Dinosauria",
+      "order": "Saurischia",
+      "suborder": "Theropoda",
+      "family": "Deinocheiridae",
+      "genus": "Deinocheirus",
+      "species": "Deinocheirus mirificus"
+    },
+    "geographicRange": {
+      "continent": "Asia",
+      "region": "Gobi Desert, Ömnögovi",
+      "country": "Mongolia",
+      "fossilFormation": "Nemegt Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 11.0,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 4.4,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 6400.0,
+        "unit": "kg",
+        "confidence": "well-supported"
+      }
+    },
+    "sizeNotes": "The largest known ornithomimosaurian, sporting massive 2.4-meter arms ending in blunt, curved 20-centimeter claws.",
+    "discoveryHistory": "First discovered in 1965 by Zofia Kielan-Jaworowska as giant mysterious arms; its bizarre complete body with duck-bill and dorsal sail was revealed in 2014 by Lee et al.",
+    "interestingFacts": [
+      "Remained one of paleontology's greatest mysteries for nearly 50 years when only its gargantuan arms were known.",
+      "Featured a prominent sail-like hump along its back supported by tall neural spines and a fused pygostyle at the tail tip.",
+      "Fossilized stomach contents revealed fish scales alongside over 1,400 gastroliths used to grind tough plant matter.",
+      "Possessed a wide, toothless, duck-like bill ideal for scooping aquatic vegetation in Cretaceous wetlands."
+    ],
+    "sources": [
+      {
+        "citation": "Lee, Y. N., Barsbold, R., Currie, P. J., et al. (2014). Resolving the long-standing enigmas of a giant ornithomimosaur Deinocheirus mirificus. Nature, 515(7526), 257-260.",
+        "url": "https://doi.org/10.1038/nature13874"
+      }
+    ]
+  },
+  {
+    "name": "Erlikosaurus",
+    "scientificName": "Erlikosaurus andrewsi",
+    "nameMeaning": "Erlik's lizard, honoring Andrews",
+    "timePeriod": "Late Cretaceous",
+    "epoch": "Late Cretaceous (Cenomanian–Turonian)",
+    "myaStart": 96.0,
+    "myaEnd": 89.0,
+    "clade": "Theropod",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "dietDetails": "Herbivore consuming foliage, ferns, fruits, and soft Cretaceous vegetation.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "K-Pg Extinction Event (66 MYA)",
+    "closestLivingRelatives": [
+      "Modern Birds (Aves)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Erlikosaurus_Restoration.png",
+        "type": "art",
+        "credit": "PaleoNeolitic (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Erlikosaurus_Restoration.png"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "clade": "Dinosauria",
+      "order": "Saurischia",
+      "suborder": "Theropoda",
+      "family": "Therizinosauridae",
+      "genus": "Erlikosaurus",
+      "species": "Erlikosaurus andrewsi"
+    },
+    "geographicRange": {
+      "continent": "Asia",
+      "region": "Ömnögovi Province",
+      "country": "Mongolia",
+      "fossilFormation": "Bayan Shireh Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 3.4,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 1.5,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 250.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Known from the only exceptionally preserved complete skull of any therizinosaurid found to date (holotype MPC-D 100/111).",
+    "discoveryHistory": "Found during a Soviet-Mongolian expedition in 1972 at Bayshin Tsav and formally named by Altangerel Perle in 1980.",
+    "interestingFacts": [
+      "Provides the primary anatomical blueprint for the entire Therizinosauridae group thanks to its intact 25-centimeter skull.",
+      "Possessed a keratinous beak at the tip of its snout accompanied by small, leaf-shaped serrated teeth for stripping leaves.",
+      "Digital endocranial reconstructions revealed well-developed sense organs for hearing, balance, and spatial coordination.",
+      "Had slender, curved claws on its forelimbs used to hook high branches and pull foliage toward its mouth."
+    ],
+    "sources": [
+      {
+        "citation": "Perle, A. (1980). Segnosauria - a new infraorder of carnivorous dinosaurs. Trudy Sovmestnaya Sovetsko-Mongol'skaya Paleontologicheskaya Ekspeditsiya, 15, 87-103.",
+        "url": "https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=38634"
+      },
+      {
+        "citation": "Lautenschlager, S., Rayfield, E. J., Altangerel, P., Zanno, L. E., & Witmer, L. M. (2012). The cranial paleoneurology of Erlikosaurus andrewsi. PLoS ONE, 7(12), e52289.",
+        "url": "https://doi.org/10.1371/journal.pone.0052289"
+      }
+    ]
+  },
+  {
+    "name": "Mastodonsaurus",
+    "scientificName": "Mastodonsaurus giganteus",
+    "nameMeaning": "Breast-toothed lizard, giant",
+    "timePeriod": "Middle Triassic",
+    "epoch": "Middle Triassic (Ladinian)",
+    "myaStart": 242.0,
+    "myaEnd": 235.0,
+    "clade": "Early_Tetrapod_Amphibian",
+    "diet": "carnivore",
+    "habitat": "freshwater",
+    "dietDetails": "Ambush predator hunting freshwater fish, temnospondyls, and small terrestrial archosaurs entering shallow waterways.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "Carnian Pluvial Event (232 MYA)",
+    "closestLivingRelatives": [
+      "Modern Amphibians (Lissamphibia)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Mastodonsaurus_DB.jpg",
+        "type": "art",
+        "credit": "Dmitry Bogdanov (Public domain)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mastodonsaurus_DB.jpg"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "order": "Temnospondyli",
+      "family": "Mastodonsauridae",
+      "genus": "Mastodonsaurus",
+      "species": "Mastodonsaurus giganteus"
+    },
+    "geographicRange": {
+      "continent": "Europe",
+      "region": "Baden-Württemberg",
+      "country": "Germany",
+      "fossilFormation": "Erfurt Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 6.0,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 0.8,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 1500.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "One of the largest amphibians to ever exist, with a massive triangular skull reaching up to 1.4 meters in length.",
+    "discoveryHistory": "First described by Georg Friedrich von Jäger in 1828 based on a distinctive tooth cusp; complete massive skeletons were later uncovered in southern Germany.",
+    "interestingFacts": [
+      "Possessed two enormous upward-pointing tusks on the lower jaw that poked completely through openings in the upper snout when the mouth closed.",
+      "Its reduced limbs and flattened aquatic body meant it lived almost entirely submerged in water.",
+      "Multiple fossil bonebeds show hundreds of individuals perished together in shrinking drought ponds during seasonal dry spells.",
+      "Lateral line sensory grooves along its skull allowed it to detect pressure waves generated by swimming prey."
+    ],
+    "sources": [
+      {
+        "citation": "Schoch, R. R. (1999). Comparative osteology of Mastodonsaurus giganteus (Jaeger, 1828) from the Middle Triassic of Germany. Stuttgarter Beiträge zur Naturkunde Serie B, 278, 1-175.",
+        "url": "https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=37072"
+      }
+    ]
+  },
+  {
+    "name": "Asian Straight-tusked Elephant",
+    "scientificName": "Palaeoloxodon namadicus",
+    "nameMeaning": "Ancient straight tooth of Narmada",
+    "timePeriod": "Pleistocene",
+    "epoch": "Middle to Late Pleistocene",
+    "myaStart": 0.78,
+    "myaEnd": 0.024,
+    "clade": "Early_Mammal_Synapsid",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "dietDetails": "Megaherbivore grazing on grasses and browsing on trees, shrubs, and bamboo across Indian river valleys.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "Quaternary Extinction Event",
+    "closestLivingRelatives": [
+      "Asian Elephant (Elephas maximus)",
+      "African Forest Elephant (Loxodonta cyclotis)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Palaeoloxodon_namadicus-bpk.jpg",
+        "type": "art",
+        "credit": "Baperookamo (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Palaeoloxodon_namadicus-bpk.jpg"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "order": "Proboscidea",
+      "family": "Elephantidae",
+      "genus": "Palaeoloxodon",
+      "species": "Palaeoloxodon namadicus"
+    },
+    "geographicRange": {
+      "continent": "Asia",
+      "region": "Narmada River Valley & Siwalik Hills",
+      "country": "India",
+      "fossilFormation": "Narmada Alluvium Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 8.0,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 4.5,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 15000.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Often cited as the largest land mammal of the Quaternary period, with shoulder heights reaching up to 4.5 meters and estimated weights up to 15-22 tonnes.",
+    "discoveryHistory": "Discovered in 1834 by Hugh Falconer and Proby Cautley in the Narmada Valley of Madhya Pradesh, India, and described in 1845.",
+    "interestingFacts": [
+      "Considered by many paleontologists as the largest terrestrial mammal ever discovered, easily dwarfing modern elephants.",
+      "Characterized by a robust parietal-occipital cranial crest on its forehead that anchored massive neck muscles supporting its colossal head.",
+      "Coexisted with early hominins (such as archaic Homo / Narmada Man) throughout the Pleistocene of India.",
+      "Possessed nearly straight, massive upward-curving tusks that exceeded 3.5 meters in length."
+    ],
+    "sources": [
+      {
+        "citation": "Falconer, H., & Cautley, P. T. (1845). Fauna Antiqua Sivalensis, being the fossil zoology of the Sewalik Hills in the north of India.",
+        "url": "https://doi.org/10.5962/bhl.title.61869"
+      },
+      {
+        "citation": "Larramendi, A. (2016). Shoulder height, body mass, and shape of proboscideans. Acta Palaeontologica Polonica, 61(3), 537-574.",
+        "url": "https://doi.org/10.4202/app.00136.2014"
+      }
+    ]
+  },
+  {
+    "name": "Tyrannotitan",
+    "scientificName": "Tyrannotitan chubutensis",
+    "nameMeaning": "Tyrant giant of Chubut",
+    "timePeriod": "Early Cretaceous",
+    "epoch": "Early Cretaceous (Aptian)",
+    "myaStart": 121.0,
+    "myaEnd": 113.0,
+    "clade": "Theropod",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "dietDetails": "Apex predator preying upon massive titanosaurian sauropods such as Patagotitan and Chubutisaurus.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "Cenomanian-Turonian Boundary",
+    "closestLivingRelatives": [
+      "Modern Birds (Aves)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Tyrannotitan_chubutensis.png",
+        "type": "art",
+        "credit": "Connor Ashbridge (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tyrannotitan_chubutensis.png"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "clade": "Dinosauria",
+      "order": "Saurischia",
+      "suborder": "Theropoda",
+      "family": "Carcharodontosauridae",
+      "genus": "Tyrannotitan",
+      "species": "Tyrannotitan chubutensis"
+    },
+    "geographicRange": {
+      "continent": "South America",
+      "region": "Patagonia (Chubut)",
+      "country": "Argentina",
+      "fossilFormation": "Cerro Barcino Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 12.2,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 3.8,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 6500.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Massive carcharodontosaurid comparable in size to Giganotosaurus and Carcharodontosaurus, with heavily built dorsal vertebrae.",
+    "discoveryHistory": "Found on the 'La Juanita' farm in Chubut in 1999 and formally described by Fernando Novas and colleagues in 2005.",
+    "interestingFacts": [
+      "One of the earliest known giant carcharodontosaurids, predating both Giganotosaurus and Mapusaurus.",
+      "Unlike its later relatives, its teeth were less blade-like and bore wrinkly, undulating enamel surfaces adapted for crushing flesh.",
+      "Possessed extraordinarily short and stout arms, showing early evolutionary reduction in forelimb size among giganotosaurines.",
+      "Lived alongside giant titanosaur sauropods, which it attacked using slashing, wound-inflicting bites."
+    ],
+    "sources": [
+      {
+        "citation": "Novas, F. E., de Valais, S., Vickers-Rich, P., & Rich, T. (2005). A large Cretaceous theropod from Patagonia, Argentina, and the evolution of carcharodontosaurids. Naturwissenschaften, 92(5), 226-230.",
+        "url": "https://doi.org/10.1007/s00114-005-0623-3"
+      }
+    ]
+  },
+  {
+    "name": "Thalassodromeus",
+    "scientificName": "Thalassodromeus sethi",
+    "nameMeaning": "Sea runner of Seth",
+    "timePeriod": "Early Cretaceous",
+    "epoch": "Early Cretaceous (Albian)",
+    "myaStart": 112.0,
+    "myaEnd": 108.0,
+    "clade": "Pterosaur",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "dietDetails": "Terrestrial and aerial predator hunting small vertebrates, fish, squids, and lizards.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "Mid-Cretaceous Thermal Maximum",
+    "closestLivingRelatives": [
+      "Modern Archosaurs (Crocodilians and Birds)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/df/Thalassodromeus.jpg",
+        "type": "art",
+        "credit": "PWNZ3R Dragon (CC BY 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thalassodromeus.jpg"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "clade": "Pterosauria",
+      "order": "Pterosauria",
+      "family": "Thalassodromidae",
+      "genus": "Thalassodromeus",
+      "species": "Thalassodromeus sethi"
+    },
+    "geographicRange": {
+      "continent": "South America",
+      "region": "Araripe Basin, Ceará",
+      "country": "Brazil",
+      "fossilFormation": "Romualdo Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 1.8,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 1.6,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 25.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Wingspan of approximately 4.2 to 4.5 meters; skull length of 1.4 meters, with the cranial crest accounting for 75% of skull surface area.",
+    "discoveryHistory": "Discovered in calcium carbonate concretions in northeastern Brazil and described in 2002 by Alexander Kellner and Diogenes de Almeida Campos.",
+    "interestingFacts": [
+      "Sported one of the largest cranial crests known relative to its skull, laced with extensive blood vessel impressions for thermoregulation and display.",
+      "Originally hypothesized to skim-feed, biomechanical studies later proved its neck and jaw could not withstand water resistance forces.",
+      "Operated as a terrestrial predator similar to modern storks, stalking small prey on the ground.",
+      "Its toothless, scissor-like jaws converged to a sharp tip capable of delivering powerful stabbing and slicing bites."
+    ],
+    "sources": [
+      {
+        "citation": "Kellner, A. W., & Campos, D. A. (2002). The function of the cranial crest and jaws of a unique pterosaur from the Early Cretaceous of Brazil. Science, 297(5580), 389-392.",
+        "url": "https://doi.org/10.1126/science.1073186"
+      },
+      {
+        "citation": "Humphries, S., Bonser, R. H., Witton, M. P., & Martill, D. M. (2007). Did pterosaurs skim hunt? Did any of them? PLoS Biology, 5(8), e204.",
+        "url": "https://doi.org/10.1371/journal.pbio.0050204"
+      }
+    ]
+  },
+  {
+    "name": "Infernodrakon",
+    "scientificName": "Infernodrakon hastacaelestis",
+    "nameMeaning": "Hell dragon, heavenly spear",
+    "timePeriod": "Late Cretaceous",
+    "epoch": "Late Cretaceous (Maastrichtian)",
+    "myaStart": 68.0,
+    "myaEnd": 66.0,
+    "clade": "Pterosaur",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "dietDetails": "Carnivorous azhdarchoid stalking small dinosaurs, mammals, amphibians, and reptiles on Cretaceous floodplains.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "K-Pg Extinction Event (66 MYA)",
+    "closestLivingRelatives": [
+      "Modern Archosaurs (Crocodilians and Birds)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/70/Infernodrakon.png",
+        "type": "art",
+        "credit": "Jun-Hyeok Jang (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Infernodrakon.png"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "clade": "Pterosauria",
+      "order": "Pterosauria",
+      "family": "Azhdarchidae",
+      "genus": "Infernodrakon",
+      "species": "Infernodrakon hastacaelestis"
+    },
+    "geographicRange": {
+      "continent": "North America",
+      "region": "Montana",
+      "country": "United States",
+      "fossilFormation": "Hell Creek Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 2.5,
+        "unit": "m",
+        "confidence": "estimated"
+      },
+      "height": {
+        "value": 2.2,
+        "unit": "m",
+        "confidence": "estimated"
+      },
+      "weight": {
+        "value": 40.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Mid-sized azhdarchid with an estimated wingspan of approximately 4.5 to 5.0 meters.",
+    "discoveryHistory": "Named and described based on holotype cervical and wing material recovered from the upper Hell Creek Formation of Montana.",
+    "interestingFacts": [
+      "Coexisted directly with Tyrannosaurus rex, Triceratops, and the colossal giant pterosaur Quetzalcoatlus.",
+      "Demonstrates that medium-sized pterosaurs thrived alongside giant azhdarchids until the chicxulub asteroid impact.",
+      "Possessed elongated neck vertebrae and robust forelimbs adapted for efficient four-legged terrestrial stalking.",
+      "Features uniquely slender spear-like rostral morphology suggesting quick striking at small agile prey."
+    ],
+    "sources": [
+      {
+        "citation": "Longrich, N. R., Martill, D. M., & Andres, B. (2018). Late Maastrichtian pterosaurs confirm low extinction susceptibility prior to K-Pg. PLOS Biology, 16(3), e2001663.",
+        "url": "https://doi.org/10.1371/journal.pbio.2001663"
+      }
+    ]
+  },
+  {
+    "name": "Zhuchengtyrannus",
+    "scientificName": "Zhuchengtyrannus magnus",
+    "nameMeaning": "Great tyrant of Zhucheng",
+    "timePeriod": "Late Cretaceous",
+    "epoch": "Late Cretaceous (Campanian)",
+    "myaStart": 74.5,
+    "myaEnd": 73.0,
+    "clade": "Theropod",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "dietDetails": "Apex predator preying upon giant hadrosaurids like Shantungosaurus and large ceratopsians like Sinoceratops.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "K-Pg Extinction Event (66 MYA)",
+    "closestLivingRelatives": [
+      "Modern Birds (Aves)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/ZhuchengtyrannusJF.png",
+        "type": "art",
+        "credit": "Jfstudiospaleoart (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:ZhuchengtyrannusJF.png"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "clade": "Dinosauria",
+      "order": "Saurischia",
+      "suborder": "Theropoda",
+      "family": "Tyrannosauridae",
+      "genus": "Zhuchengtyrannus",
+      "species": "Zhuchengtyrannus magnus"
+    },
+    "geographicRange": {
+      "continent": "Asia",
+      "region": "Shandong Province",
+      "country": "China",
+      "fossilFormation": "Xingezhuang Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 11.0,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 3.6,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 6000.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "One of the largest known tyrannosaurids, nearly matching Tyrannosaurus rex and Tarbosaurus in maxilla and dentary dimensions.",
+    "discoveryHistory": "Found in 2009 during quarry excavations in Zhucheng and named by David Hone and colleagues in 2011.",
+    "interestingFacts": [
+      "Shares anatomical features with Tarbosaurus but differs in having a distinctive horizontal shelf on the maxilla.",
+      "Hunted the colossal hadrosaur Shantungosaurus, one of the largest non-sauropod dinosaurs to ever walk the Earth.",
+      "Lived in a floodplain ecosystem characterized by catastrophic mass mortality events that preserved thousands of dinosaur bones.",
+      "Bore massive, bone-crushing jaws with deep rooted teeth designed to withstand extreme lateral biting forces."
+    ],
+    "sources": [
+      {
+        "citation": "Hone, D. W. E., Wang, K., Sullivan, C., et al. (2011). A new, large tyrannosaurine theropod from the Upper Cretaceous of China. Cretaceous Research, 32(4), 495-503.",
+        "url": "https://doi.org/10.1016/j.cretres.2011.03.005"
+      }
+    ]
+  },
+  {
+    "name": "Quinkana",
+    "scientificName": "Quinkana fortirostrum",
+    "nameMeaning": "Quinkan spirit, strong snout",
+    "timePeriod": "Pleistocene",
+    "epoch": "Pliocene to Late Pleistocene",
+    "myaStart": 4.0,
+    "myaEnd": 0.04,
+    "clade": "Crocodylomorph",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "dietDetails": "Apex terrestrial predator hunting giant marsupials like Diprotodon, giant kangaroos (Procoptodon), and flightless birds.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "Quaternary Extinction Event",
+    "closestLivingRelatives": [
+      "Modern Crocodilians (Crocodylia)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Quinkana_fortirostrum.JPG",
+        "type": "art",
+        "credit": "Mr Fink (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Quinkana_fortirostrum.JPG"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "class": "Reptilia",
+      "order": "Crocodylia",
+      "family": "Mekosuchidae",
+      "genus": "Quinkana",
+      "species": "Quinkana fortirostrum"
+    },
+    "geographicRange": {
+      "continent": "Australia",
+      "region": "Queensland & Northern Territory",
+      "country": "Australia",
+      "fossilFormation": "Tea Tree Cave Deposits"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 3.5,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 0.7,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 250.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Ziphodont terrestrial crocodile with laterally compressed, recurved serrated teeth and an erect walking posture.",
+    "discoveryHistory": "First described by Ralph Molnar in 1981 from Pliocene-Pleistocene cave and river deposits in northern Queensland.",
+    "interestingFacts": [
+      "Unlike modern semi-aquatic crocodiles, Quinkana was fully terrestrial with upright legs capable of galloping pursuit.",
+      "Equipped with ziphodont teeth (laterally flattened and serrated like steak knives) designed for slicing mammal flesh.",
+      "One of Australia's apex predators alongside the giant monitor lizard Megalania and marsupial lion Thylacoleo.",
+      "Surviving until around 40,000 years ago, it encountered early indigenous Australians arriving on the continent."
+    ],
+    "sources": [
+      {
+        "citation": "Molnar, R. E. (1981). Pleistocene ziphodont crocodilians of Queensland. Records of the Australian Museum, 33(19), 803-834.",
+        "url": "https://doi.org/10.3853/j.0067-1975.33.1981.198"
+      }
+    ]
+  },
+  {
+    "name": "Haast's Eagle",
+    "scientificName": "Hieraaetus moorei",
+    "nameMeaning": "Moore's hawk-eagle",
+    "timePeriod": "Pleistocene",
+    "epoch": "Late Pleistocene to Holocene",
+    "myaStart": 1.8,
+    "myaEnd": 0.0006,
+    "clade": "Other",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "dietDetails": "Apex avian predator specialized in taking down giant flightless moa up to 15 times its own weight.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "Holocene Extinction (c. 1400 CE)",
+    "closestLivingRelatives": [
+      "Little Eagle (Hieraaetus morphnoides)",
+      "Booted Eagle (Hieraaetus pennatus)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Giant_Haasts_eagle_attacking_New_Zealand_moa.jpg",
+        "type": "art",
+        "credit": "John Megahan (CC BY 2.5)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Giant_Haasts_eagle_attacking_New_Zealand_moa.jpg"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "class": "Aves",
+      "order": "Accipitriformes",
+      "family": "Accipitridae",
+      "genus": "Hieraaetus",
+      "species": "Hieraaetus moorei"
+    },
+    "geographicRange": {
+      "continent": "Oceania",
+      "region": "South Island",
+      "country": "New Zealand",
+      "fossilFormation": "Glenmark Swamp Deposits"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 1.4,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 1.0,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 15.0,
+        "unit": "kg",
+        "confidence": "well-supported"
+      }
+    },
+    "sizeNotes": "Wingspan estimated at 2.6 to 3.0 meters; the largest eagle known to have existed, with talons matching those of a tiger.",
+    "discoveryHistory": "Discovered in 1871 by F. Fuller at Glenmark and described by Julius von Haast as Harpagornis moorei (later reclassified into Hieraaetus by Bunce et al. 2005).",
+    "interestingFacts": [
+      "Struck its prey with force equivalent to a concrete block falling from an eight-story building, crushing the pelvis of giant moa.",
+      "Possessed relatively short wings for its massive weight, adapted for maneuvering through dense southern beech forests.",
+      "Ancient Māori oral tradition remembers the eagle as the 'Pouākai', a terrifying man-eating raptor from the high mountains.",
+      "DNA analysis revealed its closest living relative is the tiny Little Eagle, demonstrating rapid evolutionary island gigantism."
+    ],
+    "sources": [
+      {
+        "citation": "Bunce, M., et al. (2005). Extreme reversed sexual size dimorphism in the extinct New Zealand eagle. PLoS Biology, 3(1), e9.",
+        "url": "https://doi.org/10.1371/journal.pbio.0030009"
+      }
+    ]
+  },
+  {
+    "name": "Zhejiangopterus",
+    "scientificName": "Zhejiangopterus linhaiensis",
+    "nameMeaning": "Zhejiang wing from Linhai",
+    "timePeriod": "Late Cretaceous",
+    "epoch": "Late Cretaceous (Campanian)",
+    "myaStart": 81.5,
+    "myaEnd": 81.0,
+    "clade": "Pterosaur",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "dietDetails": "Terrestrial stalker feeding on small vertebrates, lizards, eggs, and invertebrates.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "K-Pg Extinction Event (66 MYA)",
+    "closestLivingRelatives": [
+      "Modern Archosaurs (Crocodilians and Birds)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Zhejiangopterus_linhaiensis.png",
+        "type": "art",
+        "credit": "Connor Ashbridge (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Zhejiangopterus_linhaiensis.png"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "clade": "Pterosauria",
+      "order": "Pterosauria",
+      "family": "Azhdarchidae",
+      "genus": "Zhejiangopterus",
+      "species": "Zhejiangopterus linhaiensis"
+    },
+    "geographicRange": {
+      "continent": "Asia",
+      "region": "Zhejiang Province",
+      "country": "China",
+      "fossilFormation": "Tangshang Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 1.6,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 1.5,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 18.0,
+        "unit": "kg",
+        "confidence": "well-supported"
+      }
+    },
+    "sizeNotes": "Wingspan of approximately 3.5 meters; known from multiple well-preserved complete skeletons including juvenile and adult specimens.",
+    "discoveryHistory": "Found in 1986 in Linhai County by a local quarry worker and described in 1994 by Cai Zhengquan and Wei Feng.",
+    "interestingFacts": [
+      "One of the most anatomically complete azhdarchid pterosaurs ever discovered, providing critical data on azhdarchid neck structure.",
+      "Lacked the exaggerated cranial crests seen in many other pterosaurs, featuring a low, elongate, crestless skull with a sharp beak.",
+      "Its long neck vertebrae lacked cervical ribs, making the neck stiff and held upright like a modern stork.",
+      "Biomechanical analysis indicates it spent extensive time walking quadrupedally on land, picking off prey in open woodlands."
+    ],
+    "sources": [
+      {
+        "citation": "Cai, Z., & Wei, F. (1994). On a new pterosaur (Zhejiangopterus linhaiensis gen. et sp. nov.) from Upper Cretaceous in Linhai, Zhejiang, China. Vertebrata PalAsiatica, 32(3), 181-194.",
+        "url": "https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=64319"
+      }
+    ]
+  },
+  {
+    "name": "Glyptodon",
+    "scientificName": "Glyptodon clavipes",
+    "nameMeaning": "Carved tooth, club-footed",
+    "timePeriod": "Pleistocene",
+    "epoch": "Early Pleistocene to Early Holocene",
+    "myaStart": 2.5,
+    "myaEnd": 0.01,
+    "clade": "Early_Mammal_Synapsid",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "dietDetails": "Low-browsing herbivore and grazer feeding on coarse grasses, roots, and riparian vegetation.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "Quaternary Extinction Event",
+    "closestLivingRelatives": [
+      "Modern Armadillos (Cingulata)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/93/Tierwanderungen_in_der_Urwelt_-_Fig._08_Glyptodon.jpg",
+        "type": "art",
+        "credit": "Heinrich Harder (Public domain)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tierwanderungen_in_der_Urwelt_-_Fig._08_Glyptodon.jpg"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "class": "Mammalia",
+      "order": "Cingulata",
+      "family": "Chlamyphoridae",
+      "genus": "Glyptodon",
+      "species": "Glyptodon clavipes"
+    },
+    "geographicRange": {
+      "continent": "South America",
+      "region": "Pampas & Gran Chaco",
+      "country": "Argentina / Brazil / Uruguay",
+      "fossilFormation": "Luján Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 3.3,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 1.5,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 2000.0,
+        "unit": "kg",
+        "confidence": "well-supported"
+      }
+    },
+    "sizeNotes": "Massive armadillo relative with a domed protective shell composed of more than 1,000 fused osteoderms.",
+    "discoveryHistory": "First described by Sir Richard Owen in 1839 based on fossils collected in South America during Charles Darwin's voyage on HMS Beagle.",
+    "interestingFacts": [
+      "Its rigid carapace was so strong and spacious that early indigenous humans in South America used empty shells as shelters.",
+      "The tail was encased in a series of flexible bony rings ending in a blunt sheath used for defense against predators like Smilodon.",
+      "Fused cervical and thoracic vertebrae formed a solid bony bridge to support the tremendous weight of its armor dome.",
+      "Survived until approximately 10,000 years ago, where hunting by early human populations contributed to its extinction."
+    ],
+    "sources": [
+      {
+        "citation": "Owen, R. (1839). Description of a tooth and part of the skeleton of the Glyptodon clavipes. Transactions of the Geological Society of London, 6, 81-106.",
+        "url": "https://doi.org/10.1144/transgslb.6.1.81"
+      }
+    ]
+  },
+  {
+    "name": "Thanatotheristes",
+    "scientificName": "Thanatotheristes degrootorum",
+    "nameMeaning": "Reaper of death, honoring De Groots",
+    "timePeriod": "Late Cretaceous",
+    "epoch": "Late Cretaceous (Campanian)",
+    "myaStart": 80.1,
+    "myaEnd": 79.5,
+    "clade": "Theropod",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "dietDetails": "Apex predator preying upon early ceratopsians like Xenoceratops and hadrosauroids.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "K-Pg Extinction Event (66 MYA)",
+    "closestLivingRelatives": [
+      "Modern Birds (Aves)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Thanatotheristes_life_resconstruction.jpg",
+        "type": "art",
+        "credit": "Bubblesorg (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Thanatotheristes_life_resconstruction.jpg"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "clade": "Dinosauria",
+      "order": "Saurischia",
+      "suborder": "Theropoda",
+      "family": "Tyrannosauridae",
+      "genus": "Thanatotheristes",
+      "species": "Thanatotheristes degrootorum"
+    },
+    "geographicRange": {
+      "continent": "North America",
+      "region": "Alberta",
+      "country": "Canada",
+      "fossilFormation": "Foremost Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 8.0,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 2.4,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 2000.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Oldest known tyrannosaurid from northern North America, with an adult skull measuring approximately 80 cm.",
+    "discoveryHistory": "Found along the Bow River in Alberta in 2010 by local hikers John and Sandra De Groot, and described in 2020 by Jared Voris and colleagues.",
+    "interestingFacts": [
+      "Nicknamed the 'Reaper of Death', it is the oldest named tyrannosaurid discovered in Canada, predating T. rex by about 12 million years.",
+      "Distinguished by a unique series of vertical ridges along the upper jaw margin (maxilla) in front of the eye socket.",
+      "Forms a distinct clade (Daspletosaurini) with Daspletosaurus, demonstrating that tyrannosaurids were ecologically partitioned into distinct lineages.",
+      "Deep, robust jaw construction indicates it delivered crushing bites to disable thick-skinned ceratopsian prey."
+    ],
+    "sources": [
+      {
+        "citation": "Voris, J. T., Therrien, F., Zelenitsky, D. K., & Brown, C. M. (2020). A new tyrannosaurine from the Canadian Late Cretaceous Foremost Formation. Cretaceous Research, 110, 104388.",
+        "url": "https://doi.org/10.1016/j.cretres.2020.104388"
+      }
+    ]
+  },
+  {
+    "name": "Gigantspinosaurus",
+    "scientificName": "Gigantspinosaurus sichuanensis",
+    "nameMeaning": "Giant-spined lizard of Sichuan",
+    "timePeriod": "Late Jurassic",
+    "epoch": "Late Jurassic (Oxfordian)",
+    "myaStart": 163.5,
+    "myaEnd": 157.3,
+    "clade": "Ornithischian",
+    "diet": "herbivore",
+    "habitat": "terrestrial",
+    "dietDetails": "Low-browsing herbivore feeding on cycads, bennettitaleans, ferns, and horsetails in Jurassic river basins.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "Late Jurassic Faunal Turnover",
+    "closestLivingRelatives": [
+      "Modern Birds (Aves)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Gigantspinosaurus_sichuanensis.png",
+        "type": "art",
+        "credit": "Connor Ashbridge (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gigantspinosaurus_sichuanensis.png"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "clade": "Dinosauria",
+      "order": "Ornithischia",
+      "suborder": "Stegosauria",
+      "family": "Stegosauridae",
+      "genus": "Gigantspinosaurus",
+      "species": "Gigantspinosaurus sichuanensis"
+    },
+    "geographicRange": {
+      "continent": "Asia",
+      "region": "Sichuan Basin, Zigong",
+      "country": "China",
+      "fossilFormation": "Upper Shaximiao Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 4.2,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 1.6,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 700.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Basal stegosaurian famous for its gargantuan shoulder spines, which were at least twice the length of its shoulder blades.",
+    "discoveryHistory": "Uncovered in 1985 in Zigong, Sichuan, and formally described in 1992 by Ouyang Hui.",
+    "interestingFacts": [
+      "Sported the largest shoulder spines (parascapular spines) of any known stegosaur, flaring backward over a meter in length.",
+      "In contrast to its giant shoulder spines, the paired plates running down its neck and back were remarkably small and rounded.",
+      "Considered a basal member of Stegosauria, preserving primitive traits transitional between early armored dinosaurs and derived stegosaurids.",
+      "Skin impressions discovered with the specimen revealed small, rounded, non-overlapping polygonal scales covering the body."
+    ],
+    "sources": [
+      {
+        "citation": "Ouyang, H. (1992). Discovery of Gigantspinosaurus sichuanensis and its scapular spine. Abstracts of the 5th Symposium of the Chinese Society of Vertebrate Paleontology, 47-49.",
+        "url": "https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=66516"
+      }
+    ]
+  },
+  {
+    "name": "Gigantoraptor",
+    "scientificName": "Gigantoraptor erlianensis",
+    "nameMeaning": "Giant seizer of Erlian",
+    "timePeriod": "Late Cretaceous",
+    "epoch": "Late Cretaceous (Cenomanian)",
+    "myaStart": 96.0,
+    "myaEnd": 89.0,
+    "clade": "Theropod",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "dietDetails": "Omnivore or herbivore consuming high foliage, seeds, tubers, and opportunistically small vertebrates with its robust beak.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "K-Pg Extinction Event (66 MYA)",
+    "closestLivingRelatives": [
+      "Modern Birds (Aves)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Gigantoraptor_Restoration.png",
+        "type": "art",
+        "credit": "PaleoNeolitic (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gigantoraptor_Restoration.png"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "clade": "Dinosauria",
+      "order": "Saurischia",
+      "suborder": "Theropoda",
+      "family": "Caenagnathidae",
+      "genus": "Gigantoraptor",
+      "species": "Gigantoraptor erlianensis"
+    },
+    "geographicRange": {
+      "continent": "Asia",
+      "region": "Erlian Basin, Inner Mongolia",
+      "country": "China",
+      "fossilFormation": "Iren Dabasu Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 8.0,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 3.5,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 2000.0,
+        "unit": "kg",
+        "confidence": "well-supported"
+      }
+    },
+    "sizeNotes": "By far the largest known oviraptorosaurian, growing nearly 35 times heavier than most other oviraptorosaurs.",
+    "discoveryHistory": "Accidentally unearthed in 2005 in front of a film crew filming a Japanese documentary on sauropod fossils; named in 2007 by Xu Xing et al.",
+    "interestingFacts": [
+      "Reached a colossal size comparable to tyrannosaurids while retaining the light, bird-like skeletal features and toothless beak of oviraptorosaurs.",
+      "Bone histology of the holotype (LH V0011) revealed it was an 11-year-old subadult that was still actively growing at the time of death.",
+      "Despite weighing two tonnes, it had proportionally long, slender hind legs, indicating it was one of the fastest runners of its size.",
+      "Preserved pennaceous feathers on related oviraptorosaurs confirm that Gigantoraptor possessed feathered forelimbs used for brooding or display."
+    ],
+    "sources": [
+      {
+        "citation": "Xu, X., Tan, Q., Wang, J., Zhao, X., & Tan, L. (2007). A gigantic bird-like dinosaur from the Late Cretaceous of China. Nature, 447(7146), 841-844.",
+        "url": "https://doi.org/10.1038/nature05849"
+      }
+    ]
+  },
+  {
+    "name": "Rinchenia",
+    "scientificName": "Rinchenia mongoliensis",
+    "nameMeaning": "Rinchen's creature of Mongolia",
+    "timePeriod": "Late Cretaceous",
+    "epoch": "Late Cretaceous (Maastrichtian)",
+    "myaStart": 70.0,
+    "myaEnd": 66.0,
+    "clade": "Theropod",
+    "diet": "omnivore",
+    "habitat": "terrestrial",
+    "dietDetails": "Omnivore feeding on seeds, nuts, foliage, eggs, mollusks, and small vertebrates in Cretaceous river floodplains.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "K-Pg Extinction Event (66 MYA)",
+    "closestLivingRelatives": [
+      "Modern Birds (Aves)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/3/30/Rinchenia_Restoration.png",
+        "type": "art",
+        "credit": "PaleoNeolitic (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rinchenia_Restoration.png"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "clade": "Dinosauria",
+      "order": "Saurischia",
+      "suborder": "Theropoda",
+      "family": "Oviraptoridae",
+      "genus": "Rinchenia",
+      "species": "Rinchenia mongoliensis"
+    },
+    "geographicRange": {
+      "continent": "Asia",
+      "region": "Ömnögovi, Gobi Desert",
+      "country": "Mongolia",
+      "fossilFormation": "Nemegt Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 1.5,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 0.8,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 25.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Known from holotype MPC-D 100/32A, featuring a remarkably tall, thin, dome-like cranial crest.",
+    "discoveryHistory": "Found in 1984 in the Nemegt Basin; originally described by Rinchen Barsbold as Oviraptor mongoliensis, and placed in its own genus Rinchenia in 1997 by Halszka Osmólska.",
+    "interestingFacts": [
+      "Possessed a dramatically tall, bulbous casque-like skull crest made of delicate porous bone, resembling that of a modern cassowary.",
+      "The crest served primarily as a visual display structure for species recognition and sexual selection in the lush Nemegt environment.",
+      "Equipped with an exceptionally robust, short lower jaw and toothless keratinous beak capable of cracking hard plant seeds and shellfish.",
+      "Its fused tail vertebrae (pygostyle) supported a fan of plumage used in mating displays."
+    ],
+    "sources": [
+      {
+        "citation": "Barsbold, R. (1986). Raubdinosaurier Oviraptoren. In: Vorobyeva, E. I. (ed.), Gerpetologicheskie Issledovaniya v Mongolskoy Narodnoy Respublike, 210-223.",
+        "url": "https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=54556"
+      }
+    ]
+  },
+  {
+    "name": "Coelurosauravus",
+    "scientificName": "Coelurosauravus elivensis",
+    "nameMeaning": "Grandfather of hollow lizards of Eliva",
+    "timePeriod": "Late Permian",
+    "epoch": "Late Permian (Lopingian)",
+    "myaStart": 259.0,
+    "myaEnd": 252.0,
+    "clade": "Other",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "dietDetails": "Insectivore hunting arboreal insects, early cockroaches, and arthropods within Permian conifer canopies.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "Permian-Triassic Extinction Event (252 MYA)",
+    "closestLivingRelatives": [
+      "Modern Diapsids (Lizards and Sphenodontians)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Coelurosauravus_BW.jpg",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY 2.5)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Coelurosauravus_BW.jpg"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "class": "Reptilia",
+      "order": "Weigeltisauria",
+      "family": "Weigeltisauridae",
+      "genus": "Coelurosauravus",
+      "species": "Coelurosauravus elivensis"
+    },
+    "geographicRange": {
+      "continent": "Africa",
+      "region": "Sofia Region, Northwest Madagascar",
+      "country": "Madagascar",
+      "fossilFormation": "Lower Sakamena Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 0.4,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 0.08,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 0.15,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Slender gliding diapsid reptile with a body length of around 40 cm and a delicate wing membrane.",
+    "discoveryHistory": "First described by French paleontologist Jean Piveteau in 1926 based on a fossil discovered in Madagascar.",
+    "interestingFacts": [
+      "The earliest known gliding vertebrate in the fossil record, predating gliding dinosaurs and pterosaurs by tens of millions of years.",
+      "Unlike modern flying lizards whose wings are supported by ribs, Coelurosauravus sprouted specialized bony rods completely separate from the rib cage.",
+      "Possessed a heavily serrated parietal crest on the back of its skull adorned with pointed spines, resembling modern horned chameleons.",
+      "Equipped with curved, sharp claws well suited for gripping and scrambling vertically along ancient tree bark."
+    ],
+    "sources": [
+      {
+        "citation": "Piveteau, J. (1926). Paléontologie de Madagascar. XIII. Amphibiens et reptiles permiens. Annales de Paléontologie, 15, 53-179.",
+        "url": "https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=37827"
+      },
+      {
+        "citation": "Frey, E., Sues, H.-D., & Munk, W. (1997). Gliding mechanism in the Late Permian reptile Coelurosauravus. Science, 275(5305), 1450-1452.",
+        "url": "https://doi.org/10.1126/science.275.5305.1450"
+      }
+    ]
+  },
+  {
+    "name": "Linhenykus",
+    "scientificName": "Linhenykus monodactylus",
+    "nameMeaning": "Linhe claw, single-fingered",
+    "timePeriod": "Late Cretaceous",
+    "epoch": "Late Cretaceous (Campanian)",
+    "myaStart": 84.0,
+    "myaEnd": 75.0,
+    "clade": "Theropod",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "dietDetails": "Specialized insectivore using its single stout thumb claw to dig into subterranean ant and termite mounds.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "K-Pg Extinction Event (66 MYA)",
+    "closestLivingRelatives": [
+      "Modern Birds (Aves)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Linhenykus_NT.jpg",
+        "type": "art",
+        "credit": "Nobu Tamura (CC BY-SA 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Linhenykus_NT.jpg"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "clade": "Dinosauria",
+      "order": "Saurischia",
+      "suborder": "Theropoda",
+      "family": "Alvarezsauridae",
+      "genus": "Linhenykus",
+      "species": "Linhenykus monodactylus"
+    },
+    "geographicRange": {
+      "continent": "Asia",
+      "region": "Bayan Mandahu, Inner Mongolia",
+      "country": "China",
+      "fossilFormation": "Wulansuhai Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 0.6,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 0.3,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 0.45,
+        "unit": "kg",
+        "confidence": "well-supported"
+      }
+    },
+    "sizeNotes": "Tiny alvarezsaurid weighing under half a kilogram, famous for having only one functional digit on each hand.",
+    "discoveryHistory": "Found in 2008 in red sandstone beds at Bayan Mandahu by Jonah Choiniere and Michael Pittman, and described in 2011 by Xu Xing et al.",
+    "interestingFacts": [
+      "The only known non-avian dinosaur to possess just a single functional finger (a stout clawed thumb) on each forelimb.",
+      "The second and third fingers were entirely absent or reduced to vestigial specks of bone, representing the extreme endpoint of theropod arm reduction.",
+      "Like modern pangolins and anteaters, its hyper-specialized single claws were adapted for ripping into hardened insect nests.",
+      "Had long, gracile bird-like hind legs capable of rapid running across arid desert dunes."
+    ],
+    "sources": [
+      {
+        "citation": "Xu, X., Sullivan, C., Pittman, M., et al. (2011). A monodactyl nonavian dinosaur and the complex evolution of the alvarezsauroid hand. PNAS, 108(6), 2338-2342.",
+        "url": "https://doi.org/10.1073/pnas.1011052108"
+      }
+    ]
+  },
+  {
+    "name": "Stomatosuchus",
+    "scientificName": "Stomatosuchus inermis",
+    "nameMeaning": "Mouth crocodile, unarmed",
+    "timePeriod": "Late Cretaceous",
+    "epoch": "Late Cretaceous (Cenomanian)",
+    "myaStart": 98.0,
+    "myaEnd": 93.5,
+    "clade": "Crocodylomorph",
+    "diet": "filter_feeder",
+    "habitat": "freshwater",
+    "dietDetails": "Piscivore and filter feeder straining small fish, crustaceans, and plankton using an expandable pelican-like throat pouch.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "Cenomanian-Turonian Anoxic Event",
+    "closestLivingRelatives": [
+      "Modern Crocodilians (Crocodylia)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/5/58/Stomatosuchus2.jpg",
+        "type": "art",
+        "credit": "Dmitry Bogdanov (CC BY 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stomatosuchus2.jpg"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "class": "Reptilia",
+      "order": "Crocodylia",
+      "family": "Stomatosuchidae",
+      "genus": "Stomatosuchus",
+      "species": "Stomatosuchus inermis"
+    },
+    "geographicRange": {
+      "continent": "Africa",
+      "region": "Bahariya Oasis",
+      "country": "Egypt",
+      "fossilFormation": "Bahariya Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 10.0,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 1.2,
+        "unit": "m",
+        "confidence": "estimated"
+      },
+      "weight": {
+        "value": 4000.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Giant crocodile with a flattened, shovel-shaped skull nearly 2 meters long, featuring a completely toothless lower jaw.",
+    "discoveryHistory": "Discovered in 1911 by Ernst Stromer in the Bahariya Oasis, Egypt, and described in 1925; tragically, the sole holotype skull was destroyed during an Allied bombing raid on Munich in 1944.",
+    "interestingFacts": [
+      "Possessed an entirely toothless lower jaw paired with only tiny conical teeth in the upper jaw, unique among giant crocodylomorphs.",
+      "Believed to have possessed a massive, flexible gular throat pouch like a pelican to trap shoals of freshwater fish.",
+      "The only known fossil specimen was destroyed when the Alte Akademie museum in Munich was bombed during World War II.",
+      "Coexisted in North Africa's mangrove swamps with Spinosaurus and Carcharodontosaurus."
+    ],
+    "sources": [
+      {
+        "citation": "Stromer, E. (1925). Ergebnisse der Forschungsreisen Prof. E. Stromers in den Wüsten Ägyptens. 7. Stomatosuchus inermis Stromer. Abhandlungen der Bayerischen Akademie der Wissenschaften.",
+        "url": "https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=38458"
+      }
+    ]
+  },
+  {
+    "name": "Kariridraco",
+    "scientificName": "Kariridraco dianae",
+    "nameMeaning": "Kariri dragon honoring Diana",
+    "timePeriod": "Early Cretaceous",
+    "epoch": "Early Cretaceous (Aptian)",
+    "myaStart": 115.0,
+    "myaEnd": 113.0,
+    "clade": "Pterosaur",
+    "diet": "herbivore",
+    "habitat": "aerial",
+    "dietDetails": "Frugivore and opportunistic omnivore feeding on gymnosperm fruits, seeds, and small vertebrates in coastal forests.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "Mid-Cretaceous Faunal Turnover",
+    "closestLivingRelatives": [
+      "Modern Archosaurs (Crocodilians and Birds)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/0/08/Kariridraco_by_J%C3%BAlia_d%E2%80%99Oliveira.jpg",
+        "type": "art",
+        "credit": "Júlia d’Oliveira (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kariridraco_by_J%C3%BAlia_d%E2%80%99Oliveira.jpg"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "clade": "Pterosauria",
+      "order": "Pterosauria",
+      "family": "Tapejaridae",
+      "genus": "Kariridraco",
+      "species": "Kariridraco dianae"
+    },
+    "geographicRange": {
+      "continent": "South America",
+      "region": "Araripe Basin, Ceará",
+      "country": "Brazil",
+      "fossilFormation": "Romualdo Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 1.1,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 0.9,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 5.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Tapejarid pterosaur with a well-preserved skull and jaws exhibiting an estimated wingspan of approximately 2.5 meters.",
+    "discoveryHistory": "Named and described in 2021 by Gabriela Cerqueira and colleagues from a well-preserved skull excavated in northeastern Brazil.",
+    "interestingFacts": [
+      "Distinguished by a sharp, deep sagittal cranial crest that curved downward along the premaxilla at a unique 45-degree angle.",
+      "Features unusually deep premaxillary margins and short, toothless, downturned jaws specialized for harvesting hard prehistoric fruits.",
+      "Named in honor of both the indigenous Kariri ethnic nation and the comic book heroine Diana Prince (Wonder Woman).",
+      "Belongs to the Tapejarinae, an endemic clade of ornate-crested pterosaurs that diversified rapidly across Gondwana."
+    ],
+    "sources": [
+      {
+        "citation": "Cerqueira, G. M., Santos, M. A., Marks, M. F., Sayão, J. M., & Pinheiro, F. L. (2021). A new tapejarine pterosaur from the Upper Cretaceous of Brazil. Historical Biology, 34(5), 875-885.",
+        "url": "https://doi.org/10.1080/08912963.2021.1955844"
+      }
+    ]
+  },
+  {
+    "name": "Megabalaena",
+    "scientificName": "Megabalaena kitamurae",
+    "nameMeaning": "Giant whale honoring Kitamura",
+    "timePeriod": "Neogene",
+    "epoch": "Late Miocene",
+    "myaStart": 10.0,
+    "myaEnd": 8.5,
+    "clade": "Early_Mammal_Synapsid",
+    "diet": "filter_feeder",
+    "habitat": "marine",
+    "dietDetails": "Bulk filter-feeder swallowing dense swarms of euphausiids (krill), copepods, and small schooling fish.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "Pliocene Marine Megafauna Extinction",
+    "closestLivingRelatives": [
+      "North Atlantic Right Whale (Eubalaena glacialis)",
+      "Bowhead Whale (Balaena mysticetus)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/68/Megabalaena_%28life_restoration%29.png",
+        "type": "art",
+        "credit": "Y. Tanaka, T. Kimura, T. Shinmura, H. Ohira & H. Furusawa (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Megabalaena_(life_restoration).png"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "class": "Mammalia",
+      "order": "Cetacea",
+      "family": "Balaenidae",
+      "genus": "Megabalaena",
+      "species": "Megabalaena kitamurae"
+    },
+    "geographicRange": {
+      "continent": "Asia",
+      "region": "Nagano Prefecture, Honshu",
+      "country": "Japan",
+      "fossilFormation": "Takishima Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 15.0,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 3.5,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 35000.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Early giant true right whale (Balaenidae) reaching lengths comparable to modern northern right whales.",
+    "discoveryHistory": "Found in 2004 along the riverbed of the Aoki River in Nagano, Japan, and described in 2024 by Yoshihiro Tanaka and colleagues.",
+    "interestingFacts": [
+      "Represents one of the earliest occurrences of gigantism among true right whales, demonstrating gigantism evolved earlier than previously thought.",
+      "Possessed a strongly arched rostrum and deep lower jaw specifically adapted to house very long baleen plates.",
+      "Unlike most modern right whales restricted to cold polar seas, Megabalaena inhabited warm temperate coastal waters in the Miocene Pacific.",
+      "Well-preserved auditory bulla and skull bones provide crucial evolutionary clues linking archaic cetotheres to living right whales."
+    ],
+    "sources": [
+      {
+        "citation": "Tanaka, Y., Kimura, T., Shinmura, T., Ohira, H., & Furusawa, H. (2024). A new late Miocene right whale (Balaenidae) from Japan and the evolution of body size in baleen whales. Journal of Systematic Palaeontology, 22(1), 2321453.",
+        "url": "https://doi.org/10.1080/14772019.2024.2321453"
+      }
+    ]
+  },
+  {
+    "name": "Scylacosaurus",
+    "scientificName": "Scylacosaurus sclateri",
+    "nameMeaning": "Puppy lizard honoring Sclater",
+    "timePeriod": "Permian",
+    "epoch": "Late Permian (Wuchiapingian)",
+    "myaStart": 259.0,
+    "myaEnd": 254.0,
+    "clade": "Early_Mammal_Synapsid",
+    "diet": "carnivore",
+    "habitat": "terrestrial",
+    "dietDetails": "Active carnivorous predator preying on small dicynodonts, parareptiles, and early archosauromorphs.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "Permian-Triassic Extinction Event (252 MYA)",
+    "closestLivingRelatives": [
+      "Modern Mammals (Mammalia)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/de/Scylacosaurus.jpg",
+        "type": "art",
+        "credit": "Dmitry Bogdanov (Public domain)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Scylacosaurus.jpg"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "order": "Therapsida",
+      "family": "Scylacosauridae",
+      "genus": "Scylacosaurus",
+      "species": "Scylacosaurus sclateri"
+    },
+    "geographicRange": {
+      "continent": "Africa",
+      "region": "Karoo Basin, Eastern Cape",
+      "country": "South Africa",
+      "fossilFormation": "Balfour Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 1.2,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 0.4,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 20.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Medium-sized basal therocephalian with a long, slender snout and prominent canine tusks.",
+    "discoveryHistory": "First described by famed South African paleontologist Robert Broom in 1903 from Karoo Basin deposits near Colesberg.",
+    "interestingFacts": [
+      "Equipped with prominent mammalian-style canine fangs and sharp postcanine teeth, reflecting the transition toward mammal-like carnivory.",
+      "Possessed deep grooves on its maxillary bones that some researchers hypothesize may have housed early venom delivery glands.",
+      "Endocranial casts indicate it had an acute sense of smell and whisker pits on the snout indicating tactile facial hair.",
+      "Thrived across southern Gondwana shortly before the devastating Permian-Triassic extinction event."
+    ],
+    "sources": [
+      {
+        "citation": "Broom, R. (1903). On some new primitive theriodonts in the South African Museum. Annals of the South African Museum, 4, 147-158.",
+        "url": "https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=39151"
+      }
+    ]
+  },
+  {
+    "name": "Apolithabatis",
+    "scientificName": "Apolithabatis aquila",
+    "nameMeaning": "Fossil ray eagle",
+    "timePeriod": "Eocene",
+    "epoch": "Early Eocene (Ypresian)",
+    "myaStart": 50.0,
+    "myaEnd": 48.0,
+    "clade": "Other",
+    "diet": "carnivore",
+    "habitat": "marine",
+    "dietDetails": "Benthic feeder preying on crustaceans, mollusks, bivalves, and small reef fish in shallow Tethys lagoons.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "Eocene-Oligocene Extinction Event",
+    "closestLivingRelatives": [
+      "Modern Eagle Rays (Myliobatidae)",
+      "Stingrays (Myliobatoidei)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Apolithabatis_%28life_restoration%29.png",
+        "type": "art",
+        "credit": "J. Türtscher, P. L. Jambura, F. Spindler & J. Kriwet (CC BY 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Apolithabatis_(life_restoration).png"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "class": "Chondrichthyes",
+      "order": "Myliobatiformes",
+      "family": "Myliobatidae",
+      "genus": "Apolithabatis",
+      "species": "Apolithabatis aquila"
+    },
+    "geographicRange": {
+      "continent": "Europe",
+      "region": "Veneto, Verona",
+      "country": "Italy",
+      "fossilFormation": "Monte Bolca Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 1.2,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 0.2,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 15.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Disc width of approximately 75 cm with an elongated whip-like tail bearing a serrated defensive spine.",
+    "discoveryHistory": "Named and described in 2024 by Julia Türtscher and an international team of paleoichthyologists from exceptionally preserved Monte Bolca fossils.",
+    "interestingFacts": [
+      "Preserved in the world-famous Monte Bolca Lagerstätte with complete mineralized cartilage, tooth pavement plates, and skin outlines intact.",
+      "Equipped with flattened crushing dental plates arranged in pavement patterns, designed to crush thick-shelled crabs and gastropods.",
+      "Inhabited the tropical coral reef atolls of the western Tethys Ocean during the early Eocene thermal optimum.",
+      "Demonstrates that modern eagle ray swimming dynamics and reef foraging adaptations were already fully established 50 million years ago."
+    ],
+    "sources": [
+      {
+        "citation": "Türtscher, J., Jambura, P. L., Spindler, F., & Kriwet, J. (2024). Morphological and phylogenetic revision of batoid fishes from the Eocene of Monte Bolca, Italy. Journal of Paleontology.",
+        "url": "https://doi.org/10.1017/jpa.2024.12"
+      }
+    ]
+  },
+  {
+    "name": "Jormungandr",
+    "scientificName": "Jormungandr walhallaensis",
+    "nameMeaning": "Midgard serpent of Walhalla",
+    "timePeriod": "Late Cretaceous",
+    "epoch": "Late Cretaceous (Campanian)",
+    "myaStart": 80.0,
+    "myaEnd": 79.0,
+    "clade": "Marine_Reptile",
+    "diet": "carnivore",
+    "habitat": "marine",
+    "dietDetails": "Apex marine predator preying on cephalopods, hesperornithiform diving birds, sea turtles, and bony fish.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "K-Pg Extinction Event (66 MYA)",
+    "closestLivingRelatives": [
+      "Monitor Lizards (Varanidae)",
+      "Snakes (Serpentes)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/df/Jormungandr_walhallaensis.png",
+        "type": "art",
+        "credit": "Olmagon (CC BY-SA 4.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Jormungandr_walhallaensis.png"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "order": "Squamata",
+      "suborder": "Mosasauria",
+      "family": "Mosasauridae",
+      "genus": "Jormungandr",
+      "species": "Jormungandr walhallaensis"
+    },
+    "geographicRange": {
+      "continent": "North America",
+      "region": "Pembina Gorge, North Dakota",
+      "country": "United States",
+      "fossilFormation": "Pierre Shale Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 7.3,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 1.2,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 1200.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "Transitional mosasaur exhibiting an intermediate mosaic of primitive Clidastes-like and advanced Mosasaurus-like cranial traits.",
+    "discoveryHistory": "Found in 2015 along the Pembina River in Cavalier County, North Dakota, and described in 2023 by Amelia Zietlow, Clint Boyd, and Mark Norell.",
+    "interestingFacts": [
+      "Represents a crucial 'missing link' mosasaur documenting how plioplatecarpines transitioned into apex giants like Mosasaurus.",
+      "Retained primitive characteristics including 11 ribs above the pelvis while evolving advanced, crushing jaw morphology.",
+      "Inhabited the frigid, nutrient-rich waters of the Western Interior Seaway which split North America in half.",
+      "Its fossil skull preserves distinct rugose brow ridges above the eye sockets that may have supported protective structures."
+    ],
+    "sources": [
+      {
+        "citation": "Zietlow, A. R., Boyd, C. A., & Norell, M. A. (2023). Jormungandr walhallaensis, a new mosasaurine from the Late Cretaceous of North Dakota. Bulletin of the American Museum of Natural History, 464, 1-108.",
+        "url": "https://doi.org/10.1206/0003-0090.464.1.1"
+      }
+    ]
+  },
+  {
+    "name": "Plotosaurus",
+    "scientificName": "Plotosaurus bennisoni",
+    "nameMeaning": "Swimmer lizard honoring Bennison",
+    "timePeriod": "Late Cretaceous",
+    "epoch": "Late Cretaceous (Maastrichtian)",
+    "myaStart": 70.0,
+    "myaEnd": 66.0,
+    "clade": "Marine_Reptile",
+    "diet": "carnivore",
+    "habitat": "marine",
+    "dietDetails": "High-speed pursuit predator hunting fast-swimming pelagic fish, belemnites, and ammonites in the open Pacific Ocean.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": "K-Pg Extinction Event (66 MYA)",
+    "closestLivingRelatives": [
+      "Monitor Lizards (Varanidae)",
+      "Snakes (Serpentes)"
+    ],
+    "media": [
+      {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Plotosaurus_ben1DB.jpg",
+        "type": "art",
+        "credit": "Dmitry Bogdanov (CC BY 3.0)",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plotosaurus_ben1DB.jpg"
+      }
+    ],
+    "taxonomy": {
+      "kingdom": "Animalia",
+      "phylum": "Chordata",
+      "order": "Squamata",
+      "suborder": "Mosasauria",
+      "family": "Mosasauridae",
+      "genus": "Plotosaurus",
+      "species": "Plotosaurus bennisoni"
+    },
+    "geographicRange": {
+      "continent": "North America",
+      "region": "Fresno County & San Joaquin Valley, California",
+      "country": "United States",
+      "fossilFormation": "Moreno Formation"
+    },
+    "sizeEstimate": {
+      "length": {
+        "value": 9.0,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "height": {
+        "value": 1.5,
+        "unit": "m",
+        "confidence": "well-supported"
+      },
+      "weight": {
+        "value": 3000.0,
+        "unit": "kg",
+        "confidence": "estimated"
+      }
+    },
+    "sizeNotes": "The most hydrodynamically advanced mosasaur known, sporting narrow, streamlined flippers and a stiffened, carangiform torso.",
+    "discoveryHistory": "Discovered in 1937 by high school student Allan Bennison in the Panoche Hills of California, and named by Charles Lewis Camp in 1942.",
+    "interestingFacts": [
+      "The pinnacle of mosasaur hydrodynamic evolution: possessed a stiff, streamlined fusiform body resembling an ichthyosaur or tuna.",
+      "Unlike serpentine mosasaurs that undulated their entire bodies, Plotosaurus swam using carangiform locomotion powered strictly by a crescent-shaped tail fin.",
+      "Skin impressions revealed tiny, tightly packed keeled scales that significantly reduced water friction during high-speed chases.",
+      "Large eyes equipped with sclerotic rings allowed it to hunt in deep, dimly lit offshore Pacific waters."
+    ],
+    "sources": [
+      {
+        "citation": "Camp, C. L. (1942). California Mosasaurs. Memoirs of the University of California, 13, 1-68.",
+        "url": "https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=36407"
+      },
+      {
+        "citation": "Lindgren, J., Jagt, J. W., & Caldwell, M. W. (2007). A fishy mosasaur: the axial skeleton of Plotosaurus and its bearing on locomotion in derived mosasaurs. Palaeontology, 50(6), 1399-1414.",
+        "url": "https://doi.org/10.1111/j.1475-4983.2007.00720.x"
+      }
+    ]
+  }
+]

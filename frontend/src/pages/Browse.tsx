@@ -665,7 +665,7 @@ export default function Browse() {
           </AnimatePresence>
 
           {loading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[...Array(6)].map((_, i) => (
                 <div key={i} className="animate-pulse museum-card rounded-xl border border-white/[0.06] h-80" />
               ))}
@@ -703,7 +703,7 @@ export default function Browse() {
                 variants={containerVariants}
                 initial="hidden"
                 animate="show"
-                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
               >
                 {speciesList.map((species) => {
                   const names = getSpeciesDisplayNames(species);
@@ -764,16 +764,16 @@ export default function Browse() {
                           </div>
                         </div>
 
-                        <div className="px-4 py-3 border-t border-white/[0.08] bg-slate-950/60 flex items-center justify-between font-mono text-[11px] text-slate-400">
-                          <div className="flex gap-2 items-center min-w-0">
-                            <span className="font-bold text-amber-400 shrink-0 uppercase text-[10px] tracking-wider">{species.clade || species.dietType}</span>
+                        <div className="px-4 py-3 border-t border-white/[0.08] bg-slate-950/60 flex items-center justify-between gap-2 font-mono text-[11px] text-slate-400">
+                          <div className="flex gap-1.5 items-center min-w-0 truncate">
+                            <span className="font-bold text-amber-400 truncate uppercase text-[10px] tracking-wider">{species.clade || species.dietType}</span>
                             <span className="text-slate-600 font-bold shrink-0">|</span>
-                            <span className="font-bold text-slate-300 truncate">
+                            <span className="font-bold text-slate-300 shrink-0 text-[10px]">
                               {formatFeet(species.lengthM, 'Unspecified')}
                             </span>
                           </div>
                           <span className="flex items-center gap-1 group-hover:text-amber-400 transition-colors shrink-0 font-bold uppercase tracking-wider text-[10px]">
-                            Inspect Specimen <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
+                            Inspect <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
                           </span>
                         </div>
                       </Link>

@@ -25,7 +25,7 @@ export default function Footer() {
             </div>
           </div>
           
-          <div className="text-left md:text-right text-xs space-y-1 border-t md:border-t-0 border-white/[0.08] pt-4 md:pt-0 w-full md:w-auto font-mono">
+          <div className="text-left md:text-right text-xs space-y-1 border-t md:border-t-0 border-white/[0.08] pt-4 md:pt-0 w-full md:w-auto font-mono pr-14 md:pr-0">
             <p className="text-slate-400">
               Reconstructions & media courtesy of <span className="text-amber-400 font-bold">Wikimedia Commons</span>
             </p>

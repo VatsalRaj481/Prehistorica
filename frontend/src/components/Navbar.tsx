@@ -52,7 +52,7 @@ export default function Navbar() {
               </Link>
 
               {/* Desktop Navigation Links */}
-              <nav className="hidden md:flex space-x-2 items-center font-mono">
+              <nav className="hidden lg:flex space-x-2 items-center font-mono">
                 <Link
                   to="/"
                   className={`px-3 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 ${isActive('/')}`}
@@ -77,8 +77,8 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Right Side Search & Compare */}
-            <div className="hidden sm:flex items-center gap-3">
-              <div className="w-52 md:w-64">
+            <div className="hidden lg:flex items-center gap-3">
+              <div className="w-56 xl:w-64">
                 <SearchAutocomplete />
               </div>
 
@@ -89,12 +89,12 @@ export default function Navbar() {
                 title="Compare 2 species side-by-side"
               >
                 <ArrowRightLeft className="h-3.5 w-3.5 text-amber-400" />
-                <span className="hidden lg:inline">Compare</span>
+                <span>Compare</span>
               </motion.button>
             </div>
 
-            {/* Mobile Controls: Search & Hamburger Toggle (44x44pt Target Compliant) */}
-            <div className="flex items-center gap-2 sm:hidden">
+            {/* Mobile Controls: Compare & Hamburger Toggle (44x44pt Target Compliant) */}
+            <div className="flex items-center gap-2 lg:hidden">
               <button
                 onClick={() => setIsCompareOpen(true)}
                 className="min-h-[44px] min-w-[44px] p-2.5 rounded-xl bg-slate-900 border border-white/10 text-amber-400 flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
@@ -124,7 +124,7 @@ export default function Navbar() {
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ type: 'spring', bounce: 0, duration: 0.35 }}
-              className="md:hidden border-t border-white/[0.08] bg-slate-950/98 px-4 py-4 space-y-4 overflow-visible font-mono overscroll-contain"
+              className="lg:hidden border-t border-white/[0.08] bg-slate-950/98 px-4 py-4 space-y-4 overflow-visible font-mono overscroll-contain"
             >
               {/* Search Bar on Mobile */}
               <div className="w-full">
