@@ -4,7 +4,8 @@ import { motion, AnimatePresence, useReducedMotion, Variants } from 'framer-moti
 import { fetchSpecies, Species } from '../services/api.js';
 import ThreeDFossilStarfield from '../components/ThreeDFossilStarfield.js';
 import SpotlightCard from '../components/SpotlightCard.js';
-import { SlidersHorizontal, ArrowRight, Dna, Info, X, ChevronLeft, ChevronRight, Filter } from 'lucide-react';
+import SpecimenThumbnail from '../components/SpecimenThumbnail.js';
+import { SlidersHorizontal, ArrowRight, Info, X, ChevronLeft, ChevronRight, Filter } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 import { formatFeet } from '../utils/formatDimensions.js';
 
@@ -219,12 +220,22 @@ export default function Browse() {
         className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/[0.08] pb-5 font-mono"
       >
         <div>
-          <h1 className="text-2xl sm:text-4xl font-black text-slate-100 uppercase tracking-tight flex items-center gap-2 font-sans">
+          <motion.h1
+            initial={shouldReduceMotion ? false : { opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="text-2xl sm:text-4xl font-black text-slate-100 uppercase tracking-tight flex items-center gap-2 font-sans"
+          >
             <Filter className="h-5 w-5 sm:h-6 sm:w-6 text-amber-500 shrink-0" /> Fauna Catalog Index
-          </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          </motion.h1>
+          <motion.p
+            initial={shouldReduceMotion ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-xs text-slate-400 mt-1"
+          >
             Archival search across <strong className="text-amber-400">{pagination.total > 0 ? `${pagination.total}+` : '460+'}</strong> verified prehistoric specimens.
-          </p>
+          </motion.p>
         </div>
 
         {/* Mobile filter icon button: compact icon with active filter badge (44pt min target) */}
@@ -667,7 +678,25 @@ export default function Browse() {
           {loading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {[...Array(6)].map((_, i) => (
-                <div key={i} className="animate-pulse museum-card rounded-xl border border-white/[0.06] h-80" />
+                <div key={i} className="animate-pulse museum-card rounded-xl border border-white/[0.06] overflow-hidden flex flex-col justify-between">
+                  <div>
+                    <div className="w-full aspect-[16/10] bg-slate-900/80 border-b border-white/[0.06]" />
+                    <div className="p-4 space-y-3">
+                      <div className="min-h-[3.75rem] flex flex-col justify-center space-y-1.5 border-l-2 border-slate-800 pl-3">
+                        <div className="h-5 bg-slate-850 rounded w-2/3" />
+                        <div className="h-3.5 bg-slate-850/60 rounded w-1/3" />
+                      </div>
+                      <div className="h-[2.5rem] space-y-1.5">
+                        <div className="h-3 bg-slate-850/50 rounded w-full" />
+                        <div className="h-3 bg-slate-850/40 rounded w-4/5" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="h-11 px-4 border-t border-white/[0.06] bg-slate-950/60 flex items-center justify-between">
+                    <div className="h-3 bg-slate-850 rounded w-24" />
+                    <div className="h-3 bg-slate-850 rounded w-12" />
+                  </div>
+                </div>
               ))}
             </div>
           ) : error ? (
@@ -727,44 +756,31 @@ export default function Browse() {
                         className="group flex flex-col justify-between h-full"
                       >
                         <div>
-                          {/* Thumbnail Image */}
-                          <div className="relative h-48 bg-slate-950/80 border-b border-white/[0.08] overflow-hidden flex items-center justify-center p-4">
-                            <div className="absolute inset-0 bg-fossil-grid opacity-20 pointer-events-none" />
-                            {species.reconstructionImageUrl ? (
-                              <img
-                                src={species.reconstructionImageUrl}
-                                alt={species.name}
-                                className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-xl z-10"
-                                loading="lazy"
-                              />
-                            ) : (
-                              <div className="w-full h-full flex flex-col items-center justify-center text-slate-500 text-xs font-mono bg-slate-950/60 rounded-lg">
-                                <Dna className="h-8 w-8 text-slate-700 mb-1" />
-                                Illustration Uncataloged
-                              </div>
-                            )}
-                            {/* Era label */}
-                            <span className="absolute top-2 left-2 bg-slate-950/90 backdrop-blur-md border border-white/[0.08] px-2.5 py-0.5 rounded text-[10px] font-mono font-bold text-amber-400 tracking-wider uppercase z-20 shadow-md">
-                              {species.timePeriod.split(' ').pop()}
-                            </span>
-                          </div>
+                          {/* Fixed-aspect-ratio Adaptive Thumbnail Frame */}
+                          <SpecimenThumbnail
+                            src={species.reconstructionImageUrl}
+                            alt={species.name}
+                            eraLabel={species.timePeriod.split(' ').pop()}
+                          />
 
-                          <div className="p-4 space-y-2">
-                            <div className="space-y-0.5 border-l-2 border-amber-500 pl-3">
-                              <h3 className="text-base font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans">
+                          <div className="p-4 flex flex-col justify-between space-y-2">
+                            {/* Standardized Title Area with Fixed Geometry */}
+                            <div className="min-h-[3.75rem] flex flex-col justify-center space-y-0.5 border-l-2 border-amber-500 pl-3">
+                              <h3 className="text-base font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans line-clamp-1">
                                 {names.heading}
                               </h3>
-                              <p className="text-xs italic text-amber-400 font-mono">
+                              <p className="text-xs italic text-amber-400 font-mono truncate">
                                 {names.subheading}
                               </p>
                             </div>
-                            <p className="text-xs font-sans text-slate-300 line-clamp-3 leading-relaxed">
-                              {species.dietDetails}
+                            {/* Uniform 2-Line Clamped Description Slot */}
+                            <p className="text-xs font-sans text-slate-300 line-clamp-2 leading-relaxed h-[2.5rem]">
+                              {species.dietDetails || 'Archival specimen profile cataloged in deep time collection.'}
                             </p>
                           </div>
                         </div>
 
-                        <div className="px-4 py-3 border-t border-white/[0.08] bg-slate-950/60 flex items-center justify-between gap-2 font-mono text-[11px] text-slate-400">
+                        <div className="h-11 px-4 border-t border-white/[0.08] bg-slate-950/60 flex items-center justify-between gap-2 font-mono text-[11px] text-slate-400">
                           <div className="flex gap-1.5 items-center min-w-0 truncate">
                             <span className="font-bold text-amber-400 truncate uppercase text-[10px] tracking-wider">{species.clade || species.dietType}</span>
                             <span className="text-slate-600 font-bold shrink-0">|</span>

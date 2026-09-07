@@ -3,7 +3,7 @@
   <h1>🏛️ PREHISTORICA</h1>
   <h3>The Modern Museum Pavilion Encyclopedia</h3>
   <p><strong>A premium, full-stack, architectural digital museum dedicated to cataloging and visualizing Earth's prehistoric fauna.</strong></p>
-  <p><em>Spanning 540 million years of natural history across 502 verified species, 31 global fossil formations, and 10 geologic eras.</em></p>
+  <p><em>Spanning 540 million years of natural history across 558 verified species, 31 global fossil formations, and 10 geologic eras.</em></p>
 </div>
 
 ---
@@ -23,19 +23,21 @@ Built around **The Modern Museum Pavilion** visual language. **Prehistorica** ex
 ## 🦖 Key Features
 
 ### 1. 🔍 Catalog Pavilion & Architectural Search
-- **502 Verified Species**: Comprehensive database covering Theropods, Sauropods, Ornithischians, Pterosaurs, Marine Reptiles, Early Synapsids, Amphibians, and Invertebrates.
+- **558 Verified Species**: Comprehensive database covering Theropods, Sauropods, Ornithischians, Pterosaurs, Marine Reptiles, Early Synapsids, Amphibians, and Invertebrates.
 - **Combinable Filters**: Search across taxonomic clade, dietary type (carnivore, herbivore, omnivore, piscivore, filter-feeder), habitat (terrestrial, semi-aquatic, freshwater, aerial, marine), geologic era, geographic region, and size scale.
 - **Collapsible Mobile Drawer**: Mobile-first filter panel with slide-over drawer navigation for 375px/428px touchscreens.
 - **Enriched Scientific Fact Banks**: 100% of species cataloged with 4–5 verified, peer-reviewed paleontological and anatomical facts.
 
 ### 2. 🎨 Verified Paleoart Media Hierarchy
 - **Strict Tier Classification**:
-  - **Tier 1**: Full-color life reconstructions and paleoart showing the living animal in naturalistic pose.
-  - **Tier 2**: Monochrome / silhouette life restorations.
-  - **Tier 3**: Authentic skeletal mounts, fossil photographs, and holotype diagrams (used when no life art exists).
-  - **Tier 4**: Pending placeholders for rare species with zero public domain artwork on Wikimedia Commons.
+  - **Tier 1 (Highest Priority)**: Coloured, full-size PNG species-specific life reconstructions and paleoart showing the complete living animal in naturalistic posture (isolated or transparent backgrounds prioritized whenever available).
+  - **Tier 2**: Full-scene colored restorations and landscape paleoart.
+  - **Tier 3**: Monochrome / silhouette life restorations.
+  - **Tier 4**: Authentic skeletal mounts, fossil photographs, and holotype diagrams (strictly fallback when no life art exists).
+  - **Tier 5**: Pending placeholders for rare species with zero public domain artwork on Wikimedia Commons.
+- **2D Scale Calibration Invariant**: Silhouettes used for the 2D Metric Projection Stage must depict the complete, horizontal lateral body profile of the animal in naturalistic walking/flying posture. Partial skull/crest busts or diagonally rearing poses are strictly prohibited to maintain 1:1 metric caliper integrity.
 - **Licensing & Attribution Compliance**: 100% CC-BY, CC-BY-SA, and Public Domain attribution metadata preserved and displayed on every specimen profile.
-- **Supabase Storage Integration**: Self-hosted image pipeline storing high-res media directly inside public Supabase Storage buckets (`species-media/`).
+- **Supabase Storage Integration**: Self-hosted image pipeline storing high-res media directly inside public Supabase Storage buckets (`species-media/` and `species-silhouettes/`).
 
 ### 3. 📐 Dual-Stage Scale Comparison System
 - **2D Metric Projection Stage**:

@@ -232,6 +232,7 @@ export default function TimeMap() {
               return (
                 <motion.button
                   key={era.name}
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.04 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleEraChange(idx)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider border transition-all cursor-pointer shrink-0 flex items-center gap-1.5 ${
@@ -262,6 +263,7 @@ export default function TimeMap() {
               {CONTINENTS.map((c) => (
                 <motion.button
                   key={c.name}
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.04 }}
                   whileTap={{ scale: 0.94 }}
                   onClick={() => handleLocationChange(c.name)}
                   className={`px-2.5 py-1 rounded-lg text-[10px] sm:text-[11px] font-bold uppercase tracking-wider border transition-all cursor-pointer ${
@@ -363,6 +365,9 @@ export default function TimeMap() {
                 return (
                   <motion.div
                     key={species.id}
+                    initial={shouldReduceMotion ? false : { opacity: 0, x: 8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.25 }}
                     whileHover={shouldReduceMotion ? {} : { x: 3, transition: { type: 'spring', stiffness: 400, damping: 25 } }}
                     whileTap={{ scale: 0.98 }}
                   >

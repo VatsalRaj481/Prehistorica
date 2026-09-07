@@ -1117,7 +1117,7 @@
     "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Wangshi\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Archosauria\",\"family\":\"Hadrosauridae\",\"genus\":\"Tsintaosaurus\",\"species\":\"Tsintaosaurus spinorhinus\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/484-Tsintaosaurus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/3/36/Tsintaosaurus.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/a/ab/Tsintaosaurus_spinorhinus_%28Henan%29.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/a/ab/Tsintaosaurus_spinorhinus_%28Henan%29.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/b/bb/Tsintaosaurus_spinorhinus_NT.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Tsintaosaurus_spinorhinus_NT.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/484-Tsintaosaurus.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Tsintaosaurus_spinorhinus_NT.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/1/10/Tsintaosaurus_spinorhinus.JPG\",\"type\":\"museum_display\",\"credit\":\"Ghedoghedo (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3ATsintaosaurus%20spinorhinus.JPG\"}]",
     "discoveryHistory": "• Discovered in 1950 in Shandong Province, China.\n• C.C. Young named the genus in 1958.\n• Its distinctive crest was initially thought to be an artifact of preservation.",
     "interestingFacts": "[\"Early reconstructions gave it a unicorn-like spike pointing directly up.\",\"Recent studies show the crest was actually part of a larger, paddle-like structure.\",\"Was one of the most prominent hadrosaurs in Late Cretaceous Asia.\"]",
     "sizeNotes": "Distinctive crest.",
@@ -1244,7 +1244,8 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Olorotitan arharensis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Olorotitan\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:06.435Z",
-    "updatedAt": "2026-08-27T08:36:16.444Z"
+    "updatedAt": "2026-08-27T08:36:16.444Z",
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/9161bbeb-fa38-48f6-bb20-c68c255dd9b6.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/9161bbeb-fa38-48f6-bb20-c68c255dd9b6\",\"license\":\"Creative Commons Attribution-ShareAlike 3.0 Unported\",\"credit\":\"Dmitry Bogdanov (vectorized by T. Michael Keesey)\",\"taxon\":\"Olorotitan arharensis\",\"taxonMatch\":\"species-specific\"}"
   },
   {
     "id": 490,
@@ -5654,5 +5655,33 @@
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:12.150Z",
     "updatedAt": "2026-08-28T15:30:15.823Z"
+  },
+  {
+    "id": 5187,
+    "name": "Dsungaripterus",
+    "scientificName": "Dsungaripterus weii",
+    "nameMeaning": "Junggar Basin wing",
+    "timePeriod": "Early Cretaceous",
+    "epoch": "Early Cretaceous Epoch",
+    "myaStart": 140,
+    "myaEnd": 125,
+    "clade": "Pterosaur",
+    "diet": "carnivore",
+    "habitat": "aerial",
+    "dietDetails": "Specialized durophage feeding on hard-shelled mollusks, crustaceans, and fish using toothless hooked beak tips to extract prey and flat bulbous rear teeth to crush shells.",
+    "taxonomicStatus": "valid",
+    "extinctionEvent": null,
+    "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/b/b9/Dsungaripterus_weii.png\",\"type\":\"art\",\"credit\":\"Connor Ashbridge (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Dsungaripterus_weii.png\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/Dsungaripterus_weii.png\",\"type\":\"art\",\"credit\":\"Connor Ashbridge (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Dsungaripterus_weii.png\"}]",
+    "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Pterosauria\",\"family\":\"Dsungaripteridae\",\"genus\":\"Dsungaripterus\",\"species\":\"Dsungaripterus weii\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
+    "geographicRange": "{\"continent\":\"Asia\",\"region\":\"East Asia\",\"country\":\"China\",\"fossilFormation\":\"Lianmuqin Formation / Shengjinkou Formation (Tugulu Group)\"}",
+    "sizeEstimate": "{\"length\":{\"value\":3.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":30,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Wingspan of approximately 3.0–3.5 m (9.8–11.5 ft), standing height around 1.2 m, and estimated body weight of 25–35 kg with robust, thick-walled flight bones.",
+    "sizeComparisonToHuman": true,
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/f58adcd3-4593-4af2-9e6d-7fb8ca8a8318.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/f58adcd3-4593-4af2-9e6d-7fb8ca8a8318\",\"license\":\"Creative Commons Attribution 4.0 International\",\"credit\":\"Connor Ashbridge\",\"taxon\":\"Dsungaripterus weii\",\"taxonMatch\":\"species-specific\"}",
+    "discoveryHistory": "• First described in 1964 by pioneering Chinese paleontologist Yang Zhongjian (C.C. Young) based on a skull and partial skeleton from the Junggar Basin in Xinjiang, China.\n• The species was named Dsungaripterus weii in honor of paleontologist C.M. Wei.\n• In 1973, additional excavations in the Shengjinkou Formation recovered nearly complete skulls and articulated postcrania.\n• Recognized as the type genus of the family Dsungaripteridae, known for their unique upward-curving beaks and crushing rear dentition.",
+    "interestingFacts": "[\"Possessed prominent upturned, toothless beak tips used to probe sediments and pry open hard-shelled mollusks and crustaceans from rocky lakeshores.\",\"Unlike most fish-eating pterosaurs with needle-sharp teeth, Dsungaripterus had broad, bulbous, flat-crowned teeth at the rear of its jaws specialized for shell-crushing durophagy.\",\"A distinctive low bony crest ran along the midline of its skull from the middle of the snout backward to a pointed occipital crest overhanging the neck.\",\"Possessed exceptionally thick-walled limb bones and stout proportions, indicating that it was capable of proficient quadrupedal terrestrial locomotion on land.\"]",
+    "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Young, C.C. (1964). On a new pterosaurian from Sinkiang, China. Vertebrata PalAsiatica, 8(3), 221-255.\",\"url\":\"http://www.ivpp.cas.cn\"},{\"citation\":\"Dsungaripterus weii description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Dsungaripterus\"}]",
+    "placeholder": false
   }
 ]

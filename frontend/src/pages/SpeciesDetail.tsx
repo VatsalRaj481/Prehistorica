@@ -146,7 +146,12 @@ export default function SpeciesDetail() {
       {(() => {
         const names = getSpeciesDisplayNames(species);
         return (
-          <div className="space-y-3 sm:space-y-4 border-l-2 border-amber-500 pl-3 sm:pl-5">
+          <motion.div
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-3 sm:space-y-4 border-l-2 border-amber-500 pl-3 sm:pl-5"
+          >
             <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs font-mono">
               <span className="px-2.5 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-400 font-bold uppercase tracking-widest flex items-center gap-1.5 rounded-md text-[10px] sm:text-xs">
                 <Calendar className="h-3.5 w-3.5" />
@@ -160,19 +165,34 @@ export default function SpeciesDetail() {
               </span>
             </div>
 
-            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-100 uppercase break-words leading-tight sm:leading-none font-sans">
+            <motion.h1
+              initial={shouldReduceMotion ? false : { opacity: 0, x: -8 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.55, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+              className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-100 uppercase break-words leading-tight sm:leading-none font-sans"
+            >
               {names.heading}
-            </h1>
-            <p className="text-sm sm:text-lg italic font-mono text-amber-400">
+            </motion.h1>
+            <motion.p
+              initial={shouldReduceMotion ? false : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.12 }}
+              className="text-sm sm:text-lg italic font-mono text-amber-400"
+            >
               {names.subheading}
-            </p>
+            </motion.p>
 
             {species.nameMeaning && (
-              <p className="text-xs font-mono text-slate-400 leading-relaxed border-t border-white/[0.08] pt-2 sm:pt-3">
+              <motion.p
+                initial={shouldReduceMotion ? false : { opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.18 }}
+                className="text-xs font-mono text-slate-400 leading-relaxed border-t border-white/[0.08] pt-2 sm:pt-3"
+              >
                 <strong className="font-bold text-amber-400 uppercase tracking-widest">Etymology & Translation:</strong> "{species.nameMeaning}"
-              </p>
+              </motion.p>
             )}
-          </div>
+          </motion.div>
         );
       })()}
 
@@ -202,32 +222,41 @@ export default function SpeciesDetail() {
         transition={{ type: 'spring', stiffness: 320, damping: 28 }}
         className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono"
       >
-        <div className="museum-card py-3.5 px-4 rounded-xl space-y-1 text-center shadow-md border border-white/[0.06]">
+        <motion.div
+          whileHover={shouldReduceMotion ? {} : { y: -3, transition: { duration: 0.2 } }}
+          className="museum-card py-3.5 px-4 rounded-xl space-y-1 text-center shadow-md border border-white/[0.06] hover:border-amber-500/40 transition-colors"
+        >
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
             <Scale className="h-3.5 w-3.5 text-amber-400" /> Total Length
           </span>
           <p className="text-xl sm:text-2xl font-black text-amber-400 tabular-nums">
             {formatFeetLong(species.lengthM)}
           </p>
-        </div>
+        </motion.div>
 
-        <div className="museum-card py-3.5 px-4 rounded-xl space-y-1 text-center shadow-md border border-white/[0.06]">
+        <motion.div
+          whileHover={shouldReduceMotion ? {} : { y: -3, transition: { duration: 0.2 } }}
+          className="museum-card py-3.5 px-4 rounded-xl space-y-1 text-center shadow-md border border-white/[0.06] hover:border-amber-500/40 transition-colors"
+        >
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
             <Scale className="h-3.5 w-3.5 text-amber-400" /> Standing Height
           </span>
           <p className="text-xl sm:text-2xl font-black text-amber-400 tabular-nums">
             {formatFeetLong(species.heightM)}
           </p>
-        </div>
+        </motion.div>
 
-        <div className="museum-card py-3.5 px-4 rounded-xl space-y-1 text-center shadow-md border border-white/[0.06]">
+        <motion.div
+          whileHover={shouldReduceMotion ? {} : { y: -3, transition: { duration: 0.2 } }}
+          className="museum-card py-3.5 px-4 rounded-xl space-y-1 text-center shadow-md border border-white/[0.06] hover:border-amber-500/40 transition-colors"
+        >
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
             <Scale className="h-3.5 w-3.5 text-amber-400" /> Estimated Mass
           </span>
           <p className="text-xl sm:text-2xl font-black text-amber-400 tabular-nums">
             {species.weightKg ? `${species.weightKg.toLocaleString()} KG` : 'Disputed'}
           </p>
-        </div>
+        </motion.div>
       </motion.div>
 
       {/* Specimen Deep Dive Grid (Scroll Viewport Reveal) */}
@@ -387,37 +416,43 @@ export default function SpeciesDetail() {
               const imgUrl = rel.reconstructionImageUrl || rel.media?.[0]?.url || 'https://images.unsplash.com/photo-1551085254-e96b210df58a?q=80&w=1200&auto=format&fit=crop';
               const names = getSpeciesDisplayNames(rel);
               return (
-                <Link
+                <motion.div
                   key={rel.id}
-                  to={`/species/${rel.id}`}
-                  className="group museum-card rounded-xl p-3 flex flex-col justify-between w-64 sm:w-72 shrink-0 snap-start shadow-lg overflow-hidden"
+                  whileHover={shouldReduceMotion ? {} : { y: -4, transition: { type: 'spring', stiffness: 350, damping: 25 } }}
+                  whileTap={{ scale: 0.98 }}
+                  className="shrink-0 snap-start"
                 >
-                  <div className="relative h-36 w-full bg-slate-950 rounded-lg overflow-hidden mb-3 border border-white/[0.06]">
-                    <img
-                      src={imgUrl}
-                      alt={rel.name}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute top-2 right-2 px-2 py-0.5 bg-slate-950/90 backdrop-blur-md rounded text-[9px] font-mono font-bold uppercase tracking-widest text-amber-400 border border-white/[0.08]">
-                      {rel.clade || 'Prehistoric'}
+                  <Link
+                    to={`/species/${rel.id}`}
+                    className="group museum-card rounded-xl p-3 flex flex-col justify-between w-64 sm:w-72 shadow-lg overflow-hidden h-full"
+                  >
+                    <div className="relative h-36 w-full bg-slate-950 rounded-lg overflow-hidden mb-3 border border-white/[0.06]">
+                      <img
+                        src={imgUrl}
+                        alt={rel.name}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute top-2 right-2 px-2 py-0.5 bg-slate-950/90 backdrop-blur-md rounded text-[9px] font-mono font-bold uppercase tracking-widest text-amber-400 border border-white/[0.08]">
+                        {rel.clade || 'Prehistoric'}
+                      </div>
                     </div>
-                  </div>
-                  <div className="space-y-1.5">
-                    <h4 className="text-xs font-bold font-sans text-slate-100 group-hover:text-amber-400 transition-colors uppercase truncate">
-                      {names.heading}
-                    </h4>
-                    <p className="text-[10px] font-mono text-amber-400 truncate">
-                      {names.subheading}
-                    </p>
-                    <div className="flex items-center justify-between text-[9px] font-mono text-slate-400 pt-2 border-t border-white/[0.06]">
-                      <span className="truncate">{rel.timePeriod || 'Prehistoric'}</span>
-                      <span className="text-amber-400 uppercase tracking-wider font-bold">
-                        {rel.fossilFormation ? rel.fossilFormation.split(' ')[0] : 'Coexisted'}
-                      </span>
+                    <div className="space-y-1.5">
+                      <h4 className="text-xs font-bold font-sans text-slate-100 group-hover:text-amber-400 transition-colors uppercase truncate">
+                        {names.heading}
+                      </h4>
+                      <p className="text-[10px] font-mono text-amber-400 truncate">
+                        {names.subheading}
+                      </p>
+                      <div className="flex items-center justify-between text-[9px] font-mono text-slate-400 pt-2 border-t border-white/[0.06]">
+                        <span className="truncate">{rel.timePeriod || 'Prehistoric'}</span>
+                        <span className="text-amber-400 uppercase tracking-wider font-bold">
+                          {rel.fossilFormation ? rel.fossilFormation.split(' ')[0] : 'Coexisted'}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                </motion.div>
               );
             })}
           </div>

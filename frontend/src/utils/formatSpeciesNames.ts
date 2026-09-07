@@ -13,7 +13,7 @@ export function getSpeciesDisplayNames(species: SpeciesNameInput) {
   const rawSciName = (species.scientificName || '').trim();
 
   let heading = rawName;
-  if (rawSciName && (rawName.toLowerCase() === rawSciName.toLowerCase() || rawName.includes(' '))) {
+  if (rawSciName && rawName.toLowerCase() === rawSciName.toLowerCase()) {
     heading = rawName.split(' ')[0];
   } else if (!rawSciName && rawName.includes(' ')) {
     heading = rawName.split(' ')[0];
