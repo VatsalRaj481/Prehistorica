@@ -427,7 +427,7 @@ function SpeciesSearchInput({
               )}
             </div>
 
-            <div ref={listRef} className="overflow-y-auto divide-y divide-white/[0.04] p-1">
+            <div ref={listRef} data-lenis-prevent className="overflow-y-auto divide-y divide-white/[0.04] p-1">
               {displayList.length > 0 ? (
                 <>
                   {displayList.map((s, idx) => {
@@ -592,6 +592,7 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
             transition={{ type: 'spring', stiffness: 350, damping: 28 }}
+            data-lenis-prevent
             className="bg-slate-900 border border-white/[0.08] rounded-2xl w-full max-w-4xl p-4 sm:p-6 shadow-2xl space-y-4 sm:space-y-6 relative max-h-[92vh] sm:max-h-[90vh] overflow-y-auto font-mono"
           >
             <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 sm:pb-4">

@@ -278,7 +278,7 @@ export default function TimeMap() {
             </div>
           </div>
 
-          <div className="relative h-[340px] sm:h-[420px] md:h-[480px] rounded-xl overflow-hidden border border-white/[0.08] shadow-2xl bg-slate-950">
+          <div data-lenis-prevent className="relative h-[340px] sm:h-[420px] md:h-[480px] rounded-xl overflow-hidden border border-white/[0.08] shadow-2xl bg-slate-950">
             <MapContainer
               center={activeContinentObj.coords}
               zoom={activeContinentObj.zoom}
@@ -359,7 +359,7 @@ export default function TimeMap() {
               </p>
             </div>
           ) : (
-            <div className="space-y-3 max-h-[460px] overflow-y-auto pr-1">
+            <div data-lenis-prevent className="space-y-3 max-h-[460px] overflow-y-auto pr-1">
               {speciesList.map((species) => {
                 const names = getSpeciesDisplayNames(species);
                 return (

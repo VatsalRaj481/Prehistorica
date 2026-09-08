@@ -264,6 +264,7 @@ export default function Browse() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+            data-lenis-prevent
             className="fixed inset-0 z-50 bg-slate-950/98 backdrop-blur-xl flex flex-col p-4 sm:p-6 overflow-y-auto lg:hidden font-mono overscroll-contain"
           >
             <div className="flex items-center justify-between border-b border-white/[0.08] pb-4 mb-4">
@@ -293,7 +294,7 @@ export default function Browse() {
               {/* Clade Multi-Select */}
               <div className="space-y-2">
                 <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Taxonomic Clade</label>
-                <div className="grid grid-cols-2 gap-1.5 max-h-56 overflow-y-auto pr-1">
+                <div data-lenis-prevent className="grid grid-cols-2 gap-1.5 max-h-56 overflow-y-auto pr-1">
                   {cladeOptions.map((c) => {
                     const isSelected = selectedClades.includes(c);
                     return (
@@ -452,7 +453,7 @@ export default function Browse() {
           {/* Taxonomic Clade Checkboxes */}
           <div className="space-y-2">
             <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Taxonomic Clade</label>
-            <div className="space-y-1 max-h-44 overflow-y-auto pr-1">
+            <div data-lenis-prevent className="space-y-1 max-h-44 overflow-y-auto pr-1">
               {cladeOptions.map((c) => {
                 const isSelected = selectedClades.includes(c);
                 return (
