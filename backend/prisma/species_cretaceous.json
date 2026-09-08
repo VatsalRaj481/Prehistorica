@@ -595,7 +595,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Dinosaur Park\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Archosauria\",\"family\":\"Tyrannosauridae\",\"genus\":\"Gorgosaurus\",\"species\":\"Gorgosaurus libratus\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/462-Gorgosaurus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/9/92/Gorgosaurus.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/9/9a/Gorgosaurus_skeleton_AMNH_5428.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/9/9a/Gorgosaurus_skeleton_AMNH_5428.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/1/14/Gorgosaurus_flipped.png\",\"type\":\"art\",\"credit\":\"Levi bernardo (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Gorgosaurus_flipped.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/3/3f/Gorgosaurus_utah_090305.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original\",\"type\":\"art\",\"credit\":\"Utahraptor ostrommaysi (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3AGorgosaurus%20utah%20090305.png\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/462-Gorgosaurus.jpg\",\"type\":\"museum_display\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/9/92/Gorgosaurus.jpg\"}]",
     "discoveryHistory": "• Discovered in 1913 by Charles M. Sternberg in Alberta, Canada.\n• Named by Lawrence Lambe in 1914.\n• Over 20 skeletons have been found, making it one of the best-represented tyrannosaurids.",
     "interestingFacts": "[\"Coexisted with another tyrannosaurid, Daspletosaurus.\",\"Had a lighter and more gracile build compared to T. rex.\",\"Possessed a small horn-like crest in front of its eyes.\"]",
     "sizeNotes": "Fast runner.",
@@ -1437,7 +1437,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Dinosaur Park\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Archosauria\",\"family\":\"Ankylosauridae\",\"genus\":\"Euoplocephalus\",\"species\":\"Euoplocephalus tutus\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/497-Euoplocephalus.jpg\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Euoplocephalus%20TD.png\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/ec/Euoplocephalus_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Euoplocephalus_TD.png\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/497-Euoplocephalus.jpg\",\"type\":\"habitat_scene\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Euoplocephalus%20TD.png\"}]",
     "discoveryHistory": "• Discovered in the 19th or 20th century.\n• Holotype found in Cretaceous fossil beds.\n• Named Euoplocephalus by paleontologists after careful study.\n• Subsequent discoveries expanded our understanding of its anatomy.",
     "interestingFacts": "[\"Euoplocephalus is the best-known ankylosaur, with over 40 specimens making it one of the most studied armored dinosaurs.\",\"Even its eyelids were armored with bony plates, making it extraordinarily well-protected.\",\"Its massive tail club could swing with enough force to break the leg bones of a large theropod.\"]",
     "sizeNotes": "Common in Alberta.",
@@ -2568,7 +2568,7 @@
     "geographicRange": "{\"region\":\"Asia\",\"country\":\"India\",\"fossilFormation\":\"Lameta Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Saurischia\",\"order\":\"Theropoda\",\"family\":\"Abelisauridae\",\"genus\":\"Indosuchus\",\"species\":\"Indosuchus raptorius\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/884-Indosuchus.png\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://en.wikipedia.org/wiki/Indosuchus\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/8/82/Indosuchus_raptorius.jpg\",\"type\":\"art\",\"credit\":\"FunkMonk (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Indosuchus_raptorius.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/884-Indosuchus.png\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://en.wikipedia.org/wiki/Indosuchus\"}]",
     "discoveryHistory": "• Collected between 1917 and 1919 by British geologist Charles Alfred Matley near Jabalpur, Madhya Pradesh.\n• Formally named by German paleontologist Friedrich von Huene in 1932.\n• Described in detail by Huene and Matley in a joint monograph in 1933.\n• Originally classified as an allosaurid, then a tyrannosaurid, before modern analysis confirmed it as an abelisaurid.",
     "interestingFacts": "[\"Had a highly specialized narrow skull roof with frontals and parietals fused, forming a prominent crest.\",\"Coexisted with other abelisaurids like Rajasaurus and Indosaurus, suggesting niche partitioning among Cretaceous Indian carnivores.\",\"Its holotype specimen GSI K27/685 went missing from the GSI collections, making it a subject of taxonomic debate.\"]",
     "sizeNotes": "Estimated to be roughly 6 to 7 meters in length and weighing 1.2 metric tonnes.",
@@ -2579,7 +2579,8 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Indosuchus raptorius description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Indosuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T13:38:45.715Z",
-    "updatedAt": "2026-08-27T08:36:19.454Z"
+    "updatedAt": "2026-08-27T08:36:19.454Z",
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/30807118-9c7a-49e0-b6f0-5fad1100ff57.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/30807118-9c7a-49e0-b6f0-5fad1100ff57\",\"license\":\"Creative Commons Attribution 4.0 International\",\"credit\":\"Tasman Dixon\",\"taxon\":\"Abelisauroidea (Representative: Eoabelisaurus mefi)\",\"taxonMatch\":\"generic approximation, not species-specific\"}"
   },
   {
     "id": 1630,
