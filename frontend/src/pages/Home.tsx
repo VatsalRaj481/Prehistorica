@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion, useScroll, useTransform, Variants } from 'framer-motion';
 import { fetchCreatureOfTheDay, fetchSpecies, fetchSpeciesById, Species } from '../services/api.js';
-import ThreeDFossilStarfield from '../components/ThreeDFossilStarfield.js';
 import SpotlightCard from '../components/SpotlightCard.js';
 import { Calendar, ArrowRight, Dna, Compass, ShieldAlert, FileText, Layers, Loader2, Globe, Database, Sparkles } from 'lucide-react';
 import { formatMass } from '../utils/formatMass.js';
@@ -79,9 +78,6 @@ export default function Home() {
 
   return (
     <div className="space-y-16 relative">
-      {/* 3D Particle Fossil Canvas Background */}
-      <ThreeDFossilStarfield />
-
       {/* Curatorial Museum Hero Section with Subtle Parallax Falloff */}
       <motion.section
         variants={heroVariants}
@@ -127,7 +123,7 @@ export default function Home() {
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.96 }}>
                 <Link
                   to="/map"
-                  className="px-6 py-3 bg-slate-900/90 hover:bg-slate-850 text-slate-200 font-bold uppercase tracking-wider rounded-lg border border-white/[0.08] hover:border-amber-500/40 transition-all flex items-center gap-2 cursor-pointer glass-panel"
+                  className="px-6 py-3 bg-slate-900 hover:bg-slate-850 text-slate-200 font-bold uppercase tracking-wider rounded-lg border border-white/[0.08] hover:border-amber-500/40 transition-all flex items-center gap-2 cursor-pointer shadow-md"
                 >
                   <Compass className="h-4 w-4 text-amber-400" /> Interactive Time-Map
                 </Link>
@@ -230,7 +226,7 @@ export default function Home() {
             </div>
           </div>
         ) : error || !creature ? (
-          <div className="glass-panel border border-red-500/30 rounded-xl p-8 text-center text-red-400 flex flex-col items-center gap-3 font-mono">
+          <div className="museum-plinth border border-red-500/30 rounded-xl p-8 text-center text-red-400 flex flex-col items-center gap-3 font-mono">
             <ShieldAlert className="h-8 w-8 text-red-400" />
             <p className="font-bold text-sm">{error || 'Creature record not found'}</p>
           </div>
@@ -239,7 +235,7 @@ export default function Home() {
             variants={cardVariants}
             initial="hidden"
             animate="show"
-            className="relative glass-panel rounded-xl overflow-hidden shadow-2xl hover:border-amber-500/40 transition-all duration-300 group"
+            className="relative museum-plinth rounded-xl overflow-hidden shadow-2xl hover:border-amber-500/40 transition-all duration-300 group"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 p-4 sm:p-8">
               {/* Artwork / Specimen Image Viewport */}
@@ -413,7 +409,7 @@ export default function Home() {
           <SpotlightCard
             whileHover={{ y: -4 }}
             transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-            className="glass-panel rounded-xl hover:border-amber-500/40 p-6 sm:p-7 transition-colors shadow-xl flex flex-col justify-between space-y-5 h-full"
+            className="museum-plinth rounded-xl hover:border-amber-500/40 p-6 sm:p-7 transition-colors shadow-xl flex flex-col justify-between space-y-5 h-full"
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5">
@@ -446,7 +442,7 @@ export default function Home() {
           <SpotlightCard
             whileHover={{ y: -4 }}
             transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-            className="glass-panel rounded-xl hover:border-amber-500/40 p-6 sm:p-7 transition-colors shadow-xl flex flex-col justify-between space-y-5 h-full"
+            className="museum-plinth rounded-xl hover:border-amber-500/40 p-6 sm:p-7 transition-colors shadow-xl flex flex-col justify-between space-y-5 h-full"
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5">

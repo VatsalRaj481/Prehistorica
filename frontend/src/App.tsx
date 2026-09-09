@@ -13,80 +13,67 @@ import TimeMap from './pages/TimeMap.js';
 import { wakePing } from './services/api.js';
 
 export default function App() {
-  const [showColdStart, setShowColdStart] = useState(false);
+  // Always activate ColdStartScreen upon initial page load / refresh
+  const [showColdStart, setShowColdStart] = useState(true);
   const [isWaking, setIsWaking] = useState(true);
 
   useEffect(() => {
     wakePing();
 
-    const searchParams = new URLSearchParams(window.location.search);
-    const isSimulated = searchParams.get('simulateColdStart') === 'true' || searchParams.get('coldstart') === '1';
-    const isWarmed = sessionStorage.getItem('prehistorica_warmed') === 'true';
+    const rawApiUrl = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5000/api' : 'https://prehistorica.onrender.com/api');
+    const cleanApiUrl = rawApiUrl.replace(/\/$/, '');
+    const apiBase = cleanApiUrl.endsWith('/api') ? cleanApiUrl : `${cleanApiUrl}/api`;
 
-    if (isSimulated) {
-      setShowColdStart(true);
-      setIsWaking(true);
-      const simDuration = parseInt(searchParams.get('duration') || '12', 10);
-      const timer = setTimeout(() => {
+    let isDone = false;
+    let activeInterval: ReturnType<typeof setInterval> | null = null;
+
+    // Minimum display duration (1.4s) so the cinematic museum preloader renders smoothly even if backend is warm
+    const minDisplayPromise = new Promise((resolve) => setTimeout(resolve, 1400));
+
+    // Maximum failsafe timer: never lock the user out for more than 16 seconds
+    const maxWakeTimer = setTimeout(() => {
+      if (!isDone) {
+        isDone = true;
+        if (activeInterval) clearInterval(activeInterval);
         setIsWaking(false);
-      }, simDuration * 1000);
-      return () => clearTimeout(timer);
-    }
+      }
+    }, 16000);
 
-    if (!isWarmed) {
-      // If backend takes longer than 750ms to respond, activate initialization screen
-      const screenTimer = setTimeout(() => {
-        setShowColdStart(true);
-      }, 750);
+    const checkHealth = async () => {
+      if (isDone) return;
+      const controller = new AbortController();
+      const fetchTimeout = setTimeout(() => controller.abort(), 6000);
 
-      // Fail-safe auto-wake timer: never block the pavilion for more than 16 seconds
-      const maxWakeTimer = setTimeout(() => {
-        setIsWaking(false);
-        sessionStorage.setItem('prehistorica_warmed', 'true');
-      }, 16000);
-
-      const rawApiUrl = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5000/api' : 'https://prehistorica.onrender.com/api');
-      const cleanApiUrl = rawApiUrl.replace(/\/$/, '');
-      const apiBase = cleanApiUrl.endsWith('/api') ? cleanApiUrl : `${cleanApiUrl}/api`;
-
-      let activeInterval: ReturnType<typeof setInterval> | null = null;
-      let isDone = false;
-
-      const checkHealth = async () => {
-        if (isDone) return;
-        const controller = new AbortController();
-        const fetchTimeout = setTimeout(() => controller.abort(), 8000);
-
-        try {
-          const res = await fetch(`${apiBase}/health`, { signal: controller.signal });
-          clearTimeout(fetchTimeout);
-          if (res.ok && !isDone) {
+      try {
+        const res = await fetch(`${apiBase}/health`, { signal: controller.signal });
+        clearTimeout(fetchTimeout);
+        if (res.ok && !isDone) {
+          // Await minimum display promise so preloader animation transitions smoothly
+          await minDisplayPromise;
+          if (!isDone) {
             isDone = true;
             if (activeInterval) clearInterval(activeInterval);
-            clearTimeout(screenTimer);
             clearTimeout(maxWakeTimer);
             setIsWaking(false);
-            sessionStorage.setItem('prehistorica_warmed', 'true');
           }
-        } catch {
-          clearTimeout(fetchTimeout);
         }
-      };
+      } catch {
+        clearTimeout(fetchTimeout);
+      }
+    };
 
-      // Initial probe
-      checkHealth().then(() => {
-        if (!isDone) {
-          activeInterval = setInterval(checkHealth, 3000);
-        }
-      });
+    // Initial check
+    checkHealth().then(() => {
+      if (!isDone) {
+        activeInterval = setInterval(checkHealth, 2000);
+      }
+    });
 
-      return () => {
-        isDone = true;
-        clearTimeout(screenTimer);
-        clearTimeout(maxWakeTimer);
-        if (activeInterval) clearInterval(activeInterval);
-      };
-    }
+    return () => {
+      isDone = true;
+      clearTimeout(maxWakeTimer);
+      if (activeInterval) clearInterval(activeInterval);
+    };
   }, []);
 
   return (

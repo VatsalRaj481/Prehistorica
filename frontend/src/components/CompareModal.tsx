@@ -585,7 +585,7 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 overflow-y-auto"
+          className="fixed inset-0 z-50 bg-slate-950/90 flex items-center justify-center p-2 sm:p-4 overflow-y-auto"
         >
           <motion.div
             initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.95, y: 15 }}

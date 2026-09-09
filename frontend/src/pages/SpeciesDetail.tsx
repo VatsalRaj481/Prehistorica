@@ -269,7 +269,7 @@ export default function SpeciesDetail() {
       >
         {/* Left Column: Media Reconstruction & Visual Archive */}
         <div className="lg:col-span-6 space-y-5">
-          <div className="glass-panel rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
+          <div className="museum-plinth rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
             <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-2.5">
               <FileText className="h-4 w-4 text-amber-400" /> Specimen Visual Archive
             </h3>
@@ -283,7 +283,7 @@ export default function SpeciesDetail() {
           </div>
 
           {/* Discovery & Geographic Range Panel */}
-          <div className="glass-panel rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
+          <div className="museum-plinth rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
             <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-2.5">
               <Compass className="h-4 w-4 text-amber-400" /> Field Discovery & Provenance
             </h3>
@@ -314,7 +314,7 @@ export default function SpeciesDetail() {
         {/* Right Column: Taxonomy Rank, Scientific Facts & Literature */}
         <div className="lg:col-span-6 space-y-5">
           {/* Architectural Taxonomic Hierarchy */}
-          <div className="glass-panel rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
+          <div className="museum-plinth rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
             <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-2.5">
               <Dna className="h-4 w-4 text-amber-400" /> Structural Taxonomic Hierarchy
             </h3>
@@ -327,7 +327,7 @@ export default function SpeciesDetail() {
 
           {/* Scientific Key Facts Monograph */}
           {species.interestingFacts && species.interestingFacts.length > 0 && (
-            <div className="glass-panel rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
+            <div className="museum-plinth rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
               <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5">
                 <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">
                   <Zap className="h-4 w-4 text-amber-400" /> Key Scientific Diagnostic Features
@@ -362,7 +362,7 @@ export default function SpeciesDetail() {
 
           {/* Academic Citations & Literature */}
           {species.sources && species.sources.length > 0 && (
-            <div className="glass-panel rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
+            <div className="museum-plinth rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
               <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-2.5">
                 <BookOpen className="h-4 w-4 text-amber-400" /> Verified Academic Citations
               </h3>
@@ -400,7 +400,7 @@ export default function SpeciesDetail() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.08 }}
           transition={{ type: 'spring', stiffness: 320, damping: 28 }}
-          className="glass-panel rounded-xl p-6 border border-white/[0.08] space-y-4 shadow-2xl"
+          className="museum-plinth rounded-xl p-6 border border-white/[0.08] space-y-4 shadow-2xl"
         >
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.08] pb-3 font-mono">
             <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">

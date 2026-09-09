@@ -197,7 +197,7 @@ export default function TimeMap() {
         initial={shouldReduceMotion ? false : { opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-        className="glass-panel rounded-xl p-5 sm:p-6 border border-white/[0.08] shadow-2xl space-y-4 font-mono"
+        className="museum-plinth rounded-xl p-5 sm:p-6 border border-white/[0.08] shadow-2xl space-y-4 font-mono"
       >
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/[0.08] pb-3">
           <div className="space-y-0.5">
@@ -341,16 +341,16 @@ export default function TimeMap() {
           </div>
 
           {loading ? (
-            <div className="h-96 glass-panel rounded-xl border border-white/[0.08] flex flex-col items-center justify-center text-slate-400 gap-2">
+            <div className="h-96 museum-plinth rounded-xl border border-white/[0.08] flex flex-col items-center justify-center text-slate-400 gap-2">
               <Loader2 className="h-7 w-7 animate-spin text-amber-400" />
               <span className="text-xs font-bold uppercase tracking-wider">Unearthing records...</span>
             </div>
           ) : error ? (
-            <div className="glass-panel rounded-xl border border-red-500/30 p-6 text-center text-red-400 text-xs">
+            <div className="museum-plinth rounded-xl border border-red-500/30 p-6 text-center text-red-400 text-xs">
               {error}
             </div>
           ) : speciesList.length === 0 ? (
-            <div className="glass-panel rounded-xl border border-white/[0.08] p-10 text-center text-slate-400 flex flex-col items-center gap-2 shadow-xl">
+            <div className="museum-plinth rounded-xl border border-white/[0.08] p-10 text-center text-slate-400 flex flex-col items-center gap-2 shadow-xl">
               <Info className="h-8 w-8 text-amber-400" />
               <p className="font-bold text-sm text-slate-200 uppercase tracking-widest font-sans">No Species Records</p>
               <p className="text-xs text-slate-400 max-w-xs font-sans">

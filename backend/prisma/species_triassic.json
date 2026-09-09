@@ -19,14 +19,14 @@
     "discoveryHistory": "Discovered by E.D. Cope in 1887 in New Mexico.",
     "interestingFacts": "[\"Early agile theropod.\", \"Mass bonebeds at Ghost Ranch.\", \"Hollow thin-walled bones.\"]",
     "sizeNotes": "Adult length ~3.0m, height ~0.9m, estimated weight ~25kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 3.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 0.9, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 25, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.85,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":20,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Cope, E.D. (1887). Trans. Amer. Phil. Soc.\", \"url\": \"https://doi.org/10.2307/1005527\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.606Z",
-    "updatedAt": "2026-08-26T11:38:41.155Z"
+    "updatedAt": "2026-09-08T15:52:06.032Z"
   },
   {
     "id": 15,
@@ -48,14 +48,14 @@
     "discoveryHistory": "Discovered in 1834 near Nuremberg, Germany, by Johann Engelhardt. Described by Hermann von Meyer in 1837.",
     "interestingFacts": "{\"An early sauropodomorph, a group that would eventually evolve into the giant, long-necked sauropods.\",\"Strictly bipedal; its hands were unable to rotate, making quadrupedal walking anatomically impossible.\",\"Fossil mass graves in Europe suggest they traveled in herds or became trapped in mud flats.\"}",
     "sizeNotes": "Highly variable adult sizes, ranging from 4.8 to 10 meters in length and 600 to 4,000 kg.",
-    "sizeEstimate": "{\"length\":{\"value\":7,\"unit\":\"m\",\"confidence\":\"estimated\"},\"height\":{\"value\":2.5,\"unit\":\"m\",\"confidence\":\"estimated\"},\"weight\":{\"value\":2000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":8,\"unit\":\"m\",\"confidence\":\"estimated\"},\"height\":{\"value\":2.8,\"unit\":\"m\",\"confidence\":\"estimated\"},\"weight\":{\"value\":2500,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\":\"von Meyer, H. (1837). Original description of Plateosaurus trossingensis.\",\"url\":\"https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=38670\"},{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Plateosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Plateosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.652Z",
-    "updatedAt": "2026-08-28T15:17:51.364Z"
+    "updatedAt": "2026-09-08T15:52:06.078Z"
   },
   {
     "id": 16,
@@ -76,15 +76,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/16-perfect-art.jpg\",\"type\":\"art\",\"credit\":\"Petrified Forest from Petrified Forest, USA (Public domain)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Postosuchus%20kirkpatricki.jpg\"}]",
     "discoveryHistory": "Named by Sankar Chatterjee in 1985.",
     "interestingFacts": "[\"Apex rauisuchian predator.\", \"Deep skull with dagger teeth.\", \"Semi-bipedal posture.\"]",
-    "sizeNotes": "Adult length ~4.0m, height ~1.2m, estimated weight ~300kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 4.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 1.2, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 300, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeNotes": "Adult length ~4.0m, height ~1.2m, estimated weight ~300kg. Note: Holotype TTUP 9000 and adult postcranial remains confirm total length of 3.8–4.0 m, bipedal/facultative quadrupedal stance height ~1.2 m, mass ~250–350 kg (representative 300 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":300,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Chatterjee, S. (1985). Phil. Trans. R. Soc. Lond. B.\", \"url\": \"https://royalsocietypublishing.org/doi/10.1098/rstb.1985.0002\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.695Z",
-    "updatedAt": "2026-08-26T16:11:02.105Z"
+    "updatedAt": "2026-09-08T15:52:06.125Z"
   },
   {
     "id": 50,
@@ -105,15 +105,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/50-Lisowicia.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/7/77/Lisowicia_bojani_Wikipedia_Juandertal.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/3/37/Lisowicia_limb_bones.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/3/37/Lisowicia_limb_bones.jpg\"}]",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":13,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4801,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Stored values were scrambled with sauropod data. The holotype and associated fossils establish total body length of 4.5 m, upright shoulder height of 2.6 m, and massive body mass of ~9,000 kg (9 tonnes; 5.7–9.3 t range).",
+    "sizeEstimate": "{\"length\":{\"value\":4.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":9000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Lisowicia spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Lisowicia\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:18.061Z",
-    "updatedAt": "2026-08-27T08:36:03.653Z"
+    "updatedAt": "2026-09-08T15:52:07.437Z"
   },
   {
     "id": 51,
@@ -135,14 +135,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3372,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":35,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Cynognathus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Cynognathus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:18.235Z",
-    "updatedAt": "2026-08-27T08:36:03.705Z"
+    "updatedAt": "2026-09-08T15:52:07.487Z"
   },
   {
     "id": 52,
@@ -164,14 +164,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":10.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":832,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":0.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.15,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Thrinaxodon spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Thrinaxodon\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:18.336Z",
-    "updatedAt": "2026-08-27T08:36:03.762Z"
+    "updatedAt": "2026-09-08T15:52:07.533Z"
   },
   {
     "id": 53,
@@ -193,14 +193,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":0.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2488,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":15,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":29700,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Shonisaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Shonisaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:18.442Z",
-    "updatedAt": "2026-08-27T08:36:03.812Z"
+    "updatedAt": "2026-09-08T15:52:07.580Z"
   },
   {
     "id": 54,
@@ -222,14 +222,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":11.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3834,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":10,\"unit\":\"m\",\"confidence\":\"estimated\"},\"height\":{\"value\":1.8,\"unit\":\"m\",\"confidence\":\"estimated\"},\"weight\":{\"value\":4000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Cymbospondylus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Cymbospondylus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:18.493Z",
-    "updatedAt": "2026-08-27T08:36:03.860Z"
+    "updatedAt": "2026-09-08T15:52:07.633Z"
   },
   {
     "id": 55,
@@ -250,15 +250,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/55-Peteinosaurus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/5/51/Peteinosaurus.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/7/7b/Peteinosaurus_fossil.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/7/7b/Peteinosaurus_fossil.jpg\"}]",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":594,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Stored 4m / 594kg was corrupted. *Peteinosaurus* had a wingspan of ~60 cm, total body length of ~45 cm (0.45 m), standing height of 15 cm (0.15 m), and mass of ~250 g (0.25 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":0.45,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.15,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.25,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Peteinosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Peteinosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:18.606Z",
-    "updatedAt": "2026-08-27T08:36:03.909Z"
+    "updatedAt": "2026-09-08T15:52:07.679Z"
   },
   {
     "id": 60,
@@ -279,15 +279,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/60-Eodromaeus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/9/95/Eodromaeus.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/2/2d/Eodromaeus_skeletal.png\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/2/2d/Eodromaeus_skeletal.png\"}]",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":13.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1827,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Stored 13.3m / 1,827kg was a legacy sauropod paste into a small basal theropod. Holotype PVSJ 560 confirms total length 1.2 m, hip height 0.4 m, and mass 5.0 kg.",
+    "sizeEstimate": "{\"length\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":5,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Eodromaeus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Eodromaeus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:19.339Z",
-    "updatedAt": "2026-08-27T08:36:04.213Z"
+    "updatedAt": "2026-09-08T15:52:07.728Z"
   },
   {
     "id": 61,
@@ -309,14 +309,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":10.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2549,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2.5,\"unit\":\"m\",\"confidence\":\"estimated\"},\"height\":{\"value\":0.7,\"unit\":\"m\",\"confidence\":\"estimated\"},\"weight\":{\"value\":40,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Nyasasaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Nyasasaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:19.497Z",
-    "updatedAt": "2026-08-27T08:36:04.266Z"
+    "updatedAt": "2026-09-08T15:52:07.774Z"
   },
   {
     "id": 62,
@@ -337,15 +337,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/62-Procompsognathus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/b/b7/Procompsognathus.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/4/4f/Procompsognathus_triassicus.JPG\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/4/4f/Procompsognathus_triassicus.JPG\"}]",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":4.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":297,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Stored 4.5m / 297kg was corrupted. Holotype SMNS 12591 indicates a tiny, agile theropod ~1.0 m in length, 0.3 m at hip, weighing ~1.0–1.4 kg (representative 1.2 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1.2,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Procompsognathus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Procompsognathus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:19.677Z",
-    "updatedAt": "2026-08-27T08:36:04.327Z"
+    "updatedAt": "2026-09-08T15:52:07.829Z"
   },
   {
     "id": 63,
@@ -367,14 +367,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":13.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":289,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":5.15,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":140,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Liliensternus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Liliensternus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:19.890Z",
-    "updatedAt": "2026-08-27T08:36:04.379Z"
+    "updatedAt": "2026-09-08T15:52:07.878Z"
   },
   {
     "id": 64,
@@ -395,15 +395,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/64-Halticosaurus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/4/4b/Liliensternus_liliensterni.JPG\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/4/4b/Liliensternus_liliensterni.JPG\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/4/4b/Liliensternus_liliensterni.JPG\"}]",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":0.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3903,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Stored 0.7m length and 3.9 tonnes weight were absurdly corrupted. Holotype SMNS 12353 indicates a medium theropod ~5.5 m long, 1.6 m hip height, weighing ~160 kg.",
+    "sizeEstimate": "{\"length\":{\"value\":5.5,\"unit\":\"m\",\"confidence\":\"estimated\"},\"height\":{\"value\":1.6,\"unit\":\"m\",\"confidence\":\"estimated\"},\"weight\":{\"value\":160,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Halticosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Halticosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:20.480Z",
-    "updatedAt": "2026-08-27T08:36:04.426Z"
+    "updatedAt": "2026-09-08T15:52:07.927Z"
   },
   {
     "id": 65,
@@ -424,15 +424,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/65-Gojirasaurus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/f/f4/Gojirasaurus_BW.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/1/17/Gojirasaurus_scale_and_skeletal.png\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/1/17/Gojirasaurus_scale_and_skeletal.png\"}]",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4977,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Stored 1.2m / 4,977kg was corrupted. Holotype UCM 47221 represents a large coelophysoid ~5.5–6.5 m long (representative 6.0 m), hip height 1.8 m, mass 200–250 kg (representative 220 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":6,\"unit\":\"m\",\"confidence\":\"estimated\"},\"height\":{\"value\":1.8,\"unit\":\"m\",\"confidence\":\"estimated\"},\"weight\":{\"value\":220,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Gojirasaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Gojirasaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:20.562Z",
-    "updatedAt": "2026-08-27T08:36:04.474Z"
+    "updatedAt": "2026-09-08T15:52:07.979Z"
   },
   {
     "id": 66,
@@ -453,15 +453,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/66-Zupaysaurus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/5/50/Zupaysaurus.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/1/17/Gojirasaurus_scale_and_skeletal.png\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/1/17/Gojirasaurus_scale_and_skeletal.png\"}]",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":0.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4749,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Stored 0.6m / 4,749kg was corrupted. Holotype PULR 076 is a 4.0 m long basal theropod, hip height 1.2 m, mass ~180 kg (150–200 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":180,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Zupaysaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Zupaysaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:20.693Z",
-    "updatedAt": "2026-08-27T08:36:04.524Z"
+    "updatedAt": "2026-09-08T15:52:08.031Z"
   },
   {
     "id": 67,
@@ -483,14 +483,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":11.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3836,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":12,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Thecodontosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Thecodontosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:20.802Z",
-    "updatedAt": "2026-08-27T08:36:04.572Z"
+    "updatedAt": "2026-09-08T15:52:08.080Z"
   },
   {
     "id": 68,
@@ -512,14 +512,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":8.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3181,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Riojasaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Riojasaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:20.889Z",
-    "updatedAt": "2026-08-27T08:36:04.622Z"
+    "updatedAt": "2026-09-08T15:52:08.127Z"
   },
   {
     "id": 70,
@@ -540,15 +540,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/70-Isanosaurus.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Isanosaurus_attavipachi_NT.jpg\"}]",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":8.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2882,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Subadult holotype QA2-1 was ~6.5 m; adult estimated length is 8.0–9.0 m (representative 8.5 m), standing hip height 2.5 m (4.7m was neck-raised overextension), mass ~3,000 kg.",
+    "sizeEstimate": "{\"length\":{\"value\":8.5,\"unit\":\"m\",\"confidence\":\"estimated\"},\"height\":{\"value\":2.5,\"unit\":\"m\",\"confidence\":\"estimated\"},\"weight\":{\"value\":3000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Isanosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Isanosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:21.910Z",
-    "updatedAt": "2026-08-27T08:41:09.647Z"
+    "updatedAt": "2026-09-08T15:52:08.173Z"
   },
   {
     "id": 72,
@@ -570,14 +570,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":7.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":815,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Antetonitrus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Antetonitrus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:22.225Z",
-    "updatedAt": "2026-08-27T08:36:04.823Z"
+    "updatedAt": "2026-09-08T15:52:08.276Z"
   },
   {
     "id": 73,
@@ -599,14 +599,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":4.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1727,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":7000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Lessemsaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Lessemsaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:22.405Z",
-    "updatedAt": "2026-08-27T08:36:04.872Z"
+    "updatedAt": "2026-09-08T15:52:08.333Z"
   },
   {
     "id": 74,
@@ -628,14 +628,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2326,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Mussaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Mussaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:22.547Z",
-    "updatedAt": "2026-08-27T08:36:04.920Z"
+    "updatedAt": "2026-09-08T15:52:08.380Z"
   },
   {
     "id": 75,
@@ -656,15 +656,15 @@
     "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/4/47/Coloradisaurus_skull_reconstruction.png\",\"type\":\"art\",\"credit\":\"Apaldetti et al. (2014) / Wikimedia Commons (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Coloradisaurus_skull_reconstruction.png\"}]",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1195,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Stored 9.0m / 3.6m was corrupted by sauropod numbers. Holotype PVL 3967 represents a medium massospondylid: total length 3.5–4.0 m (midpoint 3.8 m), hip height 1.2 m, mass 150–250 kg (representative 200 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":3.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":200,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Coloradisaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Coloradisaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:22.643Z",
-    "updatedAt": "2026-08-27T08:36:04.967Z"
+    "updatedAt": "2026-09-08T15:52:08.425Z"
   },
   {
     "id": 79,
@@ -685,15 +685,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/79-Guaibasaurus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/c/cb/Guaibasaurus.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/ef/MUSEU4X.JPG\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/e/ef/MUSEU4X.JPG\"}]",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":1.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4625,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Stored weight of 4,625 kg (4.6 tonnes!) for a 1.8m basal dinosaur was corrupted. Holotype MCN-PV 2355 indicates a slender bipedal animal: length 1.8 m, hip height 0.6 m, mass ~10–15 kg (representative 12 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":1.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":12,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Guaibasaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Guaibasaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:23.160Z",
-    "updatedAt": "2026-08-27T08:36:05.174Z"
+    "updatedAt": "2026-09-08T15:52:08.475Z"
   },
   {
     "id": 80,
@@ -715,14 +715,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":3.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1417,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":15,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Silesaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Silesaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:23.245Z",
-    "updatedAt": "2026-08-27T08:36:05.239Z"
+    "updatedAt": "2026-09-08T15:52:08.927Z"
   },
   {
     "id": 81,
@@ -744,14 +744,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4220,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":20,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Asilisaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Asilisaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:23.362Z",
-    "updatedAt": "2026-08-27T08:36:05.292Z"
+    "updatedAt": "2026-09-08T15:52:08.974Z"
   },
   {
     "id": 82,
@@ -773,14 +773,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":7.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":616,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":0.35,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.12,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.2,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Marasuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Marasuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:23.562Z",
-    "updatedAt": "2026-08-27T08:36:05.340Z"
+    "updatedAt": "2026-09-08T15:52:09.020Z"
   },
   {
     "id": 83,
@@ -801,15 +801,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/83-Lagerpeton.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/f/f6/Lagerpeton_NT_small.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/7/75/Lagerpeton_skeleton.png\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/7/75/Lagerpeton_skeleton.png\"}]",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":9.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1185,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Stored 9.5m / 1,185kg was corrupted. Holotype PVL 4619 establishes a small, rabbit-like hopping/bounding dinosauromorph ~70 cm long (0.7 m), hip height 0.25 m, mass ~800 g (0.8 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":0.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.25,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.8,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Lagerpeton spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Lagerpeton\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:23.765Z",
-    "updatedAt": "2026-08-27T08:36:05.388Z"
+    "updatedAt": "2026-09-08T15:52:09.067Z"
   },
   {
     "id": 84,
@@ -830,15 +830,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/84-Ixalerpeton.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/2/25/Brazilian_Lagerpetidae_diversity.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/f/f4/Ixalerpeton_skeletal.png\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/f/f4/Ixalerpeton_skeletal.png\"}]",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":9.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":754,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Stored 9.1m / 754kg was corrupted. Holotype ULBRA-PVT059 indicates a tiny lagerpetid ~40 cm long (0.4 m), hip height 15 cm, mass ~300 g (0.3 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":0.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.15,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.3,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Ixalerpeton spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Ixalerpeton\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:23.858Z",
-    "updatedAt": "2026-08-27T08:36:05.434Z"
+    "updatedAt": "2026-09-08T15:52:09.112Z"
   },
   {
     "id": 85,
@@ -860,14 +860,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":12,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4245,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.35,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Dromomeron spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Dromomeron\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:23.969Z",
-    "updatedAt": "2026-08-27T08:36:05.480Z"
+    "updatedAt": "2026-09-08T15:52:09.157Z"
   },
   {
     "id": 86,
@@ -889,14 +889,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":10.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":81,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":0.55,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.15,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Euparkeria spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Euparkeria\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:24.073Z",
-    "updatedAt": "2026-08-27T08:36:05.530Z"
+    "updatedAt": "2026-09-08T15:52:09.204Z"
   },
   {
     "id": 87,
@@ -918,14 +918,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":8.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":767,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":45,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Proterosuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Proterosuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:24.142Z",
-    "updatedAt": "2026-08-27T08:36:05.600Z"
+    "updatedAt": "2026-09-08T15:52:09.255Z"
   },
   {
     "id": 88,
@@ -947,14 +947,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":0.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4195,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Erythrosuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Erythrosuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:24.272Z",
-    "updatedAt": "2026-08-27T08:36:05.649Z"
+    "updatedAt": "2026-09-08T15:52:09.299Z"
   },
   {
     "id": 89,
@@ -976,14 +976,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":11.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1744,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":120,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Garjainia spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Garjainia\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:24.379Z",
-    "updatedAt": "2026-08-27T08:36:05.702Z"
+    "updatedAt": "2026-09-08T15:52:09.342Z"
   },
   {
     "id": 90,
@@ -1005,14 +1005,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":2.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":42,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":200,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Vjushkovia spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Vjushkovia\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:24.482Z",
-    "updatedAt": "2026-08-27T08:36:05.752Z"
+    "updatedAt": "2026-09-08T15:52:09.386Z"
   },
   {
     "id": 91,
@@ -1033,15 +1033,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/91-Ticinosuchus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/e/e2/Ticinosuchus.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/d/df/Ticinosuchus_PIMUZ_T_4779.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/d/df/Ticinosuchus_PIMUZ_T_4779.jpg\"}]",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":9.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1091,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Stored 9.5m / 3.8m was corrupted. The complete holotype from Monte San Giorgio measures exactly 3.0 m in length, standing hip height 0.8 m, and mass ~80–120 kg (representative 100 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":100,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Ticinosuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Ticinosuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:24.587Z",
-    "updatedAt": "2026-08-27T08:36:05.809Z"
+    "updatedAt": "2026-09-08T15:52:09.434Z"
   },
   {
     "id": 93,
@@ -1063,14 +1063,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":7.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3236,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":9,\"unit\":\"m\",\"confidence\":\"estimated\"},\"height\":{\"value\":2.3,\"unit\":\"m\",\"confidence\":\"estimated\"},\"weight\":{\"value\":3000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Fasolasuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Fasolasuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:24.799Z",
-    "updatedAt": "2026-08-27T08:36:05.907Z"
+    "updatedAt": "2026-09-08T15:52:09.480Z"
   },
   {
     "id": 94,
@@ -1092,14 +1092,14 @@
     "discoveryHistory": "• Discovered in the Triassic beds of Brazil.\n• Described by Friedrich von Huene in 1942.\n• Reassessed in the late 20th century.",
     "interestingFacts": "[\"It was a large apex predator.\",\"It had an upright limb posture.\",\"Closely related to early crocodilians.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":11.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":468,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":6.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Prestosuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Prestosuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:24.846Z",
-    "updatedAt": "2026-08-27T08:36:05.959Z"
+    "updatedAt": "2026-09-08T15:52:09.526Z"
   },
   {
     "id": 95,
@@ -1121,14 +1121,14 @@
     "discoveryHistory": "• Remains found in the Kupferzell fossil site in Germany.\n• Described in 1999.\n• Name means 'frog slicer'.",
     "interestingFacts": "[\"Preyed on giant amphibians.\",\"It was a heavily built rauisuchian.\",\"Walked on four legs but could rear up.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":13.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2863,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":5.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":900,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Batrachotomus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Batrachotomus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:25.046Z",
-    "updatedAt": "2026-08-27T08:36:06.014Z"
+    "updatedAt": "2026-09-08T15:52:09.576Z"
   },
   {
     "id": 96,
@@ -1150,14 +1150,14 @@
     "discoveryHistory": "• First found in Scotland in the 19th century.\n• Originally thought to be an ancestor to dinosaurs.\n• Recognized as a pseudosuchian archosaur.",
     "interestingFacts": "[\"It had a distinctive crocodile-like ankle.\",\"Known for its 'bird crocodile' skull shape.\",\"Exhibited facultative bipedalism.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4143,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":200,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Ornithosuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Ornithosuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:25.195Z",
-    "updatedAt": "2026-08-27T08:36:06.075Z"
+    "updatedAt": "2026-09-08T15:52:09.621Z"
   },
   {
     "id": 98,
@@ -1179,14 +1179,14 @@
     "discoveryHistory": "• Found in the Petrified Forest of Arizona.\n• Elevated to its own genus from Machaeroprosopus.\n• Known from very large skulls.",
     "interestingFacts": "[\"Had a heavy, robust snout.\",\"Possessed a large cranial crest.\",\"An apex predator in aquatic environments.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":6.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2090,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":7.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1800,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Smilosuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Smilosuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:25.295Z",
-    "updatedAt": "2026-08-27T08:36:06.184Z"
+    "updatedAt": "2026-09-08T15:52:09.669Z"
   },
   {
     "id": 99,
@@ -1208,14 +1208,14 @@
     "discoveryHistory": "• First described by Georg Friedrich Jaeger in 1828.\n• The first phytosaur ever named.\n• Based on fragmentary remains, often considered a nomen dubium.",
     "interestingFacts": "[\"Name translates to 'plant reptile' due to mistaken tooth interpretation.\",\"Actually a carnivorous aquatic predator.\",\"Gave its name to the entire group of phytosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1768,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":4.2,\"unit\":\"m\",\"confidence\":\"estimated\"},\"height\":{\"value\":0.8,\"unit\":\"m\",\"confidence\":\"estimated\"},\"weight\":{\"value\":380,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Phytosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Phytosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:25.516Z",
-    "updatedAt": "2026-08-27T08:36:06.233Z"
+    "updatedAt": "2026-09-08T15:52:09.716Z"
   },
   {
     "id": 100,
@@ -1237,14 +1237,14 @@
     "discoveryHistory": "• Discovered in the southwestern United States.\n• Described by Maurice Mehl in 1916.\n• Subject to complex taxonomic debates with other phytosaurs.",
     "interestingFacts": "[\"Had a long, narrow snout for catching fish.\",\"Lived in widespread river systems.\",\"Its fossils are excellent biostratigraphic markers.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":12.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4056,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":5.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":600,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Machaeroprosopus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Machaeroprosopus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:25.583Z",
-    "updatedAt": "2026-08-27T08:36:06.280Z"
+    "updatedAt": "2026-09-08T15:52:09.767Z"
   },
   {
     "id": 101,
@@ -1266,14 +1266,14 @@
     "discoveryHistory": "• Fossils found in North America.\n• Described by Case in 1922.\n• Often confused or synonymized with Smilosuchus.",
     "interestingFacts": "[\"Possessed a relatively broad skull.\",\"Armored with bony scutes.\",\"A widespread Late Triassic predator.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":14.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2882,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":5.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":700,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Leptosuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Leptosuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:25.708Z",
-    "updatedAt": "2026-08-27T08:36:06.331Z"
+    "updatedAt": "2026-09-08T15:52:09.815Z"
   },
   {
     "id": 102,
@@ -1294,15 +1294,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/102-Redondasaurus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/3/3b/Redondasaurus.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/3/3b/Redondasaurus.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/3/3b/Redondasaurus.jpg\"}]",
     "discoveryHistory": "• Discovered in the Redonda Formation of New Mexico.\n• Described by Hunt and Lucas in 1993.\n• One of the last known phytosaurs.",
     "interestingFacts": "[\"Very advanced phytosaur species.\",\"Highly adapted for aquatic ambush.\",\"Survived until the end-Triassic extinction event.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":10.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1736,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Stored 10.8m / 3.1m H was corrupted. Holotype skulls (~1.2 m) indicate adult length of 6.0–6.5 m (representative 6.4 m), low-slung height 1.0 m, mass ~1,000–1,200 kg (representative 1,100 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":6.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1100,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Redondasaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Redondasaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:25.807Z",
-    "updatedAt": "2026-08-27T08:36:06.402Z"
+    "updatedAt": "2026-09-08T15:52:09.861Z"
   },
   {
     "id": 103,
@@ -1324,14 +1324,14 @@
     "discoveryHistory": "• Discovered in Germany.\n• Described by Eberhard Fraas in 1896.\n• Further material has been found in northern Italy.",
     "interestingFacts": "[\"Highly adapted for marine life.\",\"Snout was extremely elongated.\",\"Some specimens found in full marine deposits.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":2.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4914,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":250,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Mystriosuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Mystriosuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:25.915Z",
-    "updatedAt": "2026-08-27T08:36:06.465Z"
+    "updatedAt": "2026-09-08T15:52:09.909Z"
   },
   {
     "id": 105,
@@ -1353,14 +1353,14 @@
     "discoveryHistory": "• Discovered in the Lossiemouth Sandstone in Scotland.\n• Initially thought to be a fish based on its scales.\n• Reinterpreted as a reptile by Thomas Huxley.",
     "interestingFacts": "[\"Had a pig-like rooting snout.\",\"Body was heavily encased in rectangular scutes.\",\"One of the best-understood early aetosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":9.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4870,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":200,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Stagonolepis spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Stagonolepis\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:26.117Z",
-    "updatedAt": "2026-08-27T08:36:06.576Z"
+    "updatedAt": "2026-09-08T15:52:09.954Z"
   },
   {
     "id": 106,
@@ -1382,14 +1382,14 @@
     "discoveryHistory": "• Found in the Stubensandstein of Germany.\n• Described in 1877.\n• Multiple skeletons found clustered together.",
     "interestingFacts": "[\"One of the smallest known aetosaurs.\",\"May have exhibited gregarious behavior.\",\"Name means 'eagle lizard'.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":7.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1535,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":0.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":8,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Aetosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Aetosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:26.319Z",
-    "updatedAt": "2026-08-27T08:36:06.623Z"
+    "updatedAt": "2026-09-08T15:52:10.001Z"
   },
   {
     "id": 107,
@@ -1411,14 +1411,14 @@
     "discoveryHistory": "• Fossils recovered from the Los Colorados Formation, Argentina.\n• Described by Bonaparte in 1969.\n• One of the first aetosaurs known from South America.",
     "interestingFacts": "[\"Possessed teeth adapted for a soft diet or omnivory.\",\"Had distinctively long limbs.\",\"First aetosaur with well-preserved limb elements.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":5.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3966,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":75,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Neoaetosauroides spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Neoaetosauroides\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:26.481Z",
-    "updatedAt": "2026-08-27T08:36:06.682Z"
+    "updatedAt": "2026-09-08T15:52:10.046Z"
   },
   {
     "id": 108,
@@ -1440,14 +1440,14 @@
     "discoveryHistory": "• Found in the southwestern US.\n• Originally assigned to Typothorax.\n• Reassigned and named after paleontologist Robert Long.",
     "interestingFacts": "[\"Had large curved spikes on its shoulders.\",\"A relatively robust and slow-moving aetosaur.\",\"Common in Late Triassic fossil assemblages.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":4.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3968,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":280,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Longosuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Longosuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:26.685Z",
-    "updatedAt": "2026-08-27T08:36:06.728Z"
+    "updatedAt": "2026-09-08T15:52:10.098Z"
   },
   {
     "id": 109,
@@ -1469,14 +1469,14 @@
     "discoveryHistory": "• Discovered in the Chañares Formation of Argentina.\n• Described by Alfred Romer in 1972.\n• Initially considered an early dinosaur or ornithosuchid.",
     "interestingFacts": "[\"A very small, agile pseudosuchian.\",\"Walked primarily on its hind legs.\",\"Had a double row of scutes along its back.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":5.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3650,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":0.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.3,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Gracilisuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Gracilisuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:27.141Z",
-    "updatedAt": "2026-08-27T08:36:06.775Z"
+    "updatedAt": "2026-09-08T15:52:10.143Z"
   },
   {
     "id": 110,
@@ -1497,15 +1497,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/110-Erpetosuchus.jpg\",\"type\":\"art\",\"credit\":\"SeismicShrimp (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Erpetosuchus%20granti.png\"}]",
     "discoveryHistory": "• Discovered in Scotland in the 19th century.\n• Later found in the eastern United States.\n• Described by E.T. Newton in 1894.",
     "interestingFacts": "[\"Very small archosaur.\",\"Had a specialized skull suggesting an insectivorous diet.\",\"Shares features with early crocodilians.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":4.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":454,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Stored 4.8m / 454kg was corrupted. Holotype and Virginia material show a small, agile carnivore ~60 cm (0.6 m) in length, standing height 15 cm, weighing ~1.0 kg (0.8–1.2 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":0.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.15,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Erpetosuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Erpetosuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:27.248Z",
-    "updatedAt": "2026-08-27T08:36:06.826Z"
+    "updatedAt": "2026-09-08T15:52:10.192Z"
   },
   {
     "id": 111,
@@ -1527,14 +1527,14 @@
     "discoveryHistory": "• Found in the Stubensandstein of Germany.\n• Described by Friedrich von Huene in 1921.\n• Often cited in early theories of dinosaur origins.",
     "interestingFacts": "[\"Name translates to 'leaping crocodile'.\",\"Very lightly built and bipedal.\",\"Covered with thin, elongated scutes.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":6.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2880,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":10,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Saltoposuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Saltoposuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:27.446Z",
-    "updatedAt": "2026-08-27T08:36:06.874Z"
+    "updatedAt": "2026-09-08T15:52:10.237Z"
   },
   {
     "id": 112,
@@ -1556,14 +1556,14 @@
     "discoveryHistory": "• Found in a fissure fill in Wales.\n• Described by P.M. Galton in 1984.\n• Thought by some to be a juvenile Saltoposuchus.",
     "interestingFacts": "[\"Extremely slender, greyhound-like proportions.\",\"A fully terrestrial early crocodylomorph.\",\"Very small, measuring around half a meter in length.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":0.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":945,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":0.75,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.25,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1.2,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Terrestrisuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Terrestrisuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:27.667Z",
-    "updatedAt": "2026-08-27T08:36:06.925Z"
+    "updatedAt": "2026-09-08T15:52:10.288Z"
   },
   {
     "id": 113,
@@ -1585,14 +1585,14 @@
     "discoveryHistory": "• Found in the Chinle Formation of Arizona.\n• Described by Colbert in 1952.\n• Represents one of the earliest North American crocodylomorphs.",
     "interestingFacts": "[\"Agile terrestrial predator.\",\"Had distinctively long hind legs.\",\"Likely preyed on large insects and small vertebrates.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":1.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1464,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":12,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Hesperosuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Hesperosuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:28.059Z",
-    "updatedAt": "2026-08-27T08:36:06.979Z"
+    "updatedAt": "2026-09-08T15:52:10.337Z"
   },
   {
     "id": 114,
@@ -1614,14 +1614,14 @@
     "discoveryHistory": "• Found in the Elliot Formation of South Africa.\n• Described by Sidney Haughton in 1915.\n• Holotype skull is exceptionally well-preserved.",
     "interestingFacts": "[\"A primitive crocodylomorph with a somewhat dog-like stance.\",\"Had a highly specialized quadrate bone.\",\"Fully terrestrial and fast-running.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":12.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":416,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":15,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Sphenosuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Sphenosuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:28.236Z",
-    "updatedAt": "2026-08-27T08:36:07.032Z"
+    "updatedAt": "2026-09-08T15:52:10.610Z"
   },
   {
     "id": 115,
@@ -1643,14 +1643,14 @@
     "discoveryHistory": "• First discovered in Arizona in the 1930s.\n• Named by Barnum Brown in 1934.\n• Material also found in South Africa and Lesotho.",
     "interestingFacts": "[\"Had short, powerful jaws.\",\"Represented a transition toward amphibious crocodyliforms.\",\"Heavily armored with dorsal and ventral scutes.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":3.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3990,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.25,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":12,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Protosuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Protosuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:28.375Z",
-    "updatedAt": "2026-08-27T08:36:07.079Z"
+    "updatedAt": "2026-09-08T15:52:10.657Z"
   },
   {
     "id": 116,
@@ -1672,14 +1672,14 @@
     "discoveryHistory": "• Found at the Ghost Ranch quarry in New Mexico.\n• Discovered by Sterling Nesbitt in 2006 from decades-old unprepared blocks.\n• Named after Georgia O'Keeffe.",
     "interestingFacts": "[\"A remarkable example of convergent evolution with ornithomimid dinosaurs.\",\"Completely toothless with a beak.\",\"Bipedal and highly cursorial.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":6.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":837,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":35,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Effigia spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Effigia\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:28.474Z",
-    "updatedAt": "2026-08-27T08:36:07.132Z"
+    "updatedAt": "2026-09-08T15:52:10.702Z"
   },
   {
     "id": 117,
@@ -1701,14 +1701,14 @@
     "discoveryHistory": "• Found in the Cooper Canyon Formation, Texas.\n• Described by Sankar Chatterjee in 1993.\n• Originally thought to be an early theropod dinosaur.",
     "interestingFacts": "[\"Another beaked, toothless pseudosuchian.\",\"Closely related to Effigia.\",\"Demonstrates high diversity among Triassic archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":5.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4544,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":45,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Shuvosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Shuvosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:28.516Z",
-    "updatedAt": "2026-08-27T08:36:07.180Z"
+    "updatedAt": "2026-09-08T15:52:10.752Z"
   },
   {
     "id": 119,
@@ -1730,14 +1730,14 @@
     "discoveryHistory": "• Discovered in Hunan, China in the 1970s.\n• Described by Zhang in 1975.\n• Distinctive due to its heavy build and neural spine sail.",
     "interestingFacts": "[\"Possessed a prominent sail on its back.\",\"Had a toothless, beaked mouth.\",\"Believed to have been an herbivore.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":11.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1263,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":120,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Lotosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Lotosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:28.803Z",
-    "updatedAt": "2026-08-27T08:36:07.277Z"
+    "updatedAt": "2026-09-08T15:52:10.808Z"
   },
   {
     "id": 120,
@@ -1759,14 +1759,14 @@
     "discoveryHistory": "• Found in the Moenkopi Formation, Arizona.\n• Described by Samuel Paul Welles in 1947.\n• A complete skeleton was later described by Sterling Nesbitt.",
     "interestingFacts": "[\"A sail-backed poposauroid.\",\"Sail may have been used for thermoregulation or display.\",\"Older than many other famous Triassic archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":14.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2512,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":180,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Arizonasaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Arizonasaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:28.841Z",
-    "updatedAt": "2026-08-27T08:36:07.333Z"
+    "updatedAt": "2026-09-08T15:52:10.857Z"
   },
   {
     "id": 121,
@@ -1787,15 +1787,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/121-Sillosuchus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/7/79/Sillosuchus.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/3/34/Sillosuchus_skeletal.png\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/3/34/Sillosuchus_skeletal.png\"}]",
     "discoveryHistory": "• Discovered in the Ischigualasto Formation, Argentina.\n• Described by Alcober and Parrish in 1997.\n• Added to the growing list of bizarre poposauroids.",
     "interestingFacts": "[\"A very large, bipedal predator.\",\"Part of the unique South American Triassic fauna.\",\"Had complex cervical vertebrae.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":11.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3897,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: The largest poposauroid known. Stored height (0.3m / 30cm) was inverted. Holotype PVL 2267 indicates a gigantic biped ~9.0–10.0 m long (representative 9.5 m), hip height 2.8 m, mass ~2,000–3,000 kg (representative 2,500 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":9.5,\"unit\":\"m\",\"confidence\":\"estimated\"},\"height\":{\"value\":2.8,\"unit\":\"m\",\"confidence\":\"estimated\"},\"weight\":{\"value\":2500,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Sillosuchus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Sillosuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:28.880Z",
-    "updatedAt": "2026-08-27T08:36:07.381Z"
+    "updatedAt": "2026-09-08T15:52:10.906Z"
   },
   {
     "id": 122,
@@ -1816,15 +1816,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/122-Sharovipteryx.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/b/b8/Sharovipteryx.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/b/bc/SkeletonsNumbers.png\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/b/bc/SkeletonsNumbers.png\"}]",
     "discoveryHistory": "• Found in the Madygen Formation of Kyrgyzstan.\n• Discovered by Aleksandr Sharov in 1971.\n• Originally named Podopteryx.",
     "interestingFacts": "[\"Had gliding membranes primarily on its hind limbs.\",\"The only known 'hind-winged' glider.\",\"Likely a leaper from tree to tree.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":8.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1271,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Stored 8.7m / 1.3 tonnes was corrupted. Tiny delta-winged gliding reptile: holotype PIN 2584/8 has a snout-to-tail length of ~20 cm (0.2 m), height 5 cm, mass ~40 grams (0.04 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":0.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.05,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.04,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Sharovipteryx spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Sharovipteryx\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:28.919Z",
-    "updatedAt": "2026-08-27T08:36:07.429Z"
+    "updatedAt": "2026-09-08T15:52:10.958Z"
   },
   {
     "id": 123,
@@ -1846,14 +1846,14 @@
     "discoveryHistory": "• Found in the Madygen Formation, Kyrgyzstan.\n• Discovered by Aleksandr Sharov in 1969.\n• Known only from the anterior half of one skeleton.",
     "interestingFacts": "[\"Possessed incredibly long, feather-like dorsal scales.\",\"Subject of intense debate regarding avian origins.\",\"A highly unusual diapsid reptile.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":3.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1663,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":0.15,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.25,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.02,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Longisquama spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Longisquama\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:28.956Z",
-    "updatedAt": "2026-08-27T08:36:07.482Z"
+    "updatedAt": "2026-09-08T15:52:11.010Z"
   },
   {
     "id": 124,
@@ -1875,14 +1875,14 @@
     "discoveryHistory": "• Fossils found in Europe, the Middle East, and China.\n• First described by Hermann von Meyer in 1852.\n• Originally thought to be a flying reptile due to long bones.",
     "interestingFacts": "[\"Neck was longer than its body and tail combined.\",\"Neck consisted of only 12 or 13 extremely elongated vertebrae.\",\"Likely an ambush predator in shallow waters.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":14,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":942,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":5.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":150,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Tanystropheus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Tanystropheus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:28.995Z",
-    "updatedAt": "2026-08-27T08:36:07.530Z"
+    "updatedAt": "2026-09-08T15:52:11.060Z"
   },
   {
     "id": 125,
@@ -1904,14 +1904,14 @@
     "discoveryHistory": "• Discovered in the Besano Formation, Italy.\n• Described by Nopcsa in 1930.\n• Later found in Switzerland and China.",
     "interestingFacts": "[\"A terrestrial or semi-aquatic prolacertiform.\",\"Had long, slender hind limbs for running.\",\"Related to Tanystropheus but with a shorter neck.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":1.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1526,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1.5,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Macrocnemus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Macrocnemus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.034Z",
-    "updatedAt": "2026-08-27T08:36:07.577Z"
+    "updatedAt": "2026-09-08T15:52:11.115Z"
   },
   {
     "id": 126,
@@ -1933,14 +1933,14 @@
     "discoveryHistory": "• Found in the Guanling Formation, China.\n• Described in 2004 by Li.\n• A remarkable complete specimen with an embryo was described in 2017.",
     "interestingFacts": "[\"First archosauromorph known to give live birth.\",\"Neck had over 25 vertebrae.\",\"Fully marine and incapable of coming on land.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":1.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1319,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":5.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":200,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Dinocephalosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Dinocephalosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.073Z",
-    "updatedAt": "2026-08-27T08:36:07.626Z"
+    "updatedAt": "2026-09-08T15:52:11.164Z"
   },
   {
     "id": 127,
@@ -1962,14 +1962,14 @@
     "discoveryHistory": "• Discovered in the Muschelkalk of Germany.\n• Described by Louis Agassiz in 1833.\n• Originally classified as a pycnodont fish.",
     "interestingFacts": "[\"Had thick, flat teeth for crushing shellfish.\",\"Possessed heavy bones for ballast in water.\",\"Looked somewhat like a marine iguana.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":5.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4820,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":150,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Placodus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Placodus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.111Z",
-    "updatedAt": "2026-08-27T08:36:07.674Z"
+    "updatedAt": "2026-09-08T15:52:11.216Z"
   },
   {
     "id": 128,
@@ -1991,14 +1991,14 @@
     "discoveryHistory": "• Fossils found in Germany.\n• Described by Hermann von Meyer in 1863.\n• One of the first heavily armored placodonts known.",
     "interestingFacts": "[\"Carried a broad, turtle-like carapace.\",\"Carapace was divided into two distinct sections.\",\"Bottom feeder specialized in hard-shelled prey.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":12.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4426,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.35,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":40,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Cyamodus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Cyamodus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.149Z",
-    "updatedAt": "2026-08-27T08:36:07.725Z"
+    "updatedAt": "2026-09-08T15:52:11.261Z"
   },
   {
     "id": 129,
@@ -2020,14 +2020,14 @@
     "discoveryHistory": "• Discovered in the Gipskeuper of Germany.\n• Described by von Huene in 1936.\n• Found in non-marine, brackish deposits.",
     "interestingFacts": "[\"Possessed a very boxy, flat shell.\",\"Had a single tooth on each side, relying mostly on a beak.\",\"May have been a filter feeder.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":1.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1062,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.25,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":30,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Henodus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Henodus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.188Z",
-    "updatedAt": "2026-08-27T08:36:07.774Z"
+    "updatedAt": "2026-09-08T15:52:11.319Z"
   },
   {
     "id": 130,
@@ -2049,14 +2049,14 @@
     "discoveryHistory": "• Found across Europe, North Africa, and China.\n• Described by Georg zu Münster in 1834.\n• One of the most abundant marine reptiles of the Triassic.",
     "interestingFacts": "[\"A semi-oceanic predator with a long neck and tail.\",\"Had webbed toes instead of fully formed flippers.\",\"Probably lived similarly to modern seals.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":10.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":450,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":150,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Nothosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Nothosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.227Z",
-    "updatedAt": "2026-08-27T08:36:07.833Z"
+    "updatedAt": "2026-09-08T15:52:11.369Z"
   },
   {
     "id": 131,
@@ -2078,14 +2078,14 @@
     "discoveryHistory": "• Discovered near Lake Como, Italy.\n• Described by Curioni in 1847.\n• Originally recognized from small, possibly juvenile specimens.",
     "interestingFacts": "[\"One of the smallest nothosaurs.\",\"Forelimbs were modified into flippers, but hindlimbs retained toes.\",\"Likely inhabited shallow coastal lagoons.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":12.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3027,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":0.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.15,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4.5,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Lariosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Lariosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.266Z",
-    "updatedAt": "2026-08-27T08:36:07.886Z"
+    "updatedAt": "2026-09-08T15:52:11.419Z"
   },
   {
     "id": 132,
@@ -2107,14 +2107,14 @@
     "discoveryHistory": "• Found at Monte San Giorgio on the Swiss-Italian border.\n• Described by Bernhard Peyer in 1931.\n• Often debated as a species of Lariosaurus.",
     "interestingFacts": "[\"A larger nothosaur with highly adapted flippers.\",\"Excellent swimmer due to hyperphalangy in its digits.\",\"A transitional form toward plesiosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":1.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3110,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":80,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Ceresiosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Ceresiosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.321Z",
-    "updatedAt": "2026-08-27T08:36:07.937Z"
+    "updatedAt": "2026-09-08T15:52:11.467Z"
   },
   {
     "id": 133,
@@ -2136,14 +2136,14 @@
     "discoveryHistory": "• Discovered in the Muschelkalk of Germany.\n• Described by Christian Erich Hermann von Meyer in 1839.\n• Represented by very few well-preserved specimens.",
     "interestingFacts": "[\"Had a stiff spine and plesiosaur-like skull.\",\"A key transitional fossil linking nothosaurs and plesiosaurs.\",\"Fully marine, utilizing flipper-based locomotion.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":5.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3562,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":150,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Pistosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Pistosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.358Z",
-    "updatedAt": "2026-08-27T08:36:07.998Z"
+    "updatedAt": "2026-09-08T15:52:11.522Z"
   },
   {
     "id": 134,
@@ -2165,14 +2165,14 @@
     "discoveryHistory": "• Discovered in the Muschelkalk deposits of Germany.\n• Described in the 19th century.\n• Skulls are commonly found, but complete skeletons are rare.",
     "interestingFacts": "[\"Had a blunt, short snout unlike other nothosaurs.\",\"Probably fed on hard-shelled organisms.\",\"Lack of typical pointed teeth suggests a specialized diet.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":9.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1204,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":180,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Simosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Simosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.395Z",
-    "updatedAt": "2026-08-27T08:36:08.051Z"
+    "updatedAt": "2026-09-08T15:52:11.568Z"
   },
   {
     "id": 135,
@@ -2194,14 +2194,14 @@
     "discoveryHistory": "• Found in marine deposits worldwide.\n• Described by George H. Baur in 1887.\n• Represents one of the most common early ichthyosaurs.",
     "interestingFacts": "[\"A transitional ichthyosaur with a straight tail.\",\"Retained a distinct neck, unlike later forms.\",\"Small and agile marine predator.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":11.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3631,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":20,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Mixosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Mixosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.432Z",
-    "updatedAt": "2026-08-27T08:36:08.107Z"
+    "updatedAt": "2026-09-08T15:52:11.614Z"
   },
   {
     "id": 136,
@@ -2222,15 +2222,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/136-Besanosaurus.png\",\"type\":\"art\",\"credit\":\"Alessio Ciaffi (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Besanosaurus_Environment.png\"}]",
     "discoveryHistory": "• Discovered at the Besano formation in Italy in 1993.\n• Described by Dal Sasso and Pinna in 1996.\n• The holotype specimen was pregnant.",
     "interestingFacts": "[\"A large shastasaurid ichthyosaur.\",\"Lacked a dorsal fin.\",\"Gave birth to live young tail-first, like modern cetaceans.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":13.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4697,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Bindellini et al. (2021) redescribed *Besanosaurus*: large adult length reaches 8.0 m (holotype 5.4 m), torso depth 1.5 m (4.3m was corrupted), body mass ~1,200–1,800 kg (representative 1,500 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1500,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Besanosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Besanosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.469Z",
-    "updatedAt": "2026-08-27T08:36:08.163Z"
+    "updatedAt": "2026-09-08T15:52:11.675Z"
   },
   {
     "id": 137,
@@ -2252,14 +2252,14 @@
     "discoveryHistory": "• First discovered in Mount Shasta, California.\n• Described by Merriam in 1895.\n• Later found in China and Canada.",
     "interestingFacts": "[\"One of the largest marine reptiles ever.\",\"S. sikanniensis reached over 20 meters in length.\",\"Likely a suction feeder lacking typical teeth.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":12.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2111,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":14.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":20000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Shastasaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Shastasaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.506Z",
-    "updatedAt": "2026-08-27T08:36:08.215Z"
+    "updatedAt": "2026-09-08T15:52:11.728Z"
   },
   {
     "id": 138,
@@ -2281,14 +2281,14 @@
     "discoveryHistory": "• Discovered in Guanling County, Guizhou, China.\n• Described by Yin et al. in 2000.\n• Often considered a species of Shastasaurus.",
     "interestingFacts": "[\"Characterized by a uniquely short and toothless snout.\",\"An enormous marine reptile.\",\"Adapted for suction feeding on soft-bodied cephalopods.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":9.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3081,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":10,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4500,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Guanlingsaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Guanlingsaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.543Z",
-    "updatedAt": "2026-08-27T08:36:08.266Z"
+    "updatedAt": "2026-09-08T15:52:11.775Z"
   },
   {
     "id": 139,
@@ -2309,15 +2309,15 @@
     "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/0/0d/Eudimorphodon_NT_small.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Eudimorphodon_NT_small.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/3/30/Triassic_fossils.png\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/3/30/Triassic_fossils.png\"}]",
     "discoveryHistory": "• Discovered near Bergamo, Italy in 1973.\n• Described by Rocco Zambelli.\n• One of the oldest known pterosaurs.",
     "interestingFacts": "[\"Possessed complex, multi-cusped teeth.\",\"Had a diamond-shaped flap of skin at the end of its long tail.\",\"Likely a piscivore (fish-eater).\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":2.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":245,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Stored 2.4m / 245kg was corrupted. *Eudimorphodon* had a 1.0 m wingspan, total body length with tail ~0.5 m, standing height 0.15 m, mass ~250–350 g (representative 0.3 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":0.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.15,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.3,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Eudimorphodon spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Eudimorphodon\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.582Z",
-    "updatedAt": "2026-08-27T08:36:08.313Z"
+    "updatedAt": "2026-09-08T15:52:11.823Z"
   },
   {
     "id": 140,
@@ -2338,15 +2338,15 @@
     "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/1/19/Preondactylus_NT.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Preondactylus_NT.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/140-Preondactylus.jpg\",\"type\":\"fossil_specimen\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/3/3b/Preondactylus.jpg\"}]",
     "discoveryHistory": "• Found in the Preone valley in Italy in 1982.\n• Described by Rupert Wild in 1984.\n• Specimen was discovered in a piece of bituminous limestone.",
     "interestingFacts": "[\"One of the most basal pterosaurs.\",\"Had single-cusped teeth unlike Eudimorphodon.\",\"Wingspan was less than half a meter.\"]",
-    "sizeNotes": "Gracile basal pterosaur with a wingspan of approximately 45 cm (1.5 ft) and weight around 150 grams.",
-    "sizeEstimate": "{\"length\":{\"value\":0.45,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.18,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.15,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Gracile basal pterosaur with a wingspan of approximately 45 cm (1.5 ft) and weight around 150 grams. Note: Wingspan is ~45–50 cm; total body length with slender tail is 35 cm (0.35 m), standing height 15 cm (0.15 m), mass 150 grams (0.15 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":0.35,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.15,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.15,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Preondactylus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Preondactylus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.619Z",
-    "updatedAt": "2026-09-06T07:54:52.641Z"
+    "updatedAt": "2026-09-08T15:52:11.876Z"
   },
   {
     "id": 141,
@@ -2367,15 +2367,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/141-Austriadactylus.jpg\",\"type\":\"art\",\"credit\":\"ABelov2014 (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Austriadactylus%20restoration.jpg\"}]",
     "discoveryHistory": "Discovered in the 20th century.",
     "interestingFacts": "[\"Austriadactylus is an important Triassic species.\",\"It tells us about early ecosystems.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2647,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Stored 4.6m H and 2.6 tonnes mass were corrupted. Large crested basal pterosaur: wingspan 1.2 m, quadrupedal body length 0.7 m (including long stiffened tail), standing height 0.25 m, mass ~0.8 kg.",
+    "sizeEstimate": "{\"length\":{\"value\":0.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.25,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.8,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Austriadactylus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Austriadactylus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.657Z",
-    "updatedAt": "2026-08-27T08:36:08.416Z"
+    "updatedAt": "2026-09-08T15:52:11.924Z"
   },
   {
     "id": 142,
@@ -2396,15 +2396,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/142-Caviramus.png\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/2/27/Caviramus.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/2/27/Caviramus.png\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/2/27/Caviramus.png\"}]",
     "discoveryHistory": "Discovered in the 20th century.",
     "interestingFacts": "[\"Caviramus is an important Triassic species.\",\"It tells us about early ecosystems.\"]",
-    "sizeNotes": "Size estimated from fossil remains.",
-    "sizeEstimate": "{\"length\":{\"value\":6.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2139,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Size estimated from fossil remains. Note: Stored 6.9m / 2.1 tonnes was corrupted. Crested basal pterosaur: wingspan ~1.35 m, body length ~0.75 m, standing height 0.25 m, mass ~1.0 kg.",
+    "sizeEstimate": "{\"length\":{\"value\":0.75,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.25,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Caviramus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Caviramus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.696Z",
-    "updatedAt": "2026-08-27T08:36:08.465Z"
+    "updatedAt": "2026-09-08T15:52:12.000Z"
   },
   {
     "id": 1615,
@@ -2426,14 +2426,14 @@
     "discoveryHistory": "Discovered in Madhya Pradesh, India, and described in 2017 by Sartee Sengupta and colleagues.",
     "interestingFacts": "[\"Features a pair of prominent forward-facing horns over its eyes, similar to modern ceratopsians.\",\"Demonstrates sexual dimorphism with horns likely used in combat.\"]",
     "sizeNotes": "Estimated from bone beds containing at least 7 individuals.",
-    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":200,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":200,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": "Late Triassic Extinction Event",
     "closestLivingRelatives": "[\"Crocodilians\",\"Modern Birds (Aves)\"]",
     "sources": "[{\"citation\":\"Sengupta, S. et al. (2017). An unusual horned archosauromorph from the Middle Triassic of India. Scientific Reports 7: 8366.\",\"url\":\"https://doi.org/10.1038/s41598-017-08658-8\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T09:50:45.361Z",
-    "updatedAt": "2026-08-26T11:42:10.382Z"
+    "updatedAt": "2026-09-08T15:52:23.198Z"
   },
   {
     "id": 1619,
@@ -2455,14 +2455,14 @@
     "discoveryHistory": "Described by E.C. Case in 1920.",
     "interestingFacts": "[\"Large 45 cm shoulder spines.\", \"Interlocking bony armor.\", \"Shovel snout for digging.\"]",
     "sizeNotes": "Adult length ~4.5m, height ~1.0m, estimated weight ~280kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 4.5, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 1.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 280, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":4.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":280,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Case, E.C. (1920). Occ. Pap. Mus. Zool.\", \"url\": \"https://hdl.handle.net/2027/spo.3523768.0001.001\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:04.158Z",
-    "updatedAt": "2026-08-26T11:42:20.387Z"
+    "updatedAt": "2026-09-08T15:52:23.287Z"
   },
   {
     "id": 1620,
@@ -2484,14 +2484,14 @@
     "discoveryHistory": "Discovered in 1904 by F.A. Lucas in Arizona.",
     "interestingFacts": "[\"Giant 1-ton dicynodont synapsid.\", \"Downward-pointing tusks.\", \"Herding behavior.\"]",
     "sizeNotes": "Adult length ~3.5m, height ~1.6m, estimated weight ~1000kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 3.5, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 1.6, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 1000, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Lucas, F.A. (1904). Proc. U.S. Natl. Mus.\", \"url\": \"https://doi.org/10.5479/si.00963801.27-1353.193\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:04.207Z",
-    "updatedAt": "2026-08-26T11:42:27.065Z"
+    "updatedAt": "2026-09-08T15:52:23.339Z"
   },
   {
     "id": 1621,
@@ -2513,14 +2513,14 @@
     "discoveryHistory": "Named by E.D. Cope in 1875.",
     "interestingFacts": "[\"Broad turtle-like armor plates.\", \"Heavy body defense.\", \"Index fossil for Late Triassic.\"]",
     "sizeNotes": "Adult length ~3.0m, height ~0.7m, estimated weight ~200kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 3.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 0.7, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 200, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":200,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Cope, E.D. (1875). US Geol. Surv.\", \"url\": \"https://doi.org/10.3138/9781442674394\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:04.256Z",
-    "updatedAt": "2026-08-26T11:42:32.619Z"
+    "updatedAt": "2026-09-08T15:52:23.384Z"
   },
   {
     "id": 1622,
@@ -2542,14 +2542,14 @@
     "discoveryHistory": "Described by Ebenezer Emmons in 1856.",
     "interestingFacts": "[\"6-meter aquatic archosaur.\", \"Raised nostril crest.\", \"Intermeshing fish-catching teeth.\"]",
     "sizeNotes": "Adult length ~6.0m, height ~0.9m, estimated weight ~500kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 6.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 0.9, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 500, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":5.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":500,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Emmons, E. (1856). Geol. Rep. N. Carolina.\", \"url\": \"https://archive.org/details/geologicalreport00emmo\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:04.304Z",
-    "updatedAt": "2026-08-26T11:42:36.603Z"
+    "updatedAt": "2026-09-08T15:52:23.430Z"
   },
   {
     "id": 1623,
@@ -2571,14 +2571,14 @@
     "discoveryHistory": "Described by Sankar Chatterjee in 1987 from Telangana, India.",
     "interestingFacts": "[\"One of oldest Indian dinosaurs.\", \"Heterogeneous teeth.\", \"Basal saurischian.\"]",
     "sizeNotes": "Adult length ~1.5m, height ~0.5m, estimated weight ~4kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 1.5, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 0.5, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 4, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.45,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Chatterjee, S. (1987). Novitates Museum.\", \"url\": \"https://hdl.handle.net/2246/3233\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:04.355Z",
-    "updatedAt": "2026-08-26T11:38:14.149Z"
+    "updatedAt": "2026-09-08T15:52:23.475Z"
   },
   {
     "id": 1624,
@@ -2600,14 +2600,14 @@
     "discoveryHistory": "Described by Fernando Novas et al. in 2011.",
     "interestingFacts": "[\"Unaysaurid plateosaurian.\", \"Asymmetric ankle bones.\", \"Gondwanan faunal interchange.\"]",
     "sizeNotes": "Adult length ~2.5m, height ~0.8m, estimated weight ~40kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 2.5, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 0.8, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 40, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":40,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Novas, F.E., et al. (2011). Zootaxa 3025.\", \"url\": \"https://doi.org/10.11646/zootaxa.3025.1.1\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:04.400Z",
-    "updatedAt": "2026-08-26T16:07:36.979Z"
+    "updatedAt": "2026-09-08T15:52:23.521Z"
   },
   {
     "id": 1625,
@@ -2629,14 +2629,14 @@
     "discoveryHistory": "Named by Novas et al. in 2011 from Pranhita-Godavari basin.",
     "interestingFacts": "[\"Guaibasaurid sauropodomorph.\", \"Red siltstone fossil beds.\", \"Evolutionary link to sauropods.\"]",
     "sizeNotes": "Adult length ~3.0m, height ~1.0m, estimated weight ~70kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 3.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 1.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 70, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":70,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Novas, F.E., et al. (2011). Zootaxa 3025.\", \"url\": \"https://doi.org/10.11646/zootaxa.3025.1.1\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:04.447Z",
-    "updatedAt": "2026-08-26T11:42:50.739Z"
+    "updatedAt": "2026-09-08T15:52:23.568Z"
   },
   {
     "id": 1626,
@@ -2658,14 +2658,14 @@
     "discoveryHistory": "Named by T.H. Huxley in 1875.",
     "interestingFacts": "[\"Highly complete phytosaur.\", \"Exhibited at ISI Kolkata.\", \"Raised nasal crest.\"]",
     "sizeNotes": "Adult length ~4.0m, height ~0.6m, estimated weight ~250kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 4.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 0.6, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 250, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":180,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Huxley, T.H. (1875). Q. J. Geol. Soc. Lond.\", \"url\": \"https://doi.org/10.1144/GSL.JGS.1875.031.01-04.29\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:04.490Z",
-    "updatedAt": "2026-08-26T11:42:57.591Z"
+    "updatedAt": "2026-09-08T15:52:23.621Z"
   },
   {
     "id": 1627,
@@ -2687,14 +2687,14 @@
     "discoveryHistory": "Described by D.H. Chowdhury in 1965.",
     "interestingFacts": "[\"Flat toilet-seat-shaped skull.\", \"Mass die-off drought deposits.\", \"Fully aquatic temnospondyl.\"]",
     "sizeNotes": "Adult length ~2.5m, height ~0.3m, estimated weight ~100kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 2.5, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 0.3, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 100, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":100,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Chowdhury, D.H. (1965). Phil. Trans. Roy. Soc. B.\", \"url\": \"https://doi.org/10.1098/rstb.1965.0019\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:04.535Z",
-    "updatedAt": "2026-08-26T11:43:03.466Z"
+    "updatedAt": "2026-09-08T15:52:23.667Z"
   },
   {
     "id": 1628,
@@ -2716,14 +2716,14 @@
     "discoveryHistory": "Described by S. Chatterjee in 1982.",
     "interestingFacts": "[\"Traversodontid cynodont.\", \"Secondary palate for chewing.\", \"Maternal care evidence.\"]",
     "sizeNotes": "Adult length ~1.8m, height ~0.6m, estimated weight ~80kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 1.8, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 0.6, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 80, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":80,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Chatterjee, S. (1982). Palaeontology.\", \"url\": \"https://www.palass.org\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:04.579Z",
-    "updatedAt": "2026-08-26T11:43:10.090Z"
+    "updatedAt": "2026-09-08T15:52:23.712Z"
   },
   {
     "id": 1629,
@@ -2745,14 +2745,14 @@
     "discoveryHistory": "Described by R. Lydekker in 1881.",
     "interestingFacts": "[\"Beaked rhynchosaur.\", \"Multiple tooth rows.\", \"Abundant Carnian herbivore.\"]",
     "sizeNotes": "Adult length ~1.3m, height ~0.4m, estimated weight ~30kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 1.3, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 0.4, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 30, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":30,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Lydekker, R. (1881). Mem. Geol. Surv. India.\", \"url\": \"https://archive.org/details/palaeontologiaindiana\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:04.628Z",
-    "updatedAt": "2026-08-26T16:11:00.742Z"
+    "updatedAt": "2026-09-08T15:52:23.779Z"
   },
   {
     "id": 1634,
@@ -2774,14 +2774,14 @@
     "discoveryHistory": "Discovered by Victorino Herrera in 1959.",
     "interestingFacts": "[\"Earliest apex predator dinosaur.\", \"Flexible lower jaw joint.\", \"Five-digit hands.\"]",
     "sizeNotes": "Adult length ~6.0m, height ~1.5m, estimated weight ~350kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 6.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 1.5, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 350, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":4.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":220,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Reig, O.A. (1963). Ameghiniana.\", \"url\": \"https://www.ameghiniana.org.ar\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:04.872Z",
-    "updatedAt": "2026-08-26T11:43:40.982Z"
+    "updatedAt": "2026-09-08T15:52:24.024Z"
   },
   {
     "id": 1635,
@@ -2802,15 +2802,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/1635-perfect-art.jpg\",\"type\":\"art\",\"credit\":\"Gonce (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Eoraptor_lunensis_real.jpg\"}]",
     "discoveryHistory": "Discovered by Ricardo Martinez in 1991.",
     "interestingFacts": "[\"One of the earliest true dinosaurs.\", \"Heterodont dentition.\", \"Lightweight runner.\"]",
-    "sizeNotes": "Adult length ~1.0m, height ~0.3m, estimated weight ~10kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 1.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 0.3, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 10, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeNotes": "Adult length ~1.0m, height ~0.3m, estimated weight ~10kg. Note: Complete holotype PVSJ 512 is 1.0 m long, hip height 0.3 m. Stored mass of 10 kg was an overestimate for a delicate 1m biped; authentic mass is 3.5–4.5 kg (representative 4.0 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Sereno, P.C., et al. (1993). Nature.\", \"url\": \"https://doi.org/10.1038/361064a0\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:04.918Z",
-    "updatedAt": "2026-08-26T11:43:53.114Z"
+    "updatedAt": "2026-09-08T15:52:24.069Z"
   },
   {
     "id": 1636,
@@ -2831,15 +2831,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/1636-perfect-art.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Sanjuansaurus_NT.jpg\"}]",
     "discoveryHistory": "Described by Alcober and Martinez in 2010.",
     "interestingFacts": "[\"Contemporaneous with Herrerasaurus.\", \"Elongated hindlimbs.\", \"Herrerasaurid diversity.\"]",
-    "sizeNotes": "Adult length ~3.0m, height ~1.0m, estimated weight ~100kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 3.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 1.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 100, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeNotes": "Adult length ~3.0m, height ~1.0m, estimated weight ~100kg. Note: Holotype PVSJ 605 confirms adult length 3.0–3.5 m (representative 3.2 m), hip height 1.0 m, mass ~100 kg.",
+    "sizeEstimate": "{\"length\":{\"value\":3.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":100,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Alcober, O.A. & Martinez, R.N. (2010). J. Vertebr. Paleontol.\", \"url\": \"https://doi.org/10.1080/02724634.2010.483540\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:04.969Z",
-    "updatedAt": "2026-08-26T11:43:58.419Z"
+    "updatedAt": "2026-09-08T15:52:24.125Z"
   },
   {
     "id": 1637,
@@ -2861,14 +2861,14 @@
     "discoveryHistory": "Described by Osvaldo Reig in 1959.",
     "interestingFacts": "[\"7-meter apex rauisuchian.\", \"1-meter deep skull.\", \"Pillar-erect hips.\"]",
     "sizeNotes": "Adult length ~7.0m, height ~1.8m, estimated weight ~1000kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 7.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 1.8, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 1000, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1100,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Reig, O.A. (1959). Rev. Assoc. Geol. Argent.\", \"url\": \"https://www.scielo.org.ar\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:05.015Z",
-    "updatedAt": "2026-08-26T11:44:06.099Z"
+    "updatedAt": "2026-09-08T15:52:24.173Z"
   },
   {
     "id": 1638,
@@ -2890,14 +2890,14 @@
     "discoveryHistory": "Named by W.D. Sill in 1970.",
     "interestingFacts": "[\"Scissor-like tooth plates.\", \"Beaked snout.\", \"Massively abundant.\"]",
     "sizeNotes": "Adult length ~1.4m, height ~0.5m, estimated weight ~40kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 1.4, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 0.5, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 40, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.45,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":35,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Sill, W.D. (1970). J. Paleontol.\", \"url\": \"https://www.jstor.org/stable/1302568\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:05.061Z",
-    "updatedAt": "2026-08-26T11:29:41.588Z"
+    "updatedAt": "2026-09-08T15:52:24.220Z"
   },
   {
     "id": 1639,
@@ -2919,14 +2919,14 @@
     "discoveryHistory": "Described by A. Cabrera in 1943.",
     "interestingFacts": "[\"Rodent-like incisors.\", \"Secondary palate.\", \"Mammal relative.\"]",
     "sizeNotes": "Adult length ~1.8m, height ~0.6m, estimated weight ~90kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 1.8, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 0.6, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 90, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":90,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Cabrera, A. (1943). Notas Mus. La Plata.\", \"url\": \"https://sedici.unlp.edu.ar\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:05.105Z",
-    "updatedAt": "2026-08-26T11:44:09.369Z"
+    "updatedAt": "2026-09-08T15:52:24.276Z"
   },
   {
     "id": 1645,
@@ -2948,14 +2948,14 @@
     "discoveryHistory": "Named by Haughton in 1924.",
     "interestingFacts": "[\"Quadrupedal early sauropodomorph.\", \"Massive weight-bearing limb bones.\", \"Found in Upper Elliot beds.\"]",
     "sizeNotes": "Adult length ~8.0m, height ~2.5m, estimated weight ~1300kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 8.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 2.5, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 1300, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Haughton, S.H. (1924). Ann. S. Afr. Mus.\", \"url\": \"https://commons.wikimedia.org\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:05.367Z",
-    "updatedAt": "2026-08-26T11:44:48.066Z"
+    "updatedAt": "2026-09-08T15:52:24.565Z"
   },
   {
     "id": 1646,
@@ -2976,15 +2976,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/1646-perfect-art.png\",\"type\":\"art\",\"credit\":\"Nobu Tamura (http://spinops.blogspot.com)\\n\\nAll illustrations on this site are copyrighted to Nobu Tamura. The low resolution versions of the images are licensed under Creative Commons Attribution-ShareAlike (CC BY-SA) license meaning that you are free to use them as long as you properly credit the author (© N. Tamura). High resolution versions are available upon request. (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Eocursor_BW_transparent.png\"}]",
     "discoveryHistory": "Described by Richard Butler et al. in 2007.",
     "interestingFacts": "[\"One of the earliest known ornithischian dinosaurs.\", \"Extremely long grasping hands.\", \"Fast agile bipedal runner.\"]",
-    "sizeNotes": "Adult length ~1.0m, height ~0.3m, estimated weight ~2kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 1.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 0.3, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 2, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeNotes": "Adult length ~1.0m, height ~0.3m, estimated weight ~2kg. Note: Complete holotype SAM-PK-K8025 confirms total length 1.0 m, hip height 0.3 m, mass ~2.0 kg.",
+    "sizeEstimate": "{\"length\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Butler, R.J., et al. (2007). Proc. R. Soc. B.\", \"url\": \"https://doi.org/10.1098/rspb.2007.0367\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:05.412Z",
-    "updatedAt": "2026-08-26T11:44:52.969Z"
+    "updatedAt": "2026-09-08T15:52:24.616Z"
   },
   {
     "id": 1653,
@@ -3006,14 +3006,14 @@
     "discoveryHistory": "Described by Huxley in 1859.",
     "interestingFacts": "[\"Surviving survivor of Permian-Triassic extinction.\", \"Made up over 95% of terrestrial vertebrates post-extinction.\", \"Barrel chest and tusked beak.\"]",
     "sizeNotes": "Adult length ~1.0m, height ~0.4m, estimated weight ~30kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 1.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 0.4, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 30, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":35,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Huxley, T.H. (1859). Q. J. Geol. Soc. Lond.\", \"url\": \"https://commons.wikimedia.org\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:05.755Z",
-    "updatedAt": "2026-08-26T11:29:55.023Z"
+    "updatedAt": "2026-09-08T15:52:24.935Z"
   },
   {
     "id": 2035,
@@ -3035,14 +3035,14 @@
     "discoveryHistory": "Named by M.G. Mehl in 1915.",
     "interestingFacts": "[\"Bipedal pseudosuchian archosaur.\", \"Convergent evolution with theropod posture.\", \"Found in Chinle and Popo Agie beds.\"]",
     "sizeNotes": "Adult length ~4.0m, height ~1.2m, estimated weight ~100kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 4.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 1.2, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 100, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":100,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Mehl, M.G. (1915). J. Geol.\", \"url\": \"https://doi.org/10.1086/622227\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T14:02:57.226Z",
-    "updatedAt": "2026-08-26T16:20:07.150Z"
+    "updatedAt": "2026-09-08T15:37:19.326Z"
   },
   {
     "id": 2042,
@@ -3064,14 +3064,14 @@
     "discoveryHistory": "Described by Rodolfo Casamiquela in 1967.",
     "interestingFacts": "[\"Earliest known ornithischian dinosaur.\", \"Slender bipedal runner.\", \"Key evolutionary link.\"]",
     "sizeNotes": "Adult length ~1.0m, height ~0.3m, estimated weight ~5kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 1.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 0.3, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 5, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"estimated\"},\"height\":{\"value\":0.3,\"unit\":\"m\",\"confidence\":\"estimated\"},\"weight\":{\"value\":3,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Casamiquela, R.M. (1967). Ameghiniana.\", \"url\": \"https://www.ameghiniana.org.ar\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T14:02:57.522Z",
-    "updatedAt": "2026-08-26T16:14:06.198Z"
+    "updatedAt": "2026-09-08T15:37:19.637Z"
   },
   {
     "id": 2483,
@@ -3093,14 +3093,14 @@
     "discoveryHistory": "Described by Galton and van Heerden in 1985.",
     "interestingFacts": "[\"Heavy stocky quadrupedal sauropodomorph lower limb.\", \"Found in Lower Elliot Formation.\", \"Early stage of sauropod gigantism.\"]",
     "sizeNotes": "Adult length ~5.0m, height ~1.5m, estimated weight ~500kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 5.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 1.5, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 500, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":550,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Galton, P.M. & van Heerden, J. (1985). Chimaira.\", \"url\": \"https://commons.wikimedia.org\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T14:11:38.468Z",
-    "updatedAt": "2026-08-26T11:56:29.191Z"
+    "updatedAt": "2026-09-08T15:37:22.082Z"
   },
   {
     "id": 3161,
@@ -3122,13 +3122,13 @@
     "discoveryHistory": "• First described by Christian Erich Hermann von Meyer in 1858.\n• Complete articulated specimens recovered from the Italian Alps (Zorzino Limestone).\n• Represents one of the last surviving placodonts before the end-Triassic extinction.",
     "interestingFacts": "[\"Superficially resembled a marine turtle but belonged to the extinct placodont order of sauropterygians.\",\"Had two distinct protective carapace shields: one covering the shoulders/chest and a smaller one over the pelvis.\",\"Possessed toothless, narrow beaked jaws lined internally with flat, pavement-like crushing plates.\"]",
     "sizeNotes": "Turtle-like marine placodont with a flattened, armored body split into two shields.",
-    "sizeEstimate": "{\"length\":{\"value\":1.8,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.3,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":50,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":45,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": "Triassic-Jurassic Extinction Event",
     "closestLivingRelatives": "[\"Modern Squamates & Archosaurs\"]",
     "sources": "[{\"citation\":\"Rieppel, O. (2002). The skull of Psephoderma alpinum Meyer, 1858 (Reptilia: Placodontia). Fieldiana Geology.\",\"url\":\"https://doi.org/10.5962/bhl.title.5369\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.057Z",
-    "updatedAt": "2026-08-28T15:30:15.497Z"
+    "updatedAt": "2026-09-08T15:37:23.268Z"
   }
 ]

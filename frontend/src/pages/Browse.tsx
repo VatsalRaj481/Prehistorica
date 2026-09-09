@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion, Variants } from 'framer-motion';
 import { fetchSpecies, Species } from '../services/api.js';
-import ThreeDFossilStarfield from '../components/ThreeDFossilStarfield.js';
 import SpotlightCard from '../components/SpotlightCard.js';
 import SpecimenThumbnail from '../components/SpecimenThumbnail.js';
 import { SlidersHorizontal, ArrowRight, Info, X, ChevronLeft, ChevronRight, Filter } from 'lucide-react';
@@ -209,9 +208,6 @@ export default function Browse() {
 
   return (
     <div className="space-y-6 relative">
-      {/* 3D Particle Fossil Background */}
-      <ThreeDFossilStarfield />
-
       {/* Header Bar */}
       <motion.div
         initial={shouldReduceMotion ? false : { opacity: 0, y: -8 }}
@@ -431,7 +427,7 @@ export default function Browse() {
           initial={shouldReduceMotion ? false : { opacity: 0, x: -12 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ type: 'spring', stiffness: 350, damping: 28 }}
-          className="hidden lg:block lg:col-span-1 glass-panel rounded-xl p-5 border border-white/[0.08] shadow-xl space-y-5 h-fit font-mono text-xs"
+          className="hidden lg:block lg:col-span-1 museum-plinth rounded-xl p-5 border border-white/[0.08] shadow-xl space-y-5 h-fit font-mono text-xs"
         >
           <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
             <div className="flex items-center gap-2">
@@ -586,7 +582,7 @@ export default function Browse() {
                 initial={shouldReduceMotion ? false : { opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                className="flex flex-wrap items-center gap-2 p-3 glass-panel rounded-xl border border-white/[0.08] text-xs font-mono overflow-hidden shadow-md"
+                className="flex flex-wrap items-center gap-2 p-3 museum-plinth rounded-xl border border-white/[0.08] text-xs font-mono overflow-hidden shadow-md"
               >
                 <span className="text-slate-400 font-bold uppercase tracking-widest text-[10px]">Active Filters:</span>
                 {search && (
@@ -701,7 +697,7 @@ export default function Browse() {
               ))}
             </div>
           ) : error ? (
-            <div className="glass-panel rounded-xl border border-red-500/30 p-8 text-center text-red-400 text-xs font-mono">
+            <div className="museum-plinth rounded-xl border border-red-500/30 p-8 text-center text-red-400 text-xs font-mono">
               {error}
             </div>
           ) : speciesList.length === 0 ? (
@@ -709,7 +705,7 @@ export default function Browse() {
               initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-              className="glass-panel rounded-xl border border-white/[0.08] p-16 text-center text-slate-400 flex flex-col items-center gap-3 font-mono shadow-2xl"
+              className="museum-plinth rounded-xl border border-white/[0.08] p-16 text-center text-slate-400 flex flex-col items-center gap-3 font-mono shadow-2xl"
             >
               <Info className="h-10 w-10 text-amber-400" />
               <p className="font-bold text-slate-200 uppercase tracking-widest text-sm font-sans">No Specimen Records Located</p>

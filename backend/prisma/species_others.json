@@ -19,14 +19,14 @@
     "discoveryHistory": "• Discovered by Joseph Whiteaves in 1892 in the Burgess Shale.\n• Initially its parts were thought to be three separate animals (a shrimp, a jellyfish, and a sponge).\n• Reconstructed correctly by Harry Whittington and Derek Briggs in the 1980s.",
     "interestingFacts": "[\"It was one of the earliest known apex predators, dominating Cambrian seas.\",\"It had highly developed compound eyes with thousands of lenses.\",\"It used flexible lobes on its body sides to swim.\"]",
     "sizeNotes": "Estimated at 1 to 2 kg body mass; length excludes tail filaments.",
-    "sizeEstimate": "{\"length\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1.5,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":0.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.12,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1.2,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Anomalocaris canadensis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Anomalocaris%20canadensis\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:35.387Z",
-    "updatedAt": "2026-08-27T08:36:19.563Z"
+    "updatedAt": "2026-09-08T15:52:05.362Z"
   },
   {
     "id": 2,
@@ -48,14 +48,14 @@
     "discoveryHistory": "• Found in the Burgess Shale and first described by Charles Walcott in 1911.\n• Simon Conway Morris redescribed it in 1977, famously reconstructing it upside-down and backward.\n• Later studies correctly identified its legs and back spines, linking it to modern velvet worms.",
     "interestingFacts": "[\"Its strange appearance baffled scientists for decades, leading to its name.\",\"It defended itself with rigid pairs of spines along its back.\",\"It belongs to the lobopodians, an ancient group of 'worm-like' animals with legs.\"]",
     "sizeNotes": "Extremely small, ranging from 0.5 to 5.5 cm in length.",
-    "sizeEstimate": "{\"length\":{\"value\":0.05,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.02,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.005,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":0.035,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.015,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.001,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Hallucigenia sparsa description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Hallucigenia%20sparsa\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:35.719Z",
-    "updatedAt": "2026-08-27T08:36:19.622Z"
+    "updatedAt": "2026-09-08T15:52:05.458Z"
   },
   {
     "id": 3,
@@ -77,14 +77,14 @@
     "discoveryHistory": "• Discovered in the Burgess Shale by Charles Walcott in 1912.\n• Its bizarre anatomy led to laughter when Harry Whittington presented a reconstruction in 1975.\n• It is an important fossil for understanding the early evolution of arthropods.",
     "interestingFacts": "[\"It had five stalked eyes, granting it a near 360-degree field of vision.\",\"It fed using a flexible, hose-like proboscis tipped with grasping claws.\",\"Unlike many of its contemporaries, it lacked jointed legs, swimming with lateral lobes.\"]",
     "sizeNotes": "Typically 4 to 7 cm in length, excluding the proboscis.",
-    "sizeEstimate": "{\"length\":{\"value\":0.07,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.02,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.01,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":0.07,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.02,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.005,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Opabinia regalis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Opabinia%20regalis\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:35.880Z",
-    "updatedAt": "2026-08-27T08:36:19.679Z"
+    "updatedAt": "2026-09-08T15:52:05.505Z"
   },
   {
     "id": 4,
@@ -106,14 +106,14 @@
     "discoveryHistory": "• First discovered by Jay Terrell in 1867 in the Cleveland Shale, Ohio.\n• Later named Dunkleosteus in 1956 to honor paleontologist David Dunkle.\n• Complete skulls have rarely been found, but its massive armored head plates are iconic.",
     "interestingFacts": "[\"Instead of teeth, it possessed self-sharpening bony plates that functioned like shears.\",\"It had an incredibly powerful bite, capable of crushing armor-plated prey.\",\"It could open its jaws in a fraction of a second to create a vacuum and suck in prey.\"]",
     "sizeNotes": "Recent studies suggest length estimates might be shorter (around 4.1 meters) due to placoderm body ratios.",
-    "sizeEstimate": "{\"length\":{\"value\":8.79,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":4.1,\"unit\":\"m\",\"confidence\":\"disputed\"},\"height\":{\"value\":1.4,\"unit\":\"m\",\"confidence\":\"disputed\"},\"weight\":{\"value\":1600,\"unit\":\"kg\",\"confidence\":\"disputed\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Dunkleosteus terrelli description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Dunkleosteus%20terrelli\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:36.044Z",
-    "updatedAt": "2026-08-27T08:41:10.277Z"
+    "updatedAt": "2026-09-08T15:52:05.553Z"
   },
   {
     "id": 5,
@@ -135,14 +135,14 @@
     "discoveryHistory": "• Discovered in 2004 on Ellesmere Island, Canada, by a team led by Neil Shubin.\n• Named 'Tiktaalik', meaning 'burbot' in the Inuktitut language, following suggestions from Inuit elders.\n• It is considered one of the most significant 'missing links' between fish and land animals.",
     "interestingFacts": "[\"It possessed primitive wrists and fingers capable of supporting its weight in shallow water.\",\"Unlike typical fish, it had a mobile neck allowing it to turn its head independently.\",\"It had both gills for breathing underwater and lungs for breathing air.\"]",
     "sizeNotes": "Ranged from 1.25 to 2.75 meters (4 to 9 feet) in length.",
-    "sizeEstimate": "{\"length\":{\"value\":2.75,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":30,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.35,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":35,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Tiktaalik roseae description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Tiktaalik%20roseae\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:36.212Z",
-    "updatedAt": "2026-08-27T08:36:19.786Z"
+    "updatedAt": "2026-09-08T15:52:05.600Z"
   },
   {
     "id": 6,
@@ -164,14 +164,14 @@
     "discoveryHistory": "• First discovered in East Greenland during an expedition in 1929.\n• Described by Gunnar Säve-Söderbergh in 1932.\n• Known as one of the first tetrapods in the fossil record, marking the transition to land.",
     "interestingFacts": "[\"It had seven toes on its hind limbs, showing that early tetrapods did not strictly have five digits.\",\"It likely moved on land similarly to modern mudskippers, pulling itself with front limbs.\",\"Its ribcage was robust, protecting its internal organs when out of the water.\"]",
     "sizeNotes": "Estimated length of 1.5 meters (5 feet). Highly robust body skeleton.",
-    "sizeEstimate": "{\"length\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":25,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.35,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":25,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Ichthyostega stensioei description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Ichthyostega%20stensioei\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:36.375Z",
-    "updatedAt": "2026-08-27T08:41:10.173Z"
+    "updatedAt": "2026-09-08T15:52:05.648Z"
   },
   {
     "id": 7,
@@ -193,14 +193,14 @@
     "discoveryHistory": "• Initially described in 1854 based on fragmentary fossils from Germany.\n• A massive, nearly complete specimen was found in England in 2018.\n• Trackways attributed to it have been found in multiple locations across Europe and North America.",
     "interestingFacts": "[\"It is the largest known land invertebrate in Earth's history.\",\"Its colossal size was enabled by the high oxygen levels of the Carboniferous atmosphere.\",\"Despite its fearsome appearance, it was a herbivore that fed on rotting plant matter.\"]",
     "sizeNotes": "Ranged from 0.3 to 2.6 meters long; estimated weight up to 50 kg.",
-    "sizeEstimate": "{\"length\":{\"value\":2.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":50,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.25,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":50,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Arthropleura armata description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Arthropleura%20armata\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:36.914Z",
-    "updatedAt": "2026-08-28T15:16:45.788Z"
+    "updatedAt": "2026-09-08T15:52:05.696Z"
   },
   {
     "id": 8,
@@ -221,15 +221,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/8-Meganeura.png\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/0/08/Meganeura_monyi_wings_Brongniart_1893.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/ed/Meganeura_monyi_au_Museum_de_Toulouse.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/e/ed/Meganeura_monyi_au_Museum_de_Toulouse.jpg\"}]",
     "discoveryHistory": "• First discovered in the coal measures of Commentry, France, in 1880.\n• Described by Charles Brongniart in 1885.\n• Further discoveries have cemented its status as one of the largest flying insects ever.",
     "interestingFacts": "[\"It is closely related to modern dragonflies but belongs to an extinct group called griffinflies.\",\"Its wingspan could reach over 70 centimeters (28 inches).\",\"It was an agile aerial predator that hunted other insects and possibly small amphibians.\"]",
-    "sizeNotes": "Wingspan: 65 to 71 cm; body length: ~43 cm. Weight estimates range from 100 to 200 grams.",
-    "sizeEstimate": "{\"length\":{\"value\":0.43,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.15,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Wingspan: 65 to 71 cm; body length: ~43 cm. Weight estimates range from 100 to 200 grams. Note: Wingspan ~65–71 cm, total body length 43 cm, body mass 150 g (0.15 kg). Stored values match consensus.",
+    "sizeEstimate": "{\"length\":{\"value\":0.43,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.15,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Meganeura monyi description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Meganeura%20monyi\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.335Z",
-    "updatedAt": "2026-08-27T08:36:19.939Z"
+    "updatedAt": "2026-09-08T15:52:05.744Z"
   },
   {
     "id": 9,
@@ -251,14 +251,14 @@
     "discoveryHistory": "• Named by Edward Drinker Cope in 1878 during the 'Bone Wars'.\n• Abundant fossils have been excavated from the Red Beds of Texas.\n• It is one of the most thoroughly studied of all early synapsids.",
     "interestingFacts": "[\"Though often confused with dinosaurs, it lived millions of years earlier and is closer to mammals.\",\"Its iconic sail was likely used for thermoregulation or mating displays.\",\"It had two distinct types of teeth in its jaws, a trait common to later mammals.\"]",
     "sizeNotes": "Ranged from 1.7 to 4.6 meters long across various species; D. grandis was one of the largest.",
-    "sizeEstimate": "{\"length\":{\"value\":3.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":200,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":250,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Dimetrodon grandis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Dimetrodon%20grandis\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.384Z",
-    "updatedAt": "2026-08-27T08:36:19.991Z"
+    "updatedAt": "2026-09-08T15:52:05.793Z"
   },
   {
     "id": 10,
@@ -280,14 +280,14 @@
     "discoveryHistory": "• Discovered in Texas and described by Edward Drinker Cope in 1882.\n• One of the first large, terrestrial herbivores known to science.\n• Notable for its highly specialized feeding apparatus compared to contemporary predators.",
     "interestingFacts": "[\"It possessed a large sail supported by vertebral spines featuring unique crossbars.\",\"Its mouth was filled with peg-like teeth forming plates for crushing tough plants.\",\"It had a disproportionately small head compared to its massive, barrel-shaped body.\"]",
     "sizeNotes": "Ranged from 1 to 3.5 meters in length. Weight reached up to 300 kg.",
-    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":300,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":300,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Edaphosaurus pogonias description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Edaphosaurus%20pogonias\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.428Z",
-    "updatedAt": "2026-08-27T08:36:20.048Z"
+    "updatedAt": "2026-09-08T15:52:05.839Z"
   },
   {
     "id": 11,
@@ -305,18 +305,19 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"United States\",\"fossilFormation\":\"Phosphoria Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Eugenodontida\",\"order\":\"Helicoprionidae\",\"family\":\"Helicoprionidae\",\"genus\":\"Helicoprion\",\"species\":\"Helicoprion bessonowi\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/11-Helicoprion.png\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/7/79/Karpinsky_1899_Helicoprion_bessonowi_Fig._73.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/b/be/Helicoprion_tooth_whorl.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/b/be/Helicoprion_tooth_whorl.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/4/43/Helicoprion_bessonovi1DB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Helicoprion_bessonovi1DB.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/11-Helicoprion.png\",\"type\":\"scientific_figure\",\"credit\":\"Alexander Karpinsky (1899, Public Domain)\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/7/79/Karpinsky_1899_Helicoprion_bessonowi_Fig._73.png\"}]",
     "discoveryHistory": "• First described by Alexander Karpinsky in 1899 from Russian fossils.\n• The exact placement of its bizarre tooth whorl debated for over a century.\n• A 2013 CT scan of a specimen finally confirmed the whorl fit within its lower jaw.",
     "interestingFacts": "[\"It retained old teeth, curling them into a spiral instead of shedding them.\",\"It belongs to the eugenodonts, a group of cartilaginous fish closer to ratfish than true sharks.\",\"Its jaw mechanism sliced through soft-bodied prey like a circular saw.\"]",
     "sizeNotes": "Estimates range from 5 to 8 meters (16 to 26 feet) based on tooth whorl proportions.",
-    "sizeEstimate": "{\"length\":{\"value\":6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":450,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":7.5,\"unit\":\"m\",\"confidence\":\"estimated\"},\"height\":{\"value\":1.8,\"unit\":\"m\",\"confidence\":\"estimated\"},\"weight\":{\"value\":700,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Helicoprion bessonowi description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Helicoprion%20bessonowi\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.472Z",
-    "updatedAt": "2026-08-27T08:36:20.105Z"
+    "updatedAt": "2026-09-09T15:07:44.411Z",
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/2dc67937-9756-4639-91d1-77f5d748fe9e.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/2dc67937-9756-4639-91d1-77f5d748fe9e\",\"license\":\"Attribution 4.0 International\",\"credit\":\"Olof Moleman\",\"taxon\":\"Helicoprion\",\"taxonMatch\":\"generic approximation, not species-specific\"}"
   },
   {
     "id": 12,
@@ -338,14 +339,14 @@
     "discoveryHistory": "• Found by Vladimir Amalitsky near the Northern Dvina River in Russia in the 1890s.\n• Named posthumously in 1921.\n• It represents one of the most specialized and armored pareiasaurs discovered.",
     "interestingFacts": "[\"Its body was covered in bony plates called osteoderms for defense.\",\"It walked with its legs positioned more vertically under its body, unusual for Permian reptiles.\",\"It had a massive ribcage to house a large digestive tract for processing fibrous plants.\"]",
     "sizeNotes": "Grew up to 3 meters (10 feet) long, weighing around 1 metric ton.",
-    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1100,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Scutosaurus karpinskii description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Scutosaurus%20karpinskii\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.518Z",
-    "updatedAt": "2026-08-27T08:36:20.157Z"
+    "updatedAt": "2026-09-08T15:52:05.935Z"
   },
   {
     "id": 13,
@@ -367,14 +368,14 @@
     "discoveryHistory": "• Discovered in northern Russia by Vladimir Amalitsky in the late 19th century.\n• Described formally in 1922.\n• In 2023, fossils were found in South Africa, demonstrating a vast geographic range.",
     "interestingFacts": "[\"It was the largest of the gorgonopsians, early predatory relatives of mammals.\",\"It wielded massive saber-like canine teeth for hunting large, thick-skinned prey.\",\"It could open its jaws incredibly wide to utilize its impressive fangs.\"]",
     "sizeNotes": "Total length reached up to 3.5 meters (11.5 feet), with a skull length of 50 cm.",
-    "sizeEstimate": "{\"length\":{\"value\":3.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":300,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":400,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Inostrancevia alexandri description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Inostrancevia%20alexandri\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.562Z",
-    "updatedAt": "2026-08-27T08:36:20.205Z"
+    "updatedAt": "2026-09-08T15:52:05.983Z"
   },
   {
     "id": 34,
@@ -396,14 +397,14 @@
     "discoveryHistory": "• Discovered in 1855 near Paris by Gaston Planté.\n• Known for a long time under the synonym 'Diatryma' in North America.\n• Once thought to be a top predator, modern analysis of its remains indicates it was herbivorous.",
     "interestingFacts": "[\"Despite its intimidating beak, isotopic evidence suggests it fed on tough plants and seeds.\",\"It was completely flightless but possessed strong, muscular legs.\",\"It lived in dense forests during the warm climate of the early Eocene.\"]",
     "sizeNotes": "Grew up to 2 meters (6.6 feet) tall; weight ranged from 150 to 200 kg.",
-    "sizeEstimate": "{\"length\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":175,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":175,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Gastornis parisiensis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Gastornis%20parisiensis\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:38.517Z",
-    "updatedAt": "2026-08-27T08:41:09.842Z"
+    "updatedAt": "2026-09-08T15:52:06.960Z"
   },
   {
     "id": 35,
@@ -425,14 +426,14 @@
     "discoveryHistory": "• Initial discoveries in the US were so common the bones were used as fireplace supports.\n• Described initially as a giant reptile ('king lizard') by Richard Harlan in 1834.\n• Richard Owen correctly identified it as an early whale in 1839.",
     "interestingFacts": "[\"It was a primitive whale that maintained tiny, non-functional hind legs.\",\"Its body was unusually elongated and serpentine compared to modern whales.\",\"It could not echolocate and relied on good eyesight and hearing to hunt.\"]",
     "sizeNotes": "Elongated body shape. Length: 15 to 20 meters. Weight: ~5 to 7 metric tons.",
-    "sizeEstimate": "{\"length\":{\"value\":18,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":6000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":18,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":6000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Basilosaurus cetoides description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Basilosaurus%20cetoides\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:38.562Z",
-    "updatedAt": "2026-08-27T08:36:20.314Z"
+    "updatedAt": "2026-09-08T15:52:07.006Z"
   },
   {
     "id": 36,
@@ -454,14 +455,14 @@
     "discoveryHistory": "• Its fossilized teeth were originally thought to be the petrified tongues of dragons.\n• Nicolas Steno correctly identified them as shark teeth in 1667.\n• Louis Agassiz gave it the scientific name meaning 'giant tooth' in 1843.",
     "interestingFacts": "[\"It was the largest predatory shark known to have existed.\",\"Because its skeleton was made of cartilage, primarily only its teeth and vertebrae fossilized.\",\"It preyed heavily on small whales, and its extinction coincided with a cooling climate.\"]",
     "sizeNotes": "Estimates range from 15 to 20 meters (50 to 65 feet); weight estimates range from 30 to 65 metric tons.",
-    "sizeEstimate": "{\"length\":{\"value\":16,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":48000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":16,\"unit\":\"m\",\"confidence\":\"disputed\"},\"height\":{\"value\":3.5,\"unit\":\"m\",\"confidence\":\"disputed\"},\"weight\":{\"value\":48000,\"unit\":\"kg\",\"confidence\":\"disputed\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Otodus megalodon description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Megalodon\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:38.605Z",
-    "updatedAt": "2026-08-27T08:36:20.365Z"
+    "updatedAt": "2026-09-08T15:52:07.056Z"
   },
   {
     "id": 37,
@@ -483,14 +484,14 @@
     "discoveryHistory": "• Described by Joseph Leidy in 1869 from fossils found in Texas.\n• Thousands of skeletons have been recovered from the La Brea Tar Pits in California.\n• It is arguably the most famous extinct mammal aside from the woolly mammoth.",
     "interestingFacts": "[\"Its iconic saber teeth could reach up to 7 inches in length.\",\"It had a weaker bite force than a modern lion but robust forelimbs to pin prey.\",\"Its jaws could open up to 120 degrees to clear its massive fangs for a bite.\"]",
     "sizeNotes": "Length: 1.75 meters (excluding short tail); height: 1.0 meter at shoulder. Weight: 160 to 280 kg.",
-    "sizeEstimate": "{\"length\":{\"value\":1.75,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":220,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1.75,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":220,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Smilodon fatalis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Smilodon%20fatalis\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:38.651Z",
-    "updatedAt": "2026-08-27T08:41:09.555Z"
+    "updatedAt": "2026-09-08T15:52:07.103Z"
   },
   {
     "id": 38,
@@ -512,14 +513,14 @@
     "discoveryHistory": "• Scientifically described by Johann Friedrich Blumenbach in 1799.\n• Spectacular mummified remains have been found preserved in the Siberian permafrost.\n• Known from extensive interactions with early humans, documented in cave art.",
     "interestingFacts": "[\"It had a specialized double coat of hair and a thick layer of fat for insulation.\",\"Its ears were much smaller than those of modern elephants to prevent heat loss.\",\"Its massive, curved tusks were likely used to sweep away snow to reach vegetation.\"]",
     "sizeNotes": "Males stood 2.7 to 3.4 meters tall at the shoulder; females were smaller. Weight: 4 to 6 metric tons.",
-    "sizeEstimate": "{\"length\":{\"value\":4.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":5000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":4.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":5000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Mammuthus primigenius description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Mammuthus%20primigenius\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:38.693Z",
-    "updatedAt": "2026-08-27T08:41:09.938Z"
+    "updatedAt": "2026-09-08T15:52:07.149Z"
   },
   {
     "id": 39,
@@ -541,14 +542,14 @@
     "discoveryHistory": "• First discovered in Argentina in 1788 by Manuel Torres.\n• Described by the famous naturalist Georges Cuvier in 1796.\n• It was one of the first prehistoric mammals to be reconstructed and exhibited.",
     "interestingFacts": "[\"It was a giant ground sloth that reached the size of an elephant.\",\"It possessed massive claws used for stripping leaves from branches, not for hunting.\",\"It could rear up on its hind legs, using its heavy tail as a tripod for balance.\"]",
     "sizeNotes": "Total length reached up to 6 meters (20 feet) from head to tail; weighed around 4 metric tons.",
-    "sizeEstimate": "{\"length\":{\"value\":6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":4000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Megatherium americanum description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Megatherium%20americanum\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:38.737Z",
-    "updatedAt": "2026-08-27T08:36:20.517Z"
+    "updatedAt": "2026-09-08T15:52:07.194Z"
   },
   {
     "id": 40,
@@ -570,14 +571,14 @@
     "discoveryHistory": "• First formally described by Johann Friedrich Blumenbach in 1799.\n• Numerous mummified specimens have been found frozen in Siberia.\n• Perfectly preserved specimens have even been found in oil seeps in Poland.",
     "interestingFacts": "[\"It was a large, woolly rhinoceros adapted to the cold Pleistocene environment.\",\"It had a massive, flattened front horn used for clearing snow from the ground.\",\"It is frequently depicted in Paleolithic European cave paintings.\"]",
     "sizeNotes": "Grew up to 3.8 meters (12 feet) in length; stood 2.0 meters tall. Weight: ~1.8 to 2.7 metric tons.",
-    "sizeEstimate": "{\"length\":{\"value\":3.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2300,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2200,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Coelodonta antiquitatis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Coelodonta%20antiquitatis\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:38.779Z",
-    "updatedAt": "2026-08-27T08:36:20.567Z"
+    "updatedAt": "2026-09-08T15:52:07.241Z"
   },
   {
     "id": 41,
@@ -599,14 +600,14 @@
     "discoveryHistory": "• Described by Richard Owen in 1874 from fossils found in Argentina.\n• It is one of the best-known members of the glyptodont family.\n• Early humans coexisted with it and may have hunted it for meat and its large shell.",
     "interestingFacts": "[\"It was a massive relative of the armadillo, heavily armored with a bony carapace.\",\"It defended itself with a spiked, club-like tail reminiscent of a medieval mace.\",\"Its rigid shell meant it could not roll into a ball like some modern armadillos.\"]",
     "sizeNotes": "Total length was 4.0 meters; shell height was 1.5 meters. Weighed about 1.4 metric tons.",
-    "sizeEstimate": "{\"length\":{\"value\":4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1400,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1400,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Doedicurus clavicaudatus description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Doedicurus%20clavicaudatus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:38.823Z",
-    "updatedAt": "2026-08-27T08:36:20.625Z"
+    "updatedAt": "2026-09-08T15:52:07.293Z"
   },
   {
     "id": 42,
@@ -628,14 +629,14 @@
     "discoveryHistory": "• First described by Richard Owen in 1859 from fragmented remains.\n• A nearly complete skeleton discovered in 2002 offered unprecedented insight into its anatomy.\n• Known from fossils across the Australian continent.",
     "interestingFacts": "[\"It is the largest known carnivorous marsupial from Australia.\",\"It had massive, blade-like premolars designed to shear through meat and bone.\",\"It featured a unique, semi-opposable thumb claw to grapple with large prey.\"]",
     "sizeNotes": "Stood 75 cm at shoulder; length 1.5 meters. Weighed 90 to 130 kg, comparable to a small female lion.",
-    "sizeEstimate": "{\"length\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.75,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":110,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.75,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":110,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Thylacoleo carnifex description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Thylacoleo%20carnifex\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:38.864Z",
-    "updatedAt": "2026-08-27T08:36:20.677Z"
+    "updatedAt": "2026-09-08T15:52:07.342Z"
   },
   {
     "id": 43,
@@ -657,14 +658,14 @@
     "discoveryHistory": "• First discovered in the Wellington Caves of New South Wales in the 1830s.\n• Described by Richard Owen in 1838.\n• Trackways reveal they moved in large herds across the Australian interior.",
     "interestingFacts": "[\"It is the largest marsupial ever discovered, comparable in size to a rhinoceros.\",\"Like modern wombats, females had a backward-facing pouch.\",\"It migrated vast distances in search of water and food during the Pleistocene.\"]",
     "sizeNotes": "Length: ~3.8 meters; height at shoulder: 2.0 meters. Weighed up to 2.8 metric tons.",
-    "sizeEstimate": "{\"length\":{\"value\":3.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2800,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2800,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Diprotodon optatum description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Diprotodon%20optatum\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:38.912Z",
-    "updatedAt": "2026-08-27T08:36:20.737Z"
+    "updatedAt": "2026-09-08T15:52:07.390Z"
   },
   {
     "id": 567,
@@ -686,14 +687,14 @@
     "discoveryHistory": "Discovered by Charles Walcott in 1911 in the Burgess Shale.",
     "interestingFacts": "[\"One of the earliest known primitive chordates, a potential ancestor of all vertebrates.\",\"Possessed a proto-backbone called a notochord.\"]",
     "sizeNotes": "Grew up to 5 centimeters in length.",
-    "sizeEstimate": "{\"length\":{\"value\":0.05,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.01,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.005,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":0.045,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.008,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.001,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Pikaia gracilens description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Pikaia%20gracilens\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:09.984Z",
-    "updatedAt": "2026-08-27T08:36:20.795Z"
+    "updatedAt": "2026-09-08T15:52:21.865Z"
   },
   {
     "id": 568,
@@ -715,14 +716,14 @@
     "discoveryHistory": "First found in 1899 as a single spine; full specimens found by Walcott in 1911.",
     "interestingFacts": "[\"Body covered in scales (sclerites) and long defensive spines.\",\"Crept along the seafloor using a slug-like foot.\"]",
     "sizeNotes": "Excluding spines, body length was around 5 cm.",
-    "sizeEstimate": "{\"length\":{\"value\":0.05,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.02,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.01,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":0.04,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.015,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.003,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Wiwaxia corrugata description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Wiwaxia%20corrugata\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:10.068Z",
-    "updatedAt": "2026-08-27T08:36:20.846Z"
+    "updatedAt": "2026-09-08T15:52:21.929Z"
   },
   {
     "id": 569,
@@ -744,14 +745,14 @@
     "discoveryHistory": "Discovered in Miguasha, Quebec, and described by Whiteaves in 1880.",
     "interestingFacts": "[\"Most widely distributed placoderm genus in the fossil record.\",\"Had heavily armored pectoral fins that could walk on muddy beds.\"]",
     "sizeNotes": "Average length around 30 centimeters.",
-    "sizeEstimate": "{\"length\":{\"value\":0.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.5,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":0.35,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.6,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Bothriolepis canadensis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Bothriolepis%20canadensis\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:10.112Z",
-    "updatedAt": "2026-08-27T08:36:20.902Z"
+    "updatedAt": "2026-09-08T15:52:21.990Z"
   },
   {
     "id": 570,
@@ -772,15 +773,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/570-Eusthenopteron.png\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/b/b2/Eusthenopteron_foordi.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/7/73/Eusthenopteron_Foordi._Whiteaves._Wellcome_M0006812.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/7/73/Eusthenopteron_Foordi._Whiteaves._Wellcome_M0006812.jpg\"}]",
     "discoveryHistory": "Named by J.F. Whiteaves in 1881 based on Miguasha specimens.",
     "interestingFacts": "[\"A famous lobe-finned fish showing the transition from fish to land vertebrates.\",\"Internal fin bones directly correlate to limb bones of tetrapods.\"]",
-    "sizeNotes": "Standard length between 0.8 and 1.2 meters.",
-    "sizeEstimate": "{\"length\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Standard length between 0.8 and 1.2 meters. Note: Stored 1m / 3kg was a subadult figure. Fully grown adult *Eusthenopteron* specimens reached 1.5–1.8 m in length (representative 1.5 m), body depth 25 cm, mass ~12–18 kg (representative 15 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.25,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":15,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Eusthenopteron foordi description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Eusthenopteron%20foordi\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:10.157Z",
-    "updatedAt": "2026-08-27T08:36:20.951Z"
+    "updatedAt": "2026-09-08T15:52:22.034Z"
   },
   {
     "id": 571,
@@ -801,15 +802,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/571-Hylonomus.svg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Hylonomus_lyelli_DB.jpg\"}]",
     "discoveryHistory": "Discovered by John William Dawson in Nova Scotia inside fossilized tree trunks in 1852.",
     "interestingFacts": "[\"The earliest known undisputed reptile in Earth's history.\",\"Laid amniotic eggs on dry land, breaking dependency on water.\"]",
-    "sizeNotes": "Total length including tail was about 20 centimeters.",
-    "sizeEstimate": "{\"length\":{\"value\":0.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.05,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.1,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Total length including tail was about 20 centimeters. Note: The earliest undisputed reptile: total length ~20 cm (0.2 m), hip height 4 cm, mass ~40–60 grams (representative 0.05 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":0.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.04,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":0.05,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Hylonomus lyelli description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Hylonomus%20lyelli\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:10.201Z",
-    "updatedAt": "2026-08-27T08:41:10.045Z"
+    "updatedAt": "2026-09-08T15:52:22.172Z"
   },
   {
     "id": 572,
@@ -831,14 +832,14 @@
     "discoveryHistory": "Described by Edward Drinker Cope in 1877 from Texas.",
     "interestingFacts": "[\"Had a distinctive boomerang-shaped head created by massive bony horns.\",\"Crescent shape of head may have generated lift when swimming.\"]",
     "sizeNotes": "Reached up to 1 meter in length; flat-bodied.",
-    "sizeEstimate": "{\"length\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.15,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":15,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.15,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":12,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Diplocaulus magnicornis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Diplocaulus%20magnicornis\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:10.244Z",
-    "updatedAt": "2026-08-27T08:36:21.057Z"
+    "updatedAt": "2026-09-08T15:52:22.215Z"
   },
   {
     "id": 573,
@@ -860,14 +861,14 @@
     "discoveryHistory": "Discovered in Perm Krai, Russia, in 1960.",
     "interestingFacts": "[\"Featured complex bony horns and antlers on its head for display.\",\"Mummified skin impressions suggest glandular, hairless skin.\"]",
     "sizeNotes": "Massive bull-like build up to 4 meters long.",
-    "sizeEstimate": "{\"length\":{\"value\":4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":900,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Estemmenosuchus uralensis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Estemmenosuchus%20uralensis\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:10.290Z",
-    "updatedAt": "2026-08-27T08:36:21.108Z"
+    "updatedAt": "2026-09-08T15:52:22.509Z"
   },
   {
     "id": 574,
@@ -888,15 +889,15 @@
     "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/574-Andrewsarchus.png\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/8/84/Andrewsarchus_mongoliensis.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/3/39/Andrewsarchus_mongoliensis_skull.JPG\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/3/39/Andrewsarchus_mongoliensis_skull.JPG\"}]",
     "discoveryHistory": "Discovered by Kan Chuen Pao during Roy Chapman Andrews' Central Asiatic Expedition in 1923.",
     "interestingFacts": "[\"Only known from a single giant skull measuring 83 cm in length.\",\"More closely related to hippos and whales than modern wolves.\"]",
-    "sizeNotes": "Estimated length 3.4m; height at shoulder 1.5m.",
-    "sizeEstimate": "{\"length\":{\"value\":3.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Estimated length 3.4m; height at shoulder 1.5m. Note: Holotype skull AMNH 20138 measures 83 cm. Modern phylogenetic placement near entelodonts/whippomorphs yields total length ~3.4 m, shoulder height 1.5 m, mass ~800–1,000 kg (representative 900 kg).",
+    "sizeEstimate": "{\"length\":{\"value\":3.4,\"unit\":\"m\",\"confidence\":\"estimated\"},\"height\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"estimated\"},\"weight\":{\"value\":900,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Andrewsarchus mongoliensis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Andrewsarchus%20mongoliensis\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:10.333Z",
-    "updatedAt": "2026-08-27T08:36:21.160Z"
+    "updatedAt": "2026-09-08T15:52:22.554Z"
   },
   {
     "id": 575,
@@ -918,14 +919,14 @@
     "discoveryHistory": "Discovered during the bone wars and described by Leidy, Marsh, and Cope.",
     "interestingFacts": "[\"Had six distinctive bony knobs (horns) on its flat skull.\",\"Males possessed large, saber-like canine teeth for defense.\"]",
     "sizeNotes": "Comparable in size to a modern white rhinoceros.",
-    "sizeEstimate": "{\"length\":{\"value\":4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Uintatherium anceps description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Uintatherium%20anceps\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:10.383Z",
-    "updatedAt": "2026-08-27T08:36:21.219Z"
+    "updatedAt": "2026-09-08T15:52:22.600Z"
   },
   {
     "id": 576,
@@ -947,14 +948,14 @@
     "discoveryHistory": "Discovered in Pakistan and described by Forster-Cooper in 1911.",
     "interestingFacts": "[\"The largest land mammal known to have ever lived on Earth.\",\"Had a long neck allowing it to browse canopies up to 8m high.\"]",
     "sizeNotes": "Shoulder height 4.8 meters; length 7.4 meters.",
-    "sizeEstimate": "{\"length\":{\"value\":7.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":15000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":7.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":15000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Paraceratherium transouralicum description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Paraceratherium%20transouralicum\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:10.427Z",
-    "updatedAt": "2026-08-27T08:36:21.271Z"
+    "updatedAt": "2026-09-08T15:52:22.644Z"
   },
   {
     "id": 577,
@@ -1005,14 +1006,14 @@
     "discoveryHistory": "No discovery history available.",
     "interestingFacts": "[\"The largest, longest, and heaviest snake ever discovered.\",\"Fossils show it lived in a tropical rainforest hotter than today's tropics.\"]",
     "sizeNotes": "Reached up to 12.8 meters (42 ft) in length and weighed 1.1 metric tons.",
-    "sizeEstimate": "{\"length\":{\"value\":12.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1135,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":12.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1135,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Titanoboa cerrejonensis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Titanoboa%20cerrejonensis\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:10.531Z",
-    "updatedAt": "2026-08-27T08:36:21.388Z"
+    "updatedAt": "2026-09-08T15:52:22.691Z"
   },
   {
     "id": 579,
@@ -1034,14 +1035,14 @@
     "discoveryHistory": "Discovered by Charles William Andrews in Egypt in 1901.",
     "interestingFacts": "[\"An early primitive relative of modern elephants, resembling a small tapir.\",\"Fossil evidence suggests semi-aquatic habits similar to a pygmy hippo.\"]",
     "sizeNotes": "Stood about 70 cm tall at the shoulder.",
-    "sizeEstimate": "{\"length\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":235,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":235,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Moeritherium lyonsi description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Moeritherium%20lyonsi\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:10.574Z",
-    "updatedAt": "2026-08-27T08:36:21.547Z"
+    "updatedAt": "2026-09-08T15:52:22.736Z"
   },
   {
     "id": 922,
@@ -1063,14 +1064,14 @@
     "discoveryHistory": "• Holotype vertebrae GSI/GG/V/001–027 were originally discovered in 2005 at the Panandhro Lignite Mine in Kutch, Gujarat.\n• The fossil material was initially misidentified as belonging to an extinct crocodilian and stored in the IIT Roorkee archives.\n• Re-examined in 2024 by paleontologists Debajit Datta and Sunil Bajpai, who recognized it as a giant madtsoiid snake.\n• Named after 'Vasuki', the mythical serpent king from Hindu cosmology, and 'indicus' to denote its geographic discovery site.",
     "interestingFacts": "[\"Estimated to have reached a length of 10.9 to 15.2 meters (36 to 50 feet), rivaling the famous Paleocene Titanoboa for the title of the largest snake ever.\",\"Had a very broad, cylindrical body and a heavy build, indicating it was a slow-moving ambush predator that lived in warm, marshy coastal swamps.\",\"Lived during a period of global warming in the Eocene epoch, where high ambient temperatures enabled coldblooded ectotherms to reach such enormous sizes.\"]",
     "sizeNotes": "Length estimates range from 10.9 to 15.2 meters with a weight of approximately 1 metric tonne based on vertebral dimensions.",
-    "sizeEstimate": "{\"length\":{\"value\":13,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":13,\"unit\":\"m\",\"confidence\":\"estimated\"},\"height\":{\"value\":0.5,\"unit\":\"m\",\"confidence\":\"estimated\"},\"weight\":{\"value\":1000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Vasuki indicus description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Vasuki\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T13:38:47.839Z",
-    "updatedAt": "2026-08-27T08:36:21.621Z"
+    "updatedAt": "2026-09-08T15:52:23.061Z"
   },
   {
     "id": 923,
@@ -1092,14 +1093,14 @@
     "discoveryHistory": "• First fossils discovered in the Siwalik Hills of northern India and described in 1836 by Hugh Falconer and Captain Proby Thomas Cautley.\n• The bizarre skeletal remains initially sparked intense debate and were mistakenly likened to elephants, rhinos, or oxen.\n• Re-examined in 2016 through a detailed 3D skeletal reconstruction using fossils housed at the Natural History Museum in London.\n• Placed within the family Giraffidae, closely related to the modern okapi.",
     "interestingFacts": "[\"One of the largest ruminant mammals that ever lived, standing over 2.2 meters tall at the shoulder.\",\"Had a short, robust neck and sturdy limbs, differing from modern giraffes, and possessed a massive skull topped with large, palm-like ossicones.\",\"Known to have coexisted with early human ancestors, as depicted in ancient rock art in Sahara regions, surviving until about 10,000 years ago.\"]",
     "sizeNotes": "Shoulder height of 2.2 meters, total length around 3 meters, and weight of approximately 1,246 kg.",
-    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1250,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1250,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Sivatherium giganteum description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Sivatherium\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T13:38:47.889Z",
-    "updatedAt": "2026-08-27T08:36:21.680Z"
+    "updatedAt": "2026-09-08T15:52:23.107Z"
   },
   {
     "id": 924,
@@ -1121,14 +1122,14 @@
     "discoveryHistory": "• Formally described and named in 1846 by Hugh Falconer and Proby Thomas Cautley based on fossils found in the Siwalik Hills.\n• Extensive skull and tusk material has been recovered across northern India, Pakistan, and Myanmar.\n• Recent excavations in 2025 recovered exceptionally preserved fossils in the Chandrapur district of Maharashtra.\n• These Maharashtra fossils were found in deep riverbed sediments and dated to approximately 25,000 years ago.",
     "interestingFacts": "[\"Possessed enormous, nearly straight tusks that grew up to 4 meters in length, rivaling the animal's own body size.\",\"The tusks were so closely spaced that the animal could not lower its trunk between them, likely resting it over them instead.\",\"Coexisted with Pleistocene hominids and early humans in the Indian subcontinent, as evidenced by Paleolithic tools found nearby.\"]",
     "sizeNotes": "Shoulder height of up to 4 meters, and weight estimated at around 10 metric tonnes.",
-    "sizeEstimate": "{\"length\":{\"value\":6.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":10000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":6.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":10000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Stegodon ganesa description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Stegodon%20ganesa\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T13:38:47.931Z",
-    "updatedAt": "2026-08-27T08:36:21.733Z"
+    "updatedAt": "2026-09-08T15:52:23.153Z"
   },
   {
     "id": 1616,
@@ -1150,14 +1151,14 @@
     "discoveryHistory": "Discovered in 1901 by British paleontologist Charles William Andrews in the Eocene Birket Qarun Formation of the Fayum Depression in Egypt.",
     "interestingFacts": "[\"For over a century until the discovery of Titanoboa in 2009, Gigantophis was considered the largest known snake to have ever existed.\",\"Historically estimated at 9 to 10 meters, a 2004 reassessment by Jason Head et al. revised its estimated length downward to approximately 6.9 ± 0.3 meters.\",\"Belongs to the extinct family Madtsoiidae, sharing a deep evolutionary lineage with other giant Paleogene snakes such as Vasuki and Madtsoia.\"]",
     "sizeNotes": "Historically estimated at 9–10m; revised in 2004 to ~6.9m.",
-    "sizeEstimate": "{\"length\":{\"value\":6.9,\"unit\":\"m\",\"confidence\":\"disputed\"},\"height\":{\"value\":0.6,\"unit\":\"m\",\"confidence\":\"estimated\"},\"weight\":{\"value\":700,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":6.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":700,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": "Eocene-Oligocene extinction event",
     "closestLivingRelatives": "[\"Boas (Boidae)\",\"Pythons (Pythonidae)\"]",
     "sources": "[{\"citation\":\"Andrews, C.W. (1901). Preliminary note on some recently discovered extinct vertebrates from Egypt (Part II). Geological Magazine 8(10): 436–444.\",\"url\":\"https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=38102\"},{\"citation\":\"Head, J.J., et al. (2004). Revision of the giant Eocene snake Gigantophis garstini Andrews. Journal of Vertebrate Paleontology 24(3): 88A.\",\"url\":\"https://en.wikipedia.org/wiki/Gigantophis\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T11:47:52.508Z",
-    "updatedAt": "2026-08-26T11:42:14.681Z"
+    "updatedAt": "2026-09-08T15:52:23.243Z"
   },
   {
     "id": 1654,
@@ -1179,14 +1180,14 @@
     "discoveryHistory": "Described by Robert Broom in 1911.",
     "interestingFacts": "[\"Pachyostotic thick head roof up to 10 cm for headbutting.\", \"Massive quadrupedal dinocephalian synapsid.\", \"Heavy barrel body.\"]",
     "sizeNotes": "Adult length ~2.7m, height ~1.5m, estimated weight ~800kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 2.7, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 1.5, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 800, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":800,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Broom, R. (1911). Proc. Zool. Soc. Lond.\", \"url\": \"https://commons.wikimedia.org\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:05.802Z",
-    "updatedAt": "2026-08-26T11:45:18.185Z"
+    "updatedAt": "2026-09-08T15:52:24.981Z"
   },
   {
     "id": 1655,
@@ -1208,14 +1209,14 @@
     "discoveryHistory": "Named by Richard Owen in 1845.",
     "interestingFacts": "[\"Burrowing dicynodont synapsid with spiral burrows.\", \"Sexually dimorphic tusks.\", \"Extremely abundant in Karoo.\"]",
     "sizeNotes": "Adult length ~0.5m, height ~0.2m, estimated weight ~3kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 0.5, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 0.2, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 3, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":0.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.15,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Owen, R. (1845). Trans. Geol. Soc. Lond.\", \"url\": \"https://commons.wikimedia.org\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:05.850Z",
-    "updatedAt": "2026-08-26T10:26:48.555Z"
+    "updatedAt": "2026-09-08T15:52:25.027Z"
   },
   {
     "id": 1656,
@@ -1237,14 +1238,14 @@
     "discoveryHistory": "Named by Richard Owen in 1876.",
     "interestingFacts": "[\"Eponymous gorgonopsian saber-toothed synapsid.\", \"Enormous upper saber tusks.\", \"Fast semi-erect runner.\"]",
     "sizeNotes": "Adult length ~2.0m, height ~0.8m, estimated weight ~150kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 2.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 0.8, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 150, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.75,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":140,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Owen, R. (1876). Descr. Cat. Foss. Rept. S. Africa.\", \"url\": \"https://commons.wikimedia.org\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:05.894Z",
-    "updatedAt": "2026-08-26T11:30:07.538Z"
+    "updatedAt": "2026-09-08T15:52:25.070Z"
   },
   {
     "id": 1657,
@@ -1266,14 +1267,14 @@
     "discoveryHistory": "Named by Robert Broom in 1938.",
     "interestingFacts": "[\"Largest apex gorgonopsian saber-tooth in South Africa.\", \"Enormous heavy skull over 50 cm.\", \"Massive crushing jaw power.\"]",
     "sizeNotes": "Adult length ~3.4m, height ~1.2m, estimated weight ~400kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 3.4, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 1.2, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 400, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":400,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Broom, R. (1938). Ann. Transv. Mus.\", \"url\": \"https://commons.wikimedia.org\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:05.937Z",
-    "updatedAt": "2026-08-26T11:45:24.217Z"
+    "updatedAt": "2026-09-08T15:52:25.118Z"
   },
   {
     "id": 1658,
@@ -1295,14 +1296,14 @@
     "discoveryHistory": "Described by Robert Broom in 1937.",
     "interestingFacts": "[\"One of the earliest semi-aquatic cynodonts.\", \"Flexible spine for otter-like swimming.\", \"Primitive mammal ancestor.\"]",
     "sizeNotes": "Adult length ~0.6m, height ~0.2m, estimated weight ~5kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 0.6, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 0.2, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 5, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":0.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.18,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":5,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Broom, R. (1937). Ann. Mag. Nat. Hist.\", \"url\": \"https://commons.wikimedia.org\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:05.984Z",
-    "updatedAt": "2026-08-26T11:45:35.721Z"
+    "updatedAt": "2026-09-08T15:52:25.162Z"
   },
   {
     "id": 1659,
@@ -1324,14 +1325,14 @@
     "discoveryHistory": "Named by Lieuwe Dirk Boonstra in 1954.",
     "interestingFacts": "[\"Massive carnivorous dinocephalian synapsid.\", \"Thickened skull roof for head-butting rivals.\", \"Large curved incisors.\"]",
     "sizeNotes": "Adult length ~5.0m, height ~1.8m, estimated weight ~600kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 5.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 1.8, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 600, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":600,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Boonstra, L.D. (1954). Ann. S. Afr. Mus.\", \"url\": \"https://commons.wikimedia.org\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:06.031Z",
-    "updatedAt": "2026-08-26T11:45:43.087Z"
+    "updatedAt": "2026-09-08T15:52:25.208Z"
   },
   {
     "id": 2320,
@@ -1353,14 +1354,14 @@
     "discoveryHistory": "First discovered by Falconer and Cautley in 1836 in Siwalik Hills, India.",
     "interestingFacts": "[\"Direct ancestor of modern orangutans (Pongo).\", \"Concave facial profile and tall oval eye sockets.\", \"Thick tooth enamel for crushing tough seeds.\"]",
     "sizeNotes": "Adult length ~1.5m, height ~1.2m, estimated weight ~50kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 1.5, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 1.2, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 50, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":45,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Falconer, H. & Cautley, P.T. (1836). Asiatic Res.\", \"url\": \"https://commons.wikimedia.org\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T14:04:39.313Z",
-    "updatedAt": "2026-08-26T11:54:23.215Z"
+    "updatedAt": "2026-09-08T15:37:21.149Z"
   },
   {
     "id": 2321,
@@ -1382,14 +1383,14 @@
     "discoveryHistory": "Discovered in 1968 near Bilaspur, Himachal Pradesh, India.",
     "interestingFacts": "[\"Largest primate to ever live.\", \"Massive lower jaw with huge grinding molars.\", \"Forest floor browser.\"]",
     "sizeNotes": "Adult length ~3.0m, height ~2.5m, estimated weight ~300kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 3.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 2.5, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 300, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":1.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":180,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Simons, E.L. & Chopra, S.R.K. (1969). Postilla.\", \"url\": \"https://hdl.handle.net/10079/fa/ypm.postilla.0138\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T14:04:39.354Z",
-    "updatedAt": "2026-08-26T11:54:32.479Z"
+    "updatedAt": "2026-09-08T15:37:21.192Z"
   },
   {
     "id": 2322,
@@ -1411,14 +1412,14 @@
     "discoveryHistory": "Described by Hugh Falconer in 1845 from Siwalik strata.",
     "interestingFacts": "[\"Massive extinct giraffid.\", \"Five crown ossicones forming a helmet crest.\", \"Stocky neck and body frame.\"]",
     "sizeNotes": "Adult length ~3.0m, height ~2.2m, estimated weight ~450kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 3.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 2.2, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 450, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":450,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Falconer, H. (1845). Q. J. Geol. Soc. Lond.\", \"url\": \"https://doi.org/10.1144/GSL.JGS.1845.001.01-02.66\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T14:04:39.398Z",
-    "updatedAt": "2026-08-26T11:54:37.958Z"
+    "updatedAt": "2026-09-08T15:37:21.244Z"
   },
   {
     "id": 2323,
@@ -1440,14 +1441,14 @@
     "discoveryHistory": "Described by Falconer and Cautley in 1836.",
     "interestingFacts": "[\"Primitive hippopotamus with 6 incisors instead of 4.\", \"Semiaquatic river basin dweller.\", \"Widespread across Neogene India.\"]",
     "sizeNotes": "Adult length ~3.2m, height ~1.4m, estimated weight ~1500kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 3.2, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 1.4, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 1500, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.35,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1400,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Falconer, H. & Cautley, P.T. (1836). Asiat. Res.\", \"url\": \"https://commons.wikimedia.org\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T14:04:39.438Z",
-    "updatedAt": "2026-08-26T11:54:46.100Z"
+    "updatedAt": "2026-09-08T15:37:21.301Z"
   },
   {
     "id": 2324,
@@ -1469,14 +1470,14 @@
     "discoveryHistory": "Described by Falconer and Cautley in 1845.",
     "interestingFacts": "[\"Early mammoth ancestor.\", \"Curved tusks up to 3 meters.\", \"Transition to grassland grazing.\"]",
     "sizeNotes": "Adult length ~4.0m, height ~3.2m, estimated weight ~5000kg.",
-    "sizeEstimate": "{\"length\": {\"value\": 4.0, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"height\": {\"value\": 3.2, \"unit\": \"m\", \"confidence\": \"well-supported\"}, \"weight\": {\"value\": 5000, \"unit\": \"kg\", \"confidence\": \"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":4.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":5000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": null,
     "closestLivingRelatives": "[]",
     "sources": "[{\"citation\": \"Falconer, H. & Cautley, P.T. (1845). Fauna Antiqua Sivalensis.\", \"url\": \"https://archive.org/details/faunaantiquasiva00falcrich\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T14:04:39.482Z",
-    "updatedAt": "2026-08-26T11:54:51.428Z"
+    "updatedAt": "2026-09-08T15:37:21.353Z"
   },
   {
     "id": 3163,
@@ -1498,14 +1499,14 @@
     "discoveryHistory": "• First described by Richard Owen in 1840 from massive tooth specimens found near Edinburgh.\n• Fossilized scales up to 30 cm across and 22 cm long tusk-teeth were recovered in Scottish coal fields.\n• Biomechanical studies confirm massive pectoral fin musculature for rapid burst acceleration.",
     "interestingFacts": "[\"Possessed enormous 22 cm (9 inch) tusk-like teeth anchored deeply into massive jaws.\",\"Could likely lung onto land or shallow swamp margins to snatch terrestrial amphibians, similar to modern crocodiles.\",\"Its skin was covered in heavy, overlapping cosmoid scales providing armor against rival aquatic predators.\"]",
     "sizeNotes": "The largest known freshwater lobe-finned fish, reaching up to 7 meters in length.",
-    "sizeEstimate": "{\"length\":{\"value\":7,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"meters\",\"confidence\":\"estimated\"},\"weight\":{\"value\":2000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": "Carboniferous Rainforest Collapse",
     "closestLivingRelatives": "[\"Modern Tetrapods (Land Vertebrates)\"]",
     "sources": "[{\"citation\":\"Jeffery, J. E. (2001). Pectoral fin anatomy of Rhizodus hibberti (Rhizodontida, Sarcopterygii). Journal of Vertebrate Paleontology.\",\"url\":\"https://doi.org/10.1671/0272-4634(2001)021[0495:PFAORH]2.0.CO;2\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.142Z",
-    "updatedAt": "2026-08-28T15:30:15.062Z"
+    "updatedAt": "2026-09-08T15:37:23.309Z"
   },
   {
     "id": 3168,
@@ -1527,14 +1528,14 @@
     "discoveryHistory": "• Formally described in 1847 by Hugh Falconer and Proby Cautley.\n• Numerous butchered skeletons discovered across Europe alongside Neanderthal flint tools.\n• Genomic analysis in 2017 revealed Palaeoloxodon is closely related to modern African forest elephants.",
     "interestingFacts": "[\"One of the largest terrestrial mammals to ever walk the Earth, outsizing the Woolly Mammoth.\",\"Possessed long, nearly straight tusks reaching up to 3.8 meters in length.\",\"Coexisted with Neanderthals and early Homo sapiens, who actively hunted these leviathans with wooden spears.\"]",
     "sizeNotes": "Stood up to 4.2 meters tall at the shoulder and weighed up to 13-15 metric tonnes.",
-    "sizeEstimate": "{\"length\":{\"value\":7,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.2,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":13000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":13000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": "Quaternary Extinction Event",
     "closestLivingRelatives": "[\"African Forest Elephant (Loxodonta cyclotis)\"]",
     "sources": "[{\"citation\":\"Meyer, M. et al. (2017). Palaeogenomics of the straight-tusked elephant Palaeoloxodon antiquus. eLife.\",\"url\":\"https://doi.org/10.7554/eLife.25413\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.355Z",
-    "updatedAt": "2026-08-28T15:30:15.112Z"
+    "updatedAt": "2026-09-08T15:37:23.477Z"
   },
   {
     "id": 3169,
@@ -1556,14 +1557,14 @@
     "discoveryHistory": "• First described by Langston in 1965 from fossils collected at La Venta, Colombia.\n• Exceptionally complete skulls recovered from Miocene deposits in Venezuela and Peru.\n• Represents one of the largest members of the gharial family Gavialidae.",
     "interestingFacts": "[\"Possessed an extremely elongated, narrow snout packed with over 80 inter-locking needle teeth.\",\"Inhabited the mega-wetlands of Miocene South America alongside giant caimans like Purussaurus.\",\"The hook-like curvature at the tip of its snout helped hold onto slippery, armor-plated prehistoric catfish.\"]",
     "sizeNotes": "Giant gharial-like crocodilian reaching estimated lengths of 10 meters.",
-    "sizeEstimate": "{\"length\":{\"value\":10,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.3,\"unit\":\"meters\",\"confidence\":\"estimated\"},\"weight\":{\"value\":1750,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":10,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1750,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": "Pebas Wetland Desiccation",
     "closestLivingRelatives": "[\"Gharial (Gavialis gangeticus)\"]",
     "sources": "[{\"citation\":\"Riff, D. et al. (2010). Neogene giant South American crocodilians. Amazonia: Landscape and Species Evolution.\",\"url\":\"https://doi.org/10.1002/9781444326680.ch15\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.397Z",
-    "updatedAt": "2026-08-28T15:30:15.153Z"
+    "updatedAt": "2026-09-08T15:37:23.518Z"
   },
   {
     "id": 3172,
@@ -1585,14 +1586,14 @@
     "discoveryHistory": "• First described by Joseph Leidy in 1855 from bracketed tooth whorls found in coal mines.\n• 2019 jaw mechanics study confirmed vertical slashing jaw action.",
     "interestingFacts": "[\"Did not shed worn teeth; new teeth grew in from the back, pushing old teeth forward into protruding curved brackets.\",\"Jaws operated like a pair of hedge trimmers, thrashing up and down to slash prey.\",\"Belonged to Eugeneodontida, closely related to modern chimaeras rather than true sharks.\"]",
     "sizeNotes": "Nicknamed the 'Scissor-toothed Shark'; reached lengths of up to 6 meters.",
-    "sizeEstimate": "{\"length\":{\"value\":6,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"meters\",\"confidence\":\"estimated\"},\"weight\":{\"value\":800,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":800,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": "Carboniferous-Permian Extinction",
     "closestLivingRelatives": "[\"Modern Chimaeras (Holocephali)\"]",
     "sources": "[{\"citation\":\"Itano, W. M. (2019). Edestus, the scissor-toothed shark: jaw mechanics and predation. Mineralico.\",\"url\":\"https://doi.org/10.1007/s12542-019-00448-9\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.549Z",
-    "updatedAt": "2026-08-28T15:30:15.192Z"
+    "updatedAt": "2026-09-08T15:37:23.650Z"
   },
   {
     "id": 3187,
@@ -1614,14 +1615,14 @@
     "discoveryHistory": "• Formally described by Joseph Leidy in 1854.\n• Abundant, exceptionally preserved bones recovered from the Rancho La Brea tar pits in California.\n• Carbon isotope studies confirmed an overwhelmingly carnivorous diet.",
     "interestingFacts": "[\"Stood over 3.4 meters (11 feet) tall on its hind legs, making it the largest terrestrial mammalian carnivore in North America.\",\"Used its massive size to bully smaller predators like saber-toothed cats (Smilodon) away from fresh kills.\",\"Possessed unusually long, slender legs allowing it to pace efficiently across vast distances.\"]",
     "sizeNotes": "Stood up to 1.8 meters tall at the shoulder and over 3.4 meters tall when standing on hind legs.",
-    "sizeEstimate": "{\"length\":{\"value\":3.5,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.8,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":950,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": "Quaternary Extinction Event (11,000 YA)",
     "closestLivingRelatives": "[\"South American Spectacled Bear (Tremarctos ornatus)\"]",
     "sources": "[{\"citation\":\"Matheus, P. E. (1995). Diet and ecology of polar bears and giant short-faced bears based on stable isotopes. Quaternary Research.\",\"url\":\"https://doi.org/10.1006/qres.1995.1078\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:12.195Z",
-    "updatedAt": "2026-08-28T15:30:15.985Z"
+    "updatedAt": "2026-09-08T15:37:24.311Z"
   },
   {
     "id": 3188,
@@ -1643,14 +1644,14 @@
     "discoveryHistory": "• First skull fragments discovered in 1892 along the Purus River by Barbosa Rodrigues.\n• Formally reconstructed in 2015 by Tito Aureliano and colleagues, revealing incredible 69,000 N bite force.",
     "interestingFacts": "[\"Possessed one of the strongest bite forces of any animal in Earth's history (~69,000 Newtons / 7 tonnes force).\",\"Its massive skull measured 1.4 meters long and was immensely broad for crushing thick mammalian bones.\",\"Consumed over 40 kilograms of meat per day to maintain its giant metabolic needs.\"]",
     "sizeNotes": "Giant caiman reaching 10.3 meters in length and weighing over 8.4 tonnes.",
-    "sizeEstimate": "{\"length\":{\"value\":10.3,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.4,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":8400,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":10.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":6200,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": "Pebas Wetland Desiccation",
     "closestLivingRelatives": "[\"Modern Caimans (Caimaninae)\"]",
     "sources": "[{\"citation\":\"Aureliano, T. et al. (2015). Morphometry, Bite Force, and Paleobiology of the Late Miocene Caiman Purussaurus brasiliensis. PLoS ONE.\",\"url\":\"https://doi.org/10.1371/journal.pone.0117937\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:12.242Z",
-    "updatedAt": "2026-08-28T15:30:15.371Z"
+    "updatedAt": "2026-09-08T15:37:24.356Z"
   },
   {
     "id": 3189,
@@ -1672,14 +1673,14 @@
     "discoveryHistory": "• Complete 53 cm long fossil skull discovered in 1987 on the coast of San José, Uruguay.\n• Formally described in 2008 by Andrés Rinderknecht and Ernesto Blanco in Proceedings of the Royal Society B.",
     "interestingFacts": "[\"Holds the Guinness World Record as the largest rodent to ever exist on Earth.\",\"Possessed enormous 30 cm incisors with a bite force equivalent to a tiger, used for digging or defense.\",\"Replaced traditional ungulate herbivore niches in prehistoric South American river estuaries.\"]",
     "sizeNotes": "The largest rodent ever discovered, weighing as much as a modern bull (~1,000 kg).",
-    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.5,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":950,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": "Great American Biotic Interchange turnover",
     "closestLivingRelatives": "[\"Pacarana (Dinamys branickii)\"]",
     "sources": "[{\"citation\":\"Rinderknecht, A., & Blanco, R. E. (2008). The largest fossil rodent. Proceedings of the Royal Society B: Biological Sciences.\",\"url\":\"https://doi.org/10.1098/rspb.2007.1645\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:12.287Z",
-    "updatedAt": "2026-08-28T15:30:15.412Z"
+    "updatedAt": "2026-09-08T15:37:24.397Z"
   },
   {
     "id": 3190,
@@ -1701,14 +1702,14 @@
     "discoveryHistory": "• Discovered in 2008 in the coastal desert of Pisco, Peru, by Klaas Post.\n• Formally described in Nature in July 2010 by Olivier Lambert and team.\n• Named in honor of Herman Melville, author of Moby-Dick.",
     "interestingFacts": "[\"Possessed the largest functional biting teeth of any known animal in Earth's history (36 cm long and 12 cm wide).\",\"Unlike modern sperm whales which feed on squid using toothless upper jaws, Livyatan had huge teeth in BOTH upper and lower jaws.\",\"Coexisted and directly competed with Megalodon for marine mammalian prey in Miocene oceans.\"]",
     "sizeNotes": "Giant raptorial sperm whale measuring 13.5 to 17.5 meters and weighing up to 50 tonnes.",
-    "sizeEstimate": "{\"length\":{\"value\":17.5,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"height\":{\"value\":4,\"unit\":\"meters\",\"confidence\":\"estimated\"},\"weight\":{\"value\":50000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":17.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":50000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": "Miocene Marine Cooling Event",
     "closestLivingRelatives": "[\"Sperm Whale (Physeter macrocephalus)\"]",
     "sources": "[{\"citation\":\"Lambert, O. et al. (2010). The giant bite of a new raptorial sperm whale from the Miocene of Peru. Nature.\",\"url\":\"https://doi.org/10.1038/nature09067\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:12.333Z",
-    "updatedAt": "2026-08-28T15:30:15.621Z"
+    "updatedAt": "2026-09-08T15:37:24.440Z"
   },
   {
     "id": 3191,
@@ -1730,14 +1731,14 @@
     "discoveryHistory": "• Skull discovered in 1999 near Comallo village by high school student Guillermo Aguirre Zabala.\n• Formally described in 2007 by Sara Bertelli, Luis M. Chiappe, and Claudia Tambussi.",
     "interestingFacts": "[\"Possessed the largest head of any known bird in history, with a skull measuring 71.6 cm (28 inches) long.\",\"Could sprint at estimated speeds exceeding 45 km/h to run down prehistoric mammals.\",\"Killed prey by striking downwards with its massive eagle-like hooked beak like an axe.\"]",
     "sizeNotes": "The largest terror bird known, standing over 3 meters tall with a 71 cm long head.",
-    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":230,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":2.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":230,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": "Miocene Mammalian Turnover",
     "closestLivingRelatives": "[\"Seriemas (Cariamidae)\"]",
     "sources": "[{\"citation\":\"Bertelli, S., Chiappe, L. M., & Tambussi, C. (2007). A new phorusrhacid (Aves: Cariamiformes) from the Middle Miocene of Patagonia. Journal of Vertebrate Paleontology.\",\"url\":\"https://doi.org/10.1671/0272-4634(2007)27[409:ANPACB]2.0.CO;2\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:12.377Z",
-    "updatedAt": "2026-08-28T15:30:15.862Z"
+    "updatedAt": "2026-09-08T15:37:24.490Z"
   },
   {
     "id": 3192,
@@ -1759,14 +1760,14 @@
     "discoveryHistory": "• Named Megalania prisca by Sir Richard Owen in 1859.\n• Reclassified under the genus Varanus by Ralph Molnar in 2004.\n• Coexisted with early Indigenous Australians prior to its extinction ~40,000 years ago.",
     "interestingFacts": "[\"The largest terrestrial venomous squamate reptile in Earth's history.\",\"Possessed venom glands in its lower jaws similar to its smaller living relative, the Komodo Dragon.\",\"Serrated recumbent teeth allowed it to tear open heavy hide of giant extinct marsupials.\"]",
     "sizeNotes": "The largest terrestrial lizard known to have ever lived, reaching up to 6 meters in length.",
-    "sizeEstimate": "{\"length\":{\"value\":6,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.9,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":600,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":570,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": "Australian Megafauna Extinction (40,000 YA)",
     "closestLivingRelatives": "[\"Komodo Dragon (Varanus komodoensis)\"]",
     "sources": "[{\"citation\":\"Fry, B. G. et al. (2009). A central role for venom in predation by Varanus komodoensis and Megalania. PNAS.\",\"url\":\"https://doi.org/10.1073/pnas.0810883106\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:12.420Z",
-    "updatedAt": "2026-08-28T15:30:15.454Z"
+    "updatedAt": "2026-09-08T15:37:24.532Z"
   },
   {
     "id": 3193,
@@ -1788,14 +1789,14 @@
     "discoveryHistory": "• Formally described in 1878 by Edward Drinker Cope.\n• Famous 90 cm fossil skulls recovered from Agate Fossil Beds National Monument in Nebraska.\n• Synonymized with Dinohyus hollandi by Peterson in 1909.",
     "interestingFacts": "[\"Nicknamed the 'Hell Pig', though genetically closer to hippos and whales than true pigs.\",\"Possessed a massive 90 cm (3 foot) skull with heavy bony cheek flanges (jugal flanges) for muscle attachment.\",\"Heavily worn teeth show it routinely cracked open giant animal bones to extract nutrient-rich marrow.\"]",
     "sizeNotes": "Nicknamed 'Hell Pig'; stood 1.8 meters (6 feet) tall at the shoulder with a 90 cm skull.",
-    "sizeEstimate": "{\"length\":{\"value\":3.4,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.8,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":750,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
+    "sizeEstimate": "{\"length\":{\"value\":3.4,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":750,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "extinctionEvent": "Early Miocene Climatic Shift",
     "closestLivingRelatives": "[\"Hippopotamuses & Cetaceans (Whippomorpha)\"]",
     "sources": "[{\"citation\":\"Effinger, J. A. (1998). Entelodontidae. Evolution of Tertiary Mammals of North America.\",\"url\":\"https://doi.org/10.1017/CBO9780511542947.026\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:12.462Z",
-    "updatedAt": "2026-08-28T15:30:16.328Z"
+    "updatedAt": "2026-09-08T15:37:24.575Z"
   },
   {
     "id": 5189,
@@ -1816,8 +1817,8 @@
     "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/e6/Ankylorhiza_tiedemani_life_reconstruction_by_PaleoGeek.png\",\"type\":\"art\",\"credit\":\"PaleoGeekSquared (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Ankylorhiza_tiedemani_life_reconstruction_by_PaleoGeek.png\"}]",
     "discoveryHistory": "• First described in the 1880s by American paleontologist Edward Drinker Cope from fragmentary rostral remains discovered in South Carolina.\n• In the 1990s, an exceptionally preserved, nearly complete skeleton comprising the skull, axial column, ribs, and flipper elements was excavated in Dorchester County, South Carolina.\n• Formally described and erected as the distinct genus Ankylorhiza in 2020 by Robert W. Boessenecker and colleagues in Current Biology.\n• Revealed as the earliest known apex predatory toothed whale in the fossil record.",
     "interestingFacts": "[\"Ankylorhiza tiedemani was the very first apex predatory toothed whale discovered in the fossil record, evolving into a macroraptorial niche 15 million years before modern killer whales (Orcinus orca).\",\"Its skeletal anatomy demonstrates surprising postcranial convergent evolution between modern baleen whales (Mysticeti) and toothed whales (Odontoceti), including specialized swimming adaptations.\",\"Equipped with heavy, interlocking, forward-projecting incisors and tusk-like canines anchored by fused, robust roots, specialized for ramming and dismembering large marine vertebrates.\",\"Discovered in the Ashley Formation of South Carolina, proving that North American Atlantic coastal waters harbored complex marine mammal food webs during the Late Oligocene.\"]",
-    "sizeNotes": "Apex predatory stem toothed whale measuring approximately 4.8 meters (15.7 ft) in length and weighing an estimated 1,000 kg.",
-    "sizeEstimate": "{\"length\":{\"value\":4.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1000,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeNotes": "Apex predatory stem toothed whale measuring approximately 4.8 meters (15.7 ft) in length and weighing an estimated 1,000 kg. Note: Boessenecker et al. (2020); holotype CCNMH 103 skeleton length 4.8 m, mass 1,000 kg.",
+    "sizeEstimate": "{\"length\":{\"value\":4.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1000,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
     "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/95a73c63-e7c7-4e81-8e6d-592f647b07bc.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/95a73c63-e7c7-4e81-8e6d-592f647b07bc\",\"license\":\"CC0 1.0 Universal Public Domain Dedication\",\"credit\":\"Craig Dylke\",\"taxon\":\"Squalodontidae (Representative: Squalodon)\",\"taxonMatch\":\"generic approximation, not species-specific\"}",
     "extinctionEvent": null,
@@ -1825,6 +1826,6 @@
     "sources": "[{\"citation\":\"Boessenecker, R. W., Churchill, M., Buchholtz, E. A., Beatty, B. L., & Geisler, J. H. (2020). Convergent evolution of swimming adaptations in modern whales. Current Biology, 30(14), 2767-2773.\",\"url\":\"https://doi.org/10.1016/j.cub.2020.06.012\"},{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Ankylorhiza tiedemani description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Ankylorhiza\"}]",
     "placeholder": false,
     "createdAt": "2026-09-08T14:14:23.652Z",
-    "updatedAt": "2026-09-08T14:14:23.652Z"
+    "updatedAt": "2026-09-08T15:37:27.323Z"
   }
 ]
