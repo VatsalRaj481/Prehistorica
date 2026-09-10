@@ -6,7 +6,11 @@ import SearchAutocomplete from './SearchAutocomplete.js';
 import CompareModal from './CompareModal.js';
 import DinoLogoMark from './DinoLogoMark.js';
 
-export default function Navbar() {
+interface NavbarProps {
+  isLogoVisible?: boolean;
+}
+
+export default function Navbar({ isLogoVisible = true }: NavbarProps) {
   const location = useLocation();
   const [isCompareOpen, setIsCompareOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -36,7 +40,13 @@ export default function Navbar() {
             <div className="flex items-center gap-6">
               <Link to="/" className="flex items-center gap-3 shrink-0 group">
                 <div id="navbar-logo-target" className="relative flex items-center justify-center">
-                  <DinoLogoMark className="h-9 w-9 sm:h-10 sm:w-10 drop-shadow-[0_2px_8px_rgba(245,158,11,0.25)] group-hover:scale-105 transition-transform duration-200" />
+                  <div
+                    className={`transition-opacity duration-200 ${
+                      isLogoVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                    }`}
+                  >
+                    <DinoLogoMark className="h-9 w-9 sm:h-10 sm:w-10 drop-shadow-[0_2px_8px_rgba(245,158,11,0.25)] group-hover:scale-105 transition-transform duration-200" />
+                  </div>
                 </div>
                 <div className="flex flex-col">
                   <div className="flex items-center gap-1.5">

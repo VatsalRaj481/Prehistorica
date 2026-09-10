@@ -6,6 +6,7 @@ import DinoLogoMark from './DinoLogoMark.js';
 interface ColdStartScreenProps {
   isWaking: boolean;
   onWakeComplete?: () => void;
+  onLogoDock?: () => void;
   simulateDurationSeconds?: number;
 }
 
@@ -105,6 +106,7 @@ const PALEOFACTS: CuratorialPaleofact[] = [
 export default function ColdStartScreen({
   isWaking,
   onWakeComplete,
+  onLogoDock,
   simulateDurationSeconds
 }: ColdStartScreenProps) {
   const [progress, setProgress] = useState(14);
@@ -112,8 +114,8 @@ export default function ColdStartScreen({
   const [isFinishing, setIsFinishing] = useState(false);
   const [canBypass, setCanBypass] = useState(false);
 
-  // Transition sequence:
-  // 'idle' -> 'completing' (Step 1) -> 'fading-prep' (Step 2) -> 'receding-record' (Step 3) -> 'illuminating' (Step 4) -> 'expanding' (Step 5) -> 'zooming' (Step 6 & 7)
+  // Cinematic Transition Phases:
+  // 'idle' -> 'completing' -> 'fading-prep' -> 'receding-record' -> 'illuminating' -> 'expanding' -> 'zooming'
   const [exitPhase, setExitPhase] = useState<
     'idle' | 'completing' | 'fading-prep' | 'receding-record' | 'illuminating' | 'expanding' | 'zooming'
   >('idle');
@@ -150,7 +152,7 @@ export default function ColdStartScreen({
     return () => clearTimeout(bypassTimer);
   }, []);
 
-  // Cinematic 7-Step Transition Sequence
+  // Cinematic Zoom-Out Transition Sequence
   const handleFinish = useCallback(() => {
     if (isFinishing) return;
     setIsFinishing(true);
@@ -178,8 +180,8 @@ export default function ColdStartScreen({
       setFlyCoords({
         sourceLeft: window.innerWidth * 0.28,
         sourceTop: window.innerHeight * 0.45,
-        sourceWidth: 80,
-        sourceHeight: 80,
+        sourceWidth: 160,
+        sourceHeight: 160,
         targetLeft: fallbackTargetLeft,
         targetTop: 14,
         targetWidth: 40,
@@ -187,37 +189,43 @@ export default function ColdStartScreen({
       });
     }
 
-    // STEP 1: Exhibition preparation reaches completion (100% progress, status shows ready)
+    // 1. Preparation indicator reaches completion
     setExitPhase('completing');
 
-    // STEP 2: Exhibition Preparation section softly fades and becomes visually secondary
+    // 2. Secondary interface elements gradually fade
     const t2 = setTimeout(() => {
       setExitPhase('fading-prep');
     }, 180);
 
-    // STEP 3: Curatorial Collection Record gently recedes with soft fade and minimal downward movement
+    // 3. Curatorial Collection Record softly recedes
     const t3 = setTimeout(() => {
       setExitPhase('receding-record');
     }, 380);
 
-    // STEP 4: PREHISTORICA emblem becomes visual anchor, strata rings illuminate warmly
+    // 4. PREHISTORICA logo becomes primary visual focus with illuminated strata
     const t4 = setTimeout(() => {
       setExitPhase('illuminating');
     }, 620);
 
-    // STEP 5: Deep-Time rings slowly expand outward, opening sedimentary layers around visitor
+    // 5. Cinematic camera pull-back: geological strata rings slowly expand outward
     const t5 = setTimeout(() => {
       setExitPhase('expanding');
-    }, 840);
+    }, 850);
 
-    // STEP 6 & 7: Reveal Home Screen progressively while emblem glides to navbar
+    // 6 & 7. Smooth cinematic zoom-out flight from emblem to reveal the Home Screen environment
     const t6 = setTimeout(() => {
       setExitPhase('zooming');
-    }, 1040);
+    }, 1080);
 
+    // Exact docking moment: when the flying logo reaches target coordinates in the navbar
+    const tDock = setTimeout(() => {
+      if (onLogoDock) onLogoDock();
+    }, 1080 + 850);
+
+    // Final handover and unmount of cold start screen
     const t7 = setTimeout(() => {
       if (onWakeComplete) onWakeComplete();
-    }, 1040 + 850);
+    }, 1080 + 850 + 60);
 
     return () => {
       clearTimeout(t2);
@@ -225,9 +233,10 @@ export default function ColdStartScreen({
       clearTimeout(t4);
       clearTimeout(t5);
       clearTimeout(t6);
+      clearTimeout(tDock);
       clearTimeout(t7);
     };
-  }, [isFinishing, onWakeComplete]);
+  }, [isFinishing, onWakeComplete, onLogoDock]);
 
   // Smooth progressive preparation towards 100% across the display duration
   useEffect(() => {
@@ -283,8 +292,8 @@ export default function ColdStartScreen({
       >
         {/* Atmospheric Museum Gallery Lighting */}
         <div className="absolute inset-0 bg-fossil-grid opacity-10 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_35%_45%,_rgba(217,119,6,0.09)_0%,_transparent_65%)] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_rgba(251,191,36,0.03)_0%,_transparent_70%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_35%_45%,_rgba(217,119,6,0.11)_0%,_transparent_65%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_rgba(251,191,36,0.04)_0%,_transparent_70%)] pointer-events-none" />
 
         {/* Delicate Museum Inset Perimeter Border */}
         <div className="absolute inset-2 sm:inset-3 rounded-2xl border border-white/[0.04] pointer-events-none" />
@@ -326,20 +335,31 @@ export default function ColdStartScreen({
         {/* Center Exhibition Stage: Museum Identity & Curatorial Showcase */}
         <main className="relative z-10 max-w-5xl mx-auto w-full my-auto py-6 sm:py-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Museum Identity & Deep-Time Geological Strata Rings */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center space-y-6 text-center">
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center">
+          <motion.div
+            animate={
+              exitPhase === 'expanding'
+                ? { scale: 0.96 } // Subtle camera pull-back effect before zooming
+                : exitPhase === 'zooming'
+                ? { scale: 0.92, opacity: 0 }
+                : { scale: 1, opacity: 1 }
+            }
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 flex flex-col items-center justify-center space-y-6 text-center"
+          >
+            {/* Enlarged 25-30% Logo Stage with Calibrated Strata Horizon Structure */}
+            <div className="relative w-72 h-72 sm:w-84 sm:h-84 flex items-center justify-center">
               {/* Geological Strata & Sedimentary Horizon Rings */}
               <motion.div
                 animate={
                   exitPhase === 'expanding' || exitPhase === 'zooming'
-                    ? { scale: 1.55, opacity: 0 }
+                    ? { scale: 1.65, opacity: 0 }
                     : exitPhase === 'illuminating'
-                    ? { scale: 1.05, opacity: 1 }
+                    ? { scale: 1.05, opacity: 1, filter: 'brightness(1.2)' }
                     : shouldReduceMotion
-                    ? { opacity: 0.8 }
+                    ? { opacity: 0.85 }
                     : {
-                        scale: [1, 1.02, 1],
-                        opacity: [0.75, 0.9, 0.75]
+                        scale: [1, 1.025, 1],
+                        opacity: [0.8, 0.95, 0.8]
                       }
                 }
                 transition={
@@ -352,80 +372,81 @@ export default function ColdStartScreen({
                 className="absolute inset-0 flex items-center justify-center pointer-events-none"
               >
                 <svg
-                  viewBox="0 0 320 320"
-                  className="w-64 h-64 sm:w-72 sm:h-72 overflow-visible select-none"
+                  viewBox="0 0 380 380"
+                  className="w-72 h-72 sm:w-84 sm:h-84 overflow-visible select-none"
                   fill="none"
                 >
                   <defs>
                     <radialGradient id="deepTimeCoreGlow" cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.22" />
-                      <stop offset="45%" stopColor="#D97706" stopOpacity="0.08" />
-                      <stop offset="75%" stopColor="#B45309" stopOpacity="0.02" />
+                      <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.32" />
+                      <stop offset="35%" stopColor="#D97706" stopOpacity="0.14" />
+                      <stop offset="70%" stopColor="#B45309" stopOpacity="0.04" />
                       <stop offset="100%" stopColor="#080C16" stopOpacity="0" />
                     </radialGradient>
                   </defs>
 
-                  {/* Ambient Deep-Time Core Glow */}
-                  <circle cx="160" cy="160" r="140" fill="url(#deepTimeCoreGlow)" />
+                  {/* Concentrated Warm Amber Core Radiance behind Enlarged Crest */}
+                  <circle cx="190" cy="190" r="165" fill="url(#deepTimeCoreGlow)" />
 
-                  {/* Strata Horizon IV: Deepest Precambrian Sedimentary Horizon */}
+                  {/* Strata Horizon IV: Deepest Precambrian Boundary (Outer subtle sedimentary layer) */}
                   <ellipse
-                    cx="160"
-                    cy="160"
-                    rx="146"
-                    ry="143"
-                    stroke="#F59E0B"
-                    strokeOpacity="0.14"
-                    strokeWidth="1"
-                    strokeDasharray="160 10 40 8 90 14"
-                    transform="rotate(-8 160 160)"
+                    cx="190"
+                    cy="190"
+                    rx="178"
+                    ry="174"
+                    stroke="#D97706"
+                    strokeOpacity="0.11"
+                    strokeWidth="0.9"
+                    strokeDasharray="180 14 50 10 110 16"
+                    transform="rotate(-7 190 190)"
                   />
 
-                  {/* Strata Horizon III: Paleozoic Marine Contour Layer */}
+                  {/* Strata Horizon III: Paleozoic Marine Sedimentary Contour */}
                   <ellipse
-                    cx="160"
-                    cy="160"
-                    rx="122"
-                    ry="125"
-                    stroke="#FBBF24"
+                    cx="190"
+                    cy="190"
+                    rx="152"
+                    ry="156"
+                    stroke="#F59E0B"
                     strokeOpacity="0.18"
+                    strokeWidth="1.0"
+                    strokeDasharray="210 14 65 10"
+                    transform="rotate(10 190 190)"
+                  />
+
+                  {/* Strata Horizon II: Mesozoic Terrestrial Excavation Contour */}
+                  <ellipse
+                    cx="190"
+                    cy="190"
+                    rx="124"
+                    ry="120"
+                    stroke="#FBBF24"
+                    strokeOpacity="0.26"
                     strokeWidth="1.1"
-                    strokeDasharray="220 12 70 10"
-                    transform="rotate(12 160 160)"
+                    strokeDasharray="160 12 50 8 90 14"
+                    transform="rotate(-4 190 190)"
                   />
 
-                  {/* Strata Horizon II: Mesozoic Terrestrial Excavation Horizon */}
+                  {/* Strata Horizon I: Cenozoic Primary Horizon (Strongest warm amber illumination) */}
                   <ellipse
-                    cx="160"
-                    cy="160"
+                    cx="190"
+                    cy="190"
                     rx="98"
-                    ry="96"
-                    stroke="#F59E0B"
-                    strokeOpacity="0.24"
-                    strokeWidth="1.2"
-                    strokeDasharray="140 8 50 6 80 10"
-                    transform="rotate(-4 160 160)"
-                  />
-
-                  {/* Strata Horizon I: Cenozoic Excavation Boundary */}
-                  <ellipse
-                    cx="160"
-                    cy="160"
-                    rx="76"
-                    ry="78"
+                    ry="102"
                     stroke="#FDE68A"
-                    strokeOpacity="0.3"
-                    strokeWidth="1"
-                    transform="rotate(6 160 160)"
+                    strokeOpacity="0.45"
+                    strokeWidth="1.2"
+                    strokeDasharray="120 10 40 8 70 12"
+                    transform="rotate(5 190 190)"
                   />
 
-                  {/* Geological Stratigraphic Horizon Scale Ticks */}
+                  {/* Archaeological Stratigraphic Scale Ticks along Outer Sedimentary Horizon */}
                   {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => {
                     const rad = (deg * Math.PI) / 180;
-                    const x1 = 160 + Math.cos(rad) * 142;
-                    const y1 = 160 + Math.sin(rad) * 142;
-                    const x2 = 160 + Math.cos(rad) * 150;
-                    const y2 = 160 + Math.sin(rad) * 150;
+                    const x1 = 190 + Math.cos(rad) * 173;
+                    const y1 = 190 + Math.sin(rad) * 173;
+                    const x2 = 190 + Math.cos(rad) * 182;
+                    const y2 = 190 + Math.sin(rad) * 182;
                     return (
                       <line
                         key={deg}
@@ -434,7 +455,7 @@ export default function ColdStartScreen({
                         x2={x2}
                         y2={y2}
                         stroke="#F59E0B"
-                        strokeOpacity="0.2"
+                        strokeOpacity="0.22"
                         strokeWidth="1"
                       />
                     );
@@ -442,7 +463,7 @@ export default function ColdStartScreen({
                 </svg>
               </motion.div>
 
-              {/* Central Unboxed Museum Monogram Crest */}
+              {/* Central Enlarged Museum Monogram Crest (+25% scale for commanding focal presence) */}
               <motion.div
                 animate={
                   exitPhase === 'zooming'
@@ -464,7 +485,7 @@ export default function ColdStartScreen({
                   style={{ opacity: flyCoords && exitPhase === 'zooming' ? 0 : 1 }}
                   className="flex items-center justify-center"
                 >
-                  <DinoLogoMark className="h-28 w-28 sm:h-32 sm:w-32 drop-shadow-[0_4px_30px_rgba(245,158,11,0.5)]" />
+                  <DinoLogoMark className="h-36 w-36 sm:h-44 sm:w-44 drop-shadow-[0_6px_36px_rgba(245,158,11,0.55)]" />
                 </div>
               </motion.div>
             </div>
@@ -476,7 +497,7 @@ export default function ColdStartScreen({
                   : { opacity: 0, y: 6 }
               }
               transition={{ duration: 0.3 }}
-              className="space-y-1.5 max-w-xs mx-auto"
+              className="space-y-1.5 max-w-xs mx-auto pt-1"
             >
               <h1 className="text-2xl sm:text-3xl font-bold tracking-widest text-slate-100 uppercase font-['Cinzel',serif]">
                 PREHISTORICA
@@ -488,7 +509,7 @@ export default function ColdStartScreen({
                 A permanent digital pavilion cataloging 540 million years of natural history and prehistoric life.
               </p>
             </motion.div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Exhibition Preparation (Secondary) & Curatorial Record (Dominant) */}
           <div className="lg:col-span-7 space-y-4">
@@ -550,11 +571,23 @@ export default function ColdStartScreen({
               transition={{ duration: 0.35 }}
               className="bg-gradient-to-b from-[#0E1526] to-[#0A0F1B] rounded-xl p-5 sm:p-6 border border-amber-500/25 shadow-[0_12px_40px_rgba(0,0,0,0.55)] space-y-4 relative overflow-hidden"
             >
-              {/* Subtle Archival Gilded Corner Brackets */}
-              <div className="absolute top-0 left-0 w-3.5 h-3.5 border-t-2 border-l-2 border-amber-500/40 rounded-tl-sm pointer-events-none" />
-              <div className="absolute top-0 right-0 w-3.5 h-3.5 border-t-2 border-r-2 border-amber-500/40 rounded-tr-sm pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-3.5 h-3.5 border-b-2 border-l-2 border-amber-500/40 rounded-bl-sm pointer-events-none" />
-              <div className="absolute bottom-0 right-0 w-3.5 h-3.5 border-b-2 border-r-2 border-amber-500/40 rounded-br-sm pointer-events-none" />
+              {/* Archival Collection Record Framing Marks (Curatorial Registration Details) */}
+              <div className="absolute top-2.5 left-2.5 w-4 h-4 pointer-events-none">
+                <div className="w-full h-full border-t border-l border-amber-400/45 rounded-tl-[1px]" />
+                <div className="absolute -bottom-1 -left-[0.5px] w-[1px] h-1.5 bg-amber-400/30" />
+              </div>
+              <div className="absolute top-2.5 right-2.5 w-4 h-4 pointer-events-none">
+                <div className="w-full h-full border-t border-r border-amber-400/45 rounded-tr-[1px]" />
+                <div className="absolute -bottom-1 -right-[0.5px] w-[1px] h-1.5 bg-amber-400/30" />
+              </div>
+              <div className="absolute bottom-2.5 left-2.5 w-4 h-4 pointer-events-none">
+                <div className="w-full h-full border-b border-l border-amber-400/45 rounded-bl-[1px]" />
+                <div className="absolute -top-1 -left-[0.5px] w-[1px] h-1.5 bg-amber-400/30" />
+              </div>
+              <div className="absolute bottom-2.5 right-2.5 w-4 h-4 pointer-events-none">
+                <div className="w-full h-full border-b border-r border-amber-400/45 rounded-br-[1px]" />
+                <div className="absolute -top-1 -right-[0.5px] w-[1px] h-1.5 bg-amber-400/30" />
+              </div>
 
               <AnimatePresence mode="wait">
                 <motion.div
@@ -691,7 +724,7 @@ export default function ColdStartScreen({
         </motion.footer>
       </motion.div>
 
-      {/* Hero Flight Transition: Logo zooms out and glides directly to the exact Navbar position */}
+      {/* Hero Flight Transition: Larger Emblem zooms out and glides smoothly into Navbar target position */}
       {flyCoords && exitPhase === 'zooming' && (
         <motion.div
           initial={{

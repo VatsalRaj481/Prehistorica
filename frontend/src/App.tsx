@@ -17,6 +17,7 @@ export default function App() {
   // Always activate ColdStartScreen upon initial page load / refresh
   const [showColdStart, setShowColdStart] = useState(true);
   const [isWaking, setIsWaking] = useState(true);
+  const [isNavbarLogoVisible, setIsNavbarLogoVisible] = useState(false);
 
   useEffect(() => {
     if (isForcedColdStart) return;
@@ -60,14 +61,16 @@ export default function App() {
             <ColdStartScreen
               isWaking={isForcedColdStart ? true : isWaking}
               simulateDurationSeconds={isForcedColdStart ? 16 : 2}
+              onLogoDock={() => setIsNavbarLogoVisible(true)}
               onWakeComplete={() => {
+                setIsNavbarLogoVisible(true);
                 if (!isForcedColdStart) setShowColdStart(false);
               }}
             />
           )}
         </AnimatePresence>
 
-        <Navbar />
+        <Navbar isLogoVisible={isNavbarLogoVisible} />
         <main className="flex-grow max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8">
           <Routes>
             <Route path="/" element={<Home />} />
