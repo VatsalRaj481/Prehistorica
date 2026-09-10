@@ -13,11 +13,13 @@ import TimeMap from './pages/TimeMap.js';
 import { wakePing } from './services/api.js';
 
 export default function App() {
+  const isForcedColdStart = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('coldstart') === 'true';
   // Always activate ColdStartScreen upon initial page load / refresh
   const [showColdStart, setShowColdStart] = useState(true);
   const [isWaking, setIsWaking] = useState(true);
 
   useEffect(() => {
+    if (isForcedColdStart) return;
     wakePing();
 
     const rawApiUrl = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:5000/api' : 'https://prehistorica.onrender.com/api');
@@ -80,10 +82,12 @@ export default function App() {
     <Router>
       <SmoothScroll>
         <AnimatePresence>
-          {showColdStart && (
+          {(showColdStart || isForcedColdStart) && (
             <ColdStartScreen
-              isWaking={isWaking}
-              onWakeComplete={() => setShowColdStart(false)}
+              isWaking={isForcedColdStart ? true : isWaking}
+              onWakeComplete={() => {
+                if (!isForcedColdStart) setShowColdStart(false);
+              }}
             />
           )}
         </AnimatePresence>

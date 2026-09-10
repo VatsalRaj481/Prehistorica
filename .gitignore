@@ -48,3 +48,6 @@ backend/species_names_audit.txt
 
 # Audit & Migration Reports (kept locally only)
 backend/reports/
+
+# Local Project Design Documentation (kept local, do not push)
+design.md
