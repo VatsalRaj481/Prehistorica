@@ -197,17 +197,17 @@ export default function ColdStartScreen({
     };
   }, [isFinishing, onWakeComplete]);
 
-  // Smooth progressive preparation towards 96%
+  // Smooth progressive preparation towards 100% across the display duration
   useEffect(() => {
-    const targetDuration = simulateDurationSeconds || 16;
-    const intervalTime = 120;
-    const stepIncrement = (94 - 14) / ((targetDuration * 1000) / intervalTime);
+    const targetDuration = simulateDurationSeconds || 2;
+    const intervalTime = 30;
+    const totalSteps = (targetDuration * 1000) / intervalTime;
+    const stepIncrement = (100 - 14) / totalSteps;
 
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 98) return 98;
-        if (prev >= 94) return prev + 0.12;
-        return Math.min(94, prev + stepIncrement);
+        if (prev >= 100) return 100;
+        return Math.min(100, prev + stepIncrement);
       });
     }, intervalTime);
 

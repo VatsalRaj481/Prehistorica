@@ -27,56 +27,30 @@ export default function App() {
     const apiBase = cleanApiUrl.endsWith('/api') ? cleanApiUrl : `${cleanApiUrl}/api`;
 
     let isDone = false;
-    let activeInterval: ReturnType<typeof setInterval> | null = null;
 
-    // Minimum display duration (1.4s) so the cinematic museum preloader renders smoothly even if backend is warm
-    const minDisplayPromise = new Promise((resolve) => setTimeout(resolve, 1400));
-
-    // Maximum failsafe timer: never lock the user out for more than 16 seconds
-    const maxWakeTimer = setTimeout(() => {
-      if (!isDone) {
-        isDone = true;
-        if (activeInterval) clearInterval(activeInterval);
-        setIsWaking(false);
-      }
-    }, 16000);
-
-    const checkHealth = async () => {
-      if (isDone) return;
-      const controller = new AbortController();
-      const fetchTimeout = setTimeout(() => controller.abort(), 6000);
-
+    // Ping health in the background to ensure backend is warm
+    const pingBackend = async () => {
       try {
-        const res = await fetch(`${apiBase}/health`, { signal: controller.signal });
-        clearTimeout(fetchTimeout);
-        if (res.ok && !isDone) {
-          // Await minimum display promise so preloader animation transitions smoothly
-          await minDisplayPromise;
-          if (!isDone) {
-            isDone = true;
-            if (activeInterval) clearInterval(activeInterval);
-            clearTimeout(maxWakeTimer);
-            setIsWaking(false);
-          }
-        }
+        await fetch(`${apiBase}/health`);
       } catch {
-        clearTimeout(fetchTimeout);
+        // Ping silently in background
       }
     };
+    pingBackend();
 
-    // Initial check
-    checkHealth().then(() => {
+    // The coldstart screen always appears for exactly 2 seconds, then transitions into the home screen
+    const transitionTimer = setTimeout(() => {
       if (!isDone) {
-        activeInterval = setInterval(checkHealth, 2000);
+        isDone = true;
+        setIsWaking(false);
       }
-    });
+    }, 2000);
 
     return () => {
       isDone = true;
-      clearTimeout(maxWakeTimer);
-      if (activeInterval) clearInterval(activeInterval);
+      clearTimeout(transitionTimer);
     };
-  }, []);
+  }, [isForcedColdStart]);
 
   return (
     <Router>
@@ -85,6 +59,7 @@ export default function App() {
           {(showColdStart || isForcedColdStart) && (
             <ColdStartScreen
               isWaking={isForcedColdStart ? true : isWaking}
+              simulateDurationSeconds={isForcedColdStart ? 16 : 2}
               onWakeComplete={() => {
                 if (!isForcedColdStart) setShowColdStart(false);
               }}
