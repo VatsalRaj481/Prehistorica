@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { ArrowRight, Compass, Sparkles } from 'lucide-react';
+import { Compass, Sparkles, ArrowRight } from 'lucide-react';
 import DinoLogoMark from './DinoLogoMark.js';
 
 interface ColdStartScreenProps {
@@ -111,7 +111,13 @@ export default function ColdStartScreen({
   const [factIndex, setFactIndex] = useState(0);
   const [isFinishing, setIsFinishing] = useState(false);
   const [canBypass, setCanBypass] = useState(false);
-  const [exitPhase, setExitPhase] = useState<'idle' | 'collapsing' | 'zooming'>('idle');
+
+  // Transition sequence:
+  // 'idle' -> 'completing' (Step 1) -> 'fading-prep' (Step 2) -> 'receding-record' (Step 3) -> 'illuminating' (Step 4) -> 'expanding' (Step 5) -> 'zooming' (Step 6 & 7)
+  const [exitPhase, setExitPhase] = useState<
+    'idle' | 'completing' | 'fading-prep' | 'receding-record' | 'illuminating' | 'expanding' | 'zooming'
+  >('idle');
+
   const [flyCoords, setFlyCoords] = useState<FlyCoordinates | null>(null);
   const crestLogoRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
@@ -144,13 +150,13 @@ export default function ColdStartScreen({
     return () => clearTimeout(bypassTimer);
   }, []);
 
-  // Completion sequence: measure navbar logo position, launch strata expansion & logo flight
+  // Cinematic 7-Step Transition Sequence
   const handleFinish = useCallback(() => {
     if (isFinishing) return;
     setIsFinishing(true);
     setProgress(100);
 
-    // Calculate exact flight coordinates from current crest to navbar logo
+    // Measure exact navbar target coordinates for continuous flight
     const targetEl = document.getElementById('navbar-logo-target');
     const sourceEl = crestLogoRef.current;
 
@@ -181,19 +187,45 @@ export default function ColdStartScreen({
       });
     }
 
-    setExitPhase('collapsing');
+    // STEP 1: Exhibition preparation reaches completion (100% progress, status shows ready)
+    setExitPhase('completing');
 
-    const flyTimer = setTimeout(() => {
+    // STEP 2: Exhibition Preparation section softly fades and becomes visually secondary
+    const t2 = setTimeout(() => {
+      setExitPhase('fading-prep');
+    }, 180);
+
+    // STEP 3: Curatorial Collection Record gently recedes with soft fade and minimal downward movement
+    const t3 = setTimeout(() => {
+      setExitPhase('receding-record');
+    }, 380);
+
+    // STEP 4: PREHISTORICA emblem becomes visual anchor, strata rings illuminate warmly
+    const t4 = setTimeout(() => {
+      setExitPhase('illuminating');
+    }, 620);
+
+    // STEP 5: Deep-Time rings slowly expand outward, opening sedimentary layers around visitor
+    const t5 = setTimeout(() => {
+      setExitPhase('expanding');
+    }, 840);
+
+    // STEP 6 & 7: Reveal Home Screen progressively while emblem glides to navbar
+    const t6 = setTimeout(() => {
       setExitPhase('zooming');
-    }, 220);
+    }, 1040);
 
-    const exitTimer = setTimeout(() => {
+    const t7 = setTimeout(() => {
       if (onWakeComplete) onWakeComplete();
-    }, 220 + 850);
+    }, 1040 + 850);
 
     return () => {
-      clearTimeout(flyTimer);
-      clearTimeout(exitTimer);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      clearTimeout(t4);
+      clearTimeout(t5);
+      clearTimeout(t6);
+      clearTimeout(t7);
     };
   }, [isFinishing, onWakeComplete]);
 
@@ -224,7 +256,7 @@ export default function ColdStartScreen({
     return () => clearTimeout(autoUnlockTimeout);
   }, [handleFinish]);
 
-  // When backend wakes up, complete cleanly
+  // When backend wakes up or display timer triggers, complete transition
   useEffect(() => {
     if (!isWaking && !isFinishing) {
       handleFinish();
@@ -233,11 +265,11 @@ export default function ColdStartScreen({
 
   const currentFact = PALEOFACTS[factIndex];
 
-  // Curatorial preparation status message
+  // Atmospheric museum preparation status message
   const preparationStatusText = useMemo(() => {
-    if (progress < 35) return 'Illuminating exhibition galleries...';
-    if (progress < 70) return 'Arranging the deep-time specimen collection...';
-    if (progress < 96) return 'Opening archival exhibition spaces...';
+    if (progress < 30) return 'Illuminating exhibition galleries...';
+    if (progress < 70) return 'Preparing the galleries for discovery...';
+    if (progress < 98) return 'Opening archival exhibition spaces...';
     return 'Exhibition galleries prepared for your arrival.';
   }, [progress]);
 
@@ -246,7 +278,7 @@ export default function ColdStartScreen({
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: exitPhase === 'zooming' ? 0 : 1 }}
-        transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="fixed inset-0 z-[9999] bg-[#080C16] flex flex-col justify-between p-4 sm:p-6 md:p-8 overflow-y-auto select-none text-slate-300 font-sans"
       >
         {/* Atmospheric Museum Gallery Lighting */}
@@ -259,8 +291,14 @@ export default function ColdStartScreen({
 
         {/* Top Header Bar: Museum Institutional Masthead */}
         <motion.header
-          animate={{ opacity: exitPhase === 'idle' ? 1 : 0 }}
-          transition={{ duration: 0.25 }}
+          animate={
+            exitPhase === 'idle' || exitPhase === 'completing'
+              ? { opacity: 1 }
+              : exitPhase === 'fading-prep'
+              ? { opacity: 0.5 }
+              : { opacity: 0 }
+          }
+          transition={{ duration: 0.3 }}
           className="relative z-10 flex flex-wrap items-center justify-between gap-3 border-b border-amber-500/15 pb-4 text-xs"
         >
           <div className="flex items-center gap-3">
@@ -285,73 +323,159 @@ export default function ColdStartScreen({
           </div>
         </motion.header>
 
-        {/* Center Exhibition Stage: Museum Identity & Curatorial Dossier */}
-        <main className="relative z-10 max-w-5xl mx-auto w-full my-auto py-6 sm:py-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        {/* Center Exhibition Stage: Museum Identity & Curatorial Showcase */}
+        <main className="relative z-10 max-w-5xl mx-auto w-full my-auto py-6 sm:py-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Museum Identity & Deep-Time Geological Strata Rings */}
           <div className="lg:col-span-5 flex flex-col items-center justify-center space-y-6 text-center">
-            <div className="relative w-56 h-56 sm:w-64 sm:h-64 flex items-center justify-center">
-              {/* Concentric Geological Strata & Sedimentary Horizons */}
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 flex items-center justify-center">
+              {/* Geological Strata & Sedimentary Horizon Rings */}
               <motion.div
                 animate={
-                  exitPhase === 'zooming'
-                    ? { scale: 1.45, opacity: 0 }
+                  exitPhase === 'expanding' || exitPhase === 'zooming'
+                    ? { scale: 1.55, opacity: 0 }
+                    : exitPhase === 'illuminating'
+                    ? { scale: 1.05, opacity: 1 }
                     : shouldReduceMotion
-                    ? { opacity: 0.7 }
+                    ? { opacity: 0.8 }
                     : {
-                        scale: [1, 1.025, 1],
-                        opacity: [0.65, 0.85, 0.65]
+                        scale: [1, 1.02, 1],
+                        opacity: [0.75, 0.9, 0.75]
                       }
                 }
                 transition={
-                  exitPhase === 'zooming'
-                    ? { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-                    : { duration: 9, repeat: Infinity, ease: 'easeInOut' }
+                  exitPhase === 'expanding' || exitPhase === 'zooming'
+                    ? { duration: 0.85, ease: [0.16, 1, 0.3, 1] }
+                    : exitPhase === 'illuminating'
+                    ? { duration: 0.3, ease: 'easeOut' }
+                    : { duration: 8, repeat: Infinity, ease: 'easeInOut' }
                 }
                 className="absolute inset-0 flex items-center justify-center pointer-events-none"
               >
-                {/* Outer Deep-Time Strata Boundary */}
-                <div className="absolute w-56 h-56 sm:w-64 sm:h-64 rounded-full border border-amber-500/15 shadow-[0_0_30px_rgba(217,119,6,0.06)]" />
+                <svg
+                  viewBox="0 0 320 320"
+                  className="w-64 h-64 sm:w-72 sm:h-72 overflow-visible select-none"
+                  fill="none"
+                >
+                  <defs>
+                    <radialGradient id="deepTimeCoreGlow" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.22" />
+                      <stop offset="45%" stopColor="#D97706" stopOpacity="0.08" />
+                      <stop offset="75%" stopColor="#B45309" stopOpacity="0.02" />
+                      <stop offset="100%" stopColor="#080C16" stopOpacity="0" />
+                    </radialGradient>
+                  </defs>
 
-                {/* Mesozoic Sedimentary Horizon */}
-                <div className="absolute w-44 h-44 sm:w-52 sm:h-52 rounded-full border border-amber-400/20" />
+                  {/* Ambient Deep-Time Core Glow */}
+                  <circle cx="160" cy="160" r="140" fill="url(#deepTimeCoreGlow)" />
 
-                {/* Paleozoic Fossil Horizon */}
-                <div className="absolute w-34 h-34 sm:w-40 sm:h-40 rounded-full border border-amber-500/25" />
+                  {/* Strata Horizon IV: Deepest Precambrian Sedimentary Horizon */}
+                  <ellipse
+                    cx="160"
+                    cy="160"
+                    rx="146"
+                    ry="143"
+                    stroke="#F59E0B"
+                    strokeOpacity="0.14"
+                    strokeWidth="1"
+                    strokeDasharray="160 10 40 8 90 14"
+                    transform="rotate(-8 160 160)"
+                  />
 
-                {/* Ambient Deep-Time Geological Glow */}
-                <div className="absolute w-32 h-32 rounded-full bg-gradient-to-tr from-amber-600/10 via-amber-500/15 to-transparent blur-xl" />
+                  {/* Strata Horizon III: Paleozoic Marine Contour Layer */}
+                  <ellipse
+                    cx="160"
+                    cy="160"
+                    rx="122"
+                    ry="125"
+                    stroke="#FBBF24"
+                    strokeOpacity="0.18"
+                    strokeWidth="1.1"
+                    strokeDasharray="220 12 70 10"
+                    transform="rotate(12 160 160)"
+                  />
+
+                  {/* Strata Horizon II: Mesozoic Terrestrial Excavation Horizon */}
+                  <ellipse
+                    cx="160"
+                    cy="160"
+                    rx="98"
+                    ry="96"
+                    stroke="#F59E0B"
+                    strokeOpacity="0.24"
+                    strokeWidth="1.2"
+                    strokeDasharray="140 8 50 6 80 10"
+                    transform="rotate(-4 160 160)"
+                  />
+
+                  {/* Strata Horizon I: Cenozoic Excavation Boundary */}
+                  <ellipse
+                    cx="160"
+                    cy="160"
+                    rx="76"
+                    ry="78"
+                    stroke="#FDE68A"
+                    strokeOpacity="0.3"
+                    strokeWidth="1"
+                    transform="rotate(6 160 160)"
+                  />
+
+                  {/* Geological Stratigraphic Horizon Scale Ticks */}
+                  {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => {
+                    const rad = (deg * Math.PI) / 180;
+                    const x1 = 160 + Math.cos(rad) * 142;
+                    const y1 = 160 + Math.sin(rad) * 142;
+                    const x2 = 160 + Math.cos(rad) * 150;
+                    const y2 = 160 + Math.sin(rad) * 150;
+                    return (
+                      <line
+                        key={deg}
+                        x1={x1}
+                        y1={y1}
+                        x2={x2}
+                        y2={y2}
+                        stroke="#F59E0B"
+                        strokeOpacity="0.2"
+                        strokeWidth="1"
+                      />
+                    );
+                  })}
+                </svg>
               </motion.div>
 
-              {/* Central Museum Monogram Crest */}
+              {/* Central Unboxed Museum Monogram Crest */}
               <motion.div
                 animate={
-                  exitPhase !== 'idle'
+                  exitPhase === 'zooming'
                     ? { opacity: 0 }
                     : shouldReduceMotion
                     ? {}
                     : { scale: [1, 1.02, 1] }
                 }
                 transition={
-                  exitPhase !== 'idle'
+                  exitPhase === 'zooming'
                     ? { duration: 0.2 }
-                    : { duration: 5, repeat: Infinity, ease: 'easeInOut' }
+                    : { duration: 6, repeat: Infinity, ease: 'easeInOut' }
                 }
                 className="relative z-10 flex items-center justify-center"
               >
                 {/* Crest Container with Ref for Exact Coordinate Flight */}
                 <div
                   ref={crestLogoRef}
-                  style={{ opacity: flyCoords && exitPhase !== 'idle' ? 0 : 1 }}
+                  style={{ opacity: flyCoords && exitPhase === 'zooming' ? 0 : 1 }}
                   className="flex items-center justify-center"
                 >
-                  <DinoLogoMark className="h-28 w-28 sm:h-32 sm:w-32 drop-shadow-[0_4px_28px_rgba(245,158,11,0.45)]" />
+                  <DinoLogoMark className="h-28 w-28 sm:h-32 sm:w-32 drop-shadow-[0_4px_30px_rgba(245,158,11,0.5)]" />
                 </div>
               </motion.div>
             </div>
 
             <motion.div
-              animate={{ opacity: exitPhase === 'idle' ? 1 : 0 }}
-              transition={{ duration: 0.2 }}
+              animate={
+                exitPhase === 'idle' || exitPhase === 'completing' || exitPhase === 'fading-prep'
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 6 }
+              }
+              transition={{ duration: 0.3 }}
               className="space-y-1.5 max-w-xs mx-auto"
             >
               <h1 className="text-2xl sm:text-3xl font-bold tracking-widest text-slate-100 uppercase font-['Cinzel',serif]">
@@ -366,59 +490,71 @@ export default function ColdStartScreen({
             </motion.div>
           </div>
 
-          {/* Right Column: Museum Preparation & Curatorial Specimen Dossier */}
-          <motion.div
-            animate={
-              exitPhase === 'idle'
-                ? { opacity: 1, y: 0 }
-                : { opacity: 0, y: 12 }
-            }
-            transition={{ duration: 0.25 }}
-            className="lg:col-span-7 space-y-5"
-          >
-            {/* Museum Preparation Indicator */}
-            <div className="bg-[#0E1526] rounded-xl p-4 sm:p-5 border border-white/[0.08] shadow-xl space-y-3">
-              <div className="flex items-center justify-between text-xs text-slate-300">
+          {/* Right Column: Exhibition Preparation (Secondary) & Curatorial Record (Dominant) */}
+          <div className="lg:col-span-7 space-y-4">
+            {/* 1. Integrated Museum Exhibition Preparation Prologue (Secondary & Atmospheric) */}
+            <motion.div
+              animate={
+                exitPhase === 'idle'
+                  ? { opacity: 1, y: 0 }
+                  : exitPhase === 'completing'
+                  ? { opacity: 0.7, y: 0 }
+                  : { opacity: 0, y: -6 }
+              }
+              transition={{ duration: 0.3 }}
+              className="px-1 space-y-2.5"
+            >
+              <div className="flex items-center justify-between text-xs text-slate-400">
                 <div className="flex items-center gap-2">
-                  <Compass className="h-4 w-4 text-amber-400" />
-                  <span className="font-['Cinzel',serif] font-semibold tracking-wider uppercase text-slate-200 text-xs">
+                  <Compass className="h-3.5 w-3.5 text-amber-400/90" />
+                  <span className="font-['Cinzel',serif] tracking-widest text-[11px] uppercase text-slate-300 font-semibold">
                     Exhibition Preparation
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5 text-xs">
-                  <span className="text-slate-400 font-medium">Preparation:</span>
-                  <span className="text-amber-400 font-bold tabular-nums">
+                <div className="flex items-center gap-2 text-xs">
+                  <span className="text-slate-500 font-['Cinzel',serif] text-[10px] tracking-wider uppercase hidden sm:inline">
+                    Galleries Opening
+                  </span>
+                  <span className="text-amber-400 font-bold tabular-nums text-xs font-mono">
                     {Math.min(100, Math.round(progress))}%
                   </span>
                 </div>
               </div>
 
-              {/* Minimal Elegant Gold Progress Bar */}
-              <div className="relative h-1.5 w-full bg-[#080C16] rounded-full overflow-hidden border border-white/[0.06]">
+              {/* Minimal Gilded Museum Horizon Indicator */}
+              <div className="relative h-1 w-full bg-white/[0.05] rounded-full overflow-hidden">
                 <motion.div
-                  className="h-full bg-gradient-to-r from-amber-600 via-amber-500 to-amber-300 rounded-full shadow-[0_0_10px_rgba(245,158,11,0.5)]"
+                  className="h-full bg-gradient-to-r from-amber-600 via-amber-400 to-amber-300 rounded-full shadow-[0_0_8px_rgba(245,158,11,0.5)]"
                   style={{ width: `${Math.min(100, progress)}%` }}
                   transition={{ ease: 'easeOut', duration: 0.15 }}
                 />
               </div>
 
-              <div className="flex items-center justify-between text-[11px] text-slate-400">
-                <span className="italic text-slate-300">
+              <div className="flex items-center justify-between text-[11px] text-slate-400 font-sans pt-0.5">
+                <span className="italic text-slate-300/90 text-[11px]">
                   {preparationStatusText}
                 </span>
-                <span className="hidden sm:inline text-amber-400/80 font-['Cinzel',serif] text-[10px] tracking-widest uppercase">
+                <span className="hidden sm:inline text-amber-400/70 font-['Cinzel',serif] text-[10px] tracking-widest uppercase">
                   Deep-Time Archives
                 </span>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Curatorial Collection Record Plaque */}
-            <div className="bg-[#0E1526] rounded-xl p-5 sm:p-6 border border-amber-500/20 shadow-2xl space-y-4 relative overflow-hidden">
-              {/* Subtle Gilded Corner Bracket Accents */}
-              <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-amber-500/40 rounded-tl-sm pointer-events-none" />
-              <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-amber-500/40 rounded-tr-sm pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-amber-500/40 rounded-bl-sm pointer-events-none" />
-              <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-amber-500/40 rounded-br-sm pointer-events-none" />
+            {/* 2. Curatorial Collection Record (Primary Dominant Visual Feature) */}
+            <motion.div
+              animate={
+                exitPhase === 'idle' || exitPhase === 'completing' || exitPhase === 'fading-prep'
+                  ? { opacity: 1, y: 0, scale: 1 }
+                  : { opacity: 0, y: 12, scale: 0.98 }
+              }
+              transition={{ duration: 0.35 }}
+              className="bg-gradient-to-b from-[#0E1526] to-[#0A0F1B] rounded-xl p-5 sm:p-6 border border-amber-500/25 shadow-[0_12px_40px_rgba(0,0,0,0.55)] space-y-4 relative overflow-hidden"
+            >
+              {/* Subtle Archival Gilded Corner Brackets */}
+              <div className="absolute top-0 left-0 w-3.5 h-3.5 border-t-2 border-l-2 border-amber-500/40 rounded-tl-sm pointer-events-none" />
+              <div className="absolute top-0 right-0 w-3.5 h-3.5 border-t-2 border-r-2 border-amber-500/40 rounded-tr-sm pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-3.5 h-3.5 border-b-2 border-l-2 border-amber-500/40 rounded-bl-sm pointer-events-none" />
+              <div className="absolute bottom-0 right-0 w-3.5 h-3.5 border-b-2 border-r-2 border-amber-500/40 rounded-br-sm pointer-events-none" />
 
               <AnimatePresence mode="wait">
                 <motion.div
@@ -429,52 +565,52 @@ export default function ColdStartScreen({
                   transition={{ duration: 0.3 }}
                   className="space-y-4"
                 >
-                  {/* Plaque Header: Pure Museum Archival Label */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.08] pb-3 text-[10px] uppercase tracking-widest text-amber-400">
+                  {/* Archival Record Header */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-amber-500/15 pb-3 text-[10px] uppercase tracking-widest text-amber-400">
                     <span className="flex items-center gap-1.5 font-['Cinzel',serif] font-semibold">
                       <Sparkles className="h-3.5 w-3.5 text-amber-400" />
                       <span>CURATORIAL COLLECTION RECORD</span>
                     </span>
-                    <span className="text-slate-400 text-[11px] tracking-wider">
+                    <span className="text-slate-400 text-[11px] tracking-wider font-mono">
                       RECORD {factIndex + 1} OF {PALEOFACTS.length}
                     </span>
                   </div>
 
-                  {/* Species Title, Period & Geological Formation */}
-                  <div className="space-y-1">
+                  {/* Species Title, Period & Formation */}
+                  <div className="space-y-1.5">
                     <div className="flex flex-wrap items-baseline gap-2.5">
-                      <h2 className="text-xl sm:text-2xl font-bold tracking-wide text-slate-100 font-['Cinzel',serif] italic">
+                      <h2 className="text-2xl sm:text-3xl font-bold tracking-wide text-slate-100 font-['Cinzel',serif] italic">
                         {currentFact.species}
                       </h2>
-                      <span className="text-xs text-amber-400 font-medium tracking-wide">
+                      <span className="text-xs sm:text-sm text-amber-400 font-medium tracking-wide">
                         ({currentFact.period})
                       </span>
                     </div>
 
-                    <p className="text-xs text-amber-300/80 italic">
+                    <p className="text-xs sm:text-sm text-amber-300/85 italic leading-relaxed">
                       {currentFact.subheading}
                     </p>
 
-                    <p className="text-xs text-slate-400 pt-0.5">
+                    <p className="text-xs text-slate-400 pt-0.5 font-sans">
                       Geological Formation: <strong className="text-slate-200 font-medium">{currentFact.formation}</strong>
                     </p>
                   </div>
 
                   {/* Metric Dimensions Plaque Strip */}
-                  <div className="grid grid-cols-3 gap-2 sm:gap-3 bg-[#080C16] p-3 rounded-lg border border-white/[0.06] text-center">
+                  <div className="grid grid-cols-3 gap-2 sm:gap-3 bg-[#060A12]/80 p-3.5 rounded-lg border border-amber-500/15 text-center">
                     <div>
                       <span className="text-[9px] font-['Cinzel',serif] tracking-wider text-slate-400 uppercase block mb-0.5 font-semibold">
                         Estimated Mass
                       </span>
-                      <span className="text-amber-400 font-bold text-sm tracking-tight tabular-nums">
+                      <span className="text-amber-400 font-bold text-sm sm:text-base tracking-tight tabular-nums">
                         {currentFact.mass}
                       </span>
                     </div>
-                    <div className="border-x border-white/[0.08]">
+                    <div className="border-x border-amber-500/15">
                       <span className="text-[9px] font-['Cinzel',serif] tracking-wider text-slate-400 uppercase block mb-0.5 font-semibold">
                         Total Length
                       </span>
-                      <span className="text-amber-400 font-bold text-sm tracking-tight tabular-nums">
+                      <span className="text-slate-100 font-bold text-sm sm:text-base tracking-tight tabular-nums">
                         {currentFact.length}
                       </span>
                     </div>
@@ -482,22 +618,22 @@ export default function ColdStartScreen({
                       <span className="text-[9px] font-['Cinzel',serif] tracking-wider text-slate-400 uppercase block mb-0.5 font-semibold">
                         Paleo-Habitat
                       </span>
-                      <span className="text-slate-200 font-semibold text-xs truncate block pt-0.5">
+                      <span className="text-slate-200 font-semibold text-xs sm:text-sm truncate block pt-0.5">
                         {currentFact.habitat}
                       </span>
                     </div>
                   </div>
 
                   {/* Curatorial Anatomical Observation */}
-                  <div className="relative pl-4 border-l-2 border-amber-500/70 py-0.5">
-                    <p className="text-xs text-slate-300 leading-relaxed italic">
+                  <div className="relative pl-4 border-l-2 border-amber-500/70 py-1">
+                    <p className="text-xs sm:text-[13px] text-slate-300 leading-relaxed italic">
                       "{currentFact.fact}"
                     </p>
                   </div>
                 </motion.div>
               </AnimatePresence>
 
-              {/* Curatorial Carousel Dots */}
+              {/* Curatorial Specimen Indicators */}
               <div className="flex items-center justify-end gap-1.5 pt-1">
                 {PALEOFACTS.map((_, idx) => (
                   <button
@@ -506,20 +642,24 @@ export default function ColdStartScreen({
                     onClick={() => setFactIndex(idx)}
                     className={`h-1.5 rounded-full transition-all cursor-pointer ${
                       factIndex === idx
-                        ? 'w-5 bg-amber-400'
+                        ? 'w-5 bg-amber-400 shadow-[0_0_6px_rgba(245,158,11,0.5)]'
                         : 'w-1.5 bg-white/20 hover:bg-white/40'
                     }`}
                     aria-label={`View specimen record ${idx + 1}`}
                   />
                 ))}
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </main>
 
         {/* Bottom Footer & Visitor Entry Action */}
         <motion.footer
-          animate={{ opacity: exitPhase === 'idle' ? 1 : 0 }}
+          animate={
+            exitPhase === 'idle' || exitPhase === 'completing'
+              ? { opacity: 1 }
+              : { opacity: 0 }
+          }
           transition={{ duration: 0.25 }}
           className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-amber-500/15 pt-4 text-xs"
         >
@@ -552,7 +692,7 @@ export default function ColdStartScreen({
       </motion.div>
 
       {/* Hero Flight Transition: Logo zooms out and glides directly to the exact Navbar position */}
-      {flyCoords && exitPhase !== 'idle' && (
+      {flyCoords && exitPhase === 'zooming' && (
         <motion.div
           initial={{
             position: 'fixed',
@@ -563,21 +703,12 @@ export default function ColdStartScreen({
             zIndex: 10001,
             pointerEvents: 'none'
           }}
-          animate={
-            exitPhase === 'zooming'
-              ? {
-                  left: flyCoords.targetLeft,
-                  top: flyCoords.targetTop,
-                  width: flyCoords.targetWidth,
-                  height: flyCoords.targetHeight
-                }
-              : {
-                  left: flyCoords.sourceLeft,
-                  top: flyCoords.sourceTop,
-                  width: flyCoords.sourceWidth,
-                  height: flyCoords.sourceHeight
-                }
-          }
+          animate={{
+            left: flyCoords.targetLeft,
+            top: flyCoords.targetTop,
+            width: flyCoords.targetWidth,
+            height: flyCoords.targetHeight
+          }}
           transition={{
             duration: 0.85,
             ease: [0.16, 1, 0.3, 1]
