@@ -8,6 +8,7 @@ interface ColdStartScreenProps {
   onWakeComplete?: () => void;
   onLogoDock?: () => void;
   simulateDurationSeconds?: number;
+  onRetryHealth?: () => void;
 }
 
 interface CuratorialPaleofact {
@@ -107,12 +108,13 @@ export default function ColdStartScreen({
   isWaking,
   onWakeComplete,
   onLogoDock,
-  simulateDurationSeconds
+  simulateDurationSeconds,
+  onRetryHealth
 }: ColdStartScreenProps) {
   const [progress, setProgress] = useState(14);
   const [factIndex, setFactIndex] = useState(0);
   const [isFinishing, setIsFinishing] = useState(false);
-  const [canBypass, setCanBypass] = useState(false);
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
 
   // Cinematic Transition Phases:
   // 'idle' -> 'completing' -> 'fading-prep' -> 'receding-record' -> 'illuminating' -> 'expanding' -> 'zooming'
@@ -124,6 +126,15 @@ export default function ColdStartScreen({
   const crestLogoRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
 
+  // Track elapsed waiting seconds while backend is waking
+  useEffect(() => {
+    if (!isWaking) return;
+    const interval = setInterval(() => {
+      setElapsedSeconds((s) => s + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [isWaking]);
+
   // Rotate Curatorial Paleofacts every 5.5s
   useEffect(() => {
     const factInterval = setInterval(() => {
@@ -132,25 +143,17 @@ export default function ColdStartScreen({
     return () => clearInterval(factInterval);
   }, []);
 
-  // Keyboard shortcut listener (Space or Enter bypasses directly once allowed)
+  // Keyboard shortcut listener: Space or Enter advances only once backend is online or finishing
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.code === 'Space' || e.code === 'Enter') && (canBypass || progress >= 85 || isFinishing)) {
+      if ((e.code === 'Space' || e.code === 'Enter') && (!isWaking || isFinishing)) {
         e.preventDefault();
         handleFinish();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  });
-
-  // Enable bypass invitation after 5.5 seconds
-  useEffect(() => {
-    const bypassTimer = setTimeout(() => {
-      setCanBypass(true);
-    }, 5500);
-    return () => clearTimeout(bypassTimer);
-  }, []);
+  }, [isWaking, isFinishing]);
 
   // Cinematic Zoom-Out Transition Sequence
   const handleFinish = useCallback(() => {
@@ -238,34 +241,26 @@ export default function ColdStartScreen({
     };
   }, [isFinishing, onWakeComplete, onLogoDock]);
 
-  // Smooth progressive preparation towards 100% across the display duration
+  // Smooth progressive preparation while waiting for backend to wake up
   useEffect(() => {
-    const targetDuration = simulateDurationSeconds || 2;
-    const intervalTime = 30;
+    if (!isWaking) return;
+    const targetDuration = simulateDurationSeconds || 22;
+    const intervalTime = 60;
     const totalSteps = (targetDuration * 1000) / intervalTime;
-    const stepIncrement = (100 - 14) / totalSteps;
+    const stepIncrement = (94 - 14) / totalSteps;
 
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 100) return 100;
-        return Math.min(100, prev + stepIncrement);
+        if (prev >= 96) return 96;
+        if (prev >= 92) return prev + 0.04;
+        return Math.min(94, prev + stepIncrement);
       });
     }, intervalTime);
 
     return () => clearInterval(progressInterval);
-  }, [simulateDurationSeconds]);
+  }, [isWaking, simulateDurationSeconds]);
 
-  // Max fail-safe auto unlock after 18 seconds (bypassed in preview mode)
-  useEffect(() => {
-    const isPreview = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('coldstart') === 'true';
-    if (isPreview) return;
-    const autoUnlockTimeout = setTimeout(() => {
-      handleFinish();
-    }, 18000);
-    return () => clearTimeout(autoUnlockTimeout);
-  }, [handleFinish]);
-
-  // When backend wakes up or display timer triggers, complete transition
+  // When backend wakes up (confirmed online), complete cleanly and trigger transition
   useEffect(() => {
     if (!isWaking && !isFinishing) {
       handleFinish();
@@ -276,11 +271,20 @@ export default function ColdStartScreen({
 
   // Atmospheric museum preparation status message
   const preparationStatusText = useMemo(() => {
+    if (!isWaking || isFinishing) {
+      return 'Exhibition galleries prepared for your arrival.';
+    }
+    if (elapsedSeconds >= 45) {
+      return 'Waking archive database from standby (Render cold start)... Opening shortly.';
+    }
+    if (elapsedSeconds >= 25) {
+      return 'Synchronizing archival records (cloud server awakening)...';
+    }
     if (progress < 30) return 'Illuminating exhibition galleries...';
     if (progress < 70) return 'Preparing the galleries for discovery...';
     if (progress < 98) return 'Opening archival exhibition spaces...';
-    return 'Exhibition galleries prepared for your arrival.';
-  }, [progress]);
+    return 'Synchronizing museum archives...';
+  }, [isWaking, isFinishing, elapsedSeconds, progress]);
 
   return (
     <>
@@ -322,8 +326,14 @@ export default function ColdStartScreen({
 
           <div className="flex items-center gap-4 text-xs text-slate-400">
             <span className="flex items-center gap-1.5 text-slate-300">
-              <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse" />
-              <span className="text-[11px] font-medium tracking-wide">Galleries Preparing to Open</span>
+              <span
+                className={`h-1.5 w-1.5 rounded-full ${
+                  !isWaking ? 'bg-emerald-400' : 'bg-amber-400 animate-pulse'
+                }`}
+              />
+              <span className="text-[11px] font-medium tracking-wide">
+                {!isWaking ? 'Galleries Ready' : 'Archival Server Connecting'}
+              </span>
             </span>
             <span className="text-slate-600 hidden sm:inline">&bull;</span>
             <span className="hidden sm:inline text-amber-400/90 font-['Cinzel',serif] text-[11px] tracking-wider font-semibold">
@@ -697,14 +707,39 @@ export default function ColdStartScreen({
           className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-amber-500/15 pt-4 text-xs"
         >
           <div className="flex items-center gap-2 text-slate-400 text-xs">
-            <span className="text-amber-400 text-sm">◆</span>
-            <span>Galleries open automatically once preparation is complete.</span>
+            {!isWaking ? (
+              <>
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                <span className="text-emerald-300 font-medium">
+                  Archives online &bull; Opening exhibition galleries...
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse" />
+                <span>Galleries open automatically once archive connection is confirmed.</span>
+              </>
+            )}
           </div>
 
-          {/* Visitor Call To Action */}
+          {/* Visitor Call To Action / Archival Uplink Actions */}
           <div className="flex items-center gap-3">
+            {/* Show retry uplink button if waiting unusually long (>60s) */}
+            {isWaking && elapsedSeconds >= 60 && onRetryHealth && (
+              <motion.button
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={onRetryHealth}
+                className="px-4 py-2 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-300 hover:bg-amber-500/25 font-['Cinzel',serif] uppercase tracking-wider text-[11px] font-semibold transition-all cursor-pointer"
+              >
+                Retry Archival Uplink
+              </motion.button>
+            )}
+
             <AnimatePresence>
-              {(canBypass || isFinishing || progress >= 85) && (
+              {(!isWaking || isFinishing) && (
                 <motion.button
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}

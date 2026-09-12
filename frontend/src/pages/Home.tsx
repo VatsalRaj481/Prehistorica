@@ -13,6 +13,7 @@ export default function Home() {
   const [totalSpecies, setTotalSpecies] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
   const shouldReduceMotion = useReducedMotion();
 
   // Gentle scroll depth parallax on landing hero
@@ -22,6 +23,8 @@ export default function Home() {
 
   useEffect(() => {
     document.title = 'Prehistorica | Museum Exhibit Pavilion & Deep Time Archives';
+    setLoading(true);
+    setError(null);
 
     // Fetch Creature of the Day
     fetchCreatureOfTheDay()
@@ -53,7 +56,7 @@ export default function Home() {
         }
       })
       .catch((err) => console.error('Failed to fetch live species count:', err));
-  }, []);
+  }, [retryCount]);
 
   const heroVariants: Variants = {
     hidden: { opacity: 0, y: shouldReduceMotion ? 0 : -15 },
@@ -229,6 +232,12 @@ export default function Home() {
           <div className="museum-plinth border border-red-500/30 rounded-xl p-8 text-center text-red-400 flex flex-col items-center gap-3 font-mono">
             <ShieldAlert className="h-8 w-8 text-red-400" />
             <p className="font-bold text-sm">{error || 'Creature record not found'}</p>
+            <button
+              onClick={() => setRetryCount((c) => c + 1)}
+              className="mt-1 px-4 py-2 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 hover:bg-amber-500/20 text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer shadow-sm"
+            >
+              Retry Archival Lookup
+            </button>
           </div>
         ) : (
           <SpotlightCard
