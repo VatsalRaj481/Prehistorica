@@ -230,7 +230,7 @@ export default function Browse() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-xs text-slate-400 mt-1"
           >
-            Archival search across <strong className="text-amber-400">{pagination.total > 0 ? `${pagination.total}+` : '460+'}</strong> verified prehistoric specimens.
+            Archival search across <strong className="text-amber-400">{pagination.total > 0 ? `${pagination.total}+` : '590+'}</strong> verified prehistoric specimens.
           </motion.p>
         </div>
 

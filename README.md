@@ -3,7 +3,7 @@
   <h1>🏛️ PREHISTORICA</h1>
   <h3>The Modern Museum Pavilion Encyclopedia</h3>
   <p><strong>A premium, full-stack, architectural digital museum dedicated to cataloging and visualizing Earth's prehistoric fauna.</strong></p>
-  <p><em>Spanning 540 million years of natural history across 558 verified species, 31 global fossil formations, and 10 geologic eras.</em></p>
+  <p><em>Spanning 540 million years of natural history across 592 verified species, 31 global fossil formations, and 10 geologic eras.</em></p>
 </div>
 
 ---
@@ -15,18 +15,18 @@ Built around **The Modern Museum Pavilion** visual language. **Prehistorica** ex
 - **Official Museum Crest**: Distinctive hand-crafted archival seal depicting iconic prehistoric clades (Pterosauria, Tyrannosauroidea, Ceratopsia, early Synapsida) surrounding an ammonite fossil shield with laurel bone knotwork.
 - **Editorial Typographic Hierarchy**: Monospaced exhibit tags, serif scientific nomenclature, and high-contrast amber headers.
 - **Asymmetric Spatial Focus**: 1–2 dominant architectural elements per screen with varied scale and broken grid rhythm.
-- **Dual Scale Stages (2D & 3D)**: Both 3D interactive mesh viewports and 1:1 physical metric projection stages for direct comparative anatomy.
-- **Fossil Starfield Particle Stage**: Interactive 3D ambient particle system creating a deep museum atmosphere.
+- **1:1 Metric Caliper Scale Comparison Stage**: Highly calibrated metric projection stage comparing animals directly against reference silhouettes (Human, Car, Bus, Elephant).
+- **Interactive Geologic Time-Map**: Fluid paleogeographic exploration of fossil formations across geological eras.
 
 ---
 
 ## 🦖 Key Features
 
 ### 1. 🔍 Catalog Pavilion & Architectural Search
-- **558 Verified Species**: Comprehensive database covering Theropods, Sauropods, Ornithischians, Pterosaurs, Marine Reptiles, Early Synapsids, Amphibians, and Invertebrates.
+- **592 Verified Species**: Comprehensive database covering Theropods, Sauropods, Ornithischians, Pterosaurs, Marine Reptiles, Early Synapsids, Amphibians, and Invertebrates.
 - **Combinable Filters**: Search across taxonomic clade, dietary type (carnivore, herbivore, omnivore, piscivore, filter-feeder), habitat (terrestrial, semi-aquatic, freshwater, aerial, marine), geologic era, geographic region, and size scale.
 - **Collapsible Mobile Drawer**: Mobile-first filter panel with slide-over drawer navigation for 375px/428px touchscreens.
-- **Enriched Scientific Fact Banks**: 100% of species cataloged with 4–5 verified, peer-reviewed paleontological and anatomical facts.
+- **Enriched Scientific Fact Banks**: 100% of species cataloged with verified, peer-reviewed paleontological and anatomical facts.
 
 ### 2. 🎨 Verified Paleoart Media Hierarchy
 - **Strict Tier Classification**:
@@ -39,13 +39,12 @@ Built around **The Modern Museum Pavilion** visual language. **Prehistorica** ex
 - **Licensing & Attribution Compliance**: 100% CC-BY, CC-BY-SA, and Public Domain attribution metadata preserved and displayed on every specimen profile.
 - **Supabase Storage Integration**: Self-hosted image pipeline storing high-res media directly inside public Supabase Storage buckets (`species-media/` and `species-silhouettes/`).
 
-### 3. 📐 Dual-Stage Scale Comparison System
+### 3. 📐 1:1 Calibrated 2D Scale Comparison Stage
 - **2D Metric Projection Stage**:
   - 1:1 calibrated physical scale projection with dynamic architectural caliper dimension lines.
   - Interactive reference model switcher: **Human (1.8m)**, **Sedan Vehicle (4.5m)**, **Transit Bus (11.5m)**, and **African Bush Elephant (3.3m)**.
   - Metric grid toggle, orientation flip (parallel vs. facing creature), and smart occlusion handling to prevent dimension badge overlapping.
-- **Low-Poly 3D Specimen Viewport**: Built with React Three Fiber / Three.js, featuring 1:1 scale rendering against a 1.8m architectural human reference figure, orbit lighting, and mesh wireframe toggle.
-- **Side-by-Side Specimen Comparison Tool**: Modal allowing visitors to compare any two cataloged species simultaneously with comparative metric differential bars.
+- **Side-by-Side Specimen Comparison Tool**: Modal allowing visitors to compare any two cataloged species simultaneously with synchronized silhouettes and comparative metric differential bars.
 
 ### 4. 🗺️ Interactive Geologic Time-Map & Global Formations
 - **10 Geologic Eras**: Cambrian, Devonian, Carboniferous, Permian, Triassic, Jurassic, Cretaceous, Eocene, Neogene, and Pleistocene.
@@ -93,7 +92,7 @@ Built around **The Modern Museum Pavilion** visual language. **Prehistorica** ex
 | Layer | Technologies Used |
 | :--- | :--- |
 | **Frontend UI** | React 18, Vite, TypeScript, TailwindCSS 4.0, Framer Motion |
-| **3D & Graphics** | Three.js, React Three Fiber (`@react-three/fiber`), Drei (`@react-three/drei`) |
+| **Smooth Scrolling** | Lenis (`lenis`) |
 | **Mapping & Icons** | Leaflet, React-Leaflet, Lucide React Icons |
 | **Backend API** | Node.js, Express, TypeScript, Zod Schema Validator |
 | **Database & ORM** | PostgreSQL, Prisma ORM, Supabase Object Storage |
@@ -127,7 +126,7 @@ SUPABASE_SERVICE_ROLE_KEY="your-service-role-key"
 # 4. Generate Prisma Client
 npm run prisma:generate
 
-# 5. Seed the database with the pre-compiled 502-species dataset
+# 5. Seed the database with the pre-compiled 592-species dataset
 npm run prisma:seed
 
 # 6. Start the Express server
@@ -164,7 +163,7 @@ npm run add-species -- ./path/to/new_species.json --dry-run
 # Commit new species to PostgreSQL (with automated duplicate rejection & snapshot integrity verification)
 npm run add-species -- ./path/to/new_species.json
 
-# Run standalone integrity check against current database (502 records)
+# Run standalone integrity check against current database (592 records)
 npm run safeguard:check
 ```
 Reference `backend/scripts/species-template.json` for required schema standards.
@@ -183,7 +182,7 @@ Prehistorica/
 │   │   ├── species_jurassic.json          # Verified Jurassic fauna dataset
 │   │   ├── species_cretaceous.json        # Verified Cretaceous fauna dataset
 │   │   ├── species_others.json            # Paleozoic & Cenozoic fauna dataset
-│   │   └── species_full_export.json       # Complete 502-species master export
+│   │   └── species_full_export.json       # Complete 592-species master export
 │   ├── scripts/
 │   │   ├── add-species.ts                 # Ingestion CLI with duplicate rejection & safeguard checks
 │   │   ├── verify-no-regression.ts        # Anti-regression snapshot & verification engine
@@ -202,7 +201,7 @@ Prehistorica/
 │   │   ├── favicon.svg                    # Vector tab icon
 │   │   └── apple-touch-icon.png           # iOS / macOS web clip icon
 │   ├── src/
-│   │   ├── components/                    # TwoDScaleViewer, ThreeDScaleViewer, ScrollToTop, Navbar, MediaGallery, CompareModal
+│   │   ├── components/                    # TwoDScaleViewer, ScrollToTop, Navbar, MediaGallery, CompareModal
 │   │   ├── pages/                         # Home, Browse, SpeciesDetail, TimeMap
 │   │   ├── services/                      # REST API client & TypeScript interfaces
 │   │   ├── App.tsx

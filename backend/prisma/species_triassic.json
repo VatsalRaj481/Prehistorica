@@ -189,7 +189,7 @@
     "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Synapsida\",\"order\":\"Archosauria\",\"family\":\"Shonisaurusidae\",\"genus\":\"Shonisaurus\",\"species\":\"Shonisaurus popularis\",\"clade\":\"Marine_Reptile\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/53-Shonisaurus.jpg\",\"type\":\"art\",\"credit\":\"Tetori66ma (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Life%20restoration%20of%20Shonisaurus%20popularis.png\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/9/95/Shonisaurus_BW_2.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 2.5)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Shonisaurus_BW_2.jpg\"}]",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
@@ -711,7 +711,7 @@
     "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Synapsida\",\"order\":\"Archosauria\",\"family\":\"Silesaurusidae\",\"genus\":\"Silesaurus\",\"species\":\"Silesaurus opolensis\",\"clade\":\"Silesaurid\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/80-Silesaurus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/6/65/Triassic_archosauromorph_head_reconstructions.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c8/Silesaurus_fossil.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/c/c8/Silesaurus_fossil.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/d/d3/Silesaurus_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Silesaurus_TD.png\"}]",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"One of the apex organisms of its ecosystem.\",\"Displays unique morphological adaptations for its era.\",\"Fossils have contributed significantly to our understanding of the Triassic.\",\"It coexisted with early dinosaurs and other archosaurs.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
@@ -722,7 +722,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Silesaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Silesaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:23.245Z",
-    "updatedAt": "2026-09-08T15:52:08.927Z"
+    "updatedAt": "2026-09-17T09:52:21.751Z"
   },
   {
     "id": 81,
@@ -1842,7 +1842,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Synapsida\",\"order\":\"Archosauria\",\"family\":\"Longisquamaidae\",\"genus\":\"Longisquama\",\"species\":\"Longisquama insignis\",\"clade\":\"Archosauriform\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/123-Longisquama.png\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/2/23/Longisquama.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/a/a1/Longisquama_insignis_skeleton%26silhouette_small.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/a/a1/Longisquama_insignis_skeleton%26silhouette_small.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/d/d1/Longisquama_BW.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Longisquama_BW.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/a/a1/Longisquama_insignis_skeleton%26silhouette_small.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original\",\"type\":\"scientific_figure\",\"credit\":\"Original uploader was Qilong (Jaime A. Headden) at en.wikipedia (Public domain)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3ALongisquama%20insignis%20skeleton%26silhouette%20small.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/123-Longisquama.png\",\"type\":\"scientific_figure\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/2/23/Longisquama.png\"}]",
     "discoveryHistory": "• Found in the Madygen Formation, Kyrgyzstan.\n• Discovered by Aleksandr Sharov in 1969.\n• Known only from the anterior half of one skeleton.",
     "interestingFacts": "[\"Possessed incredibly long, feather-like dorsal scales.\",\"Subject of intense debate regarding avian origins.\",\"A highly unusual diapsid reptile.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
@@ -1853,7 +1853,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Longisquama spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Longisquama\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:28.956Z",
-    "updatedAt": "2026-09-08T15:52:11.010Z"
+    "updatedAt": "2026-09-17T09:52:21.751Z"
   },
   {
     "id": 124,
@@ -2045,7 +2045,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Synapsida\",\"order\":\"Archosauria\",\"family\":\"Nothosaurusidae\",\"genus\":\"Nothosaurus\",\"species\":\"Nothosaurus mirabilis\",\"clade\":\"Marine_Reptile\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/130-Nothosaurus.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/f/f0/Nothosaurus.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/5/56/Nothosaurus_giganteus_full_skeleton_view_2.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/5/56/Nothosaurus_giganteus_full_skeleton_view_2.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/2/23/Nothosaurus_BW.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Nothosaurus_BW.jpg\"}]",
     "discoveryHistory": "• Found across Europe, North Africa, and China.\n• Described by Georg zu Münster in 1834.\n• One of the most abundant marine reptiles of the Triassic.",
     "interestingFacts": "[\"A semi-oceanic predator with a long neck and tail.\",\"Had webbed toes instead of fully formed flippers.\",\"Probably lived similarly to modern seals.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
@@ -2190,7 +2190,7 @@
     "geographicRange": "{\"region\":\"Africa\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Synapsida\",\"order\":\"Archosauria\",\"family\":\"Mixosaurusidae\",\"genus\":\"Mixosaurus\",\"species\":\"Mixosaurus cornalianus\",\"clade\":\"Marine_Reptile\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/135-Mixosaurus.jpg\",\"type\":\"art\",\"credit\":\"SpinoDragon145 (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Mixosaurus%20Life%20Restoration.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/9/92/Mixosaurus_cornalianus_SW_1.png\",\"type\":\"art\",\"credit\":\"Slate Weasel (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Mixosaurus_cornalianus_SW_1.png\"}]",
     "discoveryHistory": "• Found in marine deposits worldwide.\n• Described by George H. Baur in 1887.\n• Represents one of the most common early ichthyosaurs.",
     "interestingFacts": "[\"A transitional ichthyosaur with a straight tail.\",\"Retained a distinct neck, unlike later forms.\",\"Small and agile marine predator.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
@@ -3130,5 +3130,35 @@
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.057Z",
     "updatedAt": "2026-09-08T15:37:23.268Z"
+  },
+  {
+    "id": 5192,
+    "name": "Nundasuchus",
+    "scientificName": "Nundasuchus songeaensis",
+    "nameMeaning": "Predator crocodile of Songea (Swahili \"nunda\" meaning predator/monster + Greek \"suchus\")",
+    "timePeriod": "Middle Triassic",
+    "epoch": "Middle Triassic (Anisian)",
+    "myaStart": 247.2,
+    "myaEnd": 242,
+    "diet": "carnivore",
+    "dietDetails": "Apex terrestrial carnivore equipped with blade-like recurved serrated ziphodont teeth capable of tearing flesh and dismembering dicynodonts and rhynchosaurs.",
+    "habitat": "terrestrial",
+    "clade": "Archosauriform",
+    "geographicRange": "{\"continent\":\"Africa\",\"region\":\"Ruvuma Basin\",\"country\":\"Tanzania\",\"fossilFormation\":\"Manda Beds (Lifua Member)\",\"coordinates\":[-10.6,35.6]}",
+    "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"clade\":\"Archosauriformes\",\"unrankedClade1\":\"Archosauria\",\"unrankedClade2\":\"Pseudosuchia\",\"genus\":\"Nundasuchus\",\"species\":\"Nundasuchus songeaensis\",\"source\":\"Paleobiology Database (PBDB) + Nesbitt et al. (2014)\"}",
+    "taxonomicStatus": "valid",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/1/17/Nundasuchus_Songeaensis.png\",\"type\":\"art\",\"credit\":\"Aquakeeper14 (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Nundasuchus_Songeaensis.png\"}]",
+    "discoveryHistory": "• Discovered in 2007 in the Middle Triassic Lifua Member of the Manda Beds in southwestern Tanzania during an international expedition led by Sterling Nesbitt.\n• Formally described and named in 2014 by Sterling J. Nesbitt, Christian A. Sidor, Kenneth D. Angielczyk, Roger M. H. Smith, and Linda A. Tsuji.\n• Generic name combines the Swahili word \"nunda\" (predator or mythical beast) with Greek \"suchus\" (crocodile), while the specific epithet honors the nearby town of Songea.\n• Represents an evolutionary intermediate offering critical clues into early archosaurian diversification after the Permian-Triassic extinction.",
+    "interestingFacts": "[\"Nundasuchus represents a critical transitional archosauriform possessing a striking mosaic of ancestral reptile features and advanced suchian archosaurian anatomy.\",\"Its back was protected by double rows of overlapping bony osteoderms, providing defense and spinal rigidity.\",\"The generic name incorporates the Swahili term \\\"nunda\\\", meaning a legendary predator or fierce beast.\",\"Fossils were recovered from the famous Manda Beds of Tanzania, revealing the complex predatory faunas that flourished right before the emergence of the first dinosaurs.\"]",
+    "sizeNotes": "Robust quadrupedal archosauriform measuring an estimated 2.7 to 3.0 meters (9 to 10 ft) in length and weighing approximately 60 to 120 kg.",
+    "sizeEstimate": "{\"length\":{\"value\":2.8,\"unit\":\"m\",\"confidence\":\"estimated\"},\"height\":{\"value\":0.8,\"unit\":\"m\",\"confidence\":\"estimated\"},\"weight\":{\"value\":90,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeComparisonToHuman": true,
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/b5927c68-da04-47ba-80ba-616059a82b9d.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/b5927c68-da04-47ba-80ba-616059a82b9d\",\"license\":\"CC0 1.0 Universal Public Domain Dedication\",\"credit\":\"Miguel Hernández\",\"taxon\":\"Nundasuchus songeaensis\",\"taxonMatch\":\"species-specific\"}",
+    "extinctionEvent": "Middle/Late Triassic faunal turnover",
+    "closestLivingRelatives": "[\"Crocodilians (Crocodilia)\"]",
+    "sources": "[{\"citation\":\"Nesbitt, S. J., Sidor, C. A., Angielczyk, K. D., Smith, R. M., & Tsuji, L. A. (2014). A new archosaur from the Manda beds (Anisian, Middle Triassic) of southern Tanzania and its implications for character evolution at the base of Archosauria. Journal of Vertebrate Paleontology, 34(6), 1478-1481.\",\"url\":\"https://doi.org/10.7987/14-00049\"},{\"citation\":\"Paleobiology Database (PBDB) - Nundasuchus songeaensis\",\"url\":\"https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=311246\"}]",
+    "placeholder": false,
+    "createdAt": "2026-09-12T15:33:29.138Z",
+    "updatedAt": "2026-09-12T15:33:29.138Z"
   }
 ]

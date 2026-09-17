@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { useLenis } from 'lenis/react';
 import { Compass, Sparkles, ArrowRight } from 'lucide-react';
 import DinoLogoMark from './DinoLogoMark.js';
 
@@ -125,6 +126,30 @@ export default function ColdStartScreen({
   const [flyCoords, setFlyCoords] = useState<FlyCoordinates | null>(null);
   const crestLogoRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
+  const lenis = useLenis();
+
+  // Strictly lock all page and smooth scrolling while ColdStartScreen is mounted
+  useEffect(() => {
+    // 1. Stop Lenis smooth scroll engine
+    if (lenis) {
+      lenis.stop();
+    }
+
+    // 2. Lock document and body scroll
+    const origBodyOverflow = document.body.style.overflow;
+    const origHtmlOverflow = document.documentElement.style.overflow;
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    return () => {
+      // Restore on unmount
+      if (lenis) {
+        lenis.start();
+      }
+      document.body.style.overflow = origBodyOverflow;
+      document.documentElement.style.overflow = origHtmlOverflow;
+    };
+  }, [lenis]);
 
   // Track elapsed waiting seconds while backend is waking
   useEffect(() => {
@@ -292,7 +317,7 @@ export default function ColdStartScreen({
         initial={{ opacity: 0 }}
         animate={{ opacity: exitPhase === 'zooming' ? 0 : 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed inset-0 z-[9999] bg-[#080C16] flex flex-col justify-between p-4 sm:p-6 md:p-8 overflow-y-auto select-none text-slate-300 font-sans"
+        className="fixed inset-0 z-[9999] bg-[#080C16] flex flex-col justify-between p-4 sm:p-6 md:p-8 overflow-hidden select-none touch-none overscroll-none text-slate-300 font-sans"
       >
         {/* Atmospheric Museum Gallery Lighting */}
         <div className="absolute inset-0 bg-fossil-grid opacity-10 pointer-events-none" />

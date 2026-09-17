@@ -180,13 +180,36 @@ export async function getSpecies(req: Request, res: Response, next: NextFunction
     }
 
     if (fossil_formation || country || location) {
-      const cleanFormation = (fossil_formation as string || location as string || '').replace(/\s+(Formation|Beds|Limestone|Group|Basin|Shale)$/i, '').trim();
-      const targetStr = country as string || cleanFormation;
-      if (targetStr) {
-        where.geographicRange = {
-          contains: targetStr,
-          mode: 'insensitive'
-        };
+      where.AND = where.AND || [];
+
+      if (fossil_formation) {
+        const rawFormation = (fossil_formation as string).trim();
+        const cleanFormation = rawFormation.replace(/\s+(Formation|Beds|Limestone|Group|Basin|Shale)$/i, '').trim();
+        const targetFormation = cleanFormation || rawFormation;
+
+        if (targetFormation.toLowerCase() === 'kota') {
+          // Disambiguate Kota Formation (India) from "South Dakota" / "North Dakota" (USA)
+          where.AND.push(
+            { geographicRange: { contains: 'Kota', mode: 'insensitive' } },
+            { NOT: { geographicRange: { contains: 'Dakota', mode: 'insensitive' } } }
+          );
+        } else {
+          where.AND.push({
+            geographicRange: { contains: targetFormation, mode: 'insensitive' }
+          });
+        }
+      }
+
+      if (country) {
+        where.AND.push({
+          geographicRange: { contains: country as string, mode: 'insensitive' }
+        });
+      }
+
+      if (location && !fossil_formation) {
+        where.AND.push({
+          geographicRange: { contains: location as string, mode: 'insensitive' }
+        });
       }
     }
 

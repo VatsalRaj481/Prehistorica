@@ -130,7 +130,7 @@ export default function TimeMap() {
     setError(null);
 
     fetchSpecies({
-      time_period: selectedFormation ? undefined : currentEra.name,
+      time_period: currentEra.name,
       location: selectedFormation ? undefined : selectedLocation,
       fossil_formation: selectedFormation || undefined,
       limit: 100
@@ -140,11 +140,19 @@ export default function TimeMap() {
 
         if (selectedFormation) {
           const cleanForm = selectedFormation.toLowerCase().replace(/\s+(formation|beds|limestone|group|basin|shale)$/i, '').trim();
+          const cleanLower = cleanForm.toLowerCase();
+          const fullLower = selectedFormation.toLowerCase();
+          const isKota = cleanLower === 'kota';
+
           const filtered = fetchedData.filter(s => {
             const formStr = (s.fossilFormation || s.geographicRange?.fossilFormation || '').toLowerCase();
-            return formStr.includes(cleanForm) || JSON.stringify(s).toLowerCase().includes(cleanForm);
+            if (isKota && formStr.includes('dakota') && !formStr.includes('kota formation') && !formStr.includes('kota beds')) {
+              return false;
+            }
+            const wordRegex = new RegExp(`\\b${cleanForm}\\b`, 'i');
+            return wordRegex.test(formStr) || formStr.includes(fullLower);
           });
-          setSpeciesList(filtered.length > 0 ? filtered : fetchedData);
+          setSpeciesList(filtered);
         } else {
           setSpeciesList(fetchedData);
         }

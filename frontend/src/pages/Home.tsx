@@ -77,7 +77,7 @@ export default function Home() {
     }
   };
 
-  const formattedTotal = totalSpecies ? `${totalSpecies}+` : '460+';
+  const formattedTotal = totalSpecies ? `${totalSpecies}+` : '590+';
 
   return (
     <div className="space-y-16 relative">
