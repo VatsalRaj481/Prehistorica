@@ -245,4 +245,15 @@ a, button {
               box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Leaflet Formation Markers */
+.custom-leaflet-marker {
+  background: transparent !important;
+  border: none !important;
+  pointer-events: none;
+}
+.custom-leaflet-marker .formation-badge,
+.custom-leaflet-marker .formation-pin {
+  pointer-events: auto;
+}
+
 

@@ -83,21 +83,184 @@ const getEraColor = (eraName: string) => {
   return '#D97706';
 };
 
-const createMapMarkerIcon = (name: string, isSelected: boolean, eraColor: string) => {
+type Placement = 'top' | 'bottom' | 'left' | 'right' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'center';
+
+const FORMATION_PLACEMENTS: Record<string, Placement> = {
+  // Asia - Cretaceous (Zero-collision offset: Nemegt top, Djadochta bottom, Yixian right)
+  'Nemegt Formation': 'top',
+  'Djadochta Formation': 'bottom',
+  'Yixian Formation': 'right',
+  'Lameta Formation': 'bottom-left',
+
+  // South America - Cretaceous (Santana top-left, Romualdo bottom-right, Candeleros bottom)
+  'Santana Formation': 'top-left',
+  'Romualdo Formation': 'bottom-right',
+  'Candeleros Formation': 'bottom',
+
+  // North America - Cretaceous (Dinosaur Park top, Two Medicine bottom-left, Hell Creek top-right, Niobrara bottom)
+  'Dinosaur Park Formation': 'top',
+  'Two Medicine Formation': 'bottom-left',
+  'Hell Creek Formation': 'top-right',
+  'Niobrara Formation': 'bottom',
+
+  // North America - Jurassic / Triassic
+  'Morrison Formation': 'center',
+  'Chinle Formation': 'center',
+
+  // South America - Triassic
+  'Ischigualasto Formation': 'center',
+
+  // Europe - Cretaceous (Wessex bottom-left, Wealden top-right)
+  'Wessex Formation': 'bottom-left',
+  'Wealden Group': 'top-right',
+
+  // Europe - Jurassic (Oxford Clay top-left, Solnhofen bottom-right)
+  'Oxford Clay Formation': 'top-left',
+  'Solnhofen Limestone': 'bottom-right',
+
+  // Asia - Triassic (Maleri bottom-left, Lufeng bottom)
+  'Maleri Formation': 'bottom-left',
+  'Lufeng Formation': 'bottom',
+
+  // Asia - Jurassic (Shaximiao top, Kota bottom-left, Lufeng bottom)
+  'Shaximiao Formation': 'top',
+  'Kota Formation': 'bottom-left',
+
+  // Asia - Neogene / Pleistocene
+  'Siwalik Hills': 'center',
+
+  // Africa - Cretaceous (Bahariya top-right, Kem Kem bottom-left)
+  'Bahariya Formation': 'top-right',
+  'Kem Kem Beds': 'bottom-left',
+
+  // Africa - Jurassic (Tendaguru top, Elliot bottom-right)
+  'Tendaguru Formation': 'top',
+  'Elliot Formation': 'bottom-right',
+
+  // Africa - Triassic / Permian (Elliot bottom-right, Karoo bottom-left)
+  'Karoo Basin': 'bottom-left',
+
+  // Oceania - Cretaceous (Winton top, Lightning Ridge bottom)
+  'Winton Formation': 'top',
+  'Lightning Ridge': 'bottom'
+};
+
+function getFormationPlacement(
+  formation: typeof FORMATIONS[number],
+  allInContinent: typeof FORMATIONS
+): Placement {
+  if (FORMATION_PLACEMENTS[formation.name]) {
+    return FORMATION_PLACEMENTS[formation.name];
+  }
+
+  const neighbors = allInContinent.filter(f => f.name !== formation.name);
+  if (neighbors.length === 0) return 'center';
+
+  let closestNeighbor: typeof FORMATIONS[number] | null = null;
+  let minDistance = Infinity;
+
+  for (const n of neighbors) {
+    const dLat = formation.coords[0] - n.coords[0];
+    const dLng = formation.coords[1] - n.coords[1];
+    const dist = Math.sqrt(dLat * dLat + dLng * dLng);
+    if (dist < minDistance) {
+      minDistance = dist;
+      closestNeighbor = n;
+    }
+  }
+
+  if (minDistance > 5) return 'center';
+
+  const dLat = formation.coords[0] - (closestNeighbor?.coords[0] ?? 0);
+  const dLng = formation.coords[1] - (closestNeighbor?.coords[1] ?? 0);
+
+  if (Math.abs(dLat) > Math.abs(dLng)) {
+    return dLat > 0 ? 'top' : 'bottom';
+  } else {
+    return dLng > 0 ? 'right' : 'left';
+  }
+}
+
+const createMapMarkerIcon = (
+  name: string,
+  isSelected: boolean,
+  eraColor: string,
+  placement: Placement
+) => {
+  let badgePosStyle = '';
+  let lineSvg = '';
+
+  switch (placement) {
+    case 'top':
+      badgePosStyle = 'bottom: 58px; left: 130px; transform: translateX(-50%);';
+      lineSvg = `<line x1="130" y1="50" x2="130" y2="40" stroke="${eraColor}" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.75" />`;
+      break;
+    case 'bottom':
+      badgePosStyle = 'top: 58px; left: 130px; transform: translateX(-50%);';
+      lineSvg = `<line x1="130" y1="50" x2="130" y2="60" stroke="${eraColor}" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.75" />`;
+      break;
+    case 'top-left':
+      badgePosStyle = 'bottom: 56px; right: 138px;';
+      lineSvg = `<line x1="130" y1="50" x2="110" y2="40" stroke="${eraColor}" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.75" />`;
+      break;
+    case 'top-right':
+      badgePosStyle = 'bottom: 56px; left: 138px;';
+      lineSvg = `<line x1="130" y1="50" x2="150" y2="40" stroke="${eraColor}" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.75" />`;
+      break;
+    case 'bottom-left':
+      badgePosStyle = 'top: 56px; right: 138px;';
+      lineSvg = `<line x1="130" y1="50" x2="110" y2="60" stroke="${eraColor}" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.75" />`;
+      break;
+    case 'bottom-right':
+      badgePosStyle = 'top: 56px; left: 138px;';
+      lineSvg = `<line x1="130" y1="50" x2="150" y2="60" stroke="${eraColor}" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.75" />`;
+      break;
+    case 'left':
+      badgePosStyle = 'top: 50px; right: 138px; transform: translateY(-50%);';
+      lineSvg = `<line x1="130" y1="50" x2="112" y2="50" stroke="${eraColor}" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.75" />`;
+      break;
+    case 'right':
+      badgePosStyle = 'top: 50px; left: 138px; transform: translateY(-50%);';
+      lineSvg = `<line x1="130" y1="50" x2="148" y2="50" stroke="${eraColor}" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.75" />`;
+      break;
+    case 'center':
+    default:
+      badgePosStyle = 'top: 50px; left: 130px; transform: translate(-50%, -50%);';
+      lineSvg = '';
+      break;
+  }
+
+  const html = `
+    <div style="--era-color: ${eraColor}; width: 260px; height: 100px; position: relative; pointer-events: none;" class="select-none">
+      ${lineSvg ? `<svg style="position: absolute; inset: 0; width: 260px; height: 100px; pointer-events: none;">${lineSvg}</svg>` : ''}
+      
+      <!-- Coordinate Origin Pinpoint (Exact Geological Site) -->
+      <div style="position: absolute; left: 130px; top: 50px; transform: translate(-50%, -50%); pointer-events: auto;" class="formation-pin group cursor-pointer">
+        <div class="relative flex items-center justify-center">
+          <div class="w-2.5 h-2.5 rounded-full border border-white/30 shadow-[0_0_8px_var(--era-color)]" style="background-color: ${eraColor};"></div>
+          <div class="absolute -inset-1 rounded-full border border-[var(--era-color)] opacity-40 animate-ping"></div>
+        </div>
+      </div>
+
+      <!-- Formation Name Badge (Collision-Calibrated Non-Overlapping Offset) -->
+      <div style="position: absolute; ${badgePosStyle}; pointer-events: auto;" class="formation-badge cursor-pointer">
+        <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-md border font-mono font-bold text-[11px] transition-all duration-200 uppercase tracking-wider whitespace-nowrap ${
+          isSelected
+            ? 'bg-slate-950 text-amber-400 border-amber-400 scale-105 shadow-[0_0_20px_var(--era-color)] z-50 ring-1 ring-amber-400/50'
+            : 'bg-slate-950/95 text-slate-300 border-white/15 hover:border-amber-500/60 hover:text-white hover:bg-slate-900 shadow-xl'
+        }">
+          <span class="w-1.5 h-1.5 rounded-full shrink-0" style="background-color: ${eraColor};"></span>
+          <span>${name}</span>
+        </div>
+      </div>
+    </div>
+  `;
+
   return L.divIcon({
     className: 'custom-leaflet-marker',
-    html: `
-      <div style="--era-color: ${eraColor};" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border shadow-2xl font-mono font-bold text-xs transition-all duration-200 uppercase tracking-wider whitespace-nowrap min-w-[80px] justify-center ${
-        isSelected
-          ? 'bg-slate-950 text-amber-400 border-amber-500 scale-105 shadow-[0_0_20px_var(--era-color)] z-50'
-          : 'bg-slate-950 text-slate-300 border-white/10 hover:border-amber-500/50 hover:text-white'
-      }">
-        <span class="w-2 h-2 rounded-full" style="background-color: ${eraColor};"></span>
-        <span>${name}</span>
-      </div>
-    `,
-    iconSize: [120, 36],
-    iconAnchor: [60, 18]
+    html,
+    iconSize: [260, 100],
+    iconAnchor: [130, 50]
   });
 };
 
@@ -304,13 +467,15 @@ export default function TimeMap() {
 
               {formationsInContinent.map((f) => {
                 const isSelected = selectedFormation === f.name;
-                const icon = createMapMarkerIcon(f.name, isSelected, eraColor);
+                const placement = getFormationPlacement(f, formationsInContinent);
+                const icon = createMapMarkerIcon(f.name, isSelected, eraColor, placement);
 
                 return (
                   <Marker
                     key={f.name}
                     position={f.coords}
                     icon={icon}
+                    zIndexOffset={isSelected ? 3000 : 100}
                     eventHandlers={{
                       click: () => {
                         setSelectedFormation(isSelected ? null : f.name);
