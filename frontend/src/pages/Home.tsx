@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useReducedMotion, useScroll, useTransform, Variants } from 'framer-motion';
 import { fetchCreatureOfTheDay, fetchSpecies, fetchSpeciesById, Species } from '../services/api.js';
 import SpotlightCard from '../components/SpotlightCard.js';
-import { Calendar, ArrowRight, Dna, Compass, ShieldAlert, FileText, Layers, Loader2, Globe, Database, Sparkles } from 'lucide-react';
+import { Calendar, ArrowRight, Dna, Compass, ShieldAlert, FileText, Layers, Loader2, Globe, Database, Sparkles, Scale, Trophy } from 'lucide-react';
 import { formatMass } from '../utils/formatMass.js';
 import { formatFeet } from '../utils/formatDimensions.js';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
@@ -474,7 +474,73 @@ export default function Home() {
             </div>
 
             <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors">
-              <span>Open Geological Map</span>
+              <span>Open Geological Map &amp; Drift</span>
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </SpotlightCard>
+        </Link>
+
+        {/* Portal 3: Multi-Specimen Caliper Runway */}
+        <Link to="/runway" className="block group">
+          <SpotlightCard
+            whileHover={{ y: -4 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+            className="museum-plinth rounded-xl hover:border-amber-500/40 p-6 sm:p-7 transition-colors shadow-xl flex flex-col justify-between space-y-5 h-full"
+          >
+            <div className="space-y-3">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5">
+                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5">
+                  <Scale className="h-3 w-3" /> 1:1 METRIC RUNWAY
+                </span>
+                <span className="text-xs text-slate-400 font-bold">
+                  MULTI-SPECIMEN LINEUP
+                </span>
+              </div>
+
+              <h3 className="text-2xl font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans">
+                Caliper Scale Runway
+              </h3>
+
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+                Project up to 6 prehistoric creatures simultaneously on a calibrated Cartesian stage with reference models (Human, Bus, Elephant) and dimensional differentials.
+              </p>
+            </div>
+
+            <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors">
+              <span>Launch Lineup Arena</span>
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </SpotlightCard>
+        </Link>
+
+        {/* Portal 4: Curator Trials & Field Notebook */}
+        <Link to="/challenge" className="block group">
+          <SpotlightCard
+            whileHover={{ y: -4 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+            className="museum-plinth rounded-xl hover:border-amber-500/40 p-6 sm:p-7 transition-colors shadow-xl flex flex-col justify-between space-y-5 h-full"
+          >
+            <div className="space-y-3">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5">
+                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5">
+                  <Trophy className="h-3 w-3" /> FIELD TRIALS &amp; ARCHIVE
+                </span>
+                <span className="text-xs text-slate-400 font-bold">
+                  GAMIFIED CHALLENGES
+                </span>
+              </div>
+
+              <h3 className="text-2xl font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans">
+                Curator Trials &amp; Notebook
+              </h3>
+
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+                Test your diagnostic intuition with Holotype Detective, Caliper Metric Guesser, and Chronostratigraphic sorting to climb the museum curator ranks.
+              </p>
+            </div>
+
+            <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors">
+              <span>Enter Curator Trials</span>
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </SpotlightCard>

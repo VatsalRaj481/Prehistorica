@@ -5,6 +5,7 @@ import { fetchSpeciesById, Species } from '../services/api.js';
 import TaxonomyBreadcrumbs from '../components/TaxonomyBreadcrumbs.js';
 import TwoDScaleViewer from '../components/TwoDScaleViewer.js';
 import MediaGallery from '../components/MediaGallery.js';
+import { isBookmarked as checkIsBookmarked, toggleBookmark as toggleBookmarkStorage } from '../utils/notebookStorage.js';
 import { Calendar, Compass, ArrowLeft, Dna, FileText, Scale, BookOpen, AlertCircle, Bookmark, BookmarkCheck, ExternalLink, Globe, Zap } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 import { formatFeetLong } from '../utils/formatDimensions.js';
@@ -24,14 +25,7 @@ export default function SpeciesDetail() {
       .then((data) => {
         setSpecies(data);
         document.title = `${data.name} (${data.scientificName}) | Prehistorica Museum Exhibit`;
-
-        try {
-          const favs = JSON.parse(localStorage.getItem('prehistorica_favorites') || '[]');
-          setIsBookmarked(favs.includes(data.id));
-        } catch {
-          setIsBookmarked(false);
-        }
-
+        setIsBookmarked(checkIsBookmarked(data.id));
         setLoading(false);
       })
       .catch((err) => {
@@ -43,20 +37,8 @@ export default function SpeciesDetail() {
 
   const toggleBookmark = () => {
     if (!species) return;
-    try {
-      const favs: number[] = JSON.parse(localStorage.getItem('prehistorica_favorites') || '[]');
-      let updated: number[];
-      if (favs.includes(species.id)) {
-        updated = favs.filter(i => i !== species.id);
-        setIsBookmarked(false);
-      } else {
-        updated = [...favs, species.id];
-        setIsBookmarked(true);
-      }
-      localStorage.setItem('prehistorica_favorites', JSON.stringify(updated));
-    } catch (e) {
-      console.error(e);
-    }
+    const newState = toggleBookmarkStorage(species.id);
+    setIsBookmarked(newState);
   };
 
   const pageVariants: Variants = {
@@ -121,25 +103,37 @@ export default function SpeciesDetail() {
           </span>
         </div>
 
-        <motion.button
-          whileTap={{ scale: 0.94 }}
-          onClick={toggleBookmark}
-          className={`px-3.5 py-2 rounded-lg border text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shadow-sm ${
-            isBookmarked
-              ? 'bg-amber-500/15 border-amber-500/40 text-amber-300'
-              : 'bg-slate-900/90 border-white/[0.08] text-slate-300 hover:text-white hover:border-amber-500/40'
-          }`}
-        >
-          {isBookmarked ? (
-            <>
-              <BookmarkCheck className="h-4 w-4 text-amber-400" /> Archival Bookmarked
-            </>
-          ) : (
-            <>
-              <Bookmark className="h-4 w-4 text-slate-400" /> Bookmark Specimen
-            </>
-          )}
-        </motion.button>
+        <div className="flex items-center gap-2">
+          <motion.div whileTap={{ scale: 0.94 }}>
+            <Link
+              to={`/runway?ids=${species.id}`}
+              className="px-3 py-2 rounded-lg border border-white/[0.08] bg-slate-900/90 hover:bg-slate-850 hover:border-amber-500/40 text-xs font-mono font-bold uppercase tracking-wider text-slate-300 hover:text-white flex items-center gap-1.5 transition-all shadow-sm"
+              title="Add this creature to the Multi-Specimen Caliper Runway"
+            >
+              <Scale className="h-3.5 w-3.5 text-amber-400" /> Runway Lineup
+            </Link>
+          </motion.div>
+
+          <motion.button
+            whileTap={{ scale: 0.94 }}
+            onClick={toggleBookmark}
+            className={`px-3.5 py-2 rounded-lg border text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shadow-sm ${
+              isBookmarked
+                ? 'bg-amber-500/15 border-amber-500/40 text-amber-300'
+                : 'bg-slate-900/90 border-white/[0.08] text-slate-300 hover:text-white hover:border-amber-500/40'
+            }`}
+          >
+            {isBookmarked ? (
+              <>
+                <BookmarkCheck className="h-4 w-4 text-amber-400" /> Archival Bookmarked
+              </>
+            ) : (
+              <>
+                <Bookmark className="h-4 w-4 text-slate-400" /> Bookmark Specimen
+              </>
+            )}
+          </motion.button>
+        </div>
       </div>
 
       {/* Main Specimen Title & Classification Headline */}

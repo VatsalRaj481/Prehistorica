@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import L from 'leaflet';
 import { fetchSpecies, Species } from '../services/api.js';
-import { Compass, Dna, Info, ArrowRight, MapPin, Loader2 } from 'lucide-react';
+import { Compass, Dna, Info, ArrowRight, MapPin, Loader2, Globe } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
+import PaleoDriftViewer from '../components/PaleoDriftViewer.js';
 
 const ERAS = [
   { name: 'Cambrian', myaStart: 541, myaEnd: 485, range: '541–485 MYA', desc: 'Explosion of marine life forms' },
@@ -268,6 +269,7 @@ export default function TimeMap() {
   const [selectedEraIndex, setSelectedEraIndex] = useState(4);
   const [selectedLocation, setSelectedLocation] = useState('North America');
   const [selectedFormation, setSelectedFormation] = useState<string | null>(null);
+  const [viewMode, setViewMode] = useState<'modern' | 'paleo'>('modern');
 
   const [speciesList, setSpeciesList] = useState<Species[]>([]);
   const [loading, setLoading] = useState(false);
@@ -356,12 +358,44 @@ export default function TimeMap() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2 font-mono text-xs">
-          <span className="px-3 py-1.5 bg-slate-900 border border-white/[0.08] text-slate-300 font-bold uppercase tracking-wider rounded-lg shadow-sm">
-            Era: <strong style={{ color: eraColor }}>{currentEra.name}</strong> ({currentEra.range})
-          </span>
+        {/* View Mode Switcher */}
+        <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
+          <div className="p-1 rounded-lg bg-slate-900 border border-white/[0.08] flex items-center gap-1 shadow-sm">
+            <button
+              onClick={() => setViewMode('modern')}
+              className={`px-3 py-1.5 rounded-md uppercase font-bold tracking-wider flex items-center gap-1.5 transition-all cursor-pointer ${
+                viewMode === 'modern'
+                  ? 'bg-amber-500 text-slate-950 shadow-sm'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <Globe className="h-3.5 w-3.5" /> Modern Formations
+            </button>
+            <button
+              onClick={() => setViewMode('paleo')}
+              className={`px-3 py-1.5 rounded-md uppercase font-bold tracking-wider flex items-center gap-1.5 transition-all cursor-pointer ${
+                viewMode === 'paleo'
+                  ? 'bg-amber-500 text-slate-950 shadow-sm'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              <Compass className="h-3.5 w-3.5" /> Continental Drift
+            </button>
+          </div>
+
+          {viewMode === 'modern' && (
+            <span className="px-3 py-1.5 bg-slate-900 border border-white/[0.08] text-slate-300 font-bold uppercase tracking-wider rounded-lg shadow-sm">
+              Era: <strong style={{ color: eraColor }}>{currentEra.name}</strong> ({currentEra.range})
+            </span>
+          )}
         </div>
       </motion.div>
+
+      {/* Deep-Time Paleogeographic Drift Mode */}
+      {viewMode === 'paleo' ? (
+        <PaleoDriftViewer />
+      ) : (
+        <>
 
       {/* Geologic Era Timeline Scrubber */}
       <motion.div
@@ -584,6 +618,8 @@ export default function TimeMap() {
           )}
         </div>
       </div>
+        </>
+      )}
     </div>
   );
 }

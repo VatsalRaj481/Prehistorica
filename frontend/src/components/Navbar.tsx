@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, Map, ArrowRightLeft, Menu, X } from 'lucide-react';
+import { Search, Map, ArrowRightLeft, Menu, X, Scale, BookOpen, Trophy } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SearchAutocomplete from './SearchAutocomplete.js';
 import CompareModal from './CompareModal.js';
 import DinoLogoMark from './DinoLogoMark.js';
+import { getBookmarkIds, NOTEBOOK_UPDATED_EVENT } from '../utils/notebookStorage.js';
 
 interface NavbarProps {
   isLogoVisible?: boolean;
@@ -14,11 +15,22 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
   const location = useLocation();
   const [isCompareOpen, setIsCompareOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [bookmarkCount, setBookmarkCount] = useState(0);
 
   // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
+
+  // Sync bookmark count
+  useEffect(() => {
+    const updateCount = () => {
+      setBookmarkCount(getBookmarkIds().length);
+    };
+    updateCount();
+    window.addEventListener(NOTEBOOK_UPDATED_EVENT, updateCount);
+    return () => window.removeEventListener(NOTEBOOK_UPDATED_EVENT, updateCount);
+  }, []);
 
   const isActive = (path: string) => {
     return location.pathname === path
@@ -62,40 +74,66 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
               </Link>
 
               {/* Desktop Navigation Links */}
-              <nav className="hidden lg:flex space-x-2 items-center font-mono">
+              <nav className="hidden lg:flex space-x-1.5 items-center font-mono">
                 <Link
                   to="/"
-                  className={`px-3 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 ${isActive('/')}`}
+                  className={`px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 ${isActive('/')}`}
                 >
                   Home
                 </Link>
                 <Link
                   to="/browse"
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 ${isActive('/browse')}`}
+                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 ${isActive('/browse')}`}
                 >
                   <Search className="h-3.5 w-3.5 text-amber-400" />
-                  Browse Catalog
+                  Catalog
                 </Link>
                 <Link
                   to="/map"
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 ${isActive('/map')}`}
+                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 ${isActive('/map')}`}
                 >
                   <Map className="h-3.5 w-3.5 text-amber-400" />
                   Time-Map
+                </Link>
+                <Link
+                  to="/runway"
+                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 ${isActive('/runway')}`}
+                >
+                  <Scale className="h-3.5 w-3.5 text-amber-400" />
+                  Runway
+                </Link>
+                <Link
+                  to="/challenge"
+                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 ${isActive('/challenge')}`}
+                >
+                  <Trophy className="h-3.5 w-3.5 text-amber-400" />
+                  Trials
+                </Link>
+                <Link
+                  to="/notebook"
+                  className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 ${isActive('/notebook')}`}
+                >
+                  <BookOpen className="h-3.5 w-3.5 text-amber-400" />
+                  Notebook
+                  {bookmarkCount > 0 && (
+                    <span className="px-1.5 py-0.2 rounded-full bg-amber-500 text-slate-950 font-black text-[10px]">
+                      {bookmarkCount}
+                    </span>
+                  )}
                 </Link>
               </nav>
             </div>
 
             {/* Desktop Right Side Search & Compare */}
             <div className="hidden lg:flex items-center gap-3">
-              <div className="w-56 xl:w-64">
+              <div className="w-52 xl:w-60">
                 <SearchAutocomplete />
               </div>
 
               <motion.button
                 whileTap={{ scale: 0.96 }}
                 onClick={() => setIsCompareOpen(true)}
-                className="px-3.5 py-2 rounded-lg bg-slate-900/90 hover:bg-slate-850 border border-white/[0.08] hover:border-amber-500/40 text-xs font-mono font-bold uppercase tracking-wider text-slate-200 hover:text-white flex items-center gap-2 transition-all cursor-pointer shrink-0 shadow-sm"
+                className="px-3 py-2 rounded-lg bg-slate-900/90 hover:bg-slate-850 border border-white/[0.08] hover:border-amber-500/40 text-xs font-mono font-bold uppercase tracking-wider text-slate-200 hover:text-white flex items-center gap-1.5 transition-all cursor-pointer shrink-0 shadow-sm"
                 title="Compare 2 species side-by-side"
               >
                 <ArrowRightLeft className="h-3.5 w-3.5 text-amber-400" />
@@ -162,6 +200,34 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                 >
                   <Map className="h-4 w-4 text-amber-400" />
                   Interactive Time-Map
+                </Link>
+                <Link
+                  to="/runway"
+                  className={`flex items-center gap-2 px-3 py-2.5 rounded-lg transition-colors ${isMobileActive('/runway')}`}
+                >
+                  <Scale className="h-4 w-4 text-amber-400" />
+                  Caliper Runway
+                </Link>
+                <Link
+                  to="/challenge"
+                  className={`flex items-center gap-2 px-3 py-2.5 rounded-lg transition-colors ${isMobileActive('/challenge')}`}
+                >
+                  <Trophy className="h-4 w-4 text-amber-400" />
+                  Curator Trials
+                </Link>
+                <Link
+                  to="/notebook"
+                  className={`flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors ${isMobileActive('/notebook')}`}
+                >
+                  <div className="flex items-center gap-2">
+                    <BookOpen className="h-4 w-4 text-amber-400" />
+                    <span>Field Notebook</span>
+                  </div>
+                  {bookmarkCount > 0 && (
+                    <span className="px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 font-black text-[10px]">
+                      {bookmarkCount}
+                    </span>
+                  )}
                 </Link>
               </div>
             </motion.div>

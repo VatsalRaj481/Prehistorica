@@ -10,6 +10,9 @@ import Home from './pages/Home.js';
 import Browse from './pages/Browse.js';
 import SpeciesDetail from './pages/SpeciesDetail.js';
 import TimeMap from './pages/TimeMap.js';
+import FieldNotebook from './pages/FieldNotebook.js';
+import CaliperRunway from './pages/CaliperRunway.js';
+import PaleoChallenge from './pages/PaleoChallenge.js';
 import { wakePing } from './services/api.js';
 
 export default function App() {
@@ -106,6 +109,9 @@ export default function App() {
               <Route path="/browse" element={<Browse />} />
               <Route path="/species/:id" element={<SpeciesDetail />} />
               <Route path="/map" element={<TimeMap />} />
+              <Route path="/runway" element={<CaliperRunway />} />
+              <Route path="/notebook" element={<FieldNotebook />} />
+              <Route path="/challenge" element={<PaleoChallenge />} />
             </Routes>
           ) : (
             <div className="min-h-[60vh]" />

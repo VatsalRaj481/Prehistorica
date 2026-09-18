@@ -39,16 +39,28 @@ Built around **The Modern Museum Pavilion** visual language. **Prehistorica** ex
 - **Licensing & Attribution Compliance**: 100% CC-BY, CC-BY-SA, and Public Domain attribution metadata preserved and displayed on every specimen profile.
 - **Supabase Storage Integration**: Self-hosted image pipeline storing high-res media directly inside public Supabase Storage buckets (`species-media/` and `species-silhouettes/`).
 
-### 3. 📐 1:1 Calibrated 2D Scale Comparison Stage
+### 3. 📐 1:1 Calibrated 2D Scale Comparison & Multi-Specimen Runway
 - **2D Metric Projection Stage**:
   - 1:1 calibrated physical scale projection with dynamic architectural caliper dimension lines.
   - Interactive reference model switcher: **Human (1.8m)**, **Sedan Vehicle (4.5m)**, **Transit Bus (11.5m)**, and **African Bush Elephant (3.3m)**.
   - Metric grid toggle, orientation flip (parallel vs. facing creature), and smart occlusion handling to prevent dimension badge overlapping.
+- **Multi-Specimen Caliper Runway (`/runway`)**:
+  - Grand architectural runway projecting **up to 6 prehistoric creatures simultaneously** on a unified calibrated Cartesian SVG stage.
+  - Real-time length and height caliper lines with tabular numeric badges (`m` and `ft`).
+  - Interactive Lineup Tray with drag/reorder controls and quick add from the 592-species roster.
+  - **Curated Matchup Presets**: *Clash of Megatheropods*, *Titans of the South*, *Azhdarchid Aerial Armada*, *Armored Bastions*.
+  - **Comparative Differential Matrix**: Proportional comparison table highlighting length, height, and mass differentials with bar graphs.
 - **Side-by-Side Specimen Comparison Tool**: Modal allowing visitors to compare any two cataloged species simultaneously with synchronized silhouettes and comparative metric differential bars.
 
-### 4. 🗺️ Interactive Geologic Time-Map & Global Formations
-- **10 Geologic Eras**: Cambrian, Devonian, Carboniferous, Permian, Triassic, Jurassic, Cretaceous, Eocene, Neogene, and Pleistocene.
-- **31 Global Fossil Formations**: Interactive Leaflet dark-matter map pins mapping native fossil formations (Hell Creek, Solnhofen, Dinosaur Park, Yixian, Djadochta, Kem Kem Beds, Karoo Basin, and more).
+### 4. 🗺️ Interactive Geologic Time-Map & Continental Drift Engine
+- **Dual Cartographic Modes**:
+  - **Modern Formations**: 31 global fossil formations on an interactive Leaflet dark-matter map (Hell Creek, Solnhofen, Dinosaur Park, Yixian, Djadochta, Kem Kem Beds, Karoo Basin, and Indian Subcontinent formations).
+  - **Deep-Time Continental Drift (`PaleoDriftViewer.tsx`)**: Reconstructed plate tectonics across deep geological epochs:
+    - *Late Triassic (220 Ma)*: Pangaea supercontinent surrounded by Panthalassa ocean.
+    - *Late Jurassic (150 Ma)*: Pangaea rifting into Laurasia and Gondwana.
+    - *Late Cretaceous (70 Ma)*: Western Interior Seaway bisecting North America; isolated island continent India racing northward across Neo-Tethys.
+    - *Pleistocene (0.1 Ma)*: Lowered sea levels exposing Beringia and Sundaland glacial land bridges.
+- **Paleo-Coordinates for Fossil Beds**: Illustrates the true paleogeographic latitudes where ancient strata originated.
 - **Indian Subcontinent Showcase**: Special coverage of iconic Indian species (*Rajasaurus narmadensis*, *Shringasaurus indicus*, *Vasuki indicus*, *Barapasaurus*, *Isisaurus*, *Indosuchus*) mapped to the *Lameta Formation*, *Kota Formation*, *Denwa Formation*, and *Siwalik Hills*.
 
 ### 5. 🔒 Database Security & Row-Level Security (RLS)
@@ -84,6 +96,20 @@ Built around **The Modern Museum Pavilion** visual language. **Prehistorica** ex
   - **Landing Pavilion**: Gentle hero scroll depth parallax & dissolve falloff, with spring reveals on the *Specimen of the Day* and *Museum Access Portals*.
   - **Catalog Index**: Species cards smoothly elevate and fade into position as the user scrolls through the 12-item grid.
   - **Exhibit Profiles**: Staggered scroll entrance across the 2D Scale Comparison Stage, Architectural Metric Tiles, Visual Archive, Provenance Notes, and Coexisting Species Ribbon.
+
+### 10. 📖 Archival Field Notebook Pavilion (`/notebook`)
+- **Personal Research Desk**: Dedicated visitor binder to manage, organize, and study bookmarked prehistoric species.
+- **Inline Field Notes & Hypotheses**: Record osteological observations, predator-prey hypotheses, or exhibit notes per creature with instant local persistence.
+- **Thematic Tagging Engine**: Organize specimens into custom tags (`Carnivore Apexes`, `Gondwana Fauna`, `Classroom Dossier`).
+- **One-Click Metric Actions**: Send any saved creature or entire collections directly onto the Multi-Specimen Caliper Runway.
+- **Curatorial Dossier Export**: Formatted Markdown download and print-ready archival layout with verified citations.
+- **Live Navbar Counter Pill**: Real-time counter badge in the navigation header showing total saved specimens.
+
+### 11. 🎯 Curator Trials & Gamification Pavilion (`/challenge`)
+- **Holotype Detective**: 3 progressive diagnostic clues (Chronostratigraphy & formation &rarr; Anatomical feature &rarr; Silhouette outline). Identify the prehistoric genus with minimal clues to earn maximum points.
+- **Caliper Metric Guesser**: Unlabelled mystery silhouette projected alongside the 1.8m human reference figure; adjust the interactive caliper slider to estimate total length in meters. Features precision percentage scoring and animated caliper reveals.
+- **Chronostratigraphic Sorter**: 4 prehistoric animals from diverse epochs; arrange them from deepest time (oldest MYA) to most recent with instant chronostratigraphic accuracy checks.
+- **Curator Rank Progression**: Climb through 5 museum rank tiers based on score and streak: *Novice Fossil Hunter* &rarr; *Field Excavation Tech* &rarr; *Paleontological Scholar* &rarr; *Lead Stratigrapher* &rarr; *Chief Museum Curator*.
 
 ---
 
@@ -201,9 +227,10 @@ Prehistorica/
 │   │   ├── favicon.svg                    # Vector tab icon
 │   │   └── apple-touch-icon.png           # iOS / macOS web clip icon
 │   ├── src/
-│   │   ├── components/                    # TwoDScaleViewer, ScrollToTop, Navbar, MediaGallery, CompareModal
-│   │   ├── pages/                         # Home, Browse, SpeciesDetail, TimeMap
+│   │   ├── components/                    # RunwayStage, PaleoDriftViewer, TwoDScaleViewer, CompareModal, challenges/
+│   │   ├── pages/                         # Home, Browse, SpeciesDetail, TimeMap, CaliperRunway, FieldNotebook, PaleoChallenge
 │   │   ├── services/                      # REST API client & TypeScript interfaces
+│   │   ├── utils/                         # notebookStorage, formatSpeciesNames, formatDimensions, formatMass
 │   │   ├── App.tsx
 │   │   └── main.tsx
 │   ├── package.json
