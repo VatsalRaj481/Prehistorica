@@ -26,7 +26,8 @@
     "sources": "[{\"citation\":\"Osborn, H.F. (1905). Tyrannosaurus and other Cretaceous carnivorous dinosaurs. Bulletin of the AMNH 21(14): 259–265.\",\"url\":\"https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=38613\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:38.076Z",
-    "updatedAt": "2026-09-08T15:52:06.468Z"
+    "updatedAt": "2026-09-08T15:52:06.468Z",
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/f05e56c4-83bc-4809-8c2e-fd30c0b0bba2.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/f05e56c4-83bc-4809-8c2e-fd30c0b0bba2\",\"license\":\"Creative Commons Attribution 3.0 Unported\",\"credit\":\"Conty (vectorized by T. Michael Keesey)\",\"taxon\":\"Tyrannosaurus rex\",\"taxonMatch\":\"species-specific\"}"
   },
   {
     "id": 25,

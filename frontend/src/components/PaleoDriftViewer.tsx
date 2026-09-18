@@ -308,7 +308,7 @@ export default function PaleoDriftViewer() {
       {/* Paleogeographic Map Canvas */}
       <div className="museum-plinth rounded-2xl border border-white/[0.08] p-4 sm:p-6 shadow-2xl relative overflow-hidden">
         {/* Ocean Background Canvas (Mollweide 2:1 Proportional Frame) */}
-        <div className="relative w-full aspect-[2/1] min-h-[340px] sm:min-h-[460px] bg-[#050A15] rounded-xl overflow-hidden border border-white/[0.06] shadow-2xl">
+        <div className="relative w-full aspect-[2/1] bg-[#050A15] rounded-xl overflow-hidden border border-white/[0.06] shadow-2xl">
           {/* Authentic Scientific Mollweide Paleomap Reconstruction */}
           <img
             key={currentEra.mapImageUrl}
@@ -381,15 +381,15 @@ export default function PaleoDriftViewer() {
           })}
 
           {/* Map Overlay HUD Card */}
-          <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10 max-w-[260px] sm:max-w-sm bg-slate-950/90 backdrop-blur-md p-3 sm:p-3.5 rounded-xl border border-white/[0.08] shadow-2xl font-mono text-xs space-y-1.5 pointer-events-none">
-            <div className="flex items-center gap-2 text-amber-400 font-bold uppercase text-[11px]">
+          <div className="absolute top-2 left-2 sm:top-4 sm:left-4 z-10 max-w-[190px] sm:max-w-sm bg-slate-950/90 backdrop-blur-md p-2 sm:p-3.5 rounded-xl border border-white/[0.08] shadow-2xl font-mono text-xs space-y-1 sm:space-y-1.5 pointer-events-none">
+            <div className="flex items-center gap-1.5 sm:gap-2 text-amber-400 font-bold uppercase text-[10px] sm:text-[11px]">
               <Globe className="h-3.5 w-3.5 shrink-0" />
               <span className="truncate">{currentEra.supercontinent}</span>
             </div>
-            <p className="text-[10px] text-slate-300 leading-relaxed font-sans line-clamp-3 sm:line-clamp-none">
+            <p className="text-[9px] sm:text-[10px] text-slate-300 leading-tight sm:leading-relaxed font-sans line-clamp-2 sm:line-clamp-none">
               {currentEra.tectonicSummary}
             </p>
-            <div className="flex items-center gap-1.5 pt-1 text-[9px] text-slate-400 border-t border-white/[0.06]">
+            <div className="flex items-center gap-1.5 pt-1 text-[8px] sm:text-[9px] text-slate-400 border-t border-white/[0.06]">
               <span className="text-sky-400 font-bold">Ocean:</span>
               <span className="truncate">{currentEra.ocean}</span>
             </div>

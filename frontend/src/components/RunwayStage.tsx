@@ -11,6 +11,9 @@ interface RunwayStageProps {
   onSelectIndex?: (index: number) => void;
 }
 
+// Global module-level aspect cache to preserve aspect ratios across re-renders and eliminate layout jump
+const aspectCache = new Map<number, number>();
+
 export default function RunwayStage({
   speciesList,
   activeReference = 'human',
@@ -19,27 +22,40 @@ export default function RunwayStage({
   highlightedIndex = null,
   onSelectIndex
 }: RunwayStageProps) {
-  const [aspectRatios, setAspectRatios] = useState<Record<number, number>>({});
+  const [aspectRatios, setAspectRatios] = useState<Record<number, number>>(() => {
+    const initial: Record<number, number> = {};
+    aspectCache.forEach((ratio, id) => {
+      initial[id] = ratio;
+    });
+    return initial;
+  });
 
   // Dynamically calculate natural aspect ratios for all loaded silhouettes
   useEffect(() => {
     speciesList.forEach((sp) => {
       const url = sp.comparisonSilhouette?.url;
       if (!url) return;
-      if (aspectRatios[sp.id]) return;
+      if (aspectCache.has(sp.id)) {
+        if (!aspectRatios[sp.id]) {
+          setAspectRatios((prev) => ({ ...prev, [sp.id]: aspectCache.get(sp.id)! }));
+        }
+        return;
+      }
 
       const img = new Image();
       img.onload = () => {
         if (img.naturalWidth > 0 && img.naturalHeight > 0) {
+          const ratio = img.naturalWidth / img.naturalHeight;
+          aspectCache.set(sp.id, ratio);
           setAspectRatios((prev) => ({
             ...prev,
-            [sp.id]: img.naturalWidth / img.naturalHeight
+            [sp.id]: ratio
           }));
         }
       };
       img.src = url;
     });
-  }, [speciesList]);
+  }, [speciesList, aspectRatios]);
 
   // Reference configurations (in meters)
   const refSpecs = useMemo(() => {
@@ -120,7 +136,7 @@ export default function RunwayStage({
       activeReference !== 'none' ? refSpecs.heightM : 1.8,
       ...creaturesMetrics.map((c) => c.effectiveHeightM)
     );
-    const totalStageHeight = Math.max(5.5, maxCreatureHeight * 1.45);
+    const totalStageHeight = Math.max(4.2, maxCreatureHeight * 1.32);
 
     return {
       items,
@@ -131,9 +147,10 @@ export default function RunwayStage({
   }, [creaturesMetrics, activeReference, refSpecs]);
 
   // SVG dimensions: ensure both width and height accommodate all specimens with architectural metric headroom
-  const baseScale = 40; // 40px per meter ensures clear architectural calibration
+  // Sizing boosted to 55px/meter (~38% larger silhouettes) with tightened vertical ceiling
+  const baseScale = 55; // 55px per meter ensures prominent, imposing specimen display
   const viewWidth = Math.max(1400, Math.ceil(runwayLayout.totalLength * baseScale + 80));
-  const viewHeight = Math.max(520, Math.ceil(runwayLayout.totalHeight * baseScale + 120));
+  const viewHeight = Math.max(380, Math.ceil(runwayLayout.totalHeight * baseScale + 100));
   const scale = baseScale;
   const groundY = viewHeight - 65; // baseline ground line
 
@@ -142,8 +159,19 @@ export default function RunwayStage({
       {/* Background Ambience */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
 
+      {/* Mobile Horizontal Pan Hint */}
+      <div className="sm:hidden flex items-center justify-between text-[11px] text-amber-400/90 pb-2 px-1">
+        <span className="flex items-center gap-1.5 font-bold">
+          <svg className="w-3.5 h-3.5 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+          </svg>
+          Pan horizontally to explore runway
+        </span>
+        <span className="text-slate-400 text-[10px]">1:1 Metric Calibrated</span>
+      </div>
+
       {/* SVG Canvas Stage */}
-      <div className="w-full overflow-x-auto pb-2 focus:outline-none">
+      <div className="w-full overflow-x-auto pb-2 focus:outline-none touch-pan-x overscroll-x-contain">
         <svg
           viewBox={`0 0 ${viewWidth} ${viewHeight}`}
           className="w-full min-w-[850px] h-auto drop-shadow-md overflow-visible"
