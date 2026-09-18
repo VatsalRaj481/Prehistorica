@@ -125,25 +125,35 @@ export default function ColdStartScreen({
 
   const [flyCoords, setFlyCoords] = useState<FlyCoordinates | null>(null);
   const crestLogoRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const lenis = useLenis();
 
-  // Strictly lock all page and smooth scrolling while ColdStartScreen is mounted
+  // Isolate page scroll and keep underlying window at top 0 while ColdStartScreen is active
   useEffect(() => {
-    // 1. Stop Lenis smooth scroll engine
+    // 1. Stop Lenis smooth scroll engine for underlying page
     if (lenis) {
       lenis.stop();
     }
 
-    // 2. Lock document and body scroll
+    // 2. Lock document and body scroll so background page cannot scroll
     const origBodyOverflow = document.body.style.overflow;
     const origHtmlOverflow = document.documentElement.style.overflow;
     document.body.style.overflow = 'hidden';
     document.documentElement.style.overflow = 'hidden';
 
+    // 3. Ensure window starts strictly at top 0
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
     return () => {
-      // Restore on unmount
+      // Ensure hero section is visible first upon transition/unmount
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
       if (lenis) {
+        lenis.scrollTo(0, { immediate: true });
         lenis.start();
       }
       document.body.style.overflow = origBodyOverflow;
@@ -185,6 +195,19 @@ export default function ColdStartScreen({
     if (isFinishing) return;
     setIsFinishing(true);
     setProgress(100);
+
+    // If the user scrolled inside the cold start screen, reset it so the emblem stage is centered
+    if (scrollContainerRef.current && scrollContainerRef.current.scrollTop > 0) {
+      scrollContainerRef.current.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    // Ensure window is strictly at top 0
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    }
 
     // Measure exact navbar target coordinates for continuous flight
     const targetEl = document.getElementById('navbar-logo-target');
@@ -314,21 +337,25 @@ export default function ColdStartScreen({
   return (
     <>
       <motion.div
+        ref={scrollContainerRef}
+        data-lenis-prevent
         initial={{ opacity: 0 }}
         animate={{ opacity: exitPhase === 'zooming' ? 0 : 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed inset-0 z-[9999] bg-[#080C16] flex flex-col justify-between p-4 sm:p-6 md:p-8 overflow-hidden select-none touch-none overscroll-none text-slate-300 font-sans"
+        className="fixed inset-0 z-[9999] bg-[#080C16] overflow-y-auto overscroll-contain touch-pan-y select-none text-slate-300 font-sans"
       >
         {/* Atmospheric Museum Gallery Lighting */}
-        <div className="absolute inset-0 bg-fossil-grid opacity-10 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_35%_45%,_rgba(217,119,6,0.11)_0%,_transparent_65%)] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_rgba(251,191,36,0.04)_0%,_transparent_70%)] pointer-events-none" />
+        <div className="fixed inset-0 bg-fossil-grid opacity-10 pointer-events-none" />
+        <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_35%_45%,_rgba(217,119,6,0.11)_0%,_transparent_65%)] pointer-events-none" />
+        <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_rgba(251,191,36,0.04)_0%,_transparent_70%)] pointer-events-none" />
 
         {/* Delicate Museum Inset Perimeter Border */}
-        <div className="absolute inset-2 sm:inset-3 rounded-2xl border border-white/[0.04] pointer-events-none" />
+        <div className="fixed inset-2 sm:inset-3 rounded-2xl border border-white/[0.04] pointer-events-none" />
 
-        {/* Top Header Bar: Museum Institutional Masthead */}
-        <motion.header
+        {/* Inner Exhibition Content: full-height layout on desktop, smooth scrolling on compact screens */}
+        <div className="relative min-h-full flex flex-col justify-between p-4 sm:p-6 md:p-8">
+          {/* Top Header Bar: Museum Institutional Masthead */}
+          <motion.header
           animate={
             exitPhase === 'idle' || exitPhase === 'completing'
               ? { opacity: 1 }
@@ -782,7 +809,8 @@ export default function ColdStartScreen({
             </AnimatePresence>
           </div>
         </motion.footer>
-      </motion.div>
+      </div>
+    </motion.div>
 
       {/* Hero Flight Transition: Larger Emblem zooms out and glides smoothly into Navbar target position */}
       {flyCoords && exitPhase === 'zooming' && (

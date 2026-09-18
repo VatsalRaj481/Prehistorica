@@ -90,6 +90,9 @@ export default function App() {
               onWakeComplete={() => {
                 setIsNavbarLogoVisible(true);
                 if (!isForcedColdStart) setShowColdStart(false);
+                window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
               }}
             />
           )}

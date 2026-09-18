@@ -23,6 +23,7 @@ export default function Home() {
 
   useEffect(() => {
     document.title = 'Prehistorica | Museum Exhibit Pavilion & Deep Time Archives';
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
     setLoading(true);
     setError(null);
 

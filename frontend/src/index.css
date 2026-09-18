@@ -256,4 +256,19 @@ a, button {
   pointer-events: auto;
 }
 
+/* Cold Start Screen custom subtle scrollbar */
+[data-lenis-prevent]::-webkit-scrollbar {
+  width: 6px;
+}
+[data-lenis-prevent]::-webkit-scrollbar-track {
+  background: rgba(8, 12, 22, 0.6);
+}
+[data-lenis-prevent]::-webkit-scrollbar-thumb {
+  background: rgba(217, 119, 6, 0.25);
+  border-radius: 9999px;
+}
+[data-lenis-prevent]::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 158, 11, 0.45);
+}
+
 
