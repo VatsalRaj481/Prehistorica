@@ -316,7 +316,8 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Giganotosaurus carolinii description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Giganotosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:04.549Z",
-    "updatedAt": "2026-09-08T15:52:16.238Z"
+    "updatedAt": "2026-09-08T15:52:16.238Z",
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/cf75413c-6985-400e-9389-81d7007e5d91.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/cf75413c-6985-400e-9389-81d7007e5d91\",\"license\":\"CC0 1.0 Universal Public Domain Dedication\",\"credit\":\"Tasman Dixon\",\"taxon\":\"Giganotosaurus carolinii\",\"taxonMatch\":\"species-specific\"}"
   },
   {
     "id": 449,

@@ -16,6 +16,7 @@ import fs from 'fs';
 import path from 'path';
 import { z } from 'zod';
 import { takeSnapshot, verifyRegression } from './verify-no-regression.js';
+import { validateSilhouetteMetadata } from './validate-silhouettes.js';
 
 const prisma = new PrismaClient();
 
@@ -81,6 +82,14 @@ const SpeciesInputSchema = z.object({
   sizeNotes: z.string().min(1, 'sizeNotes is required'),
   discoveryHistory: z.string().min(1, 'discoveryHistory is required'),
   interestingFacts: z.array(z.string()).min(1, 'interestingFacts must contain at least 1 item'),
+  comparisonSilhouette: z.object({
+    url: z.string().url('comparisonSilhouette url must be valid URL'),
+    sourceUrl: z.string().url().optional(),
+    license: z.string().min(1).optional(),
+    credit: z.string().min(1).optional(),
+    taxon: z.string().min(1).optional(),
+    taxonMatch: z.string().optional()
+  }).optional(),
   sources: z.array(
     z.object({
       citation: z.string().min(1, 'source citation is required'),
@@ -149,6 +158,26 @@ async function main() {
   const data = validationResult.data;
   console.log(`✅ SCHEMA VALIDATED SUCCESSFULLY!`);
   console.log(`Species: ${data.name} (${data.scientificName}) - Clade: ${data.clade}\n`);
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // FULL-BODY SILHOUETTE MORPHOLOGY GUARD
+  // ══════════════════════════════════════════════════════════════════════════════
+  if (data.comparisonSilhouette) {
+    const silValidation = validateSilhouetteMetadata(data.comparisonSilhouette, data.name, data.clade);
+    if (!silValidation.valid) {
+      console.error('\n' + '█'.repeat(80));
+      console.error('❌ SILHOUETTE VALIDATION REJECTED: PARTIAL ANATOMY / SKULL DETECTED');
+      console.error('█'.repeat(80));
+      console.error(`Candidate Species: "${data.name}" (${data.scientificName})`);
+      silValidation.errors.forEach(err => console.error(`  ✕ ${err}`));
+      console.error('\nCuratorial Invariant #3 (AGENTS.md): Scale silhouettes MUST depict the full body');
+      console.error('lateral profile. Skulls, busts, craniums, and trackways are strictly prohibited.');
+      console.error('█'.repeat(80) + '\n');
+      await prisma.$disconnect();
+      process.exit(1);
+    }
+    console.log(`✅ SILHOUETTE VALIDATED: Verified full-body lateral profile (no skulls/busts).\n`);
+  }
 
   // ══════════════════════════════════════════════════════════════════════════════
   // DUPLICATE REJECTION CHECK (AGAINST LIVE DATABASE)
@@ -243,6 +272,7 @@ async function main() {
         discoveryHistory: data.discoveryHistory,
         interestingFacts: JSON.stringify(data.interestingFacts),
         sources: JSON.stringify(data.sources),
+        comparisonSilhouette: data.comparisonSilhouette ? JSON.stringify(data.comparisonSilhouette) : null,
         placeholder: false
       }
     });

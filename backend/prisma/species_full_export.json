@@ -6261,7 +6261,7 @@
     "sizeNotes": "Very large. Note: Holotype MUCPv-Ch1 is 12.2–12.5 m (representative 12.5 m), standing hip height 3.9 m, mass 7,000–8,500 kg (representative 7,500 kg). 13.2 m represents the fragmentary max jaw MUCPv-95.",
     "sizeEstimate": "{\"length\":{\"value\":12.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":7500,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
-    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/a0f796bd-64f5-4533-bf01-b798fa519895.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/a0f796bd-64f5-4533-bf01-b798fa519895\",\"license\":\"CC0 1.0 Universal Public Domain Dedication\",\"credit\":\"Marie Aimée ALLARD\",\"taxon\":\"Giganotosaurus carolinii\",\"taxonMatch\":\"species-specific\"}",
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/cf75413c-6985-400e-9389-81d7007e5d91.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/cf75413c-6985-400e-9389-81d7007e5d91\",\"license\":\"CC0 1.0 Universal Public Domain Dedication\",\"credit\":\"Tasman Dixon\",\"taxon\":\"Giganotosaurus carolinii\",\"taxonMatch\":\"species-specific\"}",
     "extinctionEvent": "K-Pg extinction event (66 MYA)",
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Giganotosaurus carolinii description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Giganotosaurus\"}]",

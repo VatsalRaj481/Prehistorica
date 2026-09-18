@@ -14,7 +14,8 @@
     "safeguard:check": "tsx scripts/verify-no-regression.ts --snapshot && tsx scripts/verify-no-regression.ts --verify",
     "prisma:seed": "tsx prisma/seed.ts",
     "seed": "npm run prisma:seed",
-    "add-species": "tsx scripts/add-species.ts"
+    "add-species": "tsx scripts/add-species.ts",
+    "test:silhouettes": "tsx scripts/validate-silhouettes.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.12.1",

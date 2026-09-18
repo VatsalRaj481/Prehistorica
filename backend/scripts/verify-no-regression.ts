@@ -51,6 +51,7 @@ const PROTECTED_FIELDS = [
   'sizeNotes',
   'sizeEstimate',
   'sizeComparisonToHuman',
+  'comparisonSilhouette',
   'extinctionEvent',
   'closestLivingRelatives',
   'sources',

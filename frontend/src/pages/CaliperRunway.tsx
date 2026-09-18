@@ -42,8 +42,8 @@ const PRESETS: PresetLineup[] = [
   },
   {
     name: 'Azhdarchid Aerial Armada',
-    desc: 'Giraffe-sized flying reptiles with wingspans exceeding 10 meters.',
-    speciesNames: ['Quetzalcoatlus', 'Hatzegopteryx', 'Arambourgiania', 'Pteranodon']
+    desc: 'Giraffe-sized apex pterosaurs of the Azhdarchidae family.',
+    speciesNames: ['Quetzalcoatlus', 'Hatzegopteryx', 'Thanatosdrakon', 'Azhdarcho']
   },
   {
     name: 'Armored Bastions',
