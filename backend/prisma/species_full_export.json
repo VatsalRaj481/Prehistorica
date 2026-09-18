@@ -681,7 +681,7 @@
     "sizeNotes": "Estimates range from 8,400 to 14,000 kg depending on study.",
     "sizeEstimate": "{\"length\":{\"value\":12.3,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.66,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":8870,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
-    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/f05e56c4-83bc-4809-8c2e-fd30c0b0bba2.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/f05e56c4-83bc-4809-8c2e-fd30c0b0bba2\",\"license\":\"Creative Commons Attribution 3.0 Unported\",\"credit\":\"Conty (vectorized by T. Michael Keesey)\",\"taxon\":\"Tyrannosaurus rex\",\"taxonMatch\":\"species-specific\"}",
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/ccb9b896-20b5-4e0b-8979-001742a884c5.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/ccb9b896-20b5-4e0b-8979-001742a884c5\",\"license\":\"Creative Commons CC0 1.0 Universal Public Domain Dedication\",\"credit\":\"Richard Rich\",\"taxon\":\"Tyrannosaurus rex\",\"taxonMatch\":\"species-specific\"}",
     "extinctionEvent": "K-Pg extinction event (66 MYA)",
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Osborn, H.F. (1905). Tyrannosaurus and other Cretaceous carnivorous dinosaurs. Bulletin of the AMNH 21(14): 259–265.\",\"url\":\"https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=38613\"}]",
