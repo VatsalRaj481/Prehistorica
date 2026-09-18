@@ -118,11 +118,18 @@ export default function CaliperRunway() {
     const matchedIds: number[] = [];
 
     preset.speciesNames.forEach((targetName) => {
-      const found = roster.find(
-        (r) =>
-          r.name.toLowerCase().includes(targetName.toLowerCase()) ||
-          r.scientificName.toLowerCase().includes(targetName.toLowerCase())
-      );
+      const lower = targetName.toLowerCase();
+      const wordRegex = new RegExp(`\\b${targetName}\\b`, 'i');
+      const found =
+        // 1. Exact match on name or scientificName
+        roster.find((r) => r.name.toLowerCase() === lower || r.scientificName.toLowerCase() === lower) ||
+        // 2. Starts-with genus match (e.g. "Spinosaurus aegyptiacus" starts with "Spinosaurus ")
+        roster.find((r) => r.name.toLowerCase().startsWith(lower + ' ') || r.scientificName.toLowerCase().startsWith(lower + ' ')) ||
+        // 3. Whole-word boundary match (prevents "Gigantspinosaurus" from matching "Spinosaurus")
+        roster.find((r) => wordRegex.test(r.name) || wordRegex.test(r.scientificName)) ||
+        // 4. Fallback substring contains
+        roster.find((r) => r.name.toLowerCase().includes(lower) || r.scientificName.toLowerCase().includes(lower));
+
       if (found) matchedIds.push(found.id);
     });
 
