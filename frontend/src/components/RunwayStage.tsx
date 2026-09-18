@@ -62,11 +62,16 @@ export default function RunwayStage({
       const len = sp.lengthM && sp.lengthM > 0 ? sp.lengthM : 5.0;
       const h = sp.heightM && sp.heightM > 0 ? sp.heightM : Math.max(1, len * 0.35);
       const aspect = aspectRatios[sp.id] || (len / h);
+      // Natural box height of the silhouette SVG when scaled proportionally to its true aspect ratio
+      const naturalHeightM = len / aspect;
+      const effectiveHeightM = Math.max(h, naturalHeightM);
       return {
         species: sp,
         lengthM: len,
         heightM: h,
-        aspectRatio: aspect
+        aspectRatio: aspect,
+        naturalHeightM,
+        effectiveHeightM
       };
     });
   }, [speciesList, aspectRatios]);
@@ -78,6 +83,9 @@ export default function RunwayStage({
       species: Species;
       lengthM: number;
       heightM: number;
+      aspectRatio: number;
+      naturalHeightM: number;
+      effectiveHeightM: number;
       startX: number;
       endX: number;
       midX: number;
@@ -97,6 +105,9 @@ export default function RunwayStage({
         species: item.species,
         lengthM: item.lengthM,
         heightM: item.heightM,
+        aspectRatio: item.aspectRatio,
+        naturalHeightM: item.naturalHeightM,
+        effectiveHeightM: item.effectiveHeightM,
         startX: start,
         endX: end,
         midX: (start + end) / 2
@@ -107,9 +118,9 @@ export default function RunwayStage({
     const totalStageLength = Math.max(16.0, currentX + 2.0);
     const maxCreatureHeight = Math.max(
       activeReference !== 'none' ? refSpecs.heightM : 1.8,
-      ...creaturesMetrics.map((c) => c.heightM)
+      ...creaturesMetrics.map((c) => c.effectiveHeightM)
     );
-    const totalStageHeight = Math.max(6.0, maxCreatureHeight * 1.55);
+    const totalStageHeight = Math.max(5.5, maxCreatureHeight * 1.45);
 
     return {
       items,
@@ -119,10 +130,11 @@ export default function RunwayStage({
     };
   }, [creaturesMetrics, activeReference, refSpecs]);
 
-  // SVG dimensions
-  const viewWidth = 1400;
-  const viewHeight = 520;
-  const scale = viewWidth / runwayLayout.totalLength; // pixels per meter
+  // SVG dimensions: ensure both width and height accommodate all specimens with architectural metric headroom
+  const baseScale = 40; // 40px per meter ensures clear architectural calibration
+  const viewWidth = Math.max(1400, Math.ceil(runwayLayout.totalLength * baseScale + 80));
+  const viewHeight = Math.max(520, Math.ceil(runwayLayout.totalHeight * baseScale + 120));
+  const scale = baseScale;
   const groundY = viewHeight - 65; // baseline ground line
 
   return (
@@ -346,10 +358,12 @@ export default function RunwayStage({
           {runwayLayout.items.map((item, idx) => {
             const isHighlighted = highlightedIndex === idx;
             const pxWidth = item.lengthM * scale;
-            const pxHeight = item.heightM * scale;
+            const silhouetteHeightPx = pxWidth / item.aspectRatio;
+            const boxHeightPx = item.heightM * scale;
+            const renderHeightPx = item.species.comparisonSilhouette?.url ? silhouetteHeightPx : boxHeightPx;
             const startPx = item.startX * scale;
             const midPx = item.midX * scale;
-            const yTop = groundY - pxHeight;
+            const yTop = groundY - renderHeightPx;
             const silhouetteUrl = item.species.comparisonSilhouette?.url;
 
             return (
@@ -374,8 +388,8 @@ export default function RunwayStage({
                     x={startPx}
                     y={yTop}
                     width={pxWidth}
-                    height={pxHeight}
-                    preserveAspectRatio="none"
+                    height={silhouetteHeightPx}
+                    preserveAspectRatio="xMidYMax meet"
                     filter={isHighlighted ? 'url(#runwayAmberHighlight)' : 'url(#runwayChalkTint)'}
                     className="transition-all duration-300"
                     style={{
@@ -389,7 +403,7 @@ export default function RunwayStage({
                       x={startPx}
                       y={yTop}
                       width={pxWidth}
-                      height={pxHeight}
+                      height={boxHeightPx}
                       rx="4"
                       fill={isHighlighted ? 'rgba(245,158,11,0.2)' : 'rgba(255,255,255,0.08)'}
                       stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.2)'}
@@ -397,7 +411,7 @@ export default function RunwayStage({
                     />
                     <text
                       x={midPx}
-                      y={yTop + pxHeight / 2}
+                      y={yTop + boxHeightPx / 2}
                       fill="#94A3B8"
                       fontSize="10"
                       textAnchor="middle"

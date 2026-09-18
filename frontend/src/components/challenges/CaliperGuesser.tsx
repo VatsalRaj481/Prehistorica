@@ -14,6 +14,21 @@ export default function CaliperGuesser({ allSpecies, onScore }: CaliperGuesserPr
   const [guessM, setGuessM] = useState<number>(5.0);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [precisionScore, setPrecisionScore] = useState<number | null>(null);
+  const [silhouetteAspect, setSilhouetteAspect] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (!target?.comparisonSilhouette?.url) {
+      setSilhouetteAspect(null);
+      return;
+    }
+    const img = new Image();
+    img.onload = () => {
+      if (img.naturalWidth > 0 && img.naturalHeight > 0) {
+        setSilhouetteAspect(img.naturalWidth / img.naturalHeight);
+      }
+    };
+    img.src = target.comparisonSilhouette.url;
+  }, [target]);
 
   const startNewRound = () => {
     const valid = allSpecies.filter(
@@ -62,11 +77,18 @@ export default function CaliperGuesser({ allSpecies, onScore }: CaliperGuesserPr
   };
 
   // Stage coordinate scaling
-  const stageRange = Math.max(12, actualLen * 1.45 + 3.0);
+  const effectiveAspect = silhouetteAspect || (actualLen / actualH);
+  const naturalHeightM = actualLen / effectiveAspect;
+  const stageRange = Math.max(12, actualLen * 1.45 + 5.0);
+  const maxMetersHigh = Math.max(2.5, naturalHeightM, actualH) * 1.35;
   const viewWidth = 800;
   const viewHeight = 320;
-  const scale = viewWidth / stageRange;
+  const scaleX = viewWidth / stageRange;
+  const scaleY = (viewHeight - 70) / maxMetersHigh;
+  const scale = Math.min(scaleX, scaleY);
   const groundY = viewHeight - 50;
+  const creatureHeightPx = (actualLen * scale) / effectiveAspect;
+  const yTop = groundY - creatureHeightPx;
 
   const silhouetteUrl = target.comparisonSilhouette?.url;
 
@@ -130,10 +152,10 @@ export default function CaliperGuesser({ allSpecies, onScore }: CaliperGuesserPr
               <image
                 href={silhouetteUrl}
                 x="0"
-                y={groundY - actualH * scale}
+                y={yTop}
                 width={actualLen * scale}
-                height={actualH * scale}
-                preserveAspectRatio="none"
+                height={creatureHeightPx}
+                preserveAspectRatio="xMidYMax meet"
                 filter="url(#guesserTint)"
               />
             )}
@@ -141,11 +163,11 @@ export default function CaliperGuesser({ allSpecies, onScore }: CaliperGuesserPr
             {/* Revealed Calipers upon submission */}
             {isSubmitted && (
               <g>
-                <line x1="0" y1={groundY - actualH * scale - 14} x2={actualLen * scale} y2={groundY - actualH * scale - 14} stroke="#F59E0B" strokeWidth="1.5" />
-                <line x1="0" y1={groundY - actualH * scale - 18} x2="0" y2={groundY - actualH * scale - 10} stroke="#F59E0B" strokeWidth="1.5" />
-                <line x1={actualLen * scale} y1={groundY - actualH * scale - 18} x2={actualLen * scale} y2={groundY - actualH * scale - 10} stroke="#F59E0B" strokeWidth="1.5" />
+                <line x1="0" y1={yTop - 14} x2={actualLen * scale} y2={yTop - 14} stroke="#F59E0B" strokeWidth="1.5" />
+                <line x1="0" y1={yTop - 18} x2="0" y2={yTop - 10} stroke="#F59E0B" strokeWidth="1.5" />
+                <line x1={actualLen * scale} y1={yTop - 18} x2={actualLen * scale} y2={yTop - 10} stroke="#F59E0B" strokeWidth="1.5" />
 
-                <g transform={`translate(${(actualLen * scale) / 2}, ${groundY - actualH * scale - 14})`}>
+                <g transform={`translate(${(actualLen * scale) / 2}, ${yTop - 14})`}>
                   <rect x="-38" y="-10" width="76" height="18" rx="4" fill="#080C16" stroke="#F59E0B" strokeWidth="1" />
                   <text x="0" y="3" fill="#F59E0B" fontSize="9" fontWeight="bold" textAnchor="middle">
                     {actualLen.toFixed(1)}m ({formatFeet(actualLen)})

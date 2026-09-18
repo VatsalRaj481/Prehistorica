@@ -48,10 +48,10 @@ export default function PaleoChallenge() {
       setStreak(isNaN(savedStreak) ? 0 : savedStreak);
     } catch {}
 
-    // Load roster and broad sample pool of species for challenges
+    // Load full roster and complete species catalog (all 592 species) for randomized challenges
     Promise.all([
       fetchSpeciesRoster(),
-      fetchSpecies({ limit: 120 })
+      fetchSpecies({ limit: 600 })
     ])
       .then(([rosterData, speciesData]) => {
         setRoster(rosterData);
