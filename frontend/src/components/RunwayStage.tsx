@@ -9,6 +9,7 @@ interface RunwayStageProps {
   showCalipers?: boolean;
   highlightedIndex?: number | null;
   onSelectIndex?: (index: number) => void;
+  scale?: number;
 }
 
 // Global module-level aspect cache to preserve aspect ratios across re-renders and eliminate layout jump
@@ -20,7 +21,8 @@ export default function RunwayStage({
   showGrid = true,
   showCalipers = true,
   highlightedIndex = null,
-  onSelectIndex
+  onSelectIndex,
+  scale = 55
 }: RunwayStageProps) {
   const [aspectRatios, setAspectRatios] = useState<Record<number, number>>(() => {
     const initial: Record<number, number> = {};
@@ -72,22 +74,40 @@ export default function RunwayStage({
     }
   }, [activeReference]);
 
-  // Metric sizing for each creature
+  // Metric sizing for each creature with universal proportional calibration
   const creaturesMetrics = useMemo(() => {
     return speciesList.map((sp) => {
       const len = sp.lengthM && sp.lengthM > 0 ? sp.lengthM : 5.0;
       const h = sp.heightM && sp.heightM > 0 ? sp.heightM : Math.max(1, len * 0.35);
       const aspect = aspectRatios[sp.id] || (len / h);
-      // Natural box height of the silhouette SVG when scaled proportionally to its true aspect ratio
-      const naturalHeightM = len / aspect;
-      const effectiveHeightM = Math.max(h, naturalHeightM);
+
+      // Height if scaled purely by length
+      const heightFromLength = len / aspect;
+
+      // Universal proportional posture bounds:
+      // Allow up to a natural 12% posture headroom above nominal standing height
+      // (accounting for natural alert/head-up posture without inflating into towering giants)
+      // and a floor of 88% so tall vertical creatures (like sauropods, azhdarchids) aren't compressed.
+      const maxHeightM = h * 1.12;
+      const minHeightM = h * 0.88;
+
+      let renderHeightM = heightFromLength;
+      if (renderHeightM > maxHeightM) {
+        renderHeightM = maxHeightM;
+      } else if (renderHeightM < minHeightM) {
+        renderHeightM = minHeightM;
+      }
+
+      // Rendered width preserves the exact natural aspect ratio of the silhouette
+      const renderWidthM = renderHeightM * aspect;
+
       return {
         species: sp,
         lengthM: len,
         heightM: h,
         aspectRatio: aspect,
-        naturalHeightM,
-        effectiveHeightM
+        renderHeightM,
+        renderWidthM
       };
     });
   }, [speciesList, aspectRatios]);
@@ -100,8 +120,8 @@ export default function RunwayStage({
       lengthM: number;
       heightM: number;
       aspectRatio: number;
-      naturalHeightM: number;
-      effectiveHeightM: number;
+      renderHeightM: number;
+      renderWidthM: number;
       startX: number;
       endX: number;
       midX: number;
@@ -116,14 +136,15 @@ export default function RunwayStage({
 
     creaturesMetrics.forEach((item) => {
       const start = currentX;
-      const end = currentX + item.lengthM;
+      // Physical horizontal footprint on runway is based on the calibrated silhouette width
+      const end = currentX + item.renderWidthM;
       items.push({
         species: item.species,
         lengthM: item.lengthM,
         heightM: item.heightM,
         aspectRatio: item.aspectRatio,
-        naturalHeightM: item.naturalHeightM,
-        effectiveHeightM: item.effectiveHeightM,
+        renderHeightM: item.renderHeightM,
+        renderWidthM: item.renderWidthM,
         startX: start,
         endX: end,
         midX: (start + end) / 2
@@ -134,9 +155,9 @@ export default function RunwayStage({
     const totalStageLength = Math.max(16.0, currentX + 2.0);
     const maxCreatureHeight = Math.max(
       activeReference !== 'none' ? refSpecs.heightM : 1.8,
-      ...creaturesMetrics.map((c) => c.effectiveHeightM)
+      ...creaturesMetrics.map((c) => c.renderHeightM)
     );
-    const totalStageHeight = Math.max(4.2, maxCreatureHeight * 1.32);
+    const totalStageHeight = Math.max(4.2, maxCreatureHeight * 1.35);
 
     return {
       items,
@@ -146,12 +167,9 @@ export default function RunwayStage({
     };
   }, [creaturesMetrics, activeReference, refSpecs]);
 
-  // SVG dimensions: ensure both width and height accommodate all specimens with architectural metric headroom
-  // Sizing boosted to 55px/meter (~38% larger silhouettes) with tightened vertical ceiling
-  const baseScale = 55; // 55px per meter ensures prominent, imposing specimen display
-  const viewWidth = Math.max(1400, Math.ceil(runwayLayout.totalLength * baseScale + 80));
-  const viewHeight = Math.max(380, Math.ceil(runwayLayout.totalHeight * baseScale + 100));
-  const scale = baseScale;
+  // SVG dimensions: dynamically accommodate all specimens using the customizable metric scale
+  const viewWidth = Math.max(1400, Math.ceil(runwayLayout.totalLength * scale + 80));
+  const viewHeight = Math.max(380, Math.ceil(runwayLayout.totalHeight * scale + 100));
   const groundY = viewHeight - 65; // baseline ground line
 
   return (
@@ -385,10 +403,10 @@ export default function RunwayStage({
           {/* Lineup Species Silhouettes & Calipers */}
           {runwayLayout.items.map((item, idx) => {
             const isHighlighted = highlightedIndex === idx;
-            const pxWidth = item.lengthM * scale;
-            const silhouetteHeightPx = pxWidth / item.aspectRatio;
+            const pxWidth = item.renderWidthM * scale;
+            const pxHeight = item.renderHeightM * scale;
             const boxHeightPx = item.heightM * scale;
-            const renderHeightPx = item.species.comparisonSilhouette?.url ? silhouetteHeightPx : boxHeightPx;
+            const renderHeightPx = item.species.comparisonSilhouette?.url ? pxHeight : boxHeightPx;
             const startPx = item.startX * scale;
             const midPx = item.midX * scale;
             const yTop = groundY - renderHeightPx;
@@ -416,7 +434,7 @@ export default function RunwayStage({
                     x={startPx}
                     y={yTop}
                     width={pxWidth}
-                    height={silhouetteHeightPx}
+                    height={renderHeightPx}
                     preserveAspectRatio="xMidYMax meet"
                     filter={isHighlighted ? 'url(#runwayAmberHighlight)' : 'url(#runwayChalkTint)'}
                     className="transition-all duration-300"
@@ -482,9 +500,9 @@ export default function RunwayStage({
                     {/* Metric Badge Pill */}
                     <g transform={`translate(${midPx}, ${yTop - 14})`}>
                       <rect
-                        x="-36"
+                        x="-40"
                         y="-10"
-                        width="72"
+                        width="80"
                         height="18"
                         rx="4"
                         fill="#080C16"
@@ -514,6 +532,35 @@ export default function RunwayStage({
                       strokeWidth="0.8"
                       strokeDasharray="2 2"
                     />
+                    {/* Vertical Height Ticks */}
+                    <line
+                      x1={startPx - 11}
+                      y1={yTop}
+                      x2={startPx - 5}
+                      y2={yTop}
+                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.35)'}
+                      strokeWidth="0.8"
+                    />
+                    <line
+                      x1={startPx - 11}
+                      y1={groundY}
+                      x2={startPx - 5}
+                      y2={groundY}
+                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.35)'}
+                      strokeWidth="0.8"
+                    />
+                    {/* Vertical Height Metric Label */}
+                    <text
+                      x={startPx - 13}
+                      y={yTop + renderHeightPx / 2}
+                      fill={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.5)'}
+                      fontSize="8"
+                      fontFamily="monospace"
+                      textAnchor="end"
+                      dominantBaseline="middle"
+                    >
+                      {item.heightM.toFixed(1)}m
+                    </text>
                   </g>
                 )}
 

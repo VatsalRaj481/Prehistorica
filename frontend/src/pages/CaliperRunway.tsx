@@ -19,9 +19,12 @@ import {
   Ruler,
   ExternalLink,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  ZoomIn,
+  ZoomOut
 } from 'lucide-react';
 import { formatFeetLong } from '../utils/formatDimensions.js';
+import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 
 interface PresetLineup {
   name: string;
@@ -63,6 +66,7 @@ export default function CaliperRunway() {
   const [activeReference, setActiveReference] = useState<'human' | 'car' | 'bus' | 'elephant' | 'none'>('human');
   const [showGrid, setShowGrid] = useState(true);
   const [showCalipers, setShowCalipers] = useState(true);
+  const [stageScale, setStageScale] = useState<number>(55);
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
 
   // 1. Load full roster for search
@@ -304,6 +308,35 @@ export default function CaliperRunway() {
             >
               <Ruler className="h-4 w-4" />
             </button>
+
+            {/* Metric Scale Magnification */}
+            <div className="p-1 rounded-lg bg-slate-900 border border-white/[0.08] flex items-center gap-1">
+              <button
+                onClick={() => setStageScale((prev) => Math.max(35, prev - 15))}
+                disabled={stageScale <= 35}
+                className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                title="Decrease Scale (Zoom Out)"
+              >
+                <ZoomOut className="h-3.5 w-3.5" />
+              </button>
+
+              <button
+                onClick={() => setStageScale(55)}
+                className="px-2 py-1 rounded text-[11px] font-bold text-amber-400 hover:bg-slate-800 transition-colors cursor-pointer min-w-[56px] text-center"
+                title="Click to reset to baseline 55px/m"
+              >
+                {stageScale} px/m
+              </button>
+
+              <button
+                onClick={() => setStageScale((prev) => Math.min(145, prev + 15))}
+                disabled={stageScale >= 145}
+                className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                title="Increase Scale (Zoom In)"
+              >
+                <ZoomIn className="h-3.5 w-3.5" />
+              </button>
+            </div>
           </div>
         </div>
 
@@ -344,6 +377,7 @@ export default function CaliperRunway() {
           activeReference={activeReference}
           showGrid={showGrid}
           showCalipers={showCalipers}
+          scale={stageScale}
           highlightedIndex={highlightedIndex}
           onSelectIndex={(idx) => setHighlightedIndex(idx === highlightedIndex ? null : idx)}
         />
@@ -387,7 +421,9 @@ export default function CaliperRunway() {
                         className="w-full text-left p-2 rounded-lg hover:bg-slate-800 transition-colors flex items-center justify-between gap-2 text-xs"
                       >
                         <div className="min-w-0">
-                          <p className="font-bold text-slate-200 uppercase truncate font-sans">{item.name}</p>
+                          <p className="font-bold text-slate-200 uppercase truncate font-sans">
+                            {getSpeciesDisplayNames(item).heading}
+                          </p>
                           <p className="text-[10px] text-amber-400 italic truncate font-mono">
                             {item.clade} &bull; {item.lengthM ? `${item.lengthM}m` : 'size unconfirmed'}
                           </p>
@@ -423,7 +459,9 @@ export default function CaliperRunway() {
                     #{idx + 1}
                   </span>
                   <div className="min-w-0">
-                    <h4 className="text-xs font-bold text-slate-200 uppercase font-sans truncate">{sp.name}</h4>
+                    <h4 className="text-xs font-bold text-slate-200 uppercase font-sans truncate">
+                      {getSpeciesDisplayNames(sp).heading}
+                    </h4>
                     <p className="text-[10px] text-slate-400 truncate">
                       {formatFeetLong(sp.lengthM)} &bull; {sp.clade}
                     </p>
@@ -498,7 +536,7 @@ export default function CaliperRunway() {
                     >
                       <td className="py-3 pr-4 font-sans font-bold text-slate-100 flex items-center gap-2">
                         <span className="text-amber-400 font-mono text-[10px]">#{idx + 1}</span>
-                        <span>{sp.name}</span>
+                        <span className="italic font-medium">{sp.scientificName || sp.name}</span>
                         <Link
                           to={`/species/${sp.id}`}
                           className="text-slate-500 hover:text-amber-400 ml-1"

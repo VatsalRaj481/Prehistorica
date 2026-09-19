@@ -210,10 +210,17 @@ export default function TwoDScaleViewer({
 
   const activeRef = references[refType];
 
-  // Effective aspect ratio of the creature silhouette or fallback box
-  const effectiveAspect = silhouetteAspect || (safeLength / safeHeight);
+  // Effective aspect ratio and proportional posture calibration
+  const bioAspect = safeLength / safeHeight;
+  const effectiveAspect = silhouetteAspect || bioAspect;
   const naturalCreatureHeightM = safeLength / effectiveAspect;
-  const effectiveCreatureHeightM = Math.max(safeHeight, naturalCreatureHeightM);
+
+  // Proportional posture clamp: prevents silhouettes from ballooning past scientific height
+  const maxHeightM = safeHeight * 1.12;
+  const minHeightM = safeHeight * 0.88;
+  const renderCreatureHeightM = Math.max(minHeightM, Math.min(naturalCreatureHeightM, maxHeightM));
+  const renderCreatureWidthM = renderCreatureHeightM * effectiveAspect;
+  const effectiveCreatureHeightM = renderCreatureHeightM;
 
   // Stage physical layout calculations
   const viewBoxWidth = 1000;
@@ -229,7 +236,7 @@ export default function TwoDScaleViewer({
 
   // Total horizontal span: Reference figure + gap + Creature length
   const gapMeters = 1.2;
-  const totalSpanMeters = activeRef.lengthM + gapMeters + safeLength;
+  const totalSpanMeters = activeRef.lengthM + gapMeters + Math.max(safeLength, renderCreatureWidthM);
   const maxVerticalMeters = Math.max(activeRef.heightM, effectiveCreatureHeightM) * 1.15;
 
   // Scale: pixels per meter (keep aspect ratio 1:1)
@@ -246,8 +253,8 @@ export default function TwoDScaleViewer({
   const creatureStartX = refStartX + refWidthPx + gapMeters * scale;
 
   // Calculate creature dimensions matching true aspect ratio
-  let creatureWidthPx = safeLength * scale;
-  let creatureHeightPx = creatureWidthPx / effectiveAspect;
+  let creatureWidthPx = renderCreatureWidthM * scale;
+  let creatureHeightPx = renderCreatureHeightM * scale;
 
   if (creatureHeightPx > availableHeight * 0.94) {
     creatureHeightPx = availableHeight * 0.94;
