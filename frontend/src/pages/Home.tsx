@@ -175,7 +175,7 @@ export default function Home() {
         transition={{ type: 'spring', stiffness: 320, damping: 28 }}
         className="relative z-10 space-y-6"
       >
-        <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 font-mono">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.08] pb-3 font-mono">
           <div className="flex items-center gap-2.5">
             <div className="p-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20">
               <Calendar className="h-4 w-4 text-amber-400" />

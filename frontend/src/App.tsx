@@ -102,7 +102,7 @@ export default function App() {
         </AnimatePresence>
 
         <Navbar isLogoVisible={isNavbarLogoVisible} />
-        <main className="flex-grow max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8">
+        <main className="flex-grow max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 pt-4 pb-20 sm:pt-6 sm:pb-28">
           {backendReady ? (
             <Routes>
               <Route path="/" element={<Home />} />
