@@ -241,7 +241,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                       <div className="flex items-center gap-2 mb-1 px-1 text-[11px] font-mono text-slate-400">
                         {msg.role === 'assistant' && (
                           <img
-                            src="/curator-raja.jpg"
+                            src="/rajy-head.jpg"
                             alt="Rajy"
                             className="w-5 h-5 rounded-full object-cover object-top sm:hidden"
                           />
