@@ -426,7 +426,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
         className="fixed bottom-6 right-6 z-40 p-3.5 sm:px-4 sm:py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-2xl shadow-amber-500/40 border border-amber-400 font-mono font-black flex items-center gap-2 cursor-pointer group"
         title="Consult The Chief Curator"
       >
-        <Sparkles className="w-5 h-5 text-slate-950 group-hover:rotate-12 transition-transform" />
+        <img src="/curator-raja.jpg" alt="Curator Raja" className="w-6 h-6 rounded-full object-cover object-top" />
         <span className="hidden sm:inline text-xs uppercase tracking-wider font-bold">Ask Curator</span>
       </motion.button>
 

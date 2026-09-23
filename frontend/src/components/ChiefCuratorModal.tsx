@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Sparkles,
   X,
   Send,
   Loader2,
@@ -170,8 +169,8 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
             {/* Header */}
             <div className="px-5 py-4 border-b border-white/[0.08] bg-slate-950/80 flex items-center justify-between shrink-0">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-500/40 flex items-center justify-center text-amber-400 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
-                  <Sparkles className="w-5 h-5" />
+                <div className="w-10 h-10 rounded-xl overflow-hidden border border-amber-500/40 shadow-[0_0_15px_rgba(245,158,11,0.2)] shrink-0">
+                  <img src="/curator-raja.jpg" alt="Curator Raja" className="w-full h-full object-cover object-top" />
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
