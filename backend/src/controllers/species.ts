@@ -61,6 +61,89 @@ function formatSpeciesRecord(s: any) {
   };
 }
 
+// High-precision search evaluation ensuring word-boundary matches and preventing false positives
+function evaluateSearchMatch(s: any, query: string): { matched: boolean; score: number } {
+  if (!query) return { matched: true, score: 0 };
+  const q = query.trim().toLowerCase();
+  if (!q) return { matched: true, score: 0 };
+
+  const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  // Token starts at word boundary
+  const wordPrefixRegex = new RegExp(`(^|[^a-zA-Z0-9])${escaped}`, 'i');
+  // Token matches complete word
+  const exactWordRegex = new RegExp(`(^|[^a-zA-Z0-9])${escaped}([^a-zA-Z0-9]|$)`, 'i');
+
+  const sName = (s.name || '').toLowerCase();
+  const sSci = (s.scientificName || '').toLowerCase();
+  const taxObj = s.taxonomy || {};
+
+  let score = 0;
+  let matched = false;
+
+  // 1. Primary Name & Scientific Name Matches
+  if (sName === q || sSci === q) {
+    matched = true;
+    score += 100;
+  } else if (sName.startsWith(q) || sSci.startsWith(q)) {
+    matched = true;
+    score += 80;
+  } else if (exactWordRegex.test(sName) || exactWordRegex.test(sSci)) {
+    matched = true;
+    score += 70;
+  } else if (wordPrefixRegex.test(sName) || wordPrefixRegex.test(sSci)) {
+    matched = true;
+    score += 50;
+  }
+
+  // 2. Structured Taxonomy Matches (Family, Genus, Order, Class, Clade)
+  const genus = (taxObj.genus || '').toLowerCase();
+  if (genus) {
+    if (genus === q) {
+      matched = true;
+      score += 90;
+    } else if (genus.startsWith(q)) {
+      matched = true;
+      score += 60;
+    }
+  }
+
+  for (const [rank, val] of Object.entries(taxObj)) {
+    if (typeof val === 'string' && val.trim()) {
+      const vLower = val.toLowerCase();
+      if (vLower === q) {
+        matched = true;
+        score += 85;
+      } else if (exactWordRegex.test(val)) {
+        matched = true;
+        score += 65;
+      } else if (wordPrefixRegex.test(val)) {
+        matched = true;
+        score += 40;
+      }
+    }
+  }
+
+  // 3. Geographic Range (Region, Country, Formation)
+  const geoObj = s.geographicRange || {};
+  for (const val of Object.values(geoObj)) {
+    if (typeof val === 'string' && val.trim()) {
+      const vLower = val.toLowerCase();
+      if (vLower === q || exactWordRegex.test(val) || wordPrefixRegex.test(val)) {
+        matched = true;
+        score += 30;
+      }
+    }
+  }
+
+  // 4. Name Meaning
+  if (s.nameMeaning && (exactWordRegex.test(s.nameMeaning) || wordPrefixRegex.test(s.nameMeaning))) {
+    matched = true;
+    score += 20;
+  }
+
+  return { matched, score };
+}
+
 
 // Helper to capitalize words
 function formatLocation(loc: string): string {
@@ -235,8 +318,7 @@ export async function getSpecies(req: Request, res: Response, next: NextFunction
         { scientificName: { contains: searchStr, mode: 'insensitive' } },
         { nameMeaning: { contains: searchStr, mode: 'insensitive' } },
         { geographicRange: { contains: searchStr, mode: 'insensitive' } },
-        { taxonomy: { contains: searchStr, mode: 'insensitive' } },
-        { discoveryHistory: { contains: searchStr, mode: 'insensitive' } }
+        { taxonomy: { contains: searchStr, mode: 'insensitive' } }
       ];
     }
 
@@ -244,6 +326,7 @@ export async function getSpecies(req: Request, res: Response, next: NextFunction
     const limitNum = parseInt(limit as string, 10) || 50;
     const skip = (pageNum - 1) * limitNum;
 
+    const hasSearch = Boolean(search && (search as string).trim());
     const hasLengthFilter = min_length !== undefined || max_length !== undefined;
     const minL = min_length !== undefined ? parseFloat(min_length as string) : -Infinity;
     const maxL = max_length !== undefined ? parseFloat(max_length as string) : Infinity;
@@ -251,8 +334,8 @@ export async function getSpecies(req: Request, res: Response, next: NextFunction
     let total = 0;
     let speciesList: any[] = [];
 
-    if (hasLengthFilter) {
-      // Query candidate species matching relational criteria, then filter by parsed length metric
+    if (hasSearch || hasLengthFilter) {
+      // Query candidate species matching relational criteria
       const rawList = await prisma.species.findMany({
         where,
         orderBy: { name: 'asc' }
@@ -260,11 +343,27 @@ export async function getSpecies(req: Request, res: Response, next: NextFunction
 
       let formattedList = rawList.map(formatSpeciesRecord);
 
-      formattedList = formattedList.filter(s => {
-        const len = s.lengthM;
-        if (len === null || len === undefined || isNaN(len)) return false;
-        return len >= minL && len <= maxL;
-      });
+      // Apply high-precision word-boundary search filtering and relevance scoring
+      if (hasSearch) {
+        const searchStr = (search as string).trim();
+        const scored: { item: any; score: number }[] = [];
+        for (const s of formattedList) {
+          const evalRes = evaluateSearchMatch(s, searchStr);
+          if (evalRes.matched) {
+            scored.push({ item: s, score: evalRes.score });
+          }
+        }
+        scored.sort((a, b) => b.score - a.score || a.item.name.localeCompare(b.item.name));
+        formattedList = scored.map(s => s.item);
+      }
+
+      if (hasLengthFilter) {
+        formattedList = formattedList.filter(s => {
+          const len = s.lengthM;
+          if (len === null || len === undefined || isNaN(len)) return false;
+          return len >= minL && len <= maxL;
+        });
+      }
 
       if (fossil_formation) {
         const cleanQuery = (fossil_formation as string).toLowerCase().replace(/\s+(formation|beds|limestone|group|basin|shale)$/i, '').trim();
@@ -362,14 +461,23 @@ export async function searchAutocomplete(req: Request, res: Response, next: Next
         scientificName: true,
         clade: true,
         geographicRange: true,
+        taxonomy: true,
         media: true
       },
-      take: 8,
+      take: 25,
       orderBy: { name: 'asc' }
     });
 
     const formattedMatches = matches.map(formatSpeciesRecord);
-    res.json(formattedMatches);
+    const scored: { item: any; score: number }[] = [];
+    for (const s of formattedMatches) {
+      const evalRes = evaluateSearchMatch(s, searchStr);
+      if (evalRes.matched) {
+        scored.push({ item: s, score: evalRes.score });
+      }
+    }
+    scored.sort((a, b) => b.score - a.score || a.item.name.localeCompare(b.item.name));
+    res.json(scored.slice(0, 8).map(s => s.item));
   } catch (error) {
     next(error);
   }

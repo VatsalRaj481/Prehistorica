@@ -225,7 +225,7 @@
     "geographicRange": "{\"region\":\"Europe\",\"country\":\"France\",\"fossilFormation\":\"Commentry Shale\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Arthropoda\",\"class\":\"Insecta\",\"order\":\"Meganisoptera\",\"family\":\"Meganeuridae\",\"genus\":\"Meganeura\",\"species\":\"Meganeura monyi\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/8-Meganeura.png\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/0/08/Meganeura_monyi_wings_Brongniart_1893.png\"}]",
+    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/8-meganeura-art.jpg\",\"type\":\"art\",\"credit\":\"Michael Barera / Milwaukee Public Museum (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Milwaukee_Public_Museum_May_2023_10_(Third_Planet--Primeval_Forest_of_Northern_Illinois,_310_million_years_ago--Meganeura).jpg\"}]",
     "discoveryHistory": "• First discovered in the coal measures of Commentry, France, in 1880.\n• Described by Charles Brongniart in 1885.\n• Further discoveries have cemented its status as one of the largest flying insects ever.",
     "interestingFacts": "[\"It is closely related to modern dragonflies but belongs to an extinct group called griffinflies.\",\"Its wingspan could reach over 70 centimeters (28 inches).\",\"It was an agile aerial predator that hunted other insects and possibly small amphibians.\",\"Lacked the specialized pterostigma (weighted wing spot) of modern dragonflies, relying instead on high-density vein networks and corrugated anterior longitudinal veins to dampen torsional flutter during high-speed gliding.\",\"Hemispherical compound eyes occupied nearly the entire dorsal skull, featuring specialized enlarged upward-facing ommatidia adapted for silhouette-detection against bright skies.\"]",
     "sizeNotes": "Wingspan: 65 to 71 cm; body length: ~43 cm. Weight estimates range from 100 to 200 grams. Note: Wingspan ~65–71 cm, total body length 43 cm, body mass 150 g (0.15 kg). Stored values match consensus.",
@@ -237,7 +237,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Meganeura monyi description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Meganeura%20monyi\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.335Z",
-    "updatedAt": "2026-09-08T15:52:05.744Z"
+    "updatedAt": "2026-09-22T10:44:54.680Z"
   },
   {
     "id": 9,
@@ -687,7 +687,7 @@
     "sources": "[{\"citation\":\"Osborn, H.F. (1905). Tyrannosaurus and other Cretaceous carnivorous dinosaurs. Bulletin of the AMNH 21(14): 259–265.\",\"url\":\"https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=38613\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:38.076Z",
-    "updatedAt": "2026-09-08T15:52:06.468Z"
+    "updatedAt": "2026-09-18T17:05:17.347Z"
   },
   {
     "id": 25,
@@ -1137,7 +1137,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Megatherium americanum description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Megatherium%20americanum\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:38.737Z",
-    "updatedAt": "2026-09-17T09:52:21.709Z"
+    "updatedAt": "2026-09-17T09:52:20.360Z"
   },
   {
     "id": 40,
@@ -1377,7 +1377,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Shonisaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Shonisaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:18.442Z",
-    "updatedAt": "2026-09-08T15:52:07.580Z"
+    "updatedAt": "2026-09-12T15:52:25.191Z"
   },
   {
     "id": 54,
@@ -1917,7 +1917,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Silesaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Silesaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:23.245Z",
-    "updatedAt": "2026-09-17T09:52:21.709Z"
+    "updatedAt": "2026-09-17T09:52:20.161Z"
   },
   {
     "id": 81,
@@ -3087,7 +3087,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Longisquama spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Longisquama\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:28.956Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:20.401Z"
   },
   {
     "id": 124,
@@ -3165,7 +3165,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Protorosaur\",\"family\":\"Tanystropheidae\",\"genus\":\"Dinocephalosaurus\",\"species\":\"Dinocephalosaurus orientalis\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/126-Dinocephalosaurus.png\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Dinocephalosaurus_orientalis.png\"}]",
+    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/126-dinocephalosaurus-art.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 2.5)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Dinocephalosaurus_BW.jpg\"}]",
     "discoveryHistory": "• Found in the Guanling Formation, China.\n• Described in 2004 by Li.\n• A remarkable complete specimen with an embryo was described in 2017.",
     "interestingFacts": "[\"Excavated from the Middle Triassic Guanling Formation of Guizhou Province, southwestern China.\",\"Possessed 33 cervical vertebrae, more than any other known archosauromorph, creating an exceptionally flexible, snake-like neck.\",\"A phenomenal 2017 fossil discovery revealed an embryo preserved inside the maternal body cavity, providing the first definitive evidence of viviparity (live birth) in Archosauromorpha.\",\"Fossilized neck ribs show that Dinocephalosaurus could flare its throat ribs outward, expanding its esophagus to create suction that drew fish into its maw.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
@@ -3177,7 +3177,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Dinocephalosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Dinocephalosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.073Z",
-    "updatedAt": "2026-09-08T15:52:11.164Z"
+    "updatedAt": "2026-09-22T10:44:54.966Z"
   },
   {
     "id": 127,
@@ -3297,7 +3297,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Nothosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Nothosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.227Z",
-    "updatedAt": "2026-09-08T15:52:11.369Z"
+    "updatedAt": "2026-09-12T15:41:50.093Z"
   },
   {
     "id": 131,
@@ -3447,7 +3447,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Mixosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Mixosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.432Z",
-    "updatedAt": "2026-09-08T15:52:11.614Z"
+    "updatedAt": "2026-09-12T15:41:50.050Z"
   },
   {
     "id": 136,
@@ -3675,7 +3675,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Morrison Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Saurischia\",\"family\":\"Ceratosauridae\",\"genus\":\"Ceratosaurus\",\"species\":\"Ceratosaurus nasicornis\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/2/23/Ceratosaurus_nasicornis_DB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY 2.5)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Ceratosaurus_nasicornis_DB.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/145-Ceratosaurus.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY 2.5)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Ceratosaurus_nasicornis_DB.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/2/28/Ceratosaurus_skeleton_white_background.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/2/28/Ceratosaurus_skeleton_white_background.jpg\"}]",
+    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/145-ceratosaurus-art.png\",\"type\":\"art\",\"credit\":\"Tasman Dixon (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Ceratosaurus_TD.png\"}]",
     "discoveryHistory": "• Described by O.C. Marsh in 1884 based on a nearly complete skeleton from Colorado.\n• A notable specimen was found in the Cleveland-Lloyd Dinosaur Quarry.\n• Fossils have been discovered in North America, with possible remains in Portugal and Tanzania.",
     "interestingFacts": "[\"Possessed a prominent, laterally flattened horn on the midline of its nasal bones and a pair of smaller hornlets above the prefrontal eyes.\",\"Uniquely among theropod dinosaurs, Ceratosaurus bore a continuous row of small, bladelike dermal osteoderms running along the midline of its spine.\",\"Its maxillary teeth were disproportionately long and blade-like, extending far below the margin of the lower jaw when the mouth was closed.\",\"Its tail was exceptionally deep and laterally compressed with tall neural spines, leading some paleontologists to hypothesize strong swimming capabilities.\"]",
     "sizeNotes": "Medium-sized for its group. Note: Stored 5/2/1000 was a dummy placeholder. Holotype USNM 4735 is 5.3 m, while mature adult specimens (MWC 1) reach 6.5–7.0 m (representative 6.5 m), hip height 1.9 m, mass ~700–900 kg (representative 800 kg).",
@@ -3687,7 +3687,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Ceratosaurus nasicornis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Ceratosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:29.809Z",
-    "updatedAt": "2026-09-08T15:52:12.100Z"
+    "updatedAt": "2026-09-23T11:33:20.167Z"
   },
   {
     "id": 147,
@@ -3837,7 +3837,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Ornitholestes hermanni description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Ornitholestes\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:30.042Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:20.440Z"
   },
   {
     "id": 152,
@@ -3885,7 +3885,7 @@
     "geographicRange": "{\"region\":\"Asia\",\"country\":\"China\",\"fossilFormation\":\"Shishugou Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Saurischia\",\"family\":\"Proceratosauridae\",\"genus\":\"Guanlong\",\"species\":\"Guanlong wucaii\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/7/74/Guanlong_wucaii_head.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original\",\"type\":\"art\",\"credit\":\"Dudo~commonswiki (CC BY 2.5)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3AGuanlong%20wucaii%20head.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/153-Guanlong.jpg\",\"type\":\"fossil_specimen\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/1/1b/Guanlong.jpg\"}]",
+    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/153-guanlong-art.jpg\",\"type\":\"art\",\"credit\":\"Durbed (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Guanlong_wucaii_by_durbed.jpg\"}]",
     "discoveryHistory": "• Discovered in 2000 in the Junggar Basin, Xinjiang, China.\n• Named in 2006 by Xu Xing and colleagues.\n• Two specimens, an adult and a juvenile, were found together.",
     "interestingFacts": "[\"Excavated from the Oxfordian Shishugou Formation of Xinjiang, China, dating to roughly 160 Ma as one of the oldest known tyrannosauroids.\",\"Its cranium bore a prominent, paper-thin midline cranial crest formed by the fused nasal bones, extensively honeycombed with internal pneumatic chambers.\",\"Unlike the reduced two-fingered arms of Late Cretaceous tyrannosaurids, Guanlong retained long, functional three-clawed forelimbs for grasping prey.\",\"Fossil specimens were found stacked within 'dinosaur death pits' created by water-saturated volcanic mud springs that trapped multiple trophic levels.\"]",
     "sizeNotes": "Medium-sized for its group. Note: Replaced 5/2/1000 placeholder. Fully grown adult holotype IVPP V14531 is 3.0 m in length, standing hip height 0.9 m, mass ~60–80 kg (representative 70 kg).",
@@ -3897,7 +3897,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Guanlong wucaii description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Guanlong\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:30.118Z",
-    "updatedAt": "2026-09-08T15:52:12.431Z"
+    "updatedAt": "2026-09-23T11:33:20.212Z"
   },
   {
     "id": 154,
@@ -5187,7 +5187,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Rhamphorhynchus muensteri description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Rhamphorhynchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:32.231Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:20.481Z"
   },
   {
     "id": 205,
@@ -5817,7 +5817,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Ophthalmosaurus icenicus description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Ophthalmosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:33.423Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:20.520Z"
   },
   {
     "id": 228,
@@ -5877,7 +5877,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Rhomaleosaurus cramptoni description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Rhomaleosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:33.501Z",
-    "updatedAt": "2026-09-08T15:52:15.619Z"
+    "updatedAt": "2026-09-12T15:41:49.954Z"
   },
   {
     "id": 230,
@@ -6267,7 +6267,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Giganotosaurus carolinii description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Giganotosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:04.549Z",
-    "updatedAt": "2026-09-08T15:52:16.238Z"
+    "updatedAt": "2026-09-18T15:48:34.889Z"
   },
   {
     "id": 449,
@@ -6465,7 +6465,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Antlers\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Saurischia\",\"family\":\"Carcharodontosauridae\",\"genus\":\"Acrocanthosaurus\",\"species\":\"Acrocanthosaurus atokensis\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/0/06/Acrocanthosaurus_atokensis.png\",\"type\":\"art\",\"credit\":\"Sittaco (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Acrocanthosaurus_atokensis.png\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/459-Acrocanthosaurus.png\",\"type\":\"scientific_figure\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/a/a5/Acrocanthosaurus_restoration.jpg\"}]",
+    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/459-acrocanthosaurus-art.png\",\"type\":\"art\",\"credit\":\"Tasman Dixon (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Acrocanthosaurus_TD.png\"}]",
     "discoveryHistory": "• Discovered in the early 1940s in Oklahoma, USA.\n• Named Acrocanthosaurus atokensis in 1950 by Stovall and Langston.\n• A nearly complete skeleton 'Fran' was discovered in the 1990s.",
     "interestingFacts": "[\"Excavated from the Early Cretaceous Antlers and Twin Mountains Formations of Oklahoma and Texas, reaching lengths of over 11.5 meters.\",\"Characterized by hyper-elongated neural spines on its cervical, dorsal, and caudal vertebrae that rose up to 2.5 times the height of the vertebral centra.\",\"These neural spines anchored an immense, thick muscular ridge or fleshy hump that stabilized the spine and distributed mechanical loads when tackling large sauropods.\",\"The famed Paluxy River trackway in Texas preserves fossilized footprints widely attributed to an Acrocanthosaurus stalking a herd of sauropods across a tidal mudflat.\"]",
     "sizeNotes": "Large predator.",
@@ -6477,7 +6477,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Acrocanthosaurus atokensis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Acrocanthosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:05.098Z",
-    "updatedAt": "2026-09-08T15:52:16.667Z"
+    "updatedAt": "2026-09-23T11:03:24.565Z"
   },
   {
     "id": 460,
@@ -7137,7 +7137,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Lambeosaurus lambei description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Lambeosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:06.259Z",
-    "updatedAt": "2026-09-08T15:52:18.517Z"
+    "updatedAt": "2026-09-16T16:31:18.934Z"
   },
   {
     "id": 487,
@@ -7377,7 +7377,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Edmontonia longiceps description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Edmontonia\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:06.706Z",
-    "updatedAt": "2026-09-08T15:52:18.979Z"
+    "updatedAt": "2026-09-16T16:45:22.229Z"
   },
   {
     "id": 496,
@@ -7497,7 +7497,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Nodosaurus textilis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Nodosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:06.890Z",
-    "updatedAt": "2026-09-08T15:52:19.183Z"
+    "updatedAt": "2026-09-16T16:52:08.262Z"
   },
   {
     "id": 501,
@@ -8337,7 +8337,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Deinosuchus riograndensis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Deinosuchus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:08.649Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:20.567Z"
   },
   {
     "id": 539,
@@ -8367,7 +8367,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Xiphactinus audax description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Xiphactinus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:08.692Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:20.606Z"
   },
   {
     "id": 540,
@@ -9105,7 +9105,7 @@
     "geographicRange": "{\"region\":\"North Africa\",\"country\":\"Egypt\",\"fossilFormation\":\"Birket Qarun Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Other\",\"family\":\"Boidae\",\"genus\":\"Gigantophis\",\"species\":\"Gigantophis garstini\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/d/df/Gigantophis_JWArtwork.png\",\"type\":\"art\",\"credit\":\"Joerim (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Gigantophis_JWArtwork.png\"}]",
+    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/1616-gigantophis-art.png\",\"type\":\"art\",\"credit\":\"Life restoration of Gigantophis garstini\",\"sourceUrl\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/1616-gigantophis-art.png\"}]",
     "discoveryHistory": "Discovered in 1901 by British paleontologist Charles William Andrews in the Eocene Birket Qarun Formation of the Fayum Depression in Egypt.",
     "interestingFacts": "[\"For over a century until the discovery of Titanoboa in 2009, Gigantophis was considered the largest known snake to have ever existed.\",\"Historically estimated at 9 to 10 meters, a 2004 reassessment by Jason Head et al. revised its estimated length downward to approximately 6.9 ± 0.3 meters.\",\"Belongs to the extinct family Madtsoiidae, sharing a deep evolutionary lineage with other giant Paleogene snakes such as Vasuki and Madtsoia.\",\"Skeletal and biomechanical reconstructions indicate historically estimated at 9–10m; revised in 2004 to ~6.9m, providing key insights into its growth dynamics.\"]",
     "sizeNotes": "Historically estimated at 9–10m; revised in 2004 to ~6.9m.",
@@ -9117,7 +9117,7 @@
     "sources": "[{\"citation\":\"Andrews, C.W. (1901). Preliminary note on some recently discovered extinct vertebrates from Egypt (Part II). Geological Magazine 8(10): 436–444.\",\"url\":\"https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=38102\"},{\"citation\":\"Head, J.J., et al. (2004). Revision of the giant Eocene snake Gigantophis garstini Andrews. Journal of Vertebrate Paleontology 24(3): 88A.\",\"url\":\"https://en.wikipedia.org/wiki/Gigantophis\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T11:47:52.508Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-22T10:50:52.562Z"
   },
   {
     "id": 1619,
@@ -10467,7 +10467,7 @@
     "sources": "[{\"citation\": \"Hocknull, S.A., et al. (2021). PeerJ.\", \"url\": \"https://doi.org/10.7717/peerj.11317\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:06.219Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:20.710Z"
   },
   {
     "id": 1664,
@@ -11085,7 +11085,7 @@
     "geographicRange": "{\"region\": \"South America\", \"country\": \"Brazil\", \"fossilFormation\": \"Romualdo Formation\", \"coordinates\": [-7.2, -39.5]}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Pterosauria\",\"family\":\"Ornithocheiridae\",\"genus\":\"Brasileodactylus\",\"species\":\"Brasileodactylus araripensis\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/1740-perfect-art.jpg\",\"type\":\"art\",\"credit\":\"Maurílio Oliveira (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:RomualdoPterosaurs.jpg\"}]",
+    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/1740-brasileodactylus-art.jpg\",\"type\":\"art\",\"credit\":\"Smokeybjb (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Cearadactylus.jpg\"}]",
     "discoveryHistory": "Described by A. Kellner in 1984.",
     "interestingFacts": "[\"Brasileodactylus araripensis (Brasileodactylus araripensis) is an important Pterosaur taxon: Described by A. Kellner in 1984.\",\"Possessed distinctive anatomical adaptations for its era, including long jaw with expanding front teeth.\",\"Its craniodental architecture and piscivore diet were characterized by low nasal crest.\",\"Fossil specimens provide critical biostratigraphic and phylogenetic insights, including evidence of concretion nodule fossil.\"]",
     "sizeNotes": "Adult length ~4.0m, height ~1.0m, estimated weight ~10kg. Note: Stored length (4.0 m) was wingspan. Body length ~1.3 m, standing height 1.0 m, mass ~10 kg.",
@@ -11097,7 +11097,7 @@
     "sources": "[{\"citation\": \"Kellner, A.W.A. (1984). An. XXXIII Congr. Bras.\", \"url\": \"https://commons.wikimedia.org\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:44.192Z",
-    "updatedAt": "2026-09-08T15:52:26.397Z"
+    "updatedAt": "2026-09-22T10:25:40.118Z"
   },
   {
     "id": 1741,
@@ -11787,7 +11787,7 @@
     "sources": "[{\"citation\": \"Kellner, A.W.A. (1989). An. Acad. Bras. Cienc.\", \"url\": \"https://commons.wikimedia.org\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T14:00:31.239Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:20.751Z"
   },
   {
     "id": 2035,
@@ -13663,9 +13663,9 @@
     "habitat": "terrestrial",
     "clade": "Theropod",
     "geographicRange": "{\"region\": \"Asia\", \"country\": \"China\", \"fossilFormation\": \"Shaximiao Formation\", \"coordinates\": [29.5, 104.5]}",
-    "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Saurischia\",\"family\":\"Ceratosauridae\",\"genus\":\"Yangchuanosaurus\",\"species\":\"Yangchuanosaurus shangyouensis\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
+    "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Saurischia\",\"family\":\"Metriacanthosauridae\",\"genus\":\"Yangchuanosaurus\",\"species\":\"Yangchuanosaurus shangyouensis\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/2/2a/Yangchuanosaurus_TD.png\",\"type\":\"art\",\"credit\":\"Tasman Dixon (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Yangchuanosaurus_TD.png\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/2641-Yangchuanosaurus.png\",\"type\":\"art\",\"credit\":\"Tasman Dixon (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Yangchuanosaurus_TD.png\"},{\"url\":\"https://commons.wikimedia.org/wiki/File:Stamp_of_Azerbaijan_253.jpg\",\"type\":\"historical_display\",\"credit\":\"Post of Azerbaijan (Public domain)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Stamp_of_Azerbaijan_253.jpg\"}]",
+    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/2641-Yangchuanosaurus.png\",\"type\":\"art\",\"credit\":\"Tasman Dixon (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Yangchuanosaurus_TD.png\"}]",
     "discoveryHistory": "Discovered in 1977 during Yongchuan dam construction in Sichuan.",
     "interestingFacts": "[\"Apex carnosaur predator of Late Jurassic China.\",\"Exhibits diagnostic skeletal adaptations characteristic of Theropods, supporting specialized locomotor and ecological functions.\",\"Its craniodental architecture and carnivore diet were characterized by rugged facial crests on top of nose.\",\"Fossil specimens provide critical biostratigraphic and phylogenetic insights, including evidence of deep powerful jaws.\"]",
     "sizeNotes": "Adult length ~8.0m, height ~2.5m, estimated weight ~2000kg. Note: Dong et al. (1978), Paul (2010); holotype CV 00214 length 8.0 m, hip height 2.3 m, mass ~1,600 kg. Larger referred specimen (*Y. magnus*) reached 10.5 m / 3,200 kg.",
@@ -13677,7 +13677,7 @@
     "sources": "[{\"citation\": \"Dong, Z., et al. (1978). Mus. Nat. Hist. Beijing.\", \"url\": \"https://commons.wikimedia.org\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T14:14:53.617Z",
-    "updatedAt": "2026-09-08T15:37:22.165Z"
+    "updatedAt": "2026-09-23T11:25:01.005Z"
   },
   {
     "id": 2642,
@@ -13887,7 +13887,7 @@
     "sources": "[{\"citation\":\"Young, M. T., & Andrade, M. B. (2009). What is Geosaurus? Redescription of Geosaurus giganteus. Zoological Journal of the Linnean Society.\",\"url\":\"https://doi.org/10.1111/j.1096-3642.2009.00536.x\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:10.740Z",
-    "updatedAt": "2026-09-08T15:37:22.493Z"
+    "updatedAt": "2026-09-12T15:52:25.280Z"
   },
   {
     "id": 3155,
@@ -13917,7 +13917,7 @@
     "sources": "[{\"citation\":\"Young, M. T. et al. (2010). The pelvic girdle and hind limb of Metriorhynchus. Geological Magazine.\",\"url\":\"https://doi.org/10.1017/S001675681000007X\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:10.782Z",
-    "updatedAt": "2026-09-08T15:37:22.532Z"
+    "updatedAt": "2026-09-12T15:52:25.321Z"
   },
   {
     "id": 3156,
@@ -14127,7 +14127,7 @@
     "sources": "[{\"citation\":\"Jeffery, J. E. (2001). Pectoral fin anatomy of Rhizodus hibberti (Rhizodontida, Sarcopterygii). Journal of Vertebrate Paleontology.\",\"url\":\"https://doi.org/10.1671/0272-4634(2001)021[0495:PFAORH]2.0.CO;2\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.142Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:20.790Z"
   },
   {
     "id": 3164,
@@ -14157,7 +14157,7 @@
     "sources": "[{\"citation\":\"Bardack, D. (1965). Anatomy and evolution of chirocentrid fishes. University of Kansas Paleontological Contributions.\",\"url\":\"https://hdl.handle.net/1808/3814\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.184Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:20.829Z"
   },
   {
     "id": 3165,
@@ -14175,7 +14175,7 @@
     "geographicRange": "{\"continent\":\"Asia\",\"region\":\"Liaoning Province\",\"country\":\"China\",\"fossilFormation\":\"Yixian Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Saurischia\",\"family\":\"Proceratosauridae\",\"genus\":\"Yutyrannus\",\"species\":\"Yutyrannus huali\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/f/fe/Yutyrannus_huali.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original\",\"type\":\"art\",\"credit\":\"Tomopteryx (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3AYutyrannus%20huali.png\"}]",
+    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/3165-yutyrannus-art.png\",\"type\":\"art\",\"credit\":\"Tasman Dixon (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Yutyrannus_TD.png\"}]",
     "discoveryHistory": "• Discovered by local fossil collectors in Liaoning Province, China, and acquired by Xu Xing.\n• Formally described in Nature in April 2012 by Xu Xing and colleagues.\n• Three nearly complete skeletons of varying ages preserved extensive filamentous plumage.",
     "interestingFacts": "[\"Holds the record as the largest direct feather-bearing animal in Earth's history (9 meters long, 1.4 tonnes).\",\"Feathers were 20 cm long filamentous proto-feathers providing insulation in Liaoning's chilly 10°C climate.\",\"Possessed a high median crest along its snout used for species display and intra-species communication.\",\"Skeletal and biomechanical reconstructions indicate largest known dinosaur with direct, fossilized evidence of feathers, providing key insights into its growth dynamics.\"]",
     "sizeNotes": "Largest known dinosaur with direct, fossilized evidence of feathers. Note: Xu et al. (2012); holotype length 9.0 m, hip height 2.5 m, mass 1,400 kg.",
@@ -14187,7 +14187,7 @@
     "sources": "[{\"citation\":\"Xu, X. et al. (2012). A gigantic feathered dinosaur from the Lower Cretaceous of China. Nature.\",\"url\":\"https://doi.org/10.1038/nature10906\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.226Z",
-    "updatedAt": "2026-09-08T15:37:23.391Z"
+    "updatedAt": "2026-09-23T11:33:20.077Z"
   },
   {
     "id": 3166,
@@ -14307,7 +14307,7 @@
     "sources": "[{\"citation\":\"Young, M. T. et al. (2012). The spatial and temporal range of Geosaurus and Plesiosuchus. PLoS ONE.\",\"url\":\"https://doi.org/10.1371/journal.pone.0044985\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.439Z",
-    "updatedAt": "2026-09-08T15:37:23.565Z"
+    "updatedAt": "2026-09-12T15:52:25.362Z"
   },
   {
     "id": 3171,
@@ -14397,7 +14397,7 @@
     "sources": "[{\"citation\":\"Allain, R., & Taquet, P. (2000). A new dromaeosaurid (Dinosauria, Theropoda) from the Upper Cretaceous of Haute-Provence. Comptes Rendus de l'Académie des Sciences.\",\"url\":\"https://doi.org/10.1016/S1251-8050(00)00212-0\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.591Z",
-    "updatedAt": "2026-09-08T15:37:23.705Z"
+    "updatedAt": "2026-09-16T16:31:18.750Z"
   },
   {
     "id": 3175,
@@ -14443,9 +14443,9 @@
     "habitat": "terrestrial",
     "clade": "Theropod",
     "geographicRange": "{\"continent\":\"Europe\",\"region\":\"English Midlands\",\"country\":\"United Kingdom\",\"fossilFormation\":\"Blue Lias Formation\"}",
-    "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Saurischia\",\"family\":\"Ceratosauridae\",\"genus\":\"Sarcosaurus\",\"species\":\"Sarcosaurus woodi\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
+    "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Saurischia\",\"family\":\"Neotheropoda\",\"genus\":\"Sarcosaurus\",\"species\":\"Sarcosaurus woodi\",\"source\":\"Paleobiology Database (PBDB) + GBIF\",\"suborder\":\"Theropoda\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/d/d9/Sarcosaurus_life_restoration.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original\",\"type\":\"art\",\"credit\":\"Саша Багаев (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3ASarcosaurus%20life%20restoration.jpg\"}]",
+    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/3176-sarcosaurus-art.png\",\"type\":\"art\",\"credit\":\"Tasman Dixon (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Sarcosaurus_TD.png\"}]",
     "discoveryHistory": "• Discovered in 1913 near Barrow-upon-Soar, Leicestershire, by James W. Wood.\n• Named by Charles William Andrews in 1921.\n• Represents one of the oldest known Jurassic theropods in Europe.",
     "interestingFacts": "[\"One of the earliest true Jurassic theropod dinosaurs discovered in the UK.\",\"Possessed a small nasal horn or crest similar to Ceratosaurus.\",\"Inhabited coastal mudflats alongside early marine reptiles.\",\"Skeletal and biomechanical reconstructions indicate basal neotheropod measuring 3.5 meters in length, providing key insights into its growth dynamics.\"]",
     "sizeNotes": "Basal neotheropod measuring 3.5 meters in length.",
@@ -14457,7 +14457,7 @@
     "sources": "[{\"citation\":\"Ezcurra, M. D. et al. (2020). Enigmatic early theropod Sarcosaurus woodi re-evaluated. Zoological Journal of the Linnean Society.\",\"url\":\"https://doi.org/10.1093/zoolinnean/zlaa086\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.725Z",
-    "updatedAt": "2026-09-08T15:37:23.827Z"
+    "updatedAt": "2026-09-23T11:25:01.184Z"
   },
   {
     "id": 3177,
@@ -14697,7 +14697,7 @@
     "sources": "[{\"citation\":\"Kellner, A. W. A. et al. (2013). The largest pterosaur from Gondwana and other new anhanguerids from Brazil. Anais da Academia Brasileira de Ciências.\",\"url\":\"https://doi.org/10.1590/0001-37652013102912\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:12.107Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:20.280Z"
   },
   {
     "id": 3186,
@@ -16047,7 +16047,7 @@
     "sources": "[{\"citation\":\"Schlosser, M. (1903). Die fossilen Säugethiere Chinas nebst einer Odontographie der recenten Antilopen. Abhandlungen der Bayerischen Akademie der Wissenschaften, 22: 1-221.\",\"url\":\"https://www.biodiversitylibrary.org/item/89758\"},{\"citation\":\"Deng, T., & Tseng, Z. J. (2010). Osteological evidence for predatory behavior of the giant percrocutid Dinocrocuta gigantea as an active predator of rhinos. Chinese Science Bulletin, 55(17), 1790-1794.\",\"url\":\"https://doi.org/10.1007/s11434-010-3031-9\"}]",
     "placeholder": false,
     "createdAt": "2026-09-06T11:45:23.702Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:20.868Z"
   },
   {
     "id": 5166,
@@ -16077,7 +16077,7 @@
     "sources": "[{\"citation\":\"Leidy, J. (1853). The ancient fauna of Nebraska: or, a description of results of extensive collections of extinct mammalia and chelonia. Smithsonian Contributions to Knowledge, 6: 1-126.\",\"url\":\"https://doi.org/10.5962/bhl.title.12461\"},{\"citation\":\"Mellett, J. S. (1977). Paleobiology of North American Hyaenodon (Mammalia, Creodonta). Contributions to Vertebrate Evolution, 1: 1-134.\",\"url\":\"https://link.springer.com/book/9783805523790\"}]",
     "placeholder": false,
     "createdAt": "2026-09-06T11:45:23.802Z",
-    "updatedAt": "2026-09-08T15:37:26.305Z"
+    "updatedAt": "2026-09-12T15:33:28.710Z"
   },
   {
     "id": 5167,
@@ -16107,7 +16107,7 @@
     "sources": "[{\"citation\":\"Kammerer, C. F., Viglietti, P. A., Butler, E. D., & Botha, J. (2023). Rapid turnover of top predators in African terrestrial faunas around the Permian-Triassic boundary. Current Biology, 33(11), 2283-2290.\",\"url\":\"https://doi.org/10.1016/j.cub.2023.04.050\"}]",
     "placeholder": false,
     "createdAt": "2026-09-06T11:45:23.846Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:20.906Z"
   },
   {
     "id": 5168,
@@ -16137,7 +16137,7 @@
     "sources": "[{\"citation\":\"Kalandadze, N. N. (1975). The first discovery of Lystrosaurus in the European regions of the USSR. Paleontological Journal, 4: 140-142.\",\"url\":\"https://eurekamag.com/research/005/737/005737152.php\"},{\"citation\":\"Botha-Brink, J. (2017). Burrowing in Lystrosaurus: preadaptation to a post-extinction world? Journal of Vertebrate Paleontology, 37(6): e1380414.\",\"url\":\"https://doi.org/10.1080/02724634.2017.1380414\"}]",
     "placeholder": false,
     "createdAt": "2026-09-06T11:45:23.891Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:20.944Z"
   },
   {
     "id": 5169,
@@ -16167,7 +16167,7 @@
     "sources": "[{\"citation\":\"Matthew, W. D. (1924). Third contribution to the Snake Creek fauna. Bulletin of the American Museum of Natural History, 50: 59-210.\",\"url\":\"https://digitallibrary.amnh.org/handle/2246/1325\"},{\"citation\":\"Hunt, R. M. (2003). Intercontinental Migration of Large Mammalian Carnivores: The Amphicyonidae. Bulletin of the American Museum of Natural History, 279: 77-115.\",\"url\":\"https://doi.org/10.1206/0003-0090(2003)279<0077:C>2.0.CO;2\"}]",
     "placeholder": false,
     "createdAt": "2026-09-06T11:45:23.934Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:20.982Z"
   },
   {
     "id": 5170,
@@ -16227,7 +16227,7 @@
     "sources": "[{\"citation\":\"Sampson, S. D., Carrano, M. T., & Forster, C. A. (2001). A bizarre predatory dinosaur from the Late Cretaceous of Madagascar. Nature, 409(6819), 504-506.\",\"url\":\"https://doi.org/10.1038/35054046\"},{\"citation\":\"Carrano, M. T., Loewen, M. A., & Sertich, J. J. (2011). New materials of Masiakasaurus knopfleri Sampson, Carrano, and Forster, 2001, and the anatomy of the Noasauridae (Dinosauria: Theropoda). Smithsonian Contributions to Paleobiology, 95: 1-115.\",\"url\":\"https://doi.org/10.5479/si.00810266.95.1\"}]",
     "placeholder": false,
     "createdAt": "2026-09-06T11:45:24.018Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:20.320Z"
   },
   {
     "id": 5172,
@@ -16257,7 +16257,7 @@
     "sources": "[{\"citation\":\"Leidy, J. (1870). Remarks on a collection of fossils from the western territories. Proceedings of the Academy of Natural Sciences of Philadelphia, 22: 109-110.\",\"url\":\"https://www.biodiversitylibrary.org/page/26297072\"},{\"citation\":\"Mihlbachler, M. C. (2008). Species taxonomy, phylogeny, and biogeography of the Brontotheriidae (Mammalia: Perissodactyla). Bulletin of the American Museum of Natural History, 311: 1-475.\",\"url\":\"https://doi.org/10.1206/528.1\"}]",
     "placeholder": false,
     "createdAt": "2026-09-06T11:45:24.060Z",
-    "updatedAt": "2026-09-08T15:37:26.574Z"
+    "updatedAt": "2026-09-12T15:33:28.922Z"
   },
   {
     "id": 5173,
@@ -16317,7 +16317,7 @@
     "sources": "[{\"citation\":\"Stirton, R. A. (1932). A new genus of Artiodactyla from the Clarendon lower Pliocene of Texas. University of California Publications, Bulletin of the Department of Geological Sciences, 21(6): 147-168.\",\"url\":\"https://eurekamag.com/research/005/737/005737153.php\"},{\"citation\":\"Prothero, D. R. (1998). Protoceratidae. In Evolution of Tertiary Mammals of North America (pp. 431-438). Cambridge University Press.\",\"url\":\"https://doi.org/10.1017/CBO9780511541438.031\"}]",
     "placeholder": false,
     "createdAt": "2026-09-06T11:45:24.150Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:21.024Z"
   },
   {
     "id": 5175,
@@ -16347,7 +16347,7 @@
     "sources": "[{\"citation\":\"Broom, R. (1937). On some new Pleistocene carnivores from Sterkfontein. Annals of the Transvaal Museum, 19(1): 23-28.\",\"url\":\"https://journals.co.za/doi/abs/10.10520/AJA00411752_539\"},{\"citation\":\"Werdelin, L., & Lewis, M. E. (2001). A revision of the genus Dinofelis (Mammalia, Felidae). Zoological Journal of the Linnean Society, 132(2), 147-258.\",\"url\":\"https://doi.org/10.1006/zjls.2000.0260\"}]",
     "placeholder": false,
     "createdAt": "2026-09-06T11:45:24.201Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:21.061Z"
   },
   {
     "id": 5176,
@@ -16407,7 +16407,7 @@
     "sources": "[{\"citation\":\"Lister, A. M. (1994). The evolution of the giant deer, Megaloceros giganteus (Blumenbach). Zoological Journal of the Linnean Society, 112(1-2), 65-100.\",\"url\":\"https://doi.org/10.1111/j.1096-3642.1994.tb00312.x\"},{\"citation\":\"Stuart, A. J., et al. (2004). Pleistocene to Holocene extinction dynamics in giant deer and woolly mammoth. Nature, 431(7009), 684-689.\",\"url\":\"https://doi.org/10.1038/nature02890\"}]",
     "placeholder": false,
     "createdAt": "2026-09-06T11:45:24.284Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:21.099Z"
   },
   {
     "id": 5178,
@@ -16467,7 +16467,7 @@
     "sources": "[{\"citation\":\"Sereno, P. C., et al. (2001). The giant crocodyliform Sarcosuchus from the Cretaceous of Africa. Science, 294(5546), 1516-1519.\",\"url\":\"https://doi.org/10.1126/science.1066521\"},{\"citation\":\"O'Brien, H. D., et al. (2019). Crocodylian head gear: ontogeny, sexual dimorphism, and biomechanical implications of cranial ornamentation in Sarcosuchus. The Anatomical Record, 303(4): 989-1002.\",\"url\":\"https://doi.org/10.1002/ar.24151\"}]",
     "placeholder": false,
     "createdAt": "2026-09-06T11:45:24.369Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:21.142Z"
   },
   {
     "id": 5180,
@@ -16497,7 +16497,7 @@
     "sources": "[{\"citation\":\"Paolillo, A., & Linares, O. J. (2007). Nuevos cocodrilos Sebecosuchia del Cenozoico Suramericano (Mesosuchia: Baurusuchidae, Sebecidae). Paleobiologia Neotropical, 3: 1-25.\",\"url\":\"https://eurekamag.com/research/005/737/005737154.php\"},{\"citation\":\"Kellner, A. W. A., et al. (2014). On the presence of the giant sebecid Barinasuchus in the Miocene of Peruvian Amazonia. Journal of South American Earth Sciences, 54: 120-130.\",\"url\":\"https://doi.org/10.1016/j.jsames.2014.05.003\"}]",
     "placeholder": false,
     "createdAt": "2026-09-06T11:45:24.411Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:21.182Z"
   },
   {
     "id": 5181,
@@ -16587,7 +16587,7 @@
     "sources": "[{\"citation\":\"Kaup, J. J. (1829). Déscription d'Ossements Fossiles de Mammifères Inconnus Jusqu'à Présent. Darmstadt.\",\"url\":\"https://doi.org/10.3931/e-rara-25759\"},{\"citation\":\"Markov, G. N. (2008). Fossil proboscideans (Mammalia) from the vicinities of Varna: a rare glimpse into the early Pliocene of South-Eastern Europe. Geodiversitas, 30(4), 773-789.\",\"url\":\"https://sciencepress.mnhn.fr/en/periodiques/geodiversitas/30/4/les-proboscidiens-fossiles-mammalia-des-environs-de-varna-un-rare-apercu-du-pliocene-inferieur-d-europe-du-sud-est\"}]",
     "placeholder": false,
     "createdAt": "2026-09-06T11:45:24.545Z",
-    "updatedAt": "2026-09-17T09:52:21.710Z"
+    "updatedAt": "2026-09-17T09:52:21.221Z"
   },
   {
     "id": 5184,
@@ -16688,24 +16688,25 @@
     "epoch": "Early Cretaceous Epoch",
     "myaStart": 140,
     "myaEnd": 125,
-    "clade": "Pterosaur",
     "diet": "carnivore",
-    "habitat": "aerial",
     "dietDetails": "Specialized durophage feeding on hard-shelled mollusks, crustaceans, and fish using toothless hooked beak tips to extract prey and flat bulbous rear teeth to crush shells.",
-    "taxonomicStatus": "valid",
-    "extinctionEvent": null,
-    "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/b/b9/Dsungaripterus_weii.png\",\"type\":\"art\",\"credit\":\"Connor Ashbridge (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Dsungaripterus_weii.png\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/Dsungaripterus_weii.png\",\"type\":\"art\",\"credit\":\"Connor Ashbridge (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Dsungaripterus_weii.png\"}]",
-    "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Pterosauria\",\"family\":\"Dsungaripteridae\",\"genus\":\"Dsungaripterus\",\"species\":\"Dsungaripterus weii\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
+    "habitat": "aerial",
+    "clade": "Pterosaur",
     "geographicRange": "{\"continent\":\"Asia\",\"region\":\"East Asia\",\"country\":\"China\",\"fossilFormation\":\"Lianmuqin Formation / Shengjinkou Formation (Tugulu Group)\"}",
-    "sizeEstimate": "{\"length\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":22,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
-    "sizeNotes": "Wingspan of approximately 3.0–3.5 m (9.8–11.5 ft), standing height around 1.2 m, and estimated body weight of 25–35 kg with robust, thick-walled flight bones. Note: Wingspan 3.2 m moved to notes. Quadrupedal body length ~1.2 m, height ~1.1 m, mass ~22 kg (Young 1964, Witton 2013).",
-    "sizeComparisonToHuman": true,
-    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/f58adcd3-4593-4af2-9e6d-7fb8ca8a8318.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/f58adcd3-4593-4af2-9e6d-7fb8ca8a8318\",\"license\":\"Creative Commons Attribution 4.0 International\",\"credit\":\"Connor Ashbridge\",\"taxon\":\"Dsungaripterus weii\",\"taxonMatch\":\"species-specific\"}",
+    "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Pterosauria\",\"family\":\"Dsungaripteridae\",\"genus\":\"Dsungaripterus\",\"species\":\"Dsungaripterus weii\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
+    "taxonomicStatus": "valid",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/b/b9/Dsungaripterus_weii.png\",\"type\":\"art\",\"credit\":\"Connor Ashbridge (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Dsungaripterus_weii.png\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/Dsungaripterus_weii.png\",\"type\":\"art\",\"credit\":\"Connor Ashbridge (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Dsungaripterus_weii.png\"}]",
     "discoveryHistory": "• First described in 1964 by pioneering Chinese paleontologist Yang Zhongjian (C.C. Young) based on a skull and partial skeleton from the Junggar Basin in Xinjiang, China.\n• The species was named Dsungaripterus weii in honor of paleontologist C.M. Wei.\n• In 1973, additional excavations in the Shengjinkou Formation recovered nearly complete skulls and articulated postcrania.\n• Recognized as the type genus of the family Dsungaripteridae, known for their unique upward-curving beaks and crushing rear dentition.",
     "interestingFacts": "[\"Possessed prominent upturned, toothless beak tips used to probe sediments and pry open hard-shelled mollusks and crustaceans from rocky lakeshores.\",\"Unlike most fish-eating pterosaurs with needle-sharp teeth, Dsungaripterus had broad, bulbous, flat-crowned teeth at the rear of its jaws specialized for shell-crushing durophagy.\",\"A distinctive low bony crest ran along the midline of its skull from the middle of the snout backward to a pointed occipital crest overhanging the neck.\",\"Possessed exceptionally thick-walled limb bones and stout proportions, indicating that it was capable of proficient quadrupedal terrestrial locomotion on land.\"]",
+    "sizeNotes": "Wingspan of approximately 3.0–3.5 m (9.8–11.5 ft), standing height around 1.2 m, and estimated body weight of 25–35 kg with robust, thick-walled flight bones. Note: Wingspan 3.2 m moved to notes. Quadrupedal body length ~1.2 m, height ~1.1 m, mass ~22 kg (Young 1964, Witton 2013).",
+    "sizeEstimate": "{\"length\":{\"value\":1.2,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.1,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":22,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
+    "sizeComparisonToHuman": true,
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/f58adcd3-4593-4af2-9e6d-7fb8ca8a8318.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/f58adcd3-4593-4af2-9e6d-7fb8ca8a8318\",\"license\":\"Creative Commons Attribution 4.0 International\",\"credit\":\"Connor Ashbridge\",\"taxon\":\"Dsungaripterus weii\",\"taxonMatch\":\"species-specific\"}",
+    "extinctionEvent": null,
+    "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Young, C.C. (1964). On a new pterosaurian from Sinkiang, China. Vertebrata PalAsiatica, 8(3), 221-255.\",\"url\":\"http://www.ivpp.cas.cn\"},{\"citation\":\"Dsungaripterus weii description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Dsungaripterus\"}]",
     "placeholder": false,
+    "createdAt": "2026-09-06T13:15:40.082Z",
     "updatedAt": "2026-09-08T15:37:27.231Z"
   },
   {
@@ -16717,24 +16718,25 @@
     "epoch": "Early Jurassic (Sinemurian–Toarcian)",
     "myaStart": 199,
     "myaEnd": 183,
-    "clade": "Ornithischian",
     "diet": "herbivore",
-    "habitat": "terrestrial",
     "dietDetails": "Herbivorous low-level browser feeding on ferns, cycads, and early seed plants using small leaf-shaped dentition.",
-    "taxonomicStatus": "valid",
-    "extinctionEvent": null,
-    "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/1/19/Yuxisaurus_TD.png\",\"type\":\"art\",\"credit\":\"Tasman Dixon (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Yuxisaurus_TD.png\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/Yuxisaurus_TD.png\",\"type\":\"art\",\"credit\":\"Tasman Dixon (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Yuxisaurus_TD.png\"}]",
-    "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"clade\":\"Dinosauria\",\"order\":\"Ornithischia\",\"suborder\":\"Thyreophora\",\"genus\":\"Yuxisaurus\",\"species\":\"Yuxisaurus kopchicki\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
+    "habitat": "terrestrial",
+    "clade": "Ornithischian",
     "geographicRange": "{\"continent\":\"Asia\",\"region\":\"East Asia\",\"country\":\"China\",\"fossilFormation\":\"Fengjiahe Formation\"}",
-    "sizeEstimate": "{\"length\":{\"value\":2.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.75,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":180,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
-    "sizeNotes": "Estimated adult length of approximately 2.0–3.0 m (6.6–9.8 ft), standing ~0.8 m tall, with a heavily armored body covered in over 120 osteoderms.",
-    "sizeComparisonToHuman": true,
-    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/46447cfa-6a6b-4eb1-bb48-3531ec3ca4fd.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/46447cfa-6a6b-4eb1-bb48-3531ec3ca4fd\",\"license\":\"Creative Commons Attribution 4.0 International\",\"credit\":\"Matt Dempsey\",\"taxon\":\"Thyreophora (Representative approximation)\",\"taxonMatch\":\"generic approximation, not species-specific\"}",
+    "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"clade\":\"Dinosauria\",\"order\":\"Ornithischia\",\"suborder\":\"Thyreophora\",\"genus\":\"Yuxisaurus\",\"species\":\"Yuxisaurus kopchicki\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
+    "taxonomicStatus": "valid",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/1/19/Yuxisaurus_TD.png\",\"type\":\"art\",\"credit\":\"Tasman Dixon (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Yuxisaurus_TD.png\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/Yuxisaurus_TD.png\",\"type\":\"art\",\"credit\":\"Tasman Dixon (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Yuxisaurus_TD.png\"}]",
     "discoveryHistory": "• Discovered in the Lower Jurassic Fengjiahe Formation of Yuxi, Yunnan Province, southwestern China.\n• Formally described in 2022 by Xi Yao, Paul M. Barrett, Xing Xu, and colleagues based on holotype CVEB 21701 (partial skeleton with over 120 osteoderms).\n• Represents the first confirmed, well-preserved early-diverging armored dinosaur (basal thyreophoran) discovered in the Early Jurassic of Asia.",
     "interestingFacts": "[\"The first definitively identified early-diverging thyreophoran (armored dinosaur) from the Early Jurassic of Asia, dating to ~199–183 Ma.\",\"Preserved with more than 120 bony dermal armor plates (osteoderms) of varying shapes, including keeled scutes, spine-like armor, and pup-tent-shaped plates along its back and neck.\",\"Possessed heavily built forelimbs and robust pectoral girdle elements, demonstrating that early thyreophorans had already evolved specialized quadrupedal weight support.\",\"Phylogenetic analyses place Yuxisaurus as a basal thyreophoran closely related to the European Emausaurus and Scelidosaurus, or alternatively as a basal parankylosaur sharing specialized cervical armor.\"]",
+    "sizeNotes": "Estimated adult length of approximately 2.0–3.0 m (6.6–9.8 ft), standing ~0.8 m tall, with a heavily armored body covered in over 120 osteoderms.",
+    "sizeEstimate": "{\"length\":{\"value\":2.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.75,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":180,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
+    "sizeComparisonToHuman": true,
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/46447cfa-6a6b-4eb1-bb48-3531ec3ca4fd.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/46447cfa-6a6b-4eb1-bb48-3531ec3ca4fd\",\"license\":\"Creative Commons Attribution 4.0 International\",\"credit\":\"Matt Dempsey\",\"taxon\":\"Thyreophora (Representative approximation)\",\"taxonMatch\":\"generic approximation, not species-specific\"}",
+    "extinctionEvent": null,
+    "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Yao, X., Barrett, P. M., Yang, L., Xu, X., & Bi, S. (2022). A new early-diverging armoured dinosaur from the Lower Jurassic of southwestern China. eLife, 11, e75248.\",\"url\":\"https://doi.org/10.7554/eLife.75248\"},{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Yuxisaurus description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Yuxisaurus\"}]",
     "placeholder": false,
+    "createdAt": "2026-09-06T13:24:46.516Z",
     "updatedAt": "2026-09-08T15:37:27.277Z"
   },
   {
@@ -17756,5 +17758,125 @@
     "placeholder": false,
     "createdAt": "2026-09-17T09:21:03.484Z",
     "updatedAt": "2026-09-17T09:21:03.484Z"
+  },
+  {
+    "id": 5223,
+    "name": "Acanthostega gunnari",
+    "scientificName": "Acanthostega gunnari",
+    "nameMeaning": "Spiny roof",
+    "timePeriod": "Late Devonian",
+    "epoch": "Late Devonian",
+    "myaStart": 365,
+    "myaEnd": 360,
+    "diet": "carnivore",
+    "dietDetails": "Piscivore and aquatic carnivore preying on juvenile placoderms, sarcopterygian fish, and aquatic invertebrates in densely vegetated shallow Devonian wetlands and river channels.",
+    "habitat": "freshwater",
+    "clade": "Early_Tetrapod_Amphibian",
+    "geographicRange": "{\"continent\":\"North America / Greenland\",\"region\":\"East Greenland\",\"country\":\"Greenland\",\"fossilFormation\":\"Britta Dal Formation (Celsius Bjerg Group)\"}",
+    "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Stegocephalia\",\"order\":\"Ichthyostegalia\",\"family\":\"Acanthostegidae\",\"genus\":\"Acanthostega\",\"species\":\"Acanthostega gunnari\",\"source\":\"Paleobiology Database (PBDB) + Jarvik (1952)\"}",
+    "taxonomicStatus": "valid",
+    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/5223-acanthostega-art.png\",\"type\":\"art\",\"credit\":\"SeismicShrimp (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Acanthostega_gunnari.png\"}]",
+    "discoveryHistory": "First discovered in 1933 by Gunnar Säve-Söderbergh in East Greenland, Acanthostega was formally described by Erik Jarvik in 1952. Spectacular articulated specimens collected in 1987 by Jennifer Clack overturned decades of vertebrate evolution theories, proving that limbs with digits evolved in fully aquatic environments before vertebrates crawled onto land.",
+    "interestingFacts": "[\"Acanthostega is one of the earliest known stem-tetrapods, possessing eight fully formed digits on each hand rather than the classic five-digit pentadactyl pattern.\",\"Despite having limbs and toes, Acanthostega was entirely aquatic; its wrist and ankle joints were unable to support body weight on land, and it retained internal fish-like gills.\",\"Discovered in the Famennian deposits of Mount Celsius in East Greenland, fossil material revealed a lateral line sensory canal system embedded directly in the skull roof.\",\"Its paddle-like finned tail and forward-facing eyes indicate an ambush predatory lifestyle navigating dense underwater vegetation in oxygen-depleted Devonian swamplands.\"]",
+    "sizeNotes": "Acanthostega measured approximately 60 cm in total length, featuring a flattened fish-like body, a paddle-shaped caudal fin with bony fin rays, and paddle-like polydactylous limbs bearing eight digits.",
+    "sizeEstimate": "{\"length\":{\"value\":0.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.12,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":2.5,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeComparisonToHuman": true,
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/1b24d962-426d-4f8a-85eb-3f02213a3ac2.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/1b24d962-426d-4f8a-85eb-3f02213a3ac2\",\"license\":\"Creative Commons Attribution-ShareAlike 3.0 Unported\",\"credit\":\"Nobu Tamura\",\"taxon\":\"Acanthostega gunnari\",\"taxonMatch\":\"species-specific\"}",
+    "extinctionEvent": "Late Devonian extinction",
+    "closestLivingRelatives": "[\"Amphibians\",\"Amniotes (mammals, reptiles, birds)\"]",
+    "sources": "[{\"citation\":\"Clack, J. A. (1989). Discovery of earliest-known tetrapod stapes. Nature, 342(6248), 425-427.\",\"url\":\"https://doi.org/10.1038/342425a0\"},{\"citation\":\"Coates, M. I., & Clack, J. A. (1990). Polydactyly in the earliest known tetrapod limbs. Nature, 347(6288), 66-69.\",\"url\":\"https://doi.org/10.1038/347066a0\"}]",
+    "placeholder": false,
+    "createdAt": "2026-09-22T10:25:40.268Z",
+    "updatedAt": "2026-09-22T10:25:40.268Z"
+  },
+  {
+    "id": 5224,
+    "name": "Seymouria baylorensis",
+    "scientificName": "Seymouria baylorensis",
+    "nameMeaning": "From Seymour",
+    "timePeriod": "Early Permian",
+    "epoch": "Early Permian",
+    "myaStart": 280,
+    "myaEnd": 270,
+    "diet": "carnivore",
+    "dietDetails": "Carnivore and active terrestrial predator feeding on small amphibians, early synapsids, reptiles, and large terrestrial insects.",
+    "habitat": "terrestrial",
+    "clade": "Early_Tetrapod_Amphibian",
+    "geographicRange": "{\"continent\":\"North America\",\"region\":\"Texas, Utah, and Oklahoma\",\"country\":\"United States\",\"fossilFormation\":\"Clear Fork Group (Arroyo Formation)\"}",
+    "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Reptiliomorpha\",\"order\":\"Seymouriamorpha\",\"family\":\"Seymouriidae\",\"genus\":\"Seymouria\",\"species\":\"Seymouria baylorensis\",\"source\":\"Paleobiology Database (PBDB) + Broili (1904)\"}",
+    "taxonomicStatus": "valid",
+    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/5224-seymouria-art.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 2.5)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Seymouria_BW.jpg\"}]",
+    "discoveryHistory": "First discovered near Seymour in Baylor County, Texas, and described in 1904 by German paleontologist Ferdinand Broili. For decades Seymouria was famous in paleontology as a classic transitional fossil bridging primitive amphibians and true reptiles.",
+    "interestingFacts": "[\"Seymouria was historically considered the definitive 'missing link' between amphibians and reptiles due to its reptilian skeleton combined with an amphibian larval stage.\",\"Fossilized larval specimens discovered in Germany (Discosauriscus) confirmed that young seymouriamorphs possessed external gills and aquatic lateral lines, transitioning to terrestrial respiration as adults.\",\"Its robust, upright-held shoulder girdles and well-ossified spine allowed it to thrive in arid Permian red-bed plains far from open bodies of water.\",\"Adult skulls exhibit deep sensory otic notches and tear-duct grooves along with specialized salt-excreting nasal glands to conserve water in desert environments.\"]",
+    "sizeNotes": "Seymouria grew to approximately 60 cm in total length, possessing robust muscular limbs positioned vertically under the shoulders and hips to facilitate rapid terrestrial locomotion on dry ground.",
+    "sizeEstimate": "{\"length\":{\"value\":0.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.15,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":3,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeComparisonToHuman": true,
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/658621cf-b360-42bf-9832-02769367f0ee.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/658621cf-b360-42bf-9832-02769367f0ee\",\"license\":\"Creative Commons CC0 1.0 Universal Public Domain Dedication\",\"credit\":\"Scott Hartman\",\"taxon\":\"Seymouria\",\"taxonMatch\":\"species-specific\"}",
+    "extinctionEvent": "Olson's Extinction / Permian-Triassic extinction",
+    "closestLivingRelatives": "[\"Amniotes (mammals, reptiles, birds)\"]",
+    "sources": "[{\"citation\":\"White, T. E. (1939). Osteology of Seymouria baylorensis Broili. Bulletin of the Museum of Comparative Zoology, 85(5), 325-409.\",\"url\":\"https://www.biodiversitylibrary.org/part/4192\"},{\"citation\":\"Berman, D. S., Henrici, A. C., & Sumida, S. S. (2000). Seymouriamorpha from the Lower Permian of Central Europe. Bulletin of Carnegie Museum of Natural History, 35, 11-85.\",\"url\":\"https://doi.org/10.2992/0145-9058-35.1.11\"}]",
+    "placeholder": false,
+    "createdAt": "2026-09-22T10:25:40.360Z",
+    "updatedAt": "2026-09-22T10:25:40.360Z"
+  },
+  {
+    "id": 5225,
+    "name": "Eryops megacephalus",
+    "scientificName": "Eryops megacephalus",
+    "nameMeaning": "Drawn-out face, large head",
+    "timePeriod": "Early Permian",
+    "epoch": "Early Permian",
+    "myaStart": 295,
+    "myaEnd": 272,
+    "diet": "carnivore",
+    "dietDetails": "Apex semi-aquatic ambush predator feeding on freshwater sharks, lungfish, smaller temnospondyls, and juvenile terrestrial vertebrates.",
+    "habitat": "semi_aquatic",
+    "clade": "Early_Tetrapod_Amphibian",
+    "geographicRange": "{\"continent\":\"North America\",\"region\":\"Texas, New Mexico, and Oklahoma\",\"country\":\"United States\",\"fossilFormation\":\"Texas Red Beds (Wichita & Clear Fork Groups, Admiral Formation)\"}",
+    "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"clade\":\"Temnospondyli\",\"order\":\"Eryopiformes\",\"family\":\"Eryopidae\",\"genus\":\"Eryops\",\"species\":\"Eryops megacephalus\",\"source\":\"Paleobiology Database (PBDB) + Cope (1877)\"}",
+    "taxonomicStatus": "valid",
+    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/5225-eryops-art.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Eryops1DB.jpg\"}]",
+    "discoveryHistory": "Named and described in 1877 by legendary American paleontologist Edward Drinker Cope based on fragmentary fossils collected by Jacob Boll from the Permian Red Beds of Texas. Abundant complete skeletons were subsequently excavated, making Eryops one of the best understood fossil amphibians in the world.",
+    "interestingFacts": "[\"Eryops had one of the most disproportionately massive heads of any terrestrial vertebrate, with its skull accounting for nearly one-third of its total body length.\",\"Its jaws were lined with dozens of sharp curved teeth, plus large fangs on the palate (vomer and palatine bones) to seize slippery prey like lungfish.\",\"Although it had powerful stocky limbs and interlocking vertebrae for walking across mudflats, its sprawling gait made terrestrial movement slow, reserving explosive speed for aquatic ambushes.\",\"The palate of Eryops featured large vacuities (openings) where the eyes could retract downward into the mouth cavity to help swallow large prey, exactly like modern bullfrogs.\"]",
+    "sizeNotes": "Eryops was a heavily built apex predator measuring 1.5 to 2.0 m in length and weighing up to 90 kg, characterized by an enormous, flattened parabolic skull measuring over 60 cm in length.",
+    "sizeEstimate": "{\"length\":{\"value\":1.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.45,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":90,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
+    "sizeComparisonToHuman": true,
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/6c49ad2e-8d4d-4afa-8392-67074ea0a57c.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/6c49ad2e-8d4d-4afa-8392-67074ea0a57c\",\"license\":\"Creative Commons Attribution-ShareAlike 3.0 Unported\",\"credit\":\"Dmitry Bogdanov (vectorized by T. Michael Keesey)\",\"taxon\":\"Eryops megacephalus\",\"taxonMatch\":\"species-specific\"}",
+    "extinctionEvent": "Olson's Extinction / Middle Permian transition",
+    "closestLivingRelatives": "[\"Lissamphibians (frogs, salamanders, caecilians)\"]",
+    "sources": "[{\"citation\":\"Cope, E. D. (1877). Descriptions of extinct Vertebrata from the Permian and Triassic formations of the United States. Proceedings of the American Philosophical Society, 17(100), 182-193.\",\"url\":\"https://www.jstor.org/stable/982295\"},{\"citation\":\"Miner, R. W. (1925). The pectoral limb of Eryops and other primitive tetrapods. Bulletin of the American Museum of Natural History, 51, 145-312.\",\"url\":\"http://hdl.handle.net/2246/1324\"}]",
+    "placeholder": false,
+    "createdAt": "2026-09-22T10:25:40.449Z",
+    "updatedAt": "2026-09-22T10:25:40.449Z"
+  },
+  {
+    "id": 5226,
+    "name": "Pulmonoscorpius kirktonensis",
+    "scientificName": "Pulmonoscorpius kirktonensis",
+    "nameMeaning": "Breathing scorpion from East Kirkton",
+    "timePeriod": "Carboniferous",
+    "epoch": "Early Carboniferous",
+    "myaStart": 336,
+    "myaEnd": 330,
+    "diet": "carnivore",
+    "dietDetails": "Carnivore and active nocturnal ground hunter preying on early tetrapods, large insects, millipedes, and other arachnids using potent venomous sting.",
+    "habitat": "terrestrial",
+    "clade": "Invertebrate",
+    "geographicRange": "{\"continent\":\"Europe\",\"region\":\"West Lothian, Scotland\",\"country\":\"United Kingdom\",\"fossilFormation\":\"East Kirkton Limestone (Bathgate Hills Volcanic Formation)\"}",
+    "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Arthropoda\",\"clade\":\"Arachnida\",\"order\":\"Scorpiones\",\"family\":\"Centromachidae\",\"genus\":\"Pulmonoscorpius\",\"species\":\"Pulmonoscorpius kirktonensis\",\"source\":\"Paleobiology Database (PBDB) + Jeram (1994)\"}",
+    "taxonomicStatus": "valid",
+    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/5226-pulmonoscorpius-art.png\",\"type\":\"art\",\"credit\":\"Junnn11 (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:20210116_Pulmonoscorpius_kirktonensis.png\"}]",
+    "discoveryHistory": "Discovered in 1984 in the volcanic limestone quarry of East Kirkton, Scotland, by fossil collector Stan Wood. It was formally described in 1994 by paleontologist Andrew J. Jeram, who identified preserved book lungs proving its fully terrestrial respiratory system.",
+    "interestingFacts": "[\"Pulmonoscorpius was a colossal terrestrial scorpion reaching up to 70 cm in length—larger than a domestic cat.\",\"Its gigantism was fueled by the hyper-oxygenated atmosphere of the Carboniferous period, which reached oxygen levels of approximately 35% compared to 21% today.\",\"Exquisite microscopic preservation of its cuticle revealed book lungs and pectines (comb-like sensory organs on the underside), confirming it hunted terrestrial prey on land.\",\"Its massive tail ended in a powerful telson equipped with an elongated sting capable of injecting enough neurotoxin to subdue early tetrapods and large arthropods.\"]",
+    "sizeNotes": "Pulmonoscorpius reached an estimated length of 70 cm (28 inches) from head to sting, making it one of the largest terrestrial arachnids to have ever lived on Earth.",
+    "sizeEstimate": "{\"length\":{\"value\":0.7,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":0.18,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":1.5,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeComparisonToHuman": true,
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/3d68de3d-c39c-4432-aaf3-a22269dd7df3.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/3d68de3d-c39c-4432-aaf3-a22269dd7df3\",\"license\":\"Creative Commons Attribution-ShareAlike 3.0 Unported\",\"credit\":\"Junnn11\",\"taxon\":\"Pulmonoscorpius kirktonensis\",\"taxonMatch\":\"species-specific\"}",
+    "extinctionEvent": "Carboniferous rainforest collapse",
+    "closestLivingRelatives": "[\"Modern scorpions (Scorpiones)\"]",
+    "sources": "[{\"citation\":\"Jeram, A. J. (1994). Carboniferous Orthosterni and the evolution of scorpions. Transactions of the Royal Society of Edinburgh: Earth Sciences, 84(3-4), 283-299.\",\"url\":\"https://doi.org/10.1017/S0263593300003463\"},{\"citation\":\"Jeram, A. J. (1998). Phylogeny, classification and evolution of Silurian and Devonian scorpions. In Proceedings of the 17th European Colloquium of Arachnology (pp. 17-31).\",\"url\":\"https://www.european-arachnology.org/\"}]",
+    "placeholder": false,
+    "createdAt": "2026-09-22T10:25:40.496Z",
+    "updatedAt": "2026-09-22T10:25:40.496Z"
   }
 ]

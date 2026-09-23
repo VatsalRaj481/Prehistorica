@@ -46,9 +46,20 @@ backend/backups/
 !backend/scripts/species-template.json
 backend/species_names_audit.txt
 
-# Audit & Migration Reports (kept locally only)
+# Audit & Migration Reports & Snapshots (strictly kept local, never committed to remote)
 backend/reports/
 backend/snapshots/
+backend/prisma/snapshots/
+**/snapshots/
+**/reports/
+*.snapshot.json
+
+# Temporary test and scratch files
+backend/scripts/*.html
+backend/scripts/test_*.cjs
+backend/scripts/calc_*.cjs
+backend/scripts/check_*.cjs
+backend/scripts/fix_test.cjs
 
 # Local Project Design Documentation (kept local, do not push)
 design.md
