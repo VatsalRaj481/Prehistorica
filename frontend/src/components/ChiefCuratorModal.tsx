@@ -40,7 +40,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       id: 'welcome',
       role: 'assistant',
       content:
-        'Greetings. I am **The Chief Curator** of Prehistorica. I provide evidence-based cladistic, anatomical, and taphonomic insights grounded directly in our 596 cataloged specimens. How may I assist your deep-time research today?',
+        'Greetings! I am **Rajy**, your Prehistorica docent. I provide evidence-based cladistic, anatomical, and taphonomic insights grounded directly in our 596 cataloged specimens. How may I assist your deep-time research today?',
       timestamp: 'Just now'
     }
   ]);
@@ -121,7 +121,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     const parts = content.split(/(\[[^\]]+\]\(\/species\/\d+\))/g);
 
     return parts.map((part, i) => {
-      const match = part.match(/\[([^\]]+)\]\((\/species\/\d+)\)/);
+      const match = part.match(/\[([^\]]+)\](\/species\/\d+)/);
       if (match) {
         return (
           <Link
@@ -166,27 +166,13 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
             transition={{ duration: 0.2, ease: 'easeOut' }}
             className="relative w-full max-w-4xl h-[88vh] max-h-[780px] flex flex-col bg-slate-900 border border-white/[0.12] rounded-2xl shadow-2xl overflow-hidden font-sans text-slate-100"
           >
-            {/* Header */}
-            <div className="px-5 py-4 border-b border-white/[0.08] bg-slate-950/80 flex items-center justify-between shrink-0">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl overflow-hidden border border-amber-500/40 shadow-[0_0_15px_rgba(245,158,11,0.2)] shrink-0">
-                  <img src="/curator-raja.jpg" alt="Curator Raja" className="w-full h-full object-cover object-top" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <h2 className="text-base font-bold tracking-wide font-mono text-slate-100 uppercase">
-                      The Chief Curator
-                    </h2>
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30 uppercase">
-                      RAG Docent
-                    </span>
-                  </div>
-                  <p className="text-xs text-slate-400 font-mono">
-                    Grounded in 596 cataloged specimens & peer-reviewed vertebrate osteology
-                  </p>
-                </div>
+            {/* Top bar — close + TTS controls only */}
+            <div className="px-4 py-2.5 border-b border-white/[0.08] bg-slate-950/80 flex items-center justify-between shrink-0">
+              <div className="flex items-center gap-2">
+                <span className="text-[11px] font-mono text-slate-500 uppercase tracking-widest">
+                  Prehistorica · AI Docent
+                </span>
               </div>
-
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setTtsEnabled(!ttsEnabled)}
@@ -200,7 +186,6 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                   {ttsEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
                   <span className="hidden sm:inline">{ttsEnabled ? 'Voice On' : 'Voice Off'}</span>
                 </button>
-
                 <button
                   onClick={onClose}
                   className="p-2 rounded-lg bg-slate-800/60 hover:bg-slate-800 border border-white/[0.08] text-slate-400 hover:text-white transition-all cursor-pointer"
@@ -211,159 +196,217 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
               </div>
             </div>
 
-            {/* Chat Body */}
-            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5 bg-gradient-to-b from-slate-950/40 via-slate-900/60 to-slate-950/80">
-              {messages.map((msg) => (
-                <div
-                  key={msg.id}
-                  className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}
-                >
-                  <div className="flex items-center gap-2 mb-1 px-1 text-[11px] font-mono text-slate-400">
-                    <span>{msg.role === 'user' ? 'Visitor' : 'The Chief Curator'}</span>
-                    <span>•</span>
-                    <span>{msg.timestamp}</span>
-                  </div>
+            {/* Main body: character panel (left) + chat (right) */}
+            <div className="flex flex-1 overflow-hidden">
 
-                  <div
-                    className={`max-w-[88%] sm:max-w-[80%] rounded-2xl p-4 text-sm leading-relaxed shadow-lg ${
-                      msg.role === 'user'
-                        ? 'bg-amber-500 text-slate-950 font-medium rounded-tr-sm selection:bg-slate-900 selection:text-white'
-                        : 'bg-slate-800/90 border border-white/[0.1] text-slate-200 rounded-tl-sm whitespace-pre-wrap'
-                    }`}
-                  >
-                    {msg.role === 'user' ? msg.content : renderFormattedContent(msg.content)}
-                  </div>
+              {/* ── Rajy Character Panel (left sidebar) ── */}
+              <div className="hidden sm:flex flex-col items-center justify-end w-[180px] lg:w-[210px] shrink-0 bg-gradient-to-b from-slate-950 via-slate-950/95 to-slate-900/80 border-r border-white/[0.06] relative overflow-hidden">
+                {/* Subtle radial glow behind Rajy */}
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-48 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
 
-                  {/* Grounded Specimen Dossiers */}
-                  {msg.groundedSpecimens && msg.groundedSpecimens.length > 0 && (
-                    <div className="mt-3 max-w-[90%] sm:max-w-[85%] bg-slate-950/80 border border-white/[0.08] rounded-xl p-3.5 space-y-2">
-                      <div className="flex items-center justify-between text-xs font-mono text-slate-400">
-                        <span className="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider">
-                          <BookOpen className="w-3.5 h-3.5" />
-                          Museum Grounding Specimens ({msg.groundedSpecimens.length})
-                        </span>
-                        <span>Vector Cosine Match</span>
+                {/* Rajy full-body image */}
+                <img
+                  src="/rajy-full.jpg"
+                  alt="Rajy the Curator"
+                  className="relative w-full object-contain object-bottom select-none"
+                  style={{ maxHeight: '78%' }}
+                  draggable={false}
+                />
+
+                {/* Name plate at the bottom */}
+                <div className="w-full px-3 py-3 flex flex-col items-center gap-0.5 bg-slate-950/60 border-t border-white/[0.06] shrink-0">
+                  <span className="text-sm font-black font-mono text-amber-400 tracking-widest uppercase">
+                    Rajy
+                  </span>
+                  <span className="text-[9px] font-mono text-slate-500 italic text-center leading-tight">
+                    Rajasaurus narmadensis
+                  </span>
+                  <span className="mt-1 px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-amber-500/10 text-amber-500 border border-amber-500/25 uppercase tracking-wider">
+                    RAG Docent
+                  </span>
+                </div>
+              </div>
+
+              {/* ── Chat Area (right) ── */}
+              <div className="flex flex-col flex-1 overflow-hidden">
+
+                {/* Chat messages */}
+                <div className="flex-1 overflow-y-auto p-4 sm:p-5 space-y-5 bg-gradient-to-b from-slate-950/40 via-slate-900/60 to-slate-950/80">
+                  {messages.map((msg) => (
+                    <div
+                      key={msg.id}
+                      className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}
+                    >
+                      {/* Sender label */}
+                      <div className="flex items-center gap-2 mb-1 px-1 text-[11px] font-mono text-slate-400">
+                        {msg.role === 'assistant' && (
+                          <img
+                            src="/curator-raja.jpg"
+                            alt="Rajy"
+                            className="w-5 h-5 rounded-full object-cover object-top sm:hidden"
+                          />
+                        )}
+                        <span>{msg.role === 'user' ? 'Visitor' : 'Rajy'}</span>
+                        <span>•</span>
+                        <span>{msg.timestamp}</span>
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 pt-1">
-                        {msg.groundedSpecimens.map((spec) => (
-                          <Link
-                            key={spec.id}
-                            to={`/species/${spec.id}`}
-                            onClick={onClose}
-                            className="group flex items-center gap-2.5 p-2 rounded-lg bg-slate-900/90 hover:bg-slate-850 border border-white/[0.06] hover:border-amber-500/40 transition-all text-left"
-                          >
-                            <div className="w-11 h-11 rounded-md bg-slate-950 border border-white/[0.08] overflow-hidden shrink-0 flex items-center justify-center">
-                              {spec.imageUrl ? (
-                                <img
-                                  src={spec.imageUrl}
-                                  alt={spec.name}
-                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                                />
-                              ) : spec.silhouetteUrl ? (
-                                <img
-                                  src={spec.silhouetteUrl}
-                                  alt={spec.name}
-                                  className="w-8 h-8 object-contain filter invert opacity-70"
-                                />
-                              ) : (
-                                <Compass className="w-5 h-5 text-slate-600" />
-                              )}
-                            </div>
-                            <div className="min-w-0 flex-1">
-                              <div className="flex items-center justify-between">
-                                <span className="text-xs font-bold text-slate-200 group-hover:text-amber-300 truncate font-mono">
-                                  {spec.name}
-                                </span>
-                                <span className="text-[10px] font-mono text-amber-400/90 font-semibold shrink-0">
-                                  {spec.similarity}%
-                                </span>
-                              </div>
-                              <p className="text-[10px] text-slate-400 truncate italic">
-                                {spec.scientificName}
-                              </p>
-                              <div className="flex items-center gap-1 mt-0.5 text-[9px] text-slate-400 font-mono">
-                                <span className="px-1 rounded bg-slate-800 text-slate-300">
-                                  {spec.clade}
-                                </span>
-                                <span className="truncate">{spec.timePeriod}</span>
-                              </div>
-                            </div>
-                          </Link>
-                        ))}
+                      {/* Bubble — speech-bubble style for assistant */}
+                      <div className="relative">
+                        {msg.role === 'assistant' && (
+                          /* Speech bubble pointer pointing left (from Rajy's mouth direction) */
+                          <div className="absolute -left-2 top-4 w-0 h-0
+                            border-t-[6px] border-t-transparent
+                            border-r-[8px] border-r-slate-800/90
+                            border-b-[6px] border-b-transparent" />
+                        )}
+                        <div
+                          className={`max-w-[88%] sm:max-w-[82%] rounded-2xl p-4 text-sm leading-relaxed shadow-lg ${
+                            msg.role === 'user'
+                              ? 'bg-amber-500 text-slate-950 font-medium rounded-tr-sm selection:bg-slate-900 selection:text-white'
+                              : 'bg-slate-800/90 border border-white/[0.1] text-slate-200 rounded-tl-sm whitespace-pre-wrap'
+                          }`}
+                        >
+                          {msg.role === 'user' ? msg.content : renderFormattedContent(msg.content)}
+                        </div>
+                      </div>
+
+                      {/* Grounded Specimen Dossiers */}
+                      {msg.groundedSpecimens && msg.groundedSpecimens.length > 0 && (
+                        <div className="mt-3 max-w-[90%] sm:max-w-[85%] bg-slate-950/80 border border-white/[0.08] rounded-xl p-3.5 space-y-2">
+                          <div className="flex items-center justify-between text-xs font-mono text-slate-400">
+                            <span className="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider">
+                              <BookOpen className="w-3.5 h-3.5" />
+                              Museum Grounding Specimens ({msg.groundedSpecimens.length})
+                            </span>
+                            <span>Vector Cosine Match</span>
+                          </div>
+
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 pt-1">
+                            {msg.groundedSpecimens.map((spec) => (
+                              <Link
+                                key={spec.id}
+                                to={`/species/${spec.id}`}
+                                onClick={onClose}
+                                className="group flex items-center gap-2.5 p-2 rounded-lg bg-slate-900/90 hover:bg-slate-850 border border-white/[0.06] hover:border-amber-500/40 transition-all text-left"
+                              >
+                                <div className="w-11 h-11 rounded-md bg-slate-950 border border-white/[0.08] overflow-hidden shrink-0 flex items-center justify-center">
+                                  {spec.imageUrl ? (
+                                    <img
+                                      src={spec.imageUrl}
+                                      alt={spec.name}
+                                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                                    />
+                                  ) : spec.silhouetteUrl ? (
+                                    <img
+                                      src={spec.silhouetteUrl}
+                                      alt={spec.name}
+                                      className="w-8 h-8 object-contain filter invert opacity-70"
+                                    />
+                                  ) : (
+                                    <Compass className="w-5 h-5 text-slate-600" />
+                                  )}
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                  <div className="flex items-center justify-between">
+                                    <span className="text-xs font-bold text-slate-200 group-hover:text-amber-300 truncate font-mono">
+                                      {spec.name}
+                                    </span>
+                                    <span className="text-[10px] font-mono text-amber-400/90 font-semibold shrink-0">
+                                      {spec.similarity}%
+                                    </span>
+                                  </div>
+                                  <p className="text-[10px] text-slate-400 truncate italic">
+                                    {spec.scientificName}
+                                  </p>
+                                  <div className="flex items-center gap-1 mt-0.5 text-[9px] text-slate-400 font-mono">
+                                    <span className="px-1 rounded bg-slate-800 text-slate-300">
+                                      {spec.clade}
+                                    </span>
+                                    <span className="truncate">{spec.timePeriod}</span>
+                                  </div>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+
+                  {loading && (
+                    <div className="flex items-start gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      </div>
+                      <div className="bg-slate-800/80 border border-white/[0.08] rounded-2xl rounded-tl-sm px-4 py-3 text-xs font-mono text-slate-400 flex items-center gap-2">
+                        <span>Consulting phylogenetic records and bone density data...</span>
                       </div>
                     </div>
                   )}
+
+                  <div ref={messagesEndRef} />
                 </div>
-              ))}
 
-              {loading && (
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400">
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                  </div>
-                  <div className="bg-slate-800/80 border border-white/[0.08] rounded-2xl rounded-tl-sm px-4 py-3 text-xs font-mono text-slate-400 flex items-center gap-2">
-                    <span>Consulting phylogenetic records and bone density data...</span>
-                  </div>
+                {/* Quick Suggestion Chips */}
+                <div className="px-4 py-2.5 border-t border-white/[0.06] bg-slate-950/60 overflow-x-auto flex items-center gap-2 shrink-0 scrollbar-none">
+                  <span className="text-[11px] font-mono text-slate-400 shrink-0 uppercase tracking-wider">
+                    Inquiries:
+                  </span>
+                  {PRESET_QUESTIONS.map((q, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => handleSend(q)}
+                      disabled={loading}
+                      className="px-2.5 py-1 rounded-full bg-slate-850 hover:bg-slate-800 border border-white/[0.08] hover:border-amber-500/30 text-slate-300 hover:text-amber-200 text-xs font-mono shrink-0 transition-all text-left truncate max-w-xs cursor-pointer disabled:opacity-50"
+                    >
+                      {q}
+                    </button>
+                  ))}
                 </div>
-              )}
 
-              <div ref={messagesEndRef} />
-            </div>
-
-            {/* Quick Suggestion Chips */}
-            <div className="px-4 py-2.5 border-t border-white/[0.06] bg-slate-950/60 overflow-x-auto flex items-center gap-2 shrink-0 scrollbar-none">
-              <span className="text-[11px] font-mono text-slate-400 shrink-0 uppercase tracking-wider">
-                Inquiries:
-              </span>
-              {PRESET_QUESTIONS.map((q, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => handleSend(q)}
-                  disabled={loading}
-                  className="px-2.5 py-1 rounded-full bg-slate-850 hover:bg-slate-800 border border-white/[0.08] hover:border-amber-500/30 text-slate-300 hover:text-amber-200 text-xs font-mono shrink-0 transition-all text-left truncate max-w-xs cursor-pointer disabled:opacity-50"
-                >
-                  {q}
-                </button>
-              ))}
-            </div>
-
-            {/* Input Bar */}
-            <div className="p-4 border-t border-white/[0.08] bg-slate-950 shrink-0">
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  handleSend();
-                }}
-                className="flex items-center gap-2"
-              >
-                <div className="relative flex-1">
-                  <input
-                    ref={inputRef}
-                    type="text"
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
-                    placeholder="Ask about taxonomy, biomechanics, Hell Creek fauna, bite force..."
-                    disabled={loading}
-                    className="w-full px-4 py-3 bg-slate-900 border border-white/[0.1] focus:border-amber-500/60 rounded-xl text-sm text-slate-100 placeholder-slate-400 focus:outline-none transition-all font-mono"
-                  />
+                {/* Input Bar */}
+                <div className="p-4 border-t border-white/[0.08] bg-slate-950 shrink-0">
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      handleSend();
+                    }}
+                    className="flex items-center gap-2"
+                  >
+                    <div className="relative flex-1">
+                      <input
+                        ref={inputRef}
+                        type="text"
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        placeholder="Ask about taxonomy, biomechanics, Hell Creek fauna, bite force..."
+                        disabled={loading}
+                        className="w-full px-4 py-3 bg-slate-900 border border-white/[0.1] focus:border-amber-500/60 rounded-xl text-sm text-slate-100 placeholder-slate-400 focus:outline-none transition-all font-mono"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={!input.trim() || loading}
+                      className="px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-40 disabled:hover:bg-amber-500 text-slate-950 font-bold font-mono text-xs uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shadow-lg shadow-amber-500/10 shrink-0"
+                    >
+                      {loading ? (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      ) : (
+                        <>
+                          <span>Consult</span>
+                          <Send className="w-3.5 h-3.5" />
+                        </>
+                      )}
+                    </button>
+                  </form>
                 </div>
-                <button
-                  type="submit"
-                  disabled={!input.trim() || loading}
-                  className="px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 disabled:opacity-40 disabled:hover:bg-amber-500 text-slate-950 font-bold font-mono text-xs uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shadow-lg shadow-amber-500/10 shrink-0"
-                >
-                  {loading ? (
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                  ) : (
-                    <>
-                      <span>Consult</span>
-                      <Send className="w-3.5 h-3.5" />
-                    </>
-                  )}
-                </button>
-              </form>
+
+              </div>
+              {/* end chat area */}
             </div>
+            {/* end main body */}
+
           </motion.div>
         </div>
       )}
