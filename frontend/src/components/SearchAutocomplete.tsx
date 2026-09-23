@@ -108,8 +108,8 @@ export default function SearchAutocomplete() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => query.trim().length >= 2 && setIsOpen(true)}
-          placeholder={isSemanticMode ? 'Semantic query (e.g. sail-backed predators)...' : 'Search fauna, clade, era...'}
-          className={`block w-full pl-8 pr-14 py-1.5 bg-slate-900/90 border rounded-lg text-xs placeholder-slate-500 text-slate-200 focus:outline-none transition-all font-mono ${
+          placeholder={isSemanticMode ? 'e.g. sail-backed predators of the Permian...' : 'Search fauna, clade, era...'}
+          className={`block w-full pl-8 pr-14 py-1.5 bg-slate-900/90 border rounded-lg text-xs placeholder-slate-400 text-slate-200 focus:outline-none transition-all font-mono ${
             isSemanticMode
               ? 'border-amber-500/50 focus:border-amber-400 focus:ring-1 focus:ring-amber-500/30'
               : 'border-white/[0.08] focus:border-amber-500 focus:ring-1 focus:ring-amber-500/30'
@@ -135,6 +135,14 @@ export default function SearchAutocomplete() {
           <span>AI</span>
         </button>
       </form>
+
+      {/* Semantic mode hint — visible only in AI mode with empty query */}
+      {isSemanticMode && !query && (
+        <div className="absolute left-0 right-0 mt-1 px-2 py-1 flex items-center gap-1.5 text-[10px] font-mono text-amber-500/80 pointer-events-none select-none">
+          <Sparkles className="w-2.5 h-2.5 shrink-0" />
+          <span>Try: "giant armored fish", "crested theropods", "semi-aquatic predators"</span>
+        </div>
+      )}
 
       {/* Autocomplete Dropdown List */}
       {isOpen && (

@@ -636,19 +636,15 @@ export default function ColdStartScreen({
               {/* Archival Collection Record Framing Marks (Curatorial Registration Details) */}
               <div className="absolute top-2.5 left-2.5 w-4 h-4 pointer-events-none">
                 <div className="w-full h-full border-t border-l border-amber-400/45 rounded-tl-[1px]" />
-                <div className="absolute -bottom-1 -left-[0.5px] w-[1px] h-1.5 bg-amber-400/30" />
               </div>
               <div className="absolute top-2.5 right-2.5 w-4 h-4 pointer-events-none">
                 <div className="w-full h-full border-t border-r border-amber-400/45 rounded-tr-[1px]" />
-                <div className="absolute -bottom-1 -right-[0.5px] w-[1px] h-1.5 bg-amber-400/30" />
               </div>
               <div className="absolute bottom-2.5 left-2.5 w-4 h-4 pointer-events-none">
                 <div className="w-full h-full border-b border-l border-amber-400/45 rounded-bl-[1px]" />
-                <div className="absolute -top-1 -left-[0.5px] w-[1px] h-1.5 bg-amber-400/30" />
               </div>
               <div className="absolute bottom-2.5 right-2.5 w-4 h-4 pointer-events-none">
                 <div className="w-full h-full border-b border-r border-amber-400/45 rounded-br-[1px]" />
-                <div className="absolute -top-1 -right-[0.5px] w-[1px] h-1.5 bg-amber-400/30" />
               </div>
 
               <AnimatePresence mode="wait">

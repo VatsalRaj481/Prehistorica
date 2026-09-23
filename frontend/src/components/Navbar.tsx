@@ -141,6 +141,13 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                   </span>
                 )}
               </Link>
+              <button
+                onClick={() => setIsCompareOpen(true)}
+                className="flex items-center gap-1 px-2 xl:px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 shrink-0 text-slate-300 hover:text-white cursor-pointer"
+              >
+                <ArrowRightLeft className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+                <span>Compare</span>
+              </button>
             </nav>
 
             {/* Desktop Right Side Search & Action Tools */}
@@ -151,7 +158,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
 
               {/* Research Lab & AI Tools Dropdown Menu */}
               <div className="relative pl-1 border-l border-white/[0.08]" ref={toolsDropdownRef}>
-                <motion.button
+                  <motion.button
                   whileTap={{ scale: 0.96 }}
                   onClick={() => setIsToolsDropdownOpen(!isToolsDropdownOpen)}
                   className={`h-8 xl:h-9 px-2.5 xl:px-3 rounded-lg border text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all cursor-pointer shadow-sm select-none ${
@@ -159,15 +166,12 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                       ? 'bg-amber-500/20 border-amber-400 text-amber-300 ring-1 ring-amber-400/40 shadow-[0_0_12px_rgba(245,158,11,0.25)]'
                       : 'bg-slate-900/90 hover:bg-slate-850 border-white/[0.08] hover:border-amber-500/40 text-slate-200 hover:text-white'
                   }`}
-                  title="Open Research Lab Tools & AI Docents"
+                  title="Open AI Docent Tools"
                   aria-expanded={isToolsDropdownOpen}
                   aria-haspopup="true"
                 >
                   <Sparkles className="h-3.5 w-3.5 text-amber-400 shrink-0" />
-                  <span className="font-mono">Research Lab</span>
-                  <span className="px-1 py-0.2 rounded text-[8px] sm:text-[9px] bg-amber-500/20 text-amber-300 border border-amber-500/30 font-extrabold uppercase">
-                    AI
-                  </span>
+                  <span className="font-mono">AI Tools</span>
                   <ChevronDown
                     className={`h-3 w-3 sm:h-3.5 sm:w-3.5 text-slate-400 transition-transform duration-200 ${
                       isToolsDropdownOpen ? 'rotate-180 text-amber-400' : ''
@@ -186,12 +190,12 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                       className="absolute right-0 top-full mt-2 w-72 rounded-xl bg-slate-950/98 border border-white/[0.12] shadow-2xl p-2 z-50 divide-y divide-white/[0.06] backdrop-blur-2xl font-mono"
                     >
                       <div className="px-3 py-2 text-[10px] text-slate-400 uppercase tracking-widest font-bold flex items-center justify-between">
-                        <span>Museum Research Lab</span>
-                        <span className="text-amber-400">3 AI Tools</span>
+                        <span>AI Docent Tools</span>
+                        <span className="text-amber-400">2 AI Tools</span>
                       </div>
 
                       <div className="py-1 space-y-1">
-                        {/* Tool 1: Chief Curator */}
+                        {/* Tool 1: Chief Curator / Rajy */}
                         <button
                           onClick={() => {
                             setIsToolsDropdownOpen(false);
@@ -199,13 +203,13 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                           }}
                           className="w-full text-left p-2.5 rounded-lg hover:bg-slate-900/90 transition-colors flex items-start gap-3 group cursor-pointer"
                         >
-                          <div className="h-8 w-8 rounded-lg bg-amber-500/15 border border-amber-500/40 flex items-center justify-center text-amber-400 shrink-0 group-hover:scale-105 transition-transform shadow-sm">
-                            <Sparkles className="h-4 w-4" />
+                          <div className="h-8 w-8 rounded-lg overflow-hidden border border-amber-500/40 shrink-0 group-hover:scale-105 transition-transform shadow-sm">
+                            <img src="/rajy-head.jpg" alt="Rajy" className="w-full h-full object-cover object-top" />
                           </div>
                           <div className="min-w-0 flex-1">
                             <div className="flex items-center justify-between">
                               <span className="text-xs font-bold text-slate-100 group-hover:text-amber-300 font-sans uppercase tracking-wider">
-                                Chief Curator
+                                Ask Rajy
                               </span>
                               <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 font-extrabold">
                                 RAG AI
@@ -239,32 +243,6 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                             </div>
                             <p className="text-[11px] text-slate-400 font-sans leading-snug line-clamp-1 pt-0.5">
                               Multimodal bone & fossil identifier
-                            </p>
-                          </div>
-                        </button>
-
-                        {/* Tool 3: Specimen Comparison */}
-                        <button
-                          onClick={() => {
-                            setIsToolsDropdownOpen(false);
-                            setIsCompareOpen(true);
-                          }}
-                          className="w-full text-left p-2.5 rounded-lg hover:bg-slate-900/90 transition-colors flex items-start gap-3 group cursor-pointer"
-                        >
-                          <div className="h-8 w-8 rounded-lg bg-slate-900 border border-white/[0.1] flex items-center justify-center text-amber-400 shrink-0 group-hover:scale-105 transition-transform shadow-sm">
-                            <ArrowRightLeft className="h-4 w-4" />
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <div className="flex items-center justify-between">
-                              <span className="text-xs font-bold text-slate-100 group-hover:text-amber-300 font-sans uppercase tracking-wider">
-                                Specimen Compare
-                              </span>
-                              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 font-extrabold">
-                                1:1 STAGE
-                              </span>
-                            </div>
-                            <p className="text-[11px] text-slate-400 font-sans leading-snug line-clamp-1 pt-0.5">
-                              Side-by-side metric caliper comparison
                             </p>
                           </div>
                         </button>
