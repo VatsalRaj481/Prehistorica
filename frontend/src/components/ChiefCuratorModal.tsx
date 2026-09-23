@@ -206,7 +206,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
                 {/* Rajy full-body image */}
                 <img
-                  src="/rajy-full.jpg"
+                  src="/rajy-full.png"
                   alt="Rajy the Curator"
                   className="relative w-full object-contain object-bottom select-none"
                   style={{ maxHeight: '78%' }}
