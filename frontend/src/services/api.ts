@@ -314,4 +314,187 @@ export async function fetchSpeciesCompare(ids: number[]): Promise<Species[]> {
   return ids.map(id => speciesCompareCache.get(id)).filter(Boolean) as Species[];
 }
 
+// ══════════════════════════════════════════════════════════════════════════════
+// 🏛️ AI RESEARCH PAVILION CLIENT APIS
+// ══════════════════════════════════════════════════════════════════════════════
+
+export interface CuratorGroundingSpecimen {
+  id: number;
+  name: string;
+  scientificName: string;
+  clade: string;
+  timePeriod: string;
+  similarity: number;
+  imageUrl?: string | null;
+  silhouetteUrl?: string | null;
+}
+
+export interface CuratorChatResponse {
+  answer: string;
+  referencedSpeciesIds: number[];
+  groundedSpecimens: CuratorGroundingSpecimen[];
+}
+
+export async function askChiefCurator(
+  query: string,
+  history?: { role: 'user' | 'assistant'; content: string }[]
+): Promise<CuratorChatResponse> {
+  const response = await fetchWithRetry(`${API_BASE}/ai/curator/chat`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query, history })
+  });
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.error || 'Failed to communicate with Chief Curator');
+  }
+  return response.json();
+}
+
+export interface FossilCandidate {
+  name: string;
+  scientificName: string;
+  clade: string;
+  confidence: 'High' | 'Moderate' | 'Tentative';
+  rationale: string;
+  speciesId?: number | null;
+  reconstructionUrl?: string | null;
+  silhouetteUrl?: string | null;
+}
+
+export interface FossilAnalysis {
+  fossilAuthenticity: string;
+  anatomicalElement: string;
+  probableTaxa: string[];
+  morphologicalObservations: string[];
+  candidatePrehistoricaSpecies: FossilCandidate[];
+  overallConfidence: number;
+  preservationNotes: string;
+  recommendedFurtherTests: string[];
+}
+
+export async function identifyFossil(
+  imageBase64: string,
+  mimeType = 'image/jpeg'
+): Promise<{ analysis: FossilAnalysis }> {
+  const response = await fetchWithRetry(`${API_BASE}/ai/fossil-lens`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ imageBase64, mimeType })
+  });
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.error || 'Failed to analyze fossil specimen');
+  }
+  return response.json();
+}
+
+export interface RunwayInteractionResult {
+  coexisted: boolean;
+  temporalGapMa: number;
+  temporalVerdict: string;
+  geographicOverlap: boolean;
+  geographicNotes: string;
+  physicalComparison: {
+    speciesA: { name: string; lengthM: number; massKg: number; heightM: number; estimatedBiteForceN?: number };
+    speciesB: { name: string; lengthM: number; massKg: number; heightM: number; estimatedBiteForceN?: number };
+    massRatio: number;
+    kineticAdvantage: string;
+  };
+  biomechanicalBreakdown: {
+    offensiveCapabilities: string;
+    defensiveCapabilities: string;
+    locomotionAndAgility: string;
+    lethalVulnerabilities: string;
+  };
+  ecologicalInteractionNarrative: string;
+  curatorConclusion: string;
+}
+
+export async function simulateRunwayMatchup(speciesIds: number[]): Promise<{ cached: boolean; simulation: RunwayInteractionResult }> {
+  const response = await fetchWithRetry(`${API_BASE}/ai/runway/matchup`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ speciesIds })
+  });
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.error || 'Biomechanical simulation failed');
+  }
+  return response.json();
+}
+
+export interface SemanticSearchItem {
+  id: number;
+  name: string;
+  scientificName: string;
+  clade: string;
+  diet: string;
+  habitat: string;
+  timePeriod: string;
+  myaStart: number;
+  myaEnd: number;
+  fossilFormation?: string | null;
+  country?: string | null;
+  reconstructionImageUrl?: string | null;
+  comparisonSilhouette?: any;
+  similarity: number;
+}
+
+export async function fetchSemanticSearch(query: string, limit = 12): Promise<SemanticSearchItem[]> {
+  if (!query || query.trim().length < 2) return [];
+  const response = await fetchWithRetry(`${API_BASE}/ai/search/semantic?q=${encodeURIComponent(query.trim())}&limit=${limit}`);
+  if (!response.ok) {
+    throw new Error('Failed to perform semantic search');
+  }
+  return response.json();
+}
+
+export interface TrophicNode {
+  id: string;
+  name: string;
+  scientificName?: string;
+  speciesId?: number | null;
+  trophicLevel: string;
+  diet: string;
+  relativeBiomassPercent: number;
+}
+
+export interface TrophicEdge {
+  source: string;
+  target: string;
+  interactionType: string;
+  strength: string;
+}
+
+export interface FormationFoodWebResult {
+  formationName: string;
+  era: string;
+  paleoenvironment: string;
+  climate: string;
+  nodes: TrophicNode[];
+  edges: TrophicEdge[];
+  trophicPyramidSummary: string;
+  stressorScenario?: {
+    stressorName: string;
+    impactDescription: string;
+    vulnerableSpecies: string[];
+    resilientSpecies: string[];
+  };
+}
+
+export async function fetchFormationFoodWeb(
+  formation: string,
+  era = 'Mesozoic',
+  stressor?: string
+): Promise<{ cached: boolean; foodWeb: FormationFoodWebResult }> {
+  const url = `${API_BASE}/ai/formation/food-web?formation=${encodeURIComponent(formation)}&era=${encodeURIComponent(era)}${stressor ? `&stressor=${encodeURIComponent(stressor)}` : ''}`;
+  const response = await fetchWithRetry(url);
+  if (!response.ok) {
+    const err = await response.json().catch(() => ({}));
+    throw new Error(err.error || 'Failed to synthesize formation food web');
+  }
+  return response.json();
+}
+
 

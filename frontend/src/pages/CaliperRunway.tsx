@@ -21,8 +21,10 @@ import {
   ChevronLeft,
   ChevronRight,
   ZoomIn,
-  ZoomOut
+  ZoomOut,
+  Swords
 } from 'lucide-react';
+import RunwayMatchupModal from '../components/RunwayMatchupModal.js';
 import { formatFeetLong } from '../utils/formatDimensions.js';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 
@@ -68,6 +70,7 @@ export default function CaliperRunway() {
   const [showCalipers, setShowCalipers] = useState(true);
   const [stageScale, setStageScale] = useState<number>(55);
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
+  const [isMatchupOpen, setIsMatchupOpen] = useState(false);
 
   // 1. Load full roster for search
   useEffect(() => {
@@ -337,6 +340,18 @@ export default function CaliperRunway() {
                 <ZoomIn className="h-3.5 w-3.5" />
               </button>
             </div>
+
+            {/* AI Matchup Simulator Trigger */}
+            {selectedSpecies.length >= 2 && (
+              <button
+                onClick={() => setIsMatchupOpen(true)}
+                className="px-3 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-mono font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-lg shadow-amber-500/20 active:scale-95 cursor-pointer shrink-0"
+                title="Simulate Biomechanical & Stratigraphic Interaction"
+              >
+                <Swords className="h-4 w-4" />
+                <span>Simulate Matchup (AI)</span>
+              </button>
+            )}
           </div>
         </div>
 
@@ -579,6 +594,13 @@ export default function CaliperRunway() {
           </div>
         </div>
       )}
+
+      {/* Biomechanical Interaction Modal */}
+      <RunwayMatchupModal
+        isOpen={isMatchupOpen}
+        onClose={() => setIsMatchupOpen(false)}
+        speciesList={selectedSpecies}
+      />
     </div>
   );
 }

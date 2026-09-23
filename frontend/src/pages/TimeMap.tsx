@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import L from 'leaflet';
 import { fetchSpecies, Species } from '../services/api.js';
-import { Compass, Dna, Info, ArrowRight, MapPin, Loader2, Globe } from 'lucide-react';
+import { Compass, Dna, Info, ArrowRight, MapPin, Loader2, Globe, Network } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 import PaleoDriftViewer from '../components/PaleoDriftViewer.js';
+import FoodWebModal from '../components/FoodWebModal.js';
 
 const ERAS = [
   { name: 'Cambrian', myaStart: 541, myaEnd: 485, range: '541–485 MYA', desc: 'Explosion of marine life forms' },
@@ -270,6 +271,7 @@ export default function TimeMap() {
   const [selectedLocation, setSelectedLocation] = useState('North America');
   const [selectedFormation, setSelectedFormation] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'modern' | 'paleo'>('modern');
+  const [isFoodWebOpen, setIsFoodWebOpen] = useState(false);
 
   const [speciesList, setSpeciesList] = useState<Species[]>([]);
   const [loading, setLoading] = useState(false);
@@ -536,15 +538,27 @@ export default function TimeMap() {
               <Dna className="h-4 w-4 text-amber-400" />
               <span>Fossil Discoveries ({speciesList.length})</span>
             </h3>
-            {selectedFormation && (
-              <motion.button
-                whileTap={{ scale: 0.92 }}
-                onClick={() => setSelectedFormation(null)}
-                className="text-amber-400 hover:underline font-bold uppercase tracking-wider text-[10px] cursor-pointer"
-              >
-                Clear Formation
-              </motion.button>
-            )}
+            <div className="flex items-center gap-2">
+              {selectedFormation && (
+                <>
+                  <button
+                    onClick={() => setIsFoodWebOpen(true)}
+                    className="px-2.5 py-1 rounded-md bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-300 font-bold uppercase tracking-wider text-[10px] flex items-center gap-1.5 transition-all cursor-pointer shadow-sm"
+                    title="Synthesize Deep-Time Food Web & Ecological Stressors"
+                  >
+                    <Network className="w-3 h-3 text-amber-400" />
+                    <span>Food Web (AI)</span>
+                  </button>
+                  <motion.button
+                    whileTap={{ scale: 0.92 }}
+                    onClick={() => setSelectedFormation(null)}
+                    className="text-amber-400 hover:underline font-bold uppercase tracking-wider text-[10px] cursor-pointer"
+                  >
+                    Clear Formation
+                  </motion.button>
+                </>
+              )}
+            </div>
           </div>
 
           {loading ? (
@@ -620,6 +634,14 @@ export default function TimeMap() {
       </div>
         </>
       )}
+
+      {/* Deep-Time Paleo-Biome Food Web Synthesizer */}
+      <FoodWebModal
+        isOpen={isFoodWebOpen}
+        onClose={() => setIsFoodWebOpen(false)}
+        formationName={selectedFormation || ''}
+        era={currentEra.name}
+      />
     </div>
   );
 }

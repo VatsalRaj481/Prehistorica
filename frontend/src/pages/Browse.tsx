@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion, Variants } from 'framer-motion';
-import { fetchSpecies, Species } from '../services/api.js';
+import { fetchSpecies, fetchSemanticSearch, Species } from '../services/api.js';
 import SpotlightCard from '../components/SpotlightCard.js';
 import SpecimenThumbnail from '../components/SpecimenThumbnail.js';
-import { SlidersHorizontal, ArrowRight, Info, X, ChevronLeft, ChevronRight, Filter } from 'lucide-react';
+import { SlidersHorizontal, ArrowRight, Info, X, ChevronLeft, ChevronRight, Filter, Sparkles } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 import { formatFeet } from '../utils/formatDimensions.js';
 
@@ -22,6 +22,7 @@ export default function Browse() {
 
   // Parse state from URL Search Parameters
   const search = searchParams.get('search') || '';
+  const semantic = searchParams.get('semantic') || '';
   const selectedClades = searchParams.getAll('clade');
   const selectedDiets = searchParams.getAll('diet');
   const selectedHabitats = searchParams.getAll('habitat');
@@ -45,6 +46,23 @@ export default function Browse() {
   // Fetch species whenever search parameters shift
   useEffect(() => {
     setLoading(true);
+    setError(null);
+
+    // If semantic search is active, use vector similarity search
+    if (semantic) {
+      fetchSemanticSearch(semantic, 24)
+        .then((items: any) => {
+          setSpeciesList(items);
+          setPagination({ total: items.length, totalPages: 1, limit: 24 });
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.error(err);
+          setError('Failed to fetch semantic search results.');
+          setLoading(false);
+        });
+      return;
+    }
 
     let min_length: number | undefined;
     let max_length: number | undefined;
@@ -126,6 +144,7 @@ export default function Browse() {
 
   const hasActiveFilters =
     search !== '' ||
+    semantic !== '' ||
     selectedClades.length > 0 ||
     selectedDiets.length > 0 ||
     selectedHabitats.length > 0 ||
@@ -593,6 +612,17 @@ export default function Browse() {
                 className="flex flex-wrap items-center gap-2 p-3 museum-plinth rounded-xl border border-white/[0.08] text-xs font-mono overflow-hidden shadow-md"
               >
                 <span className="text-slate-400 font-bold uppercase tracking-widest text-[10px]">Active Filters:</span>
+                {semantic && (
+                  <motion.span
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    className="px-2.5 py-1 rounded-md bg-amber-500/20 border border-amber-500/40 text-amber-300 flex items-center gap-1.5 font-bold"
+                  >
+                    <Sparkles className="h-3 w-3 text-amber-400" />
+                    AI Vector Query: "{semantic}"
+                    <button onClick={() => updateParams({ semantic: null })} className="hover:text-white cursor-pointer"><X className="h-3 w-3" /></button>
+                  </motion.span>
+                )}
                 {search && (
                   <motion.span
                     initial={{ scale: 0.8, opacity: 0 }}

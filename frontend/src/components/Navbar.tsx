@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, Map, ArrowRightLeft, Menu, X, Scale, BookOpen, Trophy } from 'lucide-react';
+import { Search, Map, ArrowRightLeft, Menu, X, Scale, BookOpen, Trophy, Sparkles, Camera } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SearchAutocomplete from './SearchAutocomplete.js';
 import CompareModal from './CompareModal.js';
+import ChiefCuratorModal from './ChiefCuratorModal.js';
+import FossilLensModal from './FossilLensModal.js';
 import DinoLogoMark from './DinoLogoMark.js';
 import { getBookmarkIds, NOTEBOOK_UPDATED_EVENT } from '../utils/notebookStorage.js';
 
@@ -14,6 +16,8 @@ interface NavbarProps {
 export default function Navbar({ isLogoVisible = true }: NavbarProps) {
   const location = useLocation();
   const [isCompareOpen, setIsCompareOpen] = useState(false);
+  const [isCuratorOpen, setIsCuratorOpen] = useState(false);
+  const [isFossilLensOpen, setIsFossilLensOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [bookmarkCount, setBookmarkCount] = useState(0);
 
@@ -132,6 +136,26 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
 
               <motion.button
                 whileTap={{ scale: 0.96 }}
+                onClick={() => setIsCuratorOpen(true)}
+                className="px-3 py-2 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-xs font-mono font-bold uppercase tracking-wider text-amber-300 hover:text-amber-200 flex items-center gap-1.5 transition-all cursor-pointer shrink-0 shadow-sm"
+                title="Consult The Chief Curator (Grounded AI Docent)"
+              >
+                <Sparkles className="h-3.5 w-3.5 text-amber-400" />
+                <span>Curator</span>
+              </motion.button>
+
+              <motion.button
+                whileTap={{ scale: 0.96 }}
+                onClick={() => setIsFossilLensOpen(true)}
+                className="px-3 py-2 rounded-lg bg-slate-900/90 hover:bg-slate-850 border border-white/[0.08] hover:border-amber-500/40 text-xs font-mono font-bold uppercase tracking-wider text-slate-200 hover:text-white flex items-center gap-1.5 transition-all cursor-pointer shrink-0 shadow-sm"
+                title="Identify Fossil Specimens & Bones"
+              >
+                <Camera className="h-3.5 w-3.5 text-amber-400" />
+                <span>Fossil Lens</span>
+              </motion.button>
+
+              <motion.button
+                whileTap={{ scale: 0.96 }}
                 onClick={() => setIsCompareOpen(true)}
                 className="px-3 py-2 rounded-lg bg-slate-900/90 hover:bg-slate-850 border border-white/[0.08] hover:border-amber-500/40 text-xs font-mono font-bold uppercase tracking-wider text-slate-200 hover:text-white flex items-center gap-1.5 transition-all cursor-pointer shrink-0 shadow-sm"
                 title="Compare 2 species side-by-side"
@@ -141,8 +165,17 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
               </motion.button>
             </div>
 
-            {/* Mobile Controls: Compare & Hamburger Toggle (44x44pt Target Compliant) */}
+            {/* Mobile Controls: Curator, Compare & Hamburger Toggle */}
             <div className="flex items-center gap-2 lg:hidden">
+              <button
+                onClick={() => setIsCuratorOpen(true)}
+                className="min-h-[44px] min-w-[44px] p-2.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
+                title="Chief Curator"
+                aria-label="Open Chief Curator"
+              >
+                <Sparkles className="h-4 w-4" />
+              </button>
+
               <button
                 onClick={() => setIsCompareOpen(true)}
                 className="min-h-[44px] min-w-[44px] p-2.5 rounded-xl bg-slate-900 border border-white/10 text-amber-400 flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
@@ -229,16 +262,61 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                     </span>
                   )}
                 </Link>
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setIsCuratorOpen(true);
+                  }}
+                  className="w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-amber-300 bg-amber-500/10 border border-amber-500/30 font-bold"
+                >
+                  <Sparkles className="h-4 w-4 text-amber-400" />
+                  <span>The Chief Curator (AI Docent)</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setIsFossilLensOpen(true);
+                  }}
+                  className="w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-slate-200 bg-slate-900 border border-white/10 font-bold"
+                >
+                  <Camera className="h-4 w-4 text-amber-400" />
+                  <span>Fossil Lens (AI Identifier)</span>
+                </button>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </header>
 
+      {/* Floating Chief Curator Docent Launcher */}
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => setIsCuratorOpen(true)}
+        className="fixed bottom-6 right-6 z-40 p-3.5 sm:px-4 sm:py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-2xl shadow-amber-500/40 border border-amber-400 font-mono font-black flex items-center gap-2 cursor-pointer group"
+        title="Consult The Chief Curator"
+      >
+        <Sparkles className="w-5 h-5 text-slate-950 group-hover:rotate-12 transition-transform" />
+        <span className="hidden sm:inline text-xs uppercase tracking-wider font-bold">Ask Curator</span>
+      </motion.button>
+
       {/* Side-by-side Compare Modal */}
       <CompareModal
         isOpen={isCompareOpen}
         onClose={() => setIsCompareOpen(false)}
+      />
+
+      {/* Chief Curator RAG Modal */}
+      <ChiefCuratorModal
+        isOpen={isCuratorOpen}
+        onClose={() => setIsCuratorOpen(false)}
+      />
+
+      {/* Fossil Lens Modal */}
+      <FossilLensModal
+        isOpen={isFossilLensOpen}
+        onClose={() => setIsFossilLensOpen(false)}
       />
     </>
   );
