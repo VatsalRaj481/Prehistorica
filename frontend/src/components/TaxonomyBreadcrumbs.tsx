@@ -31,13 +31,25 @@ export default function TaxonomyBreadcrumbs({ taxonomy, taxonomicClassification 
   };
 
   if (taxonomy) {
+    let orderVal = taxonomy.order || (taxonomy as any).suborder || '';
+    const famVal = taxonomy.family || '';
+    if (orderVal && (orderVal.toLowerCase().endsWith('idae') || orderVal.toLowerCase() === famVal.toLowerCase())) {
+      if ((taxonomy as any).suborder) {
+        orderVal = (taxonomy as any).suborder;
+      } else if (famVal.toLowerCase().includes('tyrannosaur') || famVal.toLowerCase().includes('allosaur') || famVal.toLowerCase().includes('dilophosaur') || famVal.toLowerCase().includes('dromaeosaur')) {
+        orderVal = 'Saurischia';
+      } else if (famVal.toLowerCase().includes('ceratops') || famVal.toLowerCase().includes('hadrosaur') || famVal.toLowerCase().includes('stegosaur') || famVal.toLowerCase().includes('ankylosaur')) {
+        orderVal = 'Ornithischia';
+      }
+    }
+
     const ranks = [
       { label: 'Domain', val: taxonomy.domain || 'Eukaryota' },
       { label: 'Kingdom', val: taxonomy.kingdom || 'Animalia' },
       { label: 'Phylum', val: taxonomy.phylum || 'Chordata' },
       { label: 'Class', val: taxonomy.class || (taxonomy as any).clade || 'Reptilia' },
-      { label: 'Order', val: taxonomy.order || (taxonomy as any).suborder || 'Theropoda' },
-      { label: 'Family', val: taxonomy.family || 'Dinosauridae' },
+      { label: 'Order', val: orderVal || 'Saurischia' },
+      { label: 'Family', val: famVal || 'Dinosauridae' },
       { label: 'Genus', val: taxonomy.genus || taxonomy.species?.split(' ')[0] || '' },
       { label: 'Species', val: taxonomy.species || '' }
     ];

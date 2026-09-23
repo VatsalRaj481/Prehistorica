@@ -181,16 +181,30 @@ const CLADE_CANONICAL_MAP: Record<string, string> = {
   'other': 'Other',
 
   // Common UI aliases and synonyms
+  'sauropodomorpha': 'Sauropodomorph',
+  'sauropoda': 'Sauropod',
+  'basal_sauropodomorph': 'Sauropodomorph',
+  'basal_sauropodomorpha': 'Sauropodomorph',
+  'marine_reptiles': 'Marine_Reptile',
   'ichthyosaur': 'Marine_Reptile',
   'ichthyosaurs': 'Marine_Reptile',
   'ichthyosauria': 'Marine_Reptile',
   'plesiosaur': 'Marine_Reptile',
+  'plesiosaurs': 'Marine_Reptile',
+  'plesiosauria': 'Marine_Reptile',
+  'pliosaur': 'Marine_Reptile',
+  'pliosaurs': 'Marine_Reptile',
   'mosasaur': 'Marine_Reptile',
+  'mosasaurs': 'Marine_Reptile',
+  'mosasauroidea': 'Marine_Reptile',
   'ankylosaur': 'Ornithischian',
   'ankylosauria': 'Ornithischian',
   'ceratopsian': 'Ornithischian',
+  'ceratopsidae': 'Ornithischian',
   'hadrosaur': 'Ornithischian',
-  'stegosaur': 'Ornithischian'
+  'hadrosauridae': 'Ornithischian',
+  'stegosaur': 'Ornithischian',
+  'stegosauria': 'Ornithischian'
 };
 
 // 1. GET /api/species (Filtered Roster, Search, and Pagination)

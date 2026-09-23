@@ -62,7 +62,7 @@ model Species {
   myaStart                Float             // Millions of years ago start (e.g., 68.0)
   myaEnd                  Float             // Millions of years ago end (e.g., 66.0)
   
-  diet                    Diet              @default(carnivore)
+  diet                    Diet
   dietDetails             String
   habitat                 Habitat           @default(terrestrial)
   clade                   Clade             @default(Theropod)

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { motion, useReducedMotion, Variants } from 'framer-motion';
 import { fetchSpeciesById, Species } from '../services/api.js';
 import TaxonomyBreadcrumbs from '../components/TaxonomyBreadcrumbs.js';
@@ -12,11 +12,15 @@ import { formatFeetLong } from '../utils/formatDimensions.js';
 
 export default function SpeciesDetail() {
   const { id } = useParams<{ id: string }>();
+  const location = useLocation();
   const [species, setSpecies] = useState<Species | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const shouldReduceMotion = useReducedMotion();
+
+  // Preserve filter/search state when returning to the catalog index
+  const catalogReturnUrl = (location.state as any)?.from || (typeof window !== 'undefined' ? sessionStorage.getItem('prehistorica_browse_state') : null) || '/browse';
 
   useEffect(() => {
     if (!id) return;
@@ -70,7 +74,7 @@ export default function SpeciesDetail() {
         <h2 className="text-lg font-bold uppercase tracking-wider font-sans">Specimen Record Unavailable</h2>
         <p className="text-xs max-w-md text-slate-400 font-sans">{error || 'The requested prehistoric species exhibit could not be located.'}</p>
         <Link
-          to="/browse"
+          to={catalogReturnUrl}
           className="mt-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-850 text-amber-400 text-xs font-mono font-bold uppercase tracking-wider rounded-lg border border-white/[0.08] transition-colors flex items-center gap-2"
         >
           <ArrowLeft className="h-4 w-4" /> Return to Catalog Index
@@ -91,7 +95,7 @@ export default function SpeciesDetail() {
         <div className="flex items-center gap-4 text-xs text-slate-400">
           <motion.div whileTap={{ scale: 0.94 }}>
             <Link
-              to="/browse"
+              to={catalogReturnUrl}
               className="inline-flex items-center gap-2 text-slate-300 hover:text-amber-400 transition-colors font-bold uppercase tracking-wider"
             >
               <ArrowLeft className="h-4 w-4 text-amber-400" /> Catalog Index
@@ -153,6 +157,9 @@ export default function SpeciesDetail() {
               </span>
               <span className="px-2.5 py-1 bg-slate-900 border border-white/[0.08] text-slate-300 font-bold uppercase tracking-widest rounded-md text-[10px] sm:text-xs">
                 Clade: {species.clade}
+              </span>
+              <span className="px-2.5 py-1 bg-slate-900 border border-emerald-500/30 text-emerald-400 font-bold uppercase tracking-widest rounded-md text-[10px] sm:text-xs">
+                Diet: {species.dietType || species.diet}
               </span>
               <span className="px-2.5 py-1 bg-slate-900 border border-white/[0.08] text-amber-300/90 font-bold uppercase tracking-widest rounded-md text-[10px] sm:text-xs">
                 Status: {species.taxonomicStatus}
@@ -301,6 +308,18 @@ export default function SpeciesDetail() {
                   "{species.discoveryHistory || 'Fossilized specimens cataloged in official paleontology archives.'}"
                 </p>
               </div>
+
+              {species.dietDetails && (
+                <div className="space-y-1">
+                  <span className="text-slate-400 uppercase font-bold text-[10px] tracking-widest flex items-center gap-1.5">
+                    <Scale className="h-3.5 w-3.5 text-amber-400" /> Dietary Adaptation & Trophic Niche
+                  </span>
+                  <p className="text-slate-200 leading-relaxed bg-slate-900/90 p-3 rounded-lg border border-white/[0.06] font-sans text-xs">
+                    <span className="capitalize text-emerald-400 font-bold font-mono mr-1.5">[{species.dietType || species.diet}]:</span>
+                    {species.dietDetails}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -317,6 +336,58 @@ export default function SpeciesDetail() {
               taxonomy={species.taxonomy}
               taxonomicClassification={species.taxonomicClassification}
             />
+
+            {/* Cladistic & Evolutionary Lineage Monograph */}
+            <div className="pt-3 border-t border-white/[0.08] space-y-2 font-mono text-xs">
+              <span className="text-[10px] uppercase font-bold text-slate-400 tracking-widest flex items-center gap-1.5">
+                <Dna className="h-3.5 w-3.5 text-amber-400" /> Cladistic & Extant Lineage
+              </span>
+              <div className="bg-slate-900/90 p-3 rounded-lg border border-white/[0.06] space-y-2 text-xs font-sans">
+                {species.clade === 'Theropod' ? (
+                  <div className="space-y-1">
+                    <p className="text-slate-200">
+                      <strong className="text-amber-400 font-mono font-bold">Surviving Avian Theropods: </strong>
+                      Modern Birds (<em className="font-mono">Aves / Neornithes</em>) are direct surviving avian theropod dinosaurs.
+                    </p>
+                    <p className="text-slate-400 text-[11px]">
+                      <strong className="text-slate-300 font-mono font-bold">Closest Living Non-Dinosaurian Outgroup: </strong>
+                      Crocodilians (Crocodiles, Alligators & Gharials) form the extant sister lineage of Archosauria.
+                    </p>
+                  </div>
+                ) : ['Sauropod', 'Sauropodomorph', 'Ornithischian'].includes(species.clade) ? (
+                  <div className="space-y-1">
+                    <p className="text-slate-200">
+                      <strong className="text-amber-400 font-mono font-bold">Surviving Dinosaur Lineage: </strong>
+                      Modern Birds (<em className="font-mono">Aves</em>) are the only surviving clade of Dinosauria.
+                    </p>
+                    <p className="text-slate-400 text-[11px]">
+                      <strong className="text-slate-300 font-mono font-bold">Closest Living Non-Dinosaurian Outgroup: </strong>
+                      Crocodilians represent the closest extant non-dinosaurian archosaurs.
+                    </p>
+                  </div>
+                ) : species.clade === 'Marine_Reptile' ? (
+                  <div className="space-y-1">
+                    <p className="text-slate-200">
+                      <strong className="text-sky-400 font-mono font-bold">Ecological Evolutionary Grade: </strong>
+                      "Marine Reptiles" represents an ecological convergence of distinct reptilian orders (<em className="font-mono">Ichthyosauria</em>, <em className="font-mono">Sauropterygia / Plesiosauria</em>, and <em className="font-mono">Mosasauroidea</em>) rather than a single monophyletic clade.
+                    </p>
+                  </div>
+                ) : (
+                  <div className="space-y-1">
+                    {species.closestLivingRelatives && species.closestLivingRelatives.length > 0 ? (
+                      <p className="text-slate-300 text-xs">
+                        <strong className="text-amber-400 font-mono font-bold">Closest Extant Relatives: </strong>
+                        {species.closestLivingRelatives.join(' • ')}
+                      </p>
+                    ) : (
+                      <p className="text-slate-400 text-xs italic">
+                        Extinct prehistoric lineage without immediate extant crown descendants.
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
 
           {/* Scientific Key Facts Monograph */}
@@ -418,6 +489,7 @@ export default function SpeciesDetail() {
                 >
                   <Link
                     to={`/species/${rel.id}`}
+                    state={{ from: catalogReturnUrl }}
                     className="group museum-card rounded-xl p-3 flex flex-col justify-between w-64 sm:w-72 shadow-lg overflow-hidden h-full"
                   >
                     <div className="relative h-36 w-full bg-slate-950 rounded-lg overflow-hidden mb-3 border border-white/[0.06]">

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion, Variants } from 'framer-motion';
 import { fetchSpecies, Species } from '../services/api.js';
 import SpotlightCard from '../components/SpotlightCard.js';
@@ -10,7 +10,15 @@ import { formatFeet } from '../utils/formatDimensions.js';
 
 export default function Browse() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
   const shouldReduceMotion = useReducedMotion();
+
+  // Persist current browse state for seamless back navigation
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('prehistorica_browse_state', `${location.pathname}${location.search}`);
+    }
+  }, [location.pathname, location.search]);
 
   // Parse state from URL Search Parameters
   const search = searchParams.get('search') || '';
@@ -126,22 +134,22 @@ export default function Browse() {
     sizeRange !== '';
 
   const cladeOptions = [
-    'Theropod',
-    'Sauropod',
-    'Sauropodomorph',
-    'Ornithischian',
-    'Pterosaur',
-    'Marine Reptile',
-    'Crocodylomorph',
-    'Early Mammal/Synapsid',
-    'Early Tetrapod/Amphibian',
-    'Archosauriform',
-    'Phytosaur',
-    'Aetosaur',
-    'Rauisuchian',
-    'Poposauroid',
-    'Invertebrate',
-    'Other'
+    { label: 'Theropods (Theropoda)', val: 'Theropod' },
+    { label: 'Sauropods (Sauropoda)', val: 'Sauropod' },
+    { label: 'Sauropodomorphs (Basal)', val: 'Sauropodomorph' },
+    { label: 'Ornithischians', val: 'Ornithischian' },
+    { label: 'Pterosaurs', val: 'Pterosaur' },
+    { label: 'Marine Reptiles (Grade)', val: 'Marine Reptile' },
+    { label: 'Crocodylomorphs', val: 'Crocodylomorph' },
+    { label: 'Early Mammals & Synapsids', val: 'Early Mammal/Synapsid' },
+    { label: 'Early Tetrapods & Amphibians', val: 'Early Tetrapod/Amphibian' },
+    { label: 'Archosauriforms', val: 'Archosauriform' },
+    { label: 'Phytosaurs', val: 'Phytosaur' },
+    { label: 'Aetosaurs', val: 'Aetosaur' },
+    { label: 'Rauisuchians', val: 'Rauisuchian' },
+    { label: 'Poposauroids', val: 'Poposauroid' },
+    { label: 'Invertebrates', val: 'Invertebrate' },
+    { label: 'Other Prehistoric', val: 'Other' }
   ];
 
   const dietOptions = [
@@ -292,10 +300,10 @@ export default function Browse() {
                 <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Taxonomic Clade</label>
                 <div data-lenis-prevent className="grid grid-cols-2 gap-1.5 max-h-56 overflow-y-auto pr-1">
                   {cladeOptions.map((c) => {
-                    const isSelected = selectedClades.includes(c);
+                    const isSelected = selectedClades.includes(c.val);
                     return (
                       <label
-                        key={c}
+                        key={c.val}
                         className={`flex items-center gap-2 text-xs cursor-pointer py-2 px-2.5 rounded-lg border transition-colors select-none ${
                           isSelected ? 'bg-amber-500/10 text-amber-300 font-bold border-amber-500/40' : 'bg-slate-900 border-white/[0.06] text-slate-300'
                         }`}
@@ -303,10 +311,10 @@ export default function Browse() {
                         <input
                           type="checkbox"
                           checked={isSelected}
-                          onChange={() => toggleArrayFilter('clade', c)}
+                          onChange={() => toggleArrayFilter('clade', c.val)}
                           className="rounded border-white/10 bg-slate-950 text-amber-500"
                         />
-                        <span className="truncate">{c}</span>
+                        <span className="truncate">{c.label}</span>
                       </label>
                     );
                   })}
@@ -451,10 +459,10 @@ export default function Browse() {
             <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Taxonomic Clade</label>
             <div data-lenis-prevent className="space-y-1 max-h-44 overflow-y-auto pr-1">
               {cladeOptions.map((c) => {
-                const isSelected = selectedClades.includes(c);
+                const isSelected = selectedClades.includes(c.val);
                 return (
                   <motion.label
-                    key={c}
+                    key={c.val}
                     whileTap={{ scale: 0.98 }}
                     className={`flex items-center gap-2 text-xs cursor-pointer py-1.5 px-2.5 rounded-lg transition-colors select-none ${
                       isSelected ? 'bg-amber-500/15 text-amber-300 font-bold border border-amber-500/30' : 'text-slate-300 hover:bg-slate-900/80 hover:text-white'
@@ -463,10 +471,10 @@ export default function Browse() {
                     <input
                       type="checkbox"
                       checked={isSelected}
-                      onChange={() => toggleArrayFilter('clade', c)}
+                      onChange={() => toggleArrayFilter('clade', c.val)}
                       className="rounded border-white/10 bg-slate-950 text-amber-500 focus:ring-amber-500/40"
                     />
-                    <span>{c}</span>
+                    <span>{c.label}</span>
                   </motion.label>
                 );
               })}
@@ -595,17 +603,20 @@ export default function Browse() {
                     <button onClick={() => updateParams({ search: null })} className="hover:text-white cursor-pointer"><X className="h-3 w-3" /></button>
                   </motion.span>
                 )}
-                {selectedClades.map(c => (
-                  <motion.span
-                    key={c}
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    className="px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-300 flex items-center gap-1.5 font-bold"
-                  >
-                    Clade: {c}
-                    <button onClick={() => toggleArrayFilter('clade', c)} className="hover:text-white cursor-pointer"><X className="h-3 w-3" /></button>
-                  </motion.span>
-                ))}
+                {selectedClades.map(c => {
+                  const opt = cladeOptions.find(o => o.val === c);
+                  return (
+                    <motion.span
+                      key={c}
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      className="px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-300 flex items-center gap-1.5 font-bold"
+                    >
+                      Clade: {opt ? opt.label : c}
+                      <button onClick={() => toggleArrayFilter('clade', c)} className="hover:text-white cursor-pointer"><X className="h-3 w-3" /></button>
+                    </motion.span>
+                  );
+                })}
                 {selectedDiets.map(d => (
                   <motion.span
                     key={d}
@@ -750,6 +761,7 @@ export default function Browse() {
                     >
                       <Link
                         to={`/species/${species.id}`}
+                        state={{ from: `${location.pathname}${location.search}` }}
                         className="group flex flex-col justify-between h-full"
                       >
                         <div>
