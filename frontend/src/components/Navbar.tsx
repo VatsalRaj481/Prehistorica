@@ -258,8 +258,8 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
               <button
                 onClick={() => setIsCuratorOpen(true)}
                 className="min-h-[40px] min-w-[40px] sm:min-h-[44px] sm:min-w-[44px] p-2 sm:p-2.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
-                title="Chief Curator"
-                aria-label="Open Chief Curator"
+                title="Ask Rajy (AI Docent)"
+                aria-label="Open Rajy AI Docent"
               >
                 <Sparkles className="h-4 w-4" />
               </button>
@@ -366,7 +366,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                   className="w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-amber-300 bg-amber-500/10 border border-amber-500/30 font-bold cursor-pointer"
                 >
                   <Sparkles className="h-4 w-4 text-amber-400" />
-                  <span>The Chief Curator (AI Docent)</span>
+                  <span>Ask Rajy (AI Docent)</span>
                 </button>
 
                 <button

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, KeyboardEvent } from 'react';
+import { useState, useRef, useEffect, KeyboardEvent, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import {
@@ -7,15 +7,16 @@ import {
   Loader2,
   BookOpen,
   Compass,
-  ExternalLink,
   Volume2,
   VolumeX,
   Sparkles,
   ArrowRight,
   HelpCircle,
-  Dna
+  Dna,
+  Square
 } from 'lucide-react';
 import { askChiefCurator, CuratorGroundingSpecimen } from '../services/api.js';
+import RajyResponseRenderer from './RajyResponseRenderer.js';
 
 interface Message {
   id: string;
@@ -44,7 +45,7 @@ const INITIAL_EXPLORE_QUESTIONS = [
   }
 ];
 
-const COMPACT_PRESET_QUESTIONS = [
+const DEFAULT_COMPACT_QUESTIONS = [
   'How did Spinosaurus adapt to aquatic life?',
   'Apex predators in Hell Creek?',
   'How is dinosaur mass estimated?',
@@ -72,32 +73,81 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
   const [input, setInput] = useState(initialQuery || '');
   const [loading, setLoading] = useState(false);
   const [ttsEnabled, setTtsEnabled] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Focus input on open
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 150);
+    } else {
+      stopSpeaking();
     }
   }, [isOpen]);
 
+  // Clean up speech synthesis on unmount
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: shouldReduceMotion ? 'auto' : 'smooth' });
-  }, [messages, loading, shouldReduceMotion]);
+    return () => {
+      stopSpeaking();
+    };
+  }, []);
+
+  // Auto-scroll on subsequent messages or loading states
+  useEffect(() => {
+    if (messages.length > 1 || loading) {
+      messagesEndRef.current?.scrollIntoView({ behavior: shouldReduceMotion ? 'auto' : 'smooth' });
+    }
+  }, [messages.length, loading, shouldReduceMotion]);
+
+  const stopSpeaking = () => {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+    setIsSpeaking(false);
+  };
 
   const speakText = (text: string) => {
     if (!ttsEnabled || !('speechSynthesis' in window)) return;
-    window.speechSynthesis.cancel();
-    const clean = text.replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1').replace(/[*_#`]/g, '');
+    stopSpeaking();
+
+    // Clean markdown formatting and links for natural vocal flow
+    const clean = text
+      .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1')
+      .replace(/[*_#`>]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    if (!clean) return;
+
     const utterance = new SpeechSynthesisUtterance(clean);
     utterance.rate = 1.0;
     utterance.pitch = 0.95;
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
     window.speechSynthesis.speak(utterance);
+  };
+
+  const toggleTts = () => {
+    if (ttsEnabled) {
+      stopSpeaking();
+      setTtsEnabled(false);
+    } else {
+      setTtsEnabled(true);
+      // If there is an existing assistant message, narrate it
+      const lastAssistantMsg = [...messages].reverse().find((m) => m.role === 'assistant');
+      if (lastAssistantMsg) {
+        speakText(lastAssistantMsg.content);
+      }
+    }
   };
 
   const handleSend = async (queryToSend?: string) => {
     const text = (queryToSend || input).trim();
     if (!text || loading) return;
+
+    stopSpeaking();
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -131,7 +181,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       const errorMsg: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: `⚠️ **Curatorial Notice**: ${err.message || 'The docent archives are temporarily busy. Please ask again in a moment.'}`,
+        content: `⚠️ **Docent Notice**: ${err.message || 'The docent archives are temporarily busy. Please ask again in a moment.'}`,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
       setMessages((prev) => [...prev, errorMsg]);
@@ -147,51 +197,83 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     }
   };
 
-  const renderFormattedContent = (content: string) => {
-    const parts = content.split(/(\[[^\]]+\]\(\/species\/\d+\))/g);
-
-    return parts.map((part, i) => {
-      const match = part.match(/\[([^\]]+)\](\/species\/\d+)/);
-      if (match) {
-        return (
-          <Link
-            key={i}
-            to={match[2]}
-            onClick={onClose}
-            className="inline-flex items-center gap-1 px-1.5 py-0.5 mx-1 rounded bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 hover:text-amber-200 border border-amber-500/35 text-xs font-mono font-bold transition-all shadow-sm"
-          >
-            <span>{match[1]}</span>
-            <ExternalLink className="w-2.5 h-2.5 opacity-80" />
-          </Link>
-        );
-      }
-
-      const boldParts = part.split(/(\*\*[^*]+\*\*)/g);
-      return (
-        <span key={i}>
-          {boldParts.map((bPart, bi) => {
-            if (bPart.startsWith('**') && bPart.endsWith('**')) {
-              return (
-                <strong key={bi} className="font-semibold text-amber-200/90">
-                  {bPart.slice(2, -2)}
-                </strong>
-              );
-            }
-            return bPart;
-          })}
-        </span>
-      );
-    });
-  };
-
   const isInitialState = messages.length <= 1;
 
-  useEffect(() => {
-    // Only auto-scroll on subsequent messages or loading states so the initial view remains clean at the top
-    if (messages.length > 1 || loading) {
-      messagesEndRef.current?.scrollIntoView({ behavior: shouldReduceMotion ? 'auto' : 'smooth' });
+  // Context-aware dynamic follow-up suggestions based on conversation history & grounded specimens
+  const contextualSuggestions = useMemo(() => {
+    if (isInitialState) return DEFAULT_COMPACT_QUESTIONS;
+
+    const lastUserMsg = [...messages].reverse().find((m) => m.role === 'user')?.content.toLowerCase() || '';
+    const lastBotMsg = [...messages].reverse().find((m) => m.role === 'assistant');
+    const groundedNames = lastBotMsg?.groundedSpecimens?.map((s) => s.name) || [];
+
+    // Grounded specimens prioritization
+    if (groundedNames.length > 0) {
+      const first = groundedNames[0];
+      const list = [
+        `What were ${first}'s ecological adaptations?`,
+        `How does ${first} scale in the 1:1 Runway?`,
+        `Which formation yielded ${first} fossils?`
+      ];
+      if (groundedNames.length > 1) {
+        list.push(`Compare ${groundedNames[0]} and ${groundedNames[1]}`);
+      }
+      return list;
     }
-  }, [messages.length, loading, shouldReduceMotion]);
+
+    // Topic-based matching
+    if (lastUserMsg.includes('spino') || lastUserMsg.includes('aquatic') || lastUserMsg.includes('swim')) {
+      return [
+        'Did Spinosaurus actively swim or wade?',
+        'How does Spinosaurus compare in size to T. rex?',
+        'What fossils were found in the Kem Kem beds?',
+        'Baryonyx vs Spinosaurus adaptations?'
+      ];
+    }
+
+    if (lastUserMsg.includes('rex') || lastUserMsg.includes('tyranno') || lastUserMsg.includes('predator')) {
+      return [
+        "What was Tyrannosaurus rex's estimated bite force?",
+        'Did adult Tyrannosaurus possess feathers?',
+        'Apex predators in Hell Creek?',
+        'Scavenger vs apex predator hypothesis?'
+      ];
+    }
+
+    if (lastUserMsg.includes('mass') || lastUserMsg.includes('weight') || lastUserMsg.includes('size')) {
+      return [
+        'How do volumetric models calculate dinosaur mass?',
+        'Could massive sauropods run?',
+        'What was the heaviest land animal ever?',
+        'Bone histology and growth rings in dinosaurs?'
+      ];
+    }
+
+    if (lastUserMsg.includes('fly') || lastUserMsg.includes('pterosaur') || lastUserMsg.includes('wing')) {
+      return [
+        'Quadrupedal launch mechanics in giant azhdarchids?',
+        'Did pterosaurs have pycnofibers?',
+        'Quetzalcoatlus vs modern aircraft scale?',
+        'Evolutionary divergence of pterosaurs and birds?'
+      ];
+    }
+
+    if (lastUserMsg.includes('marine') || lastUserMsg.includes('sea') || lastUserMsg.includes('ocean')) {
+      return [
+        'How did Mosasaurs adapt from terrestrial lizards?',
+        'Did Ichthyosaurs give live birth at sea?',
+        'Four-flipper swimming in Plesiosaurs?',
+        'Marine apex predators of the Cretaceous?'
+      ];
+    }
+
+    return DEFAULT_COMPACT_QUESTIONS;
+  }, [messages, isInitialState]);
+
+  const lastAssistantMessageId = useMemo(() => {
+    const last = [...messages].reverse().find((m) => m.role === 'assistant');
+    return last?.id;
+  }, [messages]);
 
   return (
     <AnimatePresence>
@@ -200,7 +282,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
           className="fixed inset-0 z-[70] flex items-center justify-center p-2.5 sm:p-4 md:p-6 bg-slate-950/85 backdrop-blur-md"
           role="dialog"
           aria-modal="true"
-          aria-label="Prehistorica AI Docent Consultation"
+          aria-label="Rajy — Prehistorica AI Docent Consultation"
         >
           <motion.div
             initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.96, y: 12 }}
@@ -238,7 +320,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                     </span>
                   </div>
                   <p className="text-[10px] font-mono text-slate-400 truncate flex items-center gap-1.5">
-                    <span>Curatorial Guide: Rajy</span>
+                    <span className="text-slate-200 font-semibold">Rajy &bull; AI Docent</span>
                     <span className="text-slate-600">&bull;</span>
                     <span className="italic text-slate-300">Rajasaurus narmadensis</span>
                   </p>
@@ -249,23 +331,46 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
               <div className="flex items-center gap-2 shrink-0">
                 <button
                   type="button"
-                  onClick={() => setTtsEnabled(!ttsEnabled)}
+                  onClick={toggleTts}
                   className={`min-h-[36px] sm:min-h-[38px] px-2.5 sm:px-3 py-1.5 rounded-lg border text-xs font-mono font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
                     ttsEnabled
-                      ? 'bg-amber-500/15 border-amber-500/50 text-amber-300 shadow-[0_0_12px_rgba(245,158,11,0.2)]'
+                      ? 'bg-amber-500/15 border-amber-500/50 text-amber-300 shadow-[0_0_14px_rgba(245,158,11,0.25)] ring-1 ring-amber-500/30'
                       : 'bg-slate-900/80 border-white/[0.08] text-slate-400 hover:text-slate-200 hover:bg-slate-850'
                   }`}
-                  title={ttsEnabled ? 'Mute vocal narration' : 'Enable vocal voice narration for Rajy'}
-                  aria-label={ttsEnabled ? 'Voice Mode Active' : 'Voice Mode Inactive'}
+                  title={
+                    ttsEnabled
+                      ? isSpeaking
+                        ? 'Rajy is speaking — click to mute or turn off voice'
+                        : 'Voice narration active — Rajy will read responses (click to mute)'
+                      : 'Enable vocal voice narration for Rajy'
+                  }
+                  aria-pressed={ttsEnabled}
+                  aria-label={
+                    ttsEnabled
+                      ? isSpeaking
+                        ? 'Voice Mode Active — Rajy Speaking'
+                        : 'Voice Mode Active for Rajy'
+                      : 'Voice Mode Inactive — Enable vocal narration for Rajy'
+                  }
                 >
                   {ttsEnabled ? (
                     <>
-                      <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400" />
-                      </span>
+                      {isSpeaking ? (
+                        <span className="flex items-end gap-0.5 h-3.5 px-0.5">
+                          <span className="w-1 bg-amber-400 rounded-full animate-[pulse_0.6s_ease-in-out_infinite] h-2.5" />
+                          <span className="w-1 bg-amber-400 rounded-full animate-[pulse_0.4s_ease-in-out_infinite] h-3.5" />
+                          <span className="w-1 bg-amber-400 rounded-full animate-[pulse_0.8s_ease-in-out_infinite] h-2" />
+                        </span>
+                      ) : (
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400" />
+                        </span>
+                      )}
                       <Volume2 className="w-3.5 h-3.5 text-amber-400" />
-                      <span className="text-[11px] font-bold">Voice On</span>
+                      <span className="text-[11px] font-bold">
+                        {isSpeaking ? 'Speaking...' : 'Voice: Active'}
+                      </span>
                     </>
                   ) : (
                     <>
@@ -275,12 +380,26 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                   )}
                 </button>
 
+                {/* Instant Stop Speech button if speaking */}
+                {isSpeaking && (
+                  <button
+                    type="button"
+                    onClick={stopSpeaking}
+                    className="min-h-[36px] sm:min-h-[38px] px-2 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 text-xs font-mono flex items-center gap-1 cursor-pointer transition-colors"
+                    title="Stop speaking current response"
+                    aria-label="Stop vocal narration"
+                  >
+                    <Square className="w-3 h-3 fill-current" />
+                    <span className="hidden xs:inline text-[10px] uppercase font-bold">Stop</span>
+                  </button>
+                )}
+
                 <button
                   type="button"
                   onClick={onClose}
                   className="min-h-[36px] min-w-[36px] sm:min-h-[38px] sm:min-w-[38px] p-2 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-white/[0.08] text-slate-400 hover:text-white transition-all cursor-pointer flex items-center justify-center"
-                  title="Close AI Docent"
-                  aria-label="Close AI Docent"
+                  title="Close Rajy AI Docent"
+                  aria-label="Close Rajy AI Docent"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -293,7 +412,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
               {/* ── LEFT PANEL: Rajy's Museum Exhibit Plinth ── */}
               <aside
                 className="hidden sm:flex flex-col w-[170px] md:w-[190px] lg:w-[215px] shrink-0 bg-gradient-to-b from-[#090F1C] via-[#070C18] to-[#040812] border-r border-white/[0.06] relative overflow-hidden select-none"
-                aria-label="Docent Mascot Showcase"
+                aria-label="Rajy Mascot Showcase"
               >
                 {/* Atmospheric Backlight: Warm Gold & Deep Cyan Halo */}
                 <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
@@ -340,122 +459,142 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 <div
                   data-lenis-prevent
                   tabIndex={0}
-                  className="flex-1 min-h-0 overflow-y-auto p-3.5 sm:p-5 md:p-6 space-y-4 focus:outline-none focus:ring-1 focus:ring-amber-500/20 overscroll-contain"
+                  className="flex-1 min-h-0 overflow-y-auto p-3.5 sm:p-5 md:p-6 space-y-4 focus:outline-none focus-visible:ring-1 focus-visible:ring-amber-500/20 overscroll-contain"
                 >
-                  {messages.map((msg) => (
-                    <article
-                      key={msg.id}
-                      className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}
-                    >
-                      {/* Sender Meta Label */}
-                      <div className="flex items-center gap-2 mb-1.5 px-1 text-[11px] font-mono text-slate-400">
-                        {msg.role === 'assistant' ? (
-                          <div className="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider text-[10px]">
-                            <img
-                              src="/rajy-head.jpg"
-                              alt="Rajy"
-                              className="w-4 h-4 rounded-full object-cover object-top sm:hidden border border-amber-500/40"
-                            />
-                            <span>Rajy &bull; Docent</span>
-                          </div>
-                        ) : (
-                          <span className="font-bold text-slate-300 uppercase tracking-wider text-[10px]">
-                            Visitor
-                          </span>
-                        )}
-                        <span className="text-slate-600">&bull;</span>
-                        <time className="text-[10px] text-slate-500">{msg.timestamp}</time>
-                      </div>
+                  {messages.map((msg) => {
+                    const isAssistant = msg.role === 'assistant';
+                    const isCurrentlySpeaking = isSpeaking && msg.id === lastAssistantMessageId;
 
-                      {/* Message Bubble with Pointer */}
-                      <div className="relative overflow-visible max-w-[92%] sm:max-w-[85%]">
-                        {msg.role === 'assistant' && (
-                          <div
-                            className="hidden sm:block absolute -left-2.5 top-3.5 w-0 h-0
-                              border-t-[7px] border-t-transparent
-                              border-r-[11px] border-r-[#151E34]
-                              border-b-[7px] border-b-transparent
-                              z-10"
-                            aria-hidden="true"
-                          />
-                        )}
-
-                        <div
-                          className={`rounded-2xl px-4 py-3 sm:px-4.5 sm:py-3.5 text-xs sm:text-sm leading-relaxed shadow-lg ${
-                            msg.role === 'user'
-                              ? 'bg-amber-500 text-slate-950 font-medium rounded-tr-xs selection:bg-slate-900 selection:text-white'
-                              : 'bg-[#151E34] border border-white/[0.08] text-slate-100 rounded-tl-xs whitespace-pre-wrap selection:bg-amber-500 selection:text-slate-950'
-                          }`}
-                        >
-                          {msg.role === 'user' ? msg.content : renderFormattedContent(msg.content)}
-                        </div>
-                      </div>
-
-                      {/* Museum Grounding Specimens Ribbon */}
-                      {msg.groundedSpecimens && msg.groundedSpecimens.length > 0 && (
-                        <section
-                          aria-label="Museum Grounding Specimens"
-                          className="mt-3.5 w-full max-w-[95%] sm:max-w-[88%] bg-[#080D19]/90 border border-amber-500/20 rounded-xl p-3.5 space-y-2.5 shadow-md"
-                        >
-                          <div className="flex items-center justify-between text-xs font-mono text-slate-400 border-b border-white/[0.06] pb-2">
-                            <span className="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider text-[11px]">
-                              <BookOpen className="w-3.5 h-3.5 text-amber-400" />
-                              Grounded Museum Records ({msg.groundedSpecimens.length})
+                    return (
+                      <article
+                        key={msg.id}
+                        className={`flex flex-col ${isAssistant ? 'items-start' : 'items-end'}`}
+                      >
+                        {/* Sender Meta Label */}
+                        <div className="flex items-center gap-2 mb-1.5 px-1 text-[11px] font-mono text-slate-400">
+                          {isAssistant ? (
+                            <div className="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider text-[10px]">
+                              <img
+                                src="/rajy-head.jpg"
+                                alt="Rajy the AI Docent"
+                                className="w-4 h-4 rounded-full object-cover object-top sm:hidden border border-amber-500/40"
+                              />
+                              <span>Rajy &bull; AI Docent</span>
+                              {isCurrentlySpeaking && (
+                                <span className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-300 text-[9px] font-mono border border-amber-500/40 animate-pulse ml-1">
+                                  <Volume2 className="w-2.5 h-2.5" /> Narrating
+                                </span>
+                              )}
+                            </div>
+                          ) : (
+                            <span className="font-bold text-slate-300 uppercase tracking-wider text-[10px]">
+                              Visitor
                             </span>
-                            <span className="text-[10px] text-slate-500">Vector Cosine Match</span>
-                          </div>
+                          )}
+                          <span className="text-slate-600">&bull;</span>
+                          <time className="text-[10px] text-slate-500">{msg.timestamp}</time>
+                        </div>
 
-                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 pt-0.5">
-                            {msg.groundedSpecimens.map((spec) => (
-                              <Link
-                                key={spec.id}
-                                to={`/species/${spec.id}`}
-                                onClick={onClose}
-                                className="group flex items-center gap-2.5 p-2 rounded-lg bg-slate-900/80 hover:bg-slate-850 border border-white/[0.06] hover:border-amber-500/40 transition-all text-left"
-                              >
-                                <div className="w-10 h-10 rounded-md bg-slate-950 border border-white/[0.08] overflow-hidden shrink-0 flex items-center justify-center">
-                                  {spec.imageUrl ? (
-                                    <img
-                                      src={spec.imageUrl}
-                                      alt={spec.name}
-                                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                                    />
-                                  ) : spec.silhouetteUrl ? (
-                                    <img
-                                      src={spec.silhouetteUrl}
-                                      alt={spec.name}
-                                      className="w-7 h-7 object-contain filter invert opacity-70"
-                                    />
-                                  ) : (
-                                    <Compass className="w-4 h-4 text-slate-600" />
-                                  )}
-                                </div>
-                                <div className="min-w-0 flex-1">
-                                  <div className="flex items-center justify-between">
-                                    <span className="text-xs font-bold text-slate-200 group-hover:text-amber-300 truncate font-mono">
-                                      {spec.name}
-                                    </span>
-                                    <span className="text-[10px] font-mono text-amber-400/90 font-semibold shrink-0">
-                                      {spec.similarity}%
-                                    </span>
-                                  </div>
-                                  <p className="text-[10px] text-slate-400 truncate italic font-mono">
-                                    {spec.scientificName}
-                                  </p>
-                                  <div className="flex items-center gap-1 mt-0.5 text-[9px] text-slate-400 font-mono">
-                                    <span className="px-1 rounded bg-slate-800 text-slate-300">
-                                      {spec.clade}
-                                    </span>
-                                    <span className="truncate">{spec.timePeriod}</span>
-                                  </div>
-                                </div>
-                              </Link>
-                            ))}
+                        {/* Message Bubble with Left Pointer for Rajy */}
+                        <div className="relative overflow-visible max-w-[94%] sm:max-w-[88%] lg:max-w-[85%]">
+                          {isAssistant && (
+                            <div
+                              className="hidden sm:block absolute -left-2.5 top-3.5 w-0 h-0
+                                border-t-[7px] border-t-transparent
+                                border-r-[11px] border-r-[#151E34]
+                                border-b-[7px] border-b-transparent
+                                z-10"
+                              aria-hidden="true"
+                            />
+                          )}
+
+                          <div
+                            className={`rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 shadow-lg ${
+                              isAssistant
+                                ? 'bg-[#151E34] border border-white/[0.08] text-slate-100 rounded-tl-xs selection:bg-amber-500 selection:text-slate-950'
+                                : 'bg-amber-500 text-slate-950 font-medium rounded-tr-xs selection:bg-slate-900 selection:text-white'
+                            }`}
+                          >
+                            {isAssistant ? (
+                              <RajyResponseRenderer
+                                content={msg.content}
+                                onLinkClick={onClose}
+                                isLatestAssistantMessage={msg.id === lastAssistantMessageId}
+                              />
+                            ) : (
+                              <p className="whitespace-pre-wrap leading-relaxed text-xs sm:text-[13px] md:text-sm">
+                                {msg.content}
+                              </p>
+                            )}
                           </div>
-                        </section>
-                      )}
-                    </article>
-                  ))}
+                        </div>
+
+                        {/* Museum Grounding Specimens Ribbon */}
+                        {msg.groundedSpecimens && msg.groundedSpecimens.length > 0 && (
+                          <section
+                            aria-label="Museum Grounding Specimens"
+                            className="mt-3.5 w-full max-w-[95%] sm:max-w-[88%] bg-[#080D19]/90 border border-amber-500/20 rounded-xl p-3.5 space-y-2.5 shadow-md"
+                          >
+                            <div className="flex items-center justify-between text-xs font-mono text-slate-400 border-b border-white/[0.06] pb-2">
+                              <span className="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider text-[11px]">
+                                <BookOpen className="w-3.5 h-3.5 text-amber-400" />
+                                Grounded Museum Records ({msg.groundedSpecimens.length})
+                              </span>
+                              <span className="text-[10px] text-slate-500">Vector Cosine Match</span>
+                            </div>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 pt-0.5">
+                              {msg.groundedSpecimens.map((spec) => (
+                                <Link
+                                  key={spec.id}
+                                  to={`/species/${spec.id}`}
+                                  onClick={onClose}
+                                  className="group flex items-center gap-2.5 p-2 rounded-lg bg-slate-900/80 hover:bg-slate-850 border border-white/[0.06] hover:border-amber-500/40 transition-all text-left"
+                                >
+                                  <div className="w-10 h-10 rounded-md bg-slate-950 border border-white/[0.08] overflow-hidden shrink-0 flex items-center justify-center">
+                                    {spec.imageUrl ? (
+                                      <img
+                                        src={spec.imageUrl}
+                                        alt={spec.name}
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                                      />
+                                    ) : spec.silhouetteUrl ? (
+                                      <img
+                                        src={spec.silhouetteUrl}
+                                        alt={spec.name}
+                                        className="w-7 h-7 object-contain filter invert opacity-70"
+                                      />
+                                    ) : (
+                                      <Compass className="w-4 h-4 text-slate-600" />
+                                    )}
+                                  </div>
+                                  <div className="min-w-0 flex-1">
+                                    <div className="flex items-center justify-between">
+                                      <span className="text-xs font-bold text-slate-200 group-hover:text-amber-300 truncate font-mono">
+                                        {spec.name}
+                                      </span>
+                                      <span className="text-[10px] font-mono text-amber-400/90 font-semibold shrink-0">
+                                        {spec.similarity}%
+                                      </span>
+                                    </div>
+                                    <p className="text-[10px] text-slate-400 truncate italic font-mono">
+                                      {spec.scientificName}
+                                    </p>
+                                    <div className="flex items-center gap-1 mt-0.5 text-[9px] text-slate-400 font-mono">
+                                      <span className="px-1 rounded bg-slate-800 text-slate-300">
+                                        {spec.clade}
+                                      </span>
+                                      <span className="truncate">{spec.timePeriod}</span>
+                                    </div>
+                                  </div>
+                                </Link>
+                              ))}
+                            </div>
+                          </section>
+                        )}
+                      </article>
+                    );
+                  })}
 
                   {/* ── INITIAL STATE: "EXPLORE WITH RAJY" CARDS ── */}
                   {isInitialState && (
@@ -511,27 +650,30 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                     </div>
                   )}
 
-                  <div ref={messagesEndRef} />
+                  <div ref={messagesEndRef} className="h-2" />
                 </div>
 
-                {/* ── Compact Suggestion Chips (Visible during ongoing chat) ── */}
+                {/* ── Refined Context-Aware Suggestion Chips (Visible during ongoing chat) ── */}
                 {!isInitialState && (
-                  <div className="px-3.5 sm:px-5 py-2 border-t border-white/[0.06] bg-[#070B16]/90 overflow-x-auto flex items-center gap-2 shrink-0 scrollbar-none">
-                    <span className="text-[10px] font-mono text-slate-400 shrink-0 uppercase tracking-wider flex items-center gap-1">
-                      <Sparkles className="w-3 h-3 text-amber-400" />
-                      Inquiries:
+                  <div className="px-3.5 sm:px-5 py-2 border-t border-white/[0.06] bg-[#070B16]/95 flex items-center gap-2 shrink-0 z-10 overflow-hidden">
+                    <span className="text-[10px] font-mono text-slate-400 shrink-0 uppercase tracking-wider flex items-center gap-1 font-bold">
+                      <Sparkles className="w-3 h-3 text-amber-400 shrink-0" />
+                      <span className="hidden xs:inline">Follow-up:</span>
                     </span>
-                    {COMPACT_PRESET_QUESTIONS.map((q, idx) => (
-                      <button
-                        key={idx}
-                        type="button"
-                        onClick={() => handleSend(q)}
-                        disabled={loading}
-                        className="px-2.5 py-1 rounded-full bg-slate-900/90 hover:bg-slate-850 border border-white/[0.08] hover:border-amber-500/30 text-slate-300 hover:text-amber-200 text-xs font-mono shrink-0 transition-all text-left truncate max-w-xs cursor-pointer disabled:opacity-50"
-                      >
-                        {q}
-                      </button>
-                    ))}
+                    <div className="flex-1 overflow-x-auto flex items-center gap-2 scrollbar-none py-0.5">
+                      {contextualSuggestions.map((q, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => handleSend(q)}
+                          disabled={loading}
+                          className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-slate-900/90 hover:bg-amber-500/15 border border-white/[0.08] hover:border-amber-500/40 text-slate-300 hover:text-amber-200 text-[11px] sm:text-xs font-mono shrink-0 transition-all text-left whitespace-nowrap cursor-pointer active:scale-95 disabled:opacity-40 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 shadow-sm"
+                          title={`Ask Rajy: ${q}`}
+                        >
+                          {q}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 )}
 
@@ -574,7 +716,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                     </button>
                   </form>
                   <p className="hidden sm:block text-[10px] font-mono text-slate-500 pt-1.5 text-center">
-                    Prehistorica AI Docent &bull; Evidence-based retrieval augmented generation (RAG)
+                    Rajy &bull; Prehistorica AI Docent &bull; Evidence-based retrieval augmented generation (RAG)
                   </p>
                 </div>
 
