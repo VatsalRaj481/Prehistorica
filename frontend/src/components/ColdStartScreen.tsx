@@ -633,17 +633,18 @@ export default function ColdStartScreen({
               transition={{ duration: 0.35 }}
               className="bg-gradient-to-b from-[#0E1526] to-[#0A0F1B] rounded-xl p-5 sm:p-6 border border-amber-500/25 shadow-[0_12px_40px_rgba(0,0,0,0.55)] space-y-4 relative overflow-hidden"
             >
-              {/* Archival Collection Record Framing Marks (Curatorial Registration Details) */}
+              {/* Archival Collection Record Framing Marks */}
               <div className="absolute top-2.5 left-2.5 w-4 h-4 pointer-events-none">
                 <div className="w-full h-full border-t border-l border-amber-400/45 rounded-tl-[1px]" />
               </div>
               <div className="absolute top-2.5 right-2.5 w-4 h-4 pointer-events-none">
                 <div className="w-full h-full border-t border-r border-amber-400/45 rounded-tr-[1px]" />
               </div>
-              <div className="absolute bottom-2.5 left-2.5 w-4 h-4 pointer-events-none">
+              {/* Bottom corners at card edge — clear of the dots row */}
+              <div className="absolute bottom-0 left-0 w-4 h-4 pointer-events-none">
                 <div className="w-full h-full border-b border-l border-amber-400/45 rounded-bl-[1px]" />
               </div>
-              <div className="absolute bottom-2.5 right-2.5 w-4 h-4 pointer-events-none">
+              <div className="absolute bottom-0 right-0 w-4 h-4 pointer-events-none">
                 <div className="w-full h-full border-b border-r border-amber-400/45 rounded-br-[1px]" />
               </div>
 
@@ -654,7 +655,7 @@ export default function ColdStartScreen({
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -6 }}
                   transition={{ duration: 0.3 }}
-                  className="space-y-4"
+                  className="space-y-4 pb-2"
                 >
                   {/* Archival Record Header */}
                   <div className="flex flex-wrap items-center justify-between gap-2 border-b border-amber-500/15 pb-3 text-[10px] uppercase tracking-widest text-amber-400">
@@ -724,8 +725,8 @@ export default function ColdStartScreen({
                 </motion.div>
               </AnimatePresence>
 
-              {/* Curatorial Specimen Indicators */}
-              <div className="flex items-center justify-end gap-1.5 pt-1">
+              {/* Curatorial Specimen Indicators — outside AnimatePresence, clear of bottom corners */}
+              <div className="flex items-center justify-end gap-1.5 pt-2 pb-1 relative z-10">
                 {PALEOFACTS.map((_, idx) => (
                   <button
                     key={idx}

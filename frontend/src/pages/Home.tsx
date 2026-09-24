@@ -90,7 +90,7 @@ export default function Home() {
         style={{ y: heroY, opacity: heroOpacity }}
         className="relative z-10 max-w-5xl mx-auto pt-6 pb-12 space-y-8 border-b border-white/[0.08]"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-8 space-y-5 text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono font-bold tracking-widest uppercase shadow-sm">
               <img src="/logo.png" alt="Prehistorica Emblem" className="h-4 w-4 object-contain shrink-0 drop-shadow" />
@@ -412,7 +412,7 @@ export default function Home() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.05 }}
         transition={{ type: 'spring', stiffness: 320, damping: 28 }}
-        className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 font-mono"
+        className="relative z-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 font-mono"
       >
         {/* Portal 1: Catalog Index */}
         <Link to="/browse" className="block group">

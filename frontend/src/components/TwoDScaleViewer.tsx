@@ -460,7 +460,7 @@ export default function TwoDScaleViewer({
         </div>
 
         {/* Dedicated SVG Drawing Canvas Stage */}
-        <div className="relative w-full aspect-[5/2] max-h-[420px]">
+        <div className="relative w-full aspect-[3/2] sm:aspect-[5/2] max-h-[420px]">
           <svg
             viewBox={`0 0 ${viewBoxWidth} ${viewBoxHeight}`}
             className="w-full h-full"

@@ -58,10 +58,10 @@ export default function SpeciesDetail() {
     return (
       <div className="animate-pulse space-y-8 py-6">
         <div className="h-6 w-48 bg-slate-900 rounded border border-white/[0.06]" />
-        <div className="h-[450px] bg-slate-950 rounded-xl border border-white/[0.06]" />
+        <div className="h-56 sm:h-[450px] bg-slate-950 rounded-xl border border-white/[0.06]" />
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-6 h-96 bg-slate-900 rounded-xl border border-white/[0.06]" />
-          <div className="lg:col-span-6 h-96 bg-slate-900 rounded-xl border border-white/[0.06]" />
+          <div className="lg:col-span-6 h-72 sm:h-96 bg-slate-900 rounded-xl border border-white/[0.06]" />
+          <div className="lg:col-span-6 h-72 sm:h-96 bg-slate-900 rounded-xl border border-white/[0.06]" />
         </div>
       </div>
     );
@@ -490,7 +490,7 @@ export default function SpeciesDetail() {
                   <Link
                     to={`/species/${rel.id}`}
                     state={{ from: catalogReturnUrl }}
-                    className="group museum-card rounded-xl p-3 flex flex-col justify-between w-64 sm:w-72 shadow-lg overflow-hidden h-full"
+                    className="group museum-card rounded-xl p-3 flex flex-col justify-between w-52 sm:w-64 lg:w-72 shadow-lg overflow-hidden h-full"
                   >
                     <div className="relative h-36 w-full bg-slate-950 rounded-lg overflow-hidden mb-3 border border-white/[0.06]">
                       <img

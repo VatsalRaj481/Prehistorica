@@ -200,21 +200,22 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
             <div className="flex flex-1 overflow-hidden">
 
               {/* ── Rajy Character Panel (left sidebar) ── */}
-              <div className="hidden sm:flex flex-col items-center justify-end w-[180px] lg:w-[210px] shrink-0 bg-gradient-to-b from-slate-950 via-slate-950/95 to-slate-900/80 border-r border-white/[0.06] relative overflow-hidden">
+              <div className="hidden sm:flex flex-col w-[180px] lg:w-[210px] shrink-0 bg-gradient-to-b from-slate-950 via-slate-950/95 to-slate-900/80 border-r border-white/[0.06] relative overflow-hidden">
                 {/* Subtle radial glow behind Rajy */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-48 h-48 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
+                <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-48 h-48 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
 
-                {/* Rajy full-body image */}
-                <img
-                  src="/rajy-full.png"
-                  alt="Rajy the Curator"
-                  className="relative w-full object-contain object-bottom select-none"
-                  style={{ maxHeight: '78%' }}
-                  draggable={false}
-                />
+                {/* Rajy full-body image — fills available flex space, transparent PNG blends with dark bg */}
+                <div className="relative flex-1 min-h-0 w-full overflow-hidden">
+                  <img
+                    src="/rajy-full.png"
+                    alt="Rajy the Curator"
+                    className="absolute inset-0 w-full h-full object-contain object-bottom select-none"
+                    draggable={false}
+                  />
+                </div>
 
                 {/* Name plate at the bottom */}
-                <div className="w-full px-3 py-3 flex flex-col items-center gap-0.5 bg-slate-950/60 border-t border-white/[0.06] shrink-0">
+                <div className="w-full px-3 py-3 flex flex-col items-center gap-0.5 bg-slate-950/70 border-t border-white/[0.06] shrink-0 z-10">
                   <span className="text-sm font-black font-mono text-amber-400 tracking-widest uppercase">
                     Rajy
                   </span>
@@ -251,14 +252,14 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                         <span>{msg.timestamp}</span>
                       </div>
 
-                      {/* Bubble — speech-bubble style for assistant */}
-                      <div className="relative">
+                      {/* Bubble — speech-bubble pointer pointing left toward Rajy's panel */}
+                      <div className="relative overflow-visible">
                         {msg.role === 'assistant' && (
-                          /* Speech bubble pointer pointing left (from Rajy's mouth direction) */
-                          <div className="absolute -left-2 top-4 w-0 h-0
-                            border-t-[6px] border-t-transparent
-                            border-r-[8px] border-r-slate-800/90
-                            border-b-[6px] border-b-transparent" />
+                          <div className="absolute -left-3 top-4 w-0 h-0
+                            border-t-[8px] border-t-transparent
+                            border-r-[12px] border-r-slate-800/90
+                            border-b-[8px] border-b-transparent
+                            z-10" />
                         )}
                         <div
                           className={`max-w-[88%] sm:max-w-[82%] rounded-2xl p-4 text-sm leading-relaxed shadow-lg ${

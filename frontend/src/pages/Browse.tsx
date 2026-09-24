@@ -746,7 +746,7 @@ export default function Browse() {
               initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-              className="museum-plinth rounded-xl border border-white/[0.08] p-16 text-center text-slate-400 flex flex-col items-center gap-3 font-mono shadow-2xl"
+              className="museum-plinth rounded-xl border border-white/[0.08] p-8 sm:p-16 text-center text-slate-400 flex flex-col items-center gap-3 font-mono shadow-2xl"
             >
               <Info className="h-10 w-10 text-amber-400" />
               <p className="font-bold text-slate-200 uppercase tracking-widest text-sm font-sans">No Specimen Records Located</p>
@@ -770,7 +770,7 @@ export default function Browse() {
                 variants={containerVariants}
                 initial="hidden"
                 animate="show"
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6"
               >
                 {speciesList.map((species) => {
                   const names = getSpeciesDisplayNames(species);

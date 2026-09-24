@@ -138,7 +138,7 @@ export default function SearchAutocomplete() {
 
       {/* Semantic mode hint — visible only in AI mode with empty query */}
       {isSemanticMode && !query && (
-        <div className="absolute left-0 right-0 mt-1 px-2 py-1 flex items-center gap-1.5 text-[10px] font-mono text-amber-500/80 pointer-events-none select-none">
+        <div className="absolute left-0 right-0 mt-1 px-2 py-1 flex items-center gap-1.5 text-[10px] font-mono text-amber-500/80 pointer-events-none select-none z-40">
           <Sparkles className="w-2.5 h-2.5 shrink-0" />
           <span>Try: "giant armored fish", "crested theropods", "semi-aquatic predators"</span>
         </div>
