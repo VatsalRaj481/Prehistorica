@@ -15,7 +15,9 @@ import {
   Dna,
   Square,
   Pause,
-  Play
+  Play,
+  Sliders,
+  RotateCcw
 } from 'lucide-react';
 import { askChiefCurator, CuratorGroundingSpecimen } from '../services/api.js';
 import RajyResponseRenderer from './RajyResponseRenderer.js';
@@ -55,6 +57,14 @@ const DEFAULT_COMPACT_QUESTIONS = [
   'Flight mechanics in Azhdarchid pterosaurs?'
 ];
 
+// Rajy's Default Voice Profile Configuration
+const DEFAULT_VOICE_CONFIG = {
+  lang: 'en-US',
+  rate: 0.92,
+  pitch: 1.08,
+  volume: 1.0
+};
+
 interface ChiefCuratorModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -82,46 +92,132 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
+  // Voice Settings Panel Open/Closed
+  const [isVoiceSettingsOpen, setIsVoiceSettingsOpen] = useState(false);
+
+  // Available System Voices & User Preferences
+  const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [selectedVoiceURI, setSelectedVoiceURI] = useState<string>(() => {
+    return localStorage.getItem('prehistorica_voice_uri') || '';
+  });
+  const [speechRate, setSpeechRate] = useState<number>(() => {
+    const saved = localStorage.getItem('prehistorica_voice_rate');
+    return saved ? parseFloat(saved) : DEFAULT_VOICE_CONFIG.rate;
+  });
+  const [speechPitch, setSpeechPitch] = useState<number>(() => {
+    const saved = localStorage.getItem('prehistorica_voice_pitch');
+    return saved ? parseFloat(saved) : DEFAULT_VOICE_CONFIG.pitch;
+  });
+
   // Text buffer & character tracking for seamless pause/resume
   const currentCleanTextRef = useRef<string>('');
   const currentCharIndexRef = useRef<number>(0);
   const activeUtteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const keepAliveTimerRef = useRef<number | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const settingsRef = useRef<HTMLDivElement>(null);
 
   /**
-   * Browser-Native Acoustic Tuning:
-   * Selects a natural, softer English voice from available browser voices
-   * to suit Rajy's character as a curious, scholarly baby dinosaur.
+   * Asynchronous System Voice Loading:
+   * Handles browser-specific voice loading events across Chrome, Safari, Edge, Firefox, and mobile.
    */
-  const selectBabyDinoVoice = useCallback((): SpeechSynthesisVoice | null => {
-    if (!('speechSynthesis' in window)) return null;
-    const voices = window.speechSynthesis.getVoices();
-    if (!voices || voices.length === 0) return null;
+  useEffect(() => {
+    if (!('speechSynthesis' in window)) return;
 
-    // Favor natural, clear English voices with lighter acoustic timbres
-    const preferred = voices.find(
-      (v) =>
-        v.lang.startsWith('en') &&
-        (v.name.includes('Natural') ||
-          v.name.includes('Online') ||
-          v.name.includes('Samantha') ||
-          v.name.includes('Victoria') ||
-          v.name.includes('Google US English') ||
-          v.name.includes('Jenny') ||
-          v.name.includes('Zira') ||
-          v.name.includes('Karen'))
-    );
+    const loadVoices = () => {
+      const voices = window.speechSynthesis.getVoices();
+      if (voices && voices.length > 0) {
+        setAvailableVoices(voices);
+      }
+    };
 
-    if (preferred) return preferred;
+    loadVoices();
+    window.speechSynthesis.onvoiceschanged = loadVoices;
 
-    // Fallback to any English voice
-    const anyEnglish = voices.find((v) => v.lang.startsWith('en'));
-    return anyEnglish || voices[0] || null;
+    return () => {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.onvoiceschanged = null;
+      }
+    };
   }, []);
 
+  /**
+   * Click-outside handler for the compact voice settings panel
+   */
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (settingsRef.current && !settingsRef.current.contains(e.target as Node)) {
+        setIsVoiceSettingsOpen(false);
+      }
+    };
+
+    if (isVoiceSettingsOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isVoiceSettingsOpen]);
+
+  /**
+   * Selects an active voice:
+   * 1. User's chosen voice from settings if set.
+   * 2. Natural / high-clarity English voice as preferred docent default.
+   * 3. Graceful fallback to any English voice or first system voice.
+   */
+  const getActiveVoice = useCallback((): SpeechSynthesisVoice | null => {
+    if (availableVoices.length === 0) return null;
+
+    if (selectedVoiceURI) {
+      const userChoice = availableVoices.find((v) => v.voiceURI === selectedVoiceURI);
+      if (userChoice) return userChoice;
+    }
+
+    const enVoices = availableVoices.filter((v) => v.lang.startsWith('en'));
+    if (enVoices.length === 0) return availableVoices[0] || null;
+
+    // Favor natural, clear English voices with friendly museum docent timbre
+    const preferred =
+      enVoices.find(
+        (v) =>
+          (v.name.includes('Natural') ||
+            v.name.includes('Online') ||
+            v.name.includes('Samantha') ||
+            v.name.includes('Victoria') ||
+            v.name.includes('Google US English') ||
+            v.name.includes('Jenny') ||
+            v.name.includes('Zira') ||
+            v.name.includes('Karen')) &&
+          (v.lang === 'en-US' || v.lang === 'en_US')
+      ) ||
+      enVoices.find((v) => v.lang.startsWith('en-US')) ||
+      enVoices[0];
+
+    return preferred || null;
+  }, [availableVoices, selectedVoiceURI]);
+
+  const stopKeepAlive = useCallback(() => {
+    if (keepAliveTimerRef.current !== null) {
+      clearInterval(keepAliveTimerRef.current);
+      keepAliveTimerRef.current = null;
+    }
+  }, []);
+
+  const startKeepAlive = useCallback(() => {
+    stopKeepAlive();
+    // Periodically pulse pause/resume to prevent long-speech timeouts in Chromium engines
+    keepAliveTimerRef.current = window.setInterval(() => {
+      if ('speechSynthesis' in window && window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+        window.speechSynthesis.pause();
+        window.speechSynthesis.resume();
+      }
+    }, 10000);
+  }, [stopKeepAlive]);
+
   const stopSpeaking = useCallback(() => {
+    stopKeepAlive();
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
     }
@@ -129,7 +225,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     setIsSpeaking(false);
     setIsPaused(false);
     currentCharIndexRef.current = 0;
-  }, []);
+  }, [stopKeepAlive]);
 
   // Focus input on open, silence speech on close
   useEffect(() => {
@@ -137,6 +233,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       setTimeout(() => inputRef.current?.focus(), 150);
     } else {
       stopSpeaking();
+      setIsVoiceSettingsOpen(false);
     }
   }, [isOpen, stopSpeaking]);
 
@@ -155,26 +252,45 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
   }, [messages.length, loading, shouldReduceMotion]);
 
   /**
-   * Core vocal synthesizer applying:
-   * - Pitch: 1.35 (bright, youthful baby-dino acoustic formant)
-   * - Rate: 1.12 (inquisitive, energetic, eager tempo)
-   * - Word boundary tracking for exact resume
+   * Prepares raw AI-generated text for vocal speech:
+   * - Strips Markdown syntax (asterisks, hashtags, backticks, bullet symbols).
+   * - Converts internal/external links [Taxon](/species/123) -> "Taxon".
+   * - Preserves natural punctuation (periods, commas, colons, question marks)
+   *   to give the speech engine human-like breathing pauses.
+   */
+  const prepareTextForSpeech = (rawText: string): string => {
+    return rawText
+      .replace(/!\[([^\]]*)\]\([^)]+\)/g, '')
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+      .replace(/[*_~`]/g, '')
+      .replace(/^#{1,6}\s+/gm, '')
+      .replace(/^>\s+/gm, '')
+      .replace(/^[-*]\s+/gm, '')
+      .replace(/[ \t]+/g, ' ')
+      .replace(/\n\s*\n/g, '. ')
+      .replace(/\n/g, ' ')
+      .trim();
+  };
+
+  /**
+   * Core vocal speech synthesizer:
+   * Applies the default docent configuration:
+   * - lang: "en-US"
+   * - rate: 0.92 (articulate, friendly docent cadence)
+   * - pitch: 1.08 (subtle, youthful, engaging lift)
+   * - volume: 1.0
+   * - Word boundary tracking for exact pause/resume offset
    */
   const speakText = useCallback(
     (text: string, startIndex: number = 0) => {
       if (!ttsEnabled || !('speechSynthesis' in window)) return;
 
+      stopKeepAlive();
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
       }
 
-      // Clean markdown formatting and links for natural vocal flow
-      const clean = text
-        .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1')
-        .replace(/[*_#`>]/g, '')
-        .replace(/\s+/g, ' ')
-        .trim();
-
+      const clean = prepareTextForSpeech(text);
       if (!clean) return;
 
       currentCleanTextRef.current = clean;
@@ -182,16 +298,19 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
       const utterance = new SpeechSynthesisUtterance(textToSpeak);
 
-      // Acoustic calibration for baby dinosaur persona
-      utterance.pitch = 1.35;
-      utterance.rate = 1.12;
+      // Default Docent Tuning Configuration
+      utterance.lang = DEFAULT_VOICE_CONFIG.lang;
+      utterance.rate = speechRate;
+      utterance.pitch = speechPitch;
+      utterance.volume = DEFAULT_VOICE_CONFIG.volume;
 
-      const voice = selectBabyDinoVoice();
+      const voice = getActiveVoice();
       if (voice) {
         utterance.voice = voice;
+        utterance.lang = voice.lang || DEFAULT_VOICE_CONFIG.lang;
       }
 
-      // Track character boundary for precise pause/resume offset
+      // Track character boundary for precise pause/resume
       utterance.onboundary = (e) => {
         if (e.name === 'word') {
           currentCharIndexRef.current = startIndex + e.charIndex;
@@ -201,15 +320,18 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       utterance.onstart = () => {
         setIsSpeaking(true);
         setIsPaused(false);
+        startKeepAlive();
       };
 
       utterance.onend = () => {
+        stopKeepAlive();
         setIsSpeaking(false);
         setIsPaused(false);
         currentCharIndexRef.current = 0;
       };
 
       utterance.onerror = (e) => {
+        stopKeepAlive();
         if (e.error !== 'canceled' && e.error !== 'interrupted') {
           setIsSpeaking(false);
           setIsPaused(false);
@@ -219,14 +341,15 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       activeUtteranceRef.current = utterance;
       window.speechSynthesis.speak(utterance);
     },
-    [ttsEnabled, selectBabyDinoVoice]
+    [ttsEnabled, speechRate, speechPitch, getActiveVoice, startKeepAlive, stopKeepAlive]
   );
 
   /**
-   * Dedicated Pause feature:
-   * Pauses vocal narration at the exact word without canceling or losing place.
+   * Dedicated Pause:
+   * Pauses speech at the current word without canceling or losing position.
    */
   const pauseSpeaking = () => {
+    stopKeepAlive();
     if (!('speechSynthesis' in window)) return;
 
     if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
@@ -237,8 +360,8 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
   };
 
   /**
-   * Dedicated Resume feature:
-   * Resumes vocal narration from the exact word/syllable where paused.
+   * Dedicated Resume:
+   * Resumes vocal speech from the exact word where paused.
    */
   const resumeSpeaking = () => {
     if (!('speechSynthesis' in window)) return;
@@ -247,11 +370,10 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       window.speechSynthesis.resume();
       setIsSpeaking(true);
       setIsPaused(false);
+      startKeepAlive();
     } else if (currentCleanTextRef.current && currentCharIndexRef.current > 0) {
-      // Browser resume fallback using tracked character offset
       speakText(currentCleanTextRef.current, currentCharIndexRef.current);
     } else {
-      // Re-read latest assistant message
       const lastAssistantMsg = [...messages].reverse().find((m) => m.role === 'assistant');
       if (lastAssistantMsg) {
         speakText(lastAssistantMsg.content, 0);
@@ -261,21 +383,50 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
   /**
    * Global Voice Mode Toggle:
-   * Controls whether Voice Mode is enabled or disabled overall.
+   * Toggles Voice Mode ON / OFF.
    * Toggling OFF completely cancels and flushes all audio.
    */
   const toggleTts = () => {
     if (ttsEnabled) {
       stopSpeaking();
       setTtsEnabled(false);
+      setIsVoiceSettingsOpen(false);
     } else {
       setTtsEnabled(true);
       const lastAssistantMsg = [...messages].reverse().find((m) => m.role === 'assistant');
       if (lastAssistantMsg) {
-        // Speak using baby dino acoustic tuning
         setTimeout(() => speakText(lastAssistantMsg.content, 0), 50);
       }
     }
+  };
+
+  // User Settings Handlers with LocalStorage Persistence
+  const handleRateChange = (newRate: number) => {
+    setSpeechRate(newRate);
+    localStorage.setItem('prehistorica_voice_rate', newRate.toString());
+  };
+
+  const handlePitchChange = (newPitch: number) => {
+    setSpeechPitch(newPitch);
+    localStorage.setItem('prehistorica_voice_pitch', newPitch.toString());
+  };
+
+  const handleVoiceChange = (newURI: string) => {
+    setSelectedVoiceURI(newURI);
+    localStorage.setItem('prehistorica_voice_uri', newURI);
+  };
+
+  const handleResetDefaults = () => {
+    setSpeechRate(DEFAULT_VOICE_CONFIG.rate);
+    setSpeechPitch(DEFAULT_VOICE_CONFIG.pitch);
+    setSelectedVoiceURI('');
+    localStorage.removeItem('prehistorica_voice_rate');
+    localStorage.removeItem('prehistorica_voice_pitch');
+    localStorage.removeItem('prehistorica_voice_uri');
+  };
+
+  const handleTestVoice = () => {
+    speakText('Greetings, explorer! I am Rajy, your prehistoric museum docent.', 0);
   };
 
   const handleSend = async (queryToSend?: string) => {
@@ -334,7 +485,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
   const isInitialState = messages.length <= 1;
 
-  // Context-aware dynamic follow-up suggestions based on conversation history & grounded specimens
+  // Context-aware dynamic follow-up suggestions
   const contextualSuggestions = useMemo(() => {
     if (isInitialState) return DEFAULT_COMPACT_QUESTIONS;
 
@@ -342,7 +493,6 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     const lastBotMsg = [...messages].reverse().find((m) => m.role === 'assistant');
     const groundedNames = lastBotMsg?.groundedSpecimens?.map((s) => s.name) || [];
 
-    // Grounded specimens prioritization
     if (groundedNames.length > 0) {
       const first = groundedNames[0];
       const list = [
@@ -356,7 +506,6 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       return list;
     }
 
-    // Topic-based matching
     if (lastUserMsg.includes('spino') || lastUserMsg.includes('aquatic') || lastUserMsg.includes('swim')) {
       return [
         'Did Spinosaurus actively swim or wade?',
@@ -410,6 +559,17 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     return last?.id;
   }, [messages]);
 
+  // English-prioritized voice options list
+  const englishVoices = useMemo(() => {
+    const en = availableVoices.filter((v) => v.lang.startsWith('en'));
+    return en.length > 0 ? en : availableVoices;
+  }, [availableVoices]);
+
+  const activeVoiceName = useMemo(() => {
+    const v = getActiveVoice();
+    return v ? v.name : 'System Default';
+  }, [getActiveVoice]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -428,7 +588,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
             className="relative w-full max-w-4xl h-[94vh] sm:h-[90vh] max-h-[800px] flex flex-col bg-[#0A0F1D] border border-amber-500/25 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.75)] overflow-hidden font-sans text-slate-100"
           >
             {/* ── Fixed Museum Header ── */}
-            <header className="px-3.5 sm:px-5 py-2.5 sm:py-3 border-b border-white/[0.08] bg-gradient-to-r from-[#070B16] via-[#0A0F1D] to-[#070B16] flex items-center justify-between shrink-0 z-20">
+            <header className="relative px-3.5 sm:px-5 py-2.5 sm:py-3 border-b border-white/[0.08] bg-gradient-to-r from-[#070B16] via-[#0A0F1D] to-[#070B16] flex items-center justify-between shrink-0 z-20">
               <div className="flex items-center gap-3 min-w-0">
                 {/* Small Rajy Avatar Icon with Online Status Indicator */}
                 <div className="relative shrink-0">
@@ -462,7 +622,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 </div>
               </div>
 
-              {/* Header Controls: Global Voice Mode Toggle, Pause/Resume, Stop & Close */}
+              {/* Header Controls: Global Voice Mode Toggle, Playback, Voice Settings & Close */}
               <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 {/* 1. Global Voice Mode Toggle (ON / OFF) */}
                 <button
@@ -476,7 +636,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                   title={
                     ttsEnabled
                       ? 'Voice Mode is ON (click to turn OFF)'
-                      : 'Enable baby dino vocal narration for Rajy'
+                      : 'Enable docent vocal narration for Rajy'
                   }
                   aria-pressed={ttsEnabled}
                   aria-label={
@@ -498,7 +658,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                   )}
                 </button>
 
-                {/* 2. Separate Pause / Resume & Stop Controls (Only visible when Voice Mode is ON and audio is active or paused) */}
+                {/* 2. Separate Pause / Resume & Stop Controls (Visible when Voice Mode is ON and audio is active or paused) */}
                 {ttsEnabled && (isSpeaking || isPaused) && (
                   <div className="flex items-center gap-1 bg-slate-900/90 border border-amber-500/30 rounded-lg p-0.5 shadow-sm">
                     {/* Pause / Resume Button */}
@@ -531,7 +691,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                       </button>
                     )}
 
-                    {/* Instant Stop / Cancel Button */}
+                    {/* Instant Stop Button */}
                     <button
                       type="button"
                       onClick={stopSpeaking}
@@ -544,7 +704,25 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                   </div>
                 )}
 
-                {/* Close Button */}
+                {/* 3. Compact Voice Settings Control Button */}
+                {ttsEnabled && (
+                  <button
+                    type="button"
+                    onClick={() => setIsVoiceSettingsOpen(!isVoiceSettingsOpen)}
+                    className={`min-h-[36px] min-w-[36px] sm:min-h-[38px] sm:min-w-[38px] p-2 rounded-lg border text-xs font-mono flex items-center justify-center transition-all cursor-pointer ${
+                      isVoiceSettingsOpen
+                        ? 'bg-amber-500/20 border-amber-500/60 text-amber-300 shadow-sm'
+                        : 'bg-slate-900/80 border-white/[0.08] text-slate-400 hover:text-amber-300 hover:bg-slate-850'
+                    }`}
+                    title="Rajy's Voice Settings & Speed"
+                    aria-label="Voice settings and speed control"
+                    aria-expanded={isVoiceSettingsOpen}
+                  >
+                    <Sliders className="w-3.5 h-3.5" />
+                  </button>
+                )}
+
+                {/* Close Modal Button */}
                 <button
                   type="button"
                   onClick={onClose}
@@ -555,6 +733,150 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                   <X className="w-4 h-4" />
                 </button>
               </div>
+
+              {/* ── Compact Voice Settings Popover ── */}
+              <AnimatePresence>
+                {isVoiceSettingsOpen && ttsEnabled && (
+                  <motion.div
+                    ref={settingsRef}
+                    initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.95, y: -6 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95, y: -6 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute right-4 sm:right-6 top-full mt-2 w-[calc(100vw-2rem)] sm:w-80 p-3.5 rounded-xl bg-slate-950/98 border border-amber-500/35 shadow-[0_12px_36px_rgba(0,0,0,0.85)] backdrop-blur-2xl z-40 font-mono text-slate-200 space-y-3"
+                  >
+                    {/* Header */}
+                    <div className="flex items-center justify-between border-b border-white/[0.08] pb-2">
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-amber-400 uppercase tracking-wider">
+                        <Sparkles className="w-3 h-3" />
+                        <span>Rajy Voice Settings</span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={handleResetDefaults}
+                        className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-slate-900 hover:bg-amber-500/15 border border-white/[0.08] text-[10px] text-slate-400 hover:text-amber-300 transition-colors cursor-pointer"
+                        title="Restore Rajy's Default Voice Profile (Rate: 0.92, Pitch: 1.08)"
+                      >
+                        <RotateCcw className="w-2.5 h-2.5" />
+                        <span>Reset Defaults</span>
+                      </button>
+                    </div>
+
+                    {/* System Voice Selection */}
+                    <div className="space-y-1">
+                      <label htmlFor="voice-select" className="text-[10px] text-slate-400 uppercase tracking-wider block font-semibold">
+                        System Voice ({englishVoices.length} available)
+                      </label>
+                      <select
+                        id="voice-select"
+                        value={selectedVoiceURI}
+                        onChange={(e) => handleVoiceChange(e.target.value)}
+                        className="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/[0.1] text-xs text-slate-200 focus:border-amber-500/70 focus:outline-none transition-colors"
+                      >
+                        <option value="">Preferred Docent Voice ({activeVoiceName})</option>
+                        {englishVoices.map((v) => (
+                          <option key={v.voiceURI} value={v.voiceURI}>
+                            {v.name} ({v.lang})
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    {/* Speaking Speed (Rate) */}
+                    <div className="space-y-1.5">
+                      <div className="flex items-center justify-between text-[10px]">
+                        <span className="text-slate-400 uppercase tracking-wider font-semibold">Speaking Speed</span>
+                        <span className="text-amber-400 font-bold">{speechRate.toFixed(2)}x</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="0.75"
+                        max="1.25"
+                        step="0.05"
+                        value={speechRate}
+                        onChange={(e) => handleRateChange(parseFloat(e.target.value))}
+                        className="w-full accent-amber-500 cursor-pointer h-1.5 bg-slate-900 rounded-lg"
+                        aria-label="Adjust speaking speed"
+                      />
+                      <div className="flex items-center justify-between pt-0.5">
+                        <button
+                          type="button"
+                          onClick={() => handleRateChange(0.85)}
+                          className={`px-1.5 py-0.5 rounded text-[9px] border transition-colors cursor-pointer ${
+                            speechRate === 0.85
+                              ? 'bg-amber-500/20 text-amber-300 border-amber-500/50'
+                              : 'bg-slate-900 text-slate-400 border-white/[0.06] hover:text-slate-200'
+                          }`}
+                        >
+                          Slow (0.85x)
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleRateChange(DEFAULT_VOICE_CONFIG.rate)}
+                          className={`px-1.5 py-0.5 rounded text-[9px] border transition-colors cursor-pointer ${
+                            speechRate === DEFAULT_VOICE_CONFIG.rate
+                              ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 font-bold'
+                              : 'bg-slate-900 text-slate-400 border-white/[0.06] hover:text-slate-200'
+                          }`}
+                        >
+                          Rajy Default (0.92x)
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleRateChange(1.05)}
+                          className={`px-1.5 py-0.5 rounded text-[9px] border transition-colors cursor-pointer ${
+                            speechRate === 1.05
+                              ? 'bg-amber-500/20 text-amber-300 border-amber-500/50'
+                              : 'bg-slate-900 text-slate-400 border-white/[0.06] hover:text-slate-200'
+                          }`}
+                        >
+                          Brisk (1.05x)
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Vocal Pitch */}
+                    <div className="space-y-1.5">
+                      <div className="flex items-center justify-between text-[10px]">
+                        <span className="text-slate-400 uppercase tracking-wider font-semibold">Pitch Lift</span>
+                        <span className="text-amber-400 font-bold">{speechPitch.toFixed(2)}</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="0.90"
+                        max="1.25"
+                        step="0.02"
+                        value={speechPitch}
+                        onChange={(e) => handlePitchChange(parseFloat(e.target.value))}
+                        className="w-full accent-amber-500 cursor-pointer h-1.5 bg-slate-900 rounded-lg"
+                        aria-label="Adjust voice pitch"
+                      />
+                      <p className="text-[9px] text-slate-500 leading-tight">
+                        Default: 1.08 (Subtle youthful docent lift, clear & articulate)
+                      </p>
+                    </div>
+
+                    {/* Test Audio & Done */}
+                    <div className="pt-1 flex items-center justify-between border-t border-white/[0.08]">
+                      <button
+                        type="button"
+                        onClick={handleTestVoice}
+                        className="px-2.5 py-1 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-300 text-[10px] font-bold flex items-center gap-1 cursor-pointer transition-colors"
+                      >
+                        <Volume2 className="w-3 h-3" />
+                        <span>Test Voice</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setIsVoiceSettingsOpen(false)}
+                        className="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-850 text-slate-400 hover:text-white border border-white/[0.08] text-[10px] cursor-pointer transition-colors"
+                      >
+                        Done
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </header>
 
             {/* ── Main Body: Split-Panel Layout ── */}
