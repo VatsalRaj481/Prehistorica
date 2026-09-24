@@ -186,6 +186,13 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
   const isInitialState = messages.length <= 1;
 
+  useEffect(() => {
+    // Only auto-scroll on subsequent messages or loading states so the initial view remains clean at the top
+    if (messages.length > 1 || loading) {
+      messagesEndRef.current?.scrollIntoView({ behavior: shouldReduceMotion ? 'auto' : 'smooth' });
+    }
+  }, [messages.length, loading, shouldReduceMotion]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -200,10 +207,11 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 12 }}
             transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-4xl h-[92vh] sm:h-[88vh] max-h-[820px] flex flex-col bg-[#0A0F1D] border border-amber-500/25 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.7)] overflow-hidden font-sans text-slate-100"
+            data-lenis-prevent
+            className="relative w-full max-w-4xl h-[94vh] sm:h-[90vh] max-h-[800px] flex flex-col bg-[#0A0F1D] border border-amber-500/25 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.75)] overflow-hidden font-sans text-slate-100"
           >
-            {/* ── Refined Museum Header ── */}
-            <header className="px-3.5 sm:px-5 py-3 border-b border-white/[0.08] bg-gradient-to-r from-[#070B16] via-[#0A0F1D] to-[#070B16] flex items-center justify-between shrink-0 z-20">
+            {/* ── Fixed Museum Header ── */}
+            <header className="px-3.5 sm:px-5 py-2.5 sm:py-3 border-b border-white/[0.08] bg-gradient-to-r from-[#070B16] via-[#0A0F1D] to-[#070B16] flex items-center justify-between shrink-0 z-20">
               <div className="flex items-center gap-3 min-w-0">
                 {/* Small Rajy Avatar Icon with Online Status Indicator */}
                 <div className="relative shrink-0">
@@ -211,7 +219,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                     <img
                       src="/rajy-head.jpg"
                       alt="Rajy the AI Docent"
-                      className="w-full h-full object-cover object-top"
+                      className="w-full h-full object-cover object-top select-none"
                     />
                   </div>
                   <span
@@ -232,7 +240,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                   <p className="text-[10px] font-mono text-slate-400 truncate flex items-center gap-1.5">
                     <span>Curatorial Guide: Rajy</span>
                     <span className="text-slate-600">&bull;</span>
-                    <span className="italic text-slate-400">Rajasaurus narmadensis</span>
+                    <span className="italic text-slate-300">Rajasaurus narmadensis</span>
                   </p>
                 </div>
               </div>
@@ -242,7 +250,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 <button
                   type="button"
                   onClick={() => setTtsEnabled(!ttsEnabled)}
-                  className={`min-h-[38px] px-2.5 sm:px-3 py-1.5 rounded-lg border text-xs font-mono font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
+                  className={`min-h-[36px] sm:min-h-[38px] px-2.5 sm:px-3 py-1.5 rounded-lg border text-xs font-mono font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
                     ttsEnabled
                       ? 'bg-amber-500/15 border-amber-500/50 text-amber-300 shadow-[0_0_12px_rgba(245,158,11,0.2)]'
                       : 'bg-slate-900/80 border-white/[0.08] text-slate-400 hover:text-slate-200 hover:bg-slate-850'
@@ -252,7 +260,11 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 >
                   {ttsEnabled ? (
                     <>
-                      <Volume2 className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400" />
+                      </span>
+                      <Volume2 className="w-3.5 h-3.5 text-amber-400" />
                       <span className="text-[11px] font-bold">Voice On</span>
                     </>
                   ) : (
@@ -266,7 +278,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 <button
                   type="button"
                   onClick={onClose}
-                  className="min-h-[38px] min-w-[38px] p-2 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-white/[0.08] text-slate-400 hover:text-white transition-all cursor-pointer flex items-center justify-center"
+                  className="min-h-[36px] min-w-[36px] sm:min-h-[38px] sm:min-w-[38px] p-2 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-white/[0.08] text-slate-400 hover:text-white transition-all cursor-pointer flex items-center justify-center"
                   title="Close AI Docent"
                   aria-label="Close AI Docent"
                 >
@@ -276,44 +288,44 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
             </header>
 
             {/* ── Main Body: Split-Panel Layout ── */}
-            <div className="flex flex-1 overflow-hidden relative">
+            <div className="flex flex-1 min-h-0 overflow-hidden relative">
 
               {/* ── LEFT PANEL: Rajy's Museum Exhibit Plinth ── */}
               <aside
-                className="hidden sm:flex flex-col w-[175px] md:w-[195px] lg:w-[220px] shrink-0 bg-gradient-to-b from-[#090F1C] via-[#070C18] to-[#040812] border-r border-white/[0.06] relative overflow-hidden select-none"
+                className="hidden sm:flex flex-col w-[170px] md:w-[190px] lg:w-[215px] shrink-0 bg-gradient-to-b from-[#090F1C] via-[#070C18] to-[#040812] border-r border-white/[0.06] relative overflow-hidden select-none"
                 aria-label="Docent Mascot Showcase"
               >
-                {/* Exhibition Atmospheric Backlight: Warm Gold & Deep Cyan Halo */}
-                <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
+                {/* Atmospheric Backlight: Warm Gold & Deep Cyan Halo */}
+                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
                 <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-40 h-40 rounded-full bg-cyan-500/5 blur-2xl pointer-events-none" />
 
                 {/* Decorative Museum Corner Markers */}
                 <div className="absolute top-2.5 left-2.5 w-2.5 h-2.5 border-t border-l border-amber-500/30 pointer-events-none" />
                 <div className="absolute top-2.5 right-2.5 w-2.5 h-2.5 border-t border-r border-amber-500/30 pointer-events-none" />
 
-                {/* Rajy Mascot Illustration — Fills available flex space with genuine transparency */}
-                <div className="relative flex-1 min-h-0 w-full flex items-end justify-center px-2 pt-4 pb-1">
+                {/* Rajy Mascot Illustration — Centered comfortably in available height */}
+                <div className="relative flex-1 min-h-0 w-full flex items-center justify-center px-3 py-2">
                   <img
                     src="/rajy-full.png"
                     alt="Rajy - Prehistorica AI Docent mascot"
-                    className="w-full h-full max-h-[360px] object-contain object-bottom drop-shadow-[0_12px_24px_rgba(0,0,0,0.6)]"
+                    className="w-full h-full max-h-[300px] object-contain drop-shadow-[0_10px_22px_rgba(0,0,0,0.65)]"
                     draggable={false}
                   />
                 </div>
 
                 {/* Curatorial Museum Nameplate & Pedestal */}
-                <div className="w-full px-3 py-3 bg-[#060913]/90 border-t border-amber-500/20 shrink-0 z-10 text-center space-y-1">
+                <div className="w-full px-3 py-3 bg-[#060913]/95 border-t border-amber-500/25 shrink-0 z-10 text-center space-y-1 shadow-inner">
                   <div className="flex items-center justify-center gap-1.5">
                     <Sparkles className="w-3 h-3 text-amber-400" />
-                    <span className="text-sm font-black font-mono text-amber-400 tracking-widest uppercase">
+                    <span className="text-sm font-black font-mono text-amber-400 tracking-[0.2em] uppercase">
                       RAJY
                     </span>
                   </div>
-                  <p className="text-[10px] font-mono text-slate-400 italic leading-tight">
+                  <p className="text-[10px] font-mono text-slate-400 italic tracking-wider leading-tight">
                     Rajasaurus narmadensis
                   </p>
                   <div className="pt-0.5 flex justify-center">
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-mono font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30 uppercase tracking-widest shadow-sm">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9px] font-mono font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30 uppercase tracking-widest shadow-sm">
                       <Dna className="w-2.5 h-2.5" />
                       AI DOCENT
                     </span>
@@ -322,12 +334,13 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
               </aside>
 
               {/* ── RIGHT PANEL: Conversation Interface ── */}
-              <main className="flex flex-col flex-1 overflow-hidden bg-gradient-to-b from-[#080D1A] via-[#0A0F20] to-[#060A14]">
+              <main className="flex flex-col flex-1 min-h-0 overflow-hidden bg-gradient-to-b from-[#080D1A] via-[#0A0F20] to-[#060A14] relative">
 
-                {/* Scrollable Message History Area */}
+                {/* Independently Scrollable Message Area */}
                 <div
+                  data-lenis-prevent
                   tabIndex={0}
-                  className="flex-1 overflow-y-auto p-3.5 sm:p-5 md:p-6 space-y-5 focus:outline-none focus:ring-1 focus:ring-amber-500/20"
+                  className="flex-1 min-h-0 overflow-y-auto p-3.5 sm:p-5 md:p-6 space-y-4 focus:outline-none focus:ring-1 focus:ring-amber-500/20 overscroll-contain"
                 >
                   {messages.map((msg) => (
                     <article
@@ -354,10 +367,9 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                         <time className="text-[10px] text-slate-500">{msg.timestamp}</time>
                       </div>
 
-                      {/* Message Bubble */}
+                      {/* Message Bubble with Pointer */}
                       <div className="relative overflow-visible max-w-[92%] sm:max-w-[85%]">
                         {msg.role === 'assistant' && (
-                          /* Speech bubble triangle pointing toward Rajy's sidebar */
                           <div
                             className="hidden sm:block absolute -left-2.5 top-3.5 w-0 h-0
                               border-t-[7px] border-t-transparent
@@ -369,7 +381,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                         )}
 
                         <div
-                          className={`rounded-2xl p-4 sm:p-4.5 text-xs sm:text-sm leading-relaxed shadow-lg ${
+                          className={`rounded-2xl px-4 py-3 sm:px-4.5 sm:py-3.5 text-xs sm:text-sm leading-relaxed shadow-lg ${
                             msg.role === 'user'
                               ? 'bg-amber-500 text-slate-950 font-medium rounded-tr-xs selection:bg-slate-900 selection:text-white'
                               : 'bg-[#151E34] border border-white/[0.08] text-slate-100 rounded-tl-xs whitespace-pre-wrap selection:bg-amber-500 selection:text-slate-950'
@@ -447,7 +459,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
                   {/* ── INITIAL STATE: "EXPLORE WITH RAJY" CARDS ── */}
                   {isInitialState && (
-                    <div className="pt-2 pb-1 space-y-3">
+                    <div className="pt-2 pb-6 space-y-3">
                       <div className="flex items-center gap-2 border-b border-white/[0.06] pb-2 font-mono">
                         <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                         <h3 className="text-xs font-bold tracking-widest uppercase text-amber-400">
@@ -465,14 +477,14 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                             type="button"
                             onClick={() => handleSend(q.prompt)}
                             disabled={loading}
-                            className="group flex flex-col justify-between p-3.5 rounded-xl bg-slate-900/60 hover:bg-slate-850/90 border border-white/[0.08] hover:border-amber-500/40 text-left transition-all duration-200 shadow-sm cursor-pointer disabled:opacity-50"
+                            className="group flex flex-col justify-between p-3 sm:p-3.5 rounded-xl bg-slate-900/60 hover:bg-slate-850/90 border border-white/[0.08] hover:border-amber-500/50 hover:shadow-[0_4px_16px_rgba(245,158,11,0.08)] active:scale-[0.99] focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none text-left transition-all duration-200 shadow-sm cursor-pointer disabled:opacity-50"
                           >
                             <div className="space-y-1">
                               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400/90 flex items-center gap-1">
                                 <HelpCircle className="w-3 h-3 text-amber-400 shrink-0" />
                                 {q.title}
                               </span>
-                              <p className="text-xs font-medium text-slate-200 group-hover:text-amber-200 transition-colors leading-relaxed">
+                              <p className="text-xs font-medium text-slate-200 group-hover:text-amber-100 transition-colors leading-snug">
                                 {q.prompt}
                               </p>
                             </div>
@@ -523,8 +535,8 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                   </div>
                 )}
 
-                {/* ── Refined Message Input Area ── */}
-                <div className="p-3 sm:p-4 md:p-5 border-t border-white/[0.08] bg-[#070B16] shrink-0">
+                {/* ── Refined Fixed Message Input Area ── */}
+                <div className="px-3.5 py-3 sm:px-5 sm:py-3.5 border-t border-white/[0.08] bg-[#070B16] shrink-0 z-10">
                   <form
                     onSubmit={(e) => {
                       e.preventDefault();
@@ -542,13 +554,13 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                         placeholder="Ask Rajy about prehistoric life..."
                         disabled={loading}
                         aria-label="Question for Rajy"
-                        className="w-full px-4 py-3 bg-[#0D1527] border border-white/[0.1] focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/30 rounded-xl text-xs sm:text-sm text-slate-100 placeholder-slate-400 focus:outline-none transition-all font-mono shadow-inner"
+                        className="w-full px-4 py-2.5 sm:py-3 bg-[#0D1527] border border-white/[0.1] focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/30 rounded-xl text-xs sm:text-sm text-slate-100 placeholder-slate-400 focus:outline-none transition-all font-mono shadow-inner"
                       />
                     </div>
                     <button
                       type="submit"
                       disabled={!input.trim() || loading}
-                      className="min-h-[44px] px-4 sm:px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-98 disabled:opacity-40 disabled:hover:bg-amber-500 text-slate-950 font-bold font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-amber-500/10 shrink-0"
+                      className="min-h-[42px] sm:min-h-[44px] px-4 sm:px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-98 disabled:opacity-40 disabled:hover:bg-amber-500 text-slate-950 font-bold font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-amber-500/10 shrink-0"
                       aria-label="Send message to Rajy"
                     >
                       {loading ? (
