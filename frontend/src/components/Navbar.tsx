@@ -396,17 +396,39 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
         </AnimatePresence>
       </header>
 
-      {/* Floating Chief Curator Docent Launcher */}
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => setIsCuratorOpen(true)}
-        className="fixed bottom-6 right-6 z-40 p-3.5 sm:px-4 sm:py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-2xl shadow-amber-500/40 border border-amber-400 font-mono font-black flex items-center gap-2 cursor-pointer group"
-        title="Ask Rajy — AI Docent"
-      >
-        <img src="/rajy-head.jpg" alt="Rajy" className="w-6 h-6 rounded-full object-cover object-top" />
-        <span className="hidden sm:inline text-xs uppercase tracking-wider font-bold">Ask Rajy</span>
-      </motion.button>
+      {/* Floating Chief Curator Docent Launcher — hidden when modal is open */}
+      <AnimatePresence>
+        {!isCuratorOpen && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.85, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.85, y: 10 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 28 }}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsCuratorOpen(true)}
+            className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 p-2 sm:px-3.5 sm:py-2.5 rounded-full bg-slate-900/95 hover:bg-slate-850 backdrop-blur-xl border border-amber-500/40 hover:border-amber-400 text-amber-300 hover:text-amber-200 shadow-[0_8px_25px_rgba(0,0,0,0.65),0_0_15px_rgba(245,158,11,0.18)] font-mono font-bold flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 min-h-[44px] min-w-[44px]"
+            title="Ask Rajy — AI Docent"
+            aria-label="Open Rajy AI Docent"
+          >
+            <div className="relative w-7 h-7 sm:w-6 sm:h-6 rounded-full overflow-hidden border border-amber-500/60 shrink-0 shadow-sm">
+              <img
+                src="/rajy-head.jpg"
+                alt="Rajy mascot avatar"
+                className="w-full h-full object-cover object-top select-none"
+                draggable={false}
+              />
+              <span
+                className="absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-400 ring-1 ring-slate-950"
+                title="Rajy online"
+              />
+            </div>
+            <span className="hidden sm:inline text-xs font-black uppercase tracking-wider text-amber-300 group-hover:text-amber-200">
+              Ask Rajy
+            </span>
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       {/* Side-by-side Compare Modal */}
       <CompareModal

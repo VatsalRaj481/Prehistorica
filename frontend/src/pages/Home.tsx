@@ -415,133 +415,133 @@ export default function Home() {
         className="relative z-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 font-mono"
       >
         {/* Portal 1: Catalog Index */}
-        <Link to="/browse" className="block group">
+        <Link to="/browse" className="block group focus:outline-none">
           <SpotlightCard
             whileHover={{ y: -4 }}
             transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-            className="museum-plinth rounded-xl hover:border-amber-500/40 p-6 sm:p-7 transition-colors shadow-xl flex flex-col justify-between space-y-5 h-full"
+            className="museum-plinth rounded-xl border border-white/[0.08] hover:border-amber-500/40 p-6 sm:p-7 transition-all duration-200 shadow-xl flex flex-col justify-between h-full group-focus-visible:ring-2 group-focus-visible:ring-amber-400"
           >
-            <div className="space-y-3">
-              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5">
-                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest">
-                  ARCHIVE INDEX
+            <div className="space-y-3 flex-1 flex flex-col">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5 min-h-[32px] gap-2">
+                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5 shrink-0">
+                  <Layers className="h-3 w-3" /> ARCHIVE INDEX
                 </span>
-                <span className="text-xs text-slate-400 font-bold">
+                <span className="text-[10px] sm:text-[11px] text-slate-400 font-bold uppercase tracking-wider shrink-0">
                   {formattedTotal} SPECIMENS
                 </span>
               </div>
 
-              <h3 className="text-2xl font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans">
-                Fauna Catalog & Filter Pavilion
+              <h3 className="text-xl sm:text-2xl font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans min-h-[56px] flex items-center leading-tight">
+                Fauna Catalog &amp; Filter Pavilion
               </h3>
 
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans flex-1">
                 Filter cataloged prehistoric species by period, diet, habitat, and taxonomic clade with interactive 1:1 scale inspection and human reference models.
               </p>
             </div>
 
-            <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors">
+            <div className="mt-5 pt-3.5 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors shrink-0">
               <span>Filter All Specimens</span>
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1.5 transition-transform duration-200" />
             </div>
           </SpotlightCard>
         </Link>
 
         {/* Portal 2: Time Map */}
-        <Link to="/map" className="block group">
+        <Link to="/map" className="block group focus:outline-none">
           <SpotlightCard
             whileHover={{ y: -4 }}
             transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-            className="museum-plinth rounded-xl hover:border-amber-500/40 p-6 sm:p-7 transition-colors shadow-xl flex flex-col justify-between space-y-5 h-full"
+            className="museum-plinth rounded-xl border border-white/[0.08] hover:border-amber-500/40 p-6 sm:p-7 transition-all duration-200 shadow-xl flex flex-col justify-between h-full group-focus-visible:ring-2 group-focus-visible:ring-amber-400"
           >
-            <div className="space-y-3">
-              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5">
-                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5">
+            <div className="space-y-3 flex-1 flex flex-col">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5 min-h-[32px] gap-2">
+                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5 shrink-0">
                   <Globe className="h-3 w-3" /> PALEOGEOGRAPHY
                 </span>
-                <span className="text-xs text-slate-400 font-bold">
+                <span className="text-[10px] sm:text-[11px] text-slate-400 font-bold uppercase tracking-wider shrink-0">
                   GEOLOGICAL STRATA
                 </span>
               </div>
 
-              <h3 className="text-2xl font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans">
-                Geological Time-Map
+              <h3 className="text-xl sm:text-2xl font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans min-h-[56px] flex items-center leading-tight">
+                Geological Time Map
               </h3>
 
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans flex-1">
                 Explore major fossil sites around the globe dynamically filtered by geological time period from Cambrian marine explosion to Pleistocene megafauna.
               </p>
             </div>
 
-            <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors">
-              <span>Open Geological Map &amp; Drift</span>
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            <div className="mt-5 pt-3.5 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors shrink-0">
+              <span>Open Geological Map</span>
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1.5 transition-transform duration-200" />
             </div>
           </SpotlightCard>
         </Link>
 
         {/* Portal 3: Multi-Specimen Caliper Runway */}
-        <Link to="/runway" className="block group">
+        <Link to="/runway" className="block group focus:outline-none">
           <SpotlightCard
             whileHover={{ y: -4 }}
             transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-            className="museum-plinth rounded-xl hover:border-amber-500/40 p-6 sm:p-7 transition-colors shadow-xl flex flex-col justify-between space-y-5 h-full"
+            className="museum-plinth rounded-xl border border-white/[0.08] hover:border-amber-500/40 p-6 sm:p-7 transition-all duration-200 shadow-xl flex flex-col justify-between h-full group-focus-visible:ring-2 group-focus-visible:ring-amber-400"
           >
-            <div className="space-y-3">
-              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5">
-                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5">
+            <div className="space-y-3 flex-1 flex flex-col">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5 min-h-[32px] gap-2">
+                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5 shrink-0">
                   <Scale className="h-3 w-3" /> 1:1 METRIC RUNWAY
                 </span>
-                <span className="text-xs text-slate-400 font-bold">
-                  MULTI-SPECIMEN LINEUP
+                <span className="text-[10px] sm:text-[11px] text-slate-400 font-bold uppercase tracking-wider shrink-0">
+                  SPECIMEN LINEUP
                 </span>
               </div>
 
-              <h3 className="text-2xl font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans">
+              <h3 className="text-xl sm:text-2xl font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans min-h-[56px] flex items-center leading-tight">
                 Caliper Scale Runway
               </h3>
 
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans flex-1">
                 Project up to 6 prehistoric creatures simultaneously on a calibrated Cartesian stage with reference models (Human, Bus, Elephant) and dimensional differentials.
               </p>
             </div>
 
-            <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors">
+            <div className="mt-5 pt-3.5 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors shrink-0">
               <span>Launch Lineup Arena</span>
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1.5 transition-transform duration-200" />
             </div>
           </SpotlightCard>
         </Link>
 
         {/* Portal 4: Curator Trials & Field Notebook */}
-        <Link to="/challenge" className="block group">
+        <Link to="/challenge" className="block group focus:outline-none">
           <SpotlightCard
             whileHover={{ y: -4 }}
             transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-            className="museum-plinth rounded-xl hover:border-amber-500/40 p-6 sm:p-7 transition-colors shadow-xl flex flex-col justify-between space-y-5 h-full"
+            className="museum-plinth rounded-xl border border-white/[0.08] hover:border-amber-500/40 p-6 sm:p-7 transition-all duration-200 shadow-xl flex flex-col justify-between h-full group-focus-visible:ring-2 group-focus-visible:ring-amber-400"
           >
-            <div className="space-y-3">
-              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5">
-                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5">
-                  <Trophy className="h-3 w-3" /> FIELD TRIALS &amp; ARCHIVE
+            <div className="space-y-3 flex-1 flex flex-col">
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5 min-h-[32px] gap-2">
+                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5 shrink-0">
+                  <Trophy className="h-3 w-3" /> FIELD TRIALS
                 </span>
-                <span className="text-xs text-slate-400 font-bold">
-                  GAMIFIED CHALLENGES
+                <span className="text-[10px] sm:text-[11px] text-slate-400 font-bold uppercase tracking-wider shrink-0">
+                  CHALLENGES
                 </span>
               </div>
 
-              <h3 className="text-2xl font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans">
+              <h3 className="text-xl sm:text-2xl font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans min-h-[56px] flex items-center leading-tight">
                 Curator Trials &amp; Notebook
               </h3>
 
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans flex-1">
                 Test your diagnostic intuition with Holotype Detective, Caliper Metric Guesser, and Chronostratigraphic sorting to climb the museum curator ranks.
               </p>
             </div>
 
-            <div className="pt-3 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors">
+            <div className="mt-5 pt-3.5 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors shrink-0">
               <span>Enter Curator Trials</span>
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1.5 transition-transform duration-200" />
             </div>
           </SpotlightCard>
         </Link>
