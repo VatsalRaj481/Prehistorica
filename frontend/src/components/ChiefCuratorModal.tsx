@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, KeyboardEvent, useMemo } from 'react';
+import { useState, useRef, useEffect, KeyboardEvent, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import {
@@ -13,7 +13,9 @@ import {
   ArrowRight,
   HelpCircle,
   Dna,
-  Square
+  Square,
+  Pause,
+  Play
 } from 'lucide-react';
 import { askChiefCurator, CuratorGroundingSpecimen } from '../services/api.js';
 import RajyResponseRenderer from './RajyResponseRenderer.js';
@@ -72,26 +74,78 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
   ]);
   const [input, setInput] = useState(initialQuery || '');
   const [loading, setLoading] = useState(false);
+
+  // Global Voice Mode setting (ON / OFF)
   const [ttsEnabled, setTtsEnabled] = useState(false);
+
+  // Active playback state: speaking vs. paused
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Text buffer & character tracking for seamless pause/resume
+  const currentCleanTextRef = useRef<string>('');
+  const currentCharIndexRef = useRef<number>(0);
+  const activeUtteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Focus input on open
+  /**
+   * Browser-Native Acoustic Tuning:
+   * Selects a natural, softer English voice from available browser voices
+   * to suit Rajy's character as a curious, scholarly baby dinosaur.
+   */
+  const selectBabyDinoVoice = useCallback((): SpeechSynthesisVoice | null => {
+    if (!('speechSynthesis' in window)) return null;
+    const voices = window.speechSynthesis.getVoices();
+    if (!voices || voices.length === 0) return null;
+
+    // Favor natural, clear English voices with lighter acoustic timbres
+    const preferred = voices.find(
+      (v) =>
+        v.lang.startsWith('en') &&
+        (v.name.includes('Natural') ||
+          v.name.includes('Online') ||
+          v.name.includes('Samantha') ||
+          v.name.includes('Victoria') ||
+          v.name.includes('Google US English') ||
+          v.name.includes('Jenny') ||
+          v.name.includes('Zira') ||
+          v.name.includes('Karen'))
+    );
+
+    if (preferred) return preferred;
+
+    // Fallback to any English voice
+    const anyEnglish = voices.find((v) => v.lang.startsWith('en'));
+    return anyEnglish || voices[0] || null;
+  }, []);
+
+  const stopSpeaking = useCallback(() => {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+    activeUtteranceRef.current = null;
+    setIsSpeaking(false);
+    setIsPaused(false);
+    currentCharIndexRef.current = 0;
+  }, []);
+
+  // Focus input on open, silence speech on close
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 150);
     } else {
       stopSpeaking();
     }
-  }, [isOpen]);
+  }, [isOpen, stopSpeaking]);
 
   // Clean up speech synthesis on unmount
   useEffect(() => {
     return () => {
       stopSpeaking();
     };
-  }, []);
+  }, [stopSpeaking]);
 
   // Auto-scroll on subsequent messages or loading states
   useEffect(() => {
@@ -100,45 +154,126 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     }
   }, [messages.length, loading, shouldReduceMotion]);
 
-  const stopSpeaking = () => {
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
+  /**
+   * Core vocal synthesizer applying:
+   * - Pitch: 1.35 (bright, youthful baby-dino acoustic formant)
+   * - Rate: 1.12 (inquisitive, energetic, eager tempo)
+   * - Word boundary tracking for exact resume
+   */
+  const speakText = useCallback(
+    (text: string, startIndex: number = 0) => {
+      if (!ttsEnabled || !('speechSynthesis' in window)) return;
+
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+
+      // Clean markdown formatting and links for natural vocal flow
+      const clean = text
+        .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1')
+        .replace(/[*_#`>]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      if (!clean) return;
+
+      currentCleanTextRef.current = clean;
+      const textToSpeak = startIndex > 0 ? clean.slice(startIndex) : clean;
+
+      const utterance = new SpeechSynthesisUtterance(textToSpeak);
+
+      // Acoustic calibration for baby dinosaur persona
+      utterance.pitch = 1.35;
+      utterance.rate = 1.12;
+
+      const voice = selectBabyDinoVoice();
+      if (voice) {
+        utterance.voice = voice;
+      }
+
+      // Track character boundary for precise pause/resume offset
+      utterance.onboundary = (e) => {
+        if (e.name === 'word') {
+          currentCharIndexRef.current = startIndex + e.charIndex;
+        }
+      };
+
+      utterance.onstart = () => {
+        setIsSpeaking(true);
+        setIsPaused(false);
+      };
+
+      utterance.onend = () => {
+        setIsSpeaking(false);
+        setIsPaused(false);
+        currentCharIndexRef.current = 0;
+      };
+
+      utterance.onerror = (e) => {
+        if (e.error !== 'canceled' && e.error !== 'interrupted') {
+          setIsSpeaking(false);
+          setIsPaused(false);
+        }
+      };
+
+      activeUtteranceRef.current = utterance;
+      window.speechSynthesis.speak(utterance);
+    },
+    [ttsEnabled, selectBabyDinoVoice]
+  );
+
+  /**
+   * Dedicated Pause feature:
+   * Pauses vocal narration at the exact word without canceling or losing place.
+   */
+  const pauseSpeaking = () => {
+    if (!('speechSynthesis' in window)) return;
+
+    if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+      window.speechSynthesis.pause();
     }
     setIsSpeaking(false);
+    setIsPaused(true);
   };
 
-  const speakText = (text: string) => {
-    if (!ttsEnabled || !('speechSynthesis' in window)) return;
-    stopSpeaking();
+  /**
+   * Dedicated Resume feature:
+   * Resumes vocal narration from the exact word/syllable where paused.
+   */
+  const resumeSpeaking = () => {
+    if (!('speechSynthesis' in window)) return;
 
-    // Clean markdown formatting and links for natural vocal flow
-    const clean = text
-      .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1')
-      .replace(/[*_#`>]/g, '')
-      .replace(/\s+/g, ' ')
-      .trim();
-
-    if (!clean) return;
-
-    const utterance = new SpeechSynthesisUtterance(clean);
-    utterance.rate = 1.0;
-    utterance.pitch = 0.95;
-    utterance.onstart = () => setIsSpeaking(true);
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
-    window.speechSynthesis.speak(utterance);
+    if (window.speechSynthesis.paused) {
+      window.speechSynthesis.resume();
+      setIsSpeaking(true);
+      setIsPaused(false);
+    } else if (currentCleanTextRef.current && currentCharIndexRef.current > 0) {
+      // Browser resume fallback using tracked character offset
+      speakText(currentCleanTextRef.current, currentCharIndexRef.current);
+    } else {
+      // Re-read latest assistant message
+      const lastAssistantMsg = [...messages].reverse().find((m) => m.role === 'assistant');
+      if (lastAssistantMsg) {
+        speakText(lastAssistantMsg.content, 0);
+      }
+    }
   };
 
+  /**
+   * Global Voice Mode Toggle:
+   * Controls whether Voice Mode is enabled or disabled overall.
+   * Toggling OFF completely cancels and flushes all audio.
+   */
   const toggleTts = () => {
     if (ttsEnabled) {
       stopSpeaking();
       setTtsEnabled(false);
     } else {
       setTtsEnabled(true);
-      // If there is an existing assistant message, narrate it
       const lastAssistantMsg = [...messages].reverse().find((m) => m.role === 'assistant');
       if (lastAssistantMsg) {
-        speakText(lastAssistantMsg.content);
+        // Speak using baby dino acoustic tuning
+        setTimeout(() => speakText(lastAssistantMsg.content, 0), 50);
       }
     }
   };
@@ -176,7 +311,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       };
 
       setMessages((prev) => [...prev, botMessage]);
-      speakText(res.answer);
+      speakText(res.answer, 0);
     } catch (err: any) {
       const errorMsg: Message = {
         id: (Date.now() + 1).toString(),
@@ -327,8 +462,9 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 </div>
               </div>
 
-              {/* Header Controls: Voice Narration & Close */}
-              <div className="flex items-center gap-2 shrink-0">
+              {/* Header Controls: Global Voice Mode Toggle, Pause/Resume, Stop & Close */}
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                {/* 1. Global Voice Mode Toggle (ON / OFF) */}
                 <button
                   type="button"
                   onClick={toggleTts}
@@ -339,38 +475,20 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                   }`}
                   title={
                     ttsEnabled
-                      ? isSpeaking
-                        ? 'Rajy is speaking — click to mute or turn off voice'
-                        : 'Voice narration active — Rajy will read responses (click to mute)'
-                      : 'Enable vocal voice narration for Rajy'
+                      ? 'Voice Mode is ON (click to turn OFF)'
+                      : 'Enable baby dino vocal narration for Rajy'
                   }
                   aria-pressed={ttsEnabled}
                   aria-label={
                     ttsEnabled
-                      ? isSpeaking
-                        ? 'Voice Mode Active — Rajy Speaking'
-                        : 'Voice Mode Active for Rajy'
+                      ? 'Voice Mode Active'
                       : 'Voice Mode Inactive — Enable vocal narration for Rajy'
                   }
                 >
                   {ttsEnabled ? (
                     <>
-                      {isSpeaking ? (
-                        <span className="flex items-end gap-0.5 h-3.5 px-0.5">
-                          <span className="w-1 bg-amber-400 rounded-full animate-[pulse_0.6s_ease-in-out_infinite] h-2.5" />
-                          <span className="w-1 bg-amber-400 rounded-full animate-[pulse_0.4s_ease-in-out_infinite] h-3.5" />
-                          <span className="w-1 bg-amber-400 rounded-full animate-[pulse_0.8s_ease-in-out_infinite] h-2" />
-                        </span>
-                      ) : (
-                        <span className="relative flex h-2 w-2">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75" />
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-400" />
-                        </span>
-                      )}
                       <Volume2 className="w-3.5 h-3.5 text-amber-400" />
-                      <span className="text-[11px] font-bold">
-                        {isSpeaking ? 'Speaking...' : 'Voice: Active'}
-                      </span>
+                      <span className="text-[11px] font-bold">Voice: ON</span>
                     </>
                   ) : (
                     <>
@@ -380,24 +498,57 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                   )}
                 </button>
 
-                {/* Instant Stop Speech button if speaking */}
-                {isSpeaking && (
-                  <button
-                    type="button"
-                    onClick={stopSpeaking}
-                    className="min-h-[36px] sm:min-h-[38px] px-2 py-1.5 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 text-xs font-mono flex items-center gap-1 cursor-pointer transition-colors"
-                    title="Stop speaking current response"
-                    aria-label="Stop vocal narration"
-                  >
-                    <Square className="w-3 h-3 fill-current" />
-                    <span className="hidden xs:inline text-[10px] uppercase font-bold">Stop</span>
-                  </button>
+                {/* 2. Separate Pause / Resume & Stop Controls (Only visible when Voice Mode is ON and audio is active or paused) */}
+                {ttsEnabled && (isSpeaking || isPaused) && (
+                  <div className="flex items-center gap-1 bg-slate-900/90 border border-amber-500/30 rounded-lg p-0.5 shadow-sm">
+                    {/* Pause / Resume Button */}
+                    {isSpeaking ? (
+                      <button
+                        type="button"
+                        onClick={pauseSpeaking}
+                        className="min-h-[32px] sm:min-h-[34px] px-2 sm:px-2.5 py-1 rounded-md bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 text-xs font-mono flex items-center gap-1.5 cursor-pointer transition-colors"
+                        title="Pause speech at current word"
+                        aria-label="Pause vocal narration"
+                      >
+                        <span className="flex items-end gap-0.5 h-3">
+                          <span className="w-0.5 bg-amber-400 rounded-full animate-[pulse_0.6s_ease-in-out_infinite] h-2" />
+                          <span className="w-0.5 bg-amber-400 rounded-full animate-[pulse_0.4s_ease-in-out_infinite] h-3" />
+                          <span className="w-0.5 bg-amber-400 rounded-full animate-[pulse_0.8s_ease-in-out_infinite] h-1.5" />
+                        </span>
+                        <Pause className="w-3 h-3 fill-current ml-0.5" />
+                        <span className="text-[10px] uppercase font-bold hidden xs:inline">Pause</span>
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={resumeSpeaking}
+                        className="min-h-[32px] sm:min-h-[34px] px-2 sm:px-2.5 py-1 rounded-md bg-amber-500 text-slate-950 text-xs font-mono font-bold flex items-center gap-1.5 cursor-pointer hover:bg-amber-400 transition-colors shadow-sm"
+                        title="Resume speech from current word"
+                        aria-label="Resume vocal narration"
+                      >
+                        <Play className="w-3 h-3 fill-current" />
+                        <span className="text-[10px] uppercase font-bold">Resume</span>
+                      </button>
+                    )}
+
+                    {/* Instant Stop / Cancel Button */}
+                    <button
+                      type="button"
+                      onClick={stopSpeaking}
+                      className="min-h-[32px] sm:min-h-[34px] p-1.5 rounded-md hover:bg-slate-800 text-slate-400 hover:text-amber-300 transition-colors cursor-pointer"
+                      title="Stop audio narration completely"
+                      aria-label="Stop vocal narration"
+                    >
+                      <Square className="w-3 h-3 fill-current" />
+                    </button>
+                  </div>
                 )}
 
+                {/* Close Button */}
                 <button
                   type="button"
                   onClick={onClose}
-                  className="min-h-[36px] min-w-[36px] sm:min-h-[38px] sm:min-w-[38px] p-2 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-white/[0.08] text-slate-400 hover:text-white transition-all cursor-pointer flex items-center justify-center"
+                  className="min-h-[36px] min-w-[36px] sm:min-h-[38px] sm:min-w-[38px] p-2 rounded-lg bg-slate-900/80 hover:bg-slate-850 border border-white/[0.08] text-slate-400 hover:text-white transition-all cursor-pointer flex items-center justify-center ml-0.5"
                   title="Close Rajy AI Docent"
                   aria-label="Close Rajy AI Docent"
                 >
@@ -463,7 +614,9 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 >
                   {messages.map((msg) => {
                     const isAssistant = msg.role === 'assistant';
-                    const isCurrentlySpeaking = isSpeaking && msg.id === lastAssistantMessageId;
+                    const isThisLastAssistant = msg.id === lastAssistantMessageId;
+                    const isCurrentlySpeaking = isSpeaking && isThisLastAssistant;
+                    const isCurrentlyPaused = isPaused && isThisLastAssistant;
 
                     return (
                       <article
@@ -483,6 +636,11 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                               {isCurrentlySpeaking && (
                                 <span className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-300 text-[9px] font-mono border border-amber-500/40 animate-pulse ml-1">
                                   <Volume2 className="w-2.5 h-2.5" /> Narrating
+                                </span>
+                              )}
+                              {isCurrentlyPaused && (
+                                <span className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full bg-slate-800 text-amber-300 text-[9px] font-mono border border-amber-500/30 ml-1">
+                                  <Pause className="w-2.5 h-2.5" /> Paused
                                 </span>
                               )}
                             </div>
@@ -519,7 +677,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                               <RajyResponseRenderer
                                 content={msg.content}
                                 onLinkClick={onClose}
-                                isLatestAssistantMessage={msg.id === lastAssistantMessageId}
+                                isLatestAssistantMessage={isThisLastAssistant}
                               />
                             ) : (
                               <p className="whitespace-pre-wrap leading-relaxed text-xs sm:text-[13px] md:text-sm">
