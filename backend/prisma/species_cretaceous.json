@@ -219,7 +219,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Niobrara Formation (Kansas)\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Pterosauria\",\"family\":\"Pteranodontidae\",\"genus\":\"Pteranodon\",\"species\":\"Pteranodon longiceps\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/31-Pteranodon.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/4/4d/Pteranodon_longiceps_-_1.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/9/9b/Pteranodon_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Pteranodon_TD.png\"}]",
     "discoveryHistory": "Discovered by Othniel Charles Marsh in 1870 in the Smoky Hill Chalk of Kansas. It was the first pterosaur found outside Europe.",
     "interestingFacts": "{\"Unlike earlier pterosaurs, it lacked teeth and had a bird-like beak.\",\"Males had a large, backward-pointing crest on their skull, likely used for display and steering.\",\"Fossils suggest they spent most of their time gliding over the Western Interior Seaway.\"}",
     "sizeNotes": "Wingspan: 5.6 meters for females, up to 7.2 meters for males. Weight: ~30 to 90 kg. Note: Wingspan 5.6 m (females) to 6.5–7.0 m (large males). Quadrupedal standing height ~1.5 m, body length ~2.0 m. Modern mass calculations (Witton 2013) demonstrate 50 kg is too heavy for an animal with ultra-thin cortical bone; adult male mass is 30–40 kg (representative 35 kg).",
@@ -230,7 +230,7 @@
     "sources": "[{\"citation\":\"Marsh, O.C. (1876). Notice of new Odontornithes and Pterosauria. American Journal of Science 11(66): 507–509.\",\"url\":\"https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=38499\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:38.382Z",
-    "updatedAt": "2026-09-08T15:52:06.795Z"
+    "updatedAt": "2026-09-24T10:20:27.526Z"
   },
   {
     "id": 32,
@@ -2342,7 +2342,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Niobrara\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Actinopterygii\",\"order\":\"Ichthyodectiformes\",\"family\":\"Ichthyodectidae\",\"genus\":\"Xiphactinus\",\"species\":\"Xiphactinus audax\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/b/b6/Xiphactinus_audax.jpg\",\"type\":\"art\",\"credit\":\"Apokryltaros (CC BY 2.5)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Xiphactinus_audax.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/539-Xiphactinus.jpg\",\"type\":\"habitat_scene\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/b/b6/Xiphactinus_audax.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/e1/XiphactinusDB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (Public domain)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:XiphactinusDB.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/b/b6/Xiphactinus_audax.jpg\",\"type\":\"art\",\"credit\":\"Apokryltaros (CC BY 2.5)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Xiphactinus_audax.jpg\"}]",
     "discoveryHistory": "• Discovered in the 19th or 20th century.\n• Holotype found in Cretaceous fossil beds.\n• Named Xiphactinus by paleontologists after careful study.\n• Subsequent discoveries expanded our understanding of its anatomy.",
     "interestingFacts": "[\"Xiphactinus was a large predatory fish up to 6 meters long, one of the largest bony fish of the Cretaceous.\",\"A famous specimen preserves a 1.8-meter Gillicus fish inside its stomach, swallowed whole.\",\"Its name means \\\"sword ray,\\\" referring to its large, fang-like teeth.\"]",
     "sizeNotes": "Bulldog fish.",
@@ -2353,7 +2353,8 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Xiphactinus audax description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Xiphactinus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:08.692Z",
-    "updatedAt": "2026-09-17T09:52:21.733Z"
+    "updatedAt": "2026-09-24T08:33:45.234Z",
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/4fff35fb-3394-437e-861d-dccbd1312d5a.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/4fff35fb-3394-437e-861d-dccbd1312d5a\",\"license\":\"Attribution 3.0 Unported\",\"credit\":\"Scott Hartman\",\"taxon\":\"Ichthyodectes ctenodon\",\"taxonMatch\":\"generic approximation, not species-specific\"}"
   },
   {
     "id": 540,
@@ -4972,7 +4973,7 @@
     "id": 2642,
     "name": "Opisthocoelicaudia skarzynskii",
     "scientificName": "Opisthocoelicaudia skarzynskii",
-    "nameMeaning": "Posterior cavity tail named for Maciej Skarzynski",
+    "nameMeaning": "Posterior cavity tail named for Wojciech Skarzynski",
     "timePeriod": "Late Cretaceous",
     "epoch": "Maastrichtian Epoch",
     "myaStart": 70,
@@ -4984,7 +4985,7 @@
     "geographicRange": "{\"region\": \"Asia\", \"country\": \"Mongolia\", \"fossilFormation\": \"Nemegt Formation\", \"coordinates\": [43.5, 101.0]}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Saurischia\",\"family\":\"Camarasauridae\",\"genus\":\"Opisthocoelicaudia\",\"species\":\"Opisthocoelicaudia skarzynskii\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/2642-perfect-art.jpg\",\"type\":\"art\",\"credit\":\"FunkMonk (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Opisthocoelicaudia%20flipped.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/9/9c/Opisthocoelicaudia_flipped.jpg\",\"type\":\"art\",\"credit\":\"FunkMonk (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Opisthocoelicaudia_flipped.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/2642-perfect-art.jpg\",\"type\":\"fossil_specimen\",\"credit\":\"Opisthocoelous anterior tail vertebra with field trowel (holotype in situ, Nemegt Formation)\",\"sourceUrl\":\"https://en.wikipedia.org/wiki/Opisthocoelicaudia\"}]",
     "discoveryHistory": "Discovered in 1965 by Polish-Mongolian expedition in Nemegt Basin.",
     "interestingFacts": "[\"Opposite cavity tail vertebrae for rigid tripod stance.\", \"Lacked clawed fingers on forelimbs.\", \"Complete skeleton minus skull.\"]",
     "sizeNotes": "Adult length ~12.0m, height ~3.5m, estimated weight ~10000kg.",
@@ -4995,7 +4996,7 @@
     "sources": "[{\"citation\": \"Borsuk-Bialynicka, M. (1977). Palaeontol. Pol.\", \"url\": \"https://commons.wikimedia.org\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T14:14:53.675Z",
-    "updatedAt": "2026-09-08T15:37:22.211Z"
+    "updatedAt": "2026-09-24T08:00:09.351Z"
   },
   {
     "id": 2643,
@@ -5314,7 +5315,8 @@
     "sources": "[{\"citation\":\"Bardack, D. (1965). Anatomy and evolution of chirocentrid fishes. University of Kansas Paleontological Contributions.\",\"url\":\"https://hdl.handle.net/1808/3814\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.184Z",
-    "updatedAt": "2026-09-17T09:52:21.733Z"
+    "updatedAt": "2026-09-24T08:27:56.162Z",
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/4fff35fb-3394-437e-861d-dccbd1312d5a.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/4fff35fb-3394-437e-861d-dccbd1312d5a\",\"license\":\"Attribution 3.0 Unported\",\"credit\":\"Scott Hartman\",\"taxon\":\"Ichthyodectes ctenodon\",\"taxonMatch\":\"generic approximation, not species-specific\"}"
   },
   {
     "id": 3165,

@@ -1726,7 +1726,7 @@
     "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Poposauroid\",\"family\":\"Lotosauridae\",\"genus\":\"Lotosaurus\",\"species\":\"Lotosaurus adentus\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/119-Lotosaurus.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (https://spinops.blogspot.com) (CC BY 2.5)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Lotosaurus%20BW.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/3/31/Lotosaurus_BW.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (spinops.blogspot.com) (CC BY 2.5)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Lotosaurus_BW.jpg\"}]",
     "discoveryHistory": "• Discovered in Hunan, China in the 1970s.\n• Described by Zhang in 1975.\n• Distinctive due to its heavy build and neural spine sail.",
     "interestingFacts": "[\"Possessed a prominent sail on its back.\",\"Had a toothless, beaked mouth.\",\"Believed to have been an herbivore.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
@@ -1737,7 +1737,8 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Lotosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Lotosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:28.803Z",
-    "updatedAt": "2026-09-08T15:52:10.808Z"
+    "updatedAt": "2026-09-24T08:27:56.062Z",
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/18668a5a-e3d8-48bc-b141-c246507aeb5b.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/18668a5a-e3d8-48bc-b141-c246507aeb5b\",\"license\":\"CC0 1.0 Universal Public Domain Dedication\",\"credit\":\"Miguel Hernández\",\"taxon\":\"Ctenosauriscus koeneni\",\"taxonMatch\":\"generic approximation, not species-specific\"}"
   },
   {
     "id": 120,

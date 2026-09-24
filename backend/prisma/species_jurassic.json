@@ -3965,7 +3965,7 @@
     "geographicRange": "{\"continent\":\"Europe, South America\",\"region\":\"Tethys / Boreal Oceans\",\"country\":\"United Kingdom, France, Germany, Chile\",\"fossilFormation\":\"Oxford Clay Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Actinopterygii\",\"order\":\"Pachycormiformes\",\"family\":\"Pachycormidae\",\"genus\":\"Leedsichthys\",\"species\":\"Leedsichthys problematicus\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/eb/Leedsichthys_problematicus_1DB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Leedsichthys_problematicus_1DB.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/7/79/Leedsichthys_paleoart.jpg\",\"type\":\"art\",\"credit\":\"LiterallyMiguel (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Leedsichthys_paleoart.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/6/65/Leedsichthys_Liopleurodon.jpg\",\"type\":\"art\",\"credit\":\"Merdalhão (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Leedsichthys_Liopleurodon.jpg\"}]",
     "discoveryHistory": "• First fragments collected in 1886 near Peterborough, England, by fossil collector Alfred Nicholson Leeds.\n• Named 'problematicus' by Arthur Smith Woodward because giant fragmented bones were difficult to reconstruct.\n• Comprehensive 2013 laser-scan study by Jeff Liston confirmed adult lengths between 16 and 16.5 meters.",
     "interestingFacts": "[\"Holds the record as the largest bony fish in Earth's history, rivaling modern baleen whales in ecological role.\",\"Possessed over 40,000 delicate mesh-like gill raker teeth to filter microscopic plankton.\",\"Bite marks on Leedsichthys fins show it was hunted by giant marine predators like Liopleurodon and Metriorhynchus.\"]",
     "sizeNotes": "The largest bony fish (Osteichthyes) known to have ever existed, reaching 16.5 meters.",
@@ -3976,7 +3976,7 @@
     "sources": "[{\"citation\":\"Liston, J. J. et al. (2013). Growth, age and size of the giant Jurassic bony fish Leedsichthys problematicus. Mesozoic Fishes 5.\",\"url\":\"https://www.researchgate.net/publication/258334460\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.981Z",
-    "updatedAt": "2026-09-08T15:37:24.117Z"
+    "updatedAt": "2026-09-24T08:27:56.109Z"
   },
   {
     "id": 5188,
