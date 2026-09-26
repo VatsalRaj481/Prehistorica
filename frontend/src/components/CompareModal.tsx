@@ -7,6 +7,7 @@ import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 import { formatFeet } from '../utils/formatDimensions.js';
 import { formatMass } from '../utils/formatMass.js';
 import SpotlightCard from './SpotlightCard.js';
+import ShinyText from './reactbits/ShinyText.js';
 
 interface CompareModalProps {
   initialSpecies?: Species | null;
@@ -598,7 +599,9 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
             <div className="flex items-center justify-between border-b border-white/[0.08] pb-3 sm:pb-4">
               <div className="flex items-center gap-2">
                 <ArrowRightLeft className="h-4 w-4 sm:h-5 sm:w-5 text-amber-400" />
-                <h2 className="text-sm sm:text-lg font-bold text-slate-100 font-sans uppercase tracking-tight">Species Comparison</h2>
+                <h2 className="text-sm sm:text-lg font-bold text-slate-100 font-sans uppercase tracking-tight">
+                  <ShinyText text="Species Comparison" speed={3.5} />
+                </h2>
               </div>
               <motion.button
                 whileTap={{ scale: 0.92 }}

@@ -6,6 +6,7 @@ interface RajyResponseRendererProps {
   content: string;
   onLinkClick?: () => void;
   isLatestAssistantMessage?: boolean;
+  isFirstAssistantResponse?: boolean;
 }
 
 interface BlockItem {
@@ -26,10 +27,11 @@ interface BlockItem {
  */
 export default function RajyResponseRenderer({
   content,
-  onLinkClick
+  onLinkClick,
+  isFirstAssistantResponse = false
 }: RajyResponseRendererProps) {
   // 1. Clean repetitive self-introductions or mismatched curator titles from follow-up turns
-  const cleanedContent = cleanRepetitiveIntroductions(content);
+  const cleanedContent = cleanRepetitiveIntroductions(content, isFirstAssistantResponse);
 
   // 2. Parse text into structured block-level elements
   const blocks = parseBlocks(cleanedContent);
@@ -43,18 +45,33 @@ export default function RajyResponseRenderer({
 
 /**
  * Trims redundant introductory prefixes like "Hello! I am Rajy..." or
- * "Greetings, visitor. As Chief Curator of Prehistorica, I am delighted to..."
- * so follow-up conversation flows naturally and preserves Rajy's AI Docent identity.
+ * "Welcome to Prehistorica. I am The Chief Curator..." from follow-up turns
+ * while preserving the canonical greeting on the very first assistant response.
  */
-function cleanRepetitiveIntroductions(raw: string): string {
+function cleanRepetitiveIntroductions(raw: string, isFirstAssistantResponse = false): string {
   if (!raw) return '';
-  return raw
+  const trimmed = raw.trim();
+
+  // If this is the initial assistant response, preserve the canonical welcome
+  if (isFirstAssistantResponse) {
+    return trimmed;
+  }
+
+  return trimmed
     .replace(
-      /^(?:Greetings|Hello|Welcome|Hi),?\s*(?:visitor|explorer|guest)?[.!]?\s*(?:As\s+(?:Chief\s+Curator|Museum\s+Curator|the\s+Curator|AI\s+Docent)\s+of\s+Prehistorica,?\s*)?(?:I\s+am\s+(?:delighted|pleased|excited|happy)\s+to\s+(?:guide|welcome|share|discuss)[^.\n]*[.!:]\s*)?/i,
+      /^Welcome\s+to\s+Prehistorica[.!:]?\s*(?:(?:I\s+am|I'm)\s+(?:Rajy\s*[-—–]\s*)?(?:the\s+)?Chief\s+Curator,?\s*)?(?:(?:and\s+)?I\s+am\s+delighted\s+to\s+guide\s+you[^.\n]*[.!:]\s*)?/i,
       ''
     )
     .replace(
-      /^(?:(?:Hello|Hi|Greetings|Welcome)[!.,]?\s+)?(?:I am|I'm)\s+Rajy,?\s+(?:your\s+)?(?:Prehistorica\s+)?(?:AI\s+)?Docent[!.,]?\s*/i,
+      /^(?:Greetings|Hello|Hi),?\s*(?:visitor|explorer|guest)?[.!]?\s*(?:As\s+(?:Chief\s+Curator|Museum\s+Curator|the\s+Curator|AI\s+Docent)\s+of\s+Prehistorica,?\s*)?(?:I\s+am\s+(?:delighted|pleased|excited|happy)\s+to\s+(?:guide|welcome|share|discuss)[^.\n]*[.!:]\s*)?/i,
+      ''
+    )
+    .replace(
+      /^Welcome,?\s+(?:visitor|explorer|guest)[.!]?\s*(?:As\s+(?:Chief\s+Curator|Museum\s+Curator|the\s+Curator|AI\s+Docent)\s+of\s+Prehistorica,?\s*)?(?:I\s+am\s+(?:delighted|pleased|excited|happy)\s+to\s+(?:guide|welcome|share|discuss)[^.\n]*[.!:]\s*)?/i,
+      ''
+    )
+    .replace(
+      /^(?:(?:Hello|Hi|Greetings)[!.,]?\s+)?(?:I am|I'm)\s+Rajy,?\s+(?:your\s+)?(?:Prehistorica\s+)?(?:AI\s+)?Docent[!.,]?\s*/i,
       ''
     )
     .trim();

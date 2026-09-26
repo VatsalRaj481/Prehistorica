@@ -19,8 +19,10 @@ import {
   Sliders,
   RotateCcw
 } from 'lucide-react';
-import { askChiefCurator, CuratorGroundingSpecimen } from '../services/api.js';
+import { askChiefCurator, CuratorGroundingSpecimen, TOTAL_CATALOGED_SPECIMENS } from '../services/api.js';
 import RajyResponseRenderer from './RajyResponseRenderer.js';
+import ShinyText from './reactbits/ShinyText.js';
+import ClickSpark from './reactbits/ClickSpark.js';
 
 interface Message {
   id: string;
@@ -78,7 +80,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       id: 'welcome',
       role: 'assistant',
       content:
-        'Greetings, explorer! I am **Rajy**, your Prehistorica AI Docent.\n\nAsk me about prehistoric creatures, ancient ecosystems, evolution, biomechanics, or the deep-time history of Earth. Every insight is scientifically grounded directly in our **596 cataloged specimens**.',
+        `Greetings, explorer! I am **Rajy**, your Prehistorica AI Docent.\n\nAsk me about prehistoric creatures, ancient ecosystems, evolution, biomechanics, or the deep-time history of Earth. Every insight is scientifically grounded directly in our **${TOTAL_CATALOGED_SPECIMENS} cataloged specimens**.`,
       timestamp: 'Just now'
     }
   ]);
@@ -94,6 +96,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
   // Voice Settings Panel Open/Closed
   const [isVoiceSettingsOpen, setIsVoiceSettingsOpen] = useState(false);
+  const [showRawMatchScores, setShowRawMatchScores] = useState(false);
 
   // Available System Voices & User Preferences
   const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
@@ -109,6 +112,19 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     return saved ? parseFloat(saved) : DEFAULT_VOICE_CONFIG.pitch;
   });
 
+  const getRelevanceInfo = (similarity?: number) => {
+    if (similarity == null) {
+      return { label: 'Related Record', badgeClass: 'bg-slate-800 text-slate-300 border-white/[0.08]' };
+    }
+    if (similarity >= 70) {
+      return { label: 'High Relevance', badgeClass: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30' };
+    }
+    if (similarity >= 50) {
+      return { label: 'Moderate Relevance', badgeClass: 'bg-amber-500/15 text-amber-300 border-amber-500/30' };
+    }
+    return { label: 'Comparative Record', badgeClass: 'bg-slate-800 text-slate-400 border-white/[0.08]' };
+  };
+
   // Text buffer & character tracking for seamless pause/resume
   const currentCleanTextRef = useRef<string>('');
   const currentCharIndexRef = useRef<number>(0);
@@ -121,14 +137,15 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
   /**
    * Asynchronous System Voice Loading:
-   * Handles browser-specific voice loading events across Chrome, Safari, Edge, Firefox, and mobile.
+   * Handles browser-specific voice loading events dynamically across Chrome, Safari, Edge, Firefox, and mobile.
    */
   useEffect(() => {
     if (!('speechSynthesis' in window)) return;
 
+    let mounted = true;
     const loadVoices = () => {
       const voices = window.speechSynthesis.getVoices();
-      if (voices && voices.length > 0) {
+      if (voices && voices.length > 0 && mounted) {
         setAvailableVoices(voices);
       }
     };
@@ -136,7 +153,16 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     loadVoices();
     window.speechSynthesis.onvoiceschanged = loadVoices;
 
+    // Retry checks for Chromium and Safari where onvoiceschanged may not fire immediately
+    const t1 = setTimeout(loadVoices, 100);
+    const t2 = setTimeout(loadVoices, 400);
+    const t3 = setTimeout(loadVoices, 1000);
+
     return () => {
+      mounted = false;
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
       if ('speechSynthesis' in window) {
         window.speechSynthesis.onvoiceschanged = null;
       }
@@ -144,7 +170,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
   }, []);
 
   /**
-   * Click-outside handler for the compact voice settings panel
+   * Click-outside handler for the voice settings modal backdrop
    */
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -162,10 +188,10 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
   }, [isVoiceSettingsOpen]);
 
   /**
-   * Selects an active voice:
-   * 1. User's chosen voice from settings if set.
-   * 2. Natural / high-clarity English voice as preferred docent default.
-   * 3. Graceful fallback to any English voice or first system voice.
+   * Selects an active voice dynamically from speechSynthesis.getVoices():
+   * 1. User's chosen voice from settings if currently available on this device.
+   * 2. Browser's system default voice.
+   * 3. First English voice or first system voice.
    */
   const getActiveVoice = useCallback((): SpeechSynthesisVoice | null => {
     if (availableVoices.length === 0) return null;
@@ -175,27 +201,15 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       if (userChoice) return userChoice;
     }
 
-    const enVoices = availableVoices.filter((v) => v.lang.startsWith('en'));
-    if (enVoices.length === 0) return availableVoices[0] || null;
+    // Default to the OS/browser designated default voice if available
+    const systemDefault = availableVoices.find((v) => v.default);
+    if (systemDefault) return systemDefault;
 
-    // Favor natural, clear English voices with friendly museum docent timbre
-    const preferred =
-      enVoices.find(
-        (v) =>
-          (v.name.includes('Natural') ||
-            v.name.includes('Online') ||
-            v.name.includes('Samantha') ||
-            v.name.includes('Victoria') ||
-            v.name.includes('Google US English') ||
-            v.name.includes('Jenny') ||
-            v.name.includes('Zira') ||
-            v.name.includes('Karen')) &&
-          (v.lang === 'en-US' || v.lang === 'en_US')
-      ) ||
-      enVoices.find((v) => v.lang.startsWith('en-US')) ||
-      enVoices[0];
+    // Fallback: match English locale
+    const enVoice = availableVoices.find((v) => v.lang.startsWith('en'));
+    if (enVoice) return enVoice;
 
-    return preferred || null;
+    return availableVoices[0] || null;
   }, [availableVoices, selectedVoiceURI]);
 
   const stopKeepAlive = useCallback(() => {
@@ -608,16 +622,16 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
                     <h2 className="text-xs sm:text-sm font-black font-mono tracking-widest uppercase text-slate-100 truncate">
-                      PREHISTORICA <span className="text-amber-400">&bull;</span> AI DOCENT
+                      <ShinyText text="PREHISTORICA • AI DOCENT" speed={3.5} />
                     </h2>
                     <span className="hidden sm:inline-flex px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20 uppercase tracking-widest">
-                      596 Verified
+                      {TOTAL_CATALOGED_SPECIMENS} Verified
                     </span>
                   </div>
                   <p className="text-[10px] font-mono text-slate-400 truncate flex items-center gap-1.5">
                     <span className="text-slate-200 font-semibold">Rajy &bull; AI Docent</span>
                     <span className="text-slate-600">&bull;</span>
-                    <span className="italic text-slate-300">Rajasaurus narmadensis</span>
+                    <span className="text-slate-300">Prehistorica Pavilion Guide</span>
                   </p>
                 </div>
               </div>
@@ -625,26 +639,27 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
               {/* Header Controls: Global Voice Mode Toggle, Playback, Voice Settings & Close */}
               <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 {/* 1. Global Voice Mode Toggle (ON / OFF) */}
-                <button
-                  type="button"
-                  onClick={toggleTts}
-                  className={`min-h-[36px] sm:min-h-[38px] px-2.5 sm:px-3 py-1.5 rounded-lg border text-xs font-mono font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
-                    ttsEnabled
-                      ? 'bg-amber-500/15 border-amber-500/50 text-amber-300 shadow-[0_0_14px_rgba(245,158,11,0.25)] ring-1 ring-amber-500/30'
-                      : 'bg-slate-900/80 border-white/[0.08] text-slate-400 hover:text-slate-200 hover:bg-slate-850'
-                  }`}
-                  title={
-                    ttsEnabled
-                      ? 'Voice Mode is ON (click to turn OFF)'
-                      : 'Enable docent vocal narration for Rajy'
-                  }
-                  aria-pressed={ttsEnabled}
-                  aria-label={
-                    ttsEnabled
-                      ? 'Voice Mode Active'
-                      : 'Voice Mode Inactive — Enable vocal narration for Rajy'
-                  }
-                >
+                <ClickSpark sparkColor="#F59E0B">
+                  <button
+                    type="button"
+                    onClick={toggleTts}
+                    className={`min-h-[36px] sm:min-h-[38px] px-2.5 sm:px-3 py-1.5 rounded-lg border text-xs font-mono font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
+                      ttsEnabled
+                        ? 'bg-amber-500/15 border-amber-500/50 text-amber-300 shadow-[0_0_14px_rgba(245,158,11,0.25)] ring-1 ring-amber-500/30'
+                        : 'bg-slate-900/80 border-white/[0.08] text-slate-400 hover:text-slate-200 hover:bg-slate-850'
+                    }`}
+                    title={
+                      ttsEnabled
+                        ? 'Voice Mode is ON (click to turn OFF)'
+                        : 'Enable docent vocal narration for Rajy'
+                    }
+                    aria-pressed={ttsEnabled}
+                    aria-label={
+                      ttsEnabled
+                        ? 'Voice Mode Active'
+                        : 'Voice Mode Inactive — Enable vocal narration for Rajy'
+                    }
+                  >
                   {ttsEnabled ? (
                     <>
                       <Volume2 className="w-3.5 h-3.5 text-amber-400" />
@@ -657,6 +672,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                     </>
                   )}
                 </button>
+              </ClickSpark>
 
                 {/* 2. Separate Pause / Resume & Stop Controls (Visible when Voice Mode is ON and audio is active or paused) */}
                 {ttsEnabled && (isSpeaking || isPaused) && (
@@ -734,147 +750,160 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 </button>
               </div>
 
-              {/* ── Compact Voice Settings Popover ── */}
+              {/* ── Voice Settings Modal with Backdrop Overlay ── */}
               <AnimatePresence>
                 {isVoiceSettingsOpen && ttsEnabled && (
-                  <motion.div
-                    ref={settingsRef}
-                    initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.95, y: -6 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.95, y: -6 }}
-                    transition={{ duration: 0.15 }}
-                    className="absolute right-4 sm:right-6 top-full mt-2 w-[calc(100vw-2rem)] sm:w-80 p-3.5 rounded-xl bg-slate-950/98 border border-amber-500/35 shadow-[0_12px_36px_rgba(0,0,0,0.85)] backdrop-blur-2xl z-40 font-mono text-slate-200 space-y-3"
+                  <div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm"
+                    onClick={(e) => {
+                      if (e.target === e.currentTarget) setIsVoiceSettingsOpen(false);
+                    }}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="voice-settings-title"
                   >
-                    {/* Header */}
-                    <div className="flex items-center justify-between border-b border-white/[0.08] pb-2">
-                      <div className="flex items-center gap-1.5 text-xs font-bold text-amber-400 uppercase tracking-wider">
-                        <Sparkles className="w-3 h-3" />
-                        <span>Rajy Voice Settings</span>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={handleResetDefaults}
-                        className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-slate-900 hover:bg-amber-500/15 border border-white/[0.08] text-[10px] text-slate-400 hover:text-amber-300 transition-colors cursor-pointer"
-                        title="Restore Rajy's Default Voice Profile (Rate: 0.92, Pitch: 1.08)"
-                      >
-                        <RotateCcw className="w-2.5 h-2.5" />
-                        <span>Reset Defaults</span>
-                      </button>
-                    </div>
-
-                    {/* System Voice Selection */}
-                    <div className="space-y-1">
-                      <label htmlFor="voice-select" className="text-[10px] text-slate-400 uppercase tracking-wider block font-semibold">
-                        System Voice ({englishVoices.length} available)
-                      </label>
-                      <select
-                        id="voice-select"
-                        value={selectedVoiceURI}
-                        onChange={(e) => handleVoiceChange(e.target.value)}
-                        className="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/[0.1] text-xs text-slate-200 focus:border-amber-500/70 focus:outline-none transition-colors"
-                      >
-                        <option value="">Preferred Docent Voice ({activeVoiceName})</option>
-                        {englishVoices.map((v) => (
-                          <option key={v.voiceURI} value={v.voiceURI}>
-                            {v.name} ({v.lang})
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-
-                    {/* Speaking Speed (Rate) */}
-                    <div className="space-y-1.5">
-                      <div className="flex items-center justify-between text-[10px]">
-                        <span className="text-slate-400 uppercase tracking-wider font-semibold">Speaking Speed</span>
-                        <span className="text-amber-400 font-bold">{speechRate.toFixed(2)}x</span>
-                      </div>
-                      <input
-                        type="range"
-                        min="0.75"
-                        max="1.25"
-                        step="0.05"
-                        value={speechRate}
-                        onChange={(e) => handleRateChange(parseFloat(e.target.value))}
-                        className="w-full accent-amber-500 cursor-pointer h-1.5 bg-slate-900 rounded-lg"
-                        aria-label="Adjust speaking speed"
-                      />
-                      <div className="flex items-center justify-between pt-0.5">
+                    <motion.div
+                      ref={settingsRef}
+                      initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.95, y: 10 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                      transition={{ duration: 0.16 }}
+                      className="w-full max-w-sm sm:max-w-md p-4 sm:p-5 rounded-2xl bg-[#090E1B] border border-amber-500/40 shadow-[0_20px_50px_rgba(0,0,0,0.95)] backdrop-blur-2xl font-mono text-slate-200 space-y-4"
+                    >
+                      {/* Header */}
+                      <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5">
+                        <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-amber-400 uppercase tracking-wider" id="voice-settings-title">
+                          <Sliders className="w-4 h-4 text-amber-400" />
+                          <span>Rajy Voice Settings</span>
+                        </div>
                         <button
                           type="button"
-                          onClick={() => handleRateChange(0.85)}
-                          className={`px-1.5 py-0.5 rounded text-[9px] border transition-colors cursor-pointer ${
-                            speechRate === 0.85
-                              ? 'bg-amber-500/20 text-amber-300 border-amber-500/50'
-                              : 'bg-slate-900 text-slate-400 border-white/[0.06] hover:text-slate-200'
-                          }`}
+                          onClick={handleResetDefaults}
+                          className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-900 hover:bg-amber-500/15 border border-white/[0.08] text-[10px] sm:text-[11px] text-slate-400 hover:text-amber-300 transition-colors cursor-pointer"
+                          title="Restore Rajy's Default Voice Profile (Rate: 0.92, Pitch: 1.08)"
                         >
-                          Slow (0.85x)
+                          <RotateCcw className="w-2.5 h-2.5" />
+                          <span>Reset Defaults</span>
+                        </button>
+                      </div>
+
+                      {/* System Voice Selection */}
+                      <div className="space-y-1.5">
+                        <label htmlFor="voice-select" className="text-[10px] sm:text-[11px] text-slate-300 uppercase tracking-wider block font-semibold">
+                          System Voice ({englishVoices.length > 0 ? englishVoices.length : availableVoices.length} available)
+                        </label>
+                        <select
+                          id="voice-select"
+                          value={selectedVoiceURI}
+                          onChange={(e) => handleVoiceChange(e.target.value)}
+                          className="w-full px-2.5 py-1.5 rounded-lg bg-slate-900 border border-white/[0.1] text-xs text-slate-200 focus:border-amber-500/70 focus:outline-none transition-colors"
+                        >
+                          <option value="">Preferred Docent Voice ({activeVoiceName})</option>
+                          {englishVoices.map((v) => (
+                            <option key={v.voiceURI} value={v.voiceURI}>
+                              {v.name} ({v.lang}){v.default ? ' — System Default' : ''}
+                            </option>
+                          ))}
+                        </select>
+                        <p className="text-[9px] text-slate-500">
+                          Dynamically detected from browser speech synthesis engine.
+                        </p>
+                      </div>
+
+                      {/* Speaking Speed (Rate) */}
+                      <div className="space-y-1.5">
+                        <div className="flex items-center justify-between text-[10px]">
+                          <span className="text-slate-400 uppercase tracking-wider font-semibold">Speaking Speed</span>
+                          <span className="text-amber-400 font-bold">{speechRate.toFixed(2)}x</span>
+                        </div>
+                        <input
+                          type="range"
+                          min="0.75"
+                          max="1.25"
+                          step="0.05"
+                          value={speechRate}
+                          onChange={(e) => handleRateChange(parseFloat(e.target.value))}
+                          className="w-full accent-amber-500 cursor-pointer h-1.5 bg-slate-900 rounded-lg"
+                          aria-label="Adjust speaking speed"
+                        />
+                        <div className="flex items-center justify-between pt-0.5">
+                          <button
+                            type="button"
+                            onClick={() => handleRateChange(0.85)}
+                            className={`px-1.5 py-0.5 rounded text-[9px] border transition-colors cursor-pointer ${
+                              speechRate === 0.85
+                                ? 'bg-amber-500/20 text-amber-300 border-amber-500/50'
+                                : 'bg-slate-900 text-slate-400 border-white/[0.06] hover:text-slate-200'
+                            }`}
+                          >
+                            Slow (0.85x)
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleRateChange(DEFAULT_VOICE_CONFIG.rate)}
+                            className={`px-1.5 py-0.5 rounded text-[9px] border transition-colors cursor-pointer ${
+                              speechRate === DEFAULT_VOICE_CONFIG.rate
+                                ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 font-bold'
+                                : 'bg-slate-900 text-slate-400 border-white/[0.06] hover:text-slate-200'
+                            }`}
+                          >
+                            Rajy Default (0.92x)
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => handleRateChange(1.05)}
+                            className={`px-1.5 py-0.5 rounded text-[9px] border transition-colors cursor-pointer ${
+                              speechRate === 1.05
+                                ? 'bg-amber-500/20 text-amber-300 border-amber-500/50'
+                                : 'bg-slate-900 text-slate-400 border-white/[0.06] hover:text-slate-200'
+                            }`}
+                          >
+                            Brisk (1.05x)
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Vocal Pitch */}
+                      <div className="space-y-1.5">
+                        <div className="flex items-center justify-between text-[10px]">
+                          <span className="text-slate-400 uppercase tracking-wider font-semibold">Pitch Lift</span>
+                          <span className="text-amber-400 font-bold">{speechPitch.toFixed(2)}</span>
+                        </div>
+                        <input
+                          type="range"
+                          min="0.90"
+                          max="1.25"
+                          step="0.02"
+                          value={speechPitch}
+                          onChange={(e) => handlePitchChange(parseFloat(e.target.value))}
+                          className="w-full accent-amber-500 cursor-pointer h-1.5 bg-slate-900 rounded-lg"
+                          aria-label="Adjust voice pitch"
+                        />
+                        <p className="text-[9px] text-slate-500 leading-tight">
+                          Default: 1.08 (Subtle youthful docent lift, clear & articulate)
+                        </p>
+                      </div>
+
+                      {/* Test Audio & Done */}
+                      <div className="pt-2 flex items-center justify-between border-t border-white/[0.08]">
+                        <button
+                          type="button"
+                          onClick={handleTestVoice}
+                          className="px-2.5 py-1 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-300 text-[10px] font-bold flex items-center gap-1.5 cursor-pointer transition-colors"
+                        >
+                          <Volume2 className="w-3 h-3" />
+                          <span>Test Voice</span>
                         </button>
                         <button
                           type="button"
-                          onClick={() => handleRateChange(DEFAULT_VOICE_CONFIG.rate)}
-                          className={`px-1.5 py-0.5 rounded text-[9px] border transition-colors cursor-pointer ${
-                            speechRate === DEFAULT_VOICE_CONFIG.rate
-                              ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 font-bold'
-                              : 'bg-slate-900 text-slate-400 border-white/[0.06] hover:text-slate-200'
-                          }`}
+                          onClick={() => setIsVoiceSettingsOpen(false)}
+                          className="px-3 py-1 rounded-lg bg-amber-500 text-slate-950 font-bold hover:bg-amber-400 text-[10px] cursor-pointer transition-colors shadow-sm"
                         >
-                          Rajy Default (0.92x)
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => handleRateChange(1.05)}
-                          className={`px-1.5 py-0.5 rounded text-[9px] border transition-colors cursor-pointer ${
-                            speechRate === 1.05
-                              ? 'bg-amber-500/20 text-amber-300 border-amber-500/50'
-                              : 'bg-slate-900 text-slate-400 border-white/[0.06] hover:text-slate-200'
-                          }`}
-                        >
-                          Brisk (1.05x)
+                          Done
                         </button>
                       </div>
-                    </div>
-
-                    {/* Vocal Pitch */}
-                    <div className="space-y-1.5">
-                      <div className="flex items-center justify-between text-[10px]">
-                        <span className="text-slate-400 uppercase tracking-wider font-semibold">Pitch Lift</span>
-                        <span className="text-amber-400 font-bold">{speechPitch.toFixed(2)}</span>
-                      </div>
-                      <input
-                        type="range"
-                        min="0.90"
-                        max="1.25"
-                        step="0.02"
-                        value={speechPitch}
-                        onChange={(e) => handlePitchChange(parseFloat(e.target.value))}
-                        className="w-full accent-amber-500 cursor-pointer h-1.5 bg-slate-900 rounded-lg"
-                        aria-label="Adjust voice pitch"
-                      />
-                      <p className="text-[9px] text-slate-500 leading-tight">
-                        Default: 1.08 (Subtle youthful docent lift, clear & articulate)
-                      </p>
-                    </div>
-
-                    {/* Test Audio & Done */}
-                    <div className="pt-1 flex items-center justify-between border-t border-white/[0.08]">
-                      <button
-                        type="button"
-                        onClick={handleTestVoice}
-                        className="px-2.5 py-1 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-300 text-[10px] font-bold flex items-center gap-1 cursor-pointer transition-colors"
-                      >
-                        <Volume2 className="w-3 h-3" />
-                        <span>Test Voice</span>
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setIsVoiceSettingsOpen(false)}
-                        className="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-850 text-slate-400 hover:text-white border border-white/[0.08] text-[10px] cursor-pointer transition-colors"
-                      >
-                        Done
-                      </button>
-                    </div>
-                  </motion.div>
+                    </motion.div>
+                  </div>
                 )}
               </AnimatePresence>
             </header>
@@ -913,8 +942,8 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                       RAJY
                     </span>
                   </div>
-                  <p className="text-[10px] font-mono text-slate-400 italic tracking-wider leading-tight">
-                    Rajasaurus narmadensis
+                  <p className="text-[10px] font-mono text-slate-400 tracking-wider leading-tight">
+                    Prehistorica Pavilion Guide
                   </p>
                   <div className="pt-0.5 flex justify-center">
                     <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9px] font-mono font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30 uppercase tracking-widest shadow-sm">
@@ -939,6 +968,8 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                     const isThisLastAssistant = msg.id === lastAssistantMessageId;
                     const isCurrentlySpeaking = isSpeaking && isThisLastAssistant;
                     const isCurrentlyPaused = isPaused && isThisLastAssistant;
+                    const assistantIndex = messages.filter((m) => m.role === 'assistant').findIndex((m) => m.id === msg.id);
+                    const isFirstAssistantResponse = assistantIndex <= 1;
 
                     return (
                       <article
@@ -1000,6 +1031,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                                 content={msg.content}
                                 onLinkClick={onClose}
                                 isLatestAssistantMessage={isThisLastAssistant}
+                                isFirstAssistantResponse={isFirstAssistantResponse}
                               />
                             ) : (
                               <p className="whitespace-pre-wrap leading-relaxed text-xs sm:text-[13px] md:text-sm">
@@ -1020,55 +1052,68 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                                 <BookOpen className="w-3.5 h-3.5 text-amber-400" />
                                 Grounded Museum Records ({msg.groundedSpecimens.length})
                               </span>
-                              <span className="text-[10px] text-slate-500">Vector Cosine Match</span>
+                              <button
+                                type="button"
+                                onClick={() => setShowRawMatchScores((prev) => !prev)}
+                                className="text-[10px] font-mono text-slate-400 hover:text-amber-300 underline decoration-dotted transition-colors cursor-pointer"
+                                title="Toggle raw cosine similarity metric visibility"
+                              >
+                                {showRawMatchScores ? 'Hide Raw Cosine %' : 'Show Match Metrics'}
+                              </button>
                             </div>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 pt-0.5">
-                              {msg.groundedSpecimens.map((spec) => (
-                                <Link
-                                  key={spec.id}
-                                  to={`/species/${spec.id}`}
-                                  onClick={onClose}
-                                  className="group flex items-center gap-2.5 p-2 rounded-lg bg-slate-900/80 hover:bg-slate-850 border border-white/[0.06] hover:border-amber-500/40 transition-all text-left"
-                                >
-                                  <div className="w-10 h-10 rounded-md bg-slate-950 border border-white/[0.08] overflow-hidden shrink-0 flex items-center justify-center">
-                                    {spec.imageUrl ? (
-                                      <img
-                                        src={spec.imageUrl}
-                                        alt={spec.name}
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                                      />
-                                    ) : spec.silhouetteUrl ? (
-                                      <img
-                                        src={spec.silhouetteUrl}
-                                        alt={spec.name}
-                                        className="w-7 h-7 object-contain filter invert opacity-70"
-                                      />
-                                    ) : (
-                                      <Compass className="w-4 h-4 text-slate-600" />
-                                    )}
-                                  </div>
-                                  <div className="min-w-0 flex-1">
-                                    <div className="flex items-center justify-between">
-                                      <span className="text-xs font-bold text-slate-200 group-hover:text-amber-300 truncate font-mono">
-                                        {spec.name}
-                                      </span>
-                                      <span className="text-[10px] font-mono text-amber-400/90 font-semibold shrink-0">
-                                        {spec.similarity}%
-                                      </span>
+                              {msg.groundedSpecimens.map((spec) => {
+                                const rel = getRelevanceInfo(spec.similarity);
+                                return (
+                                  <Link
+                                    key={spec.id}
+                                    to={`/species/${spec.id}`}
+                                    onClick={onClose}
+                                    className="group flex items-center gap-2.5 p-2 rounded-lg bg-slate-900/80 hover:bg-slate-850 border border-white/[0.06] hover:border-amber-500/40 transition-all text-left"
+                                  >
+                                    <div className="w-10 h-10 rounded-md bg-slate-950 border border-white/[0.08] overflow-hidden shrink-0 flex items-center justify-center">
+                                      {spec.imageUrl ? (
+                                        <img
+                                          src={spec.imageUrl}
+                                          alt={spec.name}
+                                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                                        />
+                                      ) : spec.silhouetteUrl ? (
+                                        <img
+                                          src={spec.silhouetteUrl}
+                                          alt={spec.name}
+                                          className="w-7 h-7 object-contain filter invert opacity-70"
+                                        />
+                                      ) : (
+                                        <Compass className="w-4 h-4 text-slate-600" />
+                                      )}
                                     </div>
-                                    <p className="text-[10px] text-slate-400 truncate italic font-mono">
-                                      {spec.scientificName}
-                                    </p>
-                                    <div className="flex items-center gap-1 mt-0.5 text-[9px] text-slate-400 font-mono">
-                                      <span className="px-1 rounded bg-slate-800 text-slate-300">
-                                        {spec.clade}
-                                      </span>
-                                      <span className="truncate">{spec.timePeriod}</span>
+                                    <div className="min-w-0 flex-1">
+                                      <div className="flex items-center justify-between gap-1">
+                                        <span className="text-xs font-bold text-slate-200 group-hover:text-amber-300 truncate font-mono">
+                                          {spec.name}
+                                        </span>
+                                        <span className={`text-[9px] font-mono px-1.5 py-0.2 rounded border font-semibold shrink-0 ${rel.badgeClass}`}>
+                                          {rel.label}
+                                          {showRawMatchScores && spec.similarity != null && (
+                                            <span className="ml-1 opacity-80 font-normal">({spec.similarity}%)</span>
+                                          )}
+                                        </span>
+                                      </div>
+                                      <p className="text-[10px] text-slate-400 truncate italic font-mono">
+                                        {spec.scientificName}
+                                      </p>
+                                      <div className="flex items-center gap-1 mt-0.5 text-[9px] text-slate-400 font-mono">
+                                        <span className="px-1 rounded bg-slate-800 text-slate-300">
+                                          {spec.clade}
+                                        </span>
+                                        <span className="truncate">{spec.timePeriod}</span>
+                                      </div>
                                     </div>
-                                  </div>
-                                </Link>
-                              ))}
+                                  </Link>
+                                );
+                              })}
                             </div>
                           </section>
                         )}
@@ -1078,7 +1123,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
                   {/* ── INITIAL STATE: "EXPLORE WITH RAJY" CARDS ── */}
                   {isInitialState && (
-                    <div className="pt-2 pb-6 space-y-3">
+                    <div className="pt-2 pb-8 space-y-3 w-full">
                       <div className="flex items-center gap-2 border-b border-white/[0.06] pb-2 font-mono">
                         <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                         <h3 className="text-xs font-bold tracking-widest uppercase text-amber-400">
@@ -1089,25 +1134,25 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                         </span>
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
                         {INITIAL_EXPLORE_QUESTIONS.map((q, idx) => (
                           <button
                             key={idx}
                             type="button"
                             onClick={() => handleSend(q.prompt)}
                             disabled={loading}
-                            className="group flex flex-col justify-between p-3 sm:p-3.5 rounded-xl bg-slate-900/60 hover:bg-slate-850/90 border border-white/[0.08] hover:border-amber-500/50 hover:shadow-[0_4px_16px_rgba(245,158,11,0.08)] active:scale-[0.99] focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none text-left transition-all duration-200 shadow-sm cursor-pointer disabled:opacity-50"
+                            className="group flex flex-col justify-between min-h-[102px] p-3 sm:p-3.5 rounded-xl bg-slate-900/70 hover:bg-slate-850/95 border border-white/[0.08] hover:border-amber-500/50 hover:shadow-[0_4px_16px_rgba(245,158,11,0.1)] active:scale-[0.99] focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none text-left transition-all duration-200 shadow-sm cursor-pointer disabled:opacity-50"
                           >
                             <div className="space-y-1">
                               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400/90 flex items-center gap-1">
                                 <HelpCircle className="w-3 h-3 text-amber-400 shrink-0" />
                                 {q.title}
                               </span>
-                              <p className="text-xs font-medium text-slate-200 group-hover:text-amber-100 transition-colors leading-snug">
+                              <p className="text-xs font-medium text-slate-200 group-hover:text-amber-100 transition-colors leading-snug line-clamp-2">
                                 {q.prompt}
                               </p>
                             </div>
-                            <div className="pt-2 flex items-center justify-end text-[10px] font-mono text-slate-500 group-hover:text-amber-400 font-semibold gap-1 transition-colors">
+                            <div className="pt-2.5 flex items-center justify-end text-[10px] font-mono text-slate-500 group-hover:text-amber-400 font-semibold gap-1 transition-colors">
                               <span>Ask Rajy</span>
                               <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                             </div>
@@ -1140,7 +1185,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                       <Sparkles className="w-3 h-3 text-amber-400 shrink-0" />
                       <span className="hidden xs:inline">Follow-up:</span>
                     </span>
-                    <div className="flex-1 overflow-x-auto flex items-center gap-2 scrollbar-none py-0.5">
+                    <div className="flex-1 overflow-x-auto flex items-center gap-2 scrollbar-thin scrollbar-thumb-amber-500/20 scrollbar-track-transparent py-1 px-1">
                       {contextualSuggestions.map((q, idx) => (
                         <button
                           key={idx}
@@ -1179,21 +1224,23 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                         className="w-full px-4 py-2.5 sm:py-3 bg-[#0D1527] border border-white/[0.1] focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/30 rounded-xl text-xs sm:text-sm text-slate-100 placeholder-slate-400 focus:outline-none transition-all font-mono shadow-inner"
                       />
                     </div>
-                    <button
-                      type="submit"
-                      disabled={!input.trim() || loading}
-                      className="min-h-[42px] sm:min-h-[44px] px-4 sm:px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-98 disabled:opacity-40 disabled:hover:bg-amber-500 text-slate-950 font-bold font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-amber-500/10 shrink-0"
-                      aria-label="Send message to Rajy"
-                    >
-                      {loading ? (
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                      ) : (
-                        <>
-                          <span className="hidden xs:inline">Consult</span>
-                          <Send className="w-3.5 h-3.5" />
-                        </>
-                      )}
-                    </button>
+                    <ClickSpark sparkColor="#F59E0B">
+                      <button
+                        type="submit"
+                        disabled={!input.trim() || loading}
+                        className="min-h-[42px] sm:min-h-[44px] px-4 sm:px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-98 disabled:opacity-40 disabled:hover:bg-amber-500 text-slate-950 font-bold font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-amber-500/10 shrink-0"
+                        aria-label="Send message to Rajy"
+                      >
+                        {loading ? (
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                        ) : (
+                          <>
+                            <span className="hidden xs:inline">Consult</span>
+                            <Send className="w-3.5 h-3.5" />
+                          </>
+                        )}
+                      </button>
+                    </ClickSpark>
                   </form>
                   <p className="hidden sm:block text-[10px] font-mono text-slate-500 pt-1.5 text-center">
                     Rajy &bull; Prehistorica AI Docent &bull; Evidence-based retrieval augmented generation (RAG)

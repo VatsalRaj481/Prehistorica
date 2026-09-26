@@ -1,13 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Search, Map, ArrowRightLeft, Menu, X, Scale, BookOpen, Trophy, Sparkles, Camera, ChevronDown } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useReducedMotion } from 'framer-motion';
 import SearchAutocomplete from './SearchAutocomplete.js';
 import CompareModal from './CompareModal.js';
 import ChiefCuratorModal from './ChiefCuratorModal.js';
 import FossilLensModal from './FossilLensModal.js';
 import DinoLogoMark from './DinoLogoMark.js';
 import { getBookmarkIds, NOTEBOOK_UPDATED_EVENT } from '../utils/notebookStorage.js';
+import ShinyText from './reactbits/ShinyText.js';
+import ClickSpark from './reactbits/ClickSpark.js';
+import Magnet from './reactbits/Magnet.js';
 
 interface NavbarProps {
   isLogoVisible?: boolean;
@@ -50,11 +53,30 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
     return () => window.removeEventListener(NOTEBOOK_UPDATED_EVENT, updateCount);
   }, []);
 
-  const isActive = (path: string) => {
-    return location.pathname === path
-      ? 'text-amber-400 border-b-2 border-amber-400 font-bold bg-amber-500/5'
-      : 'text-slate-300 hover:text-white transition-colors';
-  };
+  const shouldReduceMotion = useReducedMotion();
+  const { scrollY, scrollYProgress } = useScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    return scrollY.on('change', (latest) => {
+      setIsScrolled(latest > 24);
+    });
+  }, [scrollY]);
+
+  // One-time subtle attention pulse on first visit for AI Tools dropdown trigger
+  const [shouldPulseAiTools, setShouldPulseAiTools] = useState(false);
+
+  useEffect(() => {
+    try {
+      const seen = localStorage.getItem('prehistorica_ai_tools_seen');
+      if (!seen) {
+        setShouldPulseAiTools(true);
+        localStorage.setItem('prehistorica_ai_tools_seen', 'true');
+      }
+    } catch {
+      setShouldPulseAiTools(true);
+    }
+  }, []);
 
   const isMobileActive = (path: string) => {
     return location.pathname === path
@@ -62,9 +84,32 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
       : 'text-slate-300 hover:bg-slate-900/80 hover:text-white';
   };
 
+  const navLinks = [
+    { to: '/', label: 'Home', isHome: true },
+    { to: '/browse', label: 'Catalog', icon: Search },
+    { to: '/map', label: 'Time-Map', icon: Map },
+    { to: '/runway', label: 'Runway', icon: Scale },
+    { to: '/challenge', label: 'Trials', icon: Trophy },
+    { to: '/notebook', label: 'Notebook', icon: BookOpen, badge: bookmarkCount }
+  ];
+
   return (
     <>
-      <header className="bg-slate-950 sticky top-0 z-50 border-b border-white/[0.08] shadow-2xl">
+      <header
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'bg-[#080C16]/85 backdrop-blur-xl border-b border-amber-500/20 shadow-[0_12px_32px_rgba(0,0,0,0.7)]'
+            : 'bg-[#080C16]/95 border-b border-white/[0.08] shadow-2xl'
+        }`}
+      >
+        {/* Deep-Time Chronostratigraphic Reading Progress Bar */}
+        {!shouldReduceMotion && (
+          <motion.div
+            className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-amber-600 via-amber-400 to-amber-300 origin-left z-50 pointer-events-none"
+            style={{ scaleX: scrollYProgress }}
+          />
+        )}
+
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 gap-2 sm:gap-4">
             {/* Brand Logo and Title */}
@@ -81,9 +126,13 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                 </div>
                 <div className="flex flex-col">
                   <div className="flex items-center gap-1.5">
-                    <span className="text-sm sm:text-base font-black tracking-wider text-slate-100 uppercase font-mono leading-none">
-                      PREHISTORICA
-                    </span>
+                    <ShinyText
+                      text="PREHISTORICA"
+                      color="#F1F5F9"
+                      shineColor="#FBBF24"
+                      speed={3}
+                      className="text-sm sm:text-base font-black tracking-wider uppercase font-mono leading-none"
+                    />
                     <span className="h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0" />
                   </div>
                   <span className="text-[8px] sm:text-[9px] font-mono tracking-widest text-slate-400 uppercase">
@@ -93,54 +142,37 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
               </Link>
             </div>
 
-            {/* Desktop Navigation Links */}
+            {/* Desktop Navigation Links with Gliding Plinth */}
             <nav className="hidden lg:flex items-center gap-1 font-mono shrink min-w-0">
-              <Link
-                to="/"
-                className={`hidden xl:inline-block px-2 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 ${isActive('/')}`}
-              >
-                Home
-              </Link>
-              <Link
-                to="/browse"
-                className={`flex items-center gap-1 px-2 xl:px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 shrink-0 ${isActive('/browse')}`}
-              >
-                <Search className="h-3.5 w-3.5 text-amber-400 shrink-0" />
-                <span>Catalog</span>
-              </Link>
-              <Link
-                to="/map"
-                className={`flex items-center gap-1 px-2 xl:px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 shrink-0 ${isActive('/map')}`}
-              >
-                <Map className="h-3.5 w-3.5 text-amber-400 shrink-0" />
-                <span>Time-Map</span>
-              </Link>
-              <Link
-                to="/runway"
-                className={`flex items-center gap-1 px-2 xl:px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 shrink-0 ${isActive('/runway')}`}
-              >
-                <Scale className="h-3.5 w-3.5 text-amber-400 shrink-0" />
-                <span>Runway</span>
-              </Link>
-              <Link
-                to="/challenge"
-                className={`flex items-center gap-1 px-2 xl:px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 shrink-0 ${isActive('/challenge')}`}
-              >
-                <Trophy className="h-3.5 w-3.5 text-amber-400 shrink-0" />
-                <span>Trials</span>
-              </Link>
-              <Link
-                to="/notebook"
-                className={`flex items-center gap-1 px-2 xl:px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 shrink-0 ${isActive('/notebook')}`}
-              >
-                <BookOpen className="h-3.5 w-3.5 text-amber-400 shrink-0" />
-                <span>Notebook</span>
-                {bookmarkCount > 0 && (
-                  <span className="px-1.5 py-0.2 rounded-full bg-amber-500 text-slate-950 font-black text-[10px]">
-                    {bookmarkCount}
-                  </span>
-                )}
-              </Link>
+              {navLinks.map((link) => {
+                const active = location.pathname === link.to;
+                const IconComponent = link.icon;
+                return (
+                  <Link
+                    key={link.to}
+                    to={link.to}
+                    className={`relative flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-colors duration-200 active:scale-95 shrink-0 ${
+                      link.isHome ? 'hidden xl:inline-flex' : ''
+                    } ${active ? 'text-amber-300 font-bold' : 'text-slate-300 hover:text-white'}`}
+                  >
+                    {active && (
+                      <motion.span
+                        layoutId="activeNavPill"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                        className="absolute inset-0 rounded-md bg-amber-500/15 border border-amber-500/35 -z-10 shadow-[0_0_14px_rgba(245,158,11,0.2)]"
+                      />
+                    )}
+                    {IconComponent && <IconComponent className="h-3.5 w-3.5 text-amber-400 shrink-0" />}
+                    <span>{link.label}</span>
+                    {link.badge !== undefined && link.badge > 0 && (
+                      <span className="px-1.5 py-0.2 rounded-full bg-amber-500 text-slate-950 font-black text-[10px]">
+                        {link.badge}
+                      </span>
+                    )}
+                  </Link>
+                );
+              })}
+
               <button
                 onClick={() => setIsCompareOpen(true)}
                 className="flex items-center gap-1 px-2 xl:px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 shrink-0 text-slate-300 hover:text-white cursor-pointer"
@@ -152,32 +184,71 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
 
             {/* Desktop Right Side Search & Action Tools */}
             <div className="hidden lg:flex items-center gap-2 xl:gap-2.5 shrink-0">
-              <div className="w-36 focus-within:w-52 xl:w-44 2xl:w-56 transition-all duration-300">
+              <div className="w-36 focus-within:w-60 xl:w-44 xl:focus-within:w-64 2xl:w-56 2xl:focus-within:w-72 transition-all duration-300">
                 <SearchAutocomplete />
               </div>
 
               {/* Research Lab & AI Tools Dropdown Menu */}
               <div className="relative pl-1 border-l border-white/[0.08]" ref={toolsDropdownRef}>
-                  <motion.button
-                  whileTap={{ scale: 0.96 }}
-                  onClick={() => setIsToolsDropdownOpen(!isToolsDropdownOpen)}
-                  className={`h-8 xl:h-9 px-2.5 xl:px-3 rounded-lg border text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all cursor-pointer shadow-sm select-none ${
-                    isToolsDropdownOpen
-                      ? 'bg-amber-500/20 border-amber-400 text-amber-300 ring-1 ring-amber-400/40 shadow-[0_0_12px_rgba(245,158,11,0.25)]'
-                      : 'bg-slate-900/90 hover:bg-slate-850 border-white/[0.08] hover:border-amber-500/40 text-slate-200 hover:text-white'
-                  }`}
-                  title="Open AI Docent Tools"
-                  aria-expanded={isToolsDropdownOpen}
-                  aria-haspopup="true"
-                >
-                  <Sparkles className="h-3.5 w-3.5 text-amber-400 shrink-0" />
-                  <span className="font-mono">AI Tools</span>
-                  <ChevronDown
-                    className={`h-3 w-3 sm:h-3.5 sm:w-3.5 text-slate-400 transition-transform duration-200 ${
-                      isToolsDropdownOpen ? 'rotate-180 text-amber-400' : ''
-                    }`}
-                  />
-                </motion.button>
+                <Magnet padding={35} magnetStrength={4}>
+                  <ClickSpark sparkColor="#FBBF24" sparkSize={8} sparkRadius={14} sparkCount={6}>
+                    <div className="relative">
+                      {shouldPulseAiTools && !shouldReduceMotion && (
+                        <motion.span
+                          initial={{ scale: 0.95, opacity: 0.8 }}
+                          animate={{ scale: [1, 1.25, 1.4], opacity: [0.8, 0.35, 0] }}
+                          transition={{ duration: 2, repeat: 2, ease: 'easeOut' }}
+                          className="absolute -inset-1 rounded-xl border border-amber-400/60 pointer-events-none -z-10 shadow-[0_0_12px_rgba(245,158,11,0.4)]"
+                        />
+                      )}
+                      <motion.button
+                        whileTap={{ scale: 0.96 }}
+                        animate={
+                          shouldPulseAiTools && !shouldReduceMotion
+                            ? {
+                                boxShadow: [
+                                  '0 0 0px rgba(245, 158, 11, 0)',
+                                  '0 0 16px rgba(245, 158, 11, 0.65)',
+                                  '0 0 4px rgba(245, 158, 11, 0.2)',
+                                  '0 0 14px rgba(245, 158, 11, 0.5)',
+                                  '0 0 0px rgba(245, 158, 11, 0)'
+                                ],
+                                borderColor: [
+                                  'rgba(255, 255, 255, 0.08)',
+                                  'rgba(245, 158, 11, 0.8)',
+                                  'rgba(245, 158, 11, 0.3)',
+                                  'rgba(245, 158, 11, 0.6)',
+                                  'rgba(255, 255, 255, 0.08)'
+                                ]
+                              }
+                            : {}
+                        }
+                        transition={{
+                          duration: 3.2,
+                          times: [0, 0.25, 0.5, 0.75, 1],
+                          ease: 'easeInOut'
+                        }}
+                        onClick={() => setIsToolsDropdownOpen(!isToolsDropdownOpen)}
+                        className={`h-8 xl:h-9 px-2.5 xl:px-3 rounded-lg border text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all cursor-pointer shadow-sm select-none ${
+                          isToolsDropdownOpen
+                            ? 'bg-amber-500/20 border-amber-400 text-amber-300 ring-1 ring-amber-400/40 shadow-[0_0_12px_rgba(245,158,11,0.25)]'
+                            : 'bg-slate-900/90 hover:bg-slate-850 border-white/[0.08] hover:border-amber-500/40 text-slate-200 hover:text-white'
+                        }`}
+                        title="Open AI Docent Tools"
+                        aria-expanded={isToolsDropdownOpen}
+                        aria-haspopup="true"
+                      >
+                        <Sparkles className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+                        <span className="font-mono">AI Tools</span>
+                        <ChevronDown
+                          className={`h-3 w-3 sm:h-3.5 sm:w-3.5 text-slate-400 transition-transform duration-200 ${
+                            isToolsDropdownOpen ? 'rotate-180 text-amber-400' : ''
+                          }`}
+                        />
+                      </motion.button>
+                    </div>
+                  </ClickSpark>
+                </Magnet>
 
                 {/* Dropdown Menu Popover with High-End Glassmorphism */}
                 <AnimatePresence>

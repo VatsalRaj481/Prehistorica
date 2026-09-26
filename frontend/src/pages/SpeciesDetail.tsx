@@ -9,6 +9,9 @@ import { isBookmarked as checkIsBookmarked, toggleBookmark as toggleBookmarkStor
 import { Calendar, Compass, ArrowLeft, Dna, FileText, Scale, BookOpen, AlertCircle, Bookmark, BookmarkCheck, ExternalLink, Globe, Zap } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 import { formatFeetLong } from '../utils/formatDimensions.js';
+import ShinyText from '../components/reactbits/ShinyText.js';
+import ClickSpark from '../components/reactbits/ClickSpark.js';
+import CuratorialLoader from '../components/CuratorialLoader.js';
 
 export default function SpeciesDetail() {
   const { id } = useParams<{ id: string }>();
@@ -56,13 +59,12 @@ export default function SpeciesDetail() {
 
   if (loading) {
     return (
-      <div className="animate-pulse space-y-8 py-6">
-        <div className="h-6 w-48 bg-slate-900 rounded border border-white/[0.06]" />
-        <div className="h-56 sm:h-[450px] bg-slate-950 rounded-xl border border-white/[0.06]" />
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-6 h-72 sm:h-96 bg-slate-900 rounded-xl border border-white/[0.06]" />
-          <div className="lg:col-span-6 h-72 sm:h-96 bg-slate-900 rounded-xl border border-white/[0.06]" />
-        </div>
+      <div className="py-24 flex justify-center items-center">
+        <CuratorialLoader
+          variant="amber"
+          label="Accessing Specimen Holotype Archives..."
+          sublabel="Deciphering stratigraphic age and taxonomic classification"
+        />
       </div>
     );
   }
@@ -94,12 +96,14 @@ export default function SpeciesDetail() {
       <div className="flex flex-wrap justify-between items-center border-b border-white/[0.08] pb-4 gap-4 font-mono">
         <div className="flex items-center gap-4 text-xs text-slate-400">
           <motion.div whileTap={{ scale: 0.94 }}>
-            <Link
-              to={catalogReturnUrl}
-              className="inline-flex items-center gap-2 text-slate-300 hover:text-amber-400 transition-colors font-bold uppercase tracking-wider"
-            >
-              <ArrowLeft className="h-4 w-4 text-amber-400" /> Catalog Index
-            </Link>
+            <ClickSpark sparkColor="#F59E0B">
+              <Link
+                to={catalogReturnUrl}
+                className="inline-flex items-center gap-2 text-slate-300 hover:text-amber-400 transition-colors font-bold uppercase tracking-wider"
+              >
+                <ArrowLeft className="h-4 w-4 text-amber-400" /> Catalog Index
+              </Link>
+            </ClickSpark>
           </motion.div>
           <span className="text-slate-700">|</span>
           <span className="text-amber-400 font-bold uppercase tracking-widest text-[11px]">
@@ -109,34 +113,38 @@ export default function SpeciesDetail() {
 
         <div className="flex items-center gap-2">
           <motion.div whileTap={{ scale: 0.94 }}>
-            <Link
-              to={`/runway?ids=${species.id}`}
-              className="px-3 py-2 rounded-lg border border-white/[0.08] bg-slate-900/90 hover:bg-slate-850 hover:border-amber-500/40 text-xs font-mono font-bold uppercase tracking-wider text-slate-300 hover:text-white flex items-center gap-1.5 transition-all shadow-sm"
-              title="Add this creature to the Multi-Specimen Caliper Runway"
-            >
-              <Scale className="h-3.5 w-3.5 text-amber-400" /> Runway Lineup
-            </Link>
+            <ClickSpark sparkColor="#F59E0B">
+              <Link
+                to={`/runway?ids=${species.id}`}
+                className="px-3 py-2 rounded-lg border border-white/[0.08] bg-slate-900/90 hover:bg-slate-850 hover:border-amber-500/40 text-xs font-mono font-bold uppercase tracking-wider text-slate-300 hover:text-white flex items-center gap-1.5 transition-all shadow-sm"
+                title="Add this creature to the Multi-Specimen Caliper Runway"
+              >
+                <Scale className="h-3.5 w-3.5 text-amber-400" /> Runway Lineup
+              </Link>
+            </ClickSpark>
           </motion.div>
 
-          <motion.button
-            whileTap={{ scale: 0.94 }}
-            onClick={toggleBookmark}
-            className={`px-3.5 py-2 rounded-lg border text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shadow-sm ${
-              isBookmarked
-                ? 'bg-amber-500/15 border-amber-500/40 text-amber-300'
-                : 'bg-slate-900/90 border-white/[0.08] text-slate-300 hover:text-white hover:border-amber-500/40'
-            }`}
-          >
-            {isBookmarked ? (
-              <>
-                <BookmarkCheck className="h-4 w-4 text-amber-400" /> Archival Bookmarked
-              </>
-            ) : (
-              <>
-                <Bookmark className="h-4 w-4 text-slate-400" /> Bookmark Specimen
-              </>
-            )}
-          </motion.button>
+          <ClickSpark sparkColor="#F59E0B">
+            <motion.button
+              whileTap={{ scale: 0.94 }}
+              onClick={toggleBookmark}
+              className={`px-3.5 py-2 rounded-lg border text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shadow-sm ${
+                isBookmarked
+                  ? 'bg-amber-500/15 border-amber-500/40 text-amber-300'
+                  : 'bg-slate-900/90 border-white/[0.08] text-slate-300 hover:text-white hover:border-amber-500/40'
+              }`}
+            >
+              {isBookmarked ? (
+                <>
+                  <BookmarkCheck className="h-4 w-4 text-amber-400" /> Archival Bookmarked
+                </>
+              ) : (
+                <>
+                  <Bookmark className="h-4 w-4 text-slate-400" /> Bookmark Specimen
+                </>
+              )}
+            </motion.button>
+          </ClickSpark>
         </div>
       </div>
 
@@ -153,7 +161,7 @@ export default function SpeciesDetail() {
             <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs font-mono">
               <span className="px-2.5 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-400 font-bold uppercase tracking-widest flex items-center gap-1.5 rounded-md text-[10px] sm:text-xs">
                 <Calendar className="h-3.5 w-3.5" />
-                {species.timePeriod} &bull; {species.myaStart}–{species.myaEnd} MYA
+                <ShinyText text={`${species.timePeriod} • ${species.myaStart}–${species.myaEnd} MYA`} speed={4} />
               </span>
               <span className="px-2.5 py-1 bg-slate-900 border border-white/[0.08] text-slate-300 font-bold uppercase tracking-widest rounded-md text-[10px] sm:text-xs">
                 Clade: {species.clade}
@@ -440,15 +448,17 @@ export default function SpeciesDetail() {
                   >
                     <span className="truncate">{src.citation}</span>
                     {src.url && (
-                      <motion.a
-                        whileTap={{ scale: 0.92 }}
-                        href={src.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-amber-400 hover:text-amber-300 flex items-center gap-1 font-bold uppercase tracking-wider shrink-0 text-[10px]"
-                      >
-                        View Source <ExternalLink className="h-3 w-3" />
-                      </motion.a>
+                      <ClickSpark sparkColor="#F59E0B">
+                        <motion.a
+                          whileTap={{ scale: 0.92 }}
+                          href={src.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-amber-400 hover:text-amber-300 flex items-center gap-1 font-bold uppercase tracking-wider shrink-0 text-[10px]"
+                        >
+                          View Source <ExternalLink className="h-3 w-3" />
+                        </motion.a>
+                      </ClickSpark>
                     )}
                   </div>
                 ))}

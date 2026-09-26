@@ -9,9 +9,12 @@ import {
   HelpCircle,
   Ruler,
   Clock,
-  RotateCcw,
-  Compass
+  RotateCcw
 } from 'lucide-react';
+import ShinyText from '../components/reactbits/ShinyText.js';
+import CountUp from '../components/reactbits/CountUp.js';
+import ClickSpark from '../components/reactbits/ClickSpark.js';
+import CuratorialLoader from '../components/CuratorialLoader.js';
 
 type ChallengeTab = 'detective' | 'caliper' | 'chrono';
 
@@ -120,7 +123,7 @@ export default function PaleoChallenge() {
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono font-bold uppercase tracking-widest">
               <Trophy className="h-3.5 w-3.5" />
-              Curator Challenge Pavilion
+              <ShinyText text="Curator Challenge Pavilion" speed={3.5} />
             </div>
             <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-slate-100 font-sans">
               Paleontological Field Trials
@@ -147,8 +150,9 @@ export default function PaleoChallenge() {
               <span className="text-3xl">{currentRank.badge}</span>
               <div>
                 <h4 className="text-sm font-bold text-slate-100 uppercase font-sans">{currentRank.title}</h4>
-                <p className="text-[11px] text-amber-400 font-bold tabular-nums">
-                  {score.toLocaleString()} Points &bull; {streak} Streak
+                <p className="text-[11px] text-amber-400 font-bold tabular-nums flex items-center gap-1">
+                  <CountUp to={score} duration={0.6} />
+                  <span>Points &bull; {streak} Streak</span>
                 </p>
               </div>
             </div>
@@ -172,48 +176,55 @@ export default function PaleoChallenge() {
         </div>
 
         {/* Challenge Mode Navigation Tabs */}
-        <div className="mt-6 pt-5 border-t border-white/[0.08] flex flex-wrap items-center gap-2 font-mono text-xs">
-          <button
-            onClick={() => setActiveTab('detective')}
-            className={`px-4 py-2 rounded-lg font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer ${
-              activeTab === 'detective'
-                ? 'bg-amber-500 text-slate-950 shadow-md'
-                : 'bg-slate-900 text-slate-300 hover:text-white border border-white/[0.08]'
-            }`}
-          >
-            <HelpCircle className="h-4 w-4" /> 1. Holotype Detective
-          </button>
+        <div className="mt-6 pt-5 border-t border-white/[0.08] font-mono text-xs">
+          <ClickSpark sparkColor="#F59E0B">
+            <div className="flex flex-wrap items-center gap-2">
+              <button
+                onClick={() => setActiveTab('detective')}
+                className={`px-4 py-2 rounded-lg font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer ${
+                  activeTab === 'detective'
+                    ? 'bg-amber-500 text-slate-950 shadow-md'
+                    : 'bg-slate-900 text-slate-300 hover:text-white border border-white/[0.08]'
+                }`}
+              >
+                <HelpCircle className="h-4 w-4" /> 1. Holotype Detective
+              </button>
 
-          <button
-            onClick={() => setActiveTab('caliper')}
-            className={`px-4 py-2 rounded-lg font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer ${
-              activeTab === 'caliper'
-                ? 'bg-amber-500 text-slate-950 shadow-md'
-                : 'bg-slate-900 text-slate-300 hover:text-white border border-white/[0.08]'
-            }`}
-          >
-            <Ruler className="h-4 w-4" /> 2. Caliper Guesser
-          </button>
+              <button
+                onClick={() => setActiveTab('caliper')}
+                className={`px-4 py-2 rounded-lg font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer ${
+                  activeTab === 'caliper'
+                    ? 'bg-amber-500 text-slate-950 shadow-md'
+                    : 'bg-slate-900 text-slate-300 hover:text-white border border-white/[0.08]'
+                }`}
+              >
+                <Ruler className="h-4 w-4" /> 2. Caliper Guesser
+              </button>
 
-          <button
-            onClick={() => setActiveTab('chrono')}
-            className={`px-4 py-2 rounded-lg font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer ${
-              activeTab === 'chrono'
-                ? 'bg-amber-500 text-slate-950 shadow-md'
-                : 'bg-slate-900 text-slate-300 hover:text-white border border-white/[0.08]'
-            }`}
-          >
-            <Clock className="h-4 w-4" /> 3. Chrono Sequence
-          </button>
+              <button
+                onClick={() => setActiveTab('chrono')}
+                className={`px-4 py-2 rounded-lg font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer ${
+                  activeTab === 'chrono'
+                    ? 'bg-amber-500 text-slate-950 shadow-md'
+                    : 'bg-slate-900 text-slate-300 hover:text-white border border-white/[0.08]'
+                }`}
+              >
+                <Clock className="h-4 w-4" /> 3. Chrono Sequence
+              </button>
+            </div>
+          </ClickSpark>
         </div>
       </div>
 
       {/* Main Challenge Chamber */}
       <div className="museum-plinth rounded-2xl p-5 sm:p-7 border border-white/[0.08] shadow-2xl">
         {loading ? (
-          <div className="py-20 text-center font-mono text-slate-400 space-y-3 animate-pulse">
-            <Compass className="h-8 w-8 text-amber-400 mx-auto animate-spin" />
-            <p className="text-xs uppercase tracking-widest">Cataloging Geological Specimens For Trial...</p>
+          <div className="py-16 flex justify-center items-center">
+            <CuratorialLoader
+              variant="amber"
+              label="Cataloging Geological Specimens For Trial..."
+              sublabel="Accessing verified museum specimen database for randomized curator challenges"
+            />
           </div>
         ) : (
           <AnimatePresence mode="wait">

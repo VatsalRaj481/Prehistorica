@@ -5364,7 +5364,7 @@
     "geographicRange": "{\"continent\":\"North America\",\"region\":\"Laramidia\",\"country\":\"United States\",\"fossilFormation\":\"Hell Creek Formation, Lance Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Saurischia\",\"family\":\"Tyrannosauridae\",\"genus\":\"Nanotyrannus\",\"species\":\"Nanotyrannus lancensis\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "disputed",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/e2/Nanotyrannus_BW.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Nanotyrannus_BW.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/f/f8/Nanotyrannus_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Nanotyrannus_TD.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/e2/Nanotyrannus_BW.jpg\",\"type\":\"art\",\"credit\":\"Nobu Tamura (CC BY 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Nanotyrannus_BW.jpg\"}]",
     "discoveryHistory": "• Skull discovered in 1942 by Charles W. Gilmore and initially named Gorgosaurus lancensis.\n• Renamed Nanotyrannus by Robert Bakker, Michael Williams, and Philip Currie in 1988.\n• Long debated whether it is a valid distinct genus or a juvenile Tyrannosaurus rex; 2024 studies by Longrich & Saitta reignited support for its validity.",
     "interestingFacts": "[\"Subject of one of the longest and most fiercely contested debates in paleontology history.\",\"Had significantly more teeth (up to 36 in upper jaw) and larger forelimbs than adult T. rex.\",\"Possessed extremely long, slender leg bones adapted for high-speed pursuit running.\"]",
     "sizeNotes": "Slender, long-limbed theropod measuring roughly 5 meters in length and weighing ~900 kg.",
@@ -5375,7 +5375,7 @@
     "sources": "[{\"citation\":\"Longrich, N. R., & Saitta, E. T. (2024). Taxonomic Status of Nanotyrannus lancensis: A Distinct Genus of Small Tyrannosaurid. Fossil Studies.\",\"url\":\"https://doi.org/10.3390/fossils2010003\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.270Z",
-    "updatedAt": "2026-09-08T15:37:23.434Z"
+    "updatedAt": "2026-09-24T16:39:35.151Z"
   },
   {
     "id": 3173,

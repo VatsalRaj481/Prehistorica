@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { Species, SpeciesRosterItem } from '../../services/api.js';
 import { ShieldCheck, AlertCircle, Sparkles, Eye, RefreshCw } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ClickSpark from '../reactbits/ClickSpark.js';
 
 interface HolotypeDetectiveProps {
   roster: SpeciesRosterItem[];
@@ -164,37 +165,39 @@ export default function HolotypeDetective({ roster, allSpecies, onScore }: Holot
         <span className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">
           Identify the Prehistoric Genus:
         </span>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-          {options.map((opt) => {
-            const isSelected = selectedGuess === opt.id;
-            const isTargetOpt = opt.id === target.id;
+        <ClickSpark sparkColor="#F59E0B">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            {options.map((opt) => {
+              const isSelected = selectedGuess === opt.id;
+              const isTargetOpt = opt.id === target.id;
 
-            let btnStyle = 'bg-slate-900/90 border-white/[0.08] hover:border-amber-500/50 hover:bg-slate-850 text-slate-200';
-            if (isAnswered) {
-              if (isTargetOpt) {
-                btnStyle = 'bg-emerald-500/20 border-emerald-500 text-emerald-300 shadow-md';
-              } else if (isSelected) {
-                btnStyle = 'bg-red-500/20 border-red-500 text-red-300';
-              } else {
-                btnStyle = 'bg-slate-900/40 border-white/[0.04] text-slate-600 opacity-60';
+              let btnStyle = 'bg-slate-900/90 border-white/[0.08] hover:border-amber-500/50 hover:bg-slate-850 text-slate-200';
+              if (isAnswered) {
+                if (isTargetOpt) {
+                  btnStyle = 'bg-emerald-500/20 border-emerald-500 text-emerald-300 shadow-md';
+                } else if (isSelected) {
+                  btnStyle = 'bg-red-500/20 border-red-500 text-red-300';
+                } else {
+                  btnStyle = 'bg-slate-900/40 border-white/[0.04] text-slate-600 opacity-60';
+                }
               }
-            }
 
-            return (
-              <button
-                key={opt.id}
-                disabled={isAnswered}
-                onClick={() => handleGuess(opt.id)}
-                className={`p-3 rounded-xl border text-left transition-all font-sans cursor-pointer ${btnStyle}`}
-              >
-                <p className="text-sm font-bold uppercase truncate">{opt.name}</p>
-                <p className="text-[10px] font-mono text-slate-400 italic truncate">
-                  {opt.scientificName || opt.clade}
-                </p>
-              </button>
-            );
-          })}
-        </div>
+              return (
+                <button
+                  key={opt.id}
+                  disabled={isAnswered}
+                  onClick={() => handleGuess(opt.id)}
+                  className={`p-3 rounded-xl border text-left transition-all font-sans cursor-pointer ${btnStyle}`}
+                >
+                  <p className="text-sm font-bold uppercase truncate">{opt.name}</p>
+                  <p className="text-[10px] font-mono text-slate-400 italic truncate">
+                    {opt.scientificName || opt.clade}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
+        </ClickSpark>
       </div>
 
       {/* Post-Answer Result & Next Round */}
@@ -238,12 +241,14 @@ export default function HolotypeDetective({ roster, allSpecies, onScore }: Holot
             >
               Exhibit Profile
             </Link>
-            <button
-              onClick={startNewRound}
-              className="px-4 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 uppercase font-black flex items-center gap-1.5 cursor-pointer shadow-md"
-            >
-              <RefreshCw className="h-3 w-3" /> Next Case
-            </button>
+            <ClickSpark sparkColor="#F59E0B">
+              <button
+                onClick={startNewRound}
+                className="px-4 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 uppercase font-black flex items-center gap-1.5 cursor-pointer shadow-md"
+              >
+                <RefreshCw className="h-3 w-3" /> Next Case
+              </button>
+            </ClickSpark>
           </div>
         </motion.div>
       )}

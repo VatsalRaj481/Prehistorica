@@ -26,6 +26,9 @@ import {
 import { fetchSpeciesCompare, Species } from '../services/api.js';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 import { formatFeetLong } from '../utils/formatDimensions.js';
+import ShinyText from '../components/reactbits/ShinyText.js';
+import ClickSpark from '../components/reactbits/ClickSpark.js';
+import Magnet from '../components/reactbits/Magnet.js';
 
 export default function FieldNotebook() {
   const [entries, setEntries] = useState<NotebookEntry[]>([]);
@@ -169,7 +172,7 @@ export default function FieldNotebook() {
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono font-bold uppercase tracking-widest">
               <BookOpen className="h-3.5 w-3.5" />
-              Visitor Research Desk
+              <ShinyText text="Visitor Research Desk" speed={3.5} />
             </div>
             <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-slate-100 font-sans">
               Archival Field Notebook
@@ -182,29 +185,37 @@ export default function FieldNotebook() {
           {/* Action Toolbar */}
           {speciesList.length > 0 && (
             <div className="flex flex-wrap items-center gap-2.5 font-mono text-xs">
-              <button
-                onClick={handleSendAllToRunway}
-                className="px-3.5 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-black uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer shadow-md"
-                title="Send first 6 specimens to the Caliper Runway"
-              >
-                <Scale className="h-4 w-4" /> Send to Runway
-              </button>
+              <Magnet padding={20} magnetStrength={2}>
+                <ClickSpark sparkColor="#F59E0B">
+                  <button
+                    onClick={handleSendAllToRunway}
+                    className="px-3.5 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-black uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer shadow-md"
+                    title="Send first 6 specimens to the Caliper Runway"
+                  >
+                    <Scale className="h-4 w-4" /> Send to Runway
+                  </button>
+                </ClickSpark>
+              </Magnet>
 
-              <button
-                onClick={handleExportMarkdown}
-                className="px-3.5 py-2 rounded-lg bg-slate-900 hover:bg-slate-850 border border-white/[0.08] text-slate-300 hover:text-white uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer"
-                title="Download Markdown Field Notes"
-              >
-                <Download className="h-4 w-4 text-amber-400" /> Export Dossier
-              </button>
+              <ClickSpark sparkColor="#F59E0B">
+                <button
+                  onClick={handleExportMarkdown}
+                  className="px-3.5 py-2 rounded-lg bg-slate-900 hover:bg-slate-850 border border-white/[0.08] text-slate-300 hover:text-white uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer"
+                  title="Download Markdown Field Notes"
+                >
+                  <Download className="h-4 w-4 text-amber-400" /> Export Dossier
+                </button>
+              </ClickSpark>
 
-              <button
-                onClick={() => window.print()}
-                className="p-2 rounded-lg bg-slate-900 hover:bg-slate-850 border border-white/[0.08] text-slate-300 hover:text-white transition-colors cursor-pointer"
-                title="Print Notebook Dossier"
-              >
-                <Printer className="h-4 w-4" />
-              </button>
+              <ClickSpark sparkColor="#F59E0B">
+                <button
+                  onClick={() => window.print()}
+                  className="p-2 rounded-lg bg-slate-900 hover:bg-slate-850 border border-white/[0.08] text-slate-300 hover:text-white transition-colors cursor-pointer"
+                  title="Print Notebook Dossier"
+                >
+                  <Printer className="h-4 w-4" />
+                </button>
+              </ClickSpark>
             </div>
           )}
         </div>
@@ -213,18 +224,19 @@ export default function FieldNotebook() {
         {speciesList.length > 0 && (
           <div className="mt-6 pt-6 border-t border-white/[0.08] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 font-mono text-xs">
             {/* Tag Pills */}
-            <div className="flex flex-wrap items-center gap-1.5">
-              <button
-                onClick={() => setSelectedTag('all')}
-                className={`px-3 py-1 rounded-md transition-all uppercase tracking-wider ${
-                  selectedTag === 'all'
-                    ? 'bg-amber-500 text-slate-950 font-black shadow-sm'
-                    : 'bg-slate-900 text-slate-400 hover:text-white border border-white/[0.06]'
-                }`}
-              >
-                All ({speciesList.length})
-              </button>
-              {allAvailableTags.map((tag) => (
+            <ClickSpark sparkColor="#F59E0B">
+              <div className="flex flex-wrap items-center gap-1.5">
+                <button
+                  onClick={() => setSelectedTag('all')}
+                  className={`px-3 py-1 rounded-md transition-all uppercase tracking-wider ${
+                    selectedTag === 'all'
+                      ? 'bg-amber-500 text-slate-950 font-black shadow-sm'
+                      : 'bg-slate-900 text-slate-400 hover:text-white border border-white/[0.06]'
+                  }`}
+                >
+                  All ({speciesList.length})
+                </button>
+                {allAvailableTags.map((tag) => (
                 <button
                   key={tag}
                   onClick={() => setSelectedTag(tag)}
@@ -239,6 +251,7 @@ export default function FieldNotebook() {
                 </button>
               ))}
             </div>
+          </ClickSpark>
 
             {/* Quick search inside notebook */}
             <div className="w-full sm:w-64">

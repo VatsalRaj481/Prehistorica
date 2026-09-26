@@ -3,6 +3,13 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { useLenis } from 'lenis/react';
 import { Compass, Sparkles, ArrowRight } from 'lucide-react';
 import DinoLogoMark from './DinoLogoMark.js';
+import Particles from './reactbits/Particles.js';
+import CircularText from './reactbits/CircularText.js';
+import DecryptedText from './reactbits/DecryptedText.js';
+import ShinyText from './reactbits/ShinyText.js';
+import CountUp from './reactbits/CountUp.js';
+import ClickSpark from './reactbits/ClickSpark.js';
+import TiltedPlinth from './reactbits/TiltedPlinth.js';
 
 interface ColdStartScreenProps {
   isWaking: boolean;
@@ -349,6 +356,21 @@ export default function ColdStartScreen({
         <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_35%_45%,_rgba(217,119,6,0.11)_0%,_transparent_65%)] pointer-events-none" />
         <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_rgba(251,191,36,0.04)_0%,_transparent_70%)] pointer-events-none" />
 
+        {/* Floating Amber Spores & Particulate Atmosphere (ReactBits Background) */}
+        {!shouldReduceMotion && (
+          <div className="fixed inset-0 z-0 pointer-events-none opacity-40">
+            <Particles
+              particleCount={36}
+              particleSpread={14}
+              speed={0.12}
+              particleColors={['#F59E0B', '#D97706', '#FBBF24', '#FDE68A']}
+              moveParticlesOnHover={true}
+              particleHoverFactor={0.4}
+              particleBaseSize={65}
+            />
+          </div>
+        )}
+
         {/* Delicate Museum Inset Perimeter Border */}
         <div className="fixed inset-2 sm:inset-3 rounded-2xl border border-white/[0.04] pointer-events-none" />
 
@@ -525,6 +547,25 @@ export default function ColdStartScreen({
                 </svg>
               </motion.div>
 
+              {/* ReactBits Circular Text: Orbiting Deep-Time Archival Legend */}
+              <motion.div
+                animate={
+                  exitPhase === 'expanding' || exitPhase === 'zooming'
+                    ? { opacity: 0, scale: 1.2 }
+                    : { opacity: 1, scale: 1 }
+                }
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0 flex items-center justify-center pointer-events-none z-[5]"
+              >
+                <CircularText
+                  text="• PREHISTORICA PAVILION • DEEP-TIME ARCHIVES • 541 MYA • "
+                  spinDuration={34}
+                  onHover="speedUp"
+                  radius={132}
+                  className="font-['Cinzel',serif] text-[7.5px] sm:text-[8px] tracking-[0.22em] text-amber-400/40 uppercase font-semibold"
+                />
+              </motion.div>
+
               {/* Central Enlarged Museum Monogram Crest (+25% scale for commanding focal presence) */}
               <motion.div
                 animate={
@@ -594,13 +635,19 @@ export default function ColdStartScreen({
                     Exhibition Preparation
                   </span>
                 </div>
-                <div className="flex items-center gap-2 text-xs">
+                <div className="flex items-center gap-1.5 text-xs">
                   <span className="text-slate-500 font-['Cinzel',serif] text-[10px] tracking-wider uppercase hidden sm:inline">
                     Galleries Opening
                   </span>
-                  <span className="text-amber-400 font-bold tabular-nums text-xs font-mono">
-                    {Math.min(100, Math.round(progress))}%
-                  </span>
+                  <div className="flex items-center text-amber-400 font-bold tabular-nums text-xs font-mono">
+                    <CountUp
+                      to={Math.min(100, Math.round(progress))}
+                      duration={0.3}
+                      separator=""
+                      suffix="%"
+                      className="text-amber-400 font-bold font-mono"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -614,8 +661,14 @@ export default function ColdStartScreen({
               </div>
 
               <div className="flex items-center justify-between text-[11px] text-slate-400 font-sans pt-0.5">
-                <span className="italic text-slate-300/90 text-[11px]">
-                  {preparationStatusText}
+                <span className="text-[11px]">
+                  <ShinyText
+                    text={preparationStatusText}
+                    className="italic text-slate-300/90 text-[11px]"
+                    color="#CCD6E7"
+                    shineColor="#FDE68A"
+                    speed={3}
+                  />
                 </span>
                 <span className="hidden sm:inline text-amber-400/70 font-['Cinzel',serif] text-[10px] tracking-widest uppercase">
                   Deep-Time Archives
@@ -624,124 +677,147 @@ export default function ColdStartScreen({
             </motion.div>
 
             {/* 2. Curatorial Collection Record (Primary Dominant Visual Feature) */}
-            <motion.div
-              animate={
-                exitPhase === 'idle' || exitPhase === 'completing' || exitPhase === 'fading-prep'
-                  ? { opacity: 1, y: 0, scale: 1 }
-                  : { opacity: 0, y: 12, scale: 0.98 }
-              }
-              transition={{ duration: 0.35 }}
-              className="bg-gradient-to-b from-[#0E1526] to-[#0A0F1B] rounded-xl p-5 sm:p-6 border border-amber-500/25 shadow-[0_12px_40px_rgba(0,0,0,0.55)] space-y-4 relative overflow-hidden"
-            >
-              {/* Archival Collection Record Framing Marks */}
-              <div className="absolute top-2.5 left-2.5 w-4 h-4 pointer-events-none">
-                <div className="w-full h-full border-t border-l border-amber-400/45 rounded-tl-[1px]" />
-              </div>
-              <div className="absolute top-2.5 right-2.5 w-4 h-4 pointer-events-none">
-                <div className="w-full h-full border-t border-r border-amber-400/45 rounded-tr-[1px]" />
-              </div>
-              {/* Bottom corners at card edge — clear of the dots row */}
-              <div className="absolute bottom-0 left-0 w-4 h-4 pointer-events-none">
-                <div className="w-full h-full border-b border-l border-amber-400/45 rounded-bl-[1px]" />
-              </div>
-              <div className="absolute bottom-0 right-0 w-4 h-4 pointer-events-none">
-                <div className="w-full h-full border-b border-r border-amber-400/45 rounded-br-[1px]" />
-              </div>
+            <TiltedPlinth rotateAmplitude={3} scaleOnHover={1.01} className="w-full">
+              <motion.div
+                animate={
+                  exitPhase === 'idle' || exitPhase === 'completing' || exitPhase === 'fading-prep'
+                    ? { opacity: 1, y: 0, scale: 1 }
+                    : { opacity: 0, y: 12, scale: 0.98 }
+                }
+                transition={{ duration: 0.35 }}
+                className="bg-gradient-to-b from-[#0E1526] to-[#0A0F1B] rounded-xl p-5 sm:p-6 border border-amber-500/25 shadow-[0_12px_40px_rgba(0,0,0,0.55)] space-y-4 relative overflow-hidden"
+              >
+                {/* Archival Collection Record Framing Marks */}
+                <div className="absolute top-2.5 left-2.5 w-4 h-4 pointer-events-none">
+                  <div className="w-full h-full border-t border-l border-amber-400/45 rounded-tl-[1px]" />
+                </div>
+                <div className="absolute top-2.5 right-2.5 w-4 h-4 pointer-events-none">
+                  <div className="w-full h-full border-t border-r border-amber-400/45 rounded-tr-[1px]" />
+                </div>
+                {/* Bottom corners at card edge — clear of the dots row */}
+                <div className="absolute bottom-0 left-0 w-4 h-4 pointer-events-none">
+                  <div className="w-full h-full border-b border-l border-amber-400/45 rounded-bl-[1px]" />
+                </div>
+                <div className="absolute bottom-0 right-0 w-4 h-4 pointer-events-none">
+                  <div className="w-full h-full border-b border-r border-amber-400/45 rounded-br-[1px]" />
+                </div>
 
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={factIndex}
-                  initial={{ opacity: 0, y: 6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -6 }}
-                  transition={{ duration: 0.3 }}
-                  className="space-y-4 pb-2"
-                >
-                  {/* Archival Record Header */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-amber-500/15 pb-3 text-[10px] uppercase tracking-widest text-amber-400">
-                    <span className="flex items-center gap-1.5 font-['Cinzel',serif] font-semibold">
-                      <Sparkles className="h-3.5 w-3.5 text-amber-400" />
-                      <span>CURATORIAL COLLECTION RECORD</span>
-                    </span>
-                    <span className="text-slate-400 text-[11px] tracking-wider font-mono">
-                      RECORD {factIndex + 1} OF {PALEOFACTS.length}
-                    </span>
-                  </div>
-
-                  {/* Species Title, Period & Formation */}
-                  <div className="space-y-1.5">
-                    <div className="flex flex-wrap items-baseline gap-2.5">
-                      <h2 className="text-2xl sm:text-3xl font-bold tracking-wide text-slate-100 font-['Cinzel',serif] italic">
-                        {currentFact.species}
-                      </h2>
-                      <span className="text-xs sm:text-sm text-amber-400 font-medium tracking-wide">
-                        ({currentFact.period})
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={factIndex}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.3 }}
+                    className="space-y-4 pb-2"
+                  >
+                    {/* Archival Record Header */}
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-amber-500/15 pb-3 text-[10px] uppercase tracking-widest text-amber-400">
+                      <span className="flex items-center gap-1.5 font-['Cinzel',serif] font-semibold">
+                        <Sparkles className="h-3.5 w-3.5 text-amber-400" />
+                        <ShinyText text="CURATORIAL COLLECTION RECORD" shineColor="#FDE68A" color="#F59E0B" speed={3.5} />
+                      </span>
+                      <span className="text-slate-400 text-[11px] tracking-wider font-mono">
+                        <DecryptedText
+                          key={`log-${factIndex}`}
+                          text={`RECORD ${currentFact.logNo} OF 006`}
+                          speed={25}
+                          maxIterations={7}
+                          className="text-slate-400 font-mono text-[11px]"
+                          encryptedClassName="text-amber-500/50 font-mono text-[11px]"
+                          animateOn="change"
+                        />
                       </span>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-amber-300/85 italic leading-relaxed">
-                      {currentFact.subheading}
-                    </p>
+                    {/* Species Title, Period & Formation */}
+                    <div className="space-y-1.5">
+                      <div className="flex flex-wrap items-baseline gap-2.5">
+                        <h2 className="text-2xl sm:text-3xl font-bold tracking-wide text-slate-100 font-['Cinzel',serif] italic">
+                          {currentFact.species}
+                        </h2>
+                        <span className="text-xs sm:text-sm text-amber-400 font-medium tracking-wide">
+                          ({currentFact.period})
+                        </span>
+                      </div>
 
-                    <p className="text-xs text-slate-400 pt-0.5 font-sans">
-                      Geological Formation: <strong className="text-slate-200 font-medium">{currentFact.formation}</strong>
-                    </p>
-                  </div>
+                      <p className="text-xs sm:text-sm text-amber-300/85 italic leading-relaxed">
+                        {currentFact.subheading}
+                      </p>
 
-                  {/* Metric Dimensions Plaque Strip */}
-                  <div className="grid grid-cols-3 gap-2 sm:gap-3 bg-[#060A12]/80 p-3.5 rounded-lg border border-amber-500/15 text-center">
-                    <div>
-                      <span className="text-[9px] font-['Cinzel',serif] tracking-wider text-slate-400 uppercase block mb-0.5 font-semibold">
-                        Estimated Mass
-                      </span>
-                      <span className="text-amber-400 font-bold text-sm sm:text-base tracking-tight tabular-nums">
-                        {currentFact.mass}
-                      </span>
+                      <p className="text-xs text-slate-400 pt-0.5 font-sans flex flex-wrap items-center gap-1.5">
+                        <span>Geological Formation:</span>
+                        <strong className="text-slate-200 font-medium">
+                          <DecryptedText
+                            key={`formation-${factIndex}`}
+                            text={currentFact.formation}
+                            speed={18}
+                            maxIterations={6}
+                            className="text-slate-200 font-medium"
+                            encryptedClassName="text-amber-400/50"
+                            animateOn="change"
+                          />
+                        </strong>
+                      </p>
                     </div>
-                    <div className="border-x border-amber-500/15">
-                      <span className="text-[9px] font-['Cinzel',serif] tracking-wider text-slate-400 uppercase block mb-0.5 font-semibold">
-                        Total Length
-                      </span>
-                      <span className="text-slate-100 font-bold text-sm sm:text-base tracking-tight tabular-nums">
-                        {currentFact.length}
-                      </span>
-                    </div>
-                    <div>
-                      <span className="text-[9px] font-['Cinzel',serif] tracking-wider text-slate-400 uppercase block mb-0.5 font-semibold">
-                        Paleo-Habitat
-                      </span>
-                      <span className="text-slate-200 font-semibold text-xs sm:text-sm truncate block pt-0.5">
-                        {currentFact.habitat}
-                      </span>
-                    </div>
-                  </div>
 
-                  {/* Curatorial Anatomical Observation */}
-                  <div className="relative pl-4 border-l-2 border-amber-500/70 py-1">
-                    <p className="text-xs sm:text-[13px] text-slate-300 leading-relaxed italic">
-                      "{currentFact.fact}"
-                    </p>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+                    {/* Metric Dimensions Plaque Strip */}
+                    <div className="grid grid-cols-3 gap-2 sm:gap-3 bg-[#060A12]/80 p-3.5 rounded-lg border border-amber-500/15 text-center">
+                      <div>
+                        <span className="text-[9px] font-['Cinzel',serif] tracking-wider text-slate-400 uppercase block mb-0.5 font-semibold">
+                          Estimated Mass
+                        </span>
+                        <span className="text-amber-400 font-bold text-sm sm:text-base tracking-tight tabular-nums">
+                          {currentFact.mass}
+                        </span>
+                      </div>
+                      <div className="border-x border-amber-500/15">
+                        <span className="text-[9px] font-['Cinzel',serif] tracking-wider text-slate-400 uppercase block mb-0.5 font-semibold">
+                          Total Length
+                        </span>
+                        <span className="text-slate-100 font-bold text-sm sm:text-base tracking-tight tabular-nums">
+                          {currentFact.length}
+                        </span>
+                      </div>
+                      <div>
+                        <span className="text-[9px] font-['Cinzel',serif] tracking-wider text-slate-400 uppercase block mb-0.5 font-semibold">
+                          Paleo-Habitat
+                        </span>
+                        <span className="text-slate-200 font-semibold text-xs sm:text-sm truncate block pt-0.5">
+                          {currentFact.habitat}
+                        </span>
+                      </div>
+                    </div>
 
-              {/* Curatorial Specimen Indicators — outside AnimatePresence, clear of bottom corners */}
-              <div className="flex items-center justify-end gap-1.5 pt-2 pb-1 relative z-10">
-                {PALEOFACTS.map((_, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => setFactIndex(idx)}
-                    className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                      factIndex === idx
-                        ? 'w-5 bg-amber-400 shadow-[0_0_6px_rgba(245,158,11,0.5)]'
-                        : 'w-1.5 bg-white/20 hover:bg-white/40'
-                    }`}
-                    aria-label={`View specimen record ${idx + 1}`}
-                  />
-                ))}
-              </div>
-            </motion.div>
+                    {/* Curatorial Anatomical Observation */}
+                    <div className="relative pl-4 border-l-2 border-amber-500/70 py-1">
+                      <p className="text-xs sm:text-[13px] text-slate-300 leading-relaxed italic">
+                        "{currentFact.fact}"
+                      </p>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Curatorial Specimen Indicators — with ReactBits ClickSpark feedback */}
+                <ClickSpark sparkColor="#FBBF24" sparkSize={8} sparkRadius={16} sparkCount={6}>
+                  <div className="flex items-center justify-end gap-1.5 pt-2 pb-1 relative z-10">
+                    {PALEOFACTS.map((_, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => setFactIndex(idx)}
+                        className={`h-1.5 rounded-full transition-all cursor-pointer ${
+                          factIndex === idx
+                            ? 'w-5 bg-amber-400 shadow-[0_0_6px_rgba(245,158,11,0.5)]'
+                            : 'w-1.5 bg-white/20 hover:bg-white/40'
+                        }`}
+                        aria-label={`View specimen record ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
+                </ClickSpark>
+              </motion.div>
+            </TiltedPlinth>
           </div>
         </main>
 
@@ -789,19 +865,21 @@ export default function ColdStartScreen({
 
             <AnimatePresence>
               {(!isWaking || isFinishing) && (
-                <motion.button
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={handleFinish}
-                  id="begin-visit-btn"
-                  className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold uppercase tracking-widest text-xs font-['Cinzel',serif] flex items-center gap-2.5 shadow-[0_4px_24px_rgba(217,119,6,0.35)] transition-all cursor-pointer"
-                >
-                  <span>Begin Your Visit</span>
-                  <ArrowRight className="h-4 w-4" />
-                </motion.button>
+                <ClickSpark sparkColor="#FDE68A" sparkSize={10} sparkRadius={20} sparkCount={8}>
+                  <motion.button
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={handleFinish}
+                    id="begin-visit-btn"
+                    className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold uppercase tracking-widest text-xs font-['Cinzel',serif] flex items-center gap-2.5 shadow-[0_4px_24px_rgba(217,119,6,0.35)] transition-all cursor-pointer"
+                  >
+                    <ShinyText text="Begin Your Visit" color="#090D16" shineColor="#FFFFFF" speed={2.5} className="font-bold" />
+                    <ArrowRight className="h-4 w-4" />
+                  </motion.button>
+                </ClickSpark>
               )}
             </AnimatePresence>
           </div>

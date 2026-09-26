@@ -110,6 +110,11 @@ const cleanApiUrl = rawApiUrl.replace(/\/$/, '');
 const API_BASE = cleanApiUrl.endsWith('/api') ? cleanApiUrl : `${cleanApiUrl}/api`;
 
 /**
+ * Canonical Single Source of Truth for verified cataloged specimens count across Prehistorica.
+ */
+export const TOTAL_CATALOGED_SPECIMENS = 596;
+
+/**
  * Fire-and-forget wake ping to wake up a sleeping backend immediately upon app load.
  * Does not block rendering and silently ignores errors.
  */

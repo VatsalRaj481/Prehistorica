@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion, Variants } from 'framer-motion';
-import { fetchSpecies, fetchSemanticSearch, Species } from '../services/api.js';
+import { fetchSpecies, fetchSemanticSearch, Species, TOTAL_CATALOGED_SPECIMENS } from '../services/api.js';
 import SpotlightCard from '../components/SpotlightCard.js';
 import SpecimenThumbnail from '../components/SpecimenThumbnail.js';
 import { SlidersHorizontal, ArrowRight, Info, X, ChevronLeft, ChevronRight, Filter, Sparkles } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 import { formatFeet } from '../utils/formatDimensions.js';
+import CountUp from '../components/reactbits/CountUp.js';
+import ClickSpark from '../components/reactbits/ClickSpark.js';
+import CuratorialLoader from '../components/CuratorialLoader.js';
 
 export default function Browse() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -257,7 +260,16 @@ export default function Browse() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-xs text-slate-400 mt-1"
           >
-            Archival search across <strong className="text-amber-400">{pagination.total > 0 ? `${pagination.total}+` : '590+'}</strong> verified prehistoric specimens.
+            Archival search across{' '}
+            <strong className="text-amber-400 font-bold">
+              <CountUp
+                to={pagination.total > 0 ? pagination.total : TOTAL_CATALOGED_SPECIMENS}
+                duration={0.8}
+                separator=","
+                className="text-amber-400 font-bold"
+              />
+            </strong>{' '}
+            verified prehistoric specimens.
           </motion.p>
         </div>
 
@@ -714,7 +726,15 @@ export default function Browse() {
           </AnimatePresence>
 
           {loading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="space-y-6 w-full">
+              <div className="w-full p-4 sm:p-6 museum-card rounded-xl border border-amber-500/20 bg-slate-950/40 flex items-center justify-center">
+                <CuratorialLoader
+                  variant="strata"
+                  label="Excavating Specimen Catalog..."
+                  sublabel="Preparing fossil specimens and anatomical profiles..."
+                />
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
               {[...Array(6)].map((_, i) => (
                 <div key={i} className="animate-pulse museum-card rounded-xl border border-white/[0.06] overflow-hidden flex flex-col justify-between">
                   <div>
@@ -736,6 +756,7 @@ export default function Browse() {
                   </div>
                 </div>
               ))}
+              </div>
             </div>
           ) : error ? (
             <div className="museum-plinth rounded-xl border border-red-500/30 p-8 text-center text-red-400 text-xs font-mono">
@@ -844,24 +865,26 @@ export default function Browse() {
                     Page <strong className="text-amber-400">{page}</strong> / <strong className="text-slate-200">{pagination.totalPages}</strong> ({pagination.total} total specimens)
                   </span>
 
-                  <div className="flex items-center gap-2">
-                    <motion.button
-                      whileTap={{ scale: 0.93 }}
-                      disabled={page <= 1}
-                      onClick={() => updateParams({ page: (page - 1).toString() })}
-                      className="px-3.5 py-2 bg-slate-900/90 hover:bg-slate-850 disabled:opacity-40 border border-white/[0.08] rounded-lg text-slate-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-colors"
-                    >
-                      <ChevronLeft className="h-4 w-4" /> Prev
-                    </motion.button>
-                    <motion.button
-                      whileTap={{ scale: 0.93 }}
-                      disabled={page >= pagination.totalPages}
-                      onClick={() => updateParams({ page: (page + 1).toString() })}
-                      className="px-3.5 py-2 bg-slate-900/90 hover:bg-slate-850 disabled:opacity-40 border border-white/[0.08] rounded-lg text-slate-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-colors"
-                    >
-                      Next <ChevronRight className="h-4 w-4" />
-                    </motion.button>
-                  </div>
+                  <ClickSpark sparkColor="#FBBF24" sparkSize={8} sparkRadius={16} sparkCount={6}>
+                    <div className="flex items-center gap-2">
+                      <motion.button
+                        whileTap={{ scale: 0.93 }}
+                        disabled={page <= 1}
+                        onClick={() => updateParams({ page: (page - 1).toString() })}
+                        className="px-3.5 py-2 bg-slate-900/90 hover:bg-slate-850 disabled:opacity-40 border border-white/[0.08] rounded-lg text-slate-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-colors"
+                      >
+                        <ChevronLeft className="h-4 w-4" /> Prev
+                      </motion.button>
+                      <motion.button
+                        whileTap={{ scale: 0.93 }}
+                        disabled={page >= pagination.totalPages}
+                        onClick={() => updateParams({ page: (page + 1).toString() })}
+                        className="px-3.5 py-2 bg-slate-900/90 hover:bg-slate-850 disabled:opacity-40 border border-white/[0.08] rounded-lg text-slate-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-colors"
+                      >
+                        Next <ChevronRight className="h-4 w-4" />
+                      </motion.button>
+                    </div>
+                  </ClickSpark>
                 </div>
               )}
             </>

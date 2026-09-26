@@ -1,3 +1,5 @@
+import ShinyText from './reactbits/ShinyText.js';
+
 export default function Footer() {
   return (
     <footer className="bg-slate-950 border-t border-white/[0.08] text-slate-400 py-8 sm:py-9 mt-auto font-mono relative z-20">
@@ -12,9 +14,13 @@ export default function Footer() {
             />
             <div className="space-y-1.5">
               <div className="flex items-center gap-2.5">
-                <h3 className="text-sm font-black tracking-widest text-slate-100 uppercase font-mono">
-                  PREHISTORICA
-                </h3>
+                <ShinyText
+                  text="PREHISTORICA"
+                  color="#F1F5F9"
+                  shineColor="#FBBF24"
+                  speed={3.5}
+                  className="text-sm font-black tracking-widest uppercase font-mono"
+                />
                 <span className="px-2 py-0.5 text-[9px] font-bold rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 uppercase tracking-widest">
                   ARCHIVE v2.0
                 </span>

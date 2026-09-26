@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { User, Car, Bus, Layers, ExternalLink, ShieldCheck, AlertTriangle, Eye, Ruler, ArrowLeftRight } from 'lucide-react';
 import { formatMass } from '../utils/formatMass.js';
 import { formatFeet } from '../utils/formatDimensions.js';
+import ClickSpark from './reactbits/ClickSpark.js';
 
 export interface SilhouetteData {
   url?: string | null;
@@ -342,120 +343,124 @@ export default function TwoDScaleViewer({
           {/* Controls: Reference Switcher & Toggles */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between lg:justify-end gap-2 w-full lg:w-auto">
             {/* Reference Target Switcher */}
-            <div className="grid grid-cols-4 sm:flex items-center bg-slate-900/90 border border-white/[0.08] rounded-xl p-0.5 sm:p-1 gap-0.5 sm:gap-1 shadow-lg shrink-0">
-              <motion.button
-                whileTap={{ scale: 0.94 }}
-                onClick={() => setRefType('human')}
-                className={`min-h-[36px] px-1 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 transition-all cursor-pointer ${
-                  refType === 'human'
-                    ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
-                    : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
-                }`}
-                title="Compare with Human (1.8m)"
-                aria-label="Compare with Human scale"
-              >
-                <User className="h-3.5 w-3.5 shrink-0" />
-                <span className="text-[10px] sm:text-[11px] truncate">
-                  Human<span className="hidden xl:inline"> (1.8m)</span>
-                </span>
-              </motion.button>
+            <ClickSpark sparkColor="#F59E0B">
+              <div className="grid grid-cols-4 sm:flex items-center bg-slate-900/90 border border-white/[0.08] rounded-xl p-0.5 sm:p-1 gap-0.5 sm:gap-1 shadow-lg shrink-0">
+                <motion.button
+                  whileTap={{ scale: 0.94 }}
+                  onClick={() => setRefType('human')}
+                  className={`min-h-[36px] px-1 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 transition-all cursor-pointer ${
+                    refType === 'human'
+                      ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
+                      : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
+                  }`}
+                  title="Compare with Human (1.8m)"
+                  aria-label="Compare with Human scale"
+                >
+                  <User className="h-3.5 w-3.5 shrink-0" />
+                  <span className="text-[10px] sm:text-[11px] truncate">
+                    Human<span className="hidden xl:inline"> (1.8m)</span>
+                  </span>
+                </motion.button>
 
-              <motion.button
-                whileTap={{ scale: 0.94 }}
-                onClick={() => setRefType('car')}
-                className={`min-h-[36px] px-1 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 transition-all cursor-pointer ${
-                  refType === 'car'
-                    ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
-                    : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
-                }`}
-                title="Compare with Vehicle (4.5m)"
-                aria-label="Compare with Vehicle scale"
-              >
-                <Car className="h-3.5 w-3.5 shrink-0" />
-                <span className="text-[10px] sm:text-[11px] truncate">
-                  Car<span className="hidden xl:inline"> (4.5m)</span>
-                </span>
-              </motion.button>
+                <motion.button
+                  whileTap={{ scale: 0.94 }}
+                  onClick={() => setRefType('car')}
+                  className={`min-h-[36px] px-1 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 transition-all cursor-pointer ${
+                    refType === 'car'
+                      ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
+                      : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
+                  }`}
+                  title="Compare with Vehicle (4.5m)"
+                  aria-label="Compare with Vehicle scale"
+                >
+                  <Car className="h-3.5 w-3.5 shrink-0" />
+                  <span className="text-[10px] sm:text-[11px] truncate">
+                    Car<span className="hidden xl:inline"> (4.5m)</span>
+                  </span>
+                </motion.button>
 
-              <motion.button
-                whileTap={{ scale: 0.94 }}
-                onClick={() => setRefType('bus')}
-                className={`min-h-[36px] px-1 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 transition-all cursor-pointer ${
-                  refType === 'bus'
-                    ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
-                    : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
-                }`}
-                title="Compare with Transit Bus (11.5m)"
-                aria-label="Compare with Bus scale"
-              >
-                <Bus className="h-3.5 w-3.5 shrink-0" />
-                <span className="text-[10px] sm:text-[11px] truncate">
-                  Bus<span className="hidden xl:inline"> (11.5m)</span>
-                </span>
-              </motion.button>
+                <motion.button
+                  whileTap={{ scale: 0.94 }}
+                  onClick={() => setRefType('bus')}
+                  className={`min-h-[36px] px-1 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 transition-all cursor-pointer ${
+                    refType === 'bus'
+                      ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
+                      : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
+                  }`}
+                  title="Compare with Transit Bus (11.5m)"
+                  aria-label="Compare with Bus scale"
+                >
+                  <Bus className="h-3.5 w-3.5 shrink-0" />
+                  <span className="text-[10px] sm:text-[11px] truncate">
+                    Bus<span className="hidden xl:inline"> (11.5m)</span>
+                  </span>
+                </motion.button>
 
-              <motion.button
-                whileTap={{ scale: 0.94 }}
-                onClick={() => setRefType('elephant')}
-                className={`min-h-[36px] px-1 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 transition-all cursor-pointer ${
-                  refType === 'elephant'
-                    ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
-                    : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
-                }`}
-                title="Compare with African Elephant (3.3m)"
-                aria-label="Compare with African Elephant scale"
-              >
-                <Layers className="h-3.5 w-3.5 shrink-0" />
-                <span className="text-[10px] sm:text-[11px] truncate">
-                  Elephant<span className="hidden xl:inline"> (3.3m)</span>
-                </span>
-              </motion.button>
-            </div>
+                <motion.button
+                  whileTap={{ scale: 0.94 }}
+                  onClick={() => setRefType('elephant')}
+                  className={`min-h-[36px] px-1 py-1 sm:px-2.5 sm:py-1.5 text-xs font-mono font-bold rounded-lg flex items-center justify-center sm:justify-start gap-1 sm:gap-1.5 transition-all cursor-pointer ${
+                    refType === 'elephant'
+                      ? 'bg-amber-500 text-slate-950 shadow-md font-extrabold'
+                      : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
+                  }`}
+                  title="Compare with African Elephant (3.3m)"
+                  aria-label="Compare with African Elephant scale"
+                >
+                  <Layers className="h-3.5 w-3.5 shrink-0" />
+                  <span className="text-[10px] sm:text-[11px] truncate">
+                    Elephant<span className="hidden xl:inline"> (3.3m)</span>
+                  </span>
+                </motion.button>
+              </div>
+            </ClickSpark>
 
             {/* Toggle Action Buttons: Calipers, Grid, Orientation */}
-            <div className="flex items-center justify-end gap-1.5 shrink-0">
-              <motion.button
-                whileTap={{ scale: 0.94 }}
-                onClick={() => setShowCalipers(!showCalipers)}
-                className={`min-h-[36px] min-w-[36px] p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center shrink-0 ${
-                  showCalipers
-                    ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
-                    : 'bg-slate-900/90 border-white/[0.08] text-slate-400 hover:text-white'
-                }`}
-                title="Toggle Architectural Caliper Lines"
-                aria-label="Toggle Architectural Caliper Lines"
-              >
-                <Ruler className="h-4 w-4" />
-              </motion.button>
+            <ClickSpark sparkColor="#F59E0B">
+              <div className="flex items-center justify-end gap-1.5 shrink-0">
+                <motion.button
+                  whileTap={{ scale: 0.94 }}
+                  onClick={() => setShowCalipers(!showCalipers)}
+                  className={`min-h-[36px] min-w-[36px] p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center shrink-0 ${
+                    showCalipers
+                      ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
+                      : 'bg-slate-900/90 border-white/[0.08] text-slate-400 hover:text-white'
+                  }`}
+                  title="Toggle Architectural Caliper Lines"
+                  aria-label="Toggle Architectural Caliper Lines"
+                >
+                  <Ruler className="h-4 w-4" />
+                </motion.button>
 
-              <motion.button
-                whileTap={{ scale: 0.94 }}
-                onClick={() => setShowGrid(!showGrid)}
-                className={`min-h-[36px] min-w-[36px] p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center shrink-0 ${
-                  showGrid
-                    ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
-                    : 'bg-slate-900/90 border-white/[0.08] text-slate-400 hover:text-white'
-                }`}
-                title="Toggle Metric Grid"
-                aria-label="Toggle Metric Grid"
-              >
-                <Eye className="h-4 w-4" />
-              </motion.button>
+                <motion.button
+                  whileTap={{ scale: 0.94 }}
+                  onClick={() => setShowGrid(!showGrid)}
+                  className={`min-h-[36px] min-w-[36px] p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center shrink-0 ${
+                    showGrid
+                      ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
+                      : 'bg-slate-900/90 border-white/[0.08] text-slate-400 hover:text-white'
+                  }`}
+                  title="Toggle Metric Grid"
+                  aria-label="Toggle Metric Grid"
+                >
+                  <Eye className="h-4 w-4" />
+                </motion.button>
 
-              <motion.button
-                whileTap={{ scale: 0.94 }}
-                onClick={() => setFaceCreature(!faceCreature)}
-                className={`min-h-[36px] min-w-[36px] p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center gap-1.5 shrink-0 ${
-                  faceCreature
-                    ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
-                    : 'bg-slate-900/90 border-white/[0.08] text-slate-400 hover:text-white'
-                }`}
-                title={faceCreature ? "Orientation: Facing Creature (click for Parallel)" : "Orientation: Parallel (Both Left) (click to Face Creature)"}
-                aria-label="Toggle figure orientation"
-              >
-                <ArrowLeftRight className="h-4 w-4" />
-              </motion.button>
-            </div>
+                <motion.button
+                  whileTap={{ scale: 0.94 }}
+                  onClick={() => setFaceCreature(!faceCreature)}
+                  className={`min-h-[36px] min-w-[36px] p-2 rounded-xl border transition-all cursor-pointer shadow-lg flex items-center justify-center gap-1.5 shrink-0 ${
+                    faceCreature
+                      ? 'bg-amber-500/20 border-amber-500/60 text-amber-300'
+                      : 'bg-slate-900/90 border-white/[0.08] text-slate-400 hover:text-white'
+                  }`}
+                  title={faceCreature ? "Orientation: Facing Creature (click for Parallel)" : "Orientation: Parallel (Both Left) (click to Face Creature)"}
+                  aria-label="Toggle figure orientation"
+                >
+                  <ArrowLeftRight className="h-4 w-4" />
+                </motion.button>
+              </div>
+            </ClickSpark>
           </div>
         </div>
 

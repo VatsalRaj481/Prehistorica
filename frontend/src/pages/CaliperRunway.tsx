@@ -3,6 +3,7 @@ import { useSearchParams, Link } from 'react-router-dom';
 import {
   fetchSpeciesCompare,
   fetchSpeciesRoster,
+  TOTAL_CATALOGED_SPECIMENS,
   Species,
   SpeciesRosterItem
 } from '../services/api.js';
@@ -27,6 +28,10 @@ import {
 import RunwayMatchupModal from '../components/RunwayMatchupModal.js';
 import { formatFeetLong } from '../utils/formatDimensions.js';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
+import ShinyText from '../components/reactbits/ShinyText.js';
+import ClickSpark from '../components/reactbits/ClickSpark.js';
+import Magnet from '../components/reactbits/Magnet.js';
+import CuratorialLoader from '../components/CuratorialLoader.js';
 
 interface PresetLineup {
   name: string;
@@ -225,7 +230,7 @@ export default function CaliperRunway() {
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono font-bold uppercase tracking-widest">
               <Scale className="h-3.5 w-3.5" />
-              1:1 Cartesian Caliper Stage
+              <ShinyText text="1:1 Cartesian Caliper Stage" speed={3.5} />
             </div>
             <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-slate-100 font-sans">
               Multi-Specimen Caliper Runway
@@ -237,120 +242,132 @@ export default function CaliperRunway() {
 
           {/* Reference Switcher & Tools */}
           <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
-            <div className="p-1 rounded-lg bg-slate-900 border border-white/[0.08] flex items-center gap-1">
-              <button
-                onClick={() => setActiveReference('human')}
-                className={`px-2.5 py-1.5 rounded flex items-center gap-1.5 uppercase font-bold transition-all cursor-pointer ${
-                  activeReference === 'human'
-                    ? 'bg-amber-500 text-slate-950 shadow-sm'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-                title="1.8m Architectural Human"
-              >
-                <User className="h-3 w-3" /> Human
-              </button>
+            <ClickSpark sparkColor="#F59E0B">
+              <div className="p-1 rounded-lg bg-slate-900 border border-white/[0.08] flex items-center gap-1">
+                <button
+                  onClick={() => setActiveReference('human')}
+                  className={`px-2.5 py-1.5 rounded flex items-center gap-1.5 uppercase font-bold transition-all cursor-pointer ${
+                    activeReference === 'human'
+                      ? 'bg-amber-500 text-slate-950 shadow-sm'
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                  title="1.8m Architectural Human"
+                >
+                  <User className="h-3 w-3" /> Human
+                </button>
 
-              <button
-                onClick={() => setActiveReference('car')}
-                className={`px-2.5 py-1.5 rounded flex items-center gap-1.5 uppercase font-bold transition-all cursor-pointer ${
-                  activeReference === 'car'
-                    ? 'bg-amber-500 text-slate-950 shadow-sm'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-                title="4.5m Sedan Car"
-              >
-                <Car className="h-3 w-3" /> Vehicle
-              </button>
+                <button
+                  onClick={() => setActiveReference('car')}
+                  className={`px-2.5 py-1.5 rounded flex items-center gap-1.5 uppercase font-bold transition-all cursor-pointer ${
+                    activeReference === 'car'
+                      ? 'bg-amber-500 text-slate-950 shadow-sm'
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                  title="4.5m Sedan Car"
+                >
+                  <Car className="h-3 w-3" /> Vehicle
+                </button>
 
-              <button
-                onClick={() => setActiveReference('bus')}
-                className={`px-2.5 py-1.5 rounded flex items-center gap-1.5 uppercase font-bold transition-all cursor-pointer ${
-                  activeReference === 'bus'
-                    ? 'bg-amber-500 text-slate-950 shadow-sm'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-                title="11.5m Transit Bus"
-              >
-                <Bus className="h-3 w-3" /> Bus
-              </button>
+                <button
+                  onClick={() => setActiveReference('bus')}
+                  className={`px-2.5 py-1.5 rounded flex items-center gap-1.5 uppercase font-bold transition-all cursor-pointer ${
+                    activeReference === 'bus'
+                      ? 'bg-amber-500 text-slate-950 shadow-sm'
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                  title="11.5m Transit Bus"
+                >
+                  <Bus className="h-3 w-3" /> Bus
+                </button>
 
-              <button
-                onClick={() => setActiveReference('none')}
-                className={`px-2 py-1.5 rounded uppercase font-bold transition-all cursor-pointer ${
-                  activeReference === 'none'
-                    ? 'bg-amber-500 text-slate-950 shadow-sm'
-                    : 'text-slate-500 hover:text-white'
-                }`}
-                title="Hide reference models"
-              >
-                Off
-              </button>
-            </div>
+                <button
+                  onClick={() => setActiveReference('none')}
+                  className={`px-2 py-1.5 rounded uppercase font-bold transition-all cursor-pointer ${
+                    activeReference === 'none'
+                      ? 'bg-amber-500 text-slate-950 shadow-sm'
+                      : 'text-slate-500 hover:text-white'
+                  }`}
+                  title="Hide reference models"
+                >
+                  Off
+                </button>
+              </div>
+            </ClickSpark>
 
             {/* Grid and Caliper toggles */}
-            <button
-              onClick={() => setShowGrid(!showGrid)}
-              className={`p-2 rounded-lg border uppercase transition-colors cursor-pointer ${
-                showGrid
-                  ? 'bg-amber-500/15 border-amber-500/40 text-amber-300'
-                  : 'bg-slate-900 border-white/[0.08] text-slate-400'
-              }`}
-              title="Toggle Metric Grid"
-            >
-              <Layers className="h-4 w-4" />
-            </button>
+            <ClickSpark sparkColor="#F59E0B">
+              <div className="flex items-center gap-1.5">
+                <button
+                  onClick={() => setShowGrid(!showGrid)}
+                  className={`p-2 rounded-lg border uppercase transition-colors cursor-pointer ${
+                    showGrid
+                      ? 'bg-amber-500/15 border-amber-500/40 text-amber-300'
+                      : 'bg-slate-900 border-white/[0.08] text-slate-400'
+                  }`}
+                  title="Toggle Metric Grid"
+                >
+                  <Layers className="h-4 w-4" />
+                </button>
 
-            <button
-              onClick={() => setShowCalipers(!showCalipers)}
-              className={`p-2 rounded-lg border uppercase transition-colors cursor-pointer ${
-                showCalipers
-                  ? 'bg-amber-500/15 border-amber-500/40 text-amber-300'
-                  : 'bg-slate-900 border-white/[0.08] text-slate-400'
-              }`}
-              title="Toggle Dimension Calipers"
-            >
-              <Ruler className="h-4 w-4" />
-            </button>
+                <button
+                  onClick={() => setShowCalipers(!showCalipers)}
+                  className={`p-2 rounded-lg border uppercase transition-colors cursor-pointer ${
+                    showCalipers
+                      ? 'bg-amber-500/15 border-amber-500/40 text-amber-300'
+                      : 'bg-slate-900 border-white/[0.08] text-slate-400'
+                  }`}
+                  title="Toggle Dimension Calipers"
+                >
+                  <Ruler className="h-4 w-4" />
+                </button>
+              </div>
+            </ClickSpark>
 
             {/* Metric Scale Magnification */}
-            <div className="p-1 rounded-lg bg-slate-900 border border-white/[0.08] flex items-center gap-1">
-              <button
-                onClick={() => setStageScale((prev) => Math.max(35, prev - 15))}
-                disabled={stageScale <= 35}
-                className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
-                title="Decrease Scale (Zoom Out)"
-              >
-                <ZoomOut className="h-3.5 w-3.5" />
-              </button>
+            <ClickSpark sparkColor="#F59E0B">
+              <div className="p-1 rounded-lg bg-slate-900 border border-white/[0.08] flex items-center gap-1">
+                <button
+                  onClick={() => setStageScale((prev) => Math.max(35, prev - 15))}
+                  disabled={stageScale <= 35}
+                  className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                  title="Decrease Scale (Zoom Out)"
+                >
+                  <ZoomOut className="h-3.5 w-3.5" />
+                </button>
 
-              <button
-                onClick={() => setStageScale(55)}
-                className="px-2 py-1 rounded text-[11px] font-bold text-amber-400 hover:bg-slate-800 transition-colors cursor-pointer min-w-[56px] text-center"
-                title="Click to reset to baseline 55px/m"
-              >
-                {stageScale} px/m
-              </button>
+                <button
+                  onClick={() => setStageScale(55)}
+                  className="px-2 py-1 rounded text-[11px] font-bold text-amber-400 hover:bg-slate-800 transition-colors cursor-pointer min-w-[56px] text-center"
+                  title="Click to reset to baseline 55px/m"
+                >
+                  {stageScale} px/m
+                </button>
 
-              <button
-                onClick={() => setStageScale((prev) => Math.min(145, prev + 15))}
-                disabled={stageScale >= 145}
-                className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
-                title="Increase Scale (Zoom In)"
-              >
-                <ZoomIn className="h-3.5 w-3.5" />
-              </button>
-            </div>
+                <button
+                  onClick={() => setStageScale((prev) => Math.min(145, prev + 15))}
+                  disabled={stageScale >= 145}
+                  className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                  title="Increase Scale (Zoom In)"
+                >
+                  <ZoomIn className="h-3.5 w-3.5" />
+                </button>
+              </div>
+            </ClickSpark>
 
             {/* AI Matchup Simulator Trigger */}
             {selectedSpecies.length >= 2 && (
-              <button
-                onClick={() => setIsMatchupOpen(true)}
-                className="px-3 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-mono font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-lg shadow-amber-500/20 active:scale-95 cursor-pointer shrink-0"
-                title="Simulate Biomechanical & Stratigraphic Interaction"
-              >
-                <Swords className="h-4 w-4" />
-                <span>Simulate Matchup (AI)</span>
-              </button>
+              <Magnet padding={20} magnetStrength={2}>
+                <ClickSpark sparkColor="#F59E0B">
+                  <button
+                    onClick={() => setIsMatchupOpen(true)}
+                    className="px-3 py-2 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-mono font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-lg shadow-amber-500/20 active:scale-95 cursor-pointer shrink-0"
+                    title="Simulate Biomechanical & Stratigraphic Interaction"
+                  >
+                    <Swords className="h-4 w-4" />
+                    <span>Simulate Matchup (AI)</span>
+                  </button>
+                </ClickSpark>
+              </Magnet>
             )}
           </div>
         </div>
@@ -360,30 +377,37 @@ export default function CaliperRunway() {
           <span className="text-slate-400 font-bold uppercase tracking-wider text-[10px] mr-1 flex items-center gap-1">
             <Sparkles className="h-3 w-3 text-amber-400" /> Presets:
           </span>
-          {PRESETS.map((p) => (
-            <button
-              key={p.name}
-              onClick={() => loadPreset(p)}
-              className="px-3 py-1 rounded-md bg-slate-900 hover:bg-slate-850 border border-white/[0.08] hover:border-amber-500/40 text-slate-300 hover:text-white uppercase tracking-wider text-[11px] transition-colors cursor-pointer"
-            >
-              {p.name}
-            </button>
-          ))}
+          <ClickSpark sparkColor="#F59E0B">
+            <div className="flex flex-wrap items-center gap-2">
+              {PRESETS.map((p) => (
+                <button
+                  key={p.name}
+                  onClick={() => loadPreset(p)}
+                  className="px-3 py-1 rounded-md bg-slate-900 hover:bg-slate-850 border border-white/[0.08] hover:border-amber-500/40 text-slate-300 hover:text-white uppercase tracking-wider text-[11px] transition-colors cursor-pointer"
+                >
+                  {p.name}
+                </button>
+              ))}
+            </div>
+          </ClickSpark>
         </div>
       </div>
 
       {/* Main Caliper Stage Viewport */}
       {loading ? (
-        <div className="h-[480px] bg-slate-950 rounded-2xl border border-white/[0.08] flex flex-col items-center justify-center gap-3 animate-pulse font-mono text-slate-400">
-          <Ruler className="h-8 w-8 text-amber-400 animate-spin" />
-          <span className="text-xs uppercase tracking-widest">Calibrating Runway Stage Units...</span>
+        <div className="w-full h-[480px] bg-slate-950 rounded-2xl border border-white/[0.08] flex flex-col items-center justify-center p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+          <CuratorialLoader
+            variant="strata"
+            label="Calibrating 1:1 Metric Caliper Runway..."
+            sublabel="Synthesizing skeletal silhouettes against architectural reference models"
+          />
         </div>
       ) : selectedSpecies.length === 0 ? (
         <div className="museum-plinth rounded-2xl p-12 text-center border border-white/[0.08] space-y-4 font-mono">
           <Scale className="h-10 w-10 text-amber-400 mx-auto" />
           <h3 className="text-base text-slate-200 uppercase font-bold">No Specimen On The Runway</h3>
           <p className="text-xs text-slate-400 max-w-sm mx-auto">
-            Select a preset above or add creatures from the 592-species roster below.
+            Select a preset above or add creatures from the {TOTAL_CATALOGED_SPECIMENS}-species roster below.
           </p>
         </div>
       ) : (
@@ -410,12 +434,14 @@ export default function CaliperRunway() {
 
           {selectedSpecies.length < 6 && (
             <div className="relative">
-              <button
-                onClick={() => setIsSelectorOpen(!isSelectorOpen)}
-                className="px-3.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-black uppercase tracking-wider text-xs flex items-center gap-1.5 transition-colors cursor-pointer shadow-md"
-              >
-                <Plus className="h-4 w-4" /> Add Creature
-              </button>
+              <ClickSpark sparkColor="#F59E0B">
+                <button
+                  onClick={() => setIsSelectorOpen(!isSelectorOpen)}
+                  className="px-3.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-black uppercase tracking-wider text-xs flex items-center gap-1.5 transition-colors cursor-pointer shadow-md"
+                >
+                  <Plus className="h-4 w-4" /> Add Creature
+                </button>
+              </ClickSpark>
 
               {/* Autocomplete Dropdown Popover */}
               {isSelectorOpen && (

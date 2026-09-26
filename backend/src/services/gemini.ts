@@ -104,27 +104,74 @@ export async function askChiefCurator({
 `).join('\n')
     : 'No directly indexed species matched this query above threshold.';
 
-  const systemInstruction = `You are "The Chief Curator" of Prehistorica: The Modern Museum Pavilion Encyclopedia.
+  const validHistory = (conversationHistory || []).filter(
+    (m) => m.content && m.content.trim().length > 0
+  );
+  const isFirstTurn = validHistory.length === 0;
+
+  const greetingRule = isFirstTurn
+    ? `Turn Rule (FIRST TURN ONLY):
+You MUST open your response with this exact welcoming line:
+"Welcome to Prehistorica. I am Rajy — the Chief Curator, and I am delighted to guide you through the paleobiological marvels of our collection."
+Immediately after this single sentence, proceed directly to answer the visitor's question.`
+    : `Turn Rule (FOLLOW-UP TURN):
+This is an ongoing conversation. You MUST NOT include any greeting, welcoming preamble, or persona self-introduction. Do NOT say "Welcome to Prehistorica", do NOT say "I am Rajy" or "I am the Chief Curator", and do NOT say "delighted to guide you".
+Jump DIRECTLY into answering the visitor's question in your opening sentence.`;
+
+  const systemInstruction = `You are "The Chief Curator" (Rajy) of Prehistorica: The Modern Museum Pavilion Encyclopedia.
 You are an authoritative, peer-reviewed paleontologist and senior museum docent.
 
-Guidelines:
-1. Tone: Erudite, engaging, scientifically grounded, objective, and deeply respectful of phylogenetic systematics.
-2. Grounding: Rely heavily on the provided [Prehistorica Exhibit Specimens] context. If a user asks about specimens in the museum, cite them directly.
-3. Specimen Hyperlinks: When referring to a Prehistorica specimen that matches an ID in context, link it using markdown: [Specimen Name](/species/{id}) (e.g. [Spinosaurus](/species/${contextSpecies[0]?.id || 1})).
-4. Evidence & Uncertainty: Differentiate established skeletal consensus from controversial hypotheses (e.g., Spinosaurus subaqueous foraging vs. shoreline wader, Tyrannosaur feather coverage vs. scale impressions, Nanotyrannus debate).
-5. Units: Always use standard metric units (meters, kilograms, tonnes, Ma for millions of years ago).`;
+Opening & Greeting Protocol:
+${greetingRule}
 
-  const promptText = `[REFERENCE SPECIMENS CATALOGED IN PREHISTORICA PAVILION]:\n${speciesGroundingSnippet}\n\nUser Question: ${query}`;
+Core Guidelines:
+1. Direct Answers First: Always lead with a direct, concrete answer to the user's literal question in the opening sentence before expanding into deeper evolutionary, anatomical, or stratigraphic context. For example, if asked how a specimen scales in the 1:1 Runway or compares in size, immediately state its exact metric dimensions (length, height, estimated mass) and visual scale benchmark first.
+2. Standardized Structure: Maintain a clean, consistent response architecture across turns:
+   - A direct, informative opening statement.
+   - For multi-part answers, use structured sections with markdown subheadings (### Subheading) or clear bullet points.
+   - Conclude with a brief curatorial takeaway or synthesis.
+3. Specimen Hyperlinks: When mentioning a Prehistorica specimen that matches an ID in context, link it using markdown: [Specimen Name](/species/{id}) (e.g. [Spinosaurus](/species/${contextSpecies[0]?.id || 1})). When directing visitors to these exhibits, explicitly instruct them to click on the hyperlinked species names (never say "click the catalog numbers", as the hyperlinks are anchored to the specimen names).
+4. Grounding & Evidence: Rely heavily on the provided [REFERENCE SPECIMENS CATALOGED IN PREHISTORICA PAVILION] context. Differentiate established skeletal consensus from controversial hypotheses (e.g., Spinosaurus subaqueous foraging vs. shoreline wader, Tyrannosaur feather coverage vs. scale impressions, Nanotyrannus debate).
+5. Scientific Units: Always use standard metric units (meters, kilograms, tonnes, Ma for millions of years ago).`;
+
+  const currentTurnPrompt = `[REFERENCE SPECIMENS CATALOGED IN PREHISTORICA PAVILION]:\n${speciesGroundingSnippet}\n\nUser Question: ${query}`;
+
+  const historyContents = validHistory.map((m) => ({
+    role: (m.role === 'assistant' || m.role === 'model' ? 'model' : 'user') as 'user' | 'model',
+    parts: [{ text: m.content }]
+  }));
+
+  const contents = historyContents.length > 0
+    ? [...historyContents, { role: 'user' as const, parts: [{ text: currentTurnPrompt }] }]
+    : currentTurnPrompt;
 
   const response = await generateContentWithRetry({
-    contents: promptText,
+    contents,
     config: {
       systemInstruction,
       temperature: 0.2
     }
   });
 
-  const responseText = response.text || 'I apologize, but I could not formulate a curatorial evaluation at this moment.';
+  let responseText = response.text || 'I apologize, but I could not formulate a curatorial evaluation at this moment.';
+
+  // Canonical welcome line for Rajy AI Docent
+  const canonicalWelcome = 'Welcome to Prehistorica. I am Rajy — the Chief Curator, and I am delighted to guide you through the paleobiological marvels of our collection.';
+  const welcomePattern = /^Welcome\s+to\s+Prehistorica[.!:]?\s*(?:(?:I\s+am|I'm)\s+(?:Rajy\s*[-—–]\s*)?(?:the\s+)?Chief\s+Curator,?\s*)?(?:(?:and\s+)?I\s+am\s+delighted\s+to\s+guide\s+you[^.\n]*[.!:]\s*)?/i;
+
+  if (isFirstTurn) {
+    if (welcomePattern.test(responseText)) {
+      responseText = responseText.replace(welcomePattern, `${canonicalWelcome}\n\n`).trim();
+    } else {
+      responseText = `${canonicalWelcome}\n\n${responseText}`.trim();
+    }
+  } else {
+    // Follow-up turn: strip any accidental repetitive greeting
+    if (welcomePattern.test(responseText)) {
+      responseText = responseText.replace(welcomePattern, '').trim();
+    }
+    responseText = responseText.replace(/^(?:Greetings|Hello|Hi),?\s*(?:visitor|explorer|guest)?[.!:]?\s*/i, '').trim();
+  }
   
   // Extract species IDs referenced in the response
   const referencedSpecies: number[] = [];

@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion, useScroll, useTransform, Variants } from 'framer-motion';
-import { fetchCreatureOfTheDay, fetchSpecies, fetchSpeciesById, Species } from '../services/api.js';
+import { fetchCreatureOfTheDay, fetchSpecies, fetchSpeciesById, Species, TOTAL_CATALOGED_SPECIMENS } from '../services/api.js';
 import SpotlightCard from '../components/SpotlightCard.js';
-import { Calendar, ArrowRight, Dna, Compass, ShieldAlert, FileText, Layers, Loader2, Globe, Database, Sparkles, Scale, Trophy } from 'lucide-react';
+import { Calendar, ArrowRight, Dna, Compass, ShieldAlert, FileText, Layers, Globe, Database, Sparkles, Scale, Trophy } from 'lucide-react';
 import { formatMass } from '../utils/formatMass.js';
 import { formatFeet } from '../utils/formatDimensions.js';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
+import ShinyText from '../components/reactbits/ShinyText.js';
+import ClickSpark from '../components/reactbits/ClickSpark.js';
+import CountUp from '../components/reactbits/CountUp.js';
+import CuratorialLoader from '../components/CuratorialLoader.js';
 
 export default function Home() {
   const [creature, setCreature] = useState<Species | null>(null);
@@ -78,7 +82,7 @@ export default function Home() {
     }
   };
 
-  const formattedTotal = totalSpecies ? `${totalSpecies}+` : '590+';
+  const formattedTotal = totalSpecies ? `${totalSpecies}` : `${TOTAL_CATALOGED_SPECIMENS}`;
 
   return (
     <div className="space-y-16 relative">
@@ -94,7 +98,13 @@ export default function Home() {
           <div className="lg:col-span-8 space-y-5 text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono font-bold tracking-widest uppercase shadow-sm">
               <img src="/logo.png" alt="Prehistorica Emblem" className="h-4 w-4 object-contain shrink-0 drop-shadow" />
-              <span>Deep Time Archive &bull; 541 &ndash; 0.01 MYA</span>
+              <ShinyText
+                text="Deep Time Archive • 541 – 0.01 MYA"
+                color="#F59E0B"
+                shineColor="#FDE68A"
+                speed={3}
+                className="text-xs font-mono font-bold tracking-widest uppercase"
+              />
             </div>
 
             <motion.h1
@@ -116,22 +126,26 @@ export default function Home() {
             </motion.p>
 
             <div className="flex flex-wrap items-center gap-3 pt-2 font-mono text-xs">
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.96 }}>
-                <Link
-                  to="/browse"
-                  className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black uppercase tracking-wider rounded-lg border border-amber-300 transition-all shadow-lg flex items-center gap-2 cursor-pointer"
-                >
-                  Explore Catalog <ArrowRight className="h-4 w-4" />
-                </Link>
-              </motion.div>
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.96 }}>
-                <Link
-                  to="/map"
-                  className="px-6 py-3 bg-slate-900 hover:bg-slate-850 text-slate-200 font-bold uppercase tracking-wider rounded-lg border border-white/[0.08] hover:border-amber-500/40 transition-all flex items-center gap-2 cursor-pointer shadow-md"
-                >
-                  <Compass className="h-4 w-4 text-amber-400" /> Interactive Time-Map
-                </Link>
-              </motion.div>
+              <ClickSpark sparkColor="#FBBF24" sparkSize={10} sparkRadius={18} sparkCount={8}>
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.96 }}>
+                  <Link
+                    to="/browse"
+                    className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black uppercase tracking-wider rounded-lg border border-amber-300 transition-all shadow-lg flex items-center gap-2 cursor-pointer"
+                  >
+                    Explore Catalog <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </motion.div>
+              </ClickSpark>
+              <ClickSpark sparkColor="#F59E0B" sparkSize={10} sparkRadius={18} sparkCount={8}>
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.96 }}>
+                  <Link
+                    to="/map"
+                    className="px-6 py-3 bg-slate-900 hover:bg-slate-850 text-slate-200 font-bold uppercase tracking-wider rounded-lg border border-white/[0.08] hover:border-amber-500/40 transition-all flex items-center gap-2 cursor-pointer shadow-md"
+                  >
+                    <Compass className="h-4 w-4 text-amber-400" /> Interactive Time-Map
+                  </Link>
+                </motion.div>
+              </ClickSpark>
             </div>
           </div>
 
@@ -148,15 +162,27 @@ export default function Home() {
             <div className="space-y-3 text-xs">
               <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
                 <span className="text-slate-400">Verified Specimens</span>
-                <span className="text-slate-100 font-bold text-sm">{formattedTotal}</span>
+                <span className="text-slate-100 font-bold text-sm">
+                  {totalSpecies ? (
+                    <CountUp to={totalSpecies} duration={1} separator="," suffix="+" className="text-slate-100 font-bold text-sm" />
+                  ) : (
+                    formattedTotal
+                  )}
+                </span>
               </div>
               <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
                 <span className="text-slate-400">Geological Eras</span>
-                <span className="text-slate-100 font-bold">10 Eras (541 MYA)</span>
+                <span className="text-slate-100 font-bold flex items-center gap-1">
+                  <CountUp to={10} duration={0.8} separator="" className="text-slate-100 font-bold" />
+                  <span>Eras (541 MYA)</span>
+                </span>
               </div>
               <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
                 <span className="text-slate-400">Global Formations</span>
-                <span className="text-slate-100 font-bold">30+ Fossil Sites</span>
+                <span className="text-slate-100 font-bold flex items-center gap-1">
+                  <CountUp to={30} duration={0.8} separator="" suffix="+" className="text-slate-100 font-bold" />
+                  <span>Fossil Sites</span>
+                </span>
               </div>
               <div className="flex items-center justify-between py-1">
                 <span className="text-slate-400">Scale Inspection</span>
@@ -192,15 +218,13 @@ export default function Home() {
         {loading ? (
           <div className="relative glass-panel rounded-xl overflow-hidden shadow-2xl p-4 sm:p-8 animate-pulse">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
-              {/* Image Viewport Skeleton */}
+              {/* Image Viewport Skeleton with Curatorial Loader */}
               <div className="lg:col-span-7 relative h-64 sm:h-96 rounded-lg bg-slate-900/80 border border-white/10 flex flex-col items-center justify-center p-6 text-center">
-                <Loader2 className="h-8 w-8 text-amber-400 animate-spin mb-3" />
-                <p className="font-mono text-slate-300 font-bold text-sm">
-                  Connecting to museum archive database...
-                </p>
-                <p className="font-mono text-slate-500 text-xs mt-1">
-                  Loading daily specimen record
-                </p>
+                <CuratorialLoader
+                  variant="amber"
+                  label="Accessing Daily Specimen Exhibit..."
+                  sublabel="Connecting to curated museum holotype archives"
+                />
               </div>
 
               {/* Specimen Dossier Details Skeleton */}
@@ -390,14 +414,16 @@ export default function Home() {
                         </span>
                       </div>
 
-                      <motion.div whileTap={{ scale: 0.94 }} className="w-full sm:w-auto shrink-0">
-                        <Link
-                          to={`/species/${creature.id}`}
-                          className="w-full sm:w-auto px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black uppercase tracking-wider text-xs rounded-lg flex items-center justify-center gap-1.5 transition-all shadow-md cursor-pointer"
-                        >
-                          Inspect 2D Scale Stage <ArrowRight className="h-3.5 w-3.5" />
-                        </Link>
-                      </motion.div>
+                      <ClickSpark sparkColor="#FDE68A" sparkSize={10} sparkRadius={18} sparkCount={8} className="w-full sm:w-auto shrink-0">
+                        <motion.div whileTap={{ scale: 0.94 }} className="w-full sm:w-auto">
+                          <Link
+                            to={`/species/${creature.id}`}
+                            className="w-full sm:w-auto px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black uppercase tracking-wider text-xs rounded-lg flex items-center justify-center gap-1.5 transition-all shadow-md cursor-pointer"
+                          >
+                            Inspect 2D Scale Stage <ArrowRight className="h-3.5 w-3.5" />
+                          </Link>
+                        </motion.div>
+                      </ClickSpark>
                     </div>
                   </div>
                 );
@@ -407,7 +433,8 @@ export default function Home() {
       </motion.section>
 
       {/* Curatorial Museum Access Portals (Scroll Viewport Reveal) */}
-      <motion.section
+      <ClickSpark sparkColor="#FBBF24" sparkSize={10} sparkRadius={18} sparkCount={7}>
+        <motion.section
         initial={shouldReduceMotion ? false : { opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.05 }}
@@ -546,7 +573,8 @@ export default function Home() {
           </SpotlightCard>
         </Link>
       </motion.section>
-    </div>
+    </ClickSpark>
+  </div>
   );
 }
 
