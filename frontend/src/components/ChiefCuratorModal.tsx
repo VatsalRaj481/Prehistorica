@@ -908,21 +908,17 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
               </AnimatePresence>
             </header>
 
-            {/* ── Main Body: Split-Panel Layout ── */}
-            <div className="flex flex-1 min-h-0 overflow-hidden relative">
+            {/* ── Main Body: Continuous Integrated Layout ── */}
+            <div className="flex flex-1 min-h-0 overflow-hidden relative bg-gradient-to-b from-[#080D1A] via-[#0A0F20] to-[#060A14]">
 
-              {/* ── LEFT PANEL: Rajy's Museum Exhibit Plinth ── */}
+              {/* ── LEFT PANEL: Integrated Rajy Character Showcase ── */}
               <aside
-                className="hidden sm:flex flex-col w-[170px] md:w-[190px] lg:w-[215px] shrink-0 bg-gradient-to-b from-[#090F1C] via-[#070C18] to-[#040812] border-r border-white/[0.06] relative overflow-hidden select-none"
+                className="hidden sm:flex flex-col w-[170px] md:w-[190px] lg:w-[215px] shrink-0 bg-transparent relative overflow-hidden select-none"
                 aria-label="Rajy Mascot Showcase"
               >
-                {/* Atmospheric Backlight: Warm Gold & Deep Cyan Halo */}
-                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
-                <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-40 h-40 rounded-full bg-cyan-500/5 blur-2xl pointer-events-none" />
-
-                {/* Decorative Museum Corner Markers */}
-                <div className="absolute top-2.5 left-2.5 w-2.5 h-2.5 border-t border-l border-amber-500/30 pointer-events-none" />
-                <div className="absolute top-2.5 right-2.5 w-2.5 h-2.5 border-t border-r border-amber-500/30 pointer-events-none" />
+                {/* Atmospheric Backlight: Warm Gold & Deep Cyan Halo seamlessly diffusing into chat */}
+                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
+                <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-44 h-44 rounded-full bg-cyan-500/5 blur-2xl pointer-events-none" />
 
                 {/* Rajy Mascot Illustration — Centered comfortably in available height */}
                 <div className="relative flex-1 min-h-0 w-full flex items-center justify-center px-3 py-2">
@@ -934,20 +930,23 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                   />
                 </div>
 
-                {/* Curatorial Museum Nameplate & Pedestal */}
-                <div className="w-full px-3 py-3 bg-[#060913]/95 border-t border-amber-500/25 shrink-0 z-10 text-center space-y-1 shadow-inner">
+                {/* Curatorial Museum Nameplate (Lighter, Borderless Integrated Treatment) */}
+                <div className="w-full px-3 py-3 shrink-0 z-10 text-center space-y-1 bg-transparent">
+                  {/* Subtle Accent Glow Line above name */}
+                  <div className="w-10 h-px bg-gradient-to-r from-transparent via-amber-400/40 to-transparent mx-auto mb-1.5" />
+
                   <div className="flex items-center justify-center gap-1.5">
                     <Sparkles className="w-3 h-3 text-amber-400" />
-                    <span className="text-sm font-black font-mono text-amber-400 tracking-[0.2em] uppercase">
+                    <span className="text-xs sm:text-sm font-black font-mono text-amber-400 tracking-[0.2em] uppercase drop-shadow-[0_0_8px_rgba(245,158,11,0.25)]">
                       RAJY
                     </span>
                   </div>
-                  <p className="text-[10px] font-mono text-slate-400 tracking-wider leading-tight">
-                    Prehistorica Pavilion Guide
+                  <p className="text-[10px] font-mono text-slate-400 tracking-wider leading-tight italic">
+                    Rajasaurus narmadensis
                   </p>
                   <div className="pt-0.5 flex justify-center">
-                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9px] font-mono font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30 uppercase tracking-widest shadow-sm">
-                      <Dna className="w-2.5 h-2.5" />
+                    <span className="inline-flex items-center gap-1 text-[9px] font-mono font-bold tracking-widest text-amber-400/80 uppercase">
+                      <Dna className="w-2.5 h-2.5 text-amber-400/75" />
                       AI DOCENT
                     </span>
                   </div>
@@ -955,7 +954,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
               </aside>
 
               {/* ── RIGHT PANEL: Conversation Interface ── */}
-              <main className="flex flex-col flex-1 min-h-0 overflow-hidden bg-gradient-to-b from-[#080D1A] via-[#0A0F20] to-[#060A14] relative">
+              <main className="flex flex-col flex-1 min-h-0 overflow-hidden bg-transparent relative">
 
                 {/* Independently Scrollable Message Area */}
                 <div
@@ -970,6 +969,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                     const isCurrentlyPaused = isPaused && isThisLastAssistant;
                     const assistantIndex = messages.filter((m) => m.role === 'assistant').findIndex((m) => m.id === msg.id);
                     const isFirstAssistantResponse = assistantIndex <= 1;
+                    const hasTail = isAssistant && isThisLastAssistant;
 
                     return (
                       <article
@@ -988,7 +988,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                               <span>Rajy &bull; AI Docent</span>
                               {isCurrentlySpeaking && (
                                 <span className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-300 text-[9px] font-mono border border-amber-500/40 animate-pulse ml-1">
-                                  <Volume2 className="w-2.5 h-2.5" /> Narrating
+                                   <Volume2 className="w-2.5 h-2.5" /> Narrating
                                 </span>
                               )}
                               {isCurrentlyPaused && (
@@ -1006,23 +1006,40 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                           <time className="text-[10px] text-slate-500">{msg.timestamp}</time>
                         </div>
 
-                        {/* Message Bubble with Left Pointer for Rajy */}
+                        {/* Message Bubble with Left Pointer for Active Rajy Message */}
                         <div className="relative overflow-visible max-w-[94%] sm:max-w-[88%] lg:max-w-[85%]">
-                          {isAssistant && (
+                          {hasTail && (
                             <div
-                              className="hidden sm:block absolute -left-2.5 top-3.5 w-0 h-0
-                                border-t-[7px] border-t-transparent
-                                border-r-[11px] border-r-[#151E34]
-                                border-b-[7px] border-b-transparent
-                                z-10"
+                              className="hidden sm:block absolute -left-2.5 top-3.5 w-2.5 h-3.5 z-10 pointer-events-none"
                               aria-hidden="true"
-                            />
+                            >
+                              <svg
+                                viewBox="0 0 10 14"
+                                className="w-full h-full overflow-visible"
+                                fill="none"
+                              >
+                                <path
+                                  d="M10 0 L0 7 L10 14"
+                                  stroke="rgba(255, 255, 255, 0.08)"
+                                  strokeWidth="1"
+                                  fill="none"
+                                />
+                                <path
+                                  d="M10 0.5 L1 7 L10 13.5 Z"
+                                  fill="#151E34"
+                                />
+                              </svg>
+                            </div>
                           )}
 
-                          <div
+                          <motion.div
+                            initial={hasTail && !shouldReduceMotion ? { opacity: 0, scale: 0.94 } : false}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                            style={hasTail ? { transformOrigin: 'top left' } : undefined}
                             className={`rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 shadow-lg ${
                               isAssistant
-                                ? 'bg-[#151E34] border border-white/[0.08] text-slate-100 rounded-tl-xs selection:bg-amber-500 selection:text-slate-950'
+                                ? `bg-[#151E34] border border-white/[0.08] text-slate-100 ${hasTail ? 'rounded-tl-xs' : ''} selection:bg-amber-500 selection:text-slate-950`
                                 : 'bg-amber-500 text-slate-950 font-medium rounded-tr-xs selection:bg-slate-900 selection:text-white'
                             }`}
                           >
@@ -1038,7 +1055,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                                 {msg.content}
                               </p>
                             )}
-                          </div>
+                          </motion.div>
                         </div>
 
                         {/* Museum Grounding Specimens Ribbon */}
