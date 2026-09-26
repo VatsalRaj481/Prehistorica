@@ -81,21 +81,19 @@ export default function RunwayStage({
       const h = sp.heightM && sp.heightM > 0 ? sp.heightM : Math.max(1, len * 0.35);
       const aspect = aspectRatios[sp.id] || (len / h);
 
-      // Height if scaled purely by length
-      const heightFromLength = len / aspect;
-
-      // Universal proportional posture bounds:
-      // Allow up to a natural 12% posture headroom above nominal standing height
-      // (accounting for natural alert/head-up posture without inflating into towering giants)
-      // and a floor of 88% so tall vertical creatures (like sauropods, azhdarchids) aren't compressed.
-      const maxHeightM = h * 1.12;
-      const minHeightM = h * 0.88;
-
-      let renderHeightM = heightFromLength;
-      if (renderHeightM > maxHeightM) {
-        renderHeightM = maxHeightM;
-      } else if (renderHeightM < minHeightM) {
-        renderHeightM = minHeightM;
+      // For upright or height-dominant creatures (where standing height >= 85% of length,
+      // such as azhdarchid pterosaurs, upright terror birds, and hominids), anchor directly to
+      // the nominal scientific standing height so silhouettes accurately align with calipers.
+      // For horizontal creatures, scale from length while clamping to natural posture limits.
+      const isHeightDominant = h >= len * 0.85;
+      let renderHeightM: number;
+      if (isHeightDominant) {
+        renderHeightM = h;
+      } else {
+        const heightFromLength = len / aspect;
+        const maxHeightM = h * 1.12;
+        const minHeightM = h * 0.88;
+        renderHeightM = Math.max(minHeightM, Math.min(heightFromLength, maxHeightM));
       }
 
       // Rendered width preserves the exact natural aspect ratio of the silhouette

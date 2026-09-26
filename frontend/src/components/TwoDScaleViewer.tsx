@@ -214,12 +214,20 @@ export default function TwoDScaleViewer({
   // Effective aspect ratio and proportional posture calibration
   const bioAspect = safeLength / safeHeight;
   const effectiveAspect = silhouetteAspect || bioAspect;
-  const naturalCreatureHeightM = safeLength / effectiveAspect;
+  const isHeightDominant = safeHeight >= safeLength * 0.85;
 
-  // Proportional posture clamp: prevents silhouettes from ballooning past scientific height
-  const maxHeightM = safeHeight * 1.12;
-  const minHeightM = safeHeight * 0.88;
-  const renderCreatureHeightM = Math.max(minHeightM, Math.min(naturalCreatureHeightM, maxHeightM));
+  let renderCreatureHeightM: number;
+  if (isHeightDominant) {
+    // For upright or height-dominant creatures (e.g. azhdarchid pterosaurs, terror birds, bipeds),
+    // anchor directly to nominal scientific standing height so silhouettes align with calipers and stage grid
+    renderCreatureHeightM = safeHeight;
+  } else {
+    // For horizontal creatures, calculate height from length with natural posture bounds
+    const naturalCreatureHeightM = safeLength / effectiveAspect;
+    const maxHeightM = safeHeight * 1.12;
+    const minHeightM = safeHeight * 0.88;
+    renderCreatureHeightM = Math.max(minHeightM, Math.min(naturalCreatureHeightM, maxHeightM));
+  }
   const renderCreatureWidthM = renderCreatureHeightM * effectiveAspect;
   const effectiveCreatureHeightM = renderCreatureHeightM;
 
