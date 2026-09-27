@@ -19,21 +19,22 @@ export default function SlingButton({
   className = '',
   tooltipText,
   badgeContent,
-  dragElastic = 0.35,
-  stiffness = 450,
-  damping = 18,
+  dragElastic = 0.45,
+  stiffness = 320,
+  damping = 11, // Underdamped for authentic harmonic bounce & recoil oscillations
   ariaLabel = 'Interactive Sling Button',
 }: SlingButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
+  const [isSettling, setIsSettling] = useState(false);
 
   // Motion values tracking drag offset from origin
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  // Smooth springs for tether / sling visuals
-  const springX = useSpring(x, { stiffness, damping });
-  const springY = useSpring(y, { stiffness, damping });
+  // Smooth springs for tether / sling visuals with harmonic bounce
+  const springX = useSpring(x, { stiffness, damping, mass: 0.75 });
+  const springY = useSpring(y, { stiffness, damping, mass: 0.75 });
 
   // Calculate stretch distance for tension effect
   const distance = useTransform([springX, springY], ([latestX, latestY]: number[]) => {
@@ -43,27 +44,41 @@ export default function SlingButton({
   // Calculate rotation slightly towards pull angle
   const rotate = useTransform([springX, springY], ([latestX, latestY]: number[]) => {
     if (Math.abs(latestX) < 1 && Math.abs(latestY) < 1) return 0;
-    return Math.atan2(latestY, latestX) * (180 / Math.PI) * 0.15;
+    return Math.atan2(latestY, latestX) * (180 / Math.PI) * 0.18;
   });
 
   const handleDragStart = () => {
     setIsDragging(true);
+    setIsSettling(false);
   };
 
   const handleDragEnd = (_e: MouseEvent | TouchEvent | PointerEvent, info: { offset: { x: number; y: number } }) => {
     setIsDragging(false);
-    const pullDist = Math.sqrt(info.offset.x * info.offset.x + info.offset.y * info.offset.y);
-    // If pulled with conviction (> 30px) and released, treat as a sling launch trigger
-    if (pullDist > 30 && onClick) {
-      onClick();
+    const pullDist = Math.hypot(info.offset.x, info.offset.y);
+
+    // If dragged with conviction (> 20px), let it spring back, bounce, and then trigger docent
+    if (pullDist > 20) {
+      setIsSettling(true);
+
+      // The spring physics (stiffness 320, damping 11, mass 0.75) takes ~480ms to:
+      // 1. Recoil back through origin (0,0)
+      // 2. Overshoot to the opposite side
+      // 3. Bounce back and oscillate before coming to rest
+      // We open the AI docent modal precisely as it finishes bouncing and settles!
+      window.setTimeout(() => {
+        setIsSettling(false);
+        if (onClick) {
+          onClick();
+        }
+      }, 500);
     }
   };
 
   return (
     <div className="relative inline-flex items-center justify-center select-none touch-none">
-      {/* Tooltip on desktop hover when not dragging */}
+      {/* Tooltip on desktop hover when not dragging or settling */}
       <AnimatePresence>
-        {tooltipText && isHovered && !isDragging && (
+        {tooltipText && isHovered && !isDragging && !isSettling && (
           <motion.div
             initial={{ opacity: 0, x: 10, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -73,6 +88,9 @@ export default function SlingButton({
           >
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
             {tooltipText}
+            <span className="text-[10px] text-amber-400/60 font-sans tracking-normal ml-1">
+              (Pull & Sling)
+            </span>
           </motion.div>
         )}
       </AnimatePresence>
@@ -86,9 +104,23 @@ export default function SlingButton({
         <circle
           cx="50%"
           cy="50%"
-          r="24"
-          className="fill-amber-500/10 stroke-amber-500/20"
-          strokeDasharray="2 3"
+          r="26"
+          className="fill-amber-500/10 stroke-amber-500/25"
+          strokeDasharray="3 3"
+        />
+
+        {/* Dynamic slingshot band from origin to moving button */}
+        <motion.line
+          x1="50%"
+          y1="50%"
+          x2={useTransform(springX, (val) => `calc(50% + ${val}px)`)}
+          y2={useTransform(springY, (val) => `calc(50% + ${val}px)`)}
+          className="stroke-amber-400/50"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          style={{
+            opacity: useTransform(distance, [0, 10, 30], [0, 0.4, 0.9]),
+          }}
         />
       </svg>
 
@@ -100,11 +132,16 @@ export default function SlingButton({
         dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
         dragElastic={dragElastic}
         dragSnapToOrigin
+        dragTransition={{
+          power: 0.2,
+          bounceStiffness: stiffness,
+          bounceDamping: damping,
+        }}
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
         onClick={() => {
-          // Normal click/tap triggers action immediately
-          if (!isDragging && onClick) {
+          // If clicked or tapped without dragging (or during tap), open directly
+          if (!isDragging && !isSettling && onClick) {
             onClick();
           }
         }}
@@ -115,8 +152,8 @@ export default function SlingButton({
           y: springY,
           rotate,
         }}
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.92 }}
+        whileHover={{ scale: isDragging ? 1 : 1.08 }}
+        whileTap={{ scale: 0.94 }}
         className={`relative cursor-grab active:cursor-grabbing rounded-full flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 transition-shadow ${className}`}
       >
         {/* Child avatar / icon */}
@@ -133,12 +170,27 @@ export default function SlingButton({
 
         {/* Dynamic tension glow ring when pulled */}
         <motion.div
-          className="absolute inset-0 rounded-full border-2 border-amber-400/80 pointer-events-none"
+          className="absolute inset-0 rounded-full border-2 border-amber-400 pointer-events-none"
           style={{
-            opacity: useTransform(distance, [0, 40], [0, 0.9]),
-            scale: useTransform(distance, [0, 40], [1, 1.15]),
+            opacity: useTransform(distance, [0, 35], [0, 0.95]),
+            scale: useTransform(distance, [0, 45], [1, 1.2]),
+            boxShadow: useTransform(
+              distance,
+              [0, 40],
+              ['0 0 0px rgba(245,158,11,0)', '0 0 25px rgba(245,158,11,0.6)']
+            ),
           }}
         />
+
+        {/* Post-bounce ripple flash upon settling home */}
+        {isSettling && (
+          <motion.div
+            initial={{ scale: 0.8, opacity: 1 }}
+            animate={{ scale: 1.6, opacity: 0 }}
+            transition={{ duration: 0.45, ease: 'easeOut' }}
+            className="absolute inset-0 rounded-full border-2 border-amber-300 pointer-events-none"
+          />
+        )}
       </motion.button>
     </div>
   );
