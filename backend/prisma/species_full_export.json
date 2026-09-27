@@ -8691,7 +8691,7 @@
     "sizeNotes": "Massive bull-like build up to 4 meters long.",
     "sizeEstimate": "{\"length\":{\"value\":3.8,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.6,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":900,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
-    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/f480b74f-3f03-4e3a-a7ae-0cf5b524f05d.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/f480b74f-3f03-4e3a-a7ae-0cf5b524f05d\",\"license\":\"Attribution 3.0 Unported\",\"credit\":\"T. Michael Keesey\",\"taxon\":\"Estemmenosuchus uralensis\",\"taxonMatch\":\"species-specific\"}",
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/f480b74f-3f03-4e3a-a7ae-0cf5b524f05d.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/f480b74f-3f03-4e3a-a7ae-0cf5b524f05d\",\"license\":\"Attribution 3.0 Unported\",\"credit\":\"Dmitry Bogdanov (vectorized by T. Michael Keesey)\",\"taxon\":\"Estemmenosuchus uralensis\",\"taxonMatch\":\"species-specific\"}",
     "extinctionEvent": null,
     "closestLivingRelatives": "[\"Modern Birds (Aves)\",\"Crocodilians\"]",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Estemmenosuchus uralensis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Estemmenosuchus%20uralensis\"}]",

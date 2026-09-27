@@ -11,6 +11,7 @@ import { getBookmarkIds, NOTEBOOK_UPDATED_EVENT } from '../utils/notebookStorage
 import ShinyText from './reactbits/ShinyText.js';
 import ClickSpark from './reactbits/ClickSpark.js';
 import Magnet from './reactbits/Magnet.js';
+import SlingButton from './reactbits/SlingButton.js';
 
 interface NavbarProps {
   isLogoVisible?: boolean;
@@ -467,37 +468,44 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
         </AnimatePresence>
       </header>
 
-      {/* Floating Chief Curator Docent Launcher — hidden when modal is open */}
+      {/* Floating Chief Curator Docent Launcher (Sling Button) — hidden when modal is open */}
       <AnimatePresence>
         {!isCuratorOpen && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0.85, y: 10 }}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.85, y: 10 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 28 }}
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsCuratorOpen(true)}
-            className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 p-2 sm:px-3.5 sm:py-2.5 rounded-full bg-slate-900/95 hover:bg-slate-850 backdrop-blur-xl border border-amber-500/40 hover:border-amber-400 text-amber-300 hover:text-amber-200 shadow-[0_8px_25px_rgba(0,0,0,0.65),0_0_15px_rgba(245,158,11,0.18)] font-mono font-bold flex items-center justify-center gap-2 cursor-pointer transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 min-h-[44px] min-w-[44px]"
-            title="Ask Rajy — AI Docent"
-            aria-label="Open Rajy AI Docent"
+            exit={{ opacity: 0, scale: 0.8, y: 12 }}
+            transition={{ type: 'spring', stiffness: 380, damping: 26 }}
+            className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex items-center justify-center"
           >
-            <div className="relative w-7 h-7 sm:w-6 sm:h-6 rounded-full overflow-hidden border border-amber-500/60 shrink-0 shadow-sm">
+            <SlingButton
+              onClick={() => setIsCuratorOpen(true)}
+              tooltipText="Ask Rajy • AI Docent"
+              ariaLabel="Open Rajy AI Docent"
+              className="w-13 h-13 sm:w-14 sm:h-14 p-0.5 bg-slate-900/95 border-2 border-amber-500/50 hover:border-amber-400 shadow-[0_8px_25px_rgba(0,0,0,0.7),0_0_20px_rgba(245,158,11,0.22)]"
+              badgeContent={
+                <div className="relative flex items-center justify-center">
+                  <span
+                    className="w-4 h-4 rounded-full bg-amber-400 text-slate-950 flex items-center justify-center text-[10px] font-black shadow-md ring-1 ring-slate-950"
+                    title="AI Docent ready"
+                  >
+                    ✦
+                  </span>
+                  <span
+                    className="absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-400 ring-1 ring-slate-950"
+                    title="Rajy online"
+                  />
+                </div>
+              }
+            >
               <img
                 src="/rajy-head.jpg"
-                alt="Rajy mascot avatar"
-                className="w-full h-full object-cover object-top select-none"
+                alt="Rajy AI Docent"
+                className="w-full h-full object-cover object-top select-none pointer-events-none"
                 draggable={false}
               />
-              <span
-                className="absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-400 ring-1 ring-slate-950"
-                title="Rajy online"
-              />
-            </div>
-            <span className="hidden sm:inline text-xs font-black uppercase tracking-wider text-amber-300 group-hover:text-amber-200">
-              Ask Rajy
-            </span>
-          </motion.button>
+            </SlingButton>
+          </motion.div>
         )}
       </AnimatePresence>
 

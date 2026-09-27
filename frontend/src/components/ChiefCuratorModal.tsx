@@ -19,7 +19,7 @@ import {
   Sliders,
   RotateCcw
 } from 'lucide-react';
-import { askChiefCurator, CuratorGroundingSpecimen, TOTAL_CATALOGED_SPECIMENS } from '../services/api.js';
+import { askChiefCurator, CuratorGroundingSpecimen, fetchSpecies, TOTAL_CATALOGED_SPECIMENS } from '../services/api.js';
 import RajyResponseRenderer from './RajyResponseRenderer.js';
 import ShinyText from './reactbits/ShinyText.js';
 import ClickSpark from './reactbits/ClickSpark.js';
@@ -86,6 +86,34 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
   ]);
   const [input, setInput] = useState(initialQuery || '');
   const [loading, setLoading] = useState(false);
+  const [liveTotalSpecies, setLiveTotalSpecies] = useState<number>(TOTAL_CATALOGED_SPECIMENS);
+
+  // Fetch live total cataloged species count dynamically from database
+  useEffect(() => {
+    fetchSpecies({ limit: 1 })
+      .then((res) => {
+        if ('pagination' in res && res.pagination?.total > 0) {
+          setLiveTotalSpecies(res.pagination.total);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  // Synchronize opening welcome message if live count is loaded
+  useEffect(() => {
+    if (liveTotalSpecies) {
+      setMessages((prev) =>
+        prev.map((msg) =>
+          msg.id === 'welcome'
+            ? {
+                ...msg,
+                content: `Greetings, explorer! I am **Rajy**, your Prehistorica AI Docent.\n\nAsk me about prehistoric creatures, ancient ecosystems, evolution, biomechanics, or the deep-time history of Earth. Every insight is scientifically grounded directly in our **${liveTotalSpecies} cataloged specimens**.`
+              }
+            : msg
+        )
+      );
+    }
+  }, [liveTotalSpecies]);
 
   // Global Voice Mode setting (ON / OFF)
   const [ttsEnabled, setTtsEnabled] = useState(false);
@@ -111,6 +139,9 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     const saved = localStorage.getItem('prehistorica_voice_pitch');
     return saved ? parseFloat(saved) : DEFAULT_VOICE_CONFIG.pitch;
   });
+
+  // Dynamic visual viewport height for mobile keyboards
+  const [visualViewportHeight, setVisualViewportHeight] = useState<number | null>(null);
 
   const getRelevanceInfo = (similarity?: number) => {
     if (similarity == null) {
@@ -257,6 +288,36 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       stopSpeaking();
     };
   }, [stopSpeaking]);
+
+  // Track mobile visual viewport resize (keyboard show/hide, orientation change)
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const updateViewport = () => {
+      if (window.visualViewport && window.innerWidth < 768) {
+        setVisualViewportHeight(window.visualViewport.height);
+      } else {
+        setVisualViewportHeight(null);
+      }
+    };
+
+    updateViewport();
+
+    const vv = window.visualViewport;
+    if (vv) {
+      vv.addEventListener('resize', updateViewport);
+      vv.addEventListener('scroll', updateViewport);
+    }
+    window.addEventListener('resize', updateViewport);
+
+    return () => {
+      if (vv) {
+        vv.removeEventListener('resize', updateViewport);
+        vv.removeEventListener('scroll', updateViewport);
+      }
+      window.removeEventListener('resize', updateViewport);
+    };
+  }, [isOpen]);
 
   // Auto-scroll on subsequent messages or loading states
   useEffect(() => {
@@ -588,7 +649,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     <AnimatePresence>
       {isOpen && (
         <div
-          className="fixed inset-0 z-[70] flex items-center justify-center p-2.5 sm:p-4 md:p-6 bg-slate-950/85 backdrop-blur-md"
+          className="fixed inset-0 z-[70] flex items-center justify-center p-0 md:p-6 bg-slate-950/85 md:backdrop-blur-md overflow-hidden"
           role="dialog"
           aria-modal="true"
           aria-label="Rajy — Prehistorica AI Docent Consultation"
@@ -599,11 +660,19 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
             exit={{ opacity: 0, scale: 0.96, y: 12 }}
             transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
             data-lenis-prevent
-            className="relative w-full max-w-4xl h-[94vh] sm:h-[90vh] max-h-[800px] flex flex-col bg-[#0A0F1D] border border-amber-500/25 rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.75)] overflow-hidden font-sans text-slate-100"
+            style={
+              visualViewportHeight
+                ? { height: `${visualViewportHeight}px`, maxHeight: `${visualViewportHeight}px` }
+                : undefined
+            }
+            className="relative w-full md:max-w-4xl h-[100dvh] md:h-[90vh] md:max-h-[800px] flex flex-col bg-[#0A0F1D] border-0 md:border md:border-amber-500/25 rounded-none md:rounded-2xl shadow-none md:shadow-[0_20px_60px_rgba(0,0,0,0.75)] overflow-hidden font-sans text-slate-100"
           >
             {/* ── Fixed Museum Header ── */}
-            <header className="relative px-3.5 sm:px-5 py-2.5 sm:py-3 border-b border-white/[0.08] bg-gradient-to-r from-[#070B16] via-[#0A0F1D] to-[#070B16] flex items-center justify-between shrink-0 z-20">
-              <div className="flex items-center gap-3 min-w-0">
+            <header
+              style={{ paddingTop: 'max(env(safe-area-inset-top, 0px), 0.625rem)' }}
+              className="relative px-3.5 sm:px-5 py-2.5 sm:py-3 border-b border-white/[0.08] bg-gradient-to-r from-[#070B16] via-[#0A0F1D] to-[#070B16] flex items-center justify-between shrink-0 z-20 flex-nowrap"
+            >
+              <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1 mr-2">
                 {/* Small Rajy Avatar Icon with Online Status Indicator */}
                 <div className="relative shrink-0">
                   <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden border border-amber-500/40 bg-slate-900 shadow-inner ring-2 ring-amber-500/15">
@@ -625,25 +694,25 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                       <ShinyText text="PREHISTORICA • AI DOCENT" speed={3.5} />
                     </h2>
                     <span className="hidden sm:inline-flex px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20 uppercase tracking-widest">
-                      {TOTAL_CATALOGED_SPECIMENS} Verified
+                      {liveTotalSpecies} Verified
                     </span>
                   </div>
                   <p className="text-[10px] font-mono text-slate-400 truncate flex items-center gap-1.5">
                     <span className="text-slate-200 font-semibold">Rajy &bull; AI Docent</span>
-                    <span className="text-slate-600">&bull;</span>
-                    <span className="text-slate-300">Prehistorica Pavilion Guide</span>
+                    <span className="hidden xs:inline text-slate-600">&bull;</span>
+                    <span className="hidden xs:inline text-slate-300">Prehistorica Pavilion Guide</span>
                   </p>
                 </div>
               </div>
 
               {/* Header Controls: Global Voice Mode Toggle, Playback, Voice Settings & Close */}
-              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+              <div className="flex items-center gap-1 sm:gap-2 shrink-0 flex-nowrap">
                 {/* 1. Global Voice Mode Toggle (ON / OFF) */}
                 <ClickSpark sparkColor="#F59E0B">
                   <button
                     type="button"
                     onClick={toggleTts}
-                    className={`min-h-[36px] sm:min-h-[38px] px-2.5 sm:px-3 py-1.5 rounded-lg border text-xs font-mono font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
+                    className={`min-h-[36px] sm:min-h-[38px] px-2.5 sm:px-3 py-1.5 rounded-lg border text-xs font-mono font-semibold flex items-center gap-1.5 transition-all cursor-pointer shrink-0 ${
                       ttsEnabled
                         ? 'bg-amber-500/15 border-amber-500/50 text-amber-300 shadow-[0_0_14px_rgba(245,158,11,0.25)] ring-1 ring-amber-500/30'
                         : 'bg-slate-900/80 border-white/[0.08] text-slate-400 hover:text-slate-200 hover:bg-slate-850'
@@ -662,13 +731,13 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                   >
                   {ttsEnabled ? (
                     <>
-                      <Volume2 className="w-3.5 h-3.5 text-amber-400" />
-                      <span className="text-[11px] font-bold">Voice: ON</span>
+                      <Volume2 className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                      <span className="hidden sm:inline text-[11px] font-bold">Voice: ON</span>
                     </>
                   ) : (
                     <>
-                      <VolumeX className="w-3.5 h-3.5" />
-                      <span className="text-[11px]">Voice Mode</span>
+                      <VolumeX className="w-3.5 h-3.5 shrink-0" />
+                      <span className="hidden sm:inline text-[11px]">Voice Mode</span>
                     </>
                   )}
                 </button>
@@ -676,7 +745,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
                 {/* 2. Separate Pause / Resume & Stop Controls (Visible when Voice Mode is ON and audio is active or paused) */}
                 {ttsEnabled && (isSpeaking || isPaused) && (
-                  <div className="flex items-center gap-1 bg-slate-900/90 border border-amber-500/30 rounded-lg p-0.5 shadow-sm">
+                  <div className="flex items-center gap-1 bg-slate-900/90 border border-amber-500/30 rounded-lg p-0.5 shadow-sm shrink-0">
                     {/* Pause / Resume Button */}
                     {isSpeaking ? (
                       <button
@@ -703,7 +772,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                         aria-label="Resume vocal narration"
                       >
                         <Play className="w-3 h-3 fill-current" />
-                        <span className="text-[10px] uppercase font-bold">Resume</span>
+                        <span className="text-[10px] uppercase font-bold hidden xs:inline">Resume</span>
                       </button>
                     )}
 
@@ -725,7 +794,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                   <button
                     type="button"
                     onClick={() => setIsVoiceSettingsOpen(!isVoiceSettingsOpen)}
-                    className={`min-h-[36px] min-w-[36px] sm:min-h-[38px] sm:min-w-[38px] p-2 rounded-lg border text-xs font-mono flex items-center justify-center transition-all cursor-pointer ${
+                    className={`min-h-[36px] min-w-[36px] sm:min-h-[38px] sm:min-w-[38px] p-2 rounded-lg border text-xs font-mono flex items-center justify-center transition-all cursor-pointer shrink-0 ${
                       isVoiceSettingsOpen
                         ? 'bg-amber-500/20 border-amber-500/60 text-amber-300 shadow-sm'
                         : 'bg-slate-900/80 border-white/[0.08] text-slate-400 hover:text-amber-300 hover:bg-slate-850'
@@ -742,7 +811,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 <button
                   type="button"
                   onClick={onClose}
-                  className="min-h-[36px] min-w-[36px] sm:min-h-[38px] sm:min-w-[38px] p-2 rounded-lg bg-slate-900/80 hover:bg-slate-850 border border-white/[0.08] text-slate-400 hover:text-white transition-all cursor-pointer flex items-center justify-center ml-0.5"
+                  className="min-h-[36px] min-w-[36px] sm:min-h-[38px] sm:min-w-[38px] p-2 rounded-lg bg-slate-900/80 hover:bg-slate-850 border border-white/[0.08] text-slate-400 hover:text-white transition-all cursor-pointer flex items-center justify-center ml-0.5 shrink-0"
                   title="Close Rajy AI Docent"
                   aria-label="Close Rajy AI Docent"
                 >
@@ -913,7 +982,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
               {/* ── LEFT PANEL: Integrated Rajy Character Showcase ── */}
               <aside
-                className="hidden sm:flex flex-col w-[170px] md:w-[190px] lg:w-[215px] shrink-0 bg-transparent relative overflow-hidden select-none"
+                className="hidden md:flex flex-col w-[170px] md:w-[190px] lg:w-[215px] shrink-0 bg-transparent relative overflow-hidden select-none"
                 aria-label="Rajy Mascot Showcase"
               >
                 {/* Atmospheric Backlight: Warm Gold & Deep Cyan Halo seamlessly diffusing into chat */}
@@ -983,7 +1052,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                               <img
                                 src="/rajy-head.jpg"
                                 alt="Rajy the AI Docent"
-                                className="w-4 h-4 rounded-full object-cover object-top sm:hidden border border-amber-500/40"
+                                className="w-4 h-4 rounded-full object-cover object-top md:hidden border border-amber-500/40"
                               />
                               <span>Rajy &bull; AI Docent</span>
                               {isCurrentlySpeaking && (
@@ -1010,7 +1079,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                         <div className="relative overflow-visible max-w-[94%] sm:max-w-[88%] lg:max-w-[85%]">
                           {hasTail && (
                             <div
-                              className="hidden sm:block absolute -left-2.5 top-3.5 w-2.5 h-3.5 z-10 pointer-events-none"
+                              className="hidden md:block absolute -left-2.5 top-3.5 w-2.5 h-3.5 z-10 pointer-events-none"
                               aria-hidden="true"
                             >
                               <svg
@@ -1039,7 +1108,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                             style={hasTail ? { transformOrigin: 'top left' } : undefined}
                             className={`rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 shadow-lg ${
                               isAssistant
-                                ? `bg-[#151E34] border border-white/[0.08] text-slate-100 ${hasTail ? 'rounded-tl-xs' : ''} selection:bg-amber-500 selection:text-slate-950`
+                                ? `bg-[#151E34] border border-white/[0.08] text-slate-100 ${hasTail ? 'rounded-tl-2xl md:rounded-tl-xs' : ''} selection:bg-amber-500 selection:text-slate-950`
                                 : 'bg-amber-500 text-slate-950 font-medium rounded-tr-xs selection:bg-slate-900 selection:text-white'
                             }`}
                           >
@@ -1140,7 +1209,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
                   {/* ── INITIAL STATE: "EXPLORE WITH RAJY" CARDS ── */}
                   {isInitialState && (
-                    <div className="pt-2 pb-8 space-y-3 w-full">
+                    <div className="pt-2 pb-6 md:pb-8 space-y-3 w-full">
                       <div className="flex items-center gap-2 border-b border-white/[0.06] pb-2 font-mono">
                         <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                         <h3 className="text-xs font-bold tracking-widest uppercase text-amber-400">
@@ -1151,14 +1220,14 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                         </span>
                       </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
+                      <div className="flex md:grid md:grid-cols-2 gap-2.5 sm:gap-3 w-full overflow-x-auto md:overflow-visible pb-2 md:pb-0 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-amber-500/20 scrollbar-track-transparent">
                         {INITIAL_EXPLORE_QUESTIONS.map((q, idx) => (
                           <button
                             key={idx}
                             type="button"
                             onClick={() => handleSend(q.prompt)}
                             disabled={loading}
-                            className="group flex flex-col justify-between min-h-[102px] p-3 sm:p-3.5 rounded-xl bg-slate-900/70 hover:bg-slate-850/95 border border-white/[0.08] hover:border-amber-500/50 hover:shadow-[0_4px_16px_rgba(245,158,11,0.1)] active:scale-[0.99] focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none text-left transition-all duration-200 shadow-sm cursor-pointer disabled:opacity-50"
+                            className="group flex flex-col justify-between w-[240px] xs:w-[260px] md:w-auto shrink-0 snap-start min-h-[92px] md:min-h-[102px] p-3 sm:p-3.5 rounded-xl bg-slate-900/70 hover:bg-slate-850/95 border border-white/[0.08] hover:border-amber-500/50 hover:shadow-[0_4px_16px_rgba(245,158,11,0.1)] active:scale-[0.99] focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none text-left transition-all duration-200 shadow-sm cursor-pointer disabled:opacity-50"
                           >
                             <div className="space-y-1">
                               <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400/90 flex items-center gap-1">
@@ -1169,7 +1238,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                                 {q.prompt}
                               </p>
                             </div>
-                            <div className="pt-2.5 flex items-center justify-end text-[10px] font-mono text-slate-500 group-hover:text-amber-400 font-semibold gap-1 transition-colors">
+                            <div className="pt-2 flex items-center justify-end text-[10px] font-mono text-slate-500 group-hover:text-amber-400 font-semibold gap-1 transition-colors">
                               <span>Ask Rajy</span>
                               <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                             </div>
@@ -1220,13 +1289,16 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 )}
 
                 {/* ── Refined Fixed Message Input Area ── */}
-                <div className="px-3.5 py-3 sm:px-5 sm:py-3.5 border-t border-white/[0.08] bg-[#070B16] shrink-0 z-10">
+                <div
+                  style={{ paddingBottom: 'max(env(safe-area-inset-bottom, 0px), 0.75rem)' }}
+                  className="px-3.5 pt-3 sm:px-5 sm:pt-3.5 border-t border-white/[0.08] bg-[#070B16] shrink-0 z-10"
+                >
                   <form
                     onSubmit={(e) => {
                       e.preventDefault();
                       handleSend();
                     }}
-                    className="flex items-center gap-2.5"
+                    className="flex items-center gap-2 sm:gap-2.5"
                   >
                     <div className="relative flex-1">
                       <input
@@ -1235,17 +1307,22 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         onKeyDown={handleKeyDown}
+                        onFocus={() => {
+                          setTimeout(() => {
+                            messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                          }, 120);
+                        }}
                         placeholder="Ask Rajy about prehistoric life..."
                         disabled={loading}
                         aria-label="Question for Rajy"
-                        className="w-full px-4 py-2.5 sm:py-3 bg-[#0D1527] border border-white/[0.1] focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/30 rounded-xl text-xs sm:text-sm text-slate-100 placeholder-slate-400 focus:outline-none transition-all font-mono shadow-inner"
+                        className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 bg-[#0D1527] border border-white/[0.1] focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/30 rounded-xl text-xs sm:text-sm text-slate-100 placeholder-slate-400 focus:outline-none transition-all font-mono shadow-inner"
                       />
                     </div>
                     <ClickSpark sparkColor="#F59E0B">
                       <button
                         type="submit"
                         disabled={!input.trim() || loading}
-                        className="min-h-[42px] sm:min-h-[44px] px-4 sm:px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-98 disabled:opacity-40 disabled:hover:bg-amber-500 text-slate-950 font-bold font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-amber-500/10 shrink-0"
+                        className="min-h-[42px] sm:min-h-[44px] px-3.5 sm:px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-98 disabled:opacity-40 disabled:hover:bg-amber-500 text-slate-950 font-bold font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-amber-500/10 shrink-0"
                         aria-label="Send message to Rajy"
                       >
                         {loading ? (
