@@ -15,7 +15,9 @@
     "prisma:seed": "tsx prisma/seed.ts",
     "seed": "npm run prisma:seed",
     "add-species": "tsx scripts/add-species.ts",
-    "test:silhouettes": "tsx scripts/validate-silhouettes.ts"
+    "test:silhouettes": "tsx scripts/validate-silhouettes.ts",
+    "test:taxonomy": "tsx scripts/validate-taxonomy-and-relatives.ts",
+    "test:taxonomy:ci": "tsx scripts/validate-taxonomy-and-relatives.ts --ci"
   },
   "dependencies": {
     "@google/genai": "^2.24.0",

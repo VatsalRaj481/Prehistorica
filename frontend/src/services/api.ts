@@ -33,6 +33,20 @@ export interface SourceCitation {
   url: string;
 }
 
+export interface ExtantRelativeSource {
+  title: string;
+  url_or_doi?: string;
+}
+
+export interface StructuredExtantRelatives {
+  status: 'established' | 'debated' | 'uncertain' | 'none';
+  groups: string[];
+  rationale?: string;
+  ecologicalAnalogues?: string[];
+  sources?: ExtantRelativeSource[];
+  verified: boolean;
+}
+
 export interface Species {
   id: number;
   name: string;
@@ -69,7 +83,8 @@ export interface Species {
   sizeEstimate?: SizeEstimate | null;
   sizeComparisonToHuman: boolean;
   extinctionEvent?: string | null;
-  closestLivingRelatives?: string[];
+  closestLivingRelatives?: string[] | StructuredExtantRelatives | null;
+  extantRelatives?: StructuredExtantRelatives | null;
   sources?: SourceCitation[];
   placeholder?: boolean;
   isMapFallback?: boolean;

@@ -41,3 +41,42 @@ Whenever database updates or additions are completed, keep the static JSON archi
 - `backend/prisma/species_triassic.json`
 - `backend/prisma/species_others.json`
 - `backend/prisma/species_full_export.json`
+
+---
+
+## 5. 🧬 Taxonomy & Extant Relatives Verification Skill
+
+---
+name: taxonomy-relatives-verification
+description: Use whenever adding, editing, or reviewing any specimen's taxonomy (domain to species), "Closest Extant Relatives", ancestry/descendant wording, or lineage claims. Ensures phylogenetic claims are sourced, current, and never inferred from resemblance.
+---
+
+# Taxonomy & Extant Relatives Verification
+
+## When to run
+Any change touching: taxonomic ranks, extant relatives, "ancestor/descendant" language,
+lineage text, or the docent's phylogenetic statements about a specimen.
+
+## Checklist (all must pass)
+1. **Class sanity check.** Relatives must belong to the same major lineage as the
+   specimen's accepted placement (mammals → mammal lineages, squamates → squamates, etc.).
+   Never default to "birds and crocodilians" for a non-archosaur.
+2. **Ranks are current.** Verify Order/Family/Genus/Species against a current authoritative
+   source. Replace obsolete groupings. Each value must sit in the correct rank field.
+3. **Relatives ≠ descendants ≠ analogues.** Store and display closest extant lineage,
+   ecological analogue, morphological analogue, and direct descendant separately.
+4. **No resemblance-based claims.** Convergent shape or ecology is not kinship.
+5. **No false precision.** Unresolved cases use "Uncertain" or "Nearest living relatives:
+   [group], though the precise relationship remains debated."
+6. **Sources required.** Each corrected fact records a source (peer-reviewed paper >
+   museum/institution > university > established taxonomic database > reputable
+   publication). No blogs, SEO sites, unsourced Wikipedia-derived data, or AI-generated text.
+7. **Conflicts.** If reputable sources disagree, note why, prefer the more recent
+   interpretation when justified, and preserve the uncertainty in the record.
+8. **Unverified means flagged.** If no adequate source is found, set `verified: false`
+   and use the uncertain wording. Never guess.
+
+## Output
+Report per changed record: old value, new value, source(s), confidence status.
+Do not batch-apply changes without listing them for human review.
+

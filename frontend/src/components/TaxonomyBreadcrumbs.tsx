@@ -86,7 +86,14 @@ export default function TaxonomyBreadcrumbs({ taxonomy, taxonomicClassification 
               <span className="text-[9px] uppercase tracking-widest text-slate-400 font-bold">
                 Rank: {r.label}
               </span>
-              <span className="truncate text-xs font-semibold">{r.val}</span>
+              <span
+                className={`break-words text-xs font-semibold leading-snug ${
+                  r.label === 'Genus' || r.label === 'Species' ? 'italic' : ''
+                }`}
+                title={`${r.label}: ${r.val}`}
+              >
+                {r.val}
+              </span>
             </Link>
           </motion.div>
         ))}
