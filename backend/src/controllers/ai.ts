@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { PrismaClient } from '@prisma/client';
 import {
   askChiefCurator,
+  askChiefCuratorStream,
   analyzeFossilImage,
   simulateRunwayInteraction,
   synthesizeFormationFoodWeb,
@@ -12,11 +13,11 @@ import { searchSimilarSpecies, getEmbeddingCount } from '../services/vectorStore
 const prisma = new PrismaClient();
 
 /**
- * 1. POST /api/ai/curator/chat — Chief Curator Grounded RAG Agent
+ * 1. POST /api/curator/ask (and /api/ai/curator/chat) — Chief Curator Grounded RAG Agent (SSE Streaming)
  */
 export async function curatorChat(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const { query, history } = req.body;
+    const { query, history, stream } = req.body;
 
     if (!query || typeof query !== 'string' || query.trim().length === 0) {
       res.status(400).json({ error: 'A query string is required' });
@@ -49,36 +50,96 @@ export async function curatorChat(req: Request, res: Response, next: NextFunctio
       };
     });
 
-    // 2. Ask Chief Curator with grounded context
-    const result = await askChiefCurator({
+    const groundedSpecimens = matchedSpecies.map(s => {
+      let mediaArr: any[] = [];
+      let silhouetteObj: any = null;
+      try { mediaArr = JSON.parse(s.media || '[]'); } catch {}
+      try { silhouetteObj = JSON.parse(s.comparisonSilhouette || '{}'); } catch {}
+
+      return {
+        id: s.id,
+        name: s.name,
+        scientificName: s.scientificName,
+        clade: s.clade,
+        timePeriod: s.timePeriod,
+        similarity: Math.round((s.similarity || 0) * 100),
+        imageUrl: mediaArr[0]?.url || null,
+        silhouetteUrl: silhouetteObj?.url || null
+      };
+    });
+
+    // If client explicitly asks for non-streaming JSON
+    if (stream === false) {
+      const result = await askChiefCurator({
+        query: query.trim(),
+        conversationHistory: history || [],
+        contextSpecies
+      });
+
+      res.json({
+        answer: result.response,
+        referencedSpeciesIds: result.referencedSpecies,
+        groundedSpecimens
+      });
+      return;
+    }
+
+    // Server-Sent Events (SSE) Streaming
+    res.setHeader('Content-Type', 'text/event-stream; charset=utf-8');
+    res.setHeader('Cache-Control', 'no-cache, no-transform');
+    res.setHeader('Connection', 'keep-alive');
+    res.setHeader('X-Accel-Buffering', 'no');
+    res.flushHeaders?.();
+
+    let isClientConnected = true;
+    req.on('close', () => {
+      isClientConnected = false;
+    });
+
+    const sendSseEvent = (event: string, data: any) => {
+      if (!isClientConnected) return;
+      res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
+    };
+
+    // 1. Send grounded museum specimens metadata immediately
+    sendSseEvent('grounded', { groundedSpecimens });
+
+    // 2. Stream tokens via Gemini SDK stream API in real-time
+    let fullResponse = '';
+    const streamGen = askChiefCuratorStream({
       query: query.trim(),
       conversationHistory: history || [],
       contextSpecies
     });
 
-    res.json({
-      answer: result.response,
-      referencedSpeciesIds: result.referencedSpecies,
-      groundedSpecimens: matchedSpecies.map(s => {
-        let mediaArr: any[] = [];
-        let silhouetteObj: any = null;
-        try { mediaArr = JSON.parse(s.media || '[]'); } catch {}
-        try { silhouetteObj = JSON.parse(s.comparisonSilhouette || '{}'); } catch {}
+    for await (const token of streamGen) {
+      if (!isClientConnected) break;
+      fullResponse += token;
+      sendSseEvent('token', { token, text: fullResponse });
+    }
 
-        return {
-          id: s.id,
-          name: s.name,
-          scientificName: s.scientificName,
-          clade: s.clade,
-          timePeriod: s.timePeriod,
-          similarity: Math.round((s.similarity || 0) * 100),
-          imageUrl: mediaArr[0]?.url || null,
-          silhouetteUrl: silhouetteObj?.url || null
-        };
-      })
+    // 3. Compute referenced species IDs and finalize
+    const referencedSpeciesIds: number[] = [];
+    contextSpecies.forEach(s => {
+      if (fullResponse.includes(`/species/${s.id}`) || fullResponse.toLowerCase().includes(s.name.toLowerCase())) {
+        referencedSpeciesIds.push(s.id);
+      }
     });
-  } catch (error) {
-    next(error);
+
+    sendSseEvent('done', {
+      answer: fullResponse,
+      referencedSpeciesIds,
+      groundedSpecimens
+    });
+
+    res.end();
+  } catch (error: any) {
+    if (res.headersSent) {
+      res.write(`event: error\ndata: ${JSON.stringify({ error: error?.message || 'Streaming failure' })}\n\n`);
+      res.end();
+    } else {
+      next(error);
+    }
   }
 }
 

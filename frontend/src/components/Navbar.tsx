@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, Map, ArrowRightLeft, Menu, X, Scale, BookOpen, Trophy, Sparkles, Camera, ChevronDown } from 'lucide-react';
+import { Search, Map, ArrowRightLeft, Menu, X, Scale, BookOpen, Trophy, Sparkles, Camera, ChevronDown, Dna } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useReducedMotion } from 'framer-motion';
 import SearchAutocomplete from './SearchAutocomplete.js';
 import CompareModal from './CompareModal.js';
@@ -88,6 +88,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
   const navLinks = [
     { to: '/', label: 'Home', isHome: true },
     { to: '/browse', label: 'Catalog', icon: Search },
+    { to: '/cladogram', label: 'Tree of Life', icon: Dna },
     { to: '/map', label: 'Time-Map', icon: Map },
     { to: '/runway', label: 'Runway', icon: Scale },
     { to: '/challenge', label: 'Trials', icon: Trophy },
@@ -389,6 +390,13 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                 >
                   <Search className="h-4 w-4 text-amber-400" />
                   Browse Catalog
+                </Link>
+                <Link
+                  to="/cladogram"
+                  className={`flex items-center gap-2 px-3 py-2.5 rounded-lg transition-colors ${isMobileActive('/cladogram')}`}
+                >
+                  <Dna className="h-4 w-4 text-amber-400" />
+                  Tree of Life (Cladogram)
                 </Link>
                 <Link
                   to="/map"

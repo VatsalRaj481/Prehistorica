@@ -13,6 +13,7 @@ import TimeMap from './pages/TimeMap.js';
 import FieldNotebook from './pages/FieldNotebook.js';
 import CaliperRunway from './pages/CaliperRunway.js';
 import PaleoChallenge from './pages/PaleoChallenge.js';
+import Cladogram from './pages/Cladogram.js';
 import { wakePing } from './services/api.js';
 
 export default function App() {
@@ -109,6 +110,8 @@ export default function App() {
               <Route path="/browse" element={<Browse />} />
               <Route path="/species/:id" element={<SpeciesDetail />} />
               <Route path="/map" element={<TimeMap />} />
+              <Route path="/cladogram" element={<Cladogram />} />
+              <Route path="/tree" element={<Cladogram />} />
               <Route path="/runway" element={<CaliperRunway />} />
               <Route path="/notebook" element={<FieldNotebook />} />
               <Route path="/challenge" element={<PaleoChallenge />} />

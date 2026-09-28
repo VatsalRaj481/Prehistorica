@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import L from 'leaflet';
 import { fetchSpecies, Species } from '../services/api.js';
-import { Compass, Dna, Info, ArrowRight, MapPin, Loader2, Globe, Network } from 'lucide-react';
+import { Compass, Dna, Info, ArrowRight, MapPin, Loader2, Globe, Network, Clock, Layers } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 import PaleoDriftViewer from '../components/PaleoDriftViewer.js';
+import ChronoTimelineSlider from '../components/ChronoTimelineSlider.js';
+import FormationEcosystemDiorama from '../components/FormationEcosystemDiorama.js';
 import FoodWebModal from '../components/FoodWebModal.js';
 import ShinyText from '../components/reactbits/ShinyText.js';
 import ClickSpark from '../components/reactbits/ClickSpark.js';
@@ -272,7 +274,7 @@ export default function TimeMap() {
   const [selectedEraIndex, setSelectedEraIndex] = useState(4);
   const [selectedLocation, setSelectedLocation] = useState('North America');
   const [selectedFormation, setSelectedFormation] = useState<string | null>(null);
-  const [viewMode, setViewMode] = useState<'modern' | 'paleo'>('modern');
+  const [viewMode, setViewMode] = useState<'modern' | 'paleo' | 'chrono' | 'diorama'>('modern');
   const [isFoodWebOpen, setIsFoodWebOpen] = useState(false);
 
   const [speciesList, setSpeciesList] = useState<Species[]>([]);
@@ -291,8 +293,16 @@ export default function TimeMap() {
   );
 
   useEffect(() => {
-    document.title = `Time-Map Pavilion (${currentEra.name} - ${selectedLocation}) | Prehistorica`;
-  }, [currentEra, selectedLocation]);
+    if (viewMode === 'chrono') {
+      document.title = 'Chrono-Extinction Slider | Prehistorica';
+    } else if (viewMode === 'diorama') {
+      document.title = 'Stratigraphic Ecosystem Dioramas | Prehistorica';
+    } else if (viewMode === 'paleo') {
+      document.title = 'Continental Drift Viewer | Prehistorica';
+    } else {
+      document.title = `Time-Map Pavilion (${currentEra.name} - ${selectedLocation}) | Prehistorica`;
+    }
+  }, [currentEra, selectedLocation, viewMode]);
 
   useEffect(() => {
     setLoading(true);
@@ -366,7 +376,7 @@ export default function TimeMap() {
         {/* View Mode Switcher */}
         <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
           <ClickSpark sparkColor="#F59E0B">
-            <div className="p-1 rounded-lg bg-slate-900 border border-white/[0.08] flex items-center gap-1 shadow-sm">
+            <div className="p-1 rounded-lg bg-slate-900 border border-white/[0.08] flex flex-wrap items-center gap-1 shadow-sm">
               <button
                 onClick={() => setViewMode('modern')}
                 className={`px-3 py-1.5 rounded-md uppercase font-bold tracking-wider flex items-center gap-1.5 transition-all cursor-pointer ${
@@ -376,6 +386,26 @@ export default function TimeMap() {
                 }`}
               >
                 <Globe className="h-3.5 w-3.5" /> Modern Formations
+              </button>
+              <button
+                onClick={() => setViewMode('chrono')}
+                className={`px-3 py-1.5 rounded-md uppercase font-bold tracking-wider flex items-center gap-1.5 transition-all cursor-pointer ${
+                  viewMode === 'chrono'
+                    ? 'bg-amber-500 text-slate-950 shadow-sm'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <Clock className="h-3.5 w-3.5" /> Chrono-Extinction
+              </button>
+              <button
+                onClick={() => setViewMode('diorama')}
+                className={`px-3 py-1.5 rounded-md uppercase font-bold tracking-wider flex items-center gap-1.5 transition-all cursor-pointer ${
+                  viewMode === 'diorama'
+                    ? 'bg-amber-500 text-slate-950 shadow-sm'
+                    : 'text-slate-400 hover:text-white'
+                }`}
+              >
+                <Layers className="h-3.5 w-3.5" /> Ecosystem Dioramas
               </button>
               <button
                 onClick={() => setViewMode('paleo')}
@@ -398,9 +428,18 @@ export default function TimeMap() {
         </div>
       </motion.div>
 
-      {/* Deep-Time Paleogeographic Drift Mode */}
+      {/* Deep-Time Views */}
       {viewMode === 'paleo' ? (
         <PaleoDriftViewer />
+      ) : viewMode === 'chrono' ? (
+        <ChronoTimelineSlider />
+      ) : viewMode === 'diorama' ? (
+        <FormationEcosystemDiorama
+          onOpenFoodWeb={(formationName) => {
+            setSelectedFormation(formationName);
+            setIsFoodWebOpen(true);
+          }}
+        />
       ) : (
         <>
 

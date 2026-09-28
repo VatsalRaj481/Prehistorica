@@ -56,6 +56,8 @@ router.get('/species/:id', getSpeciesById);
 
 // 🏛️ AI Research Pavilion Endpoints
 router.get('/ai/status', getAiStatus);
+router.post('/curator/ask', aiLimiter, curatorChat);
+router.post('/ai/curator/ask', aiLimiter, curatorChat);
 router.post('/ai/curator/chat', aiLimiter, curatorChat);
 router.post('/ai/fossil-lens', aiLimiter, fossilLens);
 router.post('/ai/runway/matchup', aiLimiter, simulateRunwayMatchup);

@@ -55,12 +55,23 @@ export default function TaxonomyBreadcrumbs({ taxonomy, taxonomicClassification 
     ];
 
     return (
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="show"
-        className="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-xs"
-      >
+      <div className="space-y-2">
+        <div className="flex items-center justify-between text-xs font-mono text-slate-400">
+          <span className="uppercase text-[10px] tracking-wider font-bold">Phylogenetic Classification</span>
+          <Link
+            to="/cladogram"
+            className="text-[11px] text-amber-400 hover:text-amber-300 font-bold uppercase tracking-wider flex items-center gap-1 transition-colors"
+          >
+            <span>Tree of Life</span>
+            <span>&rarr;</span>
+          </Link>
+        </div>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className="grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-xs"
+        >
         {ranks.map((r, i) => (
           <motion.div key={r.label} variants={itemVariants} whileTap={{ scale: 0.96 }}>
             <Link
@@ -79,7 +90,8 @@ export default function TaxonomyBreadcrumbs({ taxonomy, taxonomicClassification 
             </Link>
           </motion.div>
         ))}
-      </motion.div>
+        </motion.div>
+      </div>
     );
   }
 

@@ -507,6 +507,12 @@ export async function getSpeciesRoster(req: Request, res: Response, next: NextFu
         scientificName: true,
         clade: true,
         timePeriod: true,
+        myaStart: true,
+        myaEnd: true,
+        taxonomy: true,
+        comparisonSilhouette: true,
+        diet: true,
+        habitat: true,
         media: true,
         geographicRange: true,
         sizeEstimate: true
@@ -523,6 +529,21 @@ export async function getSpeciesRoster(req: Request, res: Response, next: NextFu
             const artMedia = parsedMedia.find((m: any) => m.type === 'art' || m.type === 'life_reconstruction');
             reconstructionImageUrl = artMedia?.url || null;
           }
+        } catch {}
+      }
+
+      let silhouetteUrl: string | null = null;
+      if (s.comparisonSilhouette) {
+        try {
+          const sil = parseJson(s.comparisonSilhouette, {});
+          silhouetteUrl = sil?.url || null;
+        } catch {}
+      }
+
+      let parsedTaxonomy: any = null;
+      if (s.taxonomy) {
+        try {
+          parsedTaxonomy = parseJson(s.taxonomy, null);
         } catch {}
       }
 
@@ -552,6 +573,12 @@ export async function getSpeciesRoster(req: Request, res: Response, next: NextFu
         scientificName: s.scientificName,
         clade: s.clade,
         timePeriod: s.timePeriod,
+        myaStart: s.myaStart,
+        myaEnd: s.myaEnd,
+        taxonomy: parsedTaxonomy,
+        silhouetteUrl,
+        diet: s.diet,
+        habitat: s.habitat,
         fossilFormation,
         reconstructionImageUrl,
         lengthM,

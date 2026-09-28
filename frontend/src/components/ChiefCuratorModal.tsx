@@ -86,6 +86,9 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
   ]);
   const [input, setInput] = useState(initialQuery || '');
   const [loading, setLoading] = useState(false);
+  const [isStreaming, setIsStreaming] = useState(false);
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const isBusy = loading || isStreaming;
   const [liveTotalSpecies, setLiveTotalSpecies] = useState<number>(TOTAL_CATALOGED_SPECIMENS);
 
   // Fetch live total cataloged species count dynamically from database
@@ -278,14 +281,18 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       setTimeout(() => inputRef.current?.focus(), 150);
     } else {
       stopSpeaking();
+      abortControllerRef.current?.abort();
       setIsVoiceSettingsOpen(false);
+      setIsStreaming(false);
+      setLoading(false);
     }
   }, [isOpen, stopSpeaking]);
 
-  // Clean up speech synthesis on unmount
+  // Clean up speech synthesis and abort controller on unmount
   useEffect(() => {
     return () => {
       stopSpeaking();
+      abortControllerRef.current?.abort();
     };
   }, [stopSpeaking]);
 
@@ -319,12 +326,14 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     };
   }, [isOpen]);
 
-  // Auto-scroll on subsequent messages or loading states
+  // Auto-scroll on subsequent messages, loading states, or streaming updates
   useEffect(() => {
-    if (messages.length > 1 || loading) {
-      messagesEndRef.current?.scrollIntoView({ behavior: shouldReduceMotion ? 'auto' : 'smooth' });
+    if (messages.length > 1 || loading || isStreaming) {
+      messagesEndRef.current?.scrollIntoView({
+        behavior: isStreaming ? 'auto' : (shouldReduceMotion ? 'auto' : 'smooth')
+      });
     }
-  }, [messages.length, loading, shouldReduceMotion]);
+  }, [messages, loading, isStreaming, shouldReduceMotion]);
 
   /**
    * Prepares raw AI-generated text for vocal speech:
@@ -506,9 +515,11 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
   const handleSend = async (queryToSend?: string) => {
     const text = (queryToSend || input).trim();
-    if (!text || loading) return;
+    if (!text || isBusy) return;
 
     stopSpeaking();
+    abortControllerRef.current?.abort();
+    abortControllerRef.current = new AbortController();
 
     const userMessage: Message = {
       id: Date.now().toString(),
@@ -517,28 +528,98 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
 
+    const assistantMsgId = (Date.now() + 1).toString();
+    const assistantTimestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    let hasAppendedAssistant = false;
+
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
     setLoading(true);
+    setIsStreaming(false);
 
     try {
       const history = messages
         .filter((m) => m.id !== 'welcome')
         .map((m) => ({ role: m.role, content: m.content }));
 
-      const res = await askChiefCurator(text, history);
+      const res = await askChiefCurator(text, history, {
+        signal: abortControllerRef.current.signal,
+        onGrounded: (grounded) => {
+          if (!hasAppendedAssistant) {
+            hasAppendedAssistant = true;
+            setMessages((prev) => [
+              ...prev,
+              {
+                id: assistantMsgId,
+                role: 'assistant',
+                content: '',
+                groundedSpecimens: grounded,
+                timestamp: assistantTimestamp
+              }
+            ]);
+            setLoading(false);
+            setIsStreaming(true);
+          } else {
+            setMessages((prev) =>
+              prev.map((m) => (m.id === assistantMsgId ? { ...m, groundedSpecimens: grounded } : m))
+            );
+          }
+        },
+        onChunk: (_token, accumulated) => {
+          if (!hasAppendedAssistant) {
+            hasAppendedAssistant = true;
+            setMessages((prev) => [
+              ...prev,
+              {
+                id: assistantMsgId,
+                role: 'assistant',
+                content: accumulated,
+                timestamp: assistantTimestamp
+              }
+            ]);
+            setLoading(false);
+            setIsStreaming(true);
+          } else {
+            setMessages((prev) =>
+              prev.map((m) => (m.id === assistantMsgId ? { ...m, content: accumulated } : m))
+            );
+          }
+        }
+      });
 
-      const botMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        role: 'assistant',
-        content: res.answer,
-        groundedSpecimens: res.groundedSpecimens,
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-      };
+      // Synchronize final result when stream completes
+      setMessages((prev) => {
+        const exists = prev.some((m) => m.id === assistantMsgId);
+        if (!exists) {
+          return [
+            ...prev,
+            {
+              id: assistantMsgId,
+              role: 'assistant',
+              content: res.answer,
+              groundedSpecimens: res.groundedSpecimens,
+              timestamp: assistantTimestamp
+            }
+          ];
+        }
+        return prev.map((m) =>
+          m.id === assistantMsgId
+            ? {
+                ...m,
+                content: res.answer,
+                groundedSpecimens: res.groundedSpecimens
+              }
+            : m
+        );
+      });
 
-      setMessages((prev) => [...prev, botMessage]);
+      setIsStreaming(false);
       speakText(res.answer, 0);
     } catch (err: any) {
+      if (err.name === 'AbortError') {
+        return;
+      }
+      setIsStreaming(false);
       const errorMsg: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
@@ -548,6 +629,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       setMessages((prev) => [...prev, errorMsg]);
     } finally {
       setLoading(false);
+      setIsStreaming(false);
     }
   };
 
@@ -1113,12 +1195,20 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                             }`}
                           >
                             {isAssistant ? (
-                              <RajyResponseRenderer
-                                content={msg.content}
-                                onLinkClick={onClose}
-                                isLatestAssistantMessage={isThisLastAssistant}
-                                isFirstAssistantResponse={isFirstAssistantResponse}
-                              />
+                              <>
+                                <RajyResponseRenderer
+                                  content={msg.content}
+                                  onLinkClick={onClose}
+                                  isLatestAssistantMessage={isThisLastAssistant}
+                                  isFirstAssistantResponse={isFirstAssistantResponse}
+                                />
+                                {isThisLastAssistant && isStreaming && (
+                                  <div className="flex items-center gap-1.5 mt-2 pt-1 border-t border-white/[0.06] text-[10px] font-mono text-amber-400/90">
+                                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping" />
+                                    <span className="animate-pulse">Rajy is formulating curatorial thoughts in real-time...</span>
+                                  </div>
+                                )}
+                              </>
                             ) : (
                               <p className="whitespace-pre-wrap leading-relaxed text-xs sm:text-[13px] md:text-sm">
                                 {msg.content}
@@ -1226,7 +1316,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                             key={idx}
                             type="button"
                             onClick={() => handleSend(q.prompt)}
-                            disabled={loading}
+                            disabled={isBusy}
                             className="group flex flex-col justify-between w-[240px] xs:w-[260px] md:w-auto shrink-0 snap-start min-h-[92px] md:min-h-[102px] p-3 sm:p-3.5 rounded-xl bg-slate-900/70 hover:bg-slate-850/95 border border-white/[0.08] hover:border-amber-500/50 hover:shadow-[0_4px_16px_rgba(245,158,11,0.1)] active:scale-[0.99] focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:outline-none text-left transition-all duration-200 shadow-sm cursor-pointer disabled:opacity-50"
                           >
                             <div className="space-y-1">
@@ -1277,7 +1367,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                           key={idx}
                           type="button"
                           onClick={() => handleSend(q)}
-                          disabled={loading}
+                          disabled={isBusy}
                           className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-slate-900/90 hover:bg-amber-500/15 border border-white/[0.08] hover:border-amber-500/40 text-slate-300 hover:text-amber-200 text-[11px] sm:text-xs font-mono shrink-0 transition-all text-left whitespace-nowrap cursor-pointer active:scale-95 disabled:opacity-40 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400 shadow-sm"
                           title={`Ask Rajy: ${q}`}
                         >
@@ -1313,7 +1403,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                           }, 120);
                         }}
                         placeholder="Ask Rajy about prehistoric life..."
-                        disabled={loading}
+                        disabled={isBusy}
                         aria-label="Question for Rajy"
                         className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 bg-[#0D1527] border border-white/[0.1] focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/30 rounded-xl text-xs sm:text-sm text-slate-100 placeholder-slate-400 focus:outline-none transition-all font-mono shadow-inner"
                       />
@@ -1321,11 +1411,11 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                     <ClickSpark sparkColor="#F59E0B">
                       <button
                         type="submit"
-                        disabled={!input.trim() || loading}
+                        disabled={!input.trim() || isBusy}
                         className="min-h-[42px] sm:min-h-[44px] px-3.5 sm:px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-98 disabled:opacity-40 disabled:hover:bg-amber-500 text-slate-950 font-bold font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-amber-500/10 shrink-0"
                         aria-label="Send message to Rajy"
                       >
-                        {loading ? (
+                        {isBusy ? (
                           <Loader2 className="w-4 h-4 animate-spin" />
                         ) : (
                           <>

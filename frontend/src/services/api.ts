@@ -239,6 +239,12 @@ export interface SpeciesRosterItem {
   scientificName: string;
   clade: string;
   timePeriod: string;
+  myaStart?: number;
+  myaEnd?: number;
+  taxonomy?: TaxonomyHierarchy | null;
+  silhouetteUrl?: string | null;
+  diet?: string;
+  habitat?: string;
   fossilFormation?: string | null;
   reconstructionImageUrl?: string | null;
   lengthM?: number | null;
@@ -340,20 +346,106 @@ export interface CuratorChatResponse {
   groundedSpecimens: CuratorGroundingSpecimen[];
 }
 
+export interface AskChiefCuratorOptions {
+  onChunk?: (token: string, accumulated: string) => void;
+  onGrounded?: (specimens: CuratorGroundingSpecimen[]) => void;
+  signal?: AbortSignal;
+}
+
 export async function askChiefCurator(
   query: string,
-  history?: { role: 'user' | 'assistant'; content: string }[]
+  history?: { role: 'user' | 'assistant'; content: string }[],
+  options?: AskChiefCuratorOptions
 ): Promise<CuratorChatResponse> {
-  const response = await fetchWithRetry(`${API_BASE}/ai/curator/chat`, {
+  const url = `${API_BASE}/curator/ask`;
+  const response = await fetch(url, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ query, history })
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'text/event-stream'
+    },
+    body: JSON.stringify({ query, history, stream: true }),
+    signal: options?.signal
   });
+
   if (!response.ok) {
     const err = await response.json().catch(() => ({}));
     throw new Error(err.error || 'Failed to communicate with Chief Curator');
   }
-  return response.json();
+
+  const contentType = response.headers.get('content-type') || '';
+  if (!contentType.includes('text/event-stream')) {
+    return response.json();
+  }
+
+  if (!response.body) {
+    throw new Error('Streaming not supported in this environment');
+  }
+
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = '';
+  let accumulatedAnswer = '';
+  let groundedSpecimens: CuratorGroundingSpecimen[] = [];
+  let referencedSpeciesIds: number[] = [];
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const parts = buffer.split('\n\n');
+      buffer = parts.pop() || '';
+
+      for (const part of parts) {
+        if (!part.trim()) continue;
+        let eventType = 'message';
+        let dataText = '';
+
+        for (const line of part.split('\n')) {
+          if (line.startsWith('event:')) {
+            eventType = line.replace(/^event:\s*/, '').trim();
+          } else if (line.startsWith('data:')) {
+            dataText = line.replace(/^data:\s*/, '').trim();
+          }
+        }
+
+        if (!dataText) continue;
+
+        try {
+          const parsed = JSON.parse(dataText);
+          if (eventType === 'grounded' || parsed.type === 'grounded') {
+            groundedSpecimens = parsed.groundedSpecimens || [];
+            options?.onGrounded?.(groundedSpecimens);
+          } else if (eventType === 'token' || parsed.type === 'token') {
+            const token = parsed.token || '';
+            accumulatedAnswer += token;
+            options?.onChunk?.(token, accumulatedAnswer);
+          } else if (eventType === 'done' || parsed.type === 'done') {
+            if (parsed.answer) accumulatedAnswer = parsed.answer;
+            if (parsed.groundedSpecimens) groundedSpecimens = parsed.groundedSpecimens;
+            if (parsed.referencedSpeciesIds) referencedSpeciesIds = parsed.referencedSpeciesIds;
+          } else if (eventType === 'error' || parsed.type === 'error') {
+            throw new Error(parsed.error || 'Chief Curator streaming error');
+          }
+        } catch (parseErr: any) {
+          if (parseErr.message && parseErr.message.includes('Chief Curator streaming error')) {
+            throw parseErr;
+          }
+          console.warn('[SSE] Event parse warning:', parseErr);
+        }
+      }
+    }
+  } finally {
+    reader.releaseLock();
+  }
+
+  return {
+    answer: accumulatedAnswer,
+    referencedSpeciesIds,
+    groundedSpecimens
+  };
 }
 
 export interface FossilCandidate {
