@@ -4,6 +4,7 @@ import DinoLogoMark from './DinoLogoMark.js';
 
 interface CuratorialLoaderProps {
   variant?: 'strata' | 'amber' | 'compact';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
   label?: string;
   sublabel?: string;
   className?: string;
@@ -11,11 +12,14 @@ interface CuratorialLoaderProps {
 
 export default function CuratorialLoader({
   variant = 'strata',
+  size = 'md',
   label = 'Excavating Specimen Records...',
   sublabel,
   className = ''
 }: CuratorialLoaderProps) {
   const shouldReduceMotion = useReducedMotion();
+
+  const isLarge = size === 'lg' || size === 'xl';
 
   if (variant === 'compact') {
     return (
@@ -35,24 +39,24 @@ export default function CuratorialLoader({
         {/* Amber Resin Fossil Plinth Beacon */}
         <div className="relative flex items-center justify-center">
           {/* Subtle Ambient Radial Glow */}
-          <div className="absolute w-24 h-24 bg-amber-500/10 rounded-full blur-xl pointer-events-none" />
+          <div className={`absolute ${isLarge ? 'w-40 h-40' : 'w-24 h-24'} bg-amber-500/10 rounded-full blur-xl pointer-events-none`} />
 
           {/* Pulsing Outer Resin Ring */}
           <motion.div
             animate={shouldReduceMotion ? {} : { scale: [1, 1.08, 1], opacity: [0.4, 0.8, 0.4] }}
             transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-            className="w-16 h-16 rounded-2xl border border-amber-500/40 bg-gradient-to-br from-amber-500/15 via-amber-600/10 to-transparent flex items-center justify-center shadow-[0_0_24px_rgba(245,158,11,0.2)] backdrop-blur-sm"
+            className={`${isLarge ? 'w-24 h-24 rounded-3xl' : 'w-16 h-16 rounded-2xl'} border border-amber-500/40 bg-gradient-to-br from-amber-500/15 via-amber-600/10 to-transparent flex items-center justify-center shadow-[0_0_24px_rgba(245,158,11,0.2)] backdrop-blur-sm`}
           >
-            <DinoLogoMark className="w-9 h-9 drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]" />
+            <DinoLogoMark className={`${isLarge ? 'w-14 h-14' : 'w-9 h-9'} drop-shadow-[0_2px_8px_rgba(245,158,11,0.4)]`} />
           </motion.div>
         </div>
 
         <div className="space-y-1">
-          <h4 className="text-xs uppercase tracking-widest font-bold">
+          <h4 className={`${isLarge ? 'text-base sm:text-lg' : 'text-xs'} uppercase tracking-widest font-bold`}>
             <ShinyText text={label} speed={3} />
           </h4>
           {sublabel && (
-            <p className="text-[10px] text-slate-400 font-sans max-w-xs leading-relaxed">
+            <p className={`${isLarge ? 'text-xs sm:text-sm' : 'text-[10px]'} text-slate-400 font-sans max-w-sm leading-relaxed`}>
               {sublabel}
             </p>
           )}
@@ -65,22 +69,22 @@ export default function CuratorialLoader({
   const eggPath = 'M 30,6 C 43,6 52,24 52,44 C 52,58 42,66 30,66 C 18,66 8,58 8,44 C 8,24 17,6 30,6 Z';
 
   return (
-    <div className={`flex flex-col items-center justify-center p-8 sm:p-12 text-center font-mono space-y-5 w-full ${className}`}>
+    <div className={`flex flex-col items-center justify-center ${isLarge ? 'p-10 sm:p-16 space-y-6' : 'p-8 sm:p-12 space-y-5'} text-center font-mono w-full ${className}`}>
       {/* Fossilized Egg Specimen Matrix Visual (Clean Stage) */}
       <div className="relative flex flex-col items-center justify-center">
         {/* Soft Ambient Radial Halo behind Egg */}
         {!shouldReduceMotion && (
           <motion.div
             animate={{
-              scale: [0.9, 1.18, 0.9],
-              opacity: [0.2, 0.55, 0.2]
+              scale: [0.9, 1.2, 0.9],
+              opacity: [0.25, 0.65, 0.25]
             }}
             transition={{
               duration: 3.2,
               repeat: Infinity,
               ease: 'easeInOut'
             }}
-            className="absolute w-24 h-28 bg-amber-500/15 rounded-full blur-xl pointer-events-none"
+            className={`absolute ${isLarge ? 'w-48 h-56 sm:w-60 sm:h-72 blur-2xl' : 'w-24 h-28 blur-xl'} bg-amber-500/20 rounded-full pointer-events-none`}
           />
         )}
 
@@ -88,7 +92,11 @@ export default function CuratorialLoader({
         <div className="relative flex items-center justify-center">
           <svg
             viewBox="0 0 60 72"
-            className="w-14 h-16 sm:w-16 sm:h-20 drop-shadow-[0_8px_24px_rgba(0,0,0,0.85)]"
+            className={`${
+              isLarge
+                ? 'w-24 h-28 sm:w-32 sm:h-40 md:w-36 md:h-44 drop-shadow-[0_16px_40px_rgba(0,0,0,0.95)]'
+                : 'w-14 h-16 sm:w-16 sm:h-20 drop-shadow-[0_8px_24px_rgba(0,0,0,0.85)]'
+            }`}
             aria-label="Fossilized egg specimen emerging"
           >
             <defs>
@@ -117,8 +125,8 @@ export default function CuratorialLoader({
             <path
               d={eggPath}
               fill="url(#eggShellGradient)"
-              stroke="rgba(255, 255, 255, 0.12)"
-              strokeWidth="1"
+              stroke="rgba(255, 255, 255, 0.16)"
+              strokeWidth={isLarge ? '1.2' : '1'}
             />
 
             {/* Inner Light Seeping Through Shell — Clipped to Egg Boundary */}
@@ -126,14 +134,14 @@ export default function CuratorialLoader({
               <motion.circle
                 cx="30"
                 cy="38"
-                r="18"
+                r={isLarge ? '20' : '18'}
                 fill="url(#eggCoreGlow)"
                 animate={
                   shouldReduceMotion
                     ? { opacity: 0.45, scale: 1 }
                     : {
                         opacity: [0.2, 0.85, 0.45, 0.9, 0.2],
-                        scale: [0.85, 1.2, 0.95, 1.25, 0.85]
+                        scale: [0.85, 1.25, 0.95, 1.3, 0.85]
                       }
                 }
                 transition={
@@ -152,12 +160,14 @@ export default function CuratorialLoader({
             <motion.path
               d="M 28,14 L 33,22 L 27,31 L 35,40 L 29,49 L 34,58"
               stroke="#F59E0B"
-              strokeWidth="1.6"
+              strokeWidth={isLarge ? '2.2' : '1.6'}
               strokeLinecap="round"
               strokeLinejoin="round"
               fill="none"
               style={{
-                filter: 'drop-shadow(0 0 3px rgba(245, 158, 11, 0.85))'
+                filter: isLarge
+                  ? 'drop-shadow(0 0 5px rgba(245, 158, 11, 0.9))'
+                  : 'drop-shadow(0 0 3px rgba(245, 158, 11, 0.85))'
               }}
               initial={shouldReduceMotion ? { pathLength: 1, opacity: 0.95 } : { pathLength: 0, opacity: 0.2 }}
               animate={
@@ -184,12 +194,14 @@ export default function CuratorialLoader({
             <motion.path
               d="M 35,40 L 43,43 L 47,38 M 27,31 L 19,34 L 14,42 M 33,22 L 40,20 L 44,24"
               stroke="#FBBF24"
-              strokeWidth="1.2"
+              strokeWidth={isLarge ? '1.6' : '1.2'}
               strokeLinecap="round"
               strokeLinejoin="round"
               fill="none"
               style={{
-                filter: 'drop-shadow(0 0 2px rgba(245, 158, 11, 0.7))'
+                filter: isLarge
+                  ? 'drop-shadow(0 0 3px rgba(245, 158, 11, 0.8))'
+                  : 'drop-shadow(0 0 2px rgba(245, 158, 11, 0.7))'
               }}
               initial={shouldReduceMotion ? { pathLength: 1, opacity: 0.9 } : { pathLength: 0, opacity: 0 }}
               animate={
@@ -215,12 +227,12 @@ export default function CuratorialLoader({
         </div>
       </div>
 
-      {/* Identical Typography and Spacing Structure for ShinyText Label & Sublabel */}
-      <div className="space-y-1">
-        <h4 className="text-xs uppercase tracking-widest font-bold">
+      {/* Typography and Spacing Structure for ShinyText Label & Sublabel */}
+      <div className="space-y-1.5 max-w-md">
+        <h4 className={`${isLarge ? 'text-sm sm:text-base md:text-lg font-black' : 'text-xs font-bold'} uppercase tracking-widest`}>
           <ShinyText text={label} speed={3} />
         </h4>
-        <p className="text-[10px] text-slate-400 font-mono tracking-wider">
+        <p className={`${isLarge ? 'text-xs sm:text-sm' : 'text-[10px]'} text-slate-400 font-mono tracking-wider leading-relaxed`}>
           {sublabel || 'Excavating specimen matrix & preparing anatomical records...'}
         </p>
       </div>

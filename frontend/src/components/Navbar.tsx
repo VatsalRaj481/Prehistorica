@@ -165,7 +165,6 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                   <Link
                     key={link.to}
                     to={link.to}
-                    title={showLabel ? undefined : link.label}
                     aria-label={link.label}
                     className={`group relative flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium tracking-wide transition-colors duration-200 active:scale-95 shrink-0 ${
                       active ? 'text-amber-300 font-bold' : 'text-slate-300 hover:text-white'

@@ -152,11 +152,12 @@ export default function SearchAutocomplete({ isMobileDrawer = false }: SearchAut
     navigate(`/species/${id}`);
   }, [navigate]);
 
-  const handleSelectQuery = useCallback((text: string) => {
+  const handleSelectQuery = useCallback((text: string, forceAiMode = false) => {
     setQuery(text);
     setIsOpen(false);
     setIsOverlayExpanded(false);
-    if (isSemanticMode) {
+    if (isSemanticMode || forceAiMode) {
+      setIsSemanticMode(true);
       navigate(`/browse?semantic=${encodeURIComponent(text.trim())}`);
     } else {
       navigate(`/browse?search=${encodeURIComponent(text.trim())}`);
@@ -207,7 +208,7 @@ export default function SearchAutocomplete({ isMobileDrawer = false }: SearchAut
       if (isOpen && activeIndex >= 0 && activeIndex < currentListLength) {
         e.preventDefault();
         if (isShowingExamples) {
-          handleSelectQuery(EXAMPLE_QUERIES[activeIndex].text);
+          handleSelectQuery(EXAMPLE_QUERIES[activeIndex].text, true);
         } else if (isSemanticMode) {
           handleSelect(semanticResults[activeIndex].id);
         } else {
@@ -237,16 +238,25 @@ export default function SearchAutocomplete({ isMobileDrawer = false }: SearchAut
         className="divide-y divide-white/[0.06] overflow-y-auto max-h-[70vh] overscroll-contain"
       >
         {isShowingExamples ? (
-          // Example Queries Section (Visible ONLY when input is empty)
+          // Example Queries Section (Visible ONLY when input is empty — clarified as AI Semantic Mode prompts)
           <div>
             <div className="px-3.5 py-2.5 bg-slate-950 text-[10px] font-mono text-amber-400 uppercase tracking-wider flex items-center justify-between border-b border-white/[0.06]">
-              <span className="flex items-center gap-1.5 font-bold">
-                <Sparkles className="w-3 h-3 text-amber-400" />
-                <span>Curated Inquiries</span>
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="flex items-center gap-1.5 font-bold">
+                  <Sparkles className="w-3 h-3 text-amber-400" />
+                  <span>Curated AI Inquiries</span>
+                </span>
+                <span className="px-1.5 py-0.2 rounded bg-amber-500/20 border border-amber-400/40 text-[9px] font-mono font-bold text-amber-300">
+                  AI Mode
+                </span>
+              </div>
               <span className="text-[9px] text-slate-400 font-mono">
-                {isTouchDevice ? 'Tap to search' : 'Click to search'}
+                {isTouchDevice ? 'Tap to run with AI' : 'Click to run with AI'}
               </span>
+            </div>
+            <div className="px-3.5 py-1.5 bg-slate-900/40 border-b border-white/[0.04] text-[10px] text-slate-400 font-sans flex items-center justify-between gap-2">
+              <span className="truncate">Natural-language evolutionary and ecological prompts powered by pgvector AI search</span>
+              <span className="text-[9px] font-mono text-amber-400/80 shrink-0 font-bold uppercase tracking-wider">Semantic Vector</span>
             </div>
             <div className="p-1.5 space-y-1">
               {EXAMPLE_QUERIES.map((item, idx) => {
@@ -259,7 +269,7 @@ export default function SearchAutocomplete({ isMobileDrawer = false }: SearchAut
                     role="option"
                     aria-selected={isSelected}
                     type="button"
-                    onClick={() => handleSelectQuery(item.text)}
+                    onClick={() => handleSelectQuery(item.text, true)}
                     className={`w-full text-left px-2.5 py-2 rounded-lg text-slate-200 hover:text-white transition-all flex items-center justify-between group cursor-pointer ${
                       isSelected
                         ? 'bg-amber-500/20 text-amber-200 border border-amber-400/40 ring-1 ring-amber-400/30'
@@ -272,9 +282,14 @@ export default function SearchAutocomplete({ isMobileDrawer = false }: SearchAut
                         "{item.text}"
                       </span>
                     </div>
-                    <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-900 border border-white/[0.06] text-amber-400/90 group-hover:border-amber-500/40 group-hover:text-amber-300 font-bold shrink-0 ml-2">
-                      {item.category}
-                    </span>
+                    <div className="flex items-center gap-1.5 shrink-0 ml-2">
+                      <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-slate-900 border border-white/[0.06] text-amber-400/90 group-hover:border-amber-500/40 group-hover:text-amber-300 font-bold">
+                        {item.category}
+                      </span>
+                      <span className="text-[9px] font-mono px-1 py-0.5 rounded bg-amber-500/15 text-amber-300 border border-amber-500/30 font-bold">
+                        AI
+                      </span>
+                    </div>
                   </button>
                 );
               })}

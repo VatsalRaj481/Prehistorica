@@ -108,6 +108,20 @@ export default function Browse() {
       });
   }, [searchParams]);
 
+  // Smooth scroll and focus if arriving at a specific specimen card (e.g. #specimen-17)
+  useEffect(() => {
+    if (!loading && location.hash) {
+      try {
+        const el = document.querySelector(location.hash);
+        if (el) {
+          setTimeout(() => {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 180);
+        }
+      } catch {}
+    }
+  }, [loading, location.hash, speciesList]);
+
   // Update URL helper
   const updateParams = (updates: Record<string, string | string[] | null | undefined>) => {
     const newParams = new URLSearchParams(searchParams);
@@ -733,9 +747,10 @@ export default function Browse() {
           </AnimatePresence>
 
           {loading ? (
-            <div className="flex flex-col items-center justify-center min-h-[560px] w-full py-16">
+            <div className="flex flex-col items-center justify-center min-h-[580px] w-full py-16">
               <CuratorialLoader
                 variant="strata"
+                size="lg"
                 label="Excavating Specimen Catalog..."
                 sublabel="Preparing fossil specimens and anatomical profiles..."
               />
@@ -777,9 +792,11 @@ export default function Browse() {
               >
                 {speciesList.map((species) => {
                   const names = getSpeciesDisplayNames(species);
+                  const isTargetSpecimen = location.hash === `#specimen-${species.id}`;
                   return (
                     <SpotlightCard
                       key={species.id}
+                      id={`specimen-${species.id}`}
                       layout={shouldReduceMotion ? false : true}
                       variants={cardVariants}
                       initial="hidden"
@@ -790,7 +807,11 @@ export default function Browse() {
                       transition={{
                         layout: { type: 'spring', stiffness: 350, damping: 30 }
                       }}
-                      className="museum-card rounded-xl flex flex-col justify-between h-full shadow-xl"
+                      className={`museum-card rounded-xl flex flex-col justify-between h-full shadow-xl transition-all duration-300 ${
+                        isTargetSpecimen
+                          ? 'ring-2 ring-amber-400 border-amber-400/80 shadow-[0_0_28px_rgba(245,158,11,0.35)]'
+                          : ''
+                      }`}
                     >
                       <Link
                         to={`/species/${species.id}`}

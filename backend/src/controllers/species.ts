@@ -691,8 +691,17 @@ export async function getSpeciesById(req: Request, res: Response, next: NextFunc
 
     const relatedList = [...formationMatches, ...eraRegionMatches, ...cladeMatches].slice(0, 6);
 
+    // Compute exact catalog page in default catalog roster (name ascending, limit 12)
+    const precedingCount = await prisma.species.count({
+      where: {
+        name: { lt: rawSpecies.name }
+      }
+    });
+    const catalogPage = Math.floor(precedingCount / 12) + 1;
+
     const responseData = {
       ...species,
+      catalogPage,
       relatedSpecies: relatedList,
     };
 

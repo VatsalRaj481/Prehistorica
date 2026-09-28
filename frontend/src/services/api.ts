@@ -98,6 +98,7 @@ export interface Species {
   } | null;
   createdAt: string;
   updatedAt: string;
+  catalogPage?: number;
   relatedSpecies?: Species[];
 }
 

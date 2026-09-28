@@ -22,8 +22,18 @@ export default function SpeciesDetail() {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
-  // Preserve filter/search state when returning to the catalog index
-  const catalogReturnUrl = (location.state as any)?.from || (typeof window !== 'undefined' ? sessionStorage.getItem('prehistorica_browse_state') : null) || '/browse';
+  // Preserve filter/search state when returning to the catalog index, or navigate to exact catalog page
+  const stateFrom = (location.state as any)?.from;
+  const storedState = typeof window !== 'undefined' ? sessionStorage.getItem('prehistorica_browse_state') : null;
+  const hasSpecificCatalogReferrer = stateFrom && stateFrom.startsWith('/browse') && stateFrom !== '/browse' && stateFrom !== '/browse?page=1';
+  const exactSpeciesCatalogUrl = species?.catalogPage
+    ? `/browse?page=${species.catalogPage}#specimen-${species.id}`
+    : '/browse';
+  const catalogReturnUrl = hasSpecificCatalogReferrer
+    ? stateFrom
+    : (storedState && storedState !== '/browse' && storedState !== '/browse?page=1')
+    ? storedState
+    : exactSpeciesCatalogUrl;
 
   useEffect(() => {
     if (!id) return;
@@ -99,9 +109,16 @@ export default function SpeciesDetail() {
             <ClickSpark sparkColor="#F59E0B">
               <Link
                 to={catalogReturnUrl}
-                className="inline-flex items-center gap-2 text-slate-300 hover:text-amber-400 transition-colors font-bold uppercase tracking-wider"
+                title={species.catalogPage ? `Return to Catalog Index (Page ${species.catalogPage})` : 'Return to Catalog Index'}
+                className="inline-flex items-center gap-2 text-slate-300 hover:text-amber-400 transition-colors font-bold uppercase tracking-wider group"
               >
-                <ArrowLeft className="h-4 w-4 text-amber-400" /> Catalog Index
+                <ArrowLeft className="h-4 w-4 text-amber-400 group-hover:-translate-x-0.5 transition-transform" />
+                <span>Catalog Index</span>
+                {species.catalogPage && (
+                  <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-slate-900 border border-white/10 text-amber-400/90 group-hover:border-amber-400/40 transition-colors">
+                    Page {species.catalogPage}
+                  </span>
+                )}
               </Link>
             </ClickSpark>
           </motion.div>
