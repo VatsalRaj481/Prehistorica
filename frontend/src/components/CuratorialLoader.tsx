@@ -66,8 +66,8 @@ export default function CuratorialLoader({
 
   return (
     <div className={`flex flex-col items-center justify-center p-8 sm:p-12 text-center font-mono space-y-5 w-full ${className}`}>
-      {/* Fossilized Egg Specimen Matrix Chamber */}
-      <div className="w-48 sm:w-56 p-4 sm:p-5 rounded-xl bg-slate-950/80 border border-white/[0.08] shadow-inner relative overflow-hidden flex flex-col items-center justify-center">
+      {/* Fossilized Egg Specimen Matrix Visual (Clean Stage) */}
+      <div className="relative flex flex-col items-center justify-center">
         {/* Soft Ambient Radial Halo behind Egg */}
         {!shouldReduceMotion && (
           <motion.div

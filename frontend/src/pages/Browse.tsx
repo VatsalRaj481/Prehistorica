@@ -35,7 +35,7 @@ export default function Browse() {
   const page = parseInt(searchParams.get('page') || '1', 10);
 
   const [speciesList, setSpeciesList] = useState<Species[]>([]);
-  const [pagination, setPagination] = useState({ total: 0, totalPages: 1, limit: 12 });
+  const [pagination, setPagination] = useState({ total: TOTAL_CATALOGED_SPECIMENS, totalPages: 1, limit: 12 });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -262,12 +262,19 @@ export default function Browse() {
           >
             Archival search across{' '}
             <strong className="text-amber-400 font-bold">
-              <CountUp
-                to={pagination.total > 0 ? pagination.total : TOTAL_CATALOGED_SPECIMENS}
-                duration={0.8}
-                separator=","
-                className="text-amber-400 font-bold"
-              />
+              {loading && !hasActiveFilters ? (
+                <span>{TOTAL_CATALOGED_SPECIMENS}</span>
+              ) : hasActiveFilters ? (
+                <CountUp
+                  to={pagination.total}
+                  from={TOTAL_CATALOGED_SPECIMENS}
+                  duration={0.6}
+                  separator=","
+                  className="text-amber-400 font-bold"
+                />
+              ) : (
+                <span>{TOTAL_CATALOGED_SPECIMENS}</span>
+              )}
             </strong>{' '}
             verified prehistoric specimens.
           </motion.p>
@@ -726,37 +733,12 @@ export default function Browse() {
           </AnimatePresence>
 
           {loading ? (
-            <div className="space-y-6 w-full">
-              <div className="w-full p-4 sm:p-6 museum-card rounded-xl border border-amber-500/20 bg-slate-950/40 flex items-center justify-center">
-                <CuratorialLoader
-                  variant="strata"
-                  label="Excavating Specimen Catalog..."
-                  sublabel="Preparing fossil specimens and anatomical profiles..."
-                />
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="animate-pulse museum-card rounded-xl border border-white/[0.06] overflow-hidden flex flex-col justify-between">
-                  <div>
-                    <div className="w-full aspect-[16/10] bg-slate-900/80 border-b border-white/[0.06]" />
-                    <div className="p-4 space-y-3">
-                      <div className="min-h-[3.75rem] flex flex-col justify-center space-y-1.5 border-l-2 border-slate-800 pl-3">
-                        <div className="h-5 bg-slate-850 rounded w-2/3" />
-                        <div className="h-3.5 bg-slate-850/60 rounded w-1/3" />
-                      </div>
-                      <div className="h-[2.5rem] space-y-1.5">
-                        <div className="h-3 bg-slate-850/50 rounded w-full" />
-                        <div className="h-3 bg-slate-850/40 rounded w-4/5" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="h-11 px-4 border-t border-white/[0.06] bg-slate-950/60 flex items-center justify-between">
-                    <div className="h-3 bg-slate-850 rounded w-24" />
-                    <div className="h-3 bg-slate-850 rounded w-12" />
-                  </div>
-                </div>
-              ))}
-              </div>
+            <div className="flex flex-col items-center justify-center min-h-[560px] w-full py-16">
+              <CuratorialLoader
+                variant="strata"
+                label="Excavating Specimen Catalog..."
+                sublabel="Preparing fossil specimens and anatomical profiles..."
+              />
             </div>
           ) : error ? (
             <div className="museum-plinth rounded-xl border border-red-500/30 p-8 text-center text-red-400 text-xs font-mono">
