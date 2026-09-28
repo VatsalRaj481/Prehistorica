@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, Map, ArrowRightLeft, Menu, X, Scale, BookOpen, Trophy, Sparkles, Camera, ChevronDown, Dna } from 'lucide-react';
+import { Search, Map, ArrowRightLeft, Menu, X, Scale, BookOpen, Trophy, Sparkles, Camera, ChevronDown, Dna, Home } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useReducedMotion } from 'framer-motion';
 import SearchAutocomplete from './SearchAutocomplete.js';
 import CompareModal from './CompareModal.js';
@@ -15,6 +15,25 @@ import SlingButton from './reactbits/SlingButton.js';
 
 interface NavbarProps {
   isLogoVisible?: boolean;
+}
+
+function useMediaQuery(query: string): boolean {
+  const [matches, setMatches] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.matchMedia(query).matches;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    const listener = () => setMatches(media.matches);
+    setMatches(media.matches);
+    media.addEventListener('change', listener);
+    return () => media.removeEventListener('change', listener);
+  }, [query]);
+
+  return matches;
 }
 
 export default function Navbar({ isLogoVisible = true }: NavbarProps) {
@@ -85,8 +104,10 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
       : 'text-slate-300 hover:bg-slate-900/80 hover:text-white';
   };
 
+  const isCompactNav = useMediaQuery('(max-width: 1440px)');
+
   const navLinks = [
-    { to: '/', label: 'Home', isHome: true },
+    { to: '/', label: 'Home', icon: Home },
     { to: '/browse', label: 'Catalog', icon: Search },
     { to: '/cladogram', label: 'Tree of Life', icon: Dna },
     { to: '/map', label: 'Time-Map', icon: Map },
@@ -98,6 +119,9 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
   return (
     <>
       <header
+        style={{
+          paddingTop: 'max(env(safe-area-inset-top, 0px), 0px)'
+        }}
         className={`sticky top-0 z-50 transition-all duration-300 ${
           isScrolled
             ? 'bg-[#080C16]/85 backdrop-blur-xl border-b border-amber-500/20 shadow-[0_12px_32px_rgba(0,0,0,0.7)]'
@@ -149,13 +173,17 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
               {navLinks.map((link) => {
                 const active = location.pathname === link.to;
                 const IconComponent = link.icon;
+                const showLabel = !isCompactNav || active;
+
                 return (
                   <Link
                     key={link.to}
                     to={link.to}
-                    className={`relative flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-colors duration-200 active:scale-95 shrink-0 ${
-                      link.isHome ? 'hidden xl:inline-flex' : ''
-                    } ${active ? 'text-amber-300 font-bold' : 'text-slate-300 hover:text-white'}`}
+                    title={link.label}
+                    aria-label={link.label}
+                    className={`relative flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-colors duration-200 active:scale-95 shrink-0 ${
+                      active ? 'text-amber-300 font-bold' : 'text-slate-300 hover:text-white'
+                    }`}
                   >
                     {active && (
                       <motion.span
@@ -165,7 +193,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                       />
                     )}
                     {IconComponent && <IconComponent className="h-3.5 w-3.5 text-amber-400 shrink-0" />}
-                    <span>{link.label}</span>
+                    {showLabel && <span>{link.label}</span>}
                     {link.badge !== undefined && link.badge > 0 && (
                       <span className="px-1.5 py-0.2 rounded-full bg-amber-500 text-slate-950 font-black text-[10px]">
                         {link.badge}
@@ -177,18 +205,22 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
 
               <button
                 onClick={() => setIsCompareOpen(true)}
-                className="flex items-center gap-1 px-2 xl:px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 shrink-0 text-slate-300 hover:text-white cursor-pointer"
+                title="Compare Specimens"
+                aria-label="Compare Specimens"
+                className={`flex items-center gap-1.5 px-2 xl:px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 shrink-0 cursor-pointer ${
+                  isCompareOpen
+                    ? 'text-amber-300 font-bold bg-amber-500/15 border border-amber-500/35 rounded-md'
+                    : 'text-slate-300 hover:text-white'
+                }`}
               >
                 <ArrowRightLeft className="h-3.5 w-3.5 text-amber-400 shrink-0" />
-                <span>Compare</span>
+                {(!isCompactNav || isCompareOpen) && <span>Compare</span>}
               </button>
             </nav>
 
             {/* Desktop Right Side Search & Action Tools */}
             <div className="hidden lg:flex items-center gap-2 xl:gap-2.5 shrink-0">
-              <div className="w-36 focus-within:w-60 xl:w-44 xl:focus-within:w-64 2xl:w-56 2xl:focus-within:w-72 transition-all duration-300">
-                <SearchAutocomplete />
-              </div>
+              <SearchAutocomplete isMobileDrawer={false} />
 
               {/* Research Lab & AI Tools Dropdown Menu */}
               <div className="relative pl-1 border-l border-white/[0.08]" ref={toolsDropdownRef}>
@@ -330,7 +362,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
             <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
               <button
                 onClick={() => setIsCuratorOpen(true)}
-                className="min-h-[40px] min-w-[40px] sm:min-h-[44px] sm:min-w-[44px] p-2 sm:p-2.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
+                className="min-h-[44px] min-w-[44px] p-2.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
                 title="Ask Rajy (AI Docent)"
                 aria-label="Open Rajy AI Docent"
               >
@@ -339,7 +371,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
 
               <button
                 onClick={() => setIsCompareOpen(true)}
-                className="min-h-[40px] min-w-[40px] sm:min-h-[44px] sm:min-w-[44px] p-2 sm:p-2.5 rounded-xl bg-slate-900 border border-white/10 text-amber-400 flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
+                className="min-h-[44px] min-w-[44px] p-2.5 rounded-xl bg-slate-900 border border-white/10 text-amber-400 flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
                 title="Compare Tool"
                 aria-label="Open Species Comparison Tool"
               >
@@ -348,7 +380,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
 
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="min-h-[40px] min-w-[40px] sm:min-h-[44px] sm:min-w-[44px] p-2 sm:p-2.5 rounded-xl bg-slate-900 border border-white/10 text-slate-300 hover:text-white flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
+                className="min-h-[44px] min-w-[44px] p-2.5 rounded-xl bg-slate-900 border border-white/10 text-slate-300 hover:text-white flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
                 title="Toggle Menu"
                 aria-label="Toggle Navigation Menu"
               >
@@ -366,11 +398,14 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ type: 'spring', bounce: 0, duration: 0.35 }}
+              style={{
+                paddingBottom: 'max(env(safe-area-inset-bottom, 0px), 1.5rem)'
+              }}
               className="lg:hidden border-t border-white/[0.08] bg-slate-950/98 backdrop-blur-xl px-4 py-4 space-y-4 overflow-visible font-mono overscroll-contain shadow-2xl"
             >
-              {/* Search Bar on Mobile */}
+              {/* Search Bar on Mobile - Full width row */}
               <div className="w-full">
-                <SearchAutocomplete />
+                <SearchAutocomplete isMobileDrawer={true} />
               </div>
 
               {/* Navigation Links on Mobile */}
