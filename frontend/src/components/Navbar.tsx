@@ -9,8 +9,6 @@ import FossilLensModal from './FossilLensModal.js';
 import DinoLogoMark from './DinoLogoMark.js';
 import { getBookmarkIds, NOTEBOOK_UPDATED_EVENT } from '../utils/notebookStorage.js';
 import ShinyText from './reactbits/ShinyText.js';
-import ClickSpark from './reactbits/ClickSpark.js';
-import Magnet from './reactbits/Magnet.js';
 import SlingButton from './reactbits/SlingButton.js';
 
 interface NavbarProps {
@@ -83,28 +81,17 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
     });
   }, [scrollY]);
 
-  // One-time subtle attention pulse on first visit for AI Tools dropdown trigger
-  const [shouldPulseAiTools, setShouldPulseAiTools] = useState(false);
-
-  useEffect(() => {
-    try {
-      const seen = localStorage.getItem('prehistorica_ai_tools_seen');
-      if (!seen) {
-        setShouldPulseAiTools(true);
-        localStorage.setItem('prehistorica_ai_tools_seen', 'true');
-      }
-    } catch {
-      setShouldPulseAiTools(true);
-    }
-  }, []);
-
   const isMobileActive = (path: string) => {
     return location.pathname === path
       ? 'bg-amber-500/10 text-amber-300 border-l-2 border-amber-400 font-bold'
       : 'text-slate-300 hover:bg-slate-900/80 hover:text-white';
   };
 
-  const isCompactNav = useMediaQuery('(max-width: 1440px)');
+  // 6 core pavilion links comfortably fit down to 1140px on standard laptops
+  const isCompactNav = useMediaQuery('(max-width: 1140px)');
+
+  // Reading progress bar is meaningful only on long-scroll editorial & specimen profile pages
+  const isEditorialRoute = location.pathname.startsWith('/species/') || location.pathname.startsWith('/editorial');
 
   const navLinks = [
     { to: '/', label: 'Home', icon: Home },
@@ -112,7 +99,6 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
     { to: '/cladogram', label: 'Tree of Life', icon: Dna },
     { to: '/map', label: 'Time-Map', icon: Map },
     { to: '/runway', label: 'Runway', icon: Scale },
-    { to: '/challenge', label: 'Trials', icon: Trophy },
     { to: '/notebook', label: 'Notebook', icon: BookOpen, badge: bookmarkCount }
   ];
 
@@ -128,8 +114,8 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
             : 'bg-[#080C16]/95 border-b border-white/[0.08] shadow-2xl'
         }`}
       >
-        {/* Deep-Time Chronostratigraphic Reading Progress Bar */}
-        {!shouldReduceMotion && (
+        {/* Deep-Time Chronostratigraphic Reading Progress Bar (Editorial & Specimen views only) */}
+        {!shouldReduceMotion && isEditorialRoute && (
           <motion.div
             className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-amber-600 via-amber-400 to-amber-300 origin-left z-50 pointer-events-none"
             style={{ scaleX: scrollYProgress }}
@@ -169,7 +155,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
             </div>
 
             {/* Desktop Navigation Links with Gliding Plinth */}
-            <nav className="hidden lg:flex items-center gap-1 font-mono shrink min-w-0">
+            <nav className="hidden lg:flex items-center gap-1 font-sans shrink min-w-0">
               {navLinks.map((link) => {
                 const active = location.pathname === link.to;
                 const IconComponent = link.icon;
@@ -179,9 +165,9 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                   <Link
                     key={link.to}
                     to={link.to}
-                    title={link.label}
+                    title={showLabel ? undefined : link.label}
                     aria-label={link.label}
-                    className={`relative flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-colors duration-200 active:scale-95 shrink-0 ${
+                    className={`group relative flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium tracking-wide transition-colors duration-200 active:scale-95 shrink-0 ${
                       active ? 'text-amber-300 font-bold' : 'text-slate-300 hover:text-white'
                     }`}
                   >
@@ -189,100 +175,53 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                       <motion.span
                         layoutId="activeNavPill"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                        className="absolute inset-0 rounded-md bg-amber-500/15 border border-amber-500/35 -z-10 shadow-[0_0_14px_rgba(245,158,11,0.2)]"
+                        className="absolute inset-0 rounded-lg bg-amber-500/15 border border-amber-500/35 -z-10 shadow-[0_0_14px_rgba(245,158,11,0.2)]"
                       />
                     )}
                     {IconComponent && <IconComponent className="h-3.5 w-3.5 text-amber-400 shrink-0" />}
-                    {showLabel && <span>{link.label}</span>}
+                    {showLabel ? (
+                      <span>{link.label}</span>
+                    ) : (
+                      /* Zero-lag instant micro-tooltip for compact viewports */
+                      <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded bg-slate-900/95 border border-white/10 text-amber-300 text-[10px] font-sans font-semibold tracking-wide whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-150 shadow-xl z-50">
+                        {link.label}
+                      </span>
+                    )}
                     {link.badge !== undefined && link.badge > 0 && (
-                      <span className="px-1.5 py-0.2 rounded-full bg-amber-500 text-slate-950 font-black text-[10px]">
+                      <span className="px-1.5 py-0.2 rounded-full bg-amber-500 text-slate-950 font-black text-[10px] font-mono">
                         {link.badge}
                       </span>
                     )}
                   </Link>
                 );
               })}
-
-              <button
-                onClick={() => setIsCompareOpen(true)}
-                title="Compare Specimens"
-                aria-label="Compare Specimens"
-                className={`flex items-center gap-1.5 px-2 xl:px-2.5 py-1.5 rounded-md text-xs uppercase tracking-wider transition-all active:scale-95 shrink-0 cursor-pointer ${
-                  isCompareOpen
-                    ? 'text-amber-300 font-bold bg-amber-500/15 border border-amber-500/35 rounded-md'
-                    : 'text-slate-300 hover:text-white'
-                }`}
-              >
-                <ArrowRightLeft className="h-3.5 w-3.5 text-amber-400 shrink-0" />
-                {(!isCompactNav || isCompareOpen) && <span>Compare</span>}
-              </button>
             </nav>
 
             {/* Desktop Right Side Search & Action Tools */}
             <div className="hidden lg:flex items-center gap-2 xl:gap-2.5 shrink-0">
               <SearchAutocomplete isMobileDrawer={false} />
 
-              {/* Research Lab & AI Tools Dropdown Menu */}
+              {/* Pavilion Lab & Interactive Tools Dropdown Menu */}
               <div className="relative pl-1 border-l border-white/[0.08]" ref={toolsDropdownRef}>
-                <Magnet padding={35} magnetStrength={4}>
-                  <ClickSpark sparkColor="#FBBF24" sparkSize={8} sparkRadius={14} sparkCount={6}>
-                    <div className="relative">
-                      {shouldPulseAiTools && !shouldReduceMotion && (
-                        <motion.span
-                          initial={{ scale: 0.95, opacity: 0.8 }}
-                          animate={{ scale: [1, 1.25, 1.4], opacity: [0.8, 0.35, 0] }}
-                          transition={{ duration: 2, repeat: 2, ease: 'easeOut' }}
-                          className="absolute -inset-1 rounded-xl border border-amber-400/60 pointer-events-none -z-10 shadow-[0_0_12px_rgba(245,158,11,0.4)]"
-                        />
-                      )}
-                      <motion.button
-                        whileTap={{ scale: 0.96 }}
-                        animate={
-                          shouldPulseAiTools && !shouldReduceMotion
-                            ? {
-                                boxShadow: [
-                                  '0 0 0px rgba(245, 158, 11, 0)',
-                                  '0 0 16px rgba(245, 158, 11, 0.65)',
-                                  '0 0 4px rgba(245, 158, 11, 0.2)',
-                                  '0 0 14px rgba(245, 158, 11, 0.5)',
-                                  '0 0 0px rgba(245, 158, 11, 0)'
-                                ],
-                                borderColor: [
-                                  'rgba(255, 255, 255, 0.08)',
-                                  'rgba(245, 158, 11, 0.8)',
-                                  'rgba(245, 158, 11, 0.3)',
-                                  'rgba(245, 158, 11, 0.6)',
-                                  'rgba(255, 255, 255, 0.08)'
-                                ]
-                              }
-                            : {}
-                        }
-                        transition={{
-                          duration: 3.2,
-                          times: [0, 0.25, 0.5, 0.75, 1],
-                          ease: 'easeInOut'
-                        }}
-                        onClick={() => setIsToolsDropdownOpen(!isToolsDropdownOpen)}
-                        className={`h-8 xl:h-9 px-2.5 xl:px-3 rounded-lg border text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all cursor-pointer shadow-sm select-none ${
-                          isToolsDropdownOpen
-                            ? 'bg-amber-500/20 border-amber-400 text-amber-300 ring-1 ring-amber-400/40 shadow-[0_0_12px_rgba(245,158,11,0.25)]'
-                            : 'bg-slate-900/90 hover:bg-slate-850 border-white/[0.08] hover:border-amber-500/40 text-slate-200 hover:text-white'
-                        }`}
-                        title="Open AI Docent Tools"
-                        aria-expanded={isToolsDropdownOpen}
-                        aria-haspopup="true"
-                      >
-                        <Sparkles className="h-3.5 w-3.5 text-amber-400 shrink-0" />
-                        <span className="font-mono">AI Tools</span>
-                        <ChevronDown
-                          className={`h-3 w-3 sm:h-3.5 sm:w-3.5 text-slate-400 transition-transform duration-200 ${
-                            isToolsDropdownOpen ? 'rotate-180 text-amber-400' : ''
-                          }`}
-                        />
-                      </motion.button>
-                    </div>
-                  </ClickSpark>
-                </Magnet>
+                <button
+                  onClick={() => setIsToolsDropdownOpen(!isToolsDropdownOpen)}
+                  className={`h-8 xl:h-9 px-2.5 xl:px-3 rounded-lg border text-xs font-sans font-semibold tracking-wide flex items-center gap-1.5 transition-all cursor-pointer shadow-sm select-none ${
+                    isToolsDropdownOpen
+                      ? 'bg-amber-500/20 border-amber-400 text-amber-300 ring-1 ring-amber-400/40 shadow-[0_0_12px_rgba(245,158,11,0.25)]'
+                      : 'bg-slate-900/90 hover:bg-slate-850 border-white/[0.08] hover:border-amber-500/40 text-slate-200 hover:text-white'
+                  }`}
+                  title="Pavilion Lab & Tools"
+                  aria-expanded={isToolsDropdownOpen}
+                  aria-haspopup="true"
+                >
+                  <Sparkles className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+                  <span>Lab & Tools</span>
+                  <ChevronDown
+                    className={`h-3 w-3 sm:h-3.5 sm:w-3.5 text-slate-400 transition-transform duration-200 ${
+                      isToolsDropdownOpen ? 'rotate-180 text-amber-400' : ''
+                    }`}
+                  />
+                </button>
 
                 {/* Dropdown Menu Popover with High-End Glassmorphism */}
                 <AnimatePresence>
@@ -292,41 +231,41 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 6, scale: 0.96 }}
                       transition={{ duration: 0.18, ease: 'easeOut' }}
-                      className="absolute right-0 top-full mt-2 w-72 rounded-xl bg-slate-950/98 border border-white/[0.12] shadow-2xl p-2 z-50 divide-y divide-white/[0.06] backdrop-blur-2xl font-mono"
+                      className="absolute right-0 top-full mt-2 w-76 rounded-xl bg-slate-950/98 border border-white/[0.12] shadow-2xl p-2 z-50 divide-y divide-white/[0.06] backdrop-blur-2xl font-sans"
                     >
-                      <div className="px-3 py-2 text-[10px] text-slate-400 uppercase tracking-widest font-bold flex items-center justify-between">
-                        <span>AI Docent Tools</span>
-                        <span className="text-amber-400">2 AI Tools</span>
+                      <div className="px-3 py-2 text-[10px] text-slate-400 uppercase tracking-widest font-mono font-bold flex items-center justify-between">
+                        <span>Interactive Pavilion Lab</span>
+                        <span className="text-amber-400 font-mono">4 Tools</span>
                       </div>
 
                       <div className="py-1 space-y-1">
-                        {/* Tool 1: Chief Curator / Rajy */}
+                        {/* Tool 1: Side-by-Side Specimen Comparison */}
                         <button
                           onClick={() => {
                             setIsToolsDropdownOpen(false);
-                            setIsCuratorOpen(true);
+                            setIsCompareOpen(true);
                           }}
                           className="w-full text-left p-2.5 rounded-lg hover:bg-slate-900/90 transition-colors flex items-start gap-3 group cursor-pointer"
                         >
-                          <div className="h-8 w-8 rounded-lg overflow-hidden border border-amber-500/40 shrink-0 group-hover:scale-105 transition-transform shadow-sm">
-                            <img src="/rajy-head.jpg" alt="Rajy" className="w-full h-full object-cover object-top" />
+                          <div className="h-8 w-8 rounded-lg bg-slate-900 border border-white/[0.1] flex items-center justify-center text-amber-400 shrink-0 group-hover:scale-105 transition-transform shadow-sm">
+                            <ArrowRightLeft className="h-4 w-4" />
                           </div>
                           <div className="min-w-0 flex-1">
                             <div className="flex items-center justify-between">
-                              <span className="text-xs font-bold text-slate-100 group-hover:text-amber-300 font-sans uppercase tracking-wider">
-                                Ask Rajy
+                              <span className="text-xs font-bold text-slate-100 group-hover:text-amber-300 font-sans tracking-wide">
+                                Specimen Compare
                               </span>
-                              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 font-extrabold">
-                                RAG AI
+                              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 font-extrabold">
+                                STAGE
                               </span>
                             </div>
                             <p className="text-[11px] text-slate-400 font-sans leading-snug line-clamp-1 pt-0.5">
-                              Evidence-grounded conversational docent
+                              Dual-specimen metric caliper comparison
                             </p>
                           </div>
                         </button>
 
-                        {/* Tool 2: Fossil Lens */}
+                        {/* Tool 2: Fossil Lens Vision Identifier */}
                         <button
                           onClick={() => {
                             setIsToolsDropdownOpen(false);
@@ -339,15 +278,65 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                           </div>
                           <div className="min-w-0 flex-1">
                             <div className="flex items-center justify-between">
-                              <span className="text-xs font-bold text-slate-100 group-hover:text-amber-300 font-sans uppercase tracking-wider">
+                              <span className="text-xs font-bold text-slate-100 group-hover:text-amber-300 font-sans tracking-wide">
                                 Fossil Lens
                               </span>
-                              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 font-extrabold">
-                                VISION
+                              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 font-extrabold">
+                                VISION AI
                               </span>
                             </div>
                             <p className="text-[11px] text-slate-400 font-sans leading-snug line-clamp-1 pt-0.5">
                               Multimodal bone & fossil identifier
+                            </p>
+                          </div>
+                        </button>
+
+                        {/* Tool 3: Curator Trials Challenges */}
+                        <Link
+                          to="/challenge"
+                          onClick={() => setIsToolsDropdownOpen(false)}
+                          className="w-full text-left p-2.5 rounded-lg hover:bg-slate-900/90 transition-colors flex items-start gap-3 group cursor-pointer"
+                        >
+                          <div className="h-8 w-8 rounded-lg bg-slate-900 border border-white/[0.1] flex items-center justify-center text-amber-400 shrink-0 group-hover:scale-105 transition-transform shadow-sm">
+                            <Trophy className="h-4 w-4" />
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center justify-between">
+                              <span className="text-xs font-bold text-slate-100 group-hover:text-amber-300 font-sans tracking-wide">
+                                Curator Trials
+                              </span>
+                              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 font-extrabold">
+                                QUIZ
+                              </span>
+                            </div>
+                            <p className="text-[11px] text-slate-400 font-sans leading-snug line-clamp-1 pt-0.5">
+                              Paleobiological accreditation & mastery
+                            </p>
+                          </div>
+                        </Link>
+
+                        {/* Tool 4: Chief Curator / Rajy */}
+                        <button
+                          onClick={() => {
+                            setIsToolsDropdownOpen(false);
+                            setIsCuratorOpen(true);
+                          }}
+                          className="w-full text-left p-2.5 rounded-lg hover:bg-slate-900/90 transition-colors flex items-start gap-3 group cursor-pointer"
+                        >
+                          <div className="h-8 w-8 rounded-lg overflow-hidden border border-amber-500/40 shrink-0 group-hover:scale-105 transition-transform shadow-sm">
+                            <img src="/rajy-head.jpg" alt="Rajy" className="w-full h-full object-cover object-top" />
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center justify-between">
+                              <span className="text-xs font-bold text-slate-100 group-hover:text-amber-300 font-sans tracking-wide">
+                                Ask Rajy
+                              </span>
+                              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 font-extrabold">
+                                RAG AI
+                              </span>
+                            </div>
+                            <p className="text-[11px] text-slate-400 font-sans leading-snug line-clamp-1 pt-0.5">
+                              Evidence-grounded conversational docent
                             </p>
                           </div>
                         </button>
@@ -358,33 +347,22 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
               </div>
             </div>
 
-            {/* Mobile Controls: Quick Actions & Hamburger Drawer */}
-            <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
-              <button
-                onClick={() => setIsCuratorOpen(true)}
-                className="min-h-[44px] min-w-[44px] p-2.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
-                title="Ask Rajy (AI Docent)"
-                aria-label="Open Rajy AI Docent"
-              >
-                <Sparkles className="h-4 w-4" />
-              </button>
-
-              <button
-                onClick={() => setIsCompareOpen(true)}
-                className="min-h-[44px] min-w-[44px] p-2.5 rounded-xl bg-slate-900 border border-white/10 text-amber-400 flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
-                title="Compare Tool"
-                aria-label="Open Species Comparison Tool"
-              >
-                <ArrowRightLeft className="h-4 w-4" />
-              </button>
-
+            {/* Mobile Controls: Search & Hamburger Toggle (Uncluttered layout) */}
+            <div className="flex items-center gap-2 lg:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="min-h-[44px] min-w-[44px] p-2.5 rounded-xl bg-slate-900 border border-white/10 text-slate-300 hover:text-white flex items-center justify-center cursor-pointer active:scale-95 transition-transform"
-                title="Toggle Menu"
+                className="min-h-[44px] min-w-[44px] px-3 py-2 rounded-xl bg-slate-900 border border-white/10 text-slate-200 hover:text-white flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 transition-transform"
+                title="Toggle Navigation Menu"
                 aria-label="Toggle Navigation Menu"
               >
-                {isMobileMenuOpen ? <X className="h-5 w-5 text-amber-400" /> : <Menu className="h-5 w-5" />}
+                {isMobileMenuOpen ? (
+                  <X className="h-5 w-5 text-amber-400" />
+                ) : (
+                  <>
+                    <Menu className="h-5 w-5 text-slate-300" />
+                    <span className="text-xs font-sans font-medium text-slate-300">Menu</span>
+                  </>
+                )}
               </button>
             </div>
           </div>
@@ -409,79 +387,75 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
               </div>
 
               {/* Navigation Links on Mobile */}
-              <div className="space-y-1 text-xs uppercase tracking-wider pt-1">
-                <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest px-3 py-1">
+              <div className="space-y-1 text-xs pt-1 font-sans">
+                <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest font-mono px-3 py-1">
                   Exhibition Pavilions
                 </div>
                 <Link
                   to="/"
-                  className={`block px-3 py-2.5 rounded-lg transition-colors ${isMobileActive('/')}`}
+                  className={`block px-3 py-2.5 rounded-lg transition-colors font-medium ${isMobileActive('/')}`}
                 >
                   Home Pavilion
                 </Link>
                 <Link
                   to="/browse"
-                  className={`flex items-center gap-2 px-3 py-2.5 rounded-lg transition-colors ${isMobileActive('/browse')}`}
+                  className={`flex items-center gap-2 px-3 py-2.5 rounded-lg transition-colors font-medium ${isMobileActive('/browse')}`}
                 >
                   <Search className="h-4 w-4 text-amber-400" />
-                  Browse Catalog
+                  <span>Browse Catalog</span>
                 </Link>
                 <Link
                   to="/cladogram"
-                  className={`flex items-center gap-2 px-3 py-2.5 rounded-lg transition-colors ${isMobileActive('/cladogram')}`}
+                  className={`flex items-center gap-2 px-3 py-2.5 rounded-lg transition-colors font-medium ${isMobileActive('/cladogram')}`}
                 >
                   <Dna className="h-4 w-4 text-amber-400" />
-                  Tree of Life (Cladogram)
+                  <span>Tree of Life (Cladogram)</span>
                 </Link>
                 <Link
                   to="/map"
-                  className={`flex items-center gap-2 px-3 py-2.5 rounded-lg transition-colors ${isMobileActive('/map')}`}
+                  className={`flex items-center gap-2 px-3 py-2.5 rounded-lg transition-colors font-medium ${isMobileActive('/map')}`}
                 >
                   <Map className="h-4 w-4 text-amber-400" />
-                  Interactive Time-Map
+                  <span>Interactive Time-Map</span>
                 </Link>
                 <Link
                   to="/runway"
-                  className={`flex items-center gap-2 px-3 py-2.5 rounded-lg transition-colors ${isMobileActive('/runway')}`}
+                  className={`flex items-center gap-2 px-3 py-2.5 rounded-lg transition-colors font-medium ${isMobileActive('/runway')}`}
                 >
                   <Scale className="h-4 w-4 text-amber-400" />
-                  Caliper Runway
-                </Link>
-                <Link
-                  to="/challenge"
-                  className={`flex items-center gap-2 px-3 py-2.5 rounded-lg transition-colors ${isMobileActive('/challenge')}`}
-                >
-                  <Trophy className="h-4 w-4 text-amber-400" />
-                  Curator Trials
+                  <span>Caliper Runway</span>
                 </Link>
                 <Link
                   to="/notebook"
-                  className={`flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors ${isMobileActive('/notebook')}`}
+                  className={`flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors font-medium ${isMobileActive('/notebook')}`}
                 >
                   <div className="flex items-center gap-2">
                     <BookOpen className="h-4 w-4 text-amber-400" />
                     <span>Field Notebook</span>
                   </div>
                   {bookmarkCount > 0 && (
-                    <span className="px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 font-black text-[10px]">
+                    <span className="px-2 py-0.5 rounded-full bg-amber-500 text-slate-950 font-black text-[10px] font-mono">
                       {bookmarkCount}
                     </span>
                   )}
                 </Link>
 
-                {/* AI Research Lab Tools Section */}
-                <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest px-3 pt-3 pb-1 border-t border-white/[0.06]">
-                  Research & AI Docent
+                {/* Interactive Pavilion Lab Tools */}
+                <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest font-mono px-3 pt-3 pb-1 border-t border-white/[0.06]">
+                  Interactive Pavilion Lab
                 </div>
                 <button
                   onClick={() => {
                     setIsMobileMenuOpen(false);
-                    setIsCuratorOpen(true);
+                    setIsCompareOpen(true);
                   }}
-                  className="w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-amber-300 bg-amber-500/10 border border-amber-500/30 font-bold cursor-pointer"
+                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-200 bg-slate-900 border border-white/10 font-medium cursor-pointer"
                 >
-                  <Sparkles className="h-4 w-4 text-amber-400" />
-                  <span>Ask Rajy (AI Docent)</span>
+                  <div className="flex items-center gap-2">
+                    <ArrowRightLeft className="h-4 w-4 text-amber-400" />
+                    <span>Specimen Comparison Stage</span>
+                  </div>
+                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 font-bold">STAGE</span>
                 </button>
 
                 <button
@@ -489,21 +463,54 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                     setIsMobileMenuOpen(false);
                     setIsFossilLensOpen(true);
                   }}
-                  className="w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-slate-200 bg-slate-900 border border-white/10 font-bold cursor-pointer"
+                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-200 bg-slate-900 border border-white/10 font-medium cursor-pointer"
                 >
-                  <Camera className="h-4 w-4 text-amber-400" />
-                  <span>Fossil Lens (AI Specimen Identifier)</span>
+                  <div className="flex items-center gap-2">
+                    <Camera className="h-4 w-4 text-amber-400" />
+                    <span>Fossil Lens (Bone Identifier)</span>
+                  </div>
+                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 font-bold">VISION AI</span>
                 </button>
 
+                <Link
+                  to="/challenge"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-200 bg-slate-900 border border-white/10 font-medium cursor-pointer"
+                >
+                  <div className="flex items-center gap-2">
+                    <Trophy className="h-4 w-4 text-amber-400" />
+                    <span>Curator Trials (Challenge)</span>
+                  </div>
+                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 font-bold">QUIZ</span>
+                </Link>
+
+                {/* Featured AI Docent Hero Card */}
+                <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest font-mono px-3 pt-3 pb-1 border-t border-white/[0.06]">
+                  Chief Curator AI
+                </div>
                 <button
                   onClick={() => {
                     setIsMobileMenuOpen(false);
-                    setIsCompareOpen(true);
+                    setIsCuratorOpen(true);
                   }}
-                  className="w-full flex items-center gap-2 px-3 py-2.5 rounded-lg text-slate-200 bg-slate-900 border border-white/10 font-bold cursor-pointer"
+                  className="w-full flex items-center gap-3 p-3 rounded-xl text-left bg-gradient-to-r from-amber-500/15 to-slate-900/90 border border-amber-500/40 cursor-pointer active:scale-98 transition-transform shadow-lg"
                 >
-                  <ArrowRightLeft className="h-4 w-4 text-amber-400" />
-                  <span>Specimen Comparison Stage</span>
+                  <div className="h-10 w-10 rounded-lg overflow-hidden border border-amber-400/60 shrink-0 shadow-md">
+                    <img src="/rajy-head.jpg" alt="Rajy" className="w-full h-full object-cover object-top" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold text-amber-300 font-sans tracking-wide">
+                        Ask Rajy
+                      </span>
+                      <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-amber-400 text-slate-950 font-black">
+                        ONLINE
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-slate-300 font-sans leading-tight pt-0.5 line-clamp-1">
+                      Evidence-grounded conversational docent
+                    </p>
+                  </div>
                 </button>
               </div>
             </motion.div>
@@ -511,9 +518,9 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
         </AnimatePresence>
       </header>
 
-      {/* Floating Chief Curator Docent Launcher (Sling Button) — hidden when modal is open */}
+      {/* Floating Chief Curator Docent Launcher (Sling Button) — hidden when modal or drawer is open */}
       <AnimatePresence>
-        {!isCuratorOpen && (
+        {!isCuratorOpen && !isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, scale: 0.8, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
