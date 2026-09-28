@@ -5715,7 +5715,7 @@
     "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Oxford Clay\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Plesiosauria\",\"family\":\"Pliosauridae\",\"genus\":\"Liopleurodon\",\"species\":\"Liopleurodon ferox\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/6/65/Leedsichthys_Liopleurodon.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original\",\"type\":\"art\",\"credit\":\"Merdalhão (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3ALeedsichthys%20Liopleurodon.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/224-Liopleurodon.png\",\"type\":\"habitat_scene\",\"credit\":\"DiBgd (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Liopleurodon%20after%20Tarlo.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/e2/Liopleurodon_after_Tarlo.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Liopleurodon_after_Tarlo.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/224-Liopleurodon.png\",\"type\":\"habitat_scene\",\"credit\":\"DiBgd (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Liopleurodon%20after%20Tarlo.jpg\"}]",
     "discoveryHistory": "• First discovered in the Oxford Clay Formation, England or France.\n• Described by Henri Émile Sauvage in 1873.\n• Name means smooth-sided tooth, referring to its tooth enamel.\n• Gained fame through its exaggerated depiction in Walking with Dinosaurs.",
     "interestingFacts": "[\"Discovered throughout the Middle-to-Late Jurassic Oxford Clay of England and France, measuring roughly 5 to 7 meters in total length.\",\"Possessed four massive, hydrofoil-shaped flippers that generated propulsion via subaqueous flight, utilizing all four flippers for explosive acceleration.\",\"Its 1.2-meter skull was armed with colossal, smooth-enameled, deeply socketed teeth up to 10 centimeters long, capable of crushing armor and bone.\",\"Hydrodynamic and sensory modeling indicates that Liopleurodon had directional stereoscopic olfaction, pinpointing prey scents carried across marine currents.\"]",
     "sizeNotes": "Medium-sized for its group.",
@@ -5727,7 +5727,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Liopleurodon ferox description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Liopleurodon\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:33.303Z",
-    "updatedAt": "2026-09-08T15:52:15.389Z"
+    "updatedAt": "2026-09-28T13:38:44.020Z"
   },
   {
     "id": 225,

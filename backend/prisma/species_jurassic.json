@@ -2165,7 +2165,7 @@
     "geographicRange": "{\"region\":\"Europe\",\"country\":\"UK\",\"fossilFormation\":\"Oxford Clay\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Plesiosauria\",\"family\":\"Pliosauridae\",\"genus\":\"Liopleurodon\",\"species\":\"Liopleurodon ferox\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/224-Liopleurodon.png\",\"type\":\"art\",\"credit\":\"DiBgd (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Liopleurodon%20after%20Tarlo.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/e2/Liopleurodon_after_Tarlo.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Liopleurodon_after_Tarlo.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/224-Liopleurodon.png\",\"type\":\"habitat_scene\",\"credit\":\"DiBgd (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Liopleurodon%20after%20Tarlo.jpg\"}]",
     "discoveryHistory": "• First discovered in the Oxford Clay Formation, England or France.\n• Described by Henri Émile Sauvage in 1873.\n• Name means smooth-sided tooth, referring to its tooth enamel.\n• Gained fame through its exaggerated depiction in Walking with Dinosaurs.",
     "interestingFacts": "[\"A formidable apex predator of the Jurassic seas.\",\"Though famously portrayed as 25 meters long, it actually reached about 6-7 meters.\",\"Had an exceptionally powerful bite force.\"]",
     "sizeNotes": "Medium-sized for its group.",
@@ -2176,7 +2176,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Liopleurodon ferox description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Liopleurodon\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:33.303Z",
-    "updatedAt": "2026-09-08T15:52:15.389Z"
+    "updatedAt": "2026-09-28T13:38:43.823Z"
   },
   {
     "id": 225,
