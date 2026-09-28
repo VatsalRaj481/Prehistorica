@@ -390,109 +390,50 @@ export default function SpeciesDetail() {
                       Crocodilians represent the closest extant non-dinosaurian archosaurs.
                     </p>
                   </div>
-                ) : species.clade === 'Marine_Reptile' ? (
-                  <div className="space-y-1">
-                    <p className="text-slate-200">
-                      <strong className="text-sky-400 font-mono font-bold">Ecological Evolutionary Grade: </strong>
-                      "Marine Reptiles" represents an ecological convergence of distinct reptilian orders (<em className="font-mono">Ichthyosauria</em>, <em className="font-mono">Sauropterygia / Plesiosauria</em>, and <em className="font-mono">Mosasauroidea</em>) rather than a single monophyletic clade.
-                    </p>
-                  </div>
                 ) : (
-                  <div className="space-y-1">
-                    {(() => {
-                      const rel = species.extantRelatives || species.closestLivingRelatives;
-                      if (!rel) {
-                        return (
-                          <p className="text-slate-400 text-xs italic">
-                            Extinct prehistoric lineage without immediate extant crown descendants.
-                          </p>
-                        );
+                  (() => {
+                    const rawRel: any = species.extantRelatives || species.closestLivingRelatives;
+                    let rel: any = rawRel;
+                    if (typeof rawRel === 'string') {
+                      try {
+                        rel = JSON.parse(rawRel);
+                      } catch {
+                        rel = null;
                       }
-                      if (typeof rel === 'object' && !Array.isArray(rel)) {
-                        const statusColors: Record<string, string> = {
-                          established: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
-                          debated: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
-                          uncertain: 'bg-slate-800 text-slate-300 border-slate-700',
-                          none: 'bg-rose-500/15 text-rose-300 border-rose-500/30'
-                        };
-                        return (
-                          <div className="space-y-2.5">
-                            <div className="flex flex-wrap items-center gap-2">
-                              <span className={`text-[10px] uppercase font-mono font-bold px-2 py-0.5 rounded border ${statusColors[rel.status] || statusColors.uncertain}`}>
-                                {rel.status}
-                              </span>
-                              {rel.verified ? (
-                                <span className="text-[10px] font-mono text-emerald-400">
-                                  ✓ Verified Phylogeny
-                                </span>
-                              ) : (
-                                <span className="text-[10px] font-mono text-slate-400 italic">
-                                  Phylogeny Pending Source Verification
-                                </span>
-                              )}
-                            </div>
-                            <p className="text-slate-200 text-xs leading-relaxed">
-                              <strong className="text-amber-400 font-mono font-bold">Closest Extant Relatives: </strong>
-                              {rel.groups && rel.groups.length > 0 ? (
-                                rel.groups.join(' • ')
-                              ) : (
-                                <span className="italic text-slate-400">Uncertain</span>
-                              )}
-                            </p>
-                            {rel.rationale && (
-                              <p className="text-slate-300 text-[11px] leading-relaxed italic bg-slate-950/40 p-2.5 rounded border border-white/[0.04]">
-                                <strong className="text-slate-400 not-italic font-mono uppercase text-[9px] block mb-0.5 tracking-wider">Phylogenetic Placement:</strong>
-                                {rel.rationale}
-                              </p>
-                            )}
-                            {rel.ecologicalAnalogues && rel.ecologicalAnalogues.length > 0 && (
-                              <p className="text-slate-300 text-xs border-t border-white/[0.06] pt-1.5">
-                                <strong className="text-cyan-400 font-mono font-bold">Ecological Analogues: </strong>
-                                <span className="text-slate-200">{rel.ecologicalAnalogues.join(' • ')}</span>
-                                <span className="block text-[10px] text-slate-400 italic mt-0.5">
-                                  (Ecological / trophic convergence; not genetic kinship)
-                                </span>
-                              </p>
-                            )}
-                            {rel.sources && rel.sources.length > 0 && (
-                              <div className="text-[10px] text-slate-400 space-y-0.5 border-t border-white/[0.04] pt-1.5 font-mono">
-                                <span className="text-slate-500 uppercase tracking-wider block">Phylogenetic Sources:</span>
-                                {rel.sources.map((s, idx) => (
-                                  <div key={idx} className="flex items-center gap-1.5 truncate">
-                                    <span className="text-amber-500/70">•</span>
-                                    <span className="text-slate-300">{s.title}</span>
-                                    {s.url_or_doi && (
-                                      <a
-                                        href={s.url_or_doi}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-amber-400 hover:underline inline-flex items-center gap-0.5 ml-1"
-                                      >
-                                        [Link]
-                                      </a>
-                                    )}
-                                  </div>
-                                ))}
-                              </div>
-                            )}
-                          </div>
-                        );
-                      }
-                      if (Array.isArray(rel) && rel.length > 0) {
-                        return (
-                          <p className="text-slate-300 text-xs">
-                            <strong className="text-amber-400 font-mono font-bold">Closest Extant Relatives: </strong>
-                            {rel.join(' • ')}
-                          </p>
-                        );
-                      }
+                    }
+
+                    const isStructured = rel && typeof rel === 'object' && !Array.isArray(rel);
+                    const groupsText = isStructured && Array.isArray(rel.groups) && rel.groups.length > 0
+                      ? rel.groups.join(' • ')
+                      : (Array.isArray(rel) && rel.length > 0 ? rel.join(' • ') : null);
+
+                    const rationaleText = isStructured && typeof rel.rationale === 'string' ? rel.rationale : null;
+
+                    if (!groupsText && !rationaleText) {
                       return (
                         <p className="text-slate-400 text-xs italic">
                           Extinct prehistoric lineage without immediate extant crown descendants.
                         </p>
                       );
-                    })()}
-                  </div>
+                    }
+
+                    return (
+                      <div className="space-y-1">
+                        {groupsText && (
+                          <p className="text-slate-200">
+                            <strong className="text-amber-400 font-mono font-bold">Closest Extant Relatives: </strong>
+                            {groupsText}
+                          </p>
+                        )}
+                        {rationaleText && (
+                          <p className="text-slate-400 text-[11px]">
+                            <strong className="text-slate-300 font-mono font-bold">Phylogenetic Placement: </strong>
+                            {rationaleText}
+                          </p>
+                        )}
+                      </div>
+                    );
+                  })()
                 )}
               </div>
             </div>
