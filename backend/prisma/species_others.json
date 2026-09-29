@@ -255,7 +255,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"United States\",\"fossilFormation\":\"Red Beds of Texas\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Synapsida\",\"order\":\"Sphenacodontia\",\"family\":\"Sphenacodontidae\",\"genus\":\"Dimetrodon\",\"species\":\"Dimetrodon grandis\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/9-Dimetrodon.png\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/b/b6/Dimetrodon_grandis_in_%22high_walk%22_pose.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/ef/Dimetrodon.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/e/ef/Dimetrodon.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c6/Dimetrodon_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Dimetrodon_TD.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/ef/Dimetrodon.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/e/ef/Dimetrodon.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/9-Dimetrodon.png\",\"type\":\"fossil_specimen\",\"credit\":\"Life reconstruction illustration (Historical plate)\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/b/b6/Dimetrodon_grandis_in_%22high_walk%22_pose.png\"}]",
     "discoveryHistory": "• Named by Edward Drinker Cope in 1878 during the 'Bone Wars'.\n• Abundant fossils have been excavated from the Red Beds of Texas.\n• It is one of the most thoroughly studied of all early synapsids.",
     "interestingFacts": "[\"Though often confused with dinosaurs, it lived millions of years earlier and is closer to mammals.\",\"Its iconic sail was likely used for thermoregulation or mating displays.\",\"It had two distinct types of teeth in its jaws, a trait common to later mammals.\",\"Histological thin-sections of neural spines demonstrate high vascularity and periosteal canals devoid of tendon insertion scars, supporting a vascularized thermal membrane rather than an adipose fat hump.\",\"Exhibited true ziphodont dentition with microscopic enamel carinae serrations on maxillary tusks, marking one of the earliest occurrences of ziphodont carnivory in terrestrial vertebrate evolution (Brink & Reisz 2014).\"]",
     "sizeNotes": "Ranged from 1.7 to 4.6 meters long across various species; D. grandis was one of the largest.",
@@ -267,7 +267,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Dimetrodon grandis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Dimetrodon%20grandis\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.384Z",
-    "updatedAt": "2026-09-28T14:16:24.388Z"
+    "updatedAt": "2026-09-29T15:57:14.834Z"
   },
   {
     "id": 10,
