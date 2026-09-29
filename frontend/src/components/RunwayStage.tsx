@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { Species } from '../services/api.js';
 import { formatFeet } from '../utils/formatDimensions.js';
 
@@ -12,9 +12,6 @@ interface RunwayStageProps {
   scale?: number;
 }
 
-// Global module-level aspect cache to preserve aspect ratios across re-renders and eliminate layout jump
-const aspectCache = new Map<number, number>();
-
 export default function RunwayStage({
   speciesList,
   activeReference = 'human',
@@ -24,42 +21,12 @@ export default function RunwayStage({
   onSelectIndex,
   scale = 55
 }: RunwayStageProps) {
-  const [aspectRatios, setAspectRatios] = useState<Record<number, number>>(() => {
-    const initial: Record<number, number> = {};
-    aspectCache.forEach((ratio, id) => {
-      initial[id] = ratio;
-    });
-    return initial;
-  });
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isDraggingMouse, setIsDraggingMouse] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [scrollStartLeft, setScrollStartLeft] = useState(0);
 
-  // Dynamically calculate natural aspect ratios for all loaded silhouettes
-  useEffect(() => {
-    speciesList.forEach((sp) => {
-      const url = sp.comparisonSilhouette?.url;
-      if (!url) return;
-      if (aspectCache.has(sp.id)) {
-        if (!aspectRatios[sp.id]) {
-          setAspectRatios((prev) => ({ ...prev, [sp.id]: aspectCache.get(sp.id)! }));
-        }
-        return;
-      }
-
-      const img = new Image();
-      img.onload = () => {
-        if (img.naturalWidth > 0 && img.naturalHeight > 0) {
-          const ratio = img.naturalWidth / img.naturalHeight;
-          aspectCache.set(sp.id, ratio);
-          setAspectRatios((prev) => ({
-            ...prev,
-            [sp.id]: ratio
-          }));
-        }
-      };
-      img.src = url;
-    });
-  }, [speciesList, aspectRatios]);
-
-  // Reference configurations (in meters)
+  // Reference figure configurations (in meters)
   const refSpecs = useMemo(() => {
     switch (activeReference) {
       case 'car':
@@ -74,49 +41,27 @@ export default function RunwayStage({
     }
   }, [activeReference]);
 
-  // Metric sizing for each creature with universal proportional calibration
+  // Metric sizing for each creature: calibrated directly to scientific length and standing height
   const creaturesMetrics = useMemo(() => {
     return speciesList.map((sp) => {
       const len = sp.lengthM && sp.lengthM > 0 ? sp.lengthM : 5.0;
       const h = sp.heightM && sp.heightM > 0 ? sp.heightM : Math.max(1, len * 0.35);
-      const aspect = aspectRatios[sp.id] || (len / h);
-
-      // For upright or height-dominant creatures (where standing height >= 85% of length,
-      // such as azhdarchid pterosaurs, upright terror birds, and hominids), anchor directly to
-      // the nominal scientific standing height so silhouettes accurately align with calipers.
-      // For horizontal creatures, scale from length while clamping to natural posture limits.
-      const isHeightDominant = h >= len * 0.85;
-      let renderHeightM: number;
-      let renderWidthM: number;
-      if (isHeightDominant) {
-        renderHeightM = h;
-        renderWidthM = h * aspect;
-      } else {
-        renderWidthM = len;
-        renderHeightM = len / aspect;
-      }
 
       return {
         species: sp,
         lengthM: len,
-        heightM: h,
-        aspectRatio: aspect,
-        renderHeightM,
-        renderWidthM
+        heightM: h
       };
     });
-  }, [speciesList, aspectRatios]);
+  }, [speciesList]);
 
-  // Layout calculations: arrange specimens sequentially on runway with metric spacing
+  // Layout calculations: arrange specimens sequentially on the runway track with 3.0m metric spacing
   const runwayLayout = useMemo(() => {
     let currentX = 2.0; // 2m initial padding
     const items: Array<{
       species: Species;
       lengthM: number;
       heightM: number;
-      aspectRatio: number;
-      renderHeightM: number;
-      renderWidthM: number;
       startX: number;
       endX: number;
       midX: number;
@@ -131,15 +76,11 @@ export default function RunwayStage({
 
     creaturesMetrics.forEach((item) => {
       const start = currentX;
-      // Physical horizontal footprint on runway is based on the calibrated silhouette width
-      const end = currentX + item.renderWidthM;
+      const end = currentX + item.lengthM;
       items.push({
         species: item.species,
         lengthM: item.lengthM,
         heightM: item.heightM,
-        aspectRatio: item.aspectRatio,
-        renderHeightM: item.renderHeightM,
-        renderWidthM: item.renderWidthM,
         startX: start,
         endX: end,
         midX: (start + end) / 2
@@ -150,9 +91,9 @@ export default function RunwayStage({
     const totalStageLength = Math.max(16.0, currentX + 2.0);
     const maxCreatureHeight = Math.max(
       activeReference !== 'none' ? refSpecs.heightM : 1.8,
-      ...creaturesMetrics.map((c) => c.renderHeightM)
+      ...creaturesMetrics.map((c) => c.heightM)
     );
-    const totalStageHeight = Math.max(4.2, maxCreatureHeight * 1.35);
+    const totalStageHeight = Math.max(4.6, maxCreatureHeight * 1.35);
 
     return {
       items,
@@ -162,32 +103,69 @@ export default function RunwayStage({
     };
   }, [creaturesMetrics, activeReference, refSpecs]);
 
-  // SVG dimensions: dynamically accommodate all specimens using the customizable metric scale
-  const viewWidth = Math.max(1400, Math.ceil(runwayLayout.totalLength * scale + 80));
-  const viewHeight = Math.max(380, Math.ceil(runwayLayout.totalHeight * scale + 100));
+  // SVG dimensions: width expands with scale so Zoom In/Out magnifies real screen pixels
+  const viewWidth = Math.max(1100, Math.ceil(runwayLayout.totalLength * scale + 100));
+  const viewHeight = Math.max(380, Math.ceil(runwayLayout.totalHeight * scale + 80));
   const groundY = viewHeight - 65; // baseline ground line
+
+  // Interactive mouse drag-to-scroll handlers for desktop users
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (e.button !== 0) return;
+    if (!scrollContainerRef.current) return;
+    setIsDraggingMouse(true);
+    setDragStartX(e.pageX - scrollContainerRef.current.offsetLeft);
+    setScrollStartLeft(scrollContainerRef.current.scrollLeft);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDraggingMouse || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainerRef.current.offsetLeft;
+    const walk = (x - dragStartX) * 1.4;
+    scrollContainerRef.current.scrollLeft = scrollStartLeft - walk;
+  };
+
+  const handleMouseUpOrLeave = () => {
+    setIsDraggingMouse(false);
+  };
 
   return (
     <div className="w-full bg-slate-950 rounded-2xl border border-white/[0.08] shadow-2xl p-3 sm:p-5 relative overflow-hidden font-mono select-none">
       {/* Background Ambience */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Mobile Horizontal Pan Hint */}
-      <div className="sm:hidden flex items-center justify-between text-[11px] text-amber-400/90 pb-2 px-1">
+      {/* Mobile & Trackpad Pan Hint */}
+      <div className="flex items-center justify-between text-[11px] text-amber-400/90 pb-2 px-1">
         <span className="flex items-center gap-1.5 font-bold">
           <svg className="w-3.5 h-3.5 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
           </svg>
-          Pan horizontally to explore runway
+          Scroll or drag horizontally to explore 1:1 metric stage
         </span>
-        <span className="text-slate-400 text-[10px]">1:1 Metric Calibrated</span>
+        <span className="text-slate-400 text-[10px]">
+          Zoom: {(scale).toFixed(0)} px/m &bull; Total Track: {runwayLayout.totalLength.toFixed(1)}m
+        </span>
       </div>
 
-      {/* SVG Canvas Stage */}
-      <div className="w-full overflow-x-auto pb-2 focus:outline-none touch-pan-x overscroll-x-contain">
+      {/* SVG Canvas Stage with true scalable width */}
+      <div
+        ref={scrollContainerRef}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUpOrLeave}
+        onMouseLeave={handleMouseUpOrLeave}
+        className={`w-full overflow-x-auto pb-4 focus:outline-none touch-pan-x overscroll-x-contain ${
+          isDraggingMouse ? 'cursor-grabbing' : 'cursor-grab'
+        }`}
+      >
         <svg
           viewBox={`0 0 ${viewWidth} ${viewHeight}`}
-          className="w-full min-w-[850px] h-auto drop-shadow-md overflow-visible"
+          style={{
+            width: `${viewWidth}px`,
+            minWidth: '100%',
+            height: `${viewHeight}px`,
+          }}
+          className="drop-shadow-md overflow-visible select-none"
         >
           <defs>
             {/* Charcoal / Chalk filter for high-contrast architectural silhouette rendering */}
@@ -221,7 +199,7 @@ export default function RunwayStage({
               <path
                 d={`M ${5 * scale} 0 L 0 0 0 ${5 * scale}`}
                 fill="none"
-                stroke="rgba(255, 255, 255, 0.06)"
+                stroke="rgba(255, 255, 255, 0.07)"
                 strokeWidth="1"
               />
             </pattern>
@@ -229,7 +207,7 @@ export default function RunwayStage({
               <path
                 d={`M ${scale} 0 L 0 0 0 ${scale}`}
                 fill="none"
-                stroke="rgba(255, 255, 255, 0.02)"
+                stroke="rgba(255, 255, 255, 0.025)"
                 strokeWidth="0.5"
               />
             </pattern>
@@ -246,12 +224,12 @@ export default function RunwayStage({
                 const x = i * 5 * scale;
                 return (
                   <g key={`marker-${i}`} transform={`translate(${x}, 20)`}>
-                    <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+                    <line x1="0" y1="0" x2="0" y2="8" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
                     <text
                       x="4"
-                      y="10"
-                      fill="rgba(255,255,255,0.3)"
-                      fontSize="9"
+                      y="11"
+                      fill="rgba(255,255,255,0.4)"
+                      fontSize="9.5"
                       fontFamily="monospace"
                       textAnchor="start"
                     >
@@ -312,7 +290,7 @@ export default function RunwayStage({
                     x={(0.95 * scale) / 2}
                     y={groundY + 16}
                     fill="#94A3B8"
-                    fontSize="9"
+                    fontSize="9.5"
                     fontWeight="bold"
                     textAnchor="middle"
                   >
@@ -336,7 +314,7 @@ export default function RunwayStage({
                     x={(4.5 * scale) / 2}
                     y={groundY + 16}
                     fill="#94A3B8"
-                    fontSize="9"
+                    fontSize="9.5"
                     fontWeight="bold"
                     textAnchor="middle"
                   >
@@ -360,7 +338,7 @@ export default function RunwayStage({
                     x={(11.5 * scale) / 2}
                     y={groundY + 16}
                     fill="#94A3B8"
-                    fontSize="9"
+                    fontSize="9.5"
                     fontWeight="bold"
                     textAnchor="middle"
                   >
@@ -384,7 +362,7 @@ export default function RunwayStage({
                     x={(6.5 * scale) / 2}
                     y={groundY + 16}
                     fill="#94A3B8"
-                    fontSize="9"
+                    fontSize="9.5"
                     fontWeight="bold"
                     textAnchor="middle"
                   >
@@ -398,13 +376,11 @@ export default function RunwayStage({
           {/* Lineup Species Silhouettes & Calipers */}
           {runwayLayout.items.map((item, idx) => {
             const isHighlighted = highlightedIndex === idx;
-            const pxWidth = item.renderWidthM * scale;
-            const pxHeight = item.renderHeightM * scale;
-            const boxHeightPx = item.heightM * scale;
-            const renderHeightPx = item.species.comparisonSilhouette?.url ? pxHeight : boxHeightPx;
+            const pxWidth = item.lengthM * scale;
+            const pxHeight = item.heightM * scale;
             const startPx = item.startX * scale;
             const midPx = item.midX * scale;
-            const yTop = groundY - renderHeightPx;
+            const yTop = groundY - pxHeight;
             const silhouetteUrl = item.species.comparisonSilhouette?.url;
 
             return (
@@ -422,14 +398,14 @@ export default function RunwayStage({
                   fill={isHighlighted ? 'rgba(245, 158, 11, 0.25)' : 'rgba(255, 255, 255, 0.04)'}
                 />
 
-                {/* Silhouette or Fallback Box */}
+                {/* Silhouette or Fallback Box: Calibrated to fit within [lengthM, heightM] envelope */}
                 {silhouetteUrl ? (
                   <image
                     href={silhouetteUrl}
                     x={startPx}
                     y={yTop}
                     width={pxWidth}
-                    height={renderHeightPx}
+                    height={pxHeight}
                     preserveAspectRatio="xMidYMax meet"
                     filter={isHighlighted ? 'url(#runwayAmberHighlight)' : 'url(#runwayChalkTint)'}
                     className="transition-all duration-300"
@@ -444,7 +420,7 @@ export default function RunwayStage({
                       x={startPx}
                       y={yTop}
                       width={pxWidth}
-                      height={boxHeightPx}
+                      height={pxHeight}
                       rx="4"
                       fill={isHighlighted ? 'rgba(245,158,11,0.2)' : 'rgba(255,255,255,0.08)'}
                       stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.2)'}
@@ -452,7 +428,7 @@ export default function RunwayStage({
                     />
                     <text
                       x={midPx}
-                      y={yTop + boxHeightPx / 2}
+                      y={yTop + pxHeight / 2}
                       fill="#94A3B8"
                       fontSize="10"
                       textAnchor="middle"
@@ -462,7 +438,7 @@ export default function RunwayStage({
                   </g>
                 )}
 
-                {/* Metric Calipers (Horizontal Length Bracket) */}
+                {/* Metric Calipers (Length and Height matching matrix table exactly) */}
                 {showCalipers && (
                   <g>
                     {/* Top Length Dimension Caliper */}
@@ -471,7 +447,7 @@ export default function RunwayStage({
                       y1={yTop - 14}
                       x2={startPx + pxWidth}
                       y2={yTop - 14}
-                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.4)'}
+                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.45)'}
                       strokeWidth="1"
                     />
                     {/* Left & Right Caliper Ticks */}
@@ -480,7 +456,7 @@ export default function RunwayStage({
                       y1={yTop - 18}
                       x2={startPx}
                       y2={yTop - 10}
-                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.4)'}
+                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.45)'}
                       strokeWidth="1"
                     />
                     <line
@@ -488,25 +464,25 @@ export default function RunwayStage({
                       y1={yTop - 18}
                       x2={startPx + pxWidth}
                       y2={yTop - 10}
-                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.4)'}
+                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.45)'}
                       strokeWidth="1"
                     />
 
-                    {/* Metric Badge Pill */}
+                    {/* Metric Badge Pill for Length */}
                     <g transform={`translate(${midPx}, ${yTop - 14})`}>
                       <rect
-                        x="-40"
+                        x="-46"
                         y="-10"
-                        width="80"
-                        height="18"
+                        width="92"
+                        height="19"
                         rx="4"
                         fill="#080C16"
-                        stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.18)'}
+                        stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.22)'}
                         strokeWidth="1"
                       />
                       <text
                         x="0"
-                        y="3"
+                        y="3.5"
                         fill={isHighlighted ? '#F59E0B' : '#F3F6FB'}
                         fontSize="9"
                         fontWeight="bold"
@@ -517,13 +493,13 @@ export default function RunwayStage({
                       </text>
                     </g>
 
-                    {/* Vertical Height Line */}
+                    {/* Vertical Height Line: Ground up to Standing Height */}
                     <line
                       x1={startPx - 8}
                       y1={yTop}
                       x2={startPx - 8}
                       y2={groundY}
-                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.25)'}
+                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.3)'}
                       strokeWidth="0.8"
                       strokeDasharray="2 2"
                     />
@@ -533,7 +509,7 @@ export default function RunwayStage({
                       y1={yTop}
                       x2={startPx - 5}
                       y2={yTop}
-                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.35)'}
+                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.4)'}
                       strokeWidth="0.8"
                     />
                     <line
@@ -541,20 +517,20 @@ export default function RunwayStage({
                       y1={groundY}
                       x2={startPx - 5}
                       y2={groundY}
-                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.35)'}
+                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.4)'}
                       strokeWidth="0.8"
                     />
                     {/* Vertical Height Metric Label */}
                     <text
                       x={startPx - 13}
-                      y={yTop + renderHeightPx / 2}
-                      fill={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.5)'}
-                      fontSize="8"
+                      y={yTop + pxHeight / 2}
+                      fill={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.65)'}
+                      fontSize="8.5"
                       fontFamily="monospace"
                       textAnchor="end"
                       dominantBaseline="middle"
                     >
-                      {item.renderHeightM.toFixed(1)}m
+                      {item.heightM.toFixed(1)}m ({formatFeet(item.heightM)})
                     </text>
                   </g>
                 )}
@@ -598,7 +574,7 @@ export default function RunwayStage({
           <span>1:1 Metric Calibrated Runway &bull; Scale: {(scale).toFixed(1)}px / meter</span>
         </div>
         <div className="flex items-center gap-3">
-          <span>Click any specimen to highlight</span>
+          <span>Click any specimen to highlight &bull; Drag track to pan</span>
         </div>
       </div>
     </div>
