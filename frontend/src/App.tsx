@@ -14,6 +14,7 @@ import FieldNotebook from './pages/FieldNotebook.js';
 import CaliperRunway from './pages/CaliperRunway.js';
 import PaleoChallenge from './pages/PaleoChallenge.js';
 import Cladogram from './pages/Cladogram.js';
+import NotFound from './pages/NotFound.js';
 import { wakePing } from './services/api.js';
 
 export default function App() {
@@ -115,6 +116,8 @@ export default function App() {
               <Route path="/runway" element={<CaliperRunway />} />
               <Route path="/notebook" element={<FieldNotebook />} />
               <Route path="/challenge" element={<PaleoChallenge />} />
+              <Route path="/404" element={<NotFound />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           ) : (
             <div className="min-h-[60vh]" />

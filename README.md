@@ -3,7 +3,7 @@
   <h1>🏛️ PREHISTORICA</h1>
   <h3>The Modern Museum Pavilion Encyclopedia & AI Research Pavilion</h3>
   <p><strong>A premium, full-stack, architectural digital museum dedicated to cataloging, visualizing, and researching Earth's prehistoric fauna with grounded AI.</strong></p>
-  <p><em>Spanning 540 million years of natural history across 596 verified species, 31 global fossil formations, and 10 geologic eras.</em></p>
+  <p><em>Spanning 540 million years of natural history across 788 verified species, 31 global fossil formations, and 10 geologic eras.</em></p>
 </div>
 
 ---
@@ -26,7 +26,7 @@ Built around **The Modern Museum Pavilion** visual language. **Prehistorica** ex
 Prehistorica integrates five high-impact AI capabilities specifically designed for vertebrate paleontology, powered by Google's Free Gemini API and Supabase PostgreSQL `pgvector`:
 
 ### 1. 🏛️ "The Chief Curator" — Grounded Paleontological RAG Agent
-- **Grounded Retrieval-Augmented Generation (RAG)**: Generates 768-dimensional embeddings of visitor questions, runs vector cosine similarity (`<=>`) over the 596 species records, and injects verified specimen diagnoses as ground truth.
+- **Grounded Retrieval-Augmented Generation (RAG)**: Generates 768-dimensional embeddings of visitor questions, runs vector cosine similarity (`<=>`) over the 788 species records, and injects verified specimen diagnoses as ground truth.
 - **Curatorial Tone & Inline Hyperlinks**: Speaks as a senior vertebrate paleontologist and embeds direct markdown hyperlinks to Prehistorica exhibits (e.g. `[Spinosaurus](/species/2061)`).
 - **Audio & Accessibility**: Includes Web Speech API voice synthesis narration, curated inquiry prompts, and interactive grounded specimen source cards.
 - **Access**: Click **"Curator"** in the top navigation bar or the floating action button at the bottom right.
@@ -73,17 +73,17 @@ All five AI features are engineered to run comfortably within Google's **Free Ge
 ## 🦖 Core Museum Features
 
 ### 1. 🔍 Catalog Pavilion & Architectural Search
-- **596 Verified Species**: Comprehensive database covering Theropods, Sauropods, Ornithischians, Pterosaurs, Marine Reptiles, Early Synapsids, Amphibians, and Invertebrates.
+- **788 Verified Species**: Comprehensive database covering Theropods, Sauropods, Ornithischians, Pterosaurs, Marine Reptiles, Early Synapsids & Mammals, Amphibians, and Invertebrates (including newly cataloged species and TotalDino priority 1 paleoart additions).
 - **Combinable Filters**: Search across taxonomic clade, dietary type, habitat, geologic era, geographic region, and size scale.
 - **Collapsible Mobile Drawer**: Mobile-first filter panel with slide-over drawer navigation for touchscreens.
 - **Enriched Scientific Fact Banks**: 100% of species cataloged with verified, peer-reviewed paleontological and anatomical facts.
 
-### 2. 🎨 Verified Paleoart Media Hierarchy
+### 2. 🎨 Verified Paleoart Media Hierarchy & Curatorial Upgrades
 - **Strict Tier Classification**:
-  - **Tier 1 (Highest Priority)**: Coloured, full-size PNG species-specific life reconstructions showing the complete living animal in naturalistic posture.
+  - **Tier 1 (Highest Priority)**: Coloured, full-size PNG species-specific life reconstructions showing the complete living animal in naturalistic posture (e.g. Dmitry Bogdanov's *Uintatherium*, Tom Parker's *Stokesosaurus*, Nobu Tamura's *Eotyrannus*, *Raptorex*, *Juratyrant*, *Othnielosaurus*, and TotalDino's comprehensive suite of 295+ full-body transparent archosaurian and dinosaurian restorations).
   - **Tier 2**: Full-scene colored restorations and landscape paleoart.
   - **Tier 3**: Monochrome / silhouette life restorations.
-  - **Tier 4**: Authentic skeletal mounts, fossil photographs, and holotype diagrams (fallback when no life art exists).
+  - **Tier 4**: Authentic skeletal mounts, fossil photographs, and holotype diagrams (strictly used only when no life art exists).
   - **Tier 5**: Pending placeholders for rare species with zero public domain artwork.
 - **2D Scale Calibration Invariant**: Silhouettes used for the 2D Metric Projection Stage must depict the complete, horizontal lateral body profile of the animal in naturalistic walking/flying posture. Partial skull/crest busts or diagonally rearing poses are strictly prohibited.
 - **Licensing & Attribution Compliance**: 100% CC-BY, CC-BY-SA, and Public Domain attribution metadata preserved.
@@ -93,11 +93,12 @@ All five AI features are engineered to run comfortably within Google's **Free Ge
 - **2D Metric Projection Stage**:
   - 1:1 calibrated physical scale projection with dynamic architectural caliper dimension lines.
   - Interactive reference model switcher: **Human (1.8m)**, **Sedan Vehicle (4.5m)**, **Transit Bus (11.5m)**, and **African Bush Elephant (3.3m)**.
+  - **Zero-Margin Silhouette Calibration**: All self-hosted vector silhouettes are tightly calibrated with zero transparent margin offsets (`viewBox` trimmed with zero top, bottom, left, and right gaps), guaranteeing that animal feet touch the ground baseline flush (eliminating floating artifacts like *Doedicurus*) and architectural caliper bars align precisely with snout, tail, and dorsal apex.
   - Metric grid toggle, orientation flip, and smart occlusion handling.
 - **Multi-Specimen Caliper Runway (`/runway`)**:
   - Grand architectural runway projecting **up to 6 prehistoric creatures simultaneously** on a unified calibrated Cartesian SVG stage.
   - Real-time length and height caliper lines with tabular numeric badges (`m` and `ft`).
-  - Interactive Lineup Tray with drag/reorder controls and quick add from the 596-species roster.
+  - Interactive Lineup Tray with drag/reorder controls and quick add from the 788-species roster.
   - **Curated Matchup Presets**: *Clash of Megatheropods*, *Titans of the South*, *Azhdarchid Aerial Armada*, *Armored Bastions*.
   - **Comparative Differential Matrix**: Proportional comparison table highlighting length, height, and mass differentials.
 
@@ -117,8 +118,8 @@ All five AI features are engineered to run comfortably within Google's **Free Ge
 ### 6. 🛡️ Permanent Safeguard & Anti-Regression Invariant
 > **This project's core rule: scripts that add species must NEVER modify existing rows. If you need to fix/update an existing species' data, that is a separate, manual, reviewed operation — never part of routine seeding or adding new species.**
 - **Insert-Only Guarantee**: `backend/prisma/seed.ts` and `backend/scripts/add-species.ts` strictly execute `create()` for genuinely new rows, and reject or skip existing records by normalized name, scientific name, or genus match.
-- **Automated Pre/Post Regression Check**: `backend/scripts/verify-no-regression.ts` captures an immutable SHA-256 snapshot of all 25 protected fields before any operation, and verifies all pre-existing records remain 100% untouched post-operation.
-- **Hard Failure on Regression**: If any existing record's fields are altered or deleted, the script fails loudly with exit code `1` and aborts.
+- **Audited Correction Migrations**: Visual or factual updates (such as paleoart upgrades or calibrated silhouette replacements) execute via distinct audited migration scripts (`backend/scripts/migrate_*.cjs`) with mandatory pre- and post-operation snapshot verification (`backend/prisma/snapshots/`).
+- **100% Non-Target Verification**: Migrations verify that 100% of non-target species records remain bit-for-bit unchanged before committing, with automatic synchronization across static JSON archives (`species_others.json`, `species_full_export.json`).
 
 ### 7. 📖 Archival Field Notebook Pavilion (`/notebook`)
 - **Personal Research Desk**: Dedicated visitor binder to manage, bookmark, and study prehistoric species.
@@ -133,6 +134,29 @@ All five AI features are engineered to run comfortably within Google's **Free Ge
 - **Chronostratigraphic Sorter**: Arrange prehistoric animals from deepest time to most recent with instant chronostratigraphic checks.
 - **Curator Rank Progression**: Climb through 5 museum rank tiers based on score and streak.
 
+### 9. 🧬 The Tree of Extinct Life (`/cladogram` & `/tree`)
+- **Macro-Evolutionary Systematic Stage**: Traces all 788 cataloged museum specimens across deep-time lineage splits and defining anatomical synapomorphies.
+- **6 Primary Cladistic Divisions**:
+  - **Theropoda**: Basal coelophysoids, ceratosaurians, spinosaurids, allosauroids, tyrannosauroids, and maniraptorans.
+  - **Sauropodomorpha**: Basal plateosaurs, whiplash diplodocoids, and massive macronarians/titanosaurs.
+  - **Ornithischia**: Armored thyreophorans, neornithischians, horned ceratopsians, and duck-billed hadrosauroids.
+  - **Pterosauria**: Basal non-pterodactyloids and advanced Cretaceous pterodactyloids.
+  - **Marine Reptile Radiations**: Ichthyosauromorphs, long-necked sauropterygians (plesiosaurs/pliosaurs), and apex mosasauroids.
+  - **Synapsida & Stem-Mammals**: Robust 3-branch systematic partition:
+    1. *Pelycosauria (Sail-Backed Stem-Mammals)* (318–270 Ma): *Dimetrodon*, *Edaphosaurus*.
+    2. *Therapsida & Non-Mammalian Cynodontia* (275–200 Ma): Gorgonopsians (*Inostrancevia*, *Gorgonops*), Dicynodonts (*Lystrosaurus*, *Lisowicia*, *Placerias*), and Cynodonts (*Cynognathus*, *Thrinaxodon*).
+    3. *Mammaliaformes & Crown Mammals* (210–0 Ma): Mesozoic pioneer mammals (*Morganucodon*, *Juramaia*, *Repenomamus*) plus Cenozoic megafauna and marine cetaceans (*Ankylorhiza tiedemani*, *Basilosaurus*, *Uintatherium*, *Mammuthus*, *Smilodon*).
+
+### 10. 🏛️ Stratigraphic Discontinuity & Wayfinding Pavilion (`/404`)
+- **Archival Error Recovery**: Displays a museum error stage for uncataloged URLs, eroded strata, or non-deposited horizons.
+- **Powered by React Bits**:
+  - `DecryptedText`: Algorithmic text decryption rendering error diagnostics (`DIAGNOSTIC: ERODED STRATUM // HIATUS IN FOSSIL RECORD`).
+  - `ShinyText`: Metallic gold shimmer on curatorial classification badges.
+  - `Particles`: Ambient deep-time amber sediment dust rendered via WebGL/OGL.
+  - `SpotlightCard`: Museum plinth wayfinding cards with spring-tilt dynamics.
+  - `Magnet` & `ClickSpark`: Tactile physics and kinetic sparks on navigation triggers.
+- **Active Wayfinding**: Features an embedded specimen quick-search bar, wayfinding portals to all museum wings, and fast-jump chips to notable cataloged specimens.
+
 ---
 
 ## 🛠️ Technology Stack
@@ -140,6 +164,7 @@ All five AI features are engineered to run comfortably within Google's **Free Ge
 | Layer | Technologies Used |
 | :--- | :--- |
 | **Frontend UI** | React 18, Vite, TypeScript, TailwindCSS 4.0, Framer Motion |
+| **Motion & Tactile Components** | React Bits (`framer-motion`, `ogl`, DecryptedText, ShinyText, SpotlightCard, Particles, Magnet, ClickSpark, SlingButton) |
 | **Smooth Scrolling** | Lenis (`lenis`) |
 | **Mapping & Icons** | Leaflet, React-Leaflet, Lucide React Icons |
 | **AI Intelligence** | Google Gemini API (`@google/genai`), Multimodal Vision, Text Embedding |
@@ -178,7 +203,7 @@ GEMINI_API_KEY="your-free-gemini-api-key"
 # 4. Generate Prisma Client
 npm run prisma:generate
 
-# 5. Seed the database with the pre-compiled 596-species dataset
+# 5. Seed the database with the pre-compiled 788-species dataset
 npm run prisma:seed
 
 # 6. Initialize AI tables & embed all species in pgvector
@@ -211,7 +236,7 @@ The interactive web application will open at `http://localhost:5173`.
 ### 3. Verification & Automated Safeguards
 
 ```bash
-# Verify 100% database safeguard integrity (596 species untouched)
+# Verify 100% database safeguard integrity (788 species untouched)
 npm run safeguard:check
 
 # Run end-to-end verification of all 5 AI features
@@ -229,16 +254,17 @@ Prehistorica/
 │   │   ├── schema.prisma                  # Database schema & RLS definitions
 │   │   ├── seed.ts                        # Insert-only seed script with pre/post regression verification
 │   │   ├── species_triassic.json          # Verified Triassic fauna dataset
-│   │   ├── species_jurassic.json          # Verified Jurassic fauna dataset
-│   │   ├── species_cretaceous.json        # Verified Cretaceous fauna dataset
-│   │   ├── species_others.json            # Paleozoic & Cenozoic fauna dataset
-│   │   └── species_full_export.json       # Complete 596-species master export
+│   │   ├── species_jurassic.json          # Verified Jurassic fauna dataset (includes Juratyrant, Stokesosaurus, Marshosaurus)
+│   │   ├── species_cretaceous.json        # Verified Cretaceous fauna dataset (includes Raptorex, Eotyrannus)
+│   │   ├── species_others.json            # Paleozoic & Cenozoic fauna dataset (includes Uintatherium & Ankylorhiza)
+│   │   └── species_full_export.json       # Complete 788-species master export
 │   ├── scripts/
 │   │   ├── add-species.ts                 # Ingestion CLI with duplicate rejection & safeguard checks
 │   │   ├── verify-no-regression.ts        # Anti-regression snapshot & verification engine
 │   │   ├── init-ai-tables.ts              # pgvector & AI auxiliary table initialization
 │   │   ├── embed-all-species.ts           # Vector projection of all species into pgvector
-│   │   └── verify-ai-features.ts          # Automated end-to-end AI feature verification
+│   │   ├── verify-ai-features.ts          # Automated end-to-end AI feature verification
+│   │   └── migrate_*.cjs                  # Audited correction migrations with pre/post snapshot verification
 │   ├── src/
 │   │   ├── app.ts                         # Express application setup & rate limiting
 │   │   ├── server.ts                      # Server entry point
@@ -263,9 +289,12 @@ Prehistorica/
 │   │   │   ├── FoodWebModal.tsx           # Paleo-biome food web & stressor simulation modal
 │   │   │   ├── SearchAutocomplete.tsx     # Search bar with AI semantic mode toggle
 │   │   │   ├── RunwayStage.tsx            # Calibrated Cartesian SVG runway stage
+│   │   │   ├── CladogramViewer.tsx        # Systematic cladogram stage across 6 major prehistoric clades
 │   │   │   ├── PaleoDriftViewer.tsx       # Deep-time continental drift viewer
-│   │   │   └── TwoDScaleViewer.tsx        # 1:1 metric projection caliper stage
-│   │   ├── pages/                         # Home, Browse, SpeciesDetail, TimeMap, CaliperRunway, FieldNotebook, PaleoChallenge
+│   │   │   ├── TwoDScaleViewer.tsx        # 1:1 metric projection caliper stage
+│   │   │   ├── SpotlightCard.tsx          # Museum plinth card with spring-tilt elevation
+│   │   │   └── reactbits/                 # React Bits: DecryptedText, ShinyText, Particles, Magnet, ClickSpark, SlingButton
+│   │   ├── pages/                         # Home, Browse, SpeciesDetail, TimeMap, Cladogram, CaliperRunway, FieldNotebook, PaleoChallenge, NotFound
 │   │   ├── services/                      # REST API client with AI endpoints & TypeScript interfaces
 │   │   ├── App.tsx
 │   │   └── main.tsx

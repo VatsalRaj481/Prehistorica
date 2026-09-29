@@ -362,23 +362,119 @@ const CLADOGRAM_DATA: CladeNode[] = [
         description: 'Permian apex carnivores and herbivores flourishing long before the dawn of true dinosaurs.',
         color: '#F59E0B',
         matchFn: (s) => {
+          const isSyn = s.clade === 'Early_Mammal_Synapsid' || s.clade === 'Early Mammal/Synapsid';
+          if (!isSyn) return false;
           const name = s.name.toLowerCase();
           const fam = (s.taxonomy?.family || '').toLowerCase();
-          return s.clade === 'Early Mammal/Synapsid' && (fam.includes('sphenacodont') || fam.includes('edaphosaur') || name.includes('dimetrodon') || name.includes('edaphosaurus'));
+          return fam.includes('sphenacodont') || fam.includes('edaphosaur') || fam.includes('caseid') || fam.includes('varanop') || fam.includes('ophiacodont') || name.includes('dimetrodon') || name.includes('edaphosaurus');
         }
       },
       {
         id: 'synapsida-therapsida',
-        name: 'Therapsida & Cynodontia',
-        scientificName: 'Therapsida & Mammaliaformes',
+        name: 'Therapsida & Non-Mammalian Cynodontia',
+        scientificName: 'Therapsida, Gorgonopsia & Dicynodontia',
         rank: 'Clade',
-        timeRange: '275–66 Ma',
-        synapomorphy: 'Parasagittal limb posture, secondary palate for simultaneous breathing/chewing, and whisker-bearing sensory pits.',
-        description: 'Saber-toothed gorgonopsids, herbivorous dicynodonts, and early nocturnal Mesozoic mammals.',
+        timeRange: '275–200 Ma',
+        synapomorphy: 'Parasagittal upright limb posture, secondary palate for simultaneous breathing/chewing, and differentiated theriodont dentition.',
+        description: 'Saber-toothed gorgonopsians, herbivorous dicynodonts, dinocephalians, and advanced non-mammalian cynodont stem-mammals.',
         color: '#D97706',
         matchFn: (s) => {
+          const isSyn = s.clade === 'Early_Mammal_Synapsid' || s.clade === 'Early Mammal/Synapsid';
+          if (!isSyn) return false;
           const name = s.name.toLowerCase();
-          return s.clade === 'Early Mammal/Synapsid' && (!name.includes('dimetrodon') && !name.includes('edaphosaurus'));
+          const fam = (s.taxonomy?.family || '').toLowerCase();
+          const ord = (s.taxonomy?.order || '').toLowerCase();
+          if (fam.includes('sphenacodont') || fam.includes('edaphosaur') || name.includes('dimetrodon') || name.includes('edaphosaurus')) return false;
+          return (
+            ord.includes('therapsida') ||
+            ord.includes('dinocephalia') ||
+            ord.includes('gorgonopsia') ||
+            ord.includes('dicynodontia') ||
+            ord.includes('cynodontia') ||
+            fam.includes('gorgonops') ||
+            fam.includes('dicynodont') ||
+            fam.includes('kannemeyeri') ||
+            fam.includes('lystrosaur') ||
+            fam.includes('cynognath') ||
+            fam.includes('thrinaxodont') ||
+            fam.includes('traversodont') ||
+            fam.includes('procynosuch') ||
+            fam.includes('tapinocephal') ||
+            fam.includes('anteosaur') ||
+            fam.includes('estemmenosuch') ||
+            fam.includes('stahleckeri') ||
+            fam.includes('scylacosaur') ||
+            fam.includes('diictodont') ||
+            name.includes('inostrancevia') ||
+            name.includes('lisowicia') ||
+            name.includes('cynognathus') ||
+            name.includes('thrinaxodon') ||
+            name.includes('placerias') ||
+            name.includes('exaeretodon') ||
+            name.includes('lystrosaurus') ||
+            name.includes('moschops') ||
+            name.includes('diictodon') ||
+            name.includes('gorgonops') ||
+            name.includes('rubidgea') ||
+            name.includes('procynosuchus') ||
+            name.includes('anteosaurus') ||
+            name.includes('estemmenosuchus') ||
+            name.includes('scylacosaurus')
+          );
+        }
+      },
+      {
+        id: 'synapsida-mammalia',
+        name: 'Mammaliaformes & Crown Mammals',
+        scientificName: 'Mammaliaformes & Mammalia',
+        rank: 'Clade',
+        timeRange: '210–0 Ma (Extant in Mammalia)',
+        synapomorphy: 'Dentary-squamosal jaw articulation, three middle ear ossicles (malleus, incus, stapes), mammary glands, and hair/pelage.',
+        description: 'Mesozoic pioneer mammals, Cenozoic megafauna (mammoths, saber-tooths, indricotheres), and marine cetacean radiations.',
+        color: '#B45309',
+        matchFn: (s) => {
+          const isSyn = s.clade === 'Early_Mammal_Synapsid' || s.clade === 'Early Mammal/Synapsid';
+          if (!isSyn) return false;
+          const name = s.name.toLowerCase();
+          const fam = (s.taxonomy?.family || '').toLowerCase();
+          const ord = (s.taxonomy?.order || '').toLowerCase();
+          if (fam.includes('sphenacodont') || fam.includes('edaphosaur') || name.includes('dimetrodon') || name.includes('edaphosaurus')) return false;
+          const isStemTherapsid =
+            ord.includes('therapsida') ||
+            ord.includes('dinocephalia') ||
+            ord.includes('gorgonopsia') ||
+            ord.includes('dicynodontia') ||
+            ord.includes('cynodontia') ||
+            fam.includes('gorgonops') ||
+            fam.includes('dicynodont') ||
+            fam.includes('kannemeyeri') ||
+            fam.includes('lystrosaur') ||
+            fam.includes('cynognath') ||
+            fam.includes('thrinaxodont') ||
+            fam.includes('traversodont') ||
+            fam.includes('procynosuch') ||
+            fam.includes('tapinocephal') ||
+            fam.includes('anteosaur') ||
+            fam.includes('estemmenosuch') ||
+            fam.includes('stahleckeri') ||
+            fam.includes('scylacosaur') ||
+            fam.includes('diictodont') ||
+            name.includes('inostrancevia') ||
+            name.includes('lisowicia') ||
+            name.includes('cynognathus') ||
+            name.includes('thrinaxodon') ||
+            name.includes('placerias') ||
+            name.includes('exaeretodon') ||
+            name.includes('lystrosaurus') ||
+            name.includes('moschops') ||
+            name.includes('diictodon') ||
+            name.includes('gorgonops') ||
+            name.includes('rubidgea') ||
+            name.includes('procynosuchus') ||
+            name.includes('anteosaurus') ||
+            name.includes('estemmenosuchus') ||
+            name.includes('scylacosaurus');
+          return !isStemTherapsid;
         }
       }
     ]

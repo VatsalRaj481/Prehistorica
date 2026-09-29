@@ -87,17 +87,14 @@ export default function RunwayStage({
       // For horizontal creatures, scale from length while clamping to natural posture limits.
       const isHeightDominant = h >= len * 0.85;
       let renderHeightM: number;
+      let renderWidthM: number;
       if (isHeightDominant) {
         renderHeightM = h;
+        renderWidthM = h * aspect;
       } else {
-        const heightFromLength = len / aspect;
-        const maxHeightM = h * 1.12;
-        const minHeightM = h * 0.88;
-        renderHeightM = Math.max(minHeightM, Math.min(heightFromLength, maxHeightM));
+        renderWidthM = len;
+        renderHeightM = len / aspect;
       }
-
-      // Rendered width preserves the exact natural aspect ratio of the silhouette
-      const renderWidthM = renderHeightM * aspect;
 
       return {
         species: sp,
@@ -557,7 +554,7 @@ export default function RunwayStage({
                       textAnchor="end"
                       dominantBaseline="middle"
                     >
-                      {item.heightM.toFixed(1)}m
+                      {item.renderHeightM.toFixed(1)}m
                     </text>
                   </g>
                 )}

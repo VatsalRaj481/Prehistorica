@@ -37,7 +37,7 @@ export default function ScrollToTop() {
           transition={{ type: 'spring', stiffness: 350, damping: 28 }}
           whileTap={{ scale: 0.92 }}
           onClick={scrollToTop}
-          className="fixed bottom-18 right-5 sm:bottom-20 sm:right-6 z-40 min-h-[40px] min-w-[40px] sm:min-h-[42px] sm:min-w-[42px] p-2.5 rounded-full bg-slate-900/90 hover:bg-slate-850 backdrop-blur-xl border border-white/[0.12] hover:border-amber-500/50 text-slate-300 hover:text-amber-300 shadow-[0_8px_30px_rgba(0,0,0,0.6)] flex items-center justify-center cursor-pointer transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+          className="fixed bottom-24 right-[26px] sm:bottom-[108px] sm:right-[31px] z-40 min-h-[40px] min-w-[40px] sm:min-h-[42px] sm:min-w-[42px] p-2.5 rounded-full bg-slate-900/90 hover:bg-slate-850 backdrop-blur-xl border border-white/[0.12] hover:border-amber-500/50 text-slate-300 hover:text-amber-300 shadow-[0_8px_30px_rgba(0,0,0,0.6)] flex items-center justify-center cursor-pointer transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
           title="Return to top"
           aria-label="Return to top of page"
         >

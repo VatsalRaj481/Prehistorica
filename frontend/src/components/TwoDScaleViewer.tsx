@@ -217,18 +217,18 @@ export default function TwoDScaleViewer({
   const isHeightDominant = safeHeight >= safeLength * 0.85;
 
   let renderCreatureHeightM: number;
+  let renderCreatureWidthM: number;
+
   if (isHeightDominant) {
     // For upright or height-dominant creatures (e.g. azhdarchid pterosaurs, terror birds, bipeds),
     // anchor directly to nominal scientific standing height so silhouettes align with calipers and stage grid
     renderCreatureHeightM = safeHeight;
+    renderCreatureWidthM = safeHeight * effectiveAspect;
   } else {
-    // For horizontal creatures, calculate height from length with natural posture bounds
-    const naturalCreatureHeightM = safeLength / effectiveAspect;
-    const maxHeightM = safeHeight * 1.12;
-    const minHeightM = safeHeight * 0.88;
-    renderCreatureHeightM = Math.max(minHeightM, Math.min(naturalCreatureHeightM, maxHeightM));
+    // For horizontal creatures, width represents scientific total length
+    renderCreatureWidthM = safeLength;
+    renderCreatureHeightM = safeLength / effectiveAspect;
   }
-  const renderCreatureWidthM = renderCreatureHeightM * effectiveAspect;
   const effectiveCreatureHeightM = renderCreatureHeightM;
 
   // Stage physical layout calculations

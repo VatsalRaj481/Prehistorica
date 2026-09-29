@@ -945,7 +945,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"United States\",\"fossilFormation\":\"Bridger Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Mammalia\",\"order\":\"Dinocerata\",\"family\":\"Uintatheriidae\",\"genus\":\"Uintatherium\",\"species\":\"Uintatherium anceps\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/a/ad/Dinoceras_mirabile_Marsh_MNHN.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original\",\"type\":\"art\",\"credit\":\"Jebulon (Public domain)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3ADinoceras%20mirabile%20Marsh%20MNHN.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/575-Uintatherium.jpg\",\"type\":\"habitat_scene\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/b/be/Uintatherium_pair.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/0/0f/Uintatherium_DB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Uintatherium_DB.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/575-Uintatherium.jpg\",\"type\":\"habitat_scene\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/b/be/Uintatherium_pair.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/a/ad/Dinoceras_mirabile_Marsh_MNHN.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original\",\"type\":\"fossil_specimen\",\"credit\":\"Jebulon (Public domain) (Historical plate)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3ADinoceras%20mirabile%20Marsh%20MNHN.jpg\"}]",
     "discoveryHistory": "Discovered during the bone wars and described by Leidy, Marsh, and Cope.",
     "interestingFacts": "[\"Discovered in the Middle Eocene Bridger Formation of Wyoming and Utah, Uintatherium was a colossal, rhinoceros-sized dinoceratan herbivore.\",\"Its bizarre skull featured three distinct pairs of knobby, skin-covered bony ossicones (horns) on the snout, forehead, and cheeks, alongside a deep concave cranial bowl.\",\"Adult males possessed enormous, saber-like upper canine tusks that were protected when the mouth was closed by deep, downturned bony flanges on the lower jaw.\",\"Despite its 4-meter body length and 2-metric-ton bulk, its brain cavity was remarkably small, smaller than that of a modern domestic dog.\"]",
     "sizeNotes": "Comparable in size to a modern white rhinoceros.",
@@ -957,7 +957,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Uintatherium anceps description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Uintatherium%20anceps\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:10.383Z",
-    "updatedAt": "2026-09-28T14:15:19.496Z"
+    "updatedAt": "2026-09-29T08:12:56.602Z"
   },
   {
     "id": 576,

@@ -367,28 +367,52 @@ export default function SpeciesDetail() {
               <span className="text-[10px] uppercase font-bold text-slate-400 tracking-widest flex items-center gap-1.5">
                 <Dna className="h-3.5 w-3.5 text-amber-400" /> Cladistic & Extant Lineage
               </span>
-              <div className="bg-slate-900/90 p-3 rounded-lg border border-white/[0.06] space-y-2 text-xs font-sans">
+              <div className="space-y-2 text-xs font-sans">
                 {species.clade === 'Theropod' ? (
-                  <div className="space-y-1">
-                    <p className="text-slate-200">
-                      <strong className="text-amber-400 font-mono font-bold">Surviving Avian Theropods: </strong>
-                      Modern Birds (<em className="font-mono">Aves / Neornithes</em>) are direct surviving avian theropod dinosaurs.
-                    </p>
-                    <p className="text-slate-400 text-[11px]">
-                      <strong className="text-slate-300 font-mono font-bold">Closest Living Non-Dinosaurian Outgroup: </strong>
-                      Crocodilians (Crocodiles, Alligators & Gharials) form the extant sister lineage of Archosauria.
-                    </p>
+                  <div className="space-y-2">
+                    <div className="p-3 rounded-lg bg-slate-900/90 border border-white/[0.06] space-y-1.5">
+                      <div className="flex items-center gap-2">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/25">
+                          Surviving Avian Theropods
+                        </span>
+                      </div>
+                      <p className="text-slate-200 text-xs leading-relaxed">
+                        Modern Birds (<em className="font-mono text-amber-200/90 not-italic">Aves / Neornithes</em>) are direct surviving avian theropod dinosaurs.
+                      </p>
+                    </div>
+                    <div className="p-3 rounded-lg bg-slate-900/90 border border-white/[0.06] space-y-1.5">
+                      <div className="flex items-center gap-2">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-cyan-500/10 text-cyan-400 border border-cyan-500/25">
+                          Non-Dinosaurian Outgroup
+                        </span>
+                      </div>
+                      <p className="text-slate-300 text-xs leading-relaxed">
+                        Crocodilians (Crocodiles, Alligators & Gharials) form the extant sister lineage of Archosauria.
+                      </p>
+                    </div>
                   </div>
                 ) : ['Sauropod', 'Sauropodomorph', 'Ornithischian'].includes(species.clade) ? (
-                  <div className="space-y-1">
-                    <p className="text-slate-200">
-                      <strong className="text-amber-400 font-mono font-bold">Surviving Dinosaur Lineage: </strong>
-                      Modern Birds (<em className="font-mono">Aves</em>) are the only surviving clade of Dinosauria.
-                    </p>
-                    <p className="text-slate-400 text-[11px]">
-                      <strong className="text-slate-300 font-mono font-bold">Closest Living Non-Dinosaurian Outgroup: </strong>
-                      Crocodilians represent the closest extant non-dinosaurian archosaurs.
-                    </p>
+                  <div className="space-y-2">
+                    <div className="p-3 rounded-lg bg-slate-900/90 border border-white/[0.06] space-y-1.5">
+                      <div className="flex items-center gap-2">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/25">
+                          Surviving Dinosaur Lineage
+                        </span>
+                      </div>
+                      <p className="text-slate-200 text-xs leading-relaxed">
+                        Modern Birds (<em className="font-mono text-amber-200/90 not-italic">Aves</em>) are the only surviving clade of Dinosauria.
+                      </p>
+                    </div>
+                    <div className="p-3 rounded-lg bg-slate-900/90 border border-white/[0.06] space-y-1.5">
+                      <div className="flex items-center gap-2">
+                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-cyan-500/10 text-cyan-400 border border-cyan-500/25">
+                          Non-Dinosaurian Outgroup
+                        </span>
+                      </div>
+                      <p className="text-slate-300 text-xs leading-relaxed">
+                        Crocodilians represent the closest extant non-dinosaurian archosaurs.
+                      </p>
+                    </div>
                   </div>
                 ) : (
                   (() => {
@@ -411,25 +435,39 @@ export default function SpeciesDetail() {
 
                     if (!groupsText && !rationaleText) {
                       return (
-                        <p className="text-slate-400 text-xs italic">
-                          Extinct prehistoric lineage without immediate extant crown descendants.
-                        </p>
+                        <div className="p-3 rounded-lg bg-slate-900/90 border border-white/[0.06]">
+                          <p className="text-slate-400 text-xs italic">
+                            Extinct prehistoric lineage without immediate extant crown descendants.
+                          </p>
+                        </div>
                       );
                     }
 
                     return (
-                      <div className="space-y-1">
+                      <div className="space-y-2">
                         {groupsText && (
-                          <p className="text-slate-200">
-                            <strong className="text-amber-400 font-mono font-bold">Closest Extant Relatives: </strong>
-                            {groupsText}
-                          </p>
+                          <div className="p-3 rounded-lg bg-slate-900/90 border border-white/[0.06] space-y-1.5">
+                            <div className="flex items-center gap-2">
+                              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/25">
+                                Closest Extant Relatives
+                              </span>
+                            </div>
+                            <p className="text-slate-200 text-xs font-medium leading-relaxed">
+                              {groupsText}
+                            </p>
+                          </div>
                         )}
                         {rationaleText && (
-                          <p className="text-slate-400 text-[11px]">
-                            <strong className="text-slate-300 font-mono font-bold">Phylogenetic Placement: </strong>
-                            {rationaleText}
-                          </p>
+                          <div className="p-3 rounded-lg bg-slate-900/90 border border-white/[0.06] space-y-1.5">
+                            <div className="flex items-center gap-2">
+                              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-cyan-500/10 text-cyan-400 border border-cyan-500/25">
+                                Phylogenetic Placement
+                              </span>
+                            </div>
+                            <p className="text-slate-300 text-xs leading-relaxed font-normal">
+                              {rationaleText}
+                            </p>
+                          </div>
                         )}
                       </div>
                     );

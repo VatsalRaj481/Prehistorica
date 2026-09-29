@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform, AnimatePresence, animate } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 
 export interface SlingButtonProps {
   children?: React.ReactNode;
@@ -20,19 +20,22 @@ export default function SlingButton({
   tooltipText,
   badgeContent,
   dragElastic = 0.45,
-  stiffness = 380,
+  stiffness = 320,
   damping = 10, // Underdamped for authentic harmonic bounce & recoil oscillations
   ariaLabel = 'Interactive Sling Button',
 }: SlingButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [isSettling, setIsSettling] = useState(false);
-  const isLaunchingRef = useRef(false);
+
+  // Synchronization refs to prevent synthetic DOM click events from firing during or right after drag release
+  const hasDraggedRef = useRef(false);
+  const isSettlingRef = useRef(false);
+  const bounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Motion values tracking drag offset from origin
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const scale = useMotionValue(1);
 
   // Smooth springs for tether / sling visuals with harmonic bounce
   const springX = useSpring(x, { stiffness, damping, mass: 0.75 });
@@ -49,58 +52,10 @@ export default function SlingButton({
     return Math.atan2(latestY, latestX) * (180 / Math.PI) * 0.18;
   });
 
-  /**
-   * Automated tactile physical sequence:
-   * 1. PUSH: Button presses down / compresses.
-   * 2. DRAG: Button pulls back into the slingshot, tensioning the cord and glowing ring.
-   * 3. BOUNCE: Released! Snaps forward, overshoots past (0,0), and oscillates back to its original position.
-   * 4. OPEN: Only once fully settled at its original position does the docent window open.
-   */
-  const triggerSlingshotLaunch = async () => {
-    if (isLaunchingRef.current) return;
-    isLaunchingRef.current = true;
-    setIsSettling(false);
-
-    try {
-      // Step 1: PUSH (compress button into page)
-      await animate(scale, 0.82, { duration: 0.12, ease: 'easeOut' });
-
-      // Step 2: DRAG (draw back along the diagonal slingshot vector)
-      await Promise.all([
-        animate(x, -48, { duration: 0.22, ease: [0.16, 1, 0.3, 1] }),
-        animate(y, -48, { duration: 0.22, ease: [0.16, 1, 0.3, 1] }),
-        animate(scale, 0.92, { duration: 0.22, ease: 'easeOut' }),
-      ]);
-
-      // Brief tension hold at peak draw
-      await new Promise((resolve) => setTimeout(resolve, 50));
-
-      // Step 3: BOUNCE TO ORIGINAL POSITION (slingshot release & harmonic oscillation)
-      setIsSettling(true);
-      // Snapping x and y to 0 causes springX and springY to overshoot past 0 and oscillate naturally
-      x.set(0);
-      y.set(0);
-
-      await Promise.all([
-        animate(scale, [0.92, 1.18, 0.96, 1], { duration: 0.5, ease: 'easeOut' }),
-        new Promise((resolve) => setTimeout(resolve, 520)),
-      ]);
-
-      setIsSettling(false);
-
-      // Step 4: OPEN DOCENT WINDOW (now that button has bounced and fully settled at original position)
-      if (onClick) {
-        onClick();
-      }
-    } finally {
-      // Re-arm launcher after slight pause once modal handles state
-      setTimeout(() => {
-        isLaunchingRef.current = false;
-      }, 400);
-    }
-  };
-
   const handleDragStart = () => {
+    if (bounceTimerRef.current) clearTimeout(bounceTimerRef.current);
+    hasDraggedRef.current = true;
+    isSettlingRef.current = false;
     setIsDragging(true);
     setIsSettling(false);
   };
@@ -109,24 +64,42 @@ export default function SlingButton({
     setIsDragging(false);
     const pullDist = Math.hypot(info.offset.x, info.offset.y);
 
-    // If dragged manually with conviction (> 15px), let it spring back, bounce, and then trigger docent
-    if (pullDist > 15) {
-      if (isLaunchingRef.current) return;
-      isLaunchingRef.current = true;
+    // If dragged with conviction (> 12px), let it spring back, bounce, and then open docent
+    if (pullDist > 12) {
+      hasDraggedRef.current = true;
+      isSettlingRef.current = true;
       setIsSettling(true);
 
-      // Framer Motion's dragSnapToOrigin will spring back the button with bounce
-      // We wait for the spring bounce to fully oscillate and settle at (0,0) before opening
-      window.setTimeout(() => {
+      // Framer Motion's dragSnapToOrigin will spring back the button with real physics (stiffness 320, damping 10).
+      // The button recoils back through (0,0), overshoots to the opposite side, and oscillates back to its initial position.
+      // We open the AI docent chat window only AFTER it has bounced and settled completely onto its initial position (~500ms):
+      bounceTimerRef.current = setTimeout(() => {
         setIsSettling(false);
-        isLaunchingRef.current = false;
+        isSettlingRef.current = false;
+        hasDraggedRef.current = false;
         if (onClick) {
           onClick();
         }
-      }, 520);
+      }, 500);
     } else {
-      // If clicked/tapped or released without dragging, run the complete push-drag-bounce sequence
-      triggerSlingshotLaunch();
+      // Very slight twitch / accidental micro-move (< 12px), reset drag ref quickly so click can fire if tapped
+      setTimeout(() => {
+        hasDraggedRef.current = false;
+      }, 120);
+    }
+  };
+
+  const handleClick = (e: React.MouseEvent) => {
+    // If the button was dragged or is currently in its bounce-and-settle sequence, suppress the synthetic click
+    if (hasDraggedRef.current || isSettlingRef.current || isSettling) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+
+    // Direct click/tap without dragging: open directly
+    if (onClick) {
+      onClick();
     }
   };
 
@@ -184,33 +157,27 @@ export default function SlingButton({
       <motion.button
         type="button"
         aria-label={ariaLabel}
-        drag
+        drag={!isSettling}
         dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
         dragElastic={dragElastic}
         dragSnapToOrigin
         dragTransition={{
-          power: 0.2,
+          power: 0.15,
           bounceStiffness: stiffness,
           bounceDamping: damping,
         }}
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
-        onClick={() => {
-          // Trigger the tactile push, drag, and bounce sequence before opening
-          if (!isDragging && !isSettling && !isLaunchingRef.current) {
-            triggerSlingshotLaunch();
-          }
-        }}
+        onClick={handleClick}
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
         style={{
           x: springX,
           y: springY,
-          scale,
           rotate,
         }}
-        whileHover={{ scale: (isDragging || isSettling || isLaunchingRef.current) ? 1 : 1.08 }}
-        whileTap={{ scale: 0.92 }}
+        whileHover={{ scale: (isDragging || isSettling) ? 1 : 1.08 }}
+        whileTap={{ scale: 0.93 }}
         className={`relative cursor-grab active:cursor-grabbing rounded-full flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 transition-shadow ${className}`}
       >
         {/* Child avatar / icon */}
