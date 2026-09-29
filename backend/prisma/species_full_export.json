@@ -8295,7 +8295,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"USA\",\"fossilFormation\":\"Pierre Shale\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Testudines\",\"family\":\"Protostegidae\",\"genus\":\"Archelon\",\"species\":\"Archelon ischyros\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/537-Archelon.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/0/0b/Archelon_ischyros_reconstruction.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/0/01/Archelon_BW.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Archelon_BW.jpg\"}]",
     "discoveryHistory": "• Discovered in the 19th or 20th century.\n• Holotype found in Cretaceous fossil beds.\n• Named Archelon by paleontologists after careful study.\n• Subsequent discoveries expanded our understanding of its anatomy.",
     "interestingFacts": "[\"Discovered in the Pierre Shale of South Dakota by George R. Wieland in 1895, measuring over 4.6 meters from flipper to flipper and weighing over 2.2 metric tons.\",\"The largest sea turtle ever documented, possessing a reduced carapace composed of open framework struts covered in thick, leathery hide rather than solid bone.\",\"Its massive, toothless jaws ended in a hooked, scissor-like keratin beak powered by immense jaw muscles to crush giant ammonites and jellyfish.\",\"A famous specimen exhibited at the Yale Peabody Museum displays an amputated right rear flipper, healed from an attack by a giant mosasaur or shark.\"]",
     "sizeNotes": "Leathery shell. Note: Holotype YPM 3009 measures 4.5 m from snout to tail, flipper span ~4.9 m, carapace height 1.0 m, mass calculated at ~2,200 kg.",
@@ -8307,7 +8307,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Archelon ischyros description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Archelon\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:08.577Z",
-    "updatedAt": "2026-09-28T14:19:04.596Z"
+    "updatedAt": "2026-09-29T16:45:22.162Z"
   },
   {
     "id": 538,
