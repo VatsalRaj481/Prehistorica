@@ -255,7 +255,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"United States\",\"fossilFormation\":\"Red Beds of Texas\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Synapsida\",\"order\":\"Sphenacodontia\",\"family\":\"Sphenacodontidae\",\"genus\":\"Dimetrodon\",\"species\":\"Dimetrodon grandis\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c6/Dimetrodon_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Dimetrodon_TD.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/ef/Dimetrodon.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/e/ef/Dimetrodon.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/9-Dimetrodon.png\",\"type\":\"fossil_specimen\",\"credit\":\"Life reconstruction illustration (Historical plate)\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/b/b6/Dimetrodon_grandis_in_%22high_walk%22_pose.png\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/c/c6/Dimetrodon_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Dimetrodon_TD.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/ef/Dimetrodon.jpg\",\"type\":\"photo\",\"credit\":\"Fossil skeletal specimen photo\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/e/ef/Dimetrodon.jpg\"}]",
     "discoveryHistory": "• Named by Edward Drinker Cope in 1878 during the 'Bone Wars'.\n• Abundant fossils have been excavated from the Red Beds of Texas.\n• It is one of the most thoroughly studied of all early synapsids.",
     "interestingFacts": "[\"Though often confused with dinosaurs, it lived millions of years earlier and is closer to mammals.\",\"Its iconic sail was likely used for thermoregulation or mating displays.\",\"It had two distinct types of teeth in its jaws, a trait common to later mammals.\",\"Histological thin-sections of neural spines demonstrate high vascularity and periosteal canals devoid of tendon insertion scars, supporting a vascularized thermal membrane rather than an adipose fat hump.\",\"Exhibited true ziphodont dentition with microscopic enamel carinae serrations on maxillary tusks, marking one of the earliest occurrences of ziphodont carnivory in terrestrial vertebrate evolution (Brink & Reisz 2014).\"]",
     "sizeNotes": "Ranged from 1.7 to 4.6 meters long across various species; D. grandis was one of the largest.",
@@ -267,7 +267,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Dimetrodon grandis description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Dimetrodon%20grandis\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.384Z",
-    "updatedAt": "2026-09-29T15:57:14.834Z"
+    "updatedAt": "2026-09-29T16:01:30.069Z"
   },
   {
     "id": 10,
@@ -945,7 +945,7 @@
     "geographicRange": "{\"region\":\"North America\",\"country\":\"United States\",\"fossilFormation\":\"Bridger Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Mammalia\",\"order\":\"Dinocerata\",\"family\":\"Uintatheriidae\",\"genus\":\"Uintatherium\",\"species\":\"Uintatherium anceps\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/0/0f/Uintatherium_DB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Uintatherium_DB.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/575-Uintatherium.jpg\",\"type\":\"habitat_scene\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/b/be/Uintatherium_pair.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/a/ad/Dinoceras_mirabile_Marsh_MNHN.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original\",\"type\":\"fossil_specimen\",\"credit\":\"Jebulon (Public domain) (Historical plate)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3ADinoceras%20mirabile%20Marsh%20MNHN.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/0/0f/Uintatherium_DB.jpg\",\"type\":\"art\",\"credit\":\"Dmitry Bogdanov (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Uintatherium_DB.jpg\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/575-Uintatherium.jpg\",\"type\":\"habitat_scene\",\"credit\":\"Life reconstruction illustration\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/b/be/Uintatherium_pair.jpg\"}]",
     "discoveryHistory": "Discovered during the bone wars and described by Leidy, Marsh, and Cope.",
     "interestingFacts": "[\"Discovered in the Middle Eocene Bridger Formation of Wyoming and Utah, Uintatherium was a colossal, rhinoceros-sized dinoceratan herbivore.\",\"Its bizarre skull featured three distinct pairs of knobby, skin-covered bony ossicones (horns) on the snout, forehead, and cheeks, alongside a deep concave cranial bowl.\",\"Adult males possessed enormous, saber-like upper canine tusks that were protected when the mouth was closed by deep, downturned bony flanges on the lower jaw.\",\"Despite its 4-meter body length and 2-metric-ton bulk, its brain cavity was remarkably small, smaller than that of a modern domestic dog.\"]",
     "sizeNotes": "Comparable in size to a modern white rhinoceros.",
@@ -957,7 +957,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Uintatherium anceps description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Uintatherium%20anceps\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:10.383Z",
-    "updatedAt": "2026-09-29T08:12:56.602Z"
+    "updatedAt": "2026-09-29T16:01:33.229Z"
   },
   {
     "id": 576,

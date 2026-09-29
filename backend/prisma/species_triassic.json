@@ -15,7 +15,7 @@
     "geographicRange": "{\"region\": \"North America\", \"country\": \"United States\", \"fossilFormation\": \"Chinle Formation\", \"coordinates\": [35.0, -109.0]}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Saurischia\",\"family\":\"Coeluridae\",\"genus\":\"Coelophysis\",\"species\":\"Coelophysis bauri\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/6/6a/Coelophysis_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Coelophysis_TD.png\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/14-perfect-art.png\",\"type\":\"fossil_specimen\",\"credit\":\"TotalDino (CC BY-SA 4.0) (Historical plate)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Coelophysis_TD.png\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/6/6a/Coelophysis_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Coelophysis_TD.png\"}]",
     "discoveryHistory": "Discovered by E.D. Cope in 1887 in New Mexico.",
     "interestingFacts": "[\"Early agile theropod.\",\"Mass bonebeds at Ghost Ranch.\",\"Hollow thin-walled bones.\",\"Extensive postcranial skeletal pneumaticity and hollow limb bones indicate the presence of an advanced, avian-style cervical air sac respiratory system.\",\"The skull featured an intramandibular joint in the lower jaw that permitted slight lateral flexion, enabling it to swallow small prey items whole.\"]",
     "sizeNotes": "Adult length ~3.0m, height ~0.9m, estimated weight ~25kg.",
@@ -27,7 +27,7 @@
     "sources": "[{\"citation\": \"Cope, E.D. (1887). Trans. Amer. Phil. Soc.\", \"url\": \"https://doi.org/10.2307/1005527\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.606Z",
-    "updatedAt": "2026-09-29T15:05:58.676Z"
+    "updatedAt": "2026-09-29T16:01:30.173Z"
   },
   {
     "id": 15,
@@ -45,7 +45,7 @@
     "geographicRange": "{\"region\":\"Europe\",\"country\":\"Germany\",\"fossilFormation\":\"Trossingen Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Saurischia\",\"family\":\"Plateosauridae\",\"genus\":\"Plateosaurus\",\"species\":\"Plateosaurus trossingensis\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/e0/Plateosaurus_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Plateosaurus_TD.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/3/3d/1837_-_Plateosaurus.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original\",\"type\":\"fossil_specimen\",\"credit\":\"Atlantis536 (CC0) (Historical plate)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3A1837%20-%20Plateosaurus.png\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/e/e0/Plateosaurus_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Plateosaurus_TD.png\"}]",
     "discoveryHistory": "Discovered in 1834 near Nuremberg, Germany, by Johann Engelhardt. Described by Hermann von Meyer in 1837.",
     "interestingFacts": "[\"Exhibited dramatic developmental plasticity, with adult lengths varying from 4.8 to 10 meters depending on environmental resource availability (Sander & Klein 2005).\",\"Forelimbs were anatomically incapable of pronation, demonstrating that adults were obligate bipeds despite their heavy, massive builds (Bonnan & Senter 2007).\",\"Bore an enlarged, sickle-shaped raptorial first ungual (thumb claw) utilized for defense and hooking high conifer branches into browsing reach.\",\"High-density mono-specific bonebeds in Trossingen and Frick represent catastrophic mud traps where migrating herds became mired in alluvial mudflows.\",\"Possessed leaf-shaped, coarsely serrated teeth that lacked grinding wear facets, relying on prolonged gastrointestinal fermentation to digest tough conifer needles.\"]",
     "sizeNotes": "Highly variable adult sizes, ranging from 4.8 to 10 meters in length and 600 to 4,000 kg.",
@@ -57,7 +57,7 @@
     "sources": "[{\"citation\":\"von Meyer, H. (1837). Original description of Plateosaurus trossingensis.\",\"url\":\"https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=38670\"},{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Plateosaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Plateosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T09:22:37.652Z",
-    "updatedAt": "2026-09-29T15:05:58.756Z"
+    "updatedAt": "2026-09-29T16:01:30.218Z"
   },
   {
     "id": 16,
@@ -315,7 +315,7 @@
     "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Archosauriform\",\"family\":\"Silesauridae\",\"genus\":\"Nyasasaurus\",\"species\":\"Nyasasaurus parringtoni\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/4/45/Nyasasaurus_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Nyasasaurus_TD.png\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/61-Nyasasaurus.jpg\",\"type\":\"fossil_specimen\",\"credit\":\"Life reconstruction illustration (Historical plate)\",\"sourceUrl\":\"https://upload.wikimedia.org/wikipedia/commons/1/15/Nyasasaurus.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/4/45/Nyasasaurus_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Nyasasaurus_TD.png\"}]",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"Unearthed from the Middle Triassic Manda Beds of Tanzania, Nyasasaurus dates to ~243 Ma, making it either the earliest known dinosaur or their closest sister taxon.\",\"The humerus possesses an elongated deltopectoral crest that extends down over 30% of the bone length, a diagnostic synapomorphy of true Dinosauria.\",\"Cross-sectional bone histology displays dense vascular networks and disorganized woven fibers, indicating elevated metabolic and growth rates unmatched by other pseudosuchians.\",\"Preserves three sacral vertebrae with ancestral dinosaurian articular facets, bridging the morphological gap between dinosauromorphs and basal saurischians.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
@@ -327,7 +327,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Nyasasaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Nyasasaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:19.497Z",
-    "updatedAt": "2026-09-29T15:05:58.582Z"
+    "updatedAt": "2026-09-29T16:01:30.769Z"
   },
   {
     "id": 62,
@@ -735,7 +735,7 @@
     "geographicRange": "{\"region\":\"Asia\",\"country\":\"Various\",\"fossilFormation\":\"Triassic Beds\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Silesaurid\",\"family\":\"Silesauridae\",\"genus\":\"Silesaurus\",\"species\":\"Silesaurus opolensis\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/d/d3/Silesaurus_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Silesaurus_TD.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/d/d3/Silesaurus_TD.png\",\"type\":\"fossil_specimen\",\"credit\":\"TotalDino (CC BY 4.0) (Historical plate)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Silesaurus_TD.png\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/d/d3/Silesaurus_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Silesaurus_TD.png\"}]",
     "discoveryHistory": "• Discovered in the Triassic beds.\n• First described by renowned paleontologists.\n• Holotype specimen includes cranial and postcranial elements.\n• Subject to various taxonomic revisions over time.",
     "interestingFacts": "[\"Discovered in Krasiejów, Poland, where over 1,000 bones belonging to dozens of articulated individuals have been recovered.\",\"As a member of Silesauridae, it represents the immediate sister lineage to true dinosaurs, sharing an open acetabulum and ascending astragalar process.\",\"The tip of its lower jaw lacked teeth and ended in a conical rhamphotheca (keratin beak), followed by triangular teeth adapted for insectivory or herbivory.\",\"Preserved fossil coprolites (bromalites) associated with Silesaurus contain undigested beetle elytra, confirming an insectivorous foraging diet.\"]",
     "sizeNotes": "Size estimated from fossil remains.",
@@ -747,7 +747,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Silesaurus spp. description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Silesaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:17:23.245Z",
-    "updatedAt": "2026-09-29T15:05:58.796Z"
+    "updatedAt": "2026-09-29T16:01:30.814Z"
   },
   {
     "id": 81,
@@ -2865,7 +2865,7 @@
     "geographicRange": "{\"region\": \"South America\", \"country\": \"Argentina\", \"fossilFormation\": \"Ischigualasto Formation\", \"coordinates\": [-30.1, -67.8]}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Saurischia\",\"family\":\"Herrerasauridae\",\"genus\":\"Herrerasaurus\",\"species\":\"Herrerasaurus ischigualastensis\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/9/95/Herrerasaurus_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Herrerasaurus_TD.png\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/1634-perfect-art.jpg\",\"type\":\"fossil_specimen\",\"credit\":\"Fred Wierum (CC BY-SA 4.0) (Historical plate)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Herrerasaurus_reconstruction.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/9/95/Herrerasaurus_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Herrerasaurus_TD.png\"}]",
     "discoveryHistory": "Discovered by Victorino Herrera in 1959.",
     "interestingFacts": "[\"Herrerasaurus ischigualastensis (Herrerasaurus ischigualastensis) is an important Theropod taxon: Discovered by Victorino Herrera in 1959.\",\"Possessed distinctive anatomical adaptations for its era, including earliest apex predator dinosaur.\",\"Its craniodental architecture and carnivore diet were characterized by flexible lower jaw joint.\",\"Fossil specimens provide critical biostratigraphic and phylogenetic insights, including evidence of five-digit hands.\"]",
     "sizeNotes": "Adult length ~6.0m, height ~1.5m, estimated weight ~350kg.",
@@ -2877,7 +2877,7 @@
     "sources": "[{\"citation\": \"Reig, O.A. (1963). Ameghiniana.\", \"url\": \"https://www.ameghiniana.org.ar\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T13:59:04.872Z",
-    "updatedAt": "2026-09-29T15:05:58.716Z"
+    "updatedAt": "2026-09-29T16:01:33.409Z"
   },
   {
     "id": 1635,
