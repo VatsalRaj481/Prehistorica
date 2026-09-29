@@ -1605,7 +1605,7 @@
     "geographicRange": "{\"continent\":\"North America, Europe\",\"region\":\"Illinois Basin\",\"country\":\"United States, Russia\",\"fossilFormation\":\"Carbondale Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Chondrichthyes\",\"order\":\"Eugeneodontiformes\",\"family\":\"Edestidae\",\"genus\":\"Edestus\",\"species\":\"Edestus heinrichi\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/6/62/Edestus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original\",\"type\":\"art\",\"credit\":\"Apokryltaros at English Wikipedia (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3AEdestus.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/8/89/Edestus_recon.png\",\"type\":\"art\",\"credit\":\"Entelognathus (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Edestus_recon.png\"}]",
     "discoveryHistory": "• First described by Joseph Leidy in 1855 from bracketed tooth whorls found in coal mines.\n• 2019 jaw mechanics study confirmed vertical slashing jaw action.",
     "interestingFacts": "[\"Did not shed worn teeth; new teeth grew in from the back, pushing old teeth forward into protruding curved brackets.\",\"Jaws operated like a pair of hedge trimmers, thrashing up and down to slash prey.\",\"Belonged to Eugeneodontida, closely related to modern chimaeras rather than true sharks.\",\"Skeletal and biomechanical reconstructions indicate nicknamed the 'scissor-toothed shark'; reached lengths of up to 6 meters, providing key insights into its growth dynamics.\"]",
     "sizeNotes": "Nicknamed the 'Scissor-toothed Shark'; reached lengths of up to 6 meters.",
@@ -1617,7 +1617,7 @@
     "sources": "[{\"citation\":\"Itano, W. M. (2019). Edestus, the scissor-toothed shark: jaw mechanics and predation. Mineralico.\",\"url\":\"https://doi.org/10.1007/s12542-019-00448-9\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.549Z",
-    "updatedAt": "2026-09-28T14:17:24.552Z"
+    "updatedAt": "2026-09-29T16:53:30.324Z"
   },
   {
     "id": 3187,

@@ -7031,9 +7031,9 @@
     "diet": "herbivore",
     "dietDetails": "Browser",
     "habitat": "terrestrial",
-    "clade": "Other",
+    "clade": "Ornithischian",
     "geographicRange": "{\"region\":\"North America\",\"country\":\"Canada\",\"fossilFormation\":\"Dinosaur Park\"}",
-    "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Other\",\"family\":\"Lambeosauridae\",\"genus\":\"Corythosaurus\",\"species\":\"Corythosaurus casuarius\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
+    "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"order\":\"Ornithischia\",\"family\":\"Lambeosauridae\",\"genus\":\"Corythosaurus\",\"species\":\"Corythosaurus casuarius\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
     "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/a/a9/Corythosaurus_TD.png\",\"type\":\"art\",\"credit\":\"TotalDino (CC BY 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Corythosaurus_TD.png\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/a/a6/Corythosaurus_casuarius_head.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original\",\"type\":\"scientific_figure\",\"credit\":\"Pavel Riha = user Pavel.Riha.CB (e-mail) (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3ACorythosaurus%20casuarius%20head.png\"},{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-media/482-Corythosaurus.jpg\",\"type\":\"museum_display\",\"credit\":\"Barnum Brown (Public domain)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Corythosaurus%20restoration%20from%201916.jpg\"}]",
     "discoveryHistory": "• Discovered in 1912 by Barnum Brown in Alberta, Canada.\n• Named Corythosaurus by Brown in 1914.\n• Early specimens featured extensive skin impressions.",
@@ -7047,7 +7047,7 @@
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Corythosaurus casuarius description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Corythosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:06.126Z",
-    "updatedAt": "2026-09-29T16:01:32.301Z"
+    "updatedAt": "2026-09-29T16:53:30.214Z"
   },
   {
     "id": 483,
@@ -14355,7 +14355,7 @@
     "geographicRange": "{\"continent\":\"North America, Europe\",\"region\":\"Illinois Basin\",\"country\":\"United States, Russia\",\"fossilFormation\":\"Carbondale Formation\"}",
     "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Chondrichthyes\",\"order\":\"Eugeneodontiformes\",\"family\":\"Edestidae\",\"genus\":\"Edestus\",\"species\":\"Edestus heinrichi\",\"source\":\"Paleobiology Database (PBDB) + GBIF\"}",
     "taxonomicStatus": "valid",
-    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/6/62/Edestus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original\",\"type\":\"art\",\"credit\":\"Apokryltaros at English Wikipedia (CC BY-SA 3.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File%3AEdestus.jpg\"}]",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/8/89/Edestus_recon.png\",\"type\":\"art\",\"credit\":\"Entelognathus (CC BY-SA 4.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Edestus_recon.png\"}]",
     "discoveryHistory": "• First described by Joseph Leidy in 1855 from bracketed tooth whorls found in coal mines.\n• 2019 jaw mechanics study confirmed vertical slashing jaw action.",
     "interestingFacts": "[\"Did not shed worn teeth; new teeth grew in from the back, pushing old teeth forward into protruding curved brackets.\",\"Jaws operated like a pair of hedge trimmers, thrashing up and down to slash prey.\",\"Belonged to Eugeneodontida, closely related to modern chimaeras rather than true sharks.\",\"Skeletal and biomechanical reconstructions indicate nicknamed the 'scissor-toothed shark'; reached lengths of up to 6 meters, providing key insights into its growth dynamics.\"]",
     "sizeNotes": "Nicknamed the 'Scissor-toothed Shark'; reached lengths of up to 6 meters.",
@@ -14367,7 +14367,7 @@
     "sources": "[{\"citation\":\"Itano, W. M. (2019). Edestus, the scissor-toothed shark: jaw mechanics and predation. Mineralico.\",\"url\":\"https://doi.org/10.1007/s12542-019-00448-9\"}]",
     "placeholder": false,
     "createdAt": "2026-08-26T14:04:11.549Z",
-    "updatedAt": "2026-09-28T14:17:24.552Z"
+    "updatedAt": "2026-09-29T16:53:30.324Z"
   },
   {
     "id": 3173,
