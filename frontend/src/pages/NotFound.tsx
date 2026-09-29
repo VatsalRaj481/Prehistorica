@@ -13,7 +13,6 @@ import {
 } from 'lucide-react';
 
 import DecryptedText from '../components/reactbits/DecryptedText.js';
-import ShinyText from '../components/reactbits/ShinyText.js';
 import Particles from '../components/reactbits/Particles.js';
 import Magnet from '../components/reactbits/Magnet.js';
 import ClickSpark from '../components/reactbits/ClickSpark.js';
@@ -81,26 +80,6 @@ export default function NotFound() {
       {/* ── Main Museum Stage Container ── */}
       <div className="relative z-10 w-full max-w-4xl mx-auto px-4 text-center space-y-8">
         
-        {/* Curatorial Classification Header Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: shouldReduceMotion ? 0 : -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-amber-500/30 text-xs font-mono backdrop-blur-md shadow-lg"
-        >
-          <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-          <span className="text-slate-400 uppercase tracking-widest text-[11px] font-bold">
-            Catalog Protocol
-          </span>
-          <span className="text-white/20">&bull;</span>
-          <ShinyText
-            text="ERROR 404"
-            speed={3}
-            color="#D97706"
-            shineColor="#FDE68A"
-            className="font-bold tracking-wider text-[11px]"
-          />
-        </motion.div>
 
         {/* Hero 404 Monolith Graphic & Decrypted Diagnostic Title */}
         <div className="space-y-3">
