@@ -18,6 +18,7 @@ import Particles from '../components/reactbits/Particles.js';
 import Magnet from '../components/reactbits/Magnet.js';
 import ClickSpark from '../components/reactbits/ClickSpark.js';
 import SpotlightCard from '../components/SpotlightCard.js';
+import { TOTAL_CATALOGED_SPECIMENS } from '../services/api.js';
 
 interface CuratedSpecimenLink {
   id: number;
@@ -89,11 +90,11 @@ export default function NotFound() {
         >
           <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
           <span className="text-slate-400 uppercase tracking-widest text-[11px] font-bold">
-            Catalog Error Protocol
+            Catalog Protocol
           </span>
           <span className="text-white/20">&bull;</span>
           <ShinyText
-            text="STATUS 404: STRATIGRAPHIC DISCONTINUITY"
+            text="ERROR 404"
             speed={3}
             color="#D97706"
             shineColor="#FDE68A"
@@ -137,7 +138,7 @@ export default function NotFound() {
           </div>
 
           <p className="max-w-xl mx-auto text-xs sm:text-sm text-slate-400 font-sans leading-relaxed pt-2">
-            The requested exhibition placard, gallery corridor, or taxonomic specimen record cannot be located in the museum pavilion. The geological stratum may have eroded over deep time, or the URL address contains an uncataloged index.
+            The requested exhibition placard, corridor, or specimen record cannot be located—the geological stratum may have eroded over deep time, or the URL refers to an uncataloged horizon.
           </p>
         </div>
 
@@ -159,7 +160,7 @@ export default function NotFound() {
               type="text"
               value={quickQuery}
               onChange={(e) => setQuickQuery(e.target.value)}
-              placeholder="Search 601 cataloged species (e.g. T-Rex, Uintatherium, Spinosaurus)..."
+              placeholder={`Search ${TOTAL_CATALOGED_SPECIMENS} cataloged species (e.g. T-Rex, Spinosaurus, Dimetrodon)...`}
               className="w-full bg-transparent px-3 py-2 text-xs sm:text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none font-sans"
             />
             <button
@@ -189,7 +190,7 @@ export default function NotFound() {
                   Grand Pavilion
                 </h3>
                 <p className="text-[11px] text-slate-400 font-sans leading-relaxed">
-                  Return to the main atrium, hero galleries, and introductory docent exhibits.
+                  Return to the central exhibition rotunda, introductory orientation stage, and curated docent halls.
                 </p>
               </div>
               <div className="pt-3 flex items-center gap-1 text-[10px] font-mono font-bold text-amber-400/80 uppercase tracking-wider">
@@ -210,7 +211,7 @@ export default function NotFound() {
                   Specimen Archive
                 </h3>
                 <p className="text-[11px] text-slate-400 font-sans leading-relaxed">
-                  Filter all 601 cataloged prehistoric species by period, clade, diet, and formation.
+                  Filter all {TOTAL_CATALOGED_SPECIMENS} cataloged prehistoric species by period, clade, diet, and formation.
                 </p>
               </div>
               <div className="pt-3 flex items-center gap-1 text-[10px] font-mono font-bold text-amber-400/80 uppercase tracking-wider">
@@ -323,10 +324,10 @@ export default function NotFound() {
           </Magnet>
         </motion.div>
 
-        {/* ── Curatorial Footer Note ── */}
-        <div className="pt-6 text-[11px] font-mono text-slate-600 max-w-lg mx-auto italic border-t border-white/[0.04]">
+        {/* ── Curatorial Footer Note (WCAG AA Compliant Contrast) ── */}
+        <div className="pt-6 text-[11px] font-mono text-slate-300 max-w-lg mx-auto italic border-t border-white/[0.04]">
           &ldquo;The crust of the earth is a vast museum; but the natural collections have been made only at intervals exceedingly remote.&rdquo;
-          <div className="not-italic text-[10px] text-slate-500 mt-1 uppercase tracking-widest">
+          <div className="not-italic text-[10px] text-slate-400 mt-1 uppercase tracking-widest">
             &mdash; Charles Darwin, Origin of Species (1859)
           </div>
         </div>
