@@ -166,20 +166,6 @@ export default function SlingButton({
           </linearGradient>
         </defs>
 
-        {/* Origin Cradle Plinth & Target Reticle */}
-        <g opacity="0.6">
-          <circle
-            cx="150"
-            cy="150"
-            r="26"
-            className="fill-slate-950/40 stroke-amber-500/30"
-            strokeWidth="1.5"
-            strokeDasharray="3 3"
-          />
-          <line x1="145" y1="150" x2="155" y2="150" className="stroke-amber-400/40" strokeWidth="1" />
-          <line x1="150" y1="145" x2="150" y2="155" className="stroke-amber-400/40" strokeWidth="1" />
-        </g>
-
         {/* Single Kinetic Elastic Tether Band */}
         <motion.line
           x1={150}
@@ -195,8 +181,18 @@ export default function SlingButton({
           }}
         />
 
-        {/* Central Origin Anchor Rivet */}
-        <circle cx="150" cy="150" r="3.5" className="fill-amber-400 stroke-slate-950" strokeWidth="1" />
+        {/* Single Glowing Origin Endpoint Anchor Dot */}
+        <motion.circle
+          cx={150}
+          cy={150}
+          r={3.5}
+          className="fill-amber-400 stroke-amber-300"
+          strokeWidth={1}
+          filter="url(#slingGlow)"
+          style={{
+            opacity: bandOpacity,
+          }}
+        />
 
         {/* Kinetic Impact Shockwave (fires when oscillator snaps back to origin) */}
         {impactRipple && (
