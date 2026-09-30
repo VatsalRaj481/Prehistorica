@@ -146,6 +146,32 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
   // Dynamic visual viewport height for mobile keyboards
   const [visualViewportHeight, setVisualViewportHeight] = useState<number | null>(null);
 
+  // Dynamic Mascot Emotion & Mood State
+  const [clickQuote, setClickQuote] = useState<string | null>(null);
+  const [isTapped, setIsTapped] = useState(false);
+
+  const rajyMood = useMemo<'idle' | 'pondering' | 'speaking'>(() => {
+    if (isSpeaking) return 'speaking';
+    if (loading || isStreaming) return 'pondering';
+    return 'idle';
+  }, [isSpeaking, loading, isStreaming]);
+
+  const MASCOT_QUOTES = [
+    "Careful with the cranial horn, explorer! That's Late Cretaceous heritage.",
+    "Pardon my short abelisaurid forearms — high-fives are tricky!",
+    "Standing by! Ask me about bite forces, bone beds, or oceanic terrors.",
+    "Excavated from the Narmada Valley of India, 66 million years young!",
+    "Ready for our next deep-time inquiry? Which exhibit shall we inspect?"
+  ];
+
+  const handleMascotClick = () => {
+    setIsTapped(true);
+    const randomQuote = MASCOT_QUOTES[Math.floor(Math.random() * MASCOT_QUOTES.length)];
+    setClickQuote(randomQuote);
+    setTimeout(() => setIsTapped(false), 300);
+    setTimeout(() => setClickQuote(null), 3800);
+  };
+
   const getRelevanceInfo = (similarity?: number) => {
     if (similarity == null) {
       return { label: 'Related Record', badgeClass: 'bg-slate-800 text-slate-300 border-white/[0.08]' };
@@ -1067,21 +1093,85 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 className="hidden md:flex flex-col w-[170px] md:w-[190px] lg:w-[215px] shrink-0 bg-transparent relative overflow-hidden select-none"
                 aria-label="Rajy Mascot Showcase"
               >
-                {/* Atmospheric Backlight: Warm Gold & Deep Cyan Halo seamlessly diffusing into chat */}
-                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
-                <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-44 h-44 rounded-full bg-cyan-500/5 blur-2xl pointer-events-none" />
+                {/* Atmospheric Backlight: Dynamic Halo shifting with Docent Mood */}
+                <div
+                  className={`absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full blur-3xl pointer-events-none transition-all duration-700 ${
+                    rajyMood === 'speaking'
+                      ? 'bg-amber-400/25 scale-110'
+                      : rajyMood === 'pondering'
+                      ? 'bg-cyan-500/20 scale-105 animate-pulse'
+                      : 'bg-amber-500/10 scale-100'
+                  }`}
+                />
+                <div
+                  className={`absolute bottom-16 left-1/2 -translate-x-1/2 w-44 h-44 rounded-full blur-2xl pointer-events-none transition-all duration-700 ${
+                    rajyMood === 'speaking'
+                      ? 'bg-emerald-500/15'
+                      : rajyMood === 'pondering'
+                      ? 'bg-blue-600/15'
+                      : 'bg-cyan-500/5'
+                  }`}
+                />
 
-                {/* Rajy Mascot Illustration — Centered comfortably in available height */}
+                {/* Speech Bubble Popup on Interactive Mascot Tap */}
+                <AnimatePresence>
+                  {clickQuote && (
+                    <motion.div
+                      initial={shouldReduceMotion ? false : { opacity: 0, y: 8, scale: 0.9 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -4, scale: 0.9 }}
+                      className="absolute top-2 left-2 right-2 z-30 p-2.5 rounded-xl bg-slate-950/95 border border-amber-400/50 text-[10px] font-mono text-amber-200 shadow-[0_10px_25px_rgba(0,0,0,0.85)] backdrop-blur-md leading-relaxed text-center pointer-events-none"
+                    >
+                      <div className="flex items-center justify-center gap-1 text-[9px] text-amber-400 font-bold uppercase tracking-wider mb-1">
+                        <Sparkles className="w-2.5 h-2.5" />
+                        <span>Curator Musings</span>
+                      </div>
+                      &ldquo;{clickQuote}&rdquo;
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Rajy Mascot Illustration — Interactive & Animated */}
                 <div className="relative flex-1 min-h-0 w-full flex items-center justify-center px-3 py-2">
-                  <img
-                    src="/rajy-full.png"
-                    alt="Rajy - Prehistorica AI Docent mascot"
-                    className="w-full h-full max-h-[300px] object-contain drop-shadow-[0_10px_22px_rgba(0,0,0,0.65)]"
-                    draggable={false}
-                  />
+                  <motion.button
+                    type="button"
+                    onClick={handleMascotClick}
+                    title="Click Rajy for curatorial musings!"
+                    aria-label="Interactive Rajy docent mascot"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.95 }}
+                    animate={
+                      shouldReduceMotion
+                        ? false
+                        : isTapped
+                        ? { scale: [1, 1.08, 0.96, 1], y: [0, -6, 0] }
+                        : rajyMood === 'speaking'
+                        ? { y: [0, -3.5, 0, -2, 0], scale: [1, 1.02, 1] }
+                        : rajyMood === 'pondering'
+                        ? { rotate: [-1.2, 1.2, -1.2], y: [0, -2, 0] }
+                        : { y: [0, -2, 0] }
+                    }
+                    transition={
+                      isTapped
+                        ? { duration: 0.3 }
+                        : rajyMood === 'speaking'
+                        ? { repeat: Infinity, duration: 1.1, ease: 'easeInOut' }
+                        : rajyMood === 'pondering'
+                        ? { repeat: Infinity, duration: 2.4, ease: 'easeInOut' }
+                        : { repeat: Infinity, duration: 4.2, ease: 'easeInOut' }
+                    }
+                    className="relative w-full h-full max-h-[300px] flex items-center justify-center cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-amber-400/50 rounded-2xl group"
+                  >
+                    <img
+                      src="/rajy-full.png"
+                      alt="Rajy - Prehistorica AI Docent mascot"
+                      className="w-full h-full max-h-[300px] object-contain drop-shadow-[0_10px_22px_rgba(0,0,0,0.65)] group-hover:drop-shadow-[0_12px_28px_rgba(245,158,11,0.25)] transition-all"
+                      draggable={false}
+                    />
+                  </motion.button>
                 </div>
 
-                {/* Curatorial Museum Nameplate (Lighter, Borderless Integrated Treatment) */}
+                {/* Curatorial Museum Nameplate with Dynamic Mood Status */}
                 <div className="w-full px-3 py-3 shrink-0 z-10 text-center space-y-1 bg-transparent">
                   {/* Subtle Accent Glow Line above name */}
                   <div className="w-10 h-px bg-gradient-to-r from-transparent via-amber-400/40 to-transparent mx-auto mb-1.5" />
@@ -1096,10 +1186,27 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                     Rajasaurus narmadensis
                   </p>
                   <div className="pt-0.5 flex justify-center">
-                    <span className="inline-flex items-center gap-1 text-[9px] font-mono font-bold tracking-widest text-amber-400/80 uppercase">
-                      <Dna className="w-2.5 h-2.5 text-amber-400/75" />
-                      AI DOCENT
-                    </span>
+                    {rajyMood === 'speaking' ? (
+                      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-[9px] font-mono font-bold tracking-wider text-emerald-300 uppercase shadow-xs">
+                        <Volume2 className="w-2.5 h-2.5 text-emerald-400 animate-pulse" />
+                        <span>NARRATING</span>
+                        <span className="flex items-center gap-0.5 ml-0.5">
+                          <span className="w-0.5 h-2 bg-emerald-400 rounded-full animate-bounce [animation-delay:0ms]" />
+                          <span className="w-0.5 h-2.5 bg-emerald-400 rounded-full animate-bounce [animation-delay:150ms]" />
+                          <span className="w-0.5 h-1.5 bg-emerald-400 rounded-full animate-bounce [animation-delay:300ms]" />
+                        </span>
+                      </span>
+                    ) : rajyMood === 'pondering' ? (
+                      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-500/40 text-[9px] font-mono font-bold tracking-wider text-cyan-300 uppercase shadow-xs animate-pulse">
+                        <Sparkles className="w-2.5 h-2.5 text-cyan-400 animate-spin" />
+                        <span>RESEARCHING STRATA</span>
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/10 border border-white/[0.08] text-[9px] font-mono font-bold tracking-widest text-amber-400/80 uppercase">
+                        <Dna className="w-2.5 h-2.5 text-amber-400/75" />
+                        AI DOCENT
+                      </span>
+                    )}
                   </div>
                 </div>
               </aside>

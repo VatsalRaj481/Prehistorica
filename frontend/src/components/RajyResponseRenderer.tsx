@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ExternalLink, Sparkles, Scale, Info } from 'lucide-react';
+import { ExternalLink, Sparkles, Scale, Info, ArrowRight } from 'lucide-react';
 
 interface RajyResponseRendererProps {
   content: string;
@@ -418,7 +418,41 @@ function renderLink(
   onLinkClick?: () => void,
   isItalic?: boolean
 ): React.ReactNode {
-  // Internal specimen link: /species/:id
+  // 1. Interactive Runway comparison action chip: /runway or /runway?ids=...
+  if (linkUrl.startsWith('/runway')) {
+    return (
+      <Link
+        key={key}
+        to={linkUrl}
+        onClick={onLinkClick}
+        className="inline-flex items-center gap-2 px-3 py-1.5 my-1 rounded-xl bg-gradient-to-r from-amber-500/25 via-amber-400/20 to-emerald-500/25 hover:from-amber-500/40 hover:to-emerald-500/40 text-amber-300 hover:text-white border border-amber-500/45 hover:border-amber-300 text-xs font-mono font-bold transition-all shadow-md group cursor-pointer"
+        title="Launch Scale Runway"
+      >
+        <Scale className="w-3.5 h-3.5 text-amber-400 group-hover:rotate-12 transition-transform" />
+        <span>{linkText}</span>
+        <ArrowRight className="w-3 h-3 text-amber-400/90 group-hover:translate-x-0.5 transition-transform" />
+      </Link>
+    );
+  }
+
+  // 2. Interactive Fossil Lens action chip: /lens
+  if (linkUrl.startsWith('/lens')) {
+    return (
+      <Link
+        key={key}
+        to={linkUrl}
+        onClick={onLinkClick}
+        className="inline-flex items-center gap-2 px-3 py-1.5 my-1 rounded-xl bg-gradient-to-r from-cyan-500/25 to-blue-500/25 hover:from-cyan-500/40 hover:to-blue-500/40 text-cyan-300 hover:text-white border border-cyan-500/45 hover:border-cyan-300 text-xs font-mono font-bold transition-all shadow-md group cursor-pointer"
+        title="Launch Fossil Lens"
+      >
+        <Sparkles className="w-3.5 h-3.5 text-cyan-400 group-hover:scale-110 transition-transform" />
+        <span>{linkText}</span>
+        <ArrowRight className="w-3 h-3 text-cyan-400/90 group-hover:translate-x-0.5 transition-transform" />
+      </Link>
+    );
+  }
+
+  // 3. Internal specimen link: /species/:id
   if (linkUrl.startsWith('/species/')) {
     return (
       <Link
@@ -436,7 +470,7 @@ function renderLink(
     );
   }
 
-  // External link
+  // 4. External link
   const isExternal = linkUrl.startsWith('http://') || linkUrl.startsWith('https://');
   return (
     <a

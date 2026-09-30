@@ -3,6 +3,7 @@ import { PrismaClient } from '@prisma/client';
 import {
   askChiefCurator,
   askChiefCuratorStream,
+  reformulateCuratorQuery,
   analyzeFossilImage,
   simulateRunwayInteraction,
   synthesizeFormationFoodWeb,
@@ -24,8 +25,62 @@ export async function curatorChat(req: Request, res: Response, next: NextFunctio
       return;
     }
 
-    // 1. Retrieve top matching grounded species from pgvector
-    const matchedSpecies = await searchSimilarSpecies(query.trim(), 5);
+    // 1. Multi-turn query reformulation: resolve pronouns and follow-up references
+    const searchQuery = await reformulateCuratorQuery({
+      query: query.trim(),
+      conversationHistory: history || []
+    });
+
+    // 2. Retrieve top matching grounded species from pgvector using the contextualized query
+    let matchedSpecies = await searchSimilarSpecies(searchQuery, 6);
+
+    // 3. Extract any species IDs explicitly linked in recent conversation history
+    const historySpeciesIds: number[] = [];
+    if (Array.isArray(history)) {
+      for (const msg of history.slice(-4)) {
+        if (typeof msg?.content === 'string') {
+          const matches = msg.content.matchAll(/\/species\/(\d+)/g);
+          for (const m of matches) {
+            const id = parseInt(m[1], 10);
+            if (!isNaN(id) && !historySpeciesIds.includes(id)) {
+              historySpeciesIds.push(id);
+            }
+          }
+        }
+      }
+    }
+
+    // If species previously discussed are relevant to the contextualized query but missed by vector search, pull them in
+    if (historySpeciesIds.length > 0) {
+      const existingIds = new Set(matchedSpecies.map(s => s.id));
+      const missingIds = historySpeciesIds.filter(id => !existingIds.has(id));
+      if (missingIds.length > 0) {
+        const extraSpecies = await prisma.species.findMany({
+          where: { id: { in: missingIds } }
+        });
+        const queryLower = `${query} ${searchQuery}`.toLowerCase();
+        for (const sp of extraSpecies) {
+          if (
+            queryLower.includes(sp.name.toLowerCase()) ||
+            queryLower.includes(sp.scientificName.toLowerCase()) ||
+            (sp.clade && queryLower.includes(sp.clade.toLowerCase()))
+          ) {
+            matchedSpecies.push({ ...sp, similarity: 0.85 });
+          }
+        }
+      }
+    }
+
+    // 4. Dynamic relevance filtering: suppress low-scoring noise
+    const bestSimilarity = matchedSpecies.length > 0 ? (matchedSpecies[0].similarity || 0) : 0;
+    matchedSpecies = matchedSpecies.filter(s => {
+      const sim = s.similarity || 0;
+      if (sim >= 0.65) return true;
+      if (bestSimilarity >= 0.70) {
+        return sim >= (bestSimilarity - 0.15) && sim >= 0.55;
+      }
+      return sim >= 0.50;
+    });
 
     const contextSpecies: GroundingSpeciesContext[] = matchedSpecies.map(s => {
       let facts: string[] = [];
@@ -50,23 +105,39 @@ export async function curatorChat(req: Request, res: Response, next: NextFunctio
       };
     });
 
-    const groundedSpecimens = matchedSpecies.map(s => {
-      let mediaArr: any[] = [];
-      let silhouetteObj: any = null;
-      try { mediaArr = JSON.parse(s.media || '[]'); } catch {}
-      try { silhouetteObj = JSON.parse(s.comparisonSilhouette || '{}'); } catch {}
+    const buildGroundedSpecimens = (speciesList: any[], referencedIds: number[] = []) => {
+      const formatted = speciesList.map(s => {
+        let mediaArr: any[] = [];
+        let silhouetteObj: any = null;
+        try { mediaArr = JSON.parse(s.media || '[]'); } catch {}
+        try { silhouetteObj = JSON.parse(s.comparisonSilhouette || '{}'); } catch {}
 
-      return {
-        id: s.id,
-        name: s.name,
-        scientificName: s.scientificName,
-        clade: s.clade,
-        timePeriod: s.timePeriod,
-        similarity: Math.round((s.similarity || 0) * 100),
-        imageUrl: mediaArr[0]?.url || null,
-        silhouetteUrl: silhouetteObj?.url || null
-      };
-    });
+        return {
+          id: s.id,
+          name: s.name,
+          scientificName: s.scientificName,
+          clade: s.clade,
+          timePeriod: s.timePeriod,
+          similarity: Math.round((s.similarity || 0) * 100),
+          imageUrl: mediaArr[0]?.url || null,
+          silhouetteUrl: silhouetteObj?.url || null
+        };
+      });
+
+      if (referencedIds.length === 0) {
+        return formatted;
+      }
+
+      // Prioritize referenced species first, and filter out unreferenced low-similarity records (<62%)
+      return formatted
+        .filter(s => referencedIds.includes(s.id) || (s.similarity || 0) >= 62)
+        .sort((a, b) => {
+          const aRef = referencedIds.includes(a.id) ? 1 : 0;
+          const bRef = referencedIds.includes(b.id) ? 1 : 0;
+          if (aRef !== bRef) return bRef - aRef;
+          return (b.similarity || 0) - (a.similarity || 0);
+        });
+    };
 
     // If client explicitly asks for non-streaming JSON
     if (stream === false) {
@@ -75,6 +146,8 @@ export async function curatorChat(req: Request, res: Response, next: NextFunctio
         conversationHistory: history || [],
         contextSpecies
       });
+
+      const groundedSpecimens = buildGroundedSpecimens(matchedSpecies, result.referencedSpecies);
 
       res.json({
         answer: result.response,
@@ -101,8 +174,8 @@ export async function curatorChat(req: Request, res: Response, next: NextFunctio
       res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
     };
 
-    // 1. Send grounded museum specimens metadata immediately
-    sendSseEvent('grounded', { groundedSpecimens });
+    // 1. Send initial grounded museum specimens metadata
+    sendSseEvent('grounded', { groundedSpecimens: buildGroundedSpecimens(matchedSpecies) });
 
     // 2. Stream tokens via Gemini SDK stream API in real-time
     let fullResponse = '';
@@ -126,10 +199,12 @@ export async function curatorChat(req: Request, res: Response, next: NextFunctio
       }
     });
 
+    const finalizedGrounded = buildGroundedSpecimens(matchedSpecies, referencedSpeciesIds);
+
     sendSseEvent('done', {
       answer: fullResponse,
       referencedSpeciesIds,
-      groundedSpecimens
+      groundedSpecimens: finalizedGrounded
     });
 
     res.end();
