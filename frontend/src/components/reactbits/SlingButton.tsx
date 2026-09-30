@@ -46,15 +46,12 @@ export default function SlingButton({
   const rotate = useTransform(x, [-90, 90], [-13, 13]);
 
   // Dynamic band stretch coordinates in 300x300 SVG canvas (origin at 150, 150)
-  const bxLeft = useTransform(x, (val) => 150 + val - 11);
-  const bxRight = useTransform(x, (val) => 150 + val + 11);
   const bxCenter = useTransform(x, (val) => 150 + val);
   const byCenter = useTransform(y, (val) => 150 + val);
 
   // Elastic strain properties: Poisson ratio thinning & opacity under tension
   const bandOpacity = useTransform(distance, [3, 16], [0, 0.95]);
   const bandStrokeWidth = useTransform(distance, [4, 90], [3.2, 1.6]);
-  const coreOpacity = useTransform(distance, [8, 45], [0, 0.75]);
 
   useEffect(() => {
     return () => {
@@ -183,56 +180,23 @@ export default function SlingButton({
           <line x1="150" y1="145" x2="150" y2="155" className="stroke-amber-400/40" strokeWidth="1" />
         </g>
 
-        {/* Slingshot Dual Bands (Tension Cables) */}
-        {/* Band 1: Left Prong (134, 150) to Left Pouch Attachment */}
-        <motion.line
-          x1={134}
-          y1={150}
-          x2={bxLeft}
-          y2={byCenter}
-          stroke="url(#slingBandGrad)"
-          filter="url(#slingGlow)"
-          strokeLinecap="round"
-          style={{
-            opacity: bandOpacity,
-            strokeWidth: bandStrokeWidth,
-          }}
-        />
-
-        {/* Band 2: Right Prong (166, 150) to Right Pouch Attachment */}
-        <motion.line
-          x1={166}
-          y1={150}
-          x2={bxRight}
-          y2={byCenter}
-          stroke="url(#slingBandGrad)"
-          filter="url(#slingGlow)"
-          strokeLinecap="round"
-          style={{
-            opacity: bandOpacity,
-            strokeWidth: bandStrokeWidth,
-          }}
-        />
-
-        {/* Central High-Tension Energy Strand */}
+        {/* Single Kinetic Elastic Tether Band */}
         <motion.line
           x1={150}
           y1={150}
           x2={bxCenter}
           y2={byCenter}
-          className="stroke-amber-200"
-          strokeWidth="1"
+          stroke="url(#slingBandGrad)"
+          filter="url(#slingGlow)"
           strokeLinecap="round"
           style={{
-            opacity: coreOpacity,
+            opacity: bandOpacity,
+            strokeWidth: bandStrokeWidth,
           }}
         />
 
-        {/* Physical Slingshot Prongs / Anchors */}
-        <g>
-          <circle cx="134" cy="150" r="3" className="fill-amber-500 stroke-amber-300" strokeWidth="1" />
-          <circle cx="166" cy="150" r="3" className="fill-amber-500 stroke-amber-300" strokeWidth="1" />
-        </g>
+        {/* Central Origin Anchor Rivet */}
+        <circle cx="150" cy="150" r="3.5" className="fill-amber-400 stroke-slate-950" strokeWidth="1" />
 
         {/* Kinetic Impact Shockwave (fires when oscillator snaps back to origin) */}
         {impactRipple && (
