@@ -687,20 +687,59 @@ export default function ColdStartScreen({
                 transition={{ duration: 0.35 }}
                 className="bg-gradient-to-b from-[#0E1526] to-[#0A0F1B] rounded-xl p-5 sm:p-6 border border-amber-500/25 shadow-[0_12px_40px_rgba(0,0,0,0.55)] space-y-4 relative overflow-hidden"
               >
-                {/* Archival Collection Record Framing Marks */}
-                <div className="absolute top-2.5 left-2.5 w-4 h-4 pointer-events-none">
-                  <div className="w-full h-full border-t border-l border-amber-400/45 rounded-tl-[1px]" />
-                </div>
-                <div className="absolute top-2.5 right-2.5 w-4 h-4 pointer-events-none">
-                  <div className="w-full h-full border-t border-r border-amber-400/45 rounded-tr-[1px]" />
-                </div>
-                {/* Bottom corners at card edge — clear of the dots row */}
-                <div className="absolute bottom-0 left-0 w-4 h-4 pointer-events-none">
-                  <div className="w-full h-full border-b border-l border-amber-400/45 rounded-bl-[1px]" />
-                </div>
-                <div className="absolute bottom-0 right-0 w-4 h-4 pointer-events-none">
-                  <div className="w-full h-full border-b border-r border-amber-400/45 rounded-br-[1px]" />
-                </div>
+                {/* Archival Collection Record Framing Marks (Symmetrical 4-Corner L-Brackets) */}
+                <svg
+                  aria-hidden="true"
+                  className="absolute top-2.5 left-2.5 w-4 h-4 text-amber-400/50 pointer-events-none overflow-visible"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <path
+                    d="M 1 16 V 2.5 C 1 1.7 1.7 1 2.5 1 H 16"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  className="absolute top-2.5 right-2.5 w-4 h-4 text-amber-400/50 pointer-events-none overflow-visible"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <path
+                    d="M 15 16 V 2.5 C 15 1.7 14.3 1 13.5 1 H 0"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  className="absolute bottom-2.5 left-2.5 w-4 h-4 text-amber-400/50 pointer-events-none overflow-visible"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <path
+                    d="M 1 0 V 13.5 C 1 14.3 1.7 15 2.5 15 H 16"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                <svg
+                  aria-hidden="true"
+                  className="absolute bottom-2.5 right-2.5 w-4 h-4 text-amber-400/50 pointer-events-none overflow-visible"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <path
+                    d="M 15 0 V 13.5 C 15 14.3 14.3 15 13.5 15 H 0"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
 
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -800,7 +839,7 @@ export default function ColdStartScreen({
 
                 {/* Curatorial Specimen Indicators — with ReactBits ClickSpark feedback */}
                 <ClickSpark sparkColor="#FBBF24" sparkSize={8} sparkRadius={16} sparkCount={6}>
-                  <div className="flex items-center justify-end gap-1.5 pt-2 pb-1 relative z-10">
+                  <div className="flex items-center justify-end gap-1.5 pt-2 pb-1 pr-3 sm:pr-4 relative z-10">
                     {PALEOFACTS.map((_, idx) => (
                       <button
                         key={idx}
