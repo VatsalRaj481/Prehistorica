@@ -7,7 +7,6 @@ import Particles from './reactbits/Particles.js';
 import CircularText from './reactbits/CircularText.js';
 import DecryptedText from './reactbits/DecryptedText.js';
 import ShinyText from './reactbits/ShinyText.js';
-import CountUp from './reactbits/CountUp.js';
 import ClickSpark from './reactbits/ClickSpark.js';
 import TiltedPlinth from './reactbits/TiltedPlinth.js';
 
@@ -119,7 +118,7 @@ export default function ColdStartScreen({
   simulateDurationSeconds,
   onRetryHealth
 }: ColdStartScreenProps) {
-  const [progress, setProgress] = useState(14);
+  const [progress, setProgress] = useState(0);
   const [factIndex, setFactIndex] = useState(0);
   const [isFinishing, setIsFinishing] = useState(false);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
@@ -298,27 +297,48 @@ export default function ColdStartScreen({
 
   // Smooth progressive preparation while waiting for backend to wake up
   useEffect(() => {
-    if (!isWaking) return;
+    if (!isWaking || isFinishing) return;
     const targetDuration = simulateDurationSeconds || 22;
-    const intervalTime = 60;
-    const totalSteps = (targetDuration * 1000) / intervalTime;
-    const stepIncrement = (94 - 14) / totalSteps;
+    const intervalTime = 50;
 
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 96) return 96;
-        if (prev >= 92) return prev + 0.04;
-        return Math.min(94, prev + stepIncrement);
+        // Enforce strict monotonicity: progress can NEVER go backwards
+        if (prev >= 98) return 98;
+        if (prev >= 90) return Math.min(98, prev + 0.04);
+        if (prev >= 75) return Math.min(90, prev + 0.1);
+
+        // Smooth progression towards 75% over targetDuration
+        const stepIncrement = 75 / ((targetDuration * 1000) / intervalTime);
+        return Math.min(75, prev + stepIncrement);
       });
     }, intervalTime);
 
     return () => clearInterval(progressInterval);
-  }, [isWaking, simulateDurationSeconds]);
+  }, [isWaking, isFinishing, simulateDurationSeconds]);
 
-  // When backend wakes up (confirmed online), complete cleanly and trigger transition
+  // When backend wakes up (confirmed online), smoothly accelerate from current progress to 100%
   useEffect(() => {
     if (!isWaking && !isFinishing) {
-      handleFinish();
+      const fastInterval = setInterval(() => {
+        setProgress((prev) => {
+          if (prev >= 100) {
+            clearInterval(fastInterval);
+            handleFinish();
+            return 100;
+          }
+          const delta = Math.max(1.5, (100 - prev) * 0.35);
+          const next = prev + delta;
+          if (next >= 99.5) {
+            clearInterval(fastInterval);
+            handleFinish();
+            return 100;
+          }
+          return next;
+        });
+      }, 30);
+
+      return () => clearInterval(fastInterval);
     }
   }, [isWaking, isFinishing, handleFinish]);
 
@@ -640,23 +660,16 @@ export default function ColdStartScreen({
                     Galleries Opening
                   </span>
                   <div className="flex items-center text-amber-400 font-bold tabular-nums text-xs font-mono">
-                    <CountUp
-                      to={Math.min(100, Math.round(progress))}
-                      duration={0.3}
-                      separator=""
-                      suffix="%"
-                      className="text-amber-400 font-bold font-mono"
-                    />
+                    <span>{Math.min(100, Math.max(0, Math.round(progress)))}%</span>
                   </div>
                 </div>
               </div>
 
               {/* Minimal Gilded Museum Horizon Indicator */}
               <div className="relative h-1 w-full bg-white/[0.05] rounded-full overflow-hidden">
-                <motion.div
-                  className="h-full bg-gradient-to-r from-amber-600 via-amber-400 to-amber-300 rounded-full shadow-[0_0_8px_rgba(245,158,11,0.5)]"
-                  style={{ width: `${Math.min(100, progress)}%` }}
-                  transition={{ ease: 'easeOut', duration: 0.15 }}
+                <div
+                  className="h-full bg-gradient-to-r from-amber-600 via-amber-400 to-amber-300 rounded-full shadow-[0_0_8px_rgba(245,158,11,0.5)] transition-[width] duration-150 ease-out"
+                  style={{ width: `${Math.min(100, Math.max(0, progress))}%` }}
                 />
               </div>
 

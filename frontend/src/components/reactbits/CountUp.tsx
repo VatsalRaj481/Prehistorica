@@ -72,14 +72,23 @@ export default function CountUp({
     [maxDecimals, separator, suffix]
   );
 
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.textContent = formatValue(direction === 'down' ? to : from);
-    }
-  }, [from, to, direction, formatValue]);
+  const prevToRef = useRef(to);
+  const isInitialMount = useRef(true);
 
   useEffect(() => {
-    motionValue.set(direction === 'down' ? to : from);
+    if (isInitialMount.current) {
+      if (ref.current) {
+        ref.current.textContent = formatValue(direction === 'down' ? to : from);
+      }
+    }
+  }, [from, direction, formatValue, to]);
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+      motionValue.set(direction === 'down' ? to : from);
+      isInitialMount.current = false;
+    }
+
     if (isInView && startWhen) {
       if (typeof onStart === 'function') {
         onStart();
@@ -87,6 +96,7 @@ export default function CountUp({
 
       const timeoutId = setTimeout(() => {
         motionValue.set(direction === 'down' ? from : to);
+        prevToRef.current = to;
       }, delay * 1000);
 
       const durationTimeoutId = setTimeout(

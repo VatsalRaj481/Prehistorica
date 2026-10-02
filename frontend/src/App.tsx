@@ -29,7 +29,10 @@ export default function App() {
   useEffect(() => {
     if (isForcedColdStart) {
       setBackendReady(true);
-      return;
+      const timer = setTimeout(() => {
+        setIsWaking(false);
+      }, 30000);
+      return () => clearTimeout(timer);
     }
     wakePing();
 
@@ -88,13 +91,13 @@ export default function App() {
         <AnimatePresence>
           {(showColdStart || isForcedColdStart) && (
             <ColdStartScreen
-              isWaking={isForcedColdStart ? true : isWaking}
-              simulateDurationSeconds={isForcedColdStart ? 16 : 22}
+              isWaking={isWaking}
+              simulateDurationSeconds={isForcedColdStart ? 30 : 22}
               onRetryHealth={() => setRetryTrigger((c) => c + 1)}
               onLogoDock={() => setIsNavbarLogoVisible(true)}
               onWakeComplete={() => {
                 setIsNavbarLogoVisible(true);
-                if (!isForcedColdStart) setShowColdStart(false);
+                setShowColdStart(false);
                 window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
                 document.documentElement.scrollTop = 0;
                 document.body.scrollTop = 0;
