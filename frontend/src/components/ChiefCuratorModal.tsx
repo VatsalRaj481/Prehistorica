@@ -1393,6 +1393,167 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
               {/* ── RIGHT PANEL: Conversation Interface ── */}
               <main className="flex flex-col flex-1 min-h-0 overflow-hidden bg-transparent relative">
 
+                {/* ── MOBILE DOCENT STAGE (Mobile-only when conversation is active) ── */}
+                {!isInitialState && (
+                  <div className="md:hidden shrink-0 bg-[#0A0F1F]/95 backdrop-blur-md border-b border-white/[0.08] px-3 py-1.5 z-15 relative">
+                    {/* Mobile Curator Musings Popover */}
+                    <AnimatePresence>
+                      {clickQuote && (
+                        <motion.div
+                          initial={shouldReduceMotion ? false : { opacity: 0, y: -6, scale: 0.94 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: -4, scale: 0.96 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-3 right-3 mt-1.5 z-30 p-2.5 rounded-xl bg-slate-950/98 border border-amber-400/60 text-[11px] font-mono text-amber-200 shadow-2xl leading-relaxed text-center pointer-events-none"
+                        >
+                          <div className="flex items-center justify-center gap-1 text-[9px] text-amber-400 font-bold uppercase tracking-wider mb-0.5">
+                            <Sparkles className="w-2.5 h-2.5" />
+                            <span>Curator Musings</span>
+                          </div>
+                          &ldquo;{clickQuote}&rdquo;
+                          <div className="absolute -top-1 left-8 w-2 h-2 bg-slate-950 border-t border-l border-amber-400/60 rotate-45 pointer-events-none" />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    <div className="flex items-center justify-between gap-2.5">
+                      {/* Left: Full Mascot Character with Motion & Tap interaction */}
+                      <motion.button
+                        type="button"
+                        onClick={handleMascotClick}
+                        title="Tap Rajy for curatorial musings!"
+                        aria-label="Interactive Rajy docent mascot"
+                        whileTap={{ scale: 0.94 }}
+                        animate={
+                          shouldReduceMotion
+                            ? false
+                            : isTapped
+                            ? { scale: [1, 1.1, 0.95, 1], y: [0, -3, 0] }
+                            : { scale: 1, y: 0 }
+                        }
+                        transition={{ duration: 0.3 }}
+                        className="relative h-14 w-14 xs:h-16 xs:w-16 flex items-center justify-center shrink-0 cursor-pointer focus:outline-none rounded-xl bg-slate-900/60 border border-white/[0.06] p-0.5 group"
+                      >
+                        <motion.div
+                          variants={rajyCharacterVariants}
+                          animate={shouldReduceMotion ? 'idle' : primaryState}
+                          style={{ transformOrigin: 'bottom center' }}
+                          className="relative w-full h-full flex items-center justify-center"
+                        >
+                          <AnimatePresence mode="popLayout">
+                            <motion.img
+                              key={primaryState}
+                              src={RAJY_STATE_IMAGES[primaryState]}
+                              alt={`Rajy - Prehistorica AI Docent (${primaryState})`}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.6)] select-none"
+                              draggable={false}
+                            />
+                          </AnimatePresence>
+                        </motion.div>
+                      </motion.button>
+
+                      {/* Middle: Name & Dynamic Mood Status Badge */}
+                      <div className="min-w-0 flex-1 space-y-1">
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-xs font-black font-mono text-amber-400 tracking-wider uppercase">
+                            RAJY
+                          </span>
+                          <span className="text-[9px] font-mono text-slate-400 truncate italic">
+                            &bull; Rajasaurus
+                          </span>
+                        </div>
+
+                        {/* Dynamic Mood Status Pill */}
+                        <div className="flex items-center">
+                          <AnimatePresence mode="wait">
+                            {primaryState === 'narrating' ? (
+                              <motion.span
+                                key="narrating"
+                                initial={{ opacity: 0, scale: 0.92 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.92 }}
+                                transition={{ duration: 0.18 }}
+                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-[9px] font-mono font-bold tracking-wider text-emerald-300 uppercase"
+                              >
+                                <Volume2 className="w-2.5 h-2.5 text-emerald-400 animate-pulse" />
+                                <span>NARRATING</span>
+                                <span className="flex items-center gap-0.5 ml-0.5">
+                                  <span className="w-0.5 h-2 bg-emerald-400 rounded-full animate-bounce [animation-delay:0ms]" />
+                                  <span className="w-0.5 h-2.5 bg-emerald-400 rounded-full animate-bounce [animation-delay:150ms]" />
+                                  <span className="w-0.5 h-1.5 bg-emerald-400 rounded-full animate-bounce [animation-delay:300ms]" />
+                                </span>
+                              </motion.span>
+                            ) : primaryState === 'researching' ? (
+                              <motion.span
+                                key="researching"
+                                initial={{ opacity: 0, scale: 0.92 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.92 }}
+                                transition={{ duration: 0.18 }}
+                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-500/40 text-[9px] font-mono font-bold tracking-wider text-cyan-300 uppercase animate-pulse"
+                              >
+                                <Sparkles className="w-2.5 h-2.5 text-cyan-400 animate-spin" />
+                                <span>RESEARCHING STRATA</span>
+                              </motion.span>
+                            ) : primaryState === 'excited' ? (
+                              <motion.span
+                                key="excited"
+                                initial={{ opacity: 0, scale: 0.92 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.92 }}
+                                transition={{ duration: 0.18 }}
+                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/20 border border-amber-400/50 text-[9px] font-mono font-bold tracking-wider text-amber-300 uppercase animate-pulse"
+                              >
+                                <Sparkles className="w-2.5 h-2.5 text-amber-300" />
+                                <span>FOSSIL DISCOVERY</span>
+                              </motion.span>
+                            ) : primaryState === 'knowledgeNotFound' ? (
+                              <motion.span
+                                key="knowledgeNotFound"
+                                initial={{ opacity: 0, scale: 0.92 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.92 }}
+                                transition={{ duration: 0.18 }}
+                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/40 text-[9px] font-mono font-bold tracking-wider text-amber-300 uppercase"
+                              >
+                                <HelpCircle className="w-2.5 h-2.5 text-amber-400" />
+                                <span>KNOWLEDGE NOT FOUND</span>
+                              </motion.span>
+                            ) : (
+                              <motion.span
+                                key="idle"
+                                initial={{ opacity: 0, scale: 0.92 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.92 }}
+                                transition={{ duration: 0.18 }}
+                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/10 border border-white/[0.08] text-[9px] font-mono font-bold tracking-widest text-amber-400/80 uppercase"
+                              >
+                                <Dna className="w-2.5 h-2.5 text-amber-400/75" />
+                                <span>AI DOCENT</span>
+                              </motion.span>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      </div>
+
+                      {/* Right: Quick action cue */}
+                      <button
+                        type="button"
+                        onClick={handleMascotClick}
+                        className="px-2 py-1 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/20 text-[10px] font-mono text-amber-300 flex items-center gap-1 cursor-pointer shrink-0"
+                        title="Tap for Curator Musings"
+                      >
+                        <Sparkles className="w-2.5 h-2.5 text-amber-400" />
+                        <span className="hidden xs:inline">Musings</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
+
                 {/* Independently Scrollable Message Area */}
                 <div
                   data-lenis-prevent
@@ -1585,7 +1746,86 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
                   {/* ── INITIAL STATE: "EXPLORE WITH RAJY" CARDS ── */}
                   {isInitialState && (
-                    <div className="pt-2 pb-6 md:pb-8 space-y-3 w-full">
+                    <div className="pt-2 pb-6 md:pb-8 space-y-4 w-full">
+                      {/* Mobile Hero Mascot Presentation (Mobile-only when chat is initial) */}
+                      <div className="md:hidden flex flex-col items-center text-center pt-2 pb-2 px-2 select-none">
+                        {/* Speech Bubble on Mascot Tap */}
+                        <AnimatePresence>
+                          {clickQuote && (
+                            <motion.div
+                              initial={shouldReduceMotion ? false : { opacity: 0, y: 8, scale: 0.94 }}
+                              animate={{ opacity: 1, y: 0, scale: 1 }}
+                              exit={{ opacity: 0, y: -4, scale: 0.96 }}
+                              transition={{ duration: 0.22 }}
+                              className="relative mb-2 px-3 py-2 rounded-xl bg-slate-950/95 border border-amber-400/50 text-[11px] font-mono text-amber-200 shadow-xl max-w-[90%]"
+                            >
+                              <div className="flex items-center justify-center gap-1 text-[9px] text-amber-400 font-bold uppercase tracking-wider mb-0.5">
+                                <Sparkles className="w-2.5 h-2.5" />
+                                <span>Curator Musings</span>
+                              </div>
+                              &ldquo;{clickQuote}&rdquo;
+                              <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-950 border-b border-r border-amber-400/50 rotate-45 pointer-events-none" />
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+
+                        {/* Interactive Mascot Button */}
+                        <motion.button
+                          type="button"
+                          onClick={handleMascotClick}
+                          title="Tap Rajy for curatorial musings!"
+                          aria-label="Interactive Rajy docent mascot"
+                          whileTap={{ scale: 0.95 }}
+                          animate={
+                            shouldReduceMotion
+                              ? false
+                              : isTapped
+                              ? { scale: [1, 1.1, 0.95, 1], y: [0, -6, 0] }
+                              : { scale: 1, y: 0 }
+                          }
+                          transition={{ duration: 0.35, ease: [0.34, 1.56, 0.64, 1] }}
+                          className="relative w-36 h-36 xs:w-40 xs:h-40 flex items-center justify-center cursor-pointer focus:outline-none rounded-2xl group my-1"
+                        >
+                          <motion.div
+                            variants={rajyCharacterVariants}
+                            animate={shouldReduceMotion ? 'idle' : primaryState}
+                            style={{ transformOrigin: 'bottom center' }}
+                            className="relative w-full h-full flex items-center justify-center"
+                          >
+                            <AnimatePresence mode="popLayout">
+                              <motion.img
+                                key={primaryState}
+                                src={RAJY_STATE_IMAGES[primaryState]}
+                                alt={`Rajy - Prehistorica AI Docent (${primaryState})`}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.25 }}
+                                className="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-[0_8px_18px_rgba(0,0,0,0.6)] select-none"
+                                draggable={false}
+                              />
+                            </AnimatePresence>
+                          </motion.div>
+                        </motion.button>
+
+                        {/* Name & Species */}
+                        <div className="flex items-center justify-center gap-1.5 mt-1">
+                          <Sparkles className="w-3 h-3 text-amber-400" />
+                          <span className="text-xs font-black font-mono text-amber-400 tracking-[0.2em] uppercase">
+                            RAJY
+                          </span>
+                        </div>
+                        <p className="text-[10px] font-mono text-slate-400 italic">
+                          Rajasaurus narmadensis &bull; Prehistorica AI Docent
+                        </p>
+                        <div className="pt-1.5 flex justify-center">
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-white/[0.08] text-[9px] font-mono font-bold tracking-widest text-amber-400/90 uppercase">
+                            <Dna className="w-2.5 h-2.5 text-amber-400/80" />
+                            AI DOCENT
+                          </span>
+                        </div>
+                      </div>
+
                       <div className="flex items-center gap-2 border-b border-white/[0.06] pb-2 font-mono">
                         <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                         <h3 className="text-xs font-bold tracking-widest uppercase text-amber-400">
