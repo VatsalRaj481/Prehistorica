@@ -885,7 +885,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 ? { height: `${visualViewportHeight}px`, maxHeight: `${visualViewportHeight}px` }
                 : undefined
             }
-            className="relative w-full md:max-w-4xl h-[100dvh] md:h-[90vh] md:max-h-[800px] flex flex-col bg-[#0A0F1D] border-0 md:border md:border-amber-500/25 rounded-none md:rounded-2xl shadow-none md:shadow-[0_20px_60px_rgba(0,0,0,0.75)] overflow-hidden font-sans text-slate-100"
+            className="relative w-full md:max-w-4xl lg:max-w-5xl h-[100dvh] md:h-[90vh] md:max-h-[820px] flex flex-col bg-[#0A0F1D] border-0 md:border md:border-amber-500/25 rounded-none md:rounded-2xl shadow-none md:shadow-[0_20px_60px_rgba(0,0,0,0.75)] overflow-hidden font-sans text-slate-100"
           >
             {/* ── Fixed Museum Header ── */}
             <header
@@ -1202,37 +1202,9 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
               {/* ── LEFT PANEL: Integrated Rajy Character Showcase ── */}
               <aside
-                className="hidden md:flex flex-col w-[170px] md:w-[190px] lg:w-[215px] shrink-0 bg-transparent relative overflow-hidden select-none"
+                className="hidden md:flex flex-col w-[230px] md:w-[250px] lg:w-[270px] shrink-0 bg-transparent relative overflow-visible select-none"
                 aria-label="Rajy Mascot Showcase"
               >
-                {/* Atmospheric Backlight: Dynamic Halo shifting with Docent Mood */}
-                <div
-                  className={`absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full blur-3xl pointer-events-none transition-all duration-700 ${
-                    primaryState === 'narrating'
-                      ? 'bg-amber-400/25 scale-110'
-                      : primaryState === 'researching'
-                      ? 'bg-cyan-500/20 scale-105 animate-pulse'
-                      : primaryState === 'excited'
-                      ? 'bg-amber-400/30 scale-115 animate-pulse'
-                      : primaryState === 'knowledgeNotFound'
-                      ? 'bg-amber-600/10 scale-95'
-                      : 'bg-amber-500/10 scale-100'
-                  }`}
-                />
-                <div
-                  className={`absolute bottom-16 left-1/2 -translate-x-1/2 w-44 h-44 rounded-full blur-2xl pointer-events-none transition-all duration-700 ${
-                    primaryState === 'narrating'
-                      ? 'bg-emerald-500/15'
-                      : primaryState === 'researching'
-                      ? 'bg-blue-600/15'
-                      : primaryState === 'excited'
-                      ? 'bg-amber-500/20'
-                      : primaryState === 'knowledgeNotFound'
-                      ? 'bg-slate-700/15'
-                      : 'bg-cyan-500/5'
-                  }`}
-                />
-
                 {/* Speech Bubble Popup on Interactive Mascot Tap */}
                 <AnimatePresence>
                   {clickQuote && (
@@ -1255,7 +1227,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 </AnimatePresence>
 
                 {/* Rajy Mascot Illustration — Interactive & Animated */}
-                <div className="relative flex-1 min-h-0 w-full flex items-center justify-center px-3 py-2">
+                <div className="relative flex-1 min-h-0 w-full flex items-center justify-center px-4 py-1">
                   {/* Floating Strata / Data Particles during Researching Strata state */}
                   {primaryState === 'researching' && !shouldReduceMotion && (
                     <div className="absolute inset-0 pointer-events-none overflow-hidden z-10" aria-hidden="true">
@@ -1304,14 +1276,14 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                         ? { duration: 0.35, ease: [0.34, 1.56, 0.64, 1] }
                         : { duration: 0.3, ease: 'easeOut' }
                     }
-                    className="relative w-full h-full max-h-[300px] flex items-center justify-center cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-amber-400/50 rounded-2xl group"
+                    className="relative w-full h-full max-h-[290px] flex items-center justify-center cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-amber-400/50 rounded-2xl group"
                   >
                     {/* Inner Character Motion Layer: Primary state posture, breathing & transitions */}
                     <motion.div
                       variants={rajyCharacterVariants}
                       animate={shouldReduceMotion ? 'idle' : primaryState}
                       style={{ transformOrigin: 'bottom center' }}
-                      className="relative aspect-square h-full max-h-[300px] flex items-center justify-center"
+                      className="relative w-full h-full max-w-[240px] max-h-[280px] flex items-center justify-center"
                     >
                       {/* Smooth cross-fade between the 5 official state images */}
                       <AnimatePresence mode="popLayout">
@@ -1323,7 +1295,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
                           transition={{ duration: 0.28, ease: 'easeInOut' }}
-                          className="w-full h-full object-contain drop-shadow-[0_10px_22px_rgba(0,0,0,0.65)] group-hover:drop-shadow-[0_12px_28px_rgba(245,158,11,0.25)] transition-all select-none"
+                          className="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-[0_10px_22px_rgba(0,0,0,0.65)] group-hover:drop-shadow-[0_12px_28px_rgba(245,158,11,0.25)] transition-all select-none"
                           draggable={false}
                         />
                       </AnimatePresence>
@@ -1332,7 +1304,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 </div>
 
                 {/* Curatorial Museum Nameplate with Dynamic Mood Status */}
-                <div className="w-full px-3 py-3 shrink-0 z-10 text-center space-y-1 bg-transparent">
+                <div className="w-full px-3 pt-1 pb-2 shrink-0 z-10 text-center space-y-1 bg-transparent">
                   {/* Subtle Accent Glow Line above name */}
                   <div className="w-10 h-px bg-gradient-to-r from-transparent via-amber-400/40 to-transparent mx-auto mb-1.5" />
 
