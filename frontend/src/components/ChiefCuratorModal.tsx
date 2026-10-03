@@ -130,6 +130,30 @@ const rajyCharacterVariants: Variants = {
   }
 };
 
+const SESSION_STORAGE_KEY = 'prehistorica_rajy_chat_session';
+
+const getInitialSessionMessages = (totalCount: number): Message[] => {
+  try {
+    const saved = sessionStorage.getItem(SESSION_STORAGE_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    }
+  } catch (e) {
+    console.warn('Failed to parse stored Rajy session messages:', e);
+  }
+  return [
+    {
+      id: 'welcome',
+      role: 'assistant',
+      content: `Greetings, explorer! I am **Rajy**, your Prehistorica AI Docent.\n\nAsk me about prehistoric creatures, ancient ecosystems, evolution, biomechanics, or the deep-time history of Earth. Every insight is scientifically grounded directly in our **${totalCount} cataloged specimens**.`,
+      timestamp: 'Just now'
+    }
+  ];
+};
+
 interface ChiefCuratorModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -138,21 +162,24 @@ interface ChiefCuratorModalProps {
 
 export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: ChiefCuratorModalProps) {
   const shouldReduceMotion = useReducedMotion();
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 'welcome',
-      role: 'assistant',
-      content:
-        `Greetings, explorer! I am **Rajy**, your Prehistorica AI Docent.\n\nAsk me about prehistoric creatures, ancient ecosystems, evolution, biomechanics, or the deep-time history of Earth. Every insight is scientifically grounded directly in our **${TOTAL_CATALOGED_SPECIMENS} cataloged specimens**.`,
-      timestamp: 'Just now'
-    }
-  ]);
+  const [messages, setMessages] = useState<Message[]>(() => getInitialSessionMessages(TOTAL_CATALOGED_SPECIMENS));
   const [input, setInput] = useState(initialQuery || '');
   const [loading, setLoading] = useState(false);
   const [isStreaming, setIsStreaming] = useState(false);
   const abortControllerRef = useRef<AbortController | null>(null);
   const isBusy = loading || isStreaming;
   const [liveTotalSpecies, setLiveTotalSpecies] = useState<number>(TOTAL_CATALOGED_SPECIMENS);
+
+  // Persist conversation to sessionStorage across browser navigations / modal toggles
+  useEffect(() => {
+    try {
+      if (messages && messages.length > 0) {
+        sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(messages));
+      }
+    } catch (e) {
+      console.warn('Failed to persist Rajy session messages:', e);
+    }
+  }, [messages]);
 
   // Fetch live total cataloged species count dynamically from database
   useEffect(() => {
@@ -401,6 +428,26 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       abortControllerRef.current?.abort();
     };
   }, [stopSpeaking]);
+
+  // Clear conversation session and restore welcoming state
+  const handleClearChat = useCallback(() => {
+    stopSpeaking();
+    abortControllerRef.current?.abort();
+    setLoading(false);
+    setIsStreaming(false);
+    setIsKnowledgeNotFound(false);
+    setIsExcited(false);
+    const defaultWelcome: Message = {
+      id: 'welcome',
+      role: 'assistant',
+      content: `Greetings, explorer! I am **Rajy**, your Prehistorica AI Docent.\n\nAsk me about prehistoric creatures, ancient ecosystems, evolution, biomechanics, or the deep-time history of Earth. Every insight is scientifically grounded directly in our **${liveTotalSpecies} cataloged specimens**.`,
+      timestamp: 'Just now'
+    };
+    setMessages([defaultWelcome]);
+    try {
+      sessionStorage.removeItem(SESSION_STORAGE_KEY);
+    } catch {}
+  }, [liveTotalSpecies, stopSpeaking]);
 
   // Track mobile visual viewport resize (keyboard show/hide, orientation change)
   useEffect(() => {
@@ -1054,6 +1101,20 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                     aria-expanded={isVoiceSettingsOpen}
                   >
                     <Sliders className="w-3.5 h-3.5" />
+                  </button>
+                )}
+
+                {/* 4. Reset Conversation / New Chat Button (visible when conversation is active) */}
+                {!isInitialState && (
+                  <button
+                    type="button"
+                    onClick={handleClearChat}
+                    className="min-h-[36px] sm:min-h-[38px] px-2.5 py-1.5 rounded-lg bg-slate-900/80 hover:bg-slate-850 border border-white/[0.08] text-slate-400 hover:text-amber-300 text-xs font-mono flex items-center gap-1.5 transition-all cursor-pointer shrink-0"
+                    title="Start a fresh conversation session with Rajy"
+                    aria-label="Start new conversation session"
+                  >
+                    <RotateCcw className="w-3.5 h-3.5 text-amber-400" />
+                    <span className="hidden sm:inline text-[11px]">New Chat</span>
                   </button>
                 )}
 
