@@ -772,7 +772,7 @@ export default function ColdStartScreen({
                       <span className="text-slate-400 text-[11px] tracking-wider font-mono">
                         <DecryptedText
                           key={`log-${factIndex}`}
-                          text={`RECORD ${currentFact.logNo} OF 006`}
+                          text={`RECORD ${String(factIndex + 1).padStart(3, '0')} OF ${String(PALEOFACTS.length).padStart(3, '0')}`}
                           speed={25}
                           maxIterations={7}
                           className="text-slate-400 font-mono text-[11px]"

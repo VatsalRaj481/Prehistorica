@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, KeyboardEvent, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion, type Variants } from 'framer-motion';
 import {
   X,
   Send,
@@ -65,6 +65,69 @@ const DEFAULT_VOICE_CONFIG = {
   rate: 0.92,
   pitch: 1.08,
   volume: 1.0
+};
+
+// Rajy Docent Primary State Hierarchy: 1. NARRATING, 2. RESEARCHING, 3. KNOWLEDGE_NOT_FOUND, 4. EXCITED, 5. IDLE
+export type RajyPrimaryState = 'narrating' | 'researching' | 'excited' | 'knowledgeNotFound' | 'idle';
+
+// Five official visual state assets for the RAJY AI Docent mascot
+const RAJY_STATE_IMAGES: Record<RajyPrimaryState, string> = {
+  idle: '/rajy-idle.png',
+  researching: '/rajy-thinking.png',
+  excited: '/rajy-excited.png',
+  narrating: '/rajy-speaking.png',
+  knowledgeNotFound: '/rajy-confused.png'
+};
+
+// Character-level animation variants for Rajy mascot (subtle breathing and posture support)
+const rajyCharacterVariants: Variants = {
+  idle: {
+    y: [0, -2.5, 0],
+    scaleY: [1, 1.01, 1],
+    scaleX: [1, 0.995, 1],
+    transition: {
+      repeat: Infinity,
+      duration: 4.6,
+      ease: 'easeInOut'
+    }
+  },
+  researching: {
+    y: [0, -2, 0],
+    rotate: [-0.6, 0.6, -0.6],
+    transition: {
+      repeat: Infinity,
+      duration: 3.2,
+      ease: 'easeInOut'
+    }
+  },
+  excited: {
+    y: [0, -3.5, 0],
+    scale: [1, 1.02, 1],
+    rotate: [-0.8, 0.8, -0.8],
+    transition: {
+      repeat: Infinity,
+      duration: 1.8,
+      ease: 'easeInOut'
+    }
+  },
+  narrating: {
+    y: [0, -2.8, 0, -1.2, 0],
+    scale: [1, 1.015, 1],
+    transition: {
+      repeat: Infinity,
+      duration: 1.35,
+      ease: 'easeInOut'
+    }
+  },
+  knowledgeNotFound: {
+    y: [0, -1.5, 0],
+    rotate: [0, 0.8, 0],
+    transition: {
+      repeat: Infinity,
+      duration: 3.8,
+      ease: 'easeInOut'
+    }
+  }
 };
 
 interface ChiefCuratorModalProps {
@@ -149,26 +212,48 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
   // Dynamic Mascot Emotion & Mood State
   const [clickQuote, setClickQuote] = useState<string | null>(null);
   const [isTapped, setIsTapped] = useState(false);
+  const [isKnowledgeNotFound, setIsKnowledgeNotFound] = useState(false);
+  const [isExcited, setIsExcited] = useState(false);
 
-  const rajyMood = useMemo<'idle' | 'pondering' | 'speaking'>(() => {
-    if (isSpeaking) return 'speaking';
-    if (loading || isStreaming) return 'pondering';
+  // Preload all 5 official RAJY mascot state images on mount for instant zero-flicker transitions
+  useEffect(() => {
+    Object.values(RAJY_STATE_IMAGES).forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
+
+  // Primary State Priority: 1. NARRATING, 2. RESEARCHING, 3. KNOWLEDGE_NOT_FOUND, 4. EXCITED, 5. IDLE
+  const primaryState = useMemo<RajyPrimaryState>(() => {
+    if (isSpeaking) return 'narrating';
+    if (loading || isStreaming) return 'researching';
+    if (isKnowledgeNotFound) return 'knowledgeNotFound';
+    if (isExcited) return 'excited';
     return 'idle';
-  }, [isSpeaking, loading, isStreaming]);
+  }, [isSpeaking, loading, isStreaming, isKnowledgeNotFound, isExcited]);
+
+  // Backward-compatible alias for existing references
+  const rajyMood = useMemo<'idle' | 'pondering' | 'speaking'>(() => {
+    if (primaryState === 'narrating') return 'speaking';
+    if (primaryState === 'researching') return 'pondering';
+    return 'idle';
+  }, [primaryState]);
 
   const MASCOT_QUOTES = [
     "Careful with the cranial horn, explorer! That's Late Cretaceous heritage.",
     "Pardon my short abelisaurid forearms — high-fives are tricky!",
     "Standing by! Ask me about bite forces, bone beds, or oceanic terrors.",
     "Excavated from the Narmada Valley of India, 66 million years young!",
-    "Ready for our next deep-time inquiry? Which exhibit shall we inspect?"
+    "Ready for our next deep-time inquiry? Which exhibit shall we inspect?",
+    "Every fossil fragment has a story locked in deep-time strata.",
+    "Did you know? My abelisaurid kin roamed Gondwana while titanosaurs ruled the plains."
   ];
 
   const handleMascotClick = () => {
     setIsTapped(true);
     const randomQuote = MASCOT_QUOTES[Math.floor(Math.random() * MASCOT_QUOTES.length)];
     setClickQuote(randomQuote);
-    setTimeout(() => setIsTapped(false), 300);
+    setTimeout(() => setIsTapped(false), 350);
     setTimeout(() => setClickQuote(null), 3800);
   };
 
@@ -562,6 +647,8 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     setInput('');
     setLoading(true);
     setIsStreaming(false);
+    setIsKnowledgeNotFound(false);
+    setIsExcited(false);
 
     try {
       const history = messages
@@ -640,12 +727,43 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       });
 
       setIsStreaming(false);
+
+      // Check whether RAG / vector retrieval identified sufficient collection knowledge
+      const noGroundedRecords = !res.groundedSpecimens || res.groundedSpecimens.length === 0;
+      const lowerAnswer = (res.answer || '').toLowerCase();
+      const answerMentionsMissing =
+        lowerAnswer.includes('could not find') ||
+        lowerAnswer.includes('not in our collection') ||
+        lowerAnswer.includes('not in the collection') ||
+        lowerAnswer.includes('no cataloged specimen') ||
+        lowerAnswer.includes('no records found') ||
+        lowerAnswer.includes('insufficient data');
+
+      const isGreeting = /^(hi|hello|hey|greetings|who are you)\b/i.test(text.trim());
+      const lacksKnowledge = (noGroundedRecords && !isGreeting) || answerMentionsMissing;
+
+      if (lacksKnowledge) {
+        setIsKnowledgeNotFound(true);
+        setIsExcited(false);
+      } else {
+        setIsKnowledgeNotFound(false);
+        // High-relevance specimen match (>= 75%) or rich museum specimen discovery
+        const isHighRelevanceDiscovery = Boolean(
+          res.groundedSpecimens &&
+          res.groundedSpecimens.length > 0 &&
+          res.groundedSpecimens.some((s) => (s.similarity ?? 0) >= 75)
+        );
+        setIsExcited(isHighRelevanceDiscovery);
+      }
+
       speakText(res.answer, 0);
     } catch (err: any) {
       if (err.name === 'AbortError') {
         return;
       }
       setIsStreaming(false);
+      setIsKnowledgeNotFound(true);
+      setIsExcited(false);
       const errorMsg: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
@@ -1096,19 +1214,27 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 {/* Atmospheric Backlight: Dynamic Halo shifting with Docent Mood */}
                 <div
                   className={`absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full blur-3xl pointer-events-none transition-all duration-700 ${
-                    rajyMood === 'speaking'
+                    primaryState === 'narrating'
                       ? 'bg-amber-400/25 scale-110'
-                      : rajyMood === 'pondering'
+                      : primaryState === 'researching'
                       ? 'bg-cyan-500/20 scale-105 animate-pulse'
+                      : primaryState === 'excited'
+                      ? 'bg-amber-400/30 scale-115 animate-pulse'
+                      : primaryState === 'knowledgeNotFound'
+                      ? 'bg-amber-600/10 scale-95'
                       : 'bg-amber-500/10 scale-100'
                   }`}
                 />
                 <div
                   className={`absolute bottom-16 left-1/2 -translate-x-1/2 w-44 h-44 rounded-full blur-2xl pointer-events-none transition-all duration-700 ${
-                    rajyMood === 'speaking'
+                    primaryState === 'narrating'
                       ? 'bg-emerald-500/15'
-                      : rajyMood === 'pondering'
+                      : primaryState === 'researching'
                       ? 'bg-blue-600/15'
+                      : primaryState === 'excited'
+                      ? 'bg-amber-500/20'
+                      : primaryState === 'knowledgeNotFound'
+                      ? 'bg-slate-700/15'
                       : 'bg-cyan-500/5'
                   }`}
                 />
@@ -1117,9 +1243,10 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 <AnimatePresence>
                   {clickQuote && (
                     <motion.div
-                      initial={shouldReduceMotion ? false : { opacity: 0, y: 8, scale: 0.9 }}
+                      initial={shouldReduceMotion ? false : { opacity: 0, y: 10, scale: 0.94 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: -4, scale: 0.9 }}
+                      exit={{ opacity: 0, y: -4, scale: 0.96 }}
+                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                       className="absolute top-2 left-2 right-2 z-30 p-2.5 rounded-xl bg-slate-950/95 border border-amber-400/50 text-[10px] font-mono text-amber-200 shadow-[0_10px_25px_rgba(0,0,0,0.85)] backdrop-blur-md leading-relaxed text-center pointer-events-none"
                     >
                       <div className="flex items-center justify-center gap-1 text-[9px] text-amber-400 font-bold uppercase tracking-wider mb-1">
@@ -1127,47 +1254,86 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                         <span>Curator Musings</span>
                       </div>
                       &ldquo;{clickQuote}&rdquo;
+                      {/* Downward pointer notch toward Rajy */}
+                      <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-2.5 h-2.5 bg-slate-950/95 border-b border-r border-amber-400/50 rotate-45 pointer-events-none" />
                     </motion.div>
                   )}
                 </AnimatePresence>
 
                 {/* Rajy Mascot Illustration — Interactive & Animated */}
                 <div className="relative flex-1 min-h-0 w-full flex items-center justify-center px-3 py-2">
+                  {/* Floating Strata / Data Particles during Researching Strata state */}
+                  {primaryState === 'researching' && !shouldReduceMotion && (
+                    <div className="absolute inset-0 pointer-events-none overflow-hidden z-10" aria-hidden="true">
+                      {[0, 1, 2, 3].map((i) => (
+                        <motion.span
+                          key={i}
+                          initial={{ opacity: 0, y: 15, x: (i - 1.5) * 26 }}
+                          animate={{
+                            opacity: [0, 0.75, 0],
+                            y: [-5, -45],
+                            x: [(i - 1.5) * 26, (i - 1.5) * 30 + (i % 2 === 0 ? 5 : -5)]
+                          }}
+                          transition={{
+                            repeat: Infinity,
+                            duration: 2.2 + i * 0.4,
+                            delay: i * 0.45,
+                            ease: 'easeOut'
+                          }}
+                          className={`absolute bottom-10 left-1/2 w-1.5 h-1.5 rounded-full ${
+                            i % 2 === 0
+                              ? 'bg-cyan-400/60 shadow-[0_0_6px_rgba(34,211,238,0.8)]'
+                              : 'bg-amber-400/50 shadow-[0_0_6px_rgba(251,191,36,0.8)]'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Outer Interaction Container: Tap spring bounce & hover */}
                   <motion.button
                     type="button"
                     onClick={handleMascotClick}
                     title="Click Rajy for curatorial musings!"
                     aria-label="Interactive Rajy docent mascot"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.96 }}
                     animate={
                       shouldReduceMotion
                         ? false
                         : isTapped
                         ? { scale: [1, 1.08, 0.96, 1], y: [0, -6, 0] }
-                        : rajyMood === 'speaking'
-                        ? { y: [0, -3.5, 0, -2, 0], scale: [1, 1.02, 1] }
-                        : rajyMood === 'pondering'
-                        ? { rotate: [-1.2, 1.2, -1.2], y: [0, -2, 0] }
-                        : { y: [0, -2, 0] }
+                        : { scale: 1, y: 0 }
                     }
                     transition={
                       isTapped
-                        ? { duration: 0.3 }
-                        : rajyMood === 'speaking'
-                        ? { repeat: Infinity, duration: 1.1, ease: 'easeInOut' }
-                        : rajyMood === 'pondering'
-                        ? { repeat: Infinity, duration: 2.4, ease: 'easeInOut' }
-                        : { repeat: Infinity, duration: 4.2, ease: 'easeInOut' }
+                        ? { duration: 0.35, ease: [0.34, 1.56, 0.64, 1] }
+                        : { duration: 0.3, ease: 'easeOut' }
                     }
                     className="relative w-full h-full max-h-[300px] flex items-center justify-center cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-amber-400/50 rounded-2xl group"
                   >
-                    <img
-                      src="/rajy-full.png"
-                      alt="Rajy - Prehistorica AI Docent mascot"
-                      className="w-full h-full max-h-[300px] object-contain drop-shadow-[0_10px_22px_rgba(0,0,0,0.65)] group-hover:drop-shadow-[0_12px_28px_rgba(245,158,11,0.25)] transition-all"
-                      draggable={false}
-                    />
+                    {/* Inner Character Motion Layer: Primary state posture, breathing & transitions */}
+                    <motion.div
+                      variants={rajyCharacterVariants}
+                      animate={shouldReduceMotion ? 'idle' : primaryState}
+                      style={{ transformOrigin: 'bottom center' }}
+                      className="relative aspect-square h-full max-h-[300px] flex items-center justify-center"
+                    >
+                      {/* Smooth cross-fade between the 5 official state images */}
+                      <AnimatePresence mode="popLayout">
+                        <motion.img
+                          key={primaryState}
+                          src={RAJY_STATE_IMAGES[primaryState]}
+                          alt={`Rajy - Prehistorica AI Docent (${primaryState})`}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.28, ease: 'easeInOut' }}
+                          className="w-full h-full object-contain drop-shadow-[0_10px_22px_rgba(0,0,0,0.65)] group-hover:drop-shadow-[0_12px_28px_rgba(245,158,11,0.25)] transition-all select-none"
+                          draggable={false}
+                        />
+                      </AnimatePresence>
+                    </motion.div>
                   </motion.button>
                 </div>
 
@@ -1185,28 +1351,75 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                   <p className="text-[10px] font-mono text-slate-400 tracking-wider leading-tight italic">
                     Rajasaurus narmadensis
                   </p>
-                  <div className="pt-0.5 flex justify-center">
-                    {rajyMood === 'speaking' ? (
-                      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-[9px] font-mono font-bold tracking-wider text-emerald-300 uppercase shadow-xs">
-                        <Volume2 className="w-2.5 h-2.5 text-emerald-400 animate-pulse" />
-                        <span>NARRATING</span>
-                        <span className="flex items-center gap-0.5 ml-0.5">
-                          <span className="w-0.5 h-2 bg-emerald-400 rounded-full animate-bounce [animation-delay:0ms]" />
-                          <span className="w-0.5 h-2.5 bg-emerald-400 rounded-full animate-bounce [animation-delay:150ms]" />
-                          <span className="w-0.5 h-1.5 bg-emerald-400 rounded-full animate-bounce [animation-delay:300ms]" />
-                        </span>
-                      </span>
-                    ) : rajyMood === 'pondering' ? (
-                      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-500/40 text-[9px] font-mono font-bold tracking-wider text-cyan-300 uppercase shadow-xs animate-pulse">
-                        <Sparkles className="w-2.5 h-2.5 text-cyan-400 animate-spin" />
-                        <span>RESEARCHING STRATA</span>
-                      </span>
-                    ) : (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/10 border border-white/[0.08] text-[9px] font-mono font-bold tracking-widest text-amber-400/80 uppercase">
-                        <Dna className="w-2.5 h-2.5 text-amber-400/75" />
-                        AI DOCENT
-                      </span>
-                    )}
+                  <div className="pt-0.5 flex justify-center min-h-[26px]">
+                    <AnimatePresence mode="wait">
+                      {primaryState === 'narrating' ? (
+                        <motion.span
+                          key="narrating"
+                          initial={{ opacity: 0, scale: 0.92 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.92 }}
+                          transition={{ duration: 0.2 }}
+                          className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-[9px] font-mono font-bold tracking-wider text-emerald-300 uppercase shadow-xs"
+                        >
+                          <Volume2 className="w-2.5 h-2.5 text-emerald-400 animate-pulse" />
+                          <span>NARRATING</span>
+                          <span className="flex items-center gap-0.5 ml-0.5">
+                            <span className="w-0.5 h-2 bg-emerald-400 rounded-full animate-bounce [animation-delay:0ms]" />
+                            <span className="w-0.5 h-2.5 bg-emerald-400 rounded-full animate-bounce [animation-delay:150ms]" />
+                            <span className="w-0.5 h-1.5 bg-emerald-400 rounded-full animate-bounce [animation-delay:300ms]" />
+                          </span>
+                        </motion.span>
+                      ) : primaryState === 'researching' ? (
+                        <motion.span
+                          key="researching"
+                          initial={{ opacity: 0, scale: 0.92 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.92 }}
+                          transition={{ duration: 0.2 }}
+                          className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-500/40 text-[9px] font-mono font-bold tracking-wider text-cyan-300 uppercase shadow-xs animate-pulse"
+                        >
+                          <Sparkles className="w-2.5 h-2.5 text-cyan-400 animate-spin" />
+                          <span>RESEARCHING STRATA</span>
+                        </motion.span>
+                      ) : primaryState === 'excited' ? (
+                        <motion.span
+                          key="excited"
+                          initial={{ opacity: 0, scale: 0.92 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.92 }}
+                          transition={{ duration: 0.2 }}
+                          className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/20 border border-amber-400/50 text-[9px] font-mono font-bold tracking-wider text-amber-300 uppercase shadow-xs animate-pulse"
+                        >
+                          <Sparkles className="w-2.5 h-2.5 text-amber-300" />
+                          <span>FOSSIL DISCOVERY</span>
+                        </motion.span>
+                      ) : primaryState === 'knowledgeNotFound' ? (
+                        <motion.span
+                          key="knowledgeNotFound"
+                          initial={{ opacity: 0, scale: 0.92 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.92 }}
+                          transition={{ duration: 0.2 }}
+                          className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/40 text-[9px] font-mono font-bold tracking-wider text-amber-300 uppercase shadow-xs"
+                        >
+                          <HelpCircle className="w-2.5 h-2.5 text-amber-400" />
+                          <span>KNOWLEDGE NOT FOUND</span>
+                        </motion.span>
+                      ) : (
+                        <motion.span
+                          key="idle"
+                          initial={{ opacity: 0, scale: 0.92 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.92 }}
+                          transition={{ duration: 0.2 }}
+                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/10 border border-white/[0.08] text-[9px] font-mono font-bold tracking-widest text-amber-400/80 uppercase"
+                        >
+                          <Dna className="w-2.5 h-2.5 text-amber-400/75" />
+                          <span>AI DOCENT</span>
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </div>
               </aside>
