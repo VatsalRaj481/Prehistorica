@@ -232,12 +232,6 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     return 'idle';
   }, [isSpeaking, loading, isStreaming, isKnowledgeNotFound, isExcited]);
 
-  // Backward-compatible alias for existing references
-  const rajyMood = useMemo<'idle' | 'pondering' | 'speaking'>(() => {
-    if (primaryState === 'narrating') return 'speaking';
-    if (primaryState === 'researching') return 'pondering';
-    return 'idle';
-  }, [primaryState]);
 
   const MASCOT_QUOTES = [
     "Careful with the cranial horn, explorer! That's Late Cretaceous heritage.",
