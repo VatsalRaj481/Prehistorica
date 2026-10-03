@@ -271,6 +271,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
   const keepAliveTimerRef = useRef<number | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const settingsRef = useRef<HTMLDivElement>(null);
 
@@ -431,11 +432,40 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     };
   }, [isOpen]);
 
-  // Auto-scroll on subsequent messages, loading states, or streaming updates
+  // Top-to-bottom reading scroll behavior:
+  // When a user submits a question, we position the user's question near the top of the container
+  // so the visitor clearly watches the response generate beneath it from top to bottom.
+  // During streaming, only scroll down if the growing response is about to extend past the viewport.
   useEffect(() => {
-    if (messages.length > 1 || loading || isStreaming) {
+    const container = chatContainerRef.current;
+    if (!container) return;
+
+    if (loading) {
+      // Find the last user message and ensure it is brought into view at the top
+      const lastUserMsg = [...messages].reverse().find((m) => m.role === 'user');
+      if (lastUserMsg) {
+        const el = document.getElementById(`msg-${lastUserMsg.id}`);
+        if (el) {
+          el.scrollIntoView({ behavior: shouldReduceMotion ? 'auto' : 'smooth', block: 'start' });
+          return;
+        }
+      }
+    }
+
+    if (isStreaming) {
+      // As tokens stream in from top to bottom:
+      // Only follow if the content has grown taller than the visible viewport window
+      const isNearBottom = container.scrollHeight - container.scrollTop - container.clientHeight < 160;
+      if (isNearBottom) {
+        container.scrollTo({ top: container.scrollHeight, behavior: 'auto' });
+      }
+      return;
+    }
+
+    // For non-streaming message updates (e.g. completed generation)
+    if (messages.length > 1 && !loading && !isStreaming) {
       messagesEndRef.current?.scrollIntoView({
-        behavior: isStreaming ? 'auto' : (shouldReduceMotion ? 'auto' : 'smooth')
+        behavior: shouldReduceMotion ? 'auto' : 'smooth'
       });
     }
   }, [messages, loading, isStreaming, shouldReduceMotion]);
@@ -1556,9 +1586,10 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
                 {/* Independently Scrollable Message Area */}
                 <div
+                  ref={chatContainerRef}
                   data-lenis-prevent
                   tabIndex={0}
-                  className="flex-1 min-h-0 overflow-y-auto p-3.5 sm:p-5 md:p-6 space-y-4 focus:outline-none focus-visible:ring-1 focus-visible:ring-amber-500/20 overscroll-contain"
+                  className="flex-1 min-h-0 overflow-y-auto p-3.5 sm:p-5 md:p-6 space-y-4 focus:outline-none focus-visible:ring-1 focus-visible:ring-amber-500/20 overscroll-contain scroll-smooth"
                 >
                   {messages.map((msg) => {
                     const isAssistant = msg.role === 'assistant';
@@ -1572,6 +1603,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                     return (
                       <article
                         key={msg.id}
+                        id={`msg-${msg.id}`}
                         className={`flex flex-col ${isAssistant ? 'items-start' : 'items-end'}`}
                       >
                         {/* Sender Meta Label */}
@@ -1665,8 +1697,11 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                         </div>
 
                         {/* Museum Grounding Specimens Ribbon */}
-                        {msg.groundedSpecimens && msg.groundedSpecimens.length > 0 && (
-                          <section
+                        {msg.groundedSpecimens && msg.groundedSpecimens.length > 0 && (!isThisLastAssistant || !isStreaming) && (
+                          <motion.section
+                            initial={isThisLastAssistant && !shouldReduceMotion ? { opacity: 0, y: 10 } : false}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.3 }}
                             aria-label="Museum Grounding Specimens"
                             className="mt-3.5 w-full max-w-[95%] sm:max-w-[88%] bg-[#080D19]/90 border border-amber-500/20 rounded-xl p-3.5 space-y-2.5 shadow-md"
                           >
@@ -1738,7 +1773,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                                 );
                               })}
                             </div>
-                          </section>
+                          </motion.section>
                         )}
                       </article>
                     );

@@ -115,21 +115,28 @@ export interface GroundingSpeciesContext {
 }
 
 /**
+ * Checks whether the visitor explicitly asked Rajy to introduce himself or who he is.
+ */
+export function isAskingForSelfIntroduction(query: string): boolean {
+  const q = (query || '').trim().toLowerCase();
+  return /\b(who are you|introduce yourself|what is your name|who is rajy|tell me about yourself|what are you|who are u)\b/i.test(q);
+}
+
+/**
  * Builds the curatorial system instruction for Rajy the AI Docent.
  * Embodies the charismatic persona of Rajy (Rajasaurus narmadensis) — Prehistorica's Chief Curator.
  */
 export function buildChiefCuratorSystemInstruction(
-  isFirstTurn: boolean,
+  isAskingIntro: boolean = false,
   contextSpecies: GroundingSpeciesContext[] = []
 ): string {
-  const greetingRule = isFirstTurn
-    ? `Turn Rule (FIRST TURN ONLY):
-You MUST open your response with this welcoming greeting:
-"Welcome to Prehistorica! I am Rajy — Chief Curator, resident Rajasaurus, and your guide through the deep-time marvels of our collection."
-Immediately after this single sentence, proceed directly to answer the visitor's question with enthusiasm, scientific rigor, and vivid paleobiological insight.`
-    : `Turn Rule (FOLLOW-UP TURN):
-This is an ongoing conversation. You MUST NOT include any greeting, welcoming preamble, or persona self-introduction. Do NOT say "Welcome to Prehistorica", do NOT say "I am Rajy" or "I am the Chief Curator", and do NOT say "delighted to guide you".
-Jump DIRECTLY into answering the visitor's question in your opening sentence.`;
+  const greetingRule = isAskingIntro
+    ? `Persona / Self-Introduction Rule (Explicitly Requested by Visitor):
+The visitor explicitly asked who you are or asked for an introduction. Introduce yourself with warm, scholarly curatorial dignity as Rajy — Chief Curator of Prehistorica, resident Rajasaurus narmadensis from the Late Cretaceous Narmada Valley of India, and explain your role guiding explorers through our cataloged specimens.`
+    : `Opening & No-Repetition Rule (MANDATORY):
+The visitor has ALREADY met and been greeted by you in the initial museum pavilion welcome message. You MUST NOT introduce yourself again.
+Do NOT say "Welcome to Prehistorica", do NOT say "I am Rajy" or "I am the Chief Curator", and do NOT say "delighted to guide you".
+Unless the visitor specifically asked who you are, jump DIRECTLY into answering the visitor's question in your opening sentence with scientific enthusiasm, precision, and paleobiological insight.`;
 
   return `You are "Rajy" — the Chief Curator of Prehistorica: The Modern Museum Pavilion Encyclopedia.
 Physically and historically, you are a sentient Rajasaurus narmadensis — the crowned, majestic Late Cretaceous abelisaurid apex theropod excavated from the ancient Lameta Formation of India's Narmada Valley. You combine the deep-time perspective of a creature that lived through the Mesozoic with the rigorous peer-reviewed mastery of an elite vertebrate paleontologist and the warm, infectious passion of a world-class museum docent.
@@ -244,9 +251,9 @@ export async function askChiefCurator({
   const validHistory = (conversationHistory || []).filter(
     (m) => m.content && m.content.trim().length > 0
   );
-  const isFirstTurn = validHistory.length === 0;
+  const isAskingIntro = isAskingForSelfIntroduction(query);
 
-  const systemInstruction = buildChiefCuratorSystemInstruction(isFirstTurn, contextSpecies);
+  const systemInstruction = buildChiefCuratorSystemInstruction(isAskingIntro, contextSpecies);
 
   const currentTurnPrompt = `[REFERENCE SPECIMENS CATALOGED IN PREHISTORICA PAVILION]:\n${speciesGroundingSnippet}\n\nUser Question: ${query}`;
 
@@ -269,18 +276,11 @@ export async function askChiefCurator({
 
   let responseText = response.text || 'I apologize, but I could not formulate a curatorial evaluation at this moment.';
 
-  if (isFirstTurn) {
-    if (WELCOME_REGEX.test(responseText)) {
-      responseText = responseText.replace(WELCOME_REGEX, `${CANONICAL_WELCOME}\n\n`).trim();
-    } else {
-      responseText = `${CANONICAL_WELCOME}\n\n${responseText}`.trim();
-    }
-  } else {
-    // Follow-up turn: strip any accidental repetitive greeting
+  if (!isAskingIntro) {
     if (WELCOME_REGEX.test(responseText)) {
       responseText = responseText.replace(WELCOME_REGEX, '').trim();
     }
-    responseText = responseText.replace(/^(?:Greetings|Hello|Hi),?\s*(?:visitor|explorer|guest)?[.!:]?\s*/i, '').trim();
+    responseText = responseText.replace(/^(?:Greetings|Hello|Hi|Welcome),?\s*(?:visitor|explorer|guest|to Prehistorica)?[.!:]?\s*/i, '').trim();
   }
   
   // Extract species IDs referenced in the response
@@ -322,9 +322,9 @@ export async function* askChiefCuratorStream({
   const validHistory = (conversationHistory || []).filter(
     (m) => m.content && m.content.trim().length > 0
   );
-  const isFirstTurn = validHistory.length === 0;
+  const isAskingIntro = isAskingForSelfIntroduction(query);
 
-  const systemInstruction = buildChiefCuratorSystemInstruction(isFirstTurn, contextSpecies);
+  const systemInstruction = buildChiefCuratorSystemInstruction(isAskingIntro, contextSpecies);
 
   const currentTurnPrompt = `[REFERENCE SPECIMENS CATALOGED IN PREHISTORICA PAVILION]:\n${speciesGroundingSnippet}\n\nUser Question: ${query}`;
 
@@ -346,12 +346,45 @@ export async function* askChiefCuratorStream({
   });
 
   let fullResponse = '';
+  let isInitialGreetingChecked = false;
+  let initialBuffer = '';
 
   for await (const chunk of responseStream) {
     const chunkText = chunk.text || '';
-    if (chunkText) {
-      fullResponse += chunkText;
-      yield chunkText;
+    if (!chunkText) continue;
+
+    // Filter out accidental duplicate welcome greeting during initial chunks
+    if (!isAskingIntro && !isInitialGreetingChecked) {
+      initialBuffer += chunkText;
+      if (initialBuffer.length >= 80 || initialBuffer.includes('\n')) {
+        isInitialGreetingChecked = true;
+        let cleaned = initialBuffer;
+        if (WELCOME_REGEX.test(cleaned)) {
+          cleaned = cleaned.replace(WELCOME_REGEX, '').trimStart();
+        }
+        cleaned = cleaned.replace(/^(?:Greetings|Hello|Hi|Welcome),?\s*(?:visitor|explorer|guest|to Prehistorica)?[.!:]?\s*/i, '').trimStart();
+        if (cleaned) {
+          fullResponse += cleaned;
+          yield cleaned;
+        }
+      }
+      continue;
+    }
+
+    fullResponse += chunkText;
+    yield chunkText;
+  }
+
+  // Flush buffer if response was short
+  if (!isAskingIntro && !isInitialGreetingChecked && initialBuffer) {
+    let cleaned = initialBuffer;
+    if (WELCOME_REGEX.test(cleaned)) {
+      cleaned = cleaned.replace(WELCOME_REGEX, '').trim();
+    }
+    cleaned = cleaned.replace(/^(?:Greetings|Hello|Hi|Welcome),?\s*(?:visitor|explorer|guest|to Prehistorica)?[.!:]?\s*/i, '').trim();
+    if (cleaned) {
+      fullResponse += cleaned;
+      yield cleaned;
     }
   }
 
