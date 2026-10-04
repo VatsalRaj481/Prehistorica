@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useReducedMotion, useScroll, useTransform, Variants } from 'framer-motion';
 import { fetchCreatureOfTheDay, fetchSpecies, fetchSpeciesById, Species, TOTAL_CATALOGED_SPECIMENS } from '../services/api.js';
 import SpotlightCard from '../components/SpotlightCard.js';
-import { Calendar, ArrowRight, Dna, Compass, ShieldAlert, FileText, Layers, Globe, Database, Sparkles, Scale, Trophy } from 'lucide-react';
+import { Calendar, ArrowRight, Dna, Compass, ShieldAlert, FileText, Layers, Globe, Database, Sparkles, Scale, Trophy, Skull } from 'lucide-react';
 import { formatMass } from '../utils/formatMass.js';
 import { formatFeet } from '../utils/formatDimensions.js';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
@@ -143,6 +143,16 @@ export default function Home() {
                     className="px-6 py-3 bg-slate-900 hover:bg-slate-850 text-slate-200 font-bold uppercase tracking-wider rounded-lg border border-white/[0.08] hover:border-amber-500/40 transition-all flex items-center gap-2 cursor-pointer shadow-md"
                   >
                     <Compass className="h-4 w-4 text-amber-400" /> Interactive Time-Map
+                  </Link>
+                </motion.div>
+              </ClickSpark>
+              <ClickSpark sparkColor="#F43F5E" sparkSize={10} sparkRadius={18} sparkCount={8}>
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.96 }}>
+                  <Link
+                    to="/extinctions"
+                    className="px-6 py-3 bg-slate-900 hover:bg-slate-850 text-rose-300 hover:text-white font-bold uppercase tracking-wider rounded-lg border border-rose-500/30 hover:border-rose-500/60 transition-all flex items-center gap-2 cursor-pointer shadow-md"
+                  >
+                    <Skull className="h-4 w-4 text-rose-400" /> Mass Extinctions
                   </Link>
                 </motion.div>
               </ClickSpark>

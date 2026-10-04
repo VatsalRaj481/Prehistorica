@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, Map, ArrowRightLeft, Menu, X, Scale, BookOpen, Trophy, Sparkles, Camera, ChevronDown, Dna, Home } from 'lucide-react';
+import { Search, Map, ArrowRightLeft, Menu, X, Scale, BookOpen, Trophy, Sparkles, Camera, ChevronDown, Dna, Home, Skull } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useReducedMotion } from 'framer-motion';
 import SearchAutocomplete from './SearchAutocomplete.js';
 import CompareModal from './CompareModal.js';
@@ -234,7 +234,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                     >
                       <div className="px-3 py-2 text-[10px] text-slate-400 uppercase tracking-widest font-mono font-bold flex items-center justify-between">
                         <span>Interactive Pavilion Lab</span>
-                        <span className="text-amber-400 font-mono">4 Tools</span>
+                        <span className="text-amber-400 font-mono">5 Exhibits</span>
                       </div>
 
                       <div className="py-1 space-y-1">
@@ -314,7 +314,31 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                           </div>
                         </Link>
 
-                        {/* Tool 4: Chief Curator / Rajy */}
+                        {/* Tool 4: Big Five Extinctions & Paleoclimate Chronicle */}
+                        <Link
+                          to="/extinctions"
+                          onClick={() => setIsToolsDropdownOpen(false)}
+                          className="w-full text-left p-2.5 rounded-lg hover:bg-slate-900/90 transition-colors flex items-start gap-3 group cursor-pointer"
+                        >
+                          <div className="h-8 w-8 rounded-lg bg-slate-900 border border-rose-500/30 flex items-center justify-center text-rose-400 shrink-0 group-hover:scale-105 transition-transform shadow-sm">
+                            <Skull className="h-4 w-4" />
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <div className="flex items-center justify-between">
+                              <span className="text-xs font-bold text-slate-100 group-hover:text-rose-300 font-sans tracking-wide">
+                                Mass Extinctions
+                              </span>
+                              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-rose-500/20 text-rose-300 font-extrabold">
+                                CHRONICLE
+                              </span>
+                            </div>
+                            <p className="text-[11px] text-slate-400 font-sans leading-snug line-clamp-1 pt-0.5">
+                              The Big Five & paleoclimate curves
+                            </p>
+                          </div>
+                        </Link>
+
+                        {/* Tool 5: Chief Curator / Rajy */}
                         <button
                           onClick={() => {
                             setIsToolsDropdownOpen(false);
@@ -481,6 +505,18 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                     <span>Curator Trials (Challenge)</span>
                   </div>
                   <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 font-bold">QUIZ</span>
+                </Link>
+
+                <Link
+                  to="/extinctions"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-200 bg-slate-900 border border-rose-500/30 font-medium cursor-pointer"
+                >
+                  <div className="flex items-center gap-2">
+                    <Skull className="h-4 w-4 text-rose-400" />
+                    <span>Mass Extinction Chronicle</span>
+                  </div>
+                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-rose-500/20 text-rose-300 font-bold">CHRONICLE</span>
                 </Link>
 
                 {/* Featured AI Docent Hero Card */}

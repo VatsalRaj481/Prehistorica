@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom';
 import ShinyText from './reactbits/ShinyText.js';
 
 export default function Footer() {
   return (
     <footer className="bg-slate-950 border-t border-white/[0.08] text-slate-400 py-8 sm:py-9 mt-auto font-mono relative z-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="flex items-start gap-3.5">
             <img
@@ -38,6 +39,22 @@ export default function Footer() {
             <p className="text-slate-500 text-[11px]">
               &copy; {new Date().getFullYear()} PREHISTORICA ARCHIVE. All rights reserved.
             </p>
+          </div>
+        </div>
+
+        {/* Quick Pavilion Explorations Links */}
+        <div className="pt-4 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-3 text-xs">
+          <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Pavilion Galleries:</span>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-slate-400">
+            <Link to="/browse" className="hover:text-amber-400 transition-colors">Catalog Archive</Link>
+            <Link to="/cladogram" className="hover:text-amber-400 transition-colors">Tree of Life</Link>
+            <Link to="/map" className="hover:text-amber-400 transition-colors">Time-Map</Link>
+            <Link to="/runway" className="hover:text-amber-400 transition-colors">1:1 Metric Runway</Link>
+            <Link to="/extinctions" className="text-rose-400 hover:text-rose-300 font-bold transition-colors flex items-center gap-1">
+              <span>Mass Extinctions Chronicle</span>
+              <span className="text-[9px] px-1.5 py-0.2 rounded bg-rose-500/20 text-rose-300">NEW</span>
+            </Link>
+            <Link to="/challenge" className="hover:text-amber-400 transition-colors">Curator Trials</Link>
           </div>
         </div>
       </div>
