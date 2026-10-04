@@ -164,7 +164,7 @@ export default function Home() {
                 <span className="text-slate-400">Verified Specimens</span>
                 <span className="text-slate-100 font-bold text-sm">
                   {totalSpecies ? (
-                    <CountUp to={totalSpecies} duration={1} separator="," suffix="+" className="text-slate-100 font-bold text-sm" />
+                    <CountUp to={totalSpecies} duration={1} separator="," className="text-slate-100 font-bold text-sm" />
                   ) : (
                     formattedTotal
                   )}
