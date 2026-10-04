@@ -402,7 +402,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
               style={{
                 paddingBottom: 'max(env(safe-area-inset-bottom, 0px), 1.5rem)'
               }}
-              className="lg:hidden border-t border-white/[0.08] bg-slate-950/98 backdrop-blur-xl px-4 py-4 space-y-4 overflow-visible font-mono overscroll-contain shadow-2xl"
+              className="lg:hidden border-t border-white/[0.08] bg-slate-950/98 backdrop-blur-xl px-4 py-4 space-y-4 max-h-[calc(100dvh-4rem)] overflow-y-auto font-mono overscroll-contain shadow-2xl"
             >
               {/* Search Bar on Mobile - Full width row */}
               <div className="w-full">
@@ -561,7 +561,10 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 12 }}
             transition={{ type: 'spring', stiffness: 380, damping: 26 }}
-            className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex items-center justify-center"
+            style={{
+              bottom: 'max(env(safe-area-inset-bottom, 0px), 1.25rem)'
+            }}
+            className="fixed right-4 sm:right-6 z-40 flex items-center justify-center"
           >
             <SlingButton
               onClick={() => setIsCuratorOpen(true)}

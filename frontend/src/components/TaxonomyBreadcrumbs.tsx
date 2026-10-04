@@ -76,7 +76,7 @@ export default function TaxonomyBreadcrumbs({ taxonomy, taxonomicClassification 
           <motion.div key={r.label} variants={itemVariants} whileTap={{ scale: 0.96 }}>
             <Link
               to={`/browse?search=${encodeURIComponent(r.val)}`}
-              className={`p-2.5 rounded-lg border transition-all flex flex-col gap-0.5 block ${
+              className={`p-2 sm:p-2.5 rounded-lg border transition-all flex flex-col gap-0.5 block ${
                 i === ranks.length - 1
                   ? 'bg-amber-500/10 border-amber-500/40 text-amber-300 font-bold'
                   : 'bg-slate-900/90 border-white/[0.08] text-slate-300 hover:border-amber-500/40 hover:text-white'

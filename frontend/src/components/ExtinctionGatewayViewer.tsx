@@ -65,7 +65,7 @@ export default function ExtinctionGatewayViewer({
   return (
     <div id="extinction-dossier" className="space-y-6">
       {/* Selector Navigation Plinths for the Big Five */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5">
+      <div className="flex lg:grid overflow-x-auto lg:overflow-visible pb-2.5 lg:pb-0 scrollbar-none snap-x snap-mandatory lg:grid-cols-5 gap-2.5">
         {list.map((event: any) => {
           const eventKey = event.slug || event.id;
           const isSelected =
@@ -76,7 +76,7 @@ export default function ExtinctionGatewayViewer({
             <button
               key={eventKey}
               onClick={() => onSelectExtinction(event.slug || String(event.id))}
-              className={`p-3.5 rounded-xl border text-left transition-all relative overflow-hidden group cursor-pointer ${
+              className={`p-3.5 rounded-xl border text-left transition-all relative overflow-hidden group cursor-pointer flex-shrink-0 w-[240px] sm:w-[260px] lg:w-auto snap-start ${
                 isSelected
                   ? 'bg-slate-900 border-rose-500/70 shadow-[0_0_20px_rgba(244,63,94,0.2)] ring-1 ring-rose-500/50'
                   : 'bg-slate-900/60 hover:bg-slate-850 border-white/[0.08] hover:border-white/[0.2]'

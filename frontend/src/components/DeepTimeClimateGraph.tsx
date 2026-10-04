@@ -292,11 +292,11 @@ export default function DeepTimeClimateGraph({
       </div>
 
       {/* Main SVG Chart Stage */}
-      <div className="relative w-full overflow-hidden select-none">
+      <div className="relative w-full overflow-hidden select-none touch-pan-y">
         <svg
           ref={svgRef}
           viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-          className="w-full h-auto cursor-crosshair overflow-visible"
+          className="w-full h-auto cursor-crosshair overflow-visible touch-pan-y"
           onPointerMove={handlePointerMove}
           onPointerLeave={handlePointerLeave}
         >
@@ -544,7 +544,7 @@ export default function DeepTimeClimateGraph({
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="absolute top-2 left-2 sm:left-auto sm:right-4 z-20 pointer-events-none bg-slate-950/95 border border-amber-500/30 shadow-2xl rounded-xl p-3 sm:p-4 text-xs font-mono max-w-xs backdrop-blur-md"
+            className="absolute top-2 left-2 right-2 sm:left-auto sm:right-4 z-20 pointer-events-none bg-slate-950/95 border border-amber-500/30 shadow-2xl rounded-xl p-3 sm:p-4 text-xs font-mono max-w-full sm:max-w-xs backdrop-blur-md"
           >
             <div className="flex items-center justify-between pb-2 border-b border-white/[0.08] mb-2">
               <span className="font-bold text-amber-400 text-sm flex items-center gap-1.5">

@@ -125,32 +125,32 @@ export default function Home() {
               An architectural digital catalog documenting <strong className="text-amber-400 font-bold">{formattedTotal}</strong> scientifically verified prehistoric species across Earth's major geological epochs.
             </motion.p>
 
-            <div className="flex flex-wrap items-center gap-3 pt-2 font-mono text-xs">
-              <ClickSpark sparkColor="#FBBF24" sparkSize={10} sparkRadius={18} sparkCount={8}>
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.96 }}>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2 font-mono text-xs">
+              <ClickSpark sparkColor="#FBBF24" sparkSize={10} sparkRadius={18} sparkCount={8} className="w-full sm:w-auto">
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.96 }} className="w-full sm:w-auto">
                   <Link
                     to="/browse"
-                    className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black uppercase tracking-wider rounded-lg border border-amber-300 transition-all shadow-lg flex items-center gap-2 cursor-pointer"
+                    className="w-full sm:w-auto px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black uppercase tracking-wider rounded-lg border border-amber-300 transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
                   >
                     Explore Catalog <ArrowRight className="h-4 w-4" />
                   </Link>
                 </motion.div>
               </ClickSpark>
-              <ClickSpark sparkColor="#F59E0B" sparkSize={10} sparkRadius={18} sparkCount={8}>
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.96 }}>
+              <ClickSpark sparkColor="#F59E0B" sparkSize={10} sparkRadius={18} sparkCount={8} className="w-full sm:w-auto">
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.96 }} className="w-full sm:w-auto">
                   <Link
                     to="/map"
-                    className="px-6 py-3 bg-slate-900 hover:bg-slate-850 text-slate-200 font-bold uppercase tracking-wider rounded-lg border border-white/[0.08] hover:border-amber-500/40 transition-all flex items-center gap-2 cursor-pointer shadow-md"
+                    className="w-full sm:w-auto px-6 py-3 bg-slate-900 hover:bg-slate-850 text-slate-200 font-bold uppercase tracking-wider rounded-lg border border-white/[0.08] hover:border-amber-500/40 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
                   >
                     <Compass className="h-4 w-4 text-amber-400" /> Interactive Time-Map
                   </Link>
                 </motion.div>
               </ClickSpark>
-              <ClickSpark sparkColor="#F43F5E" sparkSize={10} sparkRadius={18} sparkCount={8}>
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.96 }}>
+              <ClickSpark sparkColor="#F43F5E" sparkSize={10} sparkRadius={18} sparkCount={8} className="w-full sm:w-auto">
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.96 }} className="w-full sm:w-auto">
                   <Link
                     to="/extinctions"
-                    className="px-6 py-3 bg-slate-900 hover:bg-slate-850 text-rose-300 hover:text-white font-bold uppercase tracking-wider rounded-lg border border-rose-500/30 hover:border-rose-500/60 transition-all flex items-center gap-2 cursor-pointer shadow-md"
+                    className="w-full sm:w-auto px-6 py-3 bg-slate-900 hover:bg-slate-850 text-rose-300 hover:text-white font-bold uppercase tracking-wider rounded-lg border border-rose-500/30 hover:border-rose-500/60 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
                   >
                     <Skull className="h-4 w-4 text-rose-400" /> Mass Extinctions
                   </Link>

@@ -82,41 +82,41 @@ export default function Extinctions() {
         </div>
 
         {/* Quick Statistical Dossier Pillars */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pt-2 font-mono">
-          <div className="p-4 rounded-xl bg-slate-900/80 border border-white/[0.08] shadow-lg">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 pt-2 font-mono">
+          <div className="p-3 sm:p-4 rounded-xl bg-slate-900/80 border border-white/[0.08] shadow-lg">
             <div className="text-[10px] text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
-              <Skull className="h-3.5 w-3.5 text-rose-400" />
-              <span>Great Cataclysms</span>
+              <Skull className="h-3.5 w-3.5 text-rose-400 shrink-0" />
+              <span className="truncate">Great Cataclysms</span>
             </div>
-            <div className="text-2xl sm:text-3xl font-black text-slate-100 mt-1">5 Pulses</div>
-            <span className="text-[11px] text-rose-400">Hirnantian to K-Pg</span>
+            <div className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-100 mt-1">5 Pulses</div>
+            <span className="text-[10px] sm:text-[11px] text-rose-400 truncate block">Hirnantian to K-Pg</span>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-900/80 border border-white/[0.08] shadow-lg">
+          <div className="p-3 sm:p-4 rounded-xl bg-slate-900/80 border border-white/[0.08] shadow-lg">
             <div className="text-[10px] text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
-              <Activity className="h-3.5 w-3.5 text-amber-400" />
-              <span>Deep-Time Span</span>
+              <Activity className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+              <span className="truncate">Deep-Time Span</span>
             </div>
-            <div className="text-2xl sm:text-3xl font-black text-amber-400 mt-1">541 Ma</div>
-            <span className="text-[11px] text-slate-400">Phanerozoic Eon Stack</span>
+            <div className="text-xl sm:text-2xl lg:text-3xl font-black text-amber-400 mt-1">541 Ma</div>
+            <span className="text-[10px] sm:text-[11px] text-slate-400 truncate block">Phanerozoic Eon</span>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-900/80 border border-white/[0.08] shadow-lg">
+          <div className="p-3 sm:p-4 rounded-xl bg-slate-900/80 border border-white/[0.08] shadow-lg">
             <div className="text-[10px] text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
-              <Flame className="h-3.5 w-3.5 text-red-500" />
-              <span>Peak Mortality</span>
+              <Flame className="h-3.5 w-3.5 text-red-500 shrink-0" />
+              <span className="truncate">Peak Mortality</span>
             </div>
-            <div className="text-2xl sm:text-3xl font-black text-red-400 mt-1">96%</div>
-            <span className="text-[11px] text-slate-400">End-Permian Marine Life</span>
+            <div className="text-xl sm:text-2xl lg:text-3xl font-black text-red-400 mt-1">96%</div>
+            <span className="text-[10px] sm:text-[11px] text-slate-400 truncate block">End-Permian Marine</span>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-900/80 border border-white/[0.08] shadow-lg">
+          <div className="p-3 sm:p-4 rounded-xl bg-slate-900/80 border border-white/[0.08] shadow-lg">
             <div className="text-[10px] text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
-              <Globe2 className="h-3.5 w-3.5 text-emerald-400" />
-              <span>Lineage Continuity</span>
+              <Globe2 className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
+              <span className="truncate">Lineage Survival</span>
             </div>
-            <div className="text-2xl sm:text-3xl font-black text-emerald-400 mt-1">100%</div>
-            <span className="text-[11px] text-slate-400">Ancestors of Modern Life</span>
+            <div className="text-xl sm:text-2xl lg:text-3xl font-black text-emerald-400 mt-1">100%</div>
+            <span className="text-[10px] sm:text-[11px] text-slate-400 truncate block">Ancestors of Crown Life</span>
           </div>
         </div>
       </section>
