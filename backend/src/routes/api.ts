@@ -16,6 +16,11 @@ import {
   getFormationFoodWeb,
   getAiStatus
 } from '../controllers/ai.js';
+import {
+  getExtinctions,
+  getExtinctionBySlug,
+  getPaleoclimateCurves
+} from '../controllers/extinctions.js';
 
 const router = Router();
 
@@ -53,6 +58,11 @@ router.get('/species/feature/creature-of-the-day', getCreatureOfTheDay);
 router.get('/species/search/autocomplete', searchAutocomplete);
 router.get('/species/compare', compareSpecies);
 router.get('/species/:id', getSpeciesById);
+
+// 🌋 Deep-Time Mass Extinction & Paleoclimate Endpoints
+router.get('/extinctions', getExtinctions);
+router.get('/extinctions/:slug', getExtinctionBySlug);
+router.get('/climate-curves', getPaleoclimateCurves);
 
 // 🏛️ AI Research Pavilion Endpoints
 router.get('/ai/status', getAiStatus);

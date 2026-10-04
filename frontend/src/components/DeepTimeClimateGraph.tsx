@@ -16,9 +16,16 @@ import {
   Crosshair
 } from 'lucide-react';
 
+import {
+  MassExtinctionEvent
+} from '../data/extinctionData.js';
+
 interface DeepTimeClimateGraphProps {
   selectedExtinctionId: string;
   onSelectExtinction: (id: string) => void;
+  climateData?: ClimateDataPoint[];
+  extinctionEvents?: MassExtinctionEvent[];
+  isDatabaseSource?: boolean;
 }
 
 interface MetricConfig {
@@ -93,7 +100,18 @@ const METRICS: MetricConfig[] = [
 export default function DeepTimeClimateGraph({
   selectedExtinctionId,
   onSelectExtinction,
+  climateData,
+  extinctionEvents,
+  isDatabaseSource = false,
 }: DeepTimeClimateGraphProps) {
+  const climatePoints = useMemo(() => {
+    return climateData && climateData.length > 0 ? climateData : PHANEROZOIC_CLIMATE_DATA;
+  }, [climateData]);
+
+  const extinctions = useMemo(() => {
+    return extinctionEvents && extinctionEvents.length > 0 ? extinctionEvents : MASS_EXTINCTIONS;
+  }, [extinctionEvents]);
+
   const [activeMetrics, setActiveMetrics] = useState<Record<string, boolean>>({
     o2Percent: true,
     co2Ppm: true,
@@ -141,7 +159,7 @@ export default function DeepTimeClimateGraph({
   // Build SVG smooth path strings for each metric
   const metricPaths = useMemo(() => {
     // Sort chronologically from 541 down to 0
-    const sorted = [...PHANEROZOIC_CLIMATE_DATA].sort((a, b) => b.ageMa - a.ageMa);
+    const sorted = [...climatePoints].sort((a, b) => b.ageMa - a.ageMa);
 
     const paths: Record<string, { stroke: string; area: string }> = {};
 
@@ -172,7 +190,7 @@ export default function DeepTimeClimateGraph({
     });
 
     return paths;
-  }, [activeMetrics, timeToX, valueToY, margin.top, plotHeight]);
+  }, [activeMetrics, timeToX, valueToY, margin.top, plotHeight, climatePoints]);
 
   // Handle pointer scrub over SVG
   const handlePointerMove = (e: React.PointerEvent<SVGSVGElement>) => {
@@ -185,9 +203,9 @@ export default function DeepTimeClimateGraph({
       const hoveredAge = xToTime(relativeX);
 
       // Find nearest data point
-      let nearest = PHANEROZOIC_CLIMATE_DATA[0];
+      let nearest = climatePoints[0];
       let minDiff = Math.abs(nearest.ageMa - hoveredAge);
-      for (const pt of PHANEROZOIC_CLIMATE_DATA) {
+      for (const pt of climatePoints) {
         const diff = Math.abs(pt.ageMa - hoveredAge);
         if (diff < minDiff) {
           minDiff = diff;
@@ -213,8 +231,8 @@ export default function DeepTimeClimateGraph({
   };
 
   const selectedExtinction = useMemo(() => {
-    return MASS_EXTINCTIONS.find((e) => e.id === selectedExtinctionId);
-  }, [selectedExtinctionId]);
+    return extinctions.find((e: any) => (e.id && e.id === selectedExtinctionId) || (e.slug && e.slug === selectedExtinctionId));
+  }, [extinctions, selectedExtinctionId]);
 
   return (
     <div className="bg-slate-900/80 border border-white/[0.08] rounded-2xl p-4 sm:p-6 shadow-2xl backdrop-blur-xl space-y-6">
@@ -228,6 +246,11 @@ export default function DeepTimeClimateGraph({
               <span className="text-xs font-mono font-normal px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20">
                 541 – 0 Ma
               </span>
+              {isDatabaseSource && (
+                <span className="text-xs font-mono font-normal px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+                  PostgreSQL Synced
+                </span>
+              )}
             </h3>
           </div>
           <p className="text-xs text-slate-400 font-sans mt-0.5">
@@ -378,15 +401,16 @@ export default function DeepTimeClimateGraph({
           })}
 
           {/* Extinction Pulse Beacons (Vertical Laser Beacons & Markers) */}
-          {MASS_EXTINCTIONS.map((ext) => {
+          {extinctions.map((ext: any) => {
             const beaconX = timeToX(ext.peakAgeMa);
-            const isSelected = ext.id === selectedExtinctionId;
+            const eventKey = ext.id ? String(ext.id) : ext.slug;
+            const isSelected = eventKey === selectedExtinctionId || ext.slug === selectedExtinctionId;
 
             return (
               <g
-                key={ext.id}
+                key={eventKey}
                 className="cursor-pointer group"
-                onClick={() => onSelectExtinction(ext.id)}
+                onClick={() => onSelectExtinction(ext.slug || eventKey)}
               >
                 {/* Active Column Aura */}
                 {isSelected && (

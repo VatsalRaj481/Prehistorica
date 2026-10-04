@@ -610,4 +610,39 @@ export async function fetchFormationFoodWeb(
   return response.json();
 }
 
+/**
+ * 🌋 PostgreSQL-Backed Extinction Events & Paleoclimate Curves
+ */
+export async function fetchExtinctionEvents(): Promise<any[]> {
+  try {
+    const res = await fetchWithRetry(`${API_BASE}/extinctions`);
+    if (!res.ok) throw new Error('Failed to fetch extinction events from database');
+    const json = await res.json();
+    return json.data || [];
+  } catch (err) {
+    console.warn('Live extinction events fetch failed, using curatorial baseline:', err);
+    return [];
+  }
+}
+
+export async function fetchExtinctionBySlug(slug: string): Promise<any> {
+  const res = await fetchWithRetry(`${API_BASE}/extinctions/${encodeURIComponent(slug)}`);
+  if (!res.ok) throw new Error(`Failed to fetch extinction event for ${slug}`);
+  const json = await res.json();
+  return json.data;
+}
+
+export async function fetchPaleoclimateCurves(): Promise<any[]> {
+  try {
+    const res = await fetchWithRetry(`${API_BASE}/climate-curves`);
+    if (!res.ok) throw new Error('Failed to fetch climate curves from database');
+    const json = await res.json();
+    return json.data || [];
+  } catch (err) {
+    console.warn('Live paleoclimate curves fetch failed, using curatorial baseline:', err);
+    return [];
+  }
+}
+
+
 

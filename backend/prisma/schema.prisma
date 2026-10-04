@@ -114,4 +114,48 @@ model SpeciesRelation {
   @@unique([speciesId, relatedSpeciesId])
 }
 
+model ExtinctionEvent {
+  id                      Int       @id @default(autoincrement())
+  slug                    String    @unique
+  name                    String
+  commonName              String
+  peakAgeMa               Float
+  ageSpanLabel            String
+  period                  String
+  epoch                   String
+  speciesLossPercent      Int
+  marineGeneraLossPercent Int
+  terrestrialLossPercent  Int
+  estimatedDuration       String
+  headline                String
+  overview                String
+  killMechanisms          Json
+  decimatedClades         Json
+  survivorsAndRadiators   Json
+  macroevolutionaryLegacy String
+  rajyPrompt              String
+  badgeColor              String
+  accentBorder            String
+  createdAt               DateTime  @default(now())
+  updatedAt               DateTime  @updatedAt
+
+  @@index([peakAgeMa])
+}
+
+model PaleoclimatePoint {
+  id             Int      @id @default(autoincrement())
+  ageMa          Float    @unique
+  period         String
+  epoch          String?
+  o2Percent      Float
+  co2Ppm         Float
+  tempCelsius    Float
+  seaLevelMeters Float
+  notes          String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([ageMa])
+}
+
 

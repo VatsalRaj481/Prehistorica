@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   MASS_EXTINCTIONS,
+  MassExtinctionEvent,
   KillMechanism
 } from '../data/extinctionData.js';
 import {
@@ -15,22 +16,33 @@ import {
   ExternalLink,
   MessageSquare,
   HeartCrack,
-  Dna
+  Dna,
+  Database
 } from 'lucide-react';
 
 interface ExtinctionGatewayViewerProps {
   selectedExtinctionId: string;
   onSelectExtinction: (id: string) => void;
   onAskRajy?: (prompt: string) => void;
+  events?: MassExtinctionEvent[];
+  isDatabaseSource?: boolean;
 }
 
 export default function ExtinctionGatewayViewer({
   selectedExtinctionId,
   onSelectExtinction,
   onAskRajy,
+  events,
+  isDatabaseSource = false,
 }: ExtinctionGatewayViewerProps) {
-  const currentEvent =
-    MASS_EXTINCTIONS.find((e) => e.id === selectedExtinctionId) || MASS_EXTINCTIONS[2];
+  const list: MassExtinctionEvent[] =
+    events && events.length > 0 ? (events as MassExtinctionEvent[]) : MASS_EXTINCTIONS;
+  const currentEvent: MassExtinctionEvent =
+    list.find(
+      (e) =>
+        (e.slug && e.slug === selectedExtinctionId) ||
+        (e.id && String(e.id) === selectedExtinctionId)
+    ) || list[2];
 
   const getCategoryIcon = (cat: KillMechanism['category']) => {
     switch (cat) {
@@ -54,12 +66,16 @@ export default function ExtinctionGatewayViewer({
     <div id="extinction-dossier" className="space-y-6">
       {/* Selector Navigation Plinths for the Big Five */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5">
-        {MASS_EXTINCTIONS.map((event) => {
-          const isSelected = event.id === currentEvent.id;
+        {list.map((event: any) => {
+          const eventKey = event.slug || event.id;
+          const isSelected =
+            eventKey === currentEvent.slug ||
+            (event.id && event.id === currentEvent.id) ||
+            (event.slug && event.slug === currentEvent.slug);
           return (
             <button
-              key={event.id}
-              onClick={() => onSelectExtinction(event.id)}
+              key={eventKey}
+              onClick={() => onSelectExtinction(event.slug || String(event.id))}
               className={`p-3.5 rounded-xl border text-left transition-all relative overflow-hidden group cursor-pointer ${
                 isSelected
                   ? 'bg-slate-900 border-rose-500/70 shadow-[0_0_20px_rgba(244,63,94,0.2)] ring-1 ring-rose-500/50'
@@ -119,6 +135,12 @@ export default function ExtinctionGatewayViewer({
                 <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">
                   Peak at {currentEvent.peakAgeMa} Ma
                 </span>
+                {isDatabaseSource && (
+                  <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5">
+                    <Database className="h-3 w-3 text-emerald-400" />
+                    PostgreSQL Record
+                  </span>
+                )}
               </div>
 
               {/* Consultation with Rajy Button */}

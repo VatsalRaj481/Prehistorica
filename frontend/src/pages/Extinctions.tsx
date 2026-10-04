@@ -2,23 +2,40 @@ import { useState, useEffect } from 'react';
 import DeepTimeClimateGraph from '../components/DeepTimeClimateGraph.js';
 import ExtinctionGatewayViewer from '../components/ExtinctionGatewayViewer.js';
 import ChiefCuratorModal from '../components/ChiefCuratorModal.js';
+import { fetchExtinctionEvents, fetchPaleoclimateCurves } from '../services/api.js';
 import {
   Skull,
   Flame,
   Activity,
   AlertTriangle,
   Globe2,
-  Layers
+  Layers,
+  Database
 } from 'lucide-react';
 
 export default function Extinctions() {
-  const [selectedExtinctionId, setSelectedExtinctionId] = useState<string>('permian-triassic');
+  const [selectedExtinctionId, setSelectedExtinctionId] = useState<string>('end-permian');
+  const [dbExtinctions, setDbExtinctions] = useState<any[]>([]);
+  const [dbClimate, setDbClimate] = useState<any[]>([]);
   const [isCuratorOpen, setIsCuratorOpen] = useState<boolean>(false);
   const [curatorPrompt, setCuratorPrompt] = useState<string>('');
 
   useEffect(() => {
     document.title = 'The Big Five Mass Extinctions & Paleoclimate Chronicle | Prehistorica Museum Pavilion';
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+
+    // Fetch live PostgreSQL database records
+    fetchExtinctionEvents().then((data) => {
+      if (Array.isArray(data) && data.length > 0) {
+        setDbExtinctions(data);
+      }
+    });
+
+    fetchPaleoclimateCurves().then((data) => {
+      if (Array.isArray(data) && data.length > 0) {
+        setDbClimate(data);
+      }
+    });
   }, []);
 
   const handleSelectExtinction = (id: string) => {
@@ -42,9 +59,17 @@ export default function Extinctions() {
         {/* Subtle Ambient Background Glow */}
         <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-96 sm:w-2xl h-48 bg-rose-600/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="flex items-center gap-2 text-xs font-mono font-bold tracking-widest uppercase text-rose-400">
-          <Skull className="h-4 w-4 text-rose-500 animate-pulse" />
-          <span>Curatorial Deep-Time Special Exhibit</span>
+        <div className="flex flex-wrap items-center gap-3 text-xs font-mono font-bold tracking-widest uppercase">
+          <span className="text-rose-400 flex items-center gap-1.5">
+            <Skull className="h-4 w-4 text-rose-500 animate-pulse" />
+            Curatorial Deep-Time Special Exhibit
+          </span>
+          {dbExtinctions.length > 0 && (
+            <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 flex items-center gap-1 normal-case tracking-normal">
+              <Database className="h-3 w-3 text-emerald-400" />
+              PostgreSQL Database Verified
+            </span>
+          )}
         </div>
 
         <div className="space-y-3">
@@ -113,6 +138,9 @@ export default function Extinctions() {
         <DeepTimeClimateGraph
           selectedExtinctionId={selectedExtinctionId}
           onSelectExtinction={handleSelectExtinction}
+          climateData={dbClimate}
+          extinctionEvents={dbExtinctions}
+          isDatabaseSource={dbExtinctions.length > 0}
         />
       </section>
 
@@ -132,6 +160,8 @@ export default function Extinctions() {
           selectedExtinctionId={selectedExtinctionId}
           onSelectExtinction={setSelectedExtinctionId}
           onAskRajy={handleAskRajy}
+          events={dbExtinctions}
+          isDatabaseSource={dbExtinctions.length > 0}
         />
       </section>
 
