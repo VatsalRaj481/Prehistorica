@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { motion, useReducedMotion, useScroll, useTransform, Variants } from 'framer-motion';
 import { fetchCreatureOfTheDay, fetchSpecies, fetchSpeciesById, Species, TOTAL_CATALOGED_SPECIMENS } from '../services/api.js';
 import SpotlightCard from '../components/SpotlightCard.js';
-import { Calendar, ArrowRight, Dna, Compass, ShieldAlert, FileText, Layers, Globe, Database, Sparkles, Scale, Trophy, Skull } from 'lucide-react';
+import SpecimenThumbnail from '../components/SpecimenThumbnail.js';
+import { Calendar, ArrowRight, Compass, ShieldAlert, FileText, Layers, Globe, Database, Sparkles, Scale, Trophy, Skull } from 'lucide-react';
 import { formatMass } from '../utils/formatMass.js';
 import { formatFeet } from '../utils/formatDimensions.js';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
@@ -282,24 +283,15 @@ export default function Home() {
             className="relative museum-plinth rounded-xl overflow-hidden shadow-2xl hover:border-amber-500/40 transition-all duration-300 group"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 p-4 sm:p-8">
-              {/* Artwork / Specimen Image Viewport */}
-              <div className="lg:col-span-7 relative h-64 sm:h-96 rounded-lg bg-slate-950/80 border border-white/[0.08] flex items-center justify-center p-4 sm:p-6 shadow-inner overflow-hidden">
-                <div className="absolute inset-0 bg-fossil-grid opacity-30 pointer-events-none" />
-                {creature.reconstructionImageUrl ? (
-                  <img
-                    src={creature.reconstructionImageUrl}
-                    alt={creature.name}
-                    className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-2xl z-10"
-                  />
-                ) : (
-                  <div className="w-full h-full flex flex-col items-center justify-center text-slate-500 text-xs font-mono bg-slate-950/60 rounded-lg">
-                    <Dna className="h-10 w-10 text-slate-700 mb-2" />
-                    Reconstruction illustration uncataloged
-                  </div>
-                )}
-                <div className="absolute top-3 left-3 bg-slate-950/90 backdrop-blur-md border border-amber-500/30 px-2.5 py-1 rounded text-[11px] sm:text-xs font-mono font-bold text-amber-400 tracking-wider uppercase shadow-lg z-20">
-                  {creature.timePeriod} ({creature.myaStart}–{creature.myaEnd} MYA)
-                </div>
+              {/* Artwork / Specimen Image Viewport with Adaptive Archival Mounting */}
+              <div className="lg:col-span-7 relative h-64 sm:h-96 rounded-lg overflow-hidden flex items-center justify-center">
+                <SpecimenThumbnail
+                  src={creature.reconstructionImageUrl}
+                  alt={creature.name}
+                  eraLabel={`${creature.timePeriod} (${creature.myaStart}–${creature.myaEnd} MYA)`}
+                  aspectRatio="aspect-auto h-full"
+                  className="rounded-lg border border-white/[0.08] shadow-inner"
+                />
               </div>
 
               {/* Specimen Dossier Details: Curatorial Archival Dossier (Option A) */}

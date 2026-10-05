@@ -807,7 +807,7 @@ export default function Browse() {
                       transition={{
                         layout: { type: 'spring', stiffness: 350, damping: 30 }
                       }}
-                      className={`museum-card rounded-xl flex flex-col justify-between h-full shadow-xl transition-all duration-300 ${
+                      className={`museum-card rounded-xl flex flex-col justify-between h-full shadow-xl transition-all duration-300 border border-white/[0.08] hover:border-amber-500/40 overflow-hidden ${
                         isTargetSpecimen
                           ? 'ring-2 ring-amber-400 border-amber-400/80 shadow-[0_0_28px_rgba(245,158,11,0.35)]'
                           : ''
@@ -843,16 +843,17 @@ export default function Browse() {
                           </div>
                         </div>
 
-                        <div className="h-11 px-4 border-t border-white/[0.08] bg-slate-950/60 flex items-center justify-between gap-2 font-mono text-[11px] text-slate-400">
-                          <div className="flex gap-1.5 items-center min-w-0 truncate">
-                            <span className="font-bold text-amber-400 truncate uppercase text-[10px] tracking-wider">{species.clade || species.dietType}</span>
-                            <span className="text-slate-600 font-bold shrink-0">|</span>
-                            <span className="font-bold text-slate-300 shrink-0 text-[10px]">
+                        <div className="h-11 px-3.5 sm:px-4 border-t border-white/[0.08] bg-slate-950/70 flex items-center justify-between gap-2 font-mono text-[11px] text-slate-400">
+                          <div className="flex gap-1.5 sm:gap-2 items-center min-w-0 truncate">
+                            <span className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/25 text-amber-300 font-bold text-[10px] tracking-wider uppercase truncate">
+                              {species.clade || species.dietType}
+                            </span>
+                            <span className="px-2 py-0.5 rounded bg-slate-900 border border-white/10 text-slate-300 font-semibold text-[10px] shrink-0">
                               {formatFeet(species.lengthM, 'Unspecified')}
                             </span>
                           </div>
-                          <span className="flex items-center gap-1 group-hover:text-amber-400 transition-colors shrink-0 font-bold uppercase tracking-wider text-[10px]">
-                            Inspect <ArrowRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
+                          <span className="flex items-center gap-1 group-hover:text-amber-300 transition-colors shrink-0 font-bold uppercase tracking-wider text-[10px]">
+                            Inspect <ArrowRight className="h-3 w-3 text-amber-400 group-hover:translate-x-1 transition-transform" />
                           </span>
                         </div>
                       </Link>

@@ -80,3 +80,24 @@ lineage text, or the docent's phylogenetic statements about a specimen.
 Report per changed record: old value, new value, source(s), confidence status.
 Do not batch-apply changes without listing them for human review.
 
+---
+
+## 6. 📱 Responsive & Cross-Device Layout Invariant (Mobile to Desktop Flexibility)
+Whenever creating, modifying, or refactoring any frontend component or page, it must be engineered for fluid responsiveness across all device form factors (mobile phones, small screens, tablets, laptops, and ultra-wide desktops):
+- **Fluid Layouts Over Fixed Dimensions**:
+  - Never use rigid, fixed pixel widths (`w-[1200px]`, `min-w-[900px]`) that cause horizontal viewport overflow.
+  - Use responsive container widths (`w-full`, `max-w-7xl`, `mx-auto`), responsive flex layouts (`flex-col md:flex-row`), and adaptive CSS grids (`grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4`).
+- **Interactive Stages & Visualizations**:
+  - Metric canvases, comparison stages (e.g. `RunwayStage`, `TwoDScaleViewer`), timeline maps, and charts must either scale proportionally with container width (`w-full aspect-[...]`, SVG viewBoxes) or provide smooth, touch-friendly horizontal scroll containers (`overflow-x-auto` with clean scrollbars and touch indicators).
+- **Modals, Drawers & Overlays**:
+  - Dialogue overlays and filter panels must adapt cleanly to small screens (e.g., bottom-sheet drawers or full-screen scrollable views on mobile `< 768px`, centered dialog cards on desktop `>= 768px`).
+  - Use dynamic viewport units (`100dvh`, `max-h-[90vh]`) to prevent mobile browser URL bar clipping.
+- **Touch & Mobile Ergonomics**:
+  - Touch targets for interactive buttons, tabs, and toggles must meet mobile accessibility standards (minimum 44×44px hit area or ample padding).
+  - Ensure typography scales comfortably across devices (e.g. `text-sm sm:text-base md:text-lg`).
+- **Zero Horizontal Body Overflow**:
+  - Top-level layout containers must prevent unwanted horizontal viewport scrolling (`overflow-x-clip` or `overflow-x-hidden` on page wrappers where applicable).
+- **Mandatory Multi-Viewport Verification**:
+  - Every UI modification must be validated against standard breakpoint tiers (`360px–420px` mobile, `768px` tablet, `1024px` desktop, `1440px+` wide screen) and compile error-free (`npm run build`).
+
+

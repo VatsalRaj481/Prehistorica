@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef, useState, useEffect } from 'react';
 import { Species } from '../services/api.js';
 import { formatFeet } from '../utils/formatDimensions.js';
 
@@ -25,6 +25,26 @@ export default function RunwayStage({
   const [isDraggingMouse, setIsDraggingMouse] = useState(false);
   const [dragStartX, setDragStartX] = useState(0);
   const [scrollStartLeft, setScrollStartLeft] = useState(0);
+  const [silhouetteAspects, setSilhouetteAspects] = useState<Record<string, number>>({});
+
+  // Dynamically load image natural aspect ratio so silhouette is scaled accurately without floating or empty padding
+  useEffect(() => {
+    speciesList.forEach((sp) => {
+      const url = sp.comparisonSilhouette?.url;
+      if (url && !silhouetteAspects[url]) {
+        const img = new Image();
+        img.onload = () => {
+          if (img.naturalWidth > 0 && img.naturalHeight > 0) {
+            setSilhouetteAspects((prev) => ({
+              ...prev,
+              [url]: img.naturalWidth / img.naturalHeight
+            }));
+          }
+        };
+        img.src = url;
+      }
+    });
+  }, [speciesList]);
 
   // Reference figure configurations (in meters)
   const refSpecs = useMemo(() => {
@@ -41,19 +61,38 @@ export default function RunwayStage({
     }
   }, [activeReference]);
 
-  // Metric sizing for each creature: calibrated directly to scientific length and standing height
+  // Metric sizing for each creature: calibrated directly to scientific length, standing height, and silhouette aspect ratio
   const creaturesMetrics = useMemo(() => {
     return speciesList.map((sp) => {
       const len = sp.lengthM && sp.lengthM > 0 ? sp.lengthM : 5.0;
       const h = sp.heightM && sp.heightM > 0 ? sp.heightM : Math.max(1, len * 0.35);
+      const url = sp.comparisonSilhouette?.url;
+      const aspect = url && silhouetteAspects[url] ? silhouetteAspects[url] : len / h;
+      const isHeightDominant = h >= len * 0.85;
+
+      let renderWidthM: number;
+      let renderHeightM: number;
+
+      if (isHeightDominant) {
+        // Upright or height-dominant creatures (azhdarchid pterosaurs, terror birds, bipeds)
+        // anchor directly to nominal standing height so silhouettes align with ground baseline
+        renderHeightM = h;
+        renderWidthM = h * aspect;
+      } else {
+        // Length-dominant creatures (theropods, sauropods, marine reptiles)
+        renderWidthM = len;
+        renderHeightM = Math.min(h, len / aspect);
+      }
 
       return {
         species: sp,
         lengthM: len,
-        heightM: h
+        heightM: h,
+        renderWidthM,
+        renderHeightM
       };
     });
-  }, [speciesList]);
+  }, [speciesList, silhouetteAspects]);
 
   // Layout calculations: arrange specimens sequentially on the runway track with 3.0m metric spacing
   const runwayLayout = useMemo(() => {
@@ -62,6 +101,8 @@ export default function RunwayStage({
       species: Species;
       lengthM: number;
       heightM: number;
+      renderWidthM: number;
+      renderHeightM: number;
       startX: number;
       endX: number;
       midX: number;
@@ -75,12 +116,15 @@ export default function RunwayStage({
     }
 
     creaturesMetrics.forEach((item) => {
+      const spanM = Math.max(item.lengthM, item.renderWidthM);
       const start = currentX;
-      const end = currentX + item.lengthM;
+      const end = currentX + spanM;
       items.push({
         species: item.species,
         lengthM: item.lengthM,
         heightM: item.heightM,
+        renderWidthM: item.renderWidthM,
+        renderHeightM: item.renderHeightM,
         startX: start,
         endX: end,
         midX: (start + end) / 2
@@ -91,7 +135,7 @@ export default function RunwayStage({
     const totalStageLength = Math.max(16.0, currentX + 2.0);
     const maxCreatureHeight = Math.max(
       activeReference !== 'none' ? refSpecs.heightM : 1.8,
-      ...creaturesMetrics.map((c) => c.heightM)
+      ...creaturesMetrics.map((c) => c.renderHeightM)
     );
     const totalStageHeight = Math.max(4.6, maxCreatureHeight * 1.35);
 
@@ -376,10 +420,10 @@ export default function RunwayStage({
           {/* Lineup Species Silhouettes & Calipers */}
           {runwayLayout.items.map((item, idx) => {
             const isHighlighted = highlightedIndex === idx;
-            const pxWidth = item.lengthM * scale;
-            const pxHeight = item.heightM * scale;
-            const startPx = item.startX * scale;
+            const pxWidth = item.renderWidthM * scale;
+            const pxHeight = item.renderHeightM * scale;
             const midPx = item.midX * scale;
+            const startPx = midPx - pxWidth / 2;
             const yTop = groundY - pxHeight;
             const silhouetteUrl = item.species.comparisonSilhouette?.url;
 
@@ -398,7 +442,7 @@ export default function RunwayStage({
                   fill={isHighlighted ? 'rgba(245, 158, 11, 0.25)' : 'rgba(255, 255, 255, 0.04)'}
                 />
 
-                {/* Silhouette or Fallback Box: Calibrated to fit within [lengthM, heightM] envelope */}
+                {/* Silhouette or Fallback Box: Calibrated to fit within physical envelope flush on baseline */}
                 {silhouetteUrl ? (
                   <image
                     href={silhouetteUrl}
@@ -406,7 +450,7 @@ export default function RunwayStage({
                     y={yTop}
                     width={pxWidth}
                     height={pxHeight}
-                    preserveAspectRatio="xMidYMax meet"
+                    preserveAspectRatio="none"
                     filter={isHighlighted ? 'url(#runwayAmberHighlight)' : 'url(#runwayChalkTint)'}
                     className="transition-all duration-300"
                     style={{

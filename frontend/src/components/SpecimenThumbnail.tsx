@@ -6,15 +6,54 @@ interface SpecimenThumbnailProps {
   alt: string;
   eraLabel?: string;
   className?: string;
+  aspectRatio?: string;
 }
 
 type DisplayMode = 'photo-cover' | 'plinth-white-bg' | 'contain-transparent';
+
+// Helper to provide distinctive era-based color palettes
+function getEraBadgeStyle(era?: string): string {
+  if (!era) {
+    return 'bg-slate-950/90 text-amber-400 border-white/10';
+  }
+  const lower = era.toLowerCase();
+  if (lower.includes('triassic')) {
+    return 'bg-orange-950/90 text-orange-400 border-orange-500/40 shadow-[0_0_12px_rgba(249,115,22,0.2)]';
+  }
+  if (lower.includes('jurassic')) {
+    return 'bg-emerald-950/90 text-emerald-400 border-emerald-500/40 shadow-[0_0_12px_rgba(16,185,129,0.2)]';
+  }
+  if (lower.includes('cretaceous')) {
+    return 'bg-amber-950/90 text-amber-400 border-amber-500/40 shadow-[0_0_12px_rgba(245,158,11,0.2)]';
+  }
+  if (
+    lower.includes('permian') ||
+    lower.includes('carboniferous') ||
+    lower.includes('devonian') ||
+    lower.includes('cambrian') ||
+    lower.includes('ordovician') ||
+    lower.includes('silurian')
+  ) {
+    return 'bg-teal-950/90 text-teal-400 border-teal-500/40 shadow-[0_0_12px_rgba(20,184,166,0.2)]';
+  }
+  if (
+    lower.includes('paleogene') ||
+    lower.includes('eocene') ||
+    lower.includes('neogene') ||
+    lower.includes('pleistocene') ||
+    lower.includes('miocene')
+  ) {
+    return 'bg-rose-950/90 text-rose-300 border-rose-500/40 shadow-[0_0_12px_rgba(244,63,94,0.2)]';
+  }
+  return 'bg-slate-950/90 text-amber-400 border-white/10';
+}
 
 export default function SpecimenThumbnail({
   src,
   alt,
   eraLabel,
-  className = ''
+  className = '',
+  aspectRatio
 }: SpecimenThumbnailProps) {
   const [displayMode, setDisplayMode] = useState<DisplayMode>('photo-cover');
   const [isError, setIsError] = useState(false);
@@ -145,14 +184,19 @@ export default function SpecimenThumbnail({
 
   return (
     <div
-      className={`relative w-full aspect-[16/10] bg-slate-950/80 border-b border-white/[0.08] overflow-hidden flex items-center justify-center select-none ${className}`}
+      className={`relative w-full ${aspectRatio ?? 'aspect-[16/10] border-b border-white/[0.08]'} bg-slate-950/80 overflow-hidden flex items-center justify-center select-none ${className}`}
     >
       {/* Background Architectural Grid Pattern */}
       <div className="absolute inset-0 bg-fossil-grid opacity-20 pointer-events-none" />
 
-      {/* Era / Chrono Badge */}
+      {/* Era / Chrono Badge with Geological Period Color Coding */}
       {eraLabel && (
-        <span className="absolute top-2.5 left-2.5 bg-slate-950/90 backdrop-blur-md border border-white/[0.08] px-2.5 py-0.5 rounded text-[10px] font-mono font-bold text-amber-400 tracking-wider uppercase z-20 shadow-md pointer-events-none">
+        <span
+          className={`absolute top-2.5 left-2.5 backdrop-blur-md border px-2.5 py-0.5 rounded text-[10px] font-mono font-bold tracking-wider uppercase z-20 shadow-md pointer-events-none flex items-center gap-1.5 transition-colors ${getEraBadgeStyle(
+            eraLabel
+          )}`}
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-current opacity-80 animate-pulse" />
           {eraLabel}
         </span>
       )}
@@ -173,9 +217,18 @@ export default function SpecimenThumbnail({
               }`}
             />
           ) : displayMode === 'plinth-white-bg' ? (
-            /* Dark-plinth letterbox treatment for white/near-white backgrounds */
+            /* Curated Museum Archival Specimen Plate for white/near-white backgrounds & lithographs */
             <div className="w-full h-full p-2.5 sm:p-3 flex items-center justify-center">
-              <div className="w-full h-full flex items-center justify-center p-2 rounded-lg bg-slate-900/90 border border-white/[0.08] shadow-inner relative overflow-hidden">
+              <div className="w-full h-full flex items-center justify-center p-2 rounded-lg bg-[#FAF9F5] border border-amber-500/30 shadow-[0_4px_18px_rgba(0,0,0,0.45)] relative overflow-hidden group/plate transition-all duration-300">
+                {/* Archival paper matting and gentle inner vignette */}
+                <div className="pointer-events-none absolute inset-0 bg-stone-100/50" />
+                <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_18px_rgba(15,23,42,0.12)] z-20" />
+
+                {/* Archival micro-tag in the top-right corner of the plate */}
+                <span className="absolute top-1.5 right-1.5 px-1.5 py-0.5 rounded text-[8px] font-mono font-bold tracking-widest uppercase bg-slate-900/10 text-slate-700 border border-slate-900/15 z-20 pointer-events-none select-none">
+                  Archival Plate
+                </span>
+
                 <img
                   src={src}
                   alt={alt}
@@ -183,12 +236,10 @@ export default function SpecimenThumbnail({
                   loading="lazy"
                   onLoad={handleImageLoad}
                   onError={() => setIsError(true)}
-                  className={`max-w-full max-h-full object-contain rounded transition-all duration-500 group-hover:scale-105 drop-shadow-md z-10 ${
+                  className={`max-w-full max-h-full object-contain rounded transition-transform duration-500 group-hover:scale-105 z-10 ${
                     isLoaded ? 'opacity-100' : 'opacity-0'
                   }`}
                 />
-                {/* Subtle dark inset vignette to soften white box boundary */}
-                <div className="pointer-events-none absolute inset-0 rounded-lg shadow-[inset_0_0_10px_rgba(8,12,22,0.6)] z-20" />
               </div>
             </div>
           ) : (
