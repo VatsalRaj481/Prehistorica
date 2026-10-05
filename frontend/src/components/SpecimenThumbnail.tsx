@@ -224,11 +224,6 @@ export default function SpecimenThumbnail({
                 <div className="pointer-events-none absolute inset-0 bg-stone-100/50" />
                 <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_18px_rgba(15,23,42,0.12)] z-20" />
 
-                {/* Archival micro-tag in the top-right corner of the plate */}
-                <span className="absolute top-1.5 right-1.5 px-1.5 py-0.5 rounded text-[8px] font-mono font-bold tracking-widest uppercase bg-slate-900/10 text-slate-700 border border-slate-900/15 z-20 pointer-events-none select-none">
-                  Archival Plate
-                </span>
-
                 <img
                   src={src}
                   alt={alt}

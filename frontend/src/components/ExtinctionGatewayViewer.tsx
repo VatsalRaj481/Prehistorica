@@ -62,6 +62,29 @@ export default function ExtinctionGatewayViewer({
     }
   };
 
+  const getSpeciesLoss = (e: any) => e?.casualtyStats?.speciesLossPercent ?? e?.speciesLossPercent ?? 0;
+  const getMarineLoss = (e: any) => e?.casualtyStats?.marineGeneraLossPercent ?? e?.marineGeneraLossPercent ?? 0;
+  const getTerrestrialLoss = (e: any) => e?.casualtyStats?.terrestrialLossPercent ?? e?.terrestrialLossPercent ?? 0;
+  const getDuration = (e: any) => e?.casualtyStats?.estimatedDuration ?? e?.estimatedDuration ?? '';
+
+  const killMechanisms: KillMechanism[] = Array.isArray(currentEvent?.killMechanisms)
+    ? currentEvent.killMechanisms
+    : typeof currentEvent?.killMechanisms === 'string'
+    ? (() => { try { return JSON.parse(currentEvent.killMechanisms); } catch { return []; } })()
+    : [];
+
+  const decimatedClades: any[] = Array.isArray(currentEvent?.decimatedClades)
+    ? currentEvent.decimatedClades
+    : typeof currentEvent?.decimatedClades === 'string'
+    ? (() => { try { return JSON.parse(currentEvent.decimatedClades); } catch { return []; } })()
+    : [];
+
+  const survivorsAndRadiators: any[] = Array.isArray(currentEvent?.survivorsAndRadiators)
+    ? currentEvent.survivorsAndRadiators
+    : typeof currentEvent?.survivorsAndRadiators === 'string'
+    ? (() => { try { return JSON.parse(currentEvent.survivorsAndRadiators); } catch { return []; } })()
+    : [];
+
   return (
     <div id="extinction-dossier" className="space-y-6">
       {/* Selector Navigation Plinths for the Big Five */}
@@ -100,7 +123,7 @@ export default function ExtinctionGatewayViewer({
 
               <div className="mt-2 flex items-center justify-between text-[11px]">
                 <span className="text-rose-400 font-mono font-bold">
-                  -{event.casualtyStats.speciesLossPercent}% Taxa
+                  -{getSpeciesLoss(event)}% Taxa
                 </span>
                 <span className="text-[10px] text-slate-400 font-mono">
                   {event.epoch}
@@ -175,27 +198,27 @@ export default function ExtinctionGatewayViewer({
               <div className="p-3 rounded-xl bg-slate-950/70 border border-rose-500/30">
                 <span className="text-[10px] text-slate-400 uppercase tracking-wider block">Global Species Loss</span>
                 <span className="text-xl sm:text-2xl font-black text-rose-400 mt-0.5 block">
-                  ~{currentEvent.casualtyStats.speciesLossPercent}%
+                  ~{getSpeciesLoss(currentEvent)}%
                 </span>
               </div>
               <div className="p-3 rounded-xl bg-slate-950/70 border border-white/[0.08]">
                 <span className="text-[10px] text-slate-400 uppercase tracking-wider block">Marine Genera Loss</span>
                 <span className="text-xl sm:text-2xl font-black text-cyan-400 mt-0.5 block">
-                  ~{currentEvent.casualtyStats.marineGeneraLossPercent}%
+                  ~{getMarineLoss(currentEvent)}%
                 </span>
               </div>
               <div className="p-3 rounded-xl bg-slate-950/70 border border-white/[0.08]">
                 <span className="text-[10px] text-slate-400 uppercase tracking-wider block">Terrestrial Loss</span>
                 <span className="text-xl sm:text-2xl font-black text-amber-400 mt-0.5 block">
-                  {currentEvent.casualtyStats.terrestrialLossPercent === 0
+                  {getTerrestrialLoss(currentEvent) === 0
                     ? 'Pre-Land Fauna'
-                    : `~${currentEvent.casualtyStats.terrestrialLossPercent}%`}
+                    : `~${getTerrestrialLoss(currentEvent)}%`}
                 </span>
               </div>
               <div className="p-3 rounded-xl bg-slate-950/70 border border-white/[0.08]">
                 <span className="text-[10px] text-slate-400 uppercase tracking-wider block">Estimated Pulse Span</span>
                 <span className="text-xs sm:text-sm font-bold text-slate-200 mt-1.5 block line-clamp-2">
-                  {currentEvent.casualtyStats.estimatedDuration}
+                  {getDuration(currentEvent)}
                 </span>
               </div>
             </div>
@@ -211,7 +234,7 @@ export default function ExtinctionGatewayViewer({
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
-              {currentEvent.killMechanisms.map((mech) => (
+              {killMechanisms.map((mech) => (
                 <div
                   key={mech.id}
                   className="p-4 rounded-xl bg-slate-950/60 border border-white/[0.08] hover:border-white/[0.15] transition-all space-y-2 flex flex-col justify-between"
@@ -262,7 +285,7 @@ export default function ExtinctionGatewayViewer({
               </div>
 
               <div className="space-y-3">
-                {currentEvent.decimatedClades.map((clade, idx) => (
+                {decimatedClades.map((clade, idx) => (
                   <div
                     key={idx}
                     className="p-3.5 rounded-xl bg-slate-950/80 border border-rose-500/20 space-y-2"
@@ -289,7 +312,7 @@ export default function ExtinctionGatewayViewer({
                     {/* Museum Specimen Links */}
                     {clade.notableSpecimens && clade.notableSpecimens.length > 0 && (
                       <div className="pt-2 border-t border-white/[0.06] flex flex-wrap gap-2">
-                        {clade.notableSpecimens.map((spec, sIdx) => (
+                        {clade.notableSpecimens.map((spec: any, sIdx: number) => (
                           spec.speciesId ? (
                             <Link
                               key={sIdx}
@@ -330,7 +353,7 @@ export default function ExtinctionGatewayViewer({
               </div>
 
               <div className="space-y-3">
-                {currentEvent.survivorsAndRadiators.map((survivor, idx) => (
+                {survivorsAndRadiators.map((survivor, idx) => (
                   <div
                     key={idx}
                     className="p-3.5 rounded-xl bg-slate-950/80 border border-emerald-500/20 space-y-2.5"
@@ -358,7 +381,7 @@ export default function ExtinctionGatewayViewer({
                     {/* Museum Specimen Links */}
                     {survivor.notableSpecimens && survivor.notableSpecimens.length > 0 && (
                       <div className="pt-2 border-t border-white/[0.06] flex flex-wrap gap-2">
-                        {survivor.notableSpecimens.map((spec, sIdx) => (
+                        {survivor.notableSpecimens.map((spec: any, sIdx: number) => (
                           spec.speciesId ? (
                             <Link
                               key={sIdx}

@@ -471,7 +471,7 @@ export default function DeepTimeClimateGraph({
                     fontFamily="sans-serif"
                     textAnchor="middle"
                   >
-                    -{ext.casualtyStats.speciesLossPercent}% Taxa
+                    -{ext.casualtyStats?.speciesLossPercent ?? ext.speciesLossPercent ?? 0}% Taxa
                   </text>
                 </g>
               </g>
@@ -623,7 +623,7 @@ export default function DeepTimeClimateGraph({
             </span>
           </div>
           <span className="text-xs font-mono px-2.5 py-1 rounded-lg bg-rose-500/20 text-rose-300 font-bold shrink-0">
-            {selectedExtinction.casualtyStats.speciesLossPercent}% Total Species Eradicated
+            {selectedExtinction.casualtyStats?.speciesLossPercent ?? (selectedExtinction as any).speciesLossPercent ?? 0}% Total Species Eradicated
           </span>
         </div>
       )}

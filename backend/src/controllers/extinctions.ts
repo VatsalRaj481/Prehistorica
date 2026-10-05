@@ -3,6 +3,19 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+function formatExtinctionEvent(ext: any) {
+  if (!ext) return ext;
+  return {
+    ...ext,
+    casualtyStats: {
+      speciesLossPercent: ext.speciesLossPercent,
+      marineGeneraLossPercent: ext.marineGeneraLossPercent,
+      terrestrialLossPercent: ext.terrestrialLossPercent,
+      estimatedDuration: ext.estimatedDuration,
+    },
+  };
+}
+
 /**
  * GET /api/extinctions
  * Returns all Big Five mass extinction events from PostgreSQL,
@@ -14,10 +27,12 @@ export async function getExtinctions(req: Request, res: Response) {
       orderBy: { peakAgeMa: 'desc' },
     });
 
+    const formatted = extinctions.map(formatExtinctionEvent);
+
     res.json({
       success: true,
-      count: extinctions.length,
-      data: extinctions,
+      count: formatted.length,
+      data: formatted,
     });
   } catch (error: any) {
     console.error('Error fetching extinction events from PostgreSQL:', error);
@@ -77,7 +92,7 @@ export async function getExtinctionBySlug(req: Request, res: Response) {
     res.json({
       success: true,
       data: {
-        ...extinction,
+        ...formatExtinctionEvent(extinction),
         boundarySpecies,
       },
     });

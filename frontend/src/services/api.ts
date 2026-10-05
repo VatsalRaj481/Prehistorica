@@ -613,12 +613,41 @@ export async function fetchFormationFoodWeb(
 /**
  * 🌋 PostgreSQL-Backed Extinction Events & Paleoclimate Curves
  */
+function normalizeExtinctionEvent(e: any): any {
+  if (!e) return e;
+  return {
+    ...e,
+    casualtyStats: e.casualtyStats || {
+      speciesLossPercent: e.speciesLossPercent ?? 0,
+      marineGeneraLossPercent: e.marineGeneraLossPercent ?? 0,
+      terrestrialLossPercent: e.terrestrialLossPercent ?? 0,
+      estimatedDuration: e.estimatedDuration || '',
+    },
+    killMechanisms: Array.isArray(e.killMechanisms)
+      ? e.killMechanisms
+      : typeof e.killMechanisms === 'string'
+      ? (() => { try { return JSON.parse(e.killMechanisms); } catch { return []; } })()
+      : [],
+    decimatedClades: Array.isArray(e.decimatedClades)
+      ? e.decimatedClades
+      : typeof e.decimatedClades === 'string'
+      ? (() => { try { return JSON.parse(e.decimatedClades); } catch { return []; } })()
+      : [],
+    survivorsAndRadiators: Array.isArray(e.survivorsAndRadiators)
+      ? e.survivorsAndRadiators
+      : typeof e.survivorsAndRadiators === 'string'
+      ? (() => { try { return JSON.parse(e.survivorsAndRadiators); } catch { return []; } })()
+      : [],
+  };
+}
+
 export async function fetchExtinctionEvents(): Promise<any[]> {
   try {
     const res = await fetchWithRetry(`${API_BASE}/extinctions`);
     if (!res.ok) throw new Error('Failed to fetch extinction events from database');
     const json = await res.json();
-    return json.data || [];
+    const rawList = Array.isArray(json.data) ? json.data : [];
+    return rawList.map(normalizeExtinctionEvent);
   } catch (err) {
     console.warn('Live extinction events fetch failed, using curatorial baseline:', err);
     return [];
@@ -629,7 +658,7 @@ export async function fetchExtinctionBySlug(slug: string): Promise<any> {
   const res = await fetchWithRetry(`${API_BASE}/extinctions/${encodeURIComponent(slug)}`);
   if (!res.ok) throw new Error(`Failed to fetch extinction event for ${slug}`);
   const json = await res.json();
-  return json.data;
+  return normalizeExtinctionEvent(json.data);
 }
 
 export async function fetchPaleoclimateCurves(): Promise<any[]> {
