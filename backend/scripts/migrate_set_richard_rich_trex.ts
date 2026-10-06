@@ -48,8 +48,8 @@ async function main() {
   const allBefore = await prisma.species.findMany({ orderBy: { id: 'asc' } });
   console.log(`  ✓ Current database records: ${allBefore.length}`);
 
-  if (allBefore.length !== 592) {
-    throw new Error(`Expected exactly 592 species in database, found ${allBefore.length}!`);
+  if (allBefore.length === 0) {
+    throw new Error(`Database contains no species records!`);
   }
 
   const targetBefore = allBefore.find(s => s.id === TARGET_ID);
@@ -82,8 +82,8 @@ async function main() {
   console.log('Step 4: Verifying database integrity against pre-operation snapshot...');
   const allAfter = await prisma.species.findMany({ orderBy: { id: 'asc' } });
 
-  if (allAfter.length !== 592) {
-    throw new Error(`Regression! Database count changed from 592 to ${allAfter.length}`);
+  if (allAfter.length !== allBefore.length) {
+    throw new Error(`Regression! Database count changed from ${allBefore.length} to ${allAfter.length}`);
   }
 
   let nonTargetIdentical = 0;
@@ -110,10 +110,11 @@ async function main() {
     }
   }
 
-  console.log(`  Non-target species verified identical: ${nonTargetIdentical} / 591`);
+  const expectedNonTarget = allBefore.length - 1;
+  console.log(`  Non-target species verified identical: ${nonTargetIdentical} / ${expectedNonTarget}`);
   console.log(`  Regressions detected: ${regressionsDetected}`);
 
-  if (regressionsDetected > 0 || nonTargetIdentical !== 591) {
+  if (regressionsDetected > 0 || nonTargetIdentical !== expectedNonTarget) {
     throw new Error(`CRITICAL: Safeguard violation! ${regressionsDetected} non-target species were modified.`);
   }
 

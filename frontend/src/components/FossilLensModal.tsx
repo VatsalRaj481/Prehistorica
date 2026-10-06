@@ -12,6 +12,7 @@ import {
   ScanLine
 } from 'lucide-react';
 import { identifyFossil, FossilAnalysis } from '../services/api.js';
+import { formatEnumLabel } from '../utils/formatEnumLabel.js';
 
 interface FossilLensModalProps {
   isOpen: boolean;
@@ -371,7 +372,7 @@ export default function FossilLensModal({ isOpen, onClose }: FossilLensModalProp
                                   {cand.scientificName}
                                 </p>
                                 <span className="inline-block mt-1 px-1.5 py-0.5 rounded bg-slate-850 text-slate-400 text-[10px] font-mono">
-                                  {cand.clade}
+                                  {formatEnumLabel(cand.clade)}
                                 </span>
                               </div>
                             </div>

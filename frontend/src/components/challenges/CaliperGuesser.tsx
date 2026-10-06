@@ -3,6 +3,7 @@ import { Species } from '../../services/api.js';
 import { Ruler, RefreshCw } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { formatFeet } from '../../utils/formatDimensions.js';
+import { formatEnumLabel } from '../../utils/formatEnumLabel.js';
 
 interface CaliperGuesserProps {
   allSpecies: Species[];
@@ -105,8 +106,8 @@ export default function CaliperGuesser({ allSpecies, onScore }: CaliperGuesserPr
           </p>
         </div>
 
-        <span className="px-2.5 py-1 rounded bg-slate-900 border border-white/[0.08] text-xs text-amber-300 font-bold uppercase">
-          Clade: {target.clade}
+        <span className="px-2.5 py-1 rounded bg-slate-900 border border-white/[0.08] text-xs text-amber-300 font-bold">
+          Clade: {formatEnumLabel(target.clade)}
         </span>
       </div>
 

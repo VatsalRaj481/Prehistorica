@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { User, Car, Bus, Layers, ExternalLink, ShieldCheck, AlertTriangle, Eye, Ruler, ArrowLeftRight } from 'lucide-react';
 import { formatMass } from '../utils/formatMass.js';
 import { formatFeet } from '../utils/formatDimensions.js';
+import { formatEnumLabel } from '../utils/formatEnumLabel.js';
 import ClickSpark from './reactbits/ClickSpark.js';
 
 export interface SilhouetteData {
@@ -326,8 +327,8 @@ export default function TwoDScaleViewer({
                 &bull; 1:1 Metric Projection
               </span>
               {clade && (
-                <span className="text-[9px] font-mono text-amber-500/80 uppercase tracking-wider hidden md:inline truncate max-w-[140px]">
-                  &bull; {clade.replace(/_/g, ' ')}
+                <span className="text-[9px] font-mono text-amber-500/80 tracking-wider hidden md:inline truncate max-w-[140px]">
+                  &bull; {formatEnumLabel(clade)}
                 </span>
               )}
             </div>

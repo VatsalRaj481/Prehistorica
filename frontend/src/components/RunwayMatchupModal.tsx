@@ -13,6 +13,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { simulateRunwayMatchup, RunwayInteractionResult, Species } from '../services/api.js';
+import { formatEnumLabel } from '../utils/formatEnumLabel.js';
 
 interface RunwayMatchupModalProps {
   isOpen: boolean;
@@ -189,7 +190,7 @@ export default function RunwayMatchupModal({ isOpen, onClose, speciesList }: Run
                           {simulation.physicalComparison.speciesA.name}
                         </h4>
                         <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">
-                          {speciesList[0]?.clade}
+                          {formatEnumLabel(speciesList[0]?.clade)}
                         </span>
                       </div>
                       <div className="grid grid-cols-3 gap-2 text-center font-mono">
@@ -220,7 +221,7 @@ export default function RunwayMatchupModal({ isOpen, onClose, speciesList }: Run
                           {simulation.physicalComparison.speciesB.name}
                         </h4>
                         <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">
-                          {speciesList[1]?.clade}
+                          {formatEnumLabel(speciesList[1]?.clade)}
                         </span>
                       </div>
                       <div className="grid grid-cols-3 gap-2 text-center font-mono">

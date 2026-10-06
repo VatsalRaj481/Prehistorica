@@ -20,9 +20,8 @@ import {
   RotateCcw
 } from 'lucide-react';
 import { askChiefCurator, CuratorGroundingSpecimen, fetchSpecies, TOTAL_CATALOGED_SPECIMENS } from '../services/api.js';
+import { formatEnumLabel } from '../utils/formatEnumLabel.js';
 import RajyResponseRenderer from './RajyResponseRenderer.js';
-import ShinyText from './reactbits/ShinyText.js';
-import ClickSpark from './reactbits/ClickSpark.js';
 
 interface Message {
   id: string;
@@ -988,16 +987,16 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
                     <h2 className="text-xs sm:text-sm font-black font-mono tracking-widest uppercase text-slate-100 truncate">
-                      <ShinyText text="PREHISTORICA • AI DOCENT" speed={3.5} />
+                      PREHISTORICA &bull; CHIEF DOCENT
                     </h2>
                     <span className="hidden sm:inline-flex px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20 uppercase tracking-widest">
                       {liveTotalSpecies} Verified
                     </span>
                   </div>
                   <p className="text-[10px] font-mono text-slate-400 truncate flex items-center gap-1.5">
-                    <span className="text-slate-200 font-semibold">Rajy &bull; AI Docent</span>
-                    <span className="hidden xs:inline text-slate-600">&bull;</span>
-                    <span className="hidden xs:inline text-slate-300">Prehistorica Pavilion Guide</span>
+                    <span className="text-slate-200 font-semibold">Rajy</span>
+                    <span className="text-slate-600">&bull;</span>
+                    <span className="text-slate-300">Curatorial Archive Docent</span>
                   </p>
                 </div>
               </div>
@@ -1005,27 +1004,26 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
               {/* Header Controls: Global Voice Mode Toggle, Playback, Voice Settings & Close */}
               <div className="flex items-center gap-1 sm:gap-2 shrink-0 flex-nowrap">
                 {/* 1. Global Voice Mode Toggle (ON / OFF) */}
-                <ClickSpark sparkColor="#F59E0B">
-                  <button
-                    type="button"
-                    onClick={toggleTts}
-                    className={`min-h-[36px] sm:min-h-[38px] px-2.5 sm:px-3 py-1.5 rounded-lg border text-xs font-mono font-semibold flex items-center gap-1.5 transition-all cursor-pointer shrink-0 ${
-                      ttsEnabled
-                        ? 'bg-amber-500/15 border-amber-500/50 text-amber-300 shadow-[0_0_14px_rgba(245,158,11,0.25)] ring-1 ring-amber-500/30'
-                        : 'bg-slate-900/80 border-white/[0.08] text-slate-400 hover:text-slate-200 hover:bg-slate-850'
-                    }`}
-                    title={
-                      ttsEnabled
-                        ? 'Voice Mode is ON (click to turn OFF)'
-                        : 'Enable docent vocal narration for Rajy'
-                    }
-                    aria-pressed={ttsEnabled}
-                    aria-label={
-                      ttsEnabled
-                        ? 'Voice Mode Active'
-                        : 'Voice Mode Inactive — Enable vocal narration for Rajy'
-                    }
-                  >
+                <button
+                  type="button"
+                  onClick={toggleTts}
+                  className={`min-h-[36px] sm:min-h-[38px] px-2.5 sm:px-3 py-1.5 rounded-lg border text-xs font-mono font-semibold flex items-center gap-1.5 transition-all cursor-pointer shrink-0 ${
+                    ttsEnabled
+                      ? 'bg-amber-500/15 border-amber-500/50 text-amber-300'
+                      : 'bg-slate-900/80 border-white/[0.08] text-slate-400 hover:text-slate-200 hover:bg-slate-850'
+                  }`}
+                  title={
+                    ttsEnabled
+                      ? 'Voice Mode is ON (click to turn OFF)'
+                      : 'Enable docent vocal narration for Rajy'
+                  }
+                  aria-pressed={ttsEnabled}
+                  aria-label={
+                    ttsEnabled
+                      ? 'Voice Mode Active'
+                      : 'Voice Mode Inactive — Enable vocal narration for Rajy'
+                  }
+                >
                   {ttsEnabled ? (
                     <>
                       <Volume2 className="w-3.5 h-3.5 text-amber-400 shrink-0" />
@@ -1038,7 +1036,6 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                     </>
                   )}
                 </button>
-              </ClickSpark>
 
                 {/* 2. Separate Pause / Resume & Stop Controls (Visible when Voice Mode is ON and audio is active or paused) */}
                 {ttsEnabled && (isSpeaking || isPaused) && (
@@ -1825,7 +1822,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                                       </p>
                                       <div className="flex items-center gap-1 mt-0.5 text-[9px] text-slate-400 font-mono">
                                         <span className="px-1 rounded bg-slate-800 text-slate-300">
-                                          {spec.clade}
+                                          {formatEnumLabel(spec.clade)}
                                         </span>
                                         <span className="truncate">{spec.timePeriod}</span>
                                       </div>
@@ -2030,23 +2027,21 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                         className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 bg-[#0D1527] border border-white/[0.1] focus:border-amber-500/70 focus:ring-1 focus:ring-amber-500/30 rounded-xl text-xs sm:text-sm text-slate-100 placeholder-slate-400 focus:outline-none transition-all font-mono shadow-inner"
                       />
                     </div>
-                    <ClickSpark sparkColor="#F59E0B">
-                      <button
-                        type="submit"
-                        disabled={!input.trim() || isBusy}
-                        className="min-h-[42px] sm:min-h-[44px] px-3.5 sm:px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-98 disabled:opacity-40 disabled:hover:bg-amber-500 text-slate-950 font-bold font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-amber-500/10 shrink-0"
-                        aria-label="Send message to Rajy"
-                      >
-                        {isBusy ? (
-                          <Loader2 className="w-4 h-4 animate-spin" />
-                        ) : (
-                          <>
-                            <span className="hidden xs:inline">Consult</span>
-                            <Send className="w-3.5 h-3.5" />
-                          </>
-                        )}
-                      </button>
-                    </ClickSpark>
+                    <button
+                      type="submit"
+                      disabled={!input.trim() || isBusy}
+                      className="min-h-[42px] sm:min-h-[44px] px-3.5 sm:px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-98 disabled:opacity-40 disabled:hover:bg-amber-500 text-slate-950 font-bold font-mono text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-lg shadow-amber-500/10 shrink-0"
+                      aria-label="Send message to Rajy"
+                    >
+                      {isBusy ? (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      ) : (
+                        <>
+                          <span className="hidden xs:inline">Consult</span>
+                          <Send className="w-3.5 h-3.5" />
+                        </>
+                      )}
+                    </button>
                   </form>
                   <p className="hidden sm:block text-[10px] font-mono text-slate-500 pt-1.5 text-center">
                     Rajy &bull; Prehistorica AI Docent &bull; Evidence-based retrieval augmented generation (RAG)

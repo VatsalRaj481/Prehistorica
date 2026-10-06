@@ -6,11 +6,10 @@ import TaxonomyBreadcrumbs from '../components/TaxonomyBreadcrumbs.js';
 import TwoDScaleViewer from '../components/TwoDScaleViewer.js';
 import MediaGallery from '../components/MediaGallery.js';
 import { isBookmarked as checkIsBookmarked, toggleBookmark as toggleBookmarkStorage } from '../utils/notebookStorage.js';
-import { Calendar, Compass, ArrowLeft, Dna, FileText, Scale, BookOpen, AlertCircle, Bookmark, BookmarkCheck, ExternalLink, Globe, Zap } from 'lucide-react';
+import { Compass, ArrowLeft, Dna, FileText, Scale, BookOpen, AlertCircle, Bookmark, BookmarkCheck, ExternalLink, Globe, Zap } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 import { formatFeetLong } from '../utils/formatDimensions.js';
-import ShinyText from '../components/reactbits/ShinyText.js';
-import ClickSpark from '../components/reactbits/ClickSpark.js';
+import { formatEnumLabel } from '../utils/formatEnumLabel.js';
 import CuratorialLoader from '../components/CuratorialLoader.js';
 
 export default function SpeciesDetail() {
@@ -105,23 +104,19 @@ export default function SpeciesDetail() {
       {/* Top Museum Navigation & Catalog Reference Header */}
       <div className="flex flex-wrap justify-between items-center border-b border-white/[0.08] pb-4 gap-4 font-mono">
         <div className="flex items-center gap-4 text-xs text-slate-400">
-          <motion.div whileTap={{ scale: 0.94 }}>
-            <ClickSpark sparkColor="#F59E0B">
-              <Link
-                to={catalogReturnUrl}
-                title={species.catalogPage ? `Return to Catalog Index (Page ${species.catalogPage})` : 'Return to Catalog Index'}
-                className="inline-flex items-center gap-2 text-slate-300 hover:text-amber-400 transition-colors font-bold uppercase tracking-wider group"
-              >
-                <ArrowLeft className="h-4 w-4 text-amber-400 group-hover:-translate-x-0.5 transition-transform" />
-                <span>Catalog Index</span>
-                {species.catalogPage && (
-                  <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-slate-900 border border-white/10 text-amber-400/90 group-hover:border-amber-400/40 transition-colors">
-                    Page {species.catalogPage}
-                  </span>
-                )}
-              </Link>
-            </ClickSpark>
-          </motion.div>
+          <Link
+            to={catalogReturnUrl}
+            title={species.catalogPage ? `Return to Catalog Index (Page ${species.catalogPage})` : 'Return to Catalog Index'}
+            className="inline-flex items-center gap-2 text-slate-300 hover:text-amber-400 transition-colors font-bold uppercase tracking-wider group"
+          >
+            <ArrowLeft className="h-4 w-4 text-amber-400 group-hover:-translate-x-0.5 transition-transform" />
+            <span>Catalog Index</span>
+            {species.catalogPage && (
+              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-900 border border-white/10 text-amber-400/90 group-hover:border-amber-400/40 transition-colors">
+                Page {species.catalogPage}
+              </span>
+            )}
+          </Link>
           <span className="text-slate-700">|</span>
           <span className="text-amber-400 font-bold uppercase tracking-widest text-[11px]">
             Specimen #{species.id.toString().padStart(4, '0')}
@@ -129,39 +124,32 @@ export default function SpeciesDetail() {
         </div>
 
         <div className="flex items-center gap-2">
-          <motion.div whileTap={{ scale: 0.94 }}>
-            <ClickSpark sparkColor="#F59E0B">
-              <Link
-                to={`/runway?ids=${species.id}`}
-                className="px-3 py-2 rounded-lg border border-white/[0.08] bg-slate-900/90 hover:bg-slate-850 hover:border-amber-500/40 text-xs font-mono font-bold uppercase tracking-wider text-slate-300 hover:text-white flex items-center gap-1.5 transition-all shadow-sm"
-                title="Add this creature to the Multi-Specimen Caliper Runway"
-              >
-                <Scale className="h-3.5 w-3.5 text-amber-400" /> Runway Lineup
-              </Link>
-            </ClickSpark>
-          </motion.div>
+          <Link
+            to={`/runway?ids=${species.id}`}
+            className="px-3.5 py-2 rounded-lg border border-white/[0.08] bg-slate-900/90 hover:bg-slate-850 hover:border-amber-500/40 text-xs font-mono font-medium tracking-wider text-slate-300 hover:text-white flex items-center gap-1.5 transition-all shadow-sm"
+            title="Add this creature to the Multi-Specimen Caliper Runway"
+          >
+            <Scale className="h-3.5 w-3.5 text-amber-400" /> Runway Lineup
+          </Link>
 
-          <ClickSpark sparkColor="#F59E0B">
-            <motion.button
-              whileTap={{ scale: 0.94 }}
-              onClick={toggleBookmark}
-              className={`px-3.5 py-2 rounded-lg border text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shadow-sm ${
-                isBookmarked
-                  ? 'bg-amber-500/15 border-amber-500/40 text-amber-300'
-                  : 'bg-slate-900/90 border-white/[0.08] text-slate-300 hover:text-white hover:border-amber-500/40'
-              }`}
-            >
-              {isBookmarked ? (
-                <>
-                  <BookmarkCheck className="h-4 w-4 text-amber-400" /> Archival Bookmarked
-                </>
-              ) : (
-                <>
-                  <Bookmark className="h-4 w-4 text-slate-400" /> Bookmark Specimen
-                </>
-              )}
-            </motion.button>
-          </ClickSpark>
+          <button
+            onClick={toggleBookmark}
+            className={`px-3.5 py-2 rounded-lg border text-xs font-mono font-medium tracking-wider flex items-center gap-2 transition-all cursor-pointer shadow-sm ${
+              isBookmarked
+                ? 'bg-amber-500/15 border-amber-500/40 text-amber-300'
+                : 'bg-slate-900/90 border-white/[0.08] text-slate-300 hover:text-white hover:border-amber-500/40'
+            }`}
+          >
+            {isBookmarked ? (
+              <>
+                <BookmarkCheck className="h-4 w-4 text-amber-400" /> Archival Bookmarked
+              </>
+            ) : (
+              <>
+                <Bookmark className="h-4 w-4 text-slate-400" /> Bookmark Specimen
+              </>
+            )}
+          </button>
         </div>
       </div>
 
@@ -173,29 +161,28 @@ export default function SpeciesDetail() {
             initial={shouldReduceMotion ? false : { opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="space-y-3 sm:space-y-4 border-l-2 border-amber-500 pl-3 sm:pl-5"
+            className="space-y-3 sm:space-y-4 border-l-2 border-amber-500/40 pl-3 sm:pl-5"
           >
-            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs font-mono">
-              <span className="px-2.5 py-1 bg-amber-500/10 border border-amber-500/20 text-amber-400 font-bold uppercase tracking-widest flex items-center gap-1.5 rounded-md text-[10px] sm:text-xs">
-                <Calendar className="h-3.5 w-3.5" />
-                <ShinyText text={`${species.timePeriod} • ${species.myaStart}–${species.myaEnd} MYA`} speed={4} />
-              </span>
-              <span className="px-2.5 py-1 bg-slate-900 border border-white/[0.08] text-slate-300 font-bold uppercase tracking-widest rounded-md text-[10px] sm:text-xs">
-                Clade: {species.clade}
-              </span>
-              <span className="px-2.5 py-1 bg-slate-900 border border-emerald-500/30 text-emerald-400 font-bold uppercase tracking-widest rounded-md text-[10px] sm:text-xs">
-                Diet: {species.dietType || species.diet}
-              </span>
-              <span className="px-2.5 py-1 bg-slate-900 border border-white/[0.08] text-amber-300/90 font-bold uppercase tracking-widest rounded-md text-[10px] sm:text-xs">
-                Status: {species.taxonomicStatus}
-              </span>
+            {/* Stratum & Taxonomic Placement Breadcrumb */}
+            <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs font-mono text-slate-400 tracking-wide">
+              <span className="text-amber-400 font-bold tracking-wider">{formatEnumLabel(species.clade)}</span>
+              <span className="text-slate-600">/</span>
+              <span className="text-slate-200">{species.timePeriod} ({species.myaStart}–{species.myaEnd} MYA)</span>
+              <span className="text-slate-600">/</span>
+              <span className="text-slate-300">{formatEnumLabel(species.dietType || species.diet)}</span>
+              {species.taxonomicStatus && (
+                <>
+                  <span className="text-slate-600">/</span>
+                  <span className="text-slate-400">{formatEnumLabel(species.taxonomicStatus)}</span>
+                </>
+              )}
             </div>
 
             <motion.h1
               initial={shouldReduceMotion ? false : { opacity: 0, x: -8 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.55, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-              className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-100 uppercase break-words leading-tight sm:leading-none font-sans"
+              className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-slate-100 uppercase break-words leading-tight sm:leading-none font-sans"
             >
               {names.heading}
             </motion.h1>
@@ -203,7 +190,7 @@ export default function SpeciesDetail() {
               initial={shouldReduceMotion ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.12 }}
-              className="text-sm sm:text-lg italic font-mono text-amber-400"
+              className="text-base sm:text-xl italic font-serif text-amber-400/90"
             >
               {names.subheading}
             </motion.p>
@@ -213,9 +200,9 @@ export default function SpeciesDetail() {
                 initial={shouldReduceMotion ? false : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5, delay: 0.18 }}
-                className="text-xs font-mono text-slate-400 leading-relaxed border-t border-white/[0.08] pt-2 sm:pt-3"
+                className="text-xs text-slate-400 leading-relaxed border-t border-white/[0.08] pt-2 sm:pt-3 font-sans"
               >
-                <strong className="font-bold text-amber-400 uppercase tracking-widest">Etymology & Translation:</strong> "{species.nameMeaning}"
+                <span className="font-mono text-slate-500 uppercase tracking-widest text-[10px]">Etymology &amp; Translation —</span> "{species.nameMeaning}"
               </motion.p>
             )}
           </motion.div>
@@ -240,49 +227,40 @@ export default function SpeciesDetail() {
         />
       </motion.div>
 
-      {/* Architectural Metrics Banner (Scroll Viewport Reveal) */}
+      {/* Architectural Dimension Register */}
       <motion.div
         initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.08 }}
         transition={{ type: 'spring', stiffness: 320, damping: 28 }}
-        className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono"
+        className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08] border-y border-white/[0.08] py-4 font-mono"
       >
-        <motion.div
-          whileHover={shouldReduceMotion ? {} : { y: -3, transition: { duration: 0.2 } }}
-          className="museum-card py-3.5 px-4 rounded-xl space-y-1 text-center shadow-md border border-white/[0.06] hover:border-amber-500/40 transition-colors"
-        >
-          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
-            <Scale className="h-3.5 w-3.5 text-amber-400" /> Total Length
+        <div className="py-2 sm:py-0 sm:px-6 text-center sm:text-left space-y-1">
+          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block">
+            Total Axial Length
           </span>
-          <p className="text-xl sm:text-2xl font-black text-amber-400 tabular-nums">
+          <p className="text-xl sm:text-2xl font-black text-slate-100 tabular-nums">
             {formatFeetLong(species.lengthM)}
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          whileHover={shouldReduceMotion ? {} : { y: -3, transition: { duration: 0.2 } }}
-          className="museum-card py-3.5 px-4 rounded-xl space-y-1 text-center shadow-md border border-white/[0.06] hover:border-amber-500/40 transition-colors"
-        >
-          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
-            <Scale className="h-3.5 w-3.5 text-amber-400" /> Standing Height
+        <div className="py-2 sm:py-0 sm:px-6 text-center sm:text-left space-y-1">
+          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block">
+            Standing Height
           </span>
-          <p className="text-xl sm:text-2xl font-black text-amber-400 tabular-nums">
+          <p className="text-xl sm:text-2xl font-black text-slate-100 tabular-nums">
             {formatFeetLong(species.heightM)}
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          whileHover={shouldReduceMotion ? {} : { y: -3, transition: { duration: 0.2 } }}
-          className="museum-card py-3.5 px-4 rounded-xl space-y-1 text-center shadow-md border border-white/[0.06] hover:border-amber-500/40 transition-colors"
-        >
-          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center justify-center gap-1.5">
-            <Scale className="h-3.5 w-3.5 text-amber-400" /> Estimated Mass
+        <div className="py-2 sm:py-0 sm:px-6 text-center sm:text-left space-y-1">
+          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block">
+            Estimated Adult Mass
           </span>
           <p className="text-xl sm:text-2xl font-black text-amber-400 tabular-nums">
-            {species.weightKg ? `${species.weightKg.toLocaleString()} KG` : 'Disputed'}
+            {species.weightKg ? `${species.weightKg.toLocaleString()} KG` : 'Disputed / Incomplete'}
           </p>
-        </motion.div>
+        </div>
       </motion.div>
 
       {/* Specimen Deep Dive Grid (Scroll Viewport Reveal) */}
@@ -309,38 +287,38 @@ export default function SpeciesDetail() {
           </div>
 
           {/* Discovery & Geographic Range Panel */}
-          <div className="museum-plinth rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
+          <div className="museum-plinth rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-4 shadow-xl">
             <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-2.5">
-              <Compass className="h-4 w-4 text-amber-400" /> Field Discovery & Provenance
+              <Compass className="h-4 w-4 text-amber-400" /> Field Discovery &amp; Provenance
             </h3>
 
-            <div className="space-y-3 text-xs font-mono">
+            <div className="space-y-4 text-xs">
               <div className="space-y-1">
-                <span className="text-slate-400 uppercase font-bold text-[10px] tracking-widest flex items-center gap-1.5">
-                  <Globe className="h-3.5 w-3.5 text-amber-400" /> Geological Range & Formation
+                <span className="text-slate-400 font-mono uppercase font-bold text-[10px] tracking-widest flex items-center gap-1.5">
+                  <Globe className="h-3.5 w-3.5 text-amber-400" /> Geological Range &amp; Stratum
                 </span>
-                <p className="text-slate-200 leading-relaxed bg-slate-900/90 p-3 rounded-lg border border-white/[0.06] font-sans text-xs">
+                <p className="text-slate-200 leading-relaxed font-sans text-xs sm:text-sm pl-4 border-l border-amber-500/30">
                   {species.geographicRange?.region || species.country || 'Global distribution'} &bull; Formation:{' '}
                   <span className="text-amber-400 font-bold font-mono">{species.fossilFormation || 'Unspecified'}</span>
                 </p>
               </div>
 
               <div className="space-y-1">
-                <span className="text-slate-400 uppercase font-bold text-[10px] tracking-widest flex items-center gap-1.5">
-                  <Compass className="h-3.5 w-3.5 text-amber-400" /> Excavation Log Notes
+                <span className="text-slate-400 font-mono uppercase font-bold text-[10px] tracking-widest flex items-center gap-1.5">
+                  <Compass className="h-3.5 w-3.5 text-amber-400" /> Excavation Field Notes
                 </span>
-                <p className="text-slate-300 leading-relaxed bg-slate-900/90 p-3 rounded-lg border border-white/[0.06] italic font-sans text-xs">
+                <p className="text-slate-300 leading-relaxed italic font-serif text-xs sm:text-sm pl-4 border-l border-amber-500/30">
                   "{species.discoveryHistory || 'Fossilized specimens cataloged in official paleontology archives.'}"
                 </p>
               </div>
 
               {species.dietDetails && (
                 <div className="space-y-1">
-                  <span className="text-slate-400 uppercase font-bold text-[10px] tracking-widest flex items-center gap-1.5">
-                    <Scale className="h-3.5 w-3.5 text-amber-400" /> Dietary Adaptation & Trophic Niche
+                  <span className="text-slate-400 font-mono uppercase font-bold text-[10px] tracking-widest flex items-center gap-1.5">
+                    <Scale className="h-3.5 w-3.5 text-amber-400" /> Dietary Adaptation &amp; Trophic Niche
                   </span>
-                  <p className="text-slate-200 leading-relaxed bg-slate-900/90 p-3 rounded-lg border border-white/[0.06] font-sans text-xs">
-                    <span className="capitalize text-emerald-400 font-bold font-mono mr-1.5">[{species.dietType || species.diet}]:</span>
+                  <p className="text-slate-200 leading-relaxed font-sans text-xs sm:text-sm pl-4 border-l border-amber-500/30">
+                    <span className="text-emerald-400 font-bold font-mono mr-1.5">[{formatEnumLabel(species.dietType || species.diet)}]:</span>
                     {species.dietDetails}
                   </p>
                 </div>
@@ -369,47 +347,39 @@ export default function SpeciesDetail() {
               </span>
               <div className="space-y-2 text-xs font-sans">
                 {species.clade === 'Theropod' ? (
-                  <div className="space-y-2">
-                    <div className="p-3 rounded-lg bg-slate-900/90 border border-white/[0.06] space-y-1.5">
-                      <div className="flex items-center gap-2">
-                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/25">
-                          Surviving Avian Theropods
-                        </span>
-                      </div>
-                      <p className="text-slate-200 text-xs leading-relaxed">
+                  <div className="space-y-3">
+                    <div className="border-l-2 border-amber-500/60 pl-3 py-0.5 space-y-0.5">
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400 block">
+                        Surviving Avian Theropods
+                      </span>
+                      <p className="text-slate-200 text-xs sm:text-sm leading-relaxed font-sans">
                         Modern Birds (<em className="font-mono text-amber-200/90 not-italic">Aves / Neornithes</em>) are direct surviving avian theropod dinosaurs.
                       </p>
                     </div>
-                    <div className="p-3 rounded-lg bg-slate-900/90 border border-white/[0.06] space-y-1.5">
-                      <div className="flex items-center gap-2">
-                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-cyan-500/10 text-cyan-400 border border-cyan-500/25">
-                          Non-Dinosaurian Outgroup
-                        </span>
-                      </div>
-                      <p className="text-slate-300 text-xs leading-relaxed">
-                        Crocodilians (Crocodiles, Alligators & Gharials) form the extant sister lineage of Archosauria.
+                    <div className="border-l-2 border-cyan-500/60 pl-3 py-0.5 space-y-0.5">
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-cyan-400 block">
+                        Non-Dinosaurian Sister Outgroup
+                      </span>
+                      <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
+                        Crocodilians (Crocodiles, Alligators &amp; Gharials) form the extant sister lineage of Archosauria.
                       </p>
                     </div>
                   </div>
                 ) : ['Sauropod', 'Sauropodomorph', 'Ornithischian'].includes(species.clade) ? (
-                  <div className="space-y-2">
-                    <div className="p-3 rounded-lg bg-slate-900/90 border border-white/[0.06] space-y-1.5">
-                      <div className="flex items-center gap-2">
-                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/25">
-                          Surviving Dinosaur Lineage
-                        </span>
-                      </div>
-                      <p className="text-slate-200 text-xs leading-relaxed">
+                  <div className="space-y-3">
+                    <div className="border-l-2 border-amber-500/60 pl-3 py-0.5 space-y-0.5">
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400 block">
+                        Surviving Dinosaur Lineage
+                      </span>
+                      <p className="text-slate-200 text-xs sm:text-sm leading-relaxed font-sans">
                         Modern Birds (<em className="font-mono text-amber-200/90 not-italic">Aves</em>) are the only surviving clade of Dinosauria.
                       </p>
                     </div>
-                    <div className="p-3 rounded-lg bg-slate-900/90 border border-white/[0.06] space-y-1.5">
-                      <div className="flex items-center gap-2">
-                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-cyan-500/10 text-cyan-400 border border-cyan-500/25">
-                          Non-Dinosaurian Outgroup
-                        </span>
-                      </div>
-                      <p className="text-slate-300 text-xs leading-relaxed">
+                    <div className="border-l-2 border-cyan-500/60 pl-3 py-0.5 space-y-0.5">
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-cyan-400 block">
+                        Non-Dinosaurian Outgroup
+                      </span>
+                      <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
                         Crocodilians represent the closest extant non-dinosaurian archosaurs.
                       </p>
                     </div>
@@ -435,36 +405,30 @@ export default function SpeciesDetail() {
 
                     if (!groupsText && !rationaleText) {
                       return (
-                        <div className="p-3 rounded-lg bg-slate-900/90 border border-white/[0.06]">
-                          <p className="text-slate-400 text-xs italic">
-                            Extinct prehistoric lineage without immediate extant crown descendants.
-                          </p>
-                        </div>
+                        <p className="text-slate-400 text-xs italic pl-3 border-l-2 border-slate-700 py-0.5 font-sans">
+                          Extinct prehistoric lineage without immediate extant crown descendants.
+                        </p>
                       );
                     }
 
                     return (
-                      <div className="space-y-2">
+                      <div className="space-y-3">
                         {groupsText && (
-                          <div className="p-3 rounded-lg bg-slate-900/90 border border-white/[0.06] space-y-1.5">
-                            <div className="flex items-center gap-2">
-                              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/25">
-                                Closest Extant Relatives
-                              </span>
-                            </div>
-                            <p className="text-slate-200 text-xs font-medium leading-relaxed">
+                          <div className="border-l-2 border-amber-500/60 pl-3 py-0.5 space-y-0.5">
+                            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400 block">
+                              Closest Extant Relatives
+                            </span>
+                            <p className="text-slate-200 text-xs sm:text-sm font-medium leading-relaxed font-sans">
                               {groupsText}
                             </p>
                           </div>
                         )}
                         {rationaleText && (
-                          <div className="p-3 rounded-lg bg-slate-900/90 border border-white/[0.06] space-y-1.5">
-                            <div className="flex items-center gap-2">
-                              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-cyan-500/10 text-cyan-400 border border-cyan-500/25">
-                                Phylogenetic Placement
-                              </span>
-                            </div>
-                            <p className="text-slate-300 text-xs leading-relaxed font-normal">
+                          <div className="border-l-2 border-cyan-500/60 pl-3 py-0.5 space-y-0.5">
+                            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-cyan-400 block">
+                              Phylogenetic Placement
+                            </span>
+                            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-sans">
                               {rationaleText}
                             </p>
                           </div>
@@ -489,25 +453,18 @@ export default function SpeciesDetail() {
                 </span>
               </div>
 
-              <div className={`grid gap-2 ${
-                species.interestingFacts.length > 1 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1'
-              }`}>
-                {species.interestingFacts.map((fact, i) => {
-                  const isLastOdd = species.interestingFacts!.length % 2 !== 0 && i === species.interestingFacts!.length - 1;
-                  return (
-                    <div
-                      key={i}
-                      className={`p-2.5 px-3 bg-slate-900/80 hover:bg-slate-900/95 rounded-lg border border-white/[0.06] text-xs font-sans text-slate-300 leading-relaxed flex items-start gap-2.5 shadow-sm transition-colors ${
-                        isLastOdd ? 'sm:col-span-2' : ''
-                      }`}
-                    >
-                      <span className="px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-400 font-bold font-mono text-[10px] border border-amber-500/20 shrink-0 mt-0.5">
-                        #{i + 1}
-                      </span>
-                      <span className="text-[12px] leading-snug">{fact}</span>
-                    </div>
-                  );
-                })}
+              <div className="space-y-2">
+                {species.interestingFacts.map((fact, i) => (
+                  <div
+                    key={i}
+                    className="p-3 bg-slate-900/60 rounded-lg border border-white/[0.05] text-xs font-sans text-slate-300 leading-relaxed flex items-start gap-3 transition-colors hover:border-amber-500/20"
+                  >
+                    <span className="font-mono text-amber-400 font-bold text-xs shrink-0 select-none">
+                      {(i + 1).toString().padStart(2, '0')}.
+                    </span>
+                    <span className="text-xs sm:text-sm leading-relaxed text-slate-200">{fact}</span>
+                  </div>
+                ))}
               </div>
             </div>
           )}
@@ -519,25 +476,22 @@ export default function SpeciesDetail() {
                 <BookOpen className="h-4 w-4 text-amber-400" /> Verified Academic Citations
               </h3>
 
-              <div className="space-y-2">
+              <div className="space-y-2 font-mono text-xs">
                 {species.sources.map((src, i) => (
                   <div
                     key={i}
-                    className="p-2.5 px-3 bg-slate-900/90 rounded-lg border border-white/[0.06] text-xs font-mono text-slate-400 flex items-center justify-between gap-3"
+                    className="p-2.5 px-3 bg-slate-900/60 rounded-lg border border-white/[0.05] text-xs font-mono text-slate-400 flex items-center justify-between gap-3"
                   >
                     <span className="truncate">{src.citation}</span>
                     {src.url && (
-                      <ClickSpark sparkColor="#F59E0B">
-                        <motion.a
-                          whileTap={{ scale: 0.92 }}
-                          href={src.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-amber-400 hover:text-amber-300 flex items-center gap-1 font-bold uppercase tracking-wider shrink-0 text-[10px]"
-                        >
-                          View Source <ExternalLink className="h-3 w-3" />
-                        </motion.a>
-                      </ClickSpark>
+                      <a
+                        href={src.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-amber-400/90 hover:text-amber-300 flex items-center gap-1 font-bold uppercase tracking-wider shrink-0 text-[10px] transition-colors"
+                      >
+                        Source <ExternalLink className="h-3 w-3" />
+                      </a>
                     )}
                   </div>
                 ))}
@@ -588,8 +542,8 @@ export default function SpeciesDetail() {
                         referrerPolicy="no-referrer"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
-                      <div className="absolute top-2 right-2 px-2 py-0.5 bg-slate-950/90 backdrop-blur-md rounded text-[9px] font-mono font-bold uppercase tracking-widest text-amber-400 border border-white/[0.08]">
-                        {rel.clade || 'Prehistoric'}
+                      <div className="absolute top-2 right-2 px-2 py-0.5 bg-slate-950/90 backdrop-blur-md rounded text-[9px] font-mono font-bold tracking-wider text-amber-400 border border-white/[0.08]">
+                        {formatEnumLabel(rel.clade) || 'Prehistoric'}
                       </div>
                     </div>
                     <div className="space-y-1.5">

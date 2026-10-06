@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { fetchSpeciesAutocomplete, fetchSemanticSearch, AutocompleteItem, SemanticSearchItem } from '../services/api.js';
 import { Search, Loader2, Dna, ArrowRight, Sparkles, Globe, Calendar, Scale, X, CornerDownLeft } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
+import { formatEnumLabel } from '../utils/formatEnumLabel.js';
 
 interface ExampleQuery {
   text: string;
@@ -339,7 +340,7 @@ export default function SearchAutocomplete({ isMobileDrawer = false }: SearchAut
                           </span>
                         </div>
                         <div className="text-[10px] text-slate-400 italic font-mono truncate">
-                          {item.scientificName} &bull; <span className="not-italic text-slate-400">{item.clade}</span>
+                          {item.scientificName} &bull; <span className="not-italic text-slate-400">{formatEnumLabel(item.clade)}</span>
                         </div>
                       </div>
                       <ArrowRight className="h-3.5 w-3.5 text-slate-600 group-hover:text-amber-400 transition-colors shrink-0" />
@@ -388,7 +389,7 @@ export default function SearchAutocomplete({ isMobileDrawer = false }: SearchAut
                         {names.heading}
                       </div>
                       <div className="text-[10px] text-amber-400/90 italic font-mono truncate">
-                        {names.subheading} &bull; <span className="text-slate-400 not-italic">{item.clade}</span>
+                        {names.subheading} &bull; <span className="text-slate-400 not-italic">{formatEnumLabel(item.clade)}</span>
                       </div>
                     </div>
                     <ArrowRight className="h-3.5 w-3.5 text-slate-600 group-hover:text-amber-400 transition-colors shrink-0" />

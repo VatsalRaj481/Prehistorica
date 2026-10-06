@@ -28,6 +28,7 @@ import {
 import RunwayMatchupModal from '../components/RunwayMatchupModal.js';
 import { formatFeetLong } from '../utils/formatDimensions.js';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
+import { formatEnumLabel } from '../utils/formatEnumLabel.js';
 import ShinyText from '../components/reactbits/ShinyText.js';
 import ClickSpark from '../components/reactbits/ClickSpark.js';
 import Magnet from '../components/reactbits/Magnet.js';
@@ -73,7 +74,7 @@ export default function CaliperRunway() {
   const [activeReference, setActiveReference] = useState<'human' | 'car' | 'bus' | 'elephant' | 'none'>('human');
   const [showGrid, setShowGrid] = useState(true);
   const [showCalipers, setShowCalipers] = useState(true);
-  const [stageScale, setStageScale] = useState<number>(55);
+  const [stageScale, setStageScale] = useState<number>(23);
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
   const [isMatchupOpen, setIsMatchupOpen] = useState(false);
 
@@ -236,7 +237,7 @@ export default function CaliperRunway() {
               Multi-Specimen Caliper Runway
             </h1>
             <p className="text-sm text-slate-400 font-mono max-w-xl">
-              Simultaneously project up to 6 prehistoric species on a single calibrated metric runway alongside architectural reference models.
+              Simultaneously project up to 6 prehistoric species on a single 1:1 scale comparison runway alongside architectural reference models.
             </p>
           </div>
 
@@ -327,27 +328,27 @@ export default function CaliperRunway() {
             <ClickSpark sparkColor="#F59E0B">
               <div className="p-1 rounded-lg bg-slate-900 border border-white/[0.08] flex items-center gap-1">
                 <button
-                  onClick={() => setStageScale((prev) => Math.max(35, prev - 15))}
-                  disabled={stageScale <= 35}
+                  onClick={() => setStageScale((prev) => Math.max(13, prev - 5))}
+                  disabled={stageScale <= 13}
                   className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
-                  title="Decrease Scale (Zoom Out)"
+                  title="Decrease Scale (Zoom Out • Min: 13 px/m to see all 4 species)"
                 >
                   <ZoomOut className="h-3.5 w-3.5" />
                 </button>
 
                 <button
-                  onClick={() => setStageScale(55)}
+                  onClick={() => setStageScale(23)}
                   className="px-2 py-1 rounded text-[11px] font-bold text-amber-400 hover:bg-slate-800 transition-colors cursor-pointer min-w-[56px] text-center"
-                  title="Click to reset to baseline 55px/m"
+                  title="Click to reset to standard scale (23 px/m)"
                 >
                   {stageScale} px/m
                 </button>
 
                 <button
-                  onClick={() => setStageScale((prev) => Math.min(145, prev + 15))}
-                  disabled={stageScale >= 145}
+                  onClick={() => setStageScale((prev) => Math.min(38, prev + 5))}
+                  disabled={stageScale >= 38}
                   className="p-1.5 rounded hover:bg-slate-800 text-slate-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
-                  title="Increase Scale (Zoom In)"
+                  title="Increase Scale (Zoom In • Max: 38 px/m to see 2 species & slide)"
                 >
                   <ZoomIn className="h-3.5 w-3.5" />
                 </button>
@@ -466,7 +467,7 @@ export default function CaliperRunway() {
                             {getSpeciesDisplayNames(item).heading}
                           </p>
                           <p className="text-[10px] text-amber-400 italic truncate font-mono">
-                            {item.clade} &bull; {item.lengthM ? `${item.lengthM}m` : 'size unconfirmed'}
+                            {formatEnumLabel(item.clade)} &bull; {item.lengthM ? `${item.lengthM}m` : 'size unconfirmed'}
                           </p>
                         </div>
                         <Plus className="h-3.5 w-3.5 text-amber-400 shrink-0" />
@@ -504,7 +505,7 @@ export default function CaliperRunway() {
                       {getSpeciesDisplayNames(sp).heading}
                     </h4>
                     <p className="text-[10px] text-slate-400 truncate">
-                      {formatFeetLong(sp.lengthM)} &bull; {sp.clade}
+                      {formatFeetLong(sp.lengthM)} &bull; {formatEnumLabel(sp.clade)}
                     </p>
                   </div>
                 </div>

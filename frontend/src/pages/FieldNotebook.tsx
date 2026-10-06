@@ -23,6 +23,7 @@ import {
   NOTEBOOK_UPDATED_EVENT,
   NotebookEntry
 } from '../utils/notebookStorage.js';
+import { formatEnumLabel } from '../utils/formatEnumLabel.js';
 import { fetchSpeciesCompare, Species } from '../services/api.js';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 import { formatFeetLong } from '../utils/formatDimensions.js';
@@ -140,7 +141,7 @@ export default function FieldNotebook() {
     speciesList.forEach((s) => {
       const entry = entries.find((e) => e.id === s.id);
       md += `## ${s.name} (*${s.scientificName}*)\n`;
-      md += `- **Clade:** ${s.clade}\n`;
+      md += `- **Clade:** ${formatEnumLabel(s.clade)}\n`;
       md += `- **Geologic Period:** ${s.timePeriod} (${s.myaStart}–${s.myaEnd} Ma)\n`;
       md += `- **Fossil Formation:** ${s.fossilFormation || 'Unknown'}\n`;
       md += `- **Length:** ${s.lengthM ? `${s.lengthM}m` : 'Disputed'} | **Height:** ${s.heightM ? `${s.heightM}m` : 'Disputed'} | **Weight:** ${s.weightKg ? `${s.weightKg} kg` : 'Disputed'}\n`;
@@ -352,8 +353,8 @@ export default function FieldNotebook() {
 
                     <div className="flex-grow min-w-0 space-y-1.5">
                       <div className="flex items-center justify-between gap-2">
-                        <span className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[10px] font-mono font-bold uppercase tracking-wider">
-                          {sp.clade}
+                        <span className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[10px] font-mono font-bold tracking-wider">
+                          {formatEnumLabel(sp.clade)}
                         </span>
                         <button
                           onClick={() => removeEntry(sp.id)}

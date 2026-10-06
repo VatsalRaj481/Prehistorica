@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { Species, SpeciesRosterItem } from '../../services/api.js';
 import { ShieldCheck, AlertCircle, Sparkles, Eye, RefreshCw } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { formatEnumLabel } from '../../utils/formatEnumLabel.js';
 import ClickSpark from '../reactbits/ClickSpark.js';
 
 interface HolotypeDetectiveProps {
@@ -115,7 +116,7 @@ export default function HolotypeDetective({ roster, allSpecies, onScore }: Holot
           </span>
           <p className="text-xs text-slate-200 font-sans leading-relaxed">
             Fossils excavated from the <strong className="text-amber-400 font-mono">{target.fossilFormation || 'official paleontology beds'}</strong>, dating back to the{' '}
-            <strong className="text-slate-100">{target.timePeriod}</strong> ({target.myaStart}–{target.myaEnd} Ma). It belonged to the clade <strong className="text-amber-300">{target.clade}</strong>.
+            <strong className="text-slate-100">{target.timePeriod}</strong> ({target.myaStart}–{target.myaEnd} Ma). It belonged to the clade <strong className="text-amber-300">{formatEnumLabel(target.clade)}</strong>.
           </p>
         </div>
 
@@ -191,7 +192,7 @@ export default function HolotypeDetective({ roster, allSpecies, onScore }: Holot
                 >
                   <p className="text-sm font-bold uppercase truncate">{opt.name}</p>
                   <p className="text-[10px] font-mono text-slate-400 italic truncate">
-                    {opt.scientificName || opt.clade}
+                    {opt.scientificName || formatEnumLabel(opt.clade)}
                   </p>
                 </button>
               );

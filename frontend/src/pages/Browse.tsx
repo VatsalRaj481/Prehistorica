@@ -7,8 +7,8 @@ import SpecimenThumbnail from '../components/SpecimenThumbnail.js';
 import { SlidersHorizontal, ArrowRight, Info, X, ChevronLeft, ChevronRight, Filter, Sparkles } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 import { formatFeet } from '../utils/formatDimensions.js';
+import { formatEnumLabel } from '../utils/formatEnumLabel.js';
 import CountUp from '../components/reactbits/CountUp.js';
-import ClickSpark from '../components/reactbits/ClickSpark.js';
 import CuratorialLoader from '../components/CuratorialLoader.js';
 
 export default function Browse() {
@@ -844,11 +844,12 @@ export default function Browse() {
                         </div>
 
                         <div className="h-11 px-3.5 sm:px-4 border-t border-white/[0.08] bg-slate-950/70 flex items-center justify-between gap-2 font-mono text-[11px] text-slate-400">
-                          <div className="flex gap-1.5 sm:gap-2 items-center min-w-0 truncate">
-                            <span className="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/25 text-amber-300 font-bold text-[10px] tracking-wider uppercase truncate">
-                              {species.clade || species.dietType}
+                          <div className="flex gap-2 items-center min-w-0 truncate">
+                            <span className="text-amber-400 font-semibold tracking-wider text-[10px] truncate">
+                              {formatEnumLabel(species.clade || species.dietType)}
                             </span>
-                            <span className="px-2 py-0.5 rounded bg-slate-900 border border-white/10 text-slate-300 font-semibold text-[10px] shrink-0">
+                            <span className="text-slate-600">•</span>
+                            <span className="text-slate-300 font-medium text-[10px] tabular-nums shrink-0">
                               {formatFeet(species.lengthM, 'Unspecified')}
                             </span>
                           </div>
@@ -869,26 +870,24 @@ export default function Browse() {
                     Page <strong className="text-amber-400">{page}</strong> / <strong className="text-slate-200">{pagination.totalPages}</strong> ({pagination.total} total specimens)
                   </span>
 
-                  <ClickSpark sparkColor="#FBBF24" sparkSize={8} sparkRadius={16} sparkCount={6}>
-                    <div className="flex items-center gap-2">
-                      <motion.button
-                        whileTap={{ scale: 0.93 }}
-                        disabled={page <= 1}
-                        onClick={() => updateParams({ page: (page - 1).toString() })}
-                        className="px-3.5 py-2 bg-slate-900/90 hover:bg-slate-850 disabled:opacity-40 border border-white/[0.08] rounded-lg text-slate-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-colors"
-                      >
-                        <ChevronLeft className="h-4 w-4" /> Prev
-                      </motion.button>
-                      <motion.button
-                        whileTap={{ scale: 0.93 }}
-                        disabled={page >= pagination.totalPages}
-                        onClick={() => updateParams({ page: (page + 1).toString() })}
-                        className="px-3.5 py-2 bg-slate-900/90 hover:bg-slate-850 disabled:opacity-40 border border-white/[0.08] rounded-lg text-slate-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-colors"
-                      >
-                        Next <ChevronRight className="h-4 w-4" />
-                      </motion.button>
-                    </div>
-                  </ClickSpark>
+                  <div className="flex items-center gap-2">
+                    <motion.button
+                      whileTap={{ scale: 0.93 }}
+                      disabled={page <= 1}
+                      onClick={() => updateParams({ page: (page - 1).toString() })}
+                      className="px-3.5 py-2 bg-slate-900/90 hover:bg-slate-850 disabled:opacity-40 border border-white/[0.08] rounded-lg text-slate-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-colors"
+                    >
+                      <ChevronLeft className="h-4 w-4" /> Prev
+                    </motion.button>
+                    <motion.button
+                      whileTap={{ scale: 0.93 }}
+                      disabled={page >= pagination.totalPages}
+                      onClick={() => updateParams({ page: (page + 1).toString() })}
+                      className="px-3.5 py-2 bg-slate-900/90 hover:bg-slate-850 disabled:opacity-40 border border-white/[0.08] rounded-lg text-slate-300 text-xs font-bold uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-colors"
+                    >
+                      Next <ChevronRight className="h-4 w-4" />
+                    </motion.button>
+                  </div>
                 </div>
               )}
             </>

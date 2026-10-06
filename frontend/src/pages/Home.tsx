@@ -4,13 +4,11 @@ import { motion, useReducedMotion, useScroll, useTransform, Variants } from 'fra
 import { fetchCreatureOfTheDay, fetchSpecies, fetchSpeciesById, Species, TOTAL_CATALOGED_SPECIMENS } from '../services/api.js';
 import SpotlightCard from '../components/SpotlightCard.js';
 import SpecimenThumbnail from '../components/SpecimenThumbnail.js';
-import { Calendar, ArrowRight, Compass, ShieldAlert, FileText, Layers, Globe, Database, Sparkles, Scale, Trophy, Skull } from 'lucide-react';
+import { ArrowRight, Compass, ShieldAlert, Layers, Globe, Database, Scale, Trophy, Skull } from 'lucide-react';
 import { formatMass } from '../utils/formatMass.js';
 import { formatFeet } from '../utils/formatDimensions.js';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
-import ShinyText from '../components/reactbits/ShinyText.js';
-import ClickSpark from '../components/reactbits/ClickSpark.js';
-import CountUp from '../components/reactbits/CountUp.js';
+import { formatEnumLabel } from '../utils/formatEnumLabel.js';
 import CuratorialLoader from '../components/CuratorialLoader.js';
 
 export default function Home() {
@@ -93,111 +91,89 @@ export default function Home() {
         initial="hidden"
         animate="show"
         style={{ y: heroY, opacity: heroOpacity }}
-        className="relative z-10 max-w-5xl mx-auto pt-6 pb-12 space-y-8 border-b border-white/[0.08]"
+        className="relative z-10 max-w-6xl mx-auto pt-6 pb-12 space-y-8 border-b border-white/[0.08]"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-8 space-y-5 text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono font-bold tracking-widest uppercase shadow-sm">
-              <img src="/logo.png" alt="Prehistorica Emblem" className="h-4 w-4 object-contain shrink-0 drop-shadow" />
-              <ShinyText
-                text="Deep Time Archive • 541 – 0.01 MYA"
-                color="#F59E0B"
-                shineColor="#FDE68A"
-                speed={3}
-                className="text-xs font-mono font-bold tracking-widest uppercase"
-              />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="lg:col-span-8 space-y-6 text-left">
+            <div className="flex items-center gap-2.5 text-xs font-mono text-amber-400 font-bold tracking-widest uppercase">
+              <img src="/logo.png" alt="Prehistorica Emblem" className="h-4 w-4 object-contain shrink-0" />
+              <span>Deep Time Archive &bull; 541 &ndash; 0.01 MYA</span>
             </div>
 
             <motion.h1
               initial={shouldReduceMotion ? false : { opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-100 uppercase leading-[1.05] font-sans"
+              className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-slate-100 uppercase leading-[1.02] font-sans"
             >
-              Museum Archive of Prehistoric Fauna
+              Museum Archive of Prehistoric Life
             </motion.h1>
 
             <motion.p
               initial={shouldReduceMotion ? false : { opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-sm sm:text-base font-sans text-slate-300 leading-relaxed max-w-2xl"
+              className="text-base sm:text-lg font-sans text-slate-300 leading-relaxed max-w-2xl"
             >
-              An architectural digital catalog documenting <strong className="text-amber-400 font-bold">{formattedTotal}</strong> scientifically verified prehistoric species across Earth's major geological epochs.
+              An architectural digital repository cataloging <strong className="text-amber-400 font-bold">{formattedTotal}</strong> scientifically verified prehistoric species across Earth's major geological epochs and fossil formations.
             </motion.p>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2 font-mono text-xs">
-              <ClickSpark sparkColor="#FBBF24" sparkSize={10} sparkRadius={18} sparkCount={8} className="w-full sm:w-auto">
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.96 }} className="w-full sm:w-auto">
-                  <Link
-                    to="/browse"
-                    className="w-full sm:w-auto px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black uppercase tracking-wider rounded-lg border border-amber-300 transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
-                  >
-                    Explore Catalog <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </motion.div>
-              </ClickSpark>
-              <ClickSpark sparkColor="#F59E0B" sparkSize={10} sparkRadius={18} sparkCount={8} className="w-full sm:w-auto">
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.96 }} className="w-full sm:w-auto">
-                  <Link
-                    to="/map"
-                    className="w-full sm:w-auto px-6 py-3 bg-slate-900 hover:bg-slate-850 text-slate-200 font-bold uppercase tracking-wider rounded-lg border border-white/[0.08] hover:border-amber-500/40 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
-                  >
-                    <Compass className="h-4 w-4 text-amber-400" /> Interactive Time-Map
-                  </Link>
-                </motion.div>
-              </ClickSpark>
-              <ClickSpark sparkColor="#F43F5E" sparkSize={10} sparkRadius={18} sparkCount={8} className="w-full sm:w-auto">
-                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.96 }} className="w-full sm:w-auto">
-                  <Link
-                    to="/extinctions"
-                    className="w-full sm:w-auto px-6 py-3 bg-slate-900 hover:bg-slate-850 text-rose-300 hover:text-white font-bold uppercase tracking-wider rounded-lg border border-rose-500/30 hover:border-rose-500/60 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
-                  >
-                    <Skull className="h-4 w-4 text-rose-400" /> Mass Extinctions
-                  </Link>
-                </motion.div>
-              </ClickSpark>
+            <div className="flex flex-wrap items-center gap-3 pt-2 font-mono text-xs">
+              <Link
+                to="/browse"
+                className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black uppercase tracking-wider rounded-lg transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+              >
+                Explore Catalog <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                to="/map"
+                className="px-6 py-3 bg-slate-900/90 hover:bg-slate-850 text-slate-200 font-bold uppercase tracking-wider rounded-lg border border-white/[0.08] hover:border-amber-500/40 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md active:scale-95"
+              >
+                <Compass className="h-4 w-4 text-amber-400" /> Interactive Time-Map
+              </Link>
+              <Link
+                to="/extinctions"
+                className="px-6 py-3 bg-slate-900/90 hover:bg-slate-850 text-rose-300 hover:text-white font-bold uppercase tracking-wider rounded-lg border border-rose-500/30 hover:border-rose-500/60 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md active:scale-95"
+              >
+                <Skull className="h-4 w-4 text-rose-400" /> Mass Extinctions
+              </Link>
             </div>
           </div>
 
-          {/* Curatorial Archive Stats Ticker */}
-          <div className="lg:col-span-4 bg-slate-900/60 border border-white/[0.08] rounded-xl p-5 space-y-4 font-mono shadow-xl">
-            <div className="text-[10px] text-amber-400 font-bold uppercase tracking-widest border-b border-white/[0.06] pb-2 flex items-center justify-between">
-              <div className="flex items-center gap-1.5">
-                <img src="/logo.png" alt="Prehistorica Seal" className="h-3.5 w-3.5 object-contain shrink-0" />
-                <span>Collection Dossier</span>
-              </div>
+          {/* Architectural Curatorial Ledger (Whitespace & Typography hierarchy) */}
+          <div className="lg:col-span-4 pl-0 lg:pl-8 lg:border-l border-white/[0.08] space-y-6 font-mono">
+            <div className="text-[11px] font-bold text-amber-400 uppercase tracking-widest flex items-center gap-2">
               <Database className="h-3.5 w-3.5 text-amber-400" />
+              <span>Curatorial Ledger</span>
             </div>
-            
-            <div className="space-y-3 text-xs">
-              <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
-                <span className="text-slate-400">Verified Specimens</span>
-                <span className="text-slate-100 font-bold text-sm">
-                  {totalSpecies ? (
-                    <CountUp to={totalSpecies} duration={1} separator="," className="text-slate-100 font-bold text-sm" />
-                  ) : (
-                    formattedTotal
-                  )}
-                </span>
+
+            <div className="space-y-5">
+              <div className="space-y-1">
+                <div className="text-[10px] text-slate-400 uppercase tracking-widest font-mono">Verified Holotype Specimens</div>
+                <div className="text-3xl font-black text-slate-100 tabular-nums font-sans">
+                  {formattedTotal}
+                </div>
               </div>
-              <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
-                <span className="text-slate-400">Geological Eras</span>
-                <span className="text-slate-100 font-bold flex items-center gap-1">
-                  <CountUp to={10} duration={0.8} separator="" className="text-slate-100 font-bold" />
-                  <span>Eras (541 MYA)</span>
-                </span>
+
+              <div className="space-y-1">
+                <div className="text-[10px] text-slate-400 uppercase tracking-widest font-mono">Geological span</div>
+                <div className="text-sm font-bold text-slate-200">
+                  10 Geological Eras &bull; <span className="text-amber-400 font-mono">541 MYA to Holocene</span>
+                </div>
               </div>
-              <div className="flex items-center justify-between py-1 border-b border-white/[0.04]">
-                <span className="text-slate-400">Global Formations</span>
-                <span className="text-slate-100 font-bold flex items-center gap-1">
-                  <CountUp to={30} duration={0.8} separator="" suffix="+" className="text-slate-100 font-bold" />
-                  <span>Fossil Sites</span>
-                </span>
+
+              <div className="space-y-1">
+                <div className="text-[10px] text-slate-400 uppercase tracking-widest font-mono">Global Fossil Localities</div>
+                <div className="text-sm font-bold text-slate-200">
+                  30+ Major Geological Formations
+                </div>
               </div>
-              <div className="flex items-center justify-between py-1">
-                <span className="text-slate-400">Scale Inspection</span>
-                <span className="text-amber-400 font-bold">1:1 Metric 2D Stage</span>
+
+              <div className="space-y-1">
+                <div className="text-[10px] text-slate-400 uppercase tracking-widest font-mono">Projection Stage</div>
+                <div className="text-sm font-bold text-amber-400">
+                  1:1 Scale comparison
+                </div>
               </div>
             </div>
           </div>
@@ -212,17 +188,15 @@ export default function Home() {
         transition={{ type: 'spring', stiffness: 320, damping: 28 }}
         className="relative z-10 space-y-6"
       >
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.08] pb-3 font-mono">
+        <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-white/[0.08] pb-3">
           <div className="flex items-center gap-2.5">
-            <div className="p-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20">
-              <Calendar className="h-4 w-4 text-amber-400" />
-            </div>
-            <h2 className="text-base font-black uppercase tracking-wide text-slate-100 font-sans">
-              Specimen of the Day
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+            <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-slate-300">
+              Rotational Specimen Focus
             </h2>
           </div>
-          <span className="text-[10px] font-mono text-amber-400 font-bold uppercase tracking-widest bg-slate-900/80 px-2.5 py-1 rounded border border-amber-500/20">
-            Daily Specimen Rotation
+          <span className="text-[11px] font-mono text-slate-500 tracking-wider">
+            Archive Selection
           </span>
         </div>
 
@@ -306,126 +280,107 @@ export default function Home() {
                 const coexCount = creature.relatedSpecies ? creature.relatedSpecies.length : null;
 
                 return (
-                  <div className="lg:col-span-5 flex flex-col justify-between space-y-4">
-                    <div className="space-y-3 sm:space-y-3.5">
-                      {/* Top Metadata Ribbon: Clade + Formation/Region + Dietary Niche */}
-                      <div className="flex flex-wrap items-center gap-1.5 font-mono text-[10px]">
-                        <span className="px-2.5 py-0.5 rounded-md bg-amber-500/15 border border-amber-500/30 text-amber-300 font-bold uppercase tracking-wider flex items-center gap-1 shadow-sm">
-                          <Layers className="h-3 w-3 text-amber-400" />
-                          {creature.clade}
-                        </span>
-
+                  <div className="lg:col-span-5 flex flex-col justify-between space-y-5">
+                    <div className="space-y-4">
+                      {/* Stratum & Taxonomic Breadcrumb */}
+                      <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 font-mono text-[11px] text-slate-400">
+                        <span className="text-amber-400 font-bold tracking-wider">{formatEnumLabel(creature.clade)}</span>
                         {(formationDisplay || regionDisplay) && (
-                          <span className="px-2.5 py-0.5 rounded-md bg-slate-900/90 border border-white/[0.08] text-slate-300 font-bold uppercase tracking-wider flex items-center gap-1 truncate max-w-[220px]">
-                            <Globe className="h-3 w-3 text-amber-400 shrink-0" />
-                            <span className="truncate">
+                          <>
+                            <span className="text-slate-600">/</span>
+                            <span className="text-slate-300">
                               {formationDisplay || regionDisplay}
-                              {formationDisplay && regionDisplay ? ` • ${regionDisplay}` : ''}
+                              {formationDisplay && regionDisplay ? ` (${regionDisplay})` : ''}
                             </span>
-                          </span>
+                          </>
                         )}
-
                         {creature.dietType && (
-                          <span className="px-2.5 py-0.5 rounded-md bg-slate-900/90 border border-white/[0.08] text-slate-300 font-bold uppercase tracking-wider capitalize">
-                            {creature.dietType}
-                          </span>
+                          <>
+                            <span className="text-slate-600">/</span>
+                            <span className="text-slate-400">{formatEnumLabel(creature.dietType)}</span>
+                          </>
                         )}
                       </div>
 
-                      {/* Specimen Heading: Name + Scientific Name + Etymology */}
-                      <div className="space-y-0.5 border-l-2 border-amber-500 pl-3 sm:pl-3.5">
-                        <h3 className="text-xl sm:text-2xl lg:text-3xl font-black uppercase tracking-tight text-slate-100 group-hover:text-amber-400 transition-colors font-sans">
+                      {/* Specimen Heading: Name + Binomen + Etymology */}
+                      <div className="space-y-1">
+                        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tight text-slate-100 group-hover:text-amber-400 transition-colors font-sans">
                           {names.heading}
                         </h3>
-                        <p className="text-xs italic text-amber-400 font-mono">
+                        <p className="text-sm italic text-amber-400/90 font-serif">
                           {names.subheading}
                         </p>
                         {creature.nameMeaning && (
-                          <p className="text-[11px] text-slate-400 font-mono pt-1 leading-snug">
-                            <strong className="text-amber-400/90 uppercase tracking-wider text-[10px]">Etymology:</strong> "{creature.nameMeaning}"
+                          <p className="text-xs text-slate-400 pt-0.5">
+                            <span className="text-slate-500 font-mono text-[10px] uppercase tracking-wider">Etymology —</span> "{creature.nameMeaning}"
                           </p>
                         )}
                       </div>
 
-                      {/* Two Diagnostic Feature Cards (#1 and #2) */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
-                        <div className="p-2.5 bg-slate-950/60 border border-white/[0.08] rounded-lg space-y-1 shadow-inner">
-                          <div className="font-bold flex items-center gap-1 text-amber-400 uppercase tracking-wider text-[9px]">
-                            <FileText className="h-3 w-3 text-amber-400 shrink-0" />
-                            <span>Feature #1 &bull; Diagnostic</span>
-                          </div>
-                          <p className="leading-relaxed font-sans text-xs text-slate-300 line-clamp-3">
-                            {creature.interestingFacts?.[0] || creature.dietDetails}
-                          </p>
-                        </div>
-
-                        <div className="p-2.5 bg-slate-950/60 border border-white/[0.08] rounded-lg space-y-1 shadow-inner">
-                          <div className="font-bold flex items-center gap-1 text-amber-400 uppercase tracking-wider text-[9px]">
-                            <Sparkles className="h-3 w-3 text-amber-400 shrink-0" />
-                            <span>Feature #2 &bull; Bio-Trait</span>
-                          </div>
-                          <p className="leading-relaxed font-sans text-xs text-slate-300 line-clamp-3">
+                      {/* Curatorial Paleobiology Narrative (editorial, not boxed into cards) */}
+                      <div className="space-y-2 border-l-2 border-amber-500/30 pl-3.5 py-0.5">
+                        <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans line-clamp-2">
+                          {creature.interestingFacts?.[0] || creature.dietDetails}
+                        </p>
+                        {secondFact && (
+                          <p className="text-xs text-slate-400 font-mono leading-relaxed line-clamp-2">
                             {secondFact}
                           </p>
-                        </div>
+                        )}
                       </div>
 
-                      {/* 4-Stat Cluster: Length, Height, Mass, Ecological Habitat */}
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2 border-y border-white/[0.08] py-2.5 font-mono">
-                        <div className="space-y-0.5 p-1.5 sm:p-2 rounded bg-slate-900/60 border border-white/[0.04] text-center">
-                          <div className="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Length</div>
-                          <div className="text-xs sm:text-sm font-black text-slate-100 truncate">{formatFeet(creature.lengthM)}</div>
+                      {/* Architectural Dimension Register */}
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-3 py-3 border-y border-white/[0.08] font-mono">
+                        <div className="space-y-0.5 pr-4 border-r border-white/[0.06]">
+                          <div className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Length</div>
+                          <div className="text-xs sm:text-sm font-bold text-slate-100 tabular-nums">{formatFeet(creature.lengthM)}</div>
                         </div>
 
-                        <div className="space-y-0.5 p-1.5 sm:p-2 rounded bg-slate-900/60 border border-white/[0.04] text-center">
-                          <div className="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Height</div>
-                          <div className="text-xs sm:text-sm font-black text-slate-100 truncate">{formatFeet(creature.heightM)}</div>
+                        <div className="space-y-0.5 px-0 sm:px-4 sm:border-r sm:border-white/[0.06]">
+                          <div className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Height</div>
+                          <div className="text-xs sm:text-sm font-bold text-slate-100 tabular-nums">{formatFeet(creature.heightM)}</div>
                         </div>
 
-                        <div className="space-y-0.5 p-1.5 sm:p-2 rounded bg-slate-900/60 border border-white/[0.04] text-center">
-                          <div className="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Mass</div>
-                          <div className="text-xs sm:text-sm font-black text-amber-400 truncate">{formatMass(creature.weightKg)}</div>
+                        <div className="space-y-0.5 pr-4 border-r border-white/[0.06] pt-2 sm:pt-0">
+                          <div className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Mass</div>
+                          <div className="text-xs sm:text-sm font-bold text-amber-400 tabular-nums">{formatMass(creature.weightKg)}</div>
                         </div>
 
-                        <div className="space-y-0.5 p-1.5 sm:p-2 rounded bg-slate-900/60 border border-white/[0.04] text-center">
-                          <div className="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Habitat</div>
-                          <div className="text-xs sm:text-sm font-black text-emerald-400 truncate capitalize">
-                            {creature.habitat ? creature.habitat.replace('_', '-') : 'Terrestrial'}
+                        <div className="space-y-0.5 pl-0 sm:pl-4 pt-2 sm:pt-0">
+                          <div className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Habitat</div>
+                          <div className="text-xs sm:text-sm font-bold text-slate-300 truncate">
+                            {formatEnumLabel(creature.habitat) || 'Terrestrial'}
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    {/* Footer: Coexisted Teaser (Left) + Prominent Inspect Scale Stage (Right) */}
+                    {/* Footer: Context + Direct Specimen Archive Action */}
                     <div className="pt-3 border-t border-white/[0.08] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 font-mono">
-                      <div className="flex items-center gap-1.5 text-xs text-slate-400 min-w-0">
-                        <Compass className="h-3.5 w-3.5 text-amber-400 shrink-0" />
+                      <div className="flex items-center gap-2 text-xs text-slate-400 min-w-0">
+                        <Compass className="h-3.5 w-3.5 text-amber-400/80 shrink-0" />
                         <span className="text-[11px] truncate">
                           {coexCount && coexCount > 0 ? (
                             <Link
                               to={`/species/${creature.id}`}
-                              className="text-amber-300 hover:text-amber-200 hover:underline font-bold"
+                              className="text-amber-400 hover:text-amber-300 hover:underline font-semibold"
                             >
                               Coexisted with {coexCount} species in {formationDisplay ? formationDisplay.split(' ')[0] : 'strata'}
                             </Link>
                           ) : formationDisplay ? (
                             <span>Stratum: <strong className="text-slate-200">{formationDisplay}</strong></span>
                           ) : (
-                            <span>Archival Holotype Record Verified</span>
+                            <span>Holotype verified against peer-reviewed record</span>
                           )}
                         </span>
                       </div>
 
-                      <ClickSpark sparkColor="#FDE68A" sparkSize={10} sparkRadius={18} sparkCount={8} className="w-full sm:w-auto shrink-0">
-                        <motion.div whileTap={{ scale: 0.94 }} className="w-full sm:w-auto">
-                          <Link
-                            to={`/species/${creature.id}`}
-                            className="w-full sm:w-auto px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black uppercase tracking-wider text-xs rounded-lg flex items-center justify-center gap-1.5 transition-all shadow-md cursor-pointer"
-                          >
-                            Inspect 2D Scale Stage <ArrowRight className="h-3.5 w-3.5" />
-                          </Link>
-                        </motion.div>
-                      </ClickSpark>
+                      <Link
+                        to={`/species/${creature.id}`}
+                        className="w-full sm:w-auto px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold uppercase tracking-wider text-xs rounded flex items-center justify-center gap-1.5 transition-all shadow hover:shadow-amber-500/10 cursor-pointer shrink-0"
+                      >
+                        Inspect Specimen Archive <ArrowRight className="h-3.5 w-3.5" />
+                      </Link>
                     </div>
                   </div>
                 );
@@ -435,15 +390,15 @@ export default function Home() {
       </motion.section>
 
       {/* Curatorial Museum Access Portals (Scroll Viewport Reveal) */}
-      <ClickSpark sparkColor="#FBBF24" sparkSize={10} sparkRadius={18} sparkCount={7}>
-        <motion.section
+      {/* Curatorial Museum Access Portals (Scroll Viewport Reveal) */}
+      <motion.section
         initial={shouldReduceMotion ? false : { opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.05 }}
         transition={{ type: 'spring', stiffness: 320, damping: 28 }}
         className="relative z-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 font-mono"
       >
-        {/* Portal 1: Catalog Index */}
+        {/* Wing I: Systematic Paleontology */}
         <Link to="/browse" className="block group focus:outline-none">
           <SpotlightCard
             whileHover={{ y: -4 }}
@@ -451,32 +406,32 @@ export default function Home() {
             className="museum-plinth rounded-xl border border-white/[0.08] hover:border-amber-500/40 p-6 sm:p-7 transition-all duration-200 shadow-xl flex flex-col justify-between h-full group-focus-visible:ring-2 group-focus-visible:ring-amber-400"
           >
             <div className="space-y-3 flex-1 flex flex-col">
-              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5 min-h-[32px] gap-2">
-                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5 shrink-0">
-                  <Layers className="h-3 w-3" /> ARCHIVE INDEX
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5 min-h-[32px] gap-2 font-mono text-[11px]">
+                <span className="text-slate-300 flex items-center gap-1.5 shrink-0 font-medium">
+                  <Layers className="h-3.5 w-3.5 text-amber-400/80" /> Systematic archive
                 </span>
-                <span className="text-[10px] sm:text-[11px] text-slate-400 font-bold uppercase tracking-wider shrink-0">
-                  {formattedTotal} SPECIMENS
+                <span className="text-slate-500 tabular-nums">
+                  {formattedTotal} taxa
                 </span>
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans min-h-[56px] flex items-center leading-tight">
-                Fauna Catalog &amp; Filter Pavilion
+              <h3 className="text-xl sm:text-2xl font-black text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans min-h-[56px] flex items-center leading-tight">
+                Fauna Catalog &amp; Strata Pavilion
               </h3>
 
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans flex-1">
-                Filter cataloged prehistoric species by period, diet, habitat, and taxonomic clade with interactive 1:1 scale inspection and human reference models.
+                Explore cataloged prehistoric taxa filtered by geological epoch, biome, and taxonomic clade with scale comparisons.
               </p>
             </div>
 
-            <div className="mt-5 pt-3.5 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors shrink-0">
-              <span>Filter All Specimens</span>
+            <div className="mt-5 pt-3.5 border-t border-white/[0.08] flex items-center justify-between text-xs font-semibold tracking-wide text-slate-300 group-hover:text-amber-400 transition-colors shrink-0">
+              <span>Explore systematic index</span>
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1.5 transition-transform duration-200" />
             </div>
           </SpotlightCard>
         </Link>
 
-        {/* Portal 2: Time Map */}
+        {/* Wing II: Paleogeography */}
         <Link to="/map" className="block group focus:outline-none">
           <SpotlightCard
             whileHover={{ y: -4 }}
@@ -484,32 +439,32 @@ export default function Home() {
             className="museum-plinth rounded-xl border border-white/[0.08] hover:border-amber-500/40 p-6 sm:p-7 transition-all duration-200 shadow-xl flex flex-col justify-between h-full group-focus-visible:ring-2 group-focus-visible:ring-amber-400"
           >
             <div className="space-y-3 flex-1 flex flex-col">
-              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5 min-h-[32px] gap-2">
-                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5 shrink-0">
-                  <Globe className="h-3 w-3" /> PALEOGEOGRAPHY
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5 min-h-[32px] gap-2 font-mono text-[11px]">
+                <span className="text-slate-300 flex items-center gap-1.5 shrink-0 font-medium">
+                  <Globe className="h-3.5 w-3.5 text-amber-400/80" /> Paleogeography
                 </span>
-                <span className="text-[10px] sm:text-[11px] text-slate-400 font-bold uppercase tracking-wider shrink-0">
-                  GEOLOGICAL STRATA
+                <span className="text-slate-500">
+                  Strata map
                 </span>
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans min-h-[56px] flex items-center leading-tight">
-                Geological Time Map
+              <h3 className="text-xl sm:text-2xl font-black text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans min-h-[56px] flex items-center leading-tight">
+                Deep Time Strata &amp; Fossil Map
               </h3>
 
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans flex-1">
-                Explore major fossil sites around the globe dynamically filtered by geological time period from Cambrian marine explosion to Pleistocene megafauna.
+                Trace global fossil formations across deep time from the Cambrian explosion through Pleistocene megafauna.
               </p>
             </div>
 
-            <div className="mt-5 pt-3.5 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors shrink-0">
-              <span>Open Geological Map</span>
+            <div className="mt-5 pt-3.5 border-t border-white/[0.08] flex items-center justify-between text-xs font-semibold tracking-wide text-slate-300 group-hover:text-amber-400 transition-colors shrink-0">
+              <span>Inspect global strata</span>
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1.5 transition-transform duration-200" />
             </div>
           </SpotlightCard>
         </Link>
 
-        {/* Portal 3: Multi-Specimen Caliper Runway */}
+        {/* Wing III: Biomechanical Projection */}
         <Link to="/runway" className="block group focus:outline-none">
           <SpotlightCard
             whileHover={{ y: -4 }}
@@ -517,32 +472,32 @@ export default function Home() {
             className="museum-plinth rounded-xl border border-white/[0.08] hover:border-amber-500/40 p-6 sm:p-7 transition-all duration-200 shadow-xl flex flex-col justify-between h-full group-focus-visible:ring-2 group-focus-visible:ring-amber-400"
           >
             <div className="space-y-3 flex-1 flex flex-col">
-              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5 min-h-[32px] gap-2">
-                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5 shrink-0">
-                  <Scale className="h-3 w-3" /> 1:1 METRIC RUNWAY
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5 min-h-[32px] gap-2 font-mono text-[11px]">
+                <span className="text-slate-300 flex items-center gap-1.5 shrink-0 font-medium">
+                  <Scale className="h-3.5 w-3.5 text-amber-400/80" /> Scale comparison
                 </span>
-                <span className="text-[10px] sm:text-[11px] text-slate-400 font-bold uppercase tracking-wider shrink-0">
-                  SPECIMEN LINEUP
+                <span className="text-slate-500">
+                  Runway
                 </span>
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans min-h-[56px] flex items-center leading-tight">
+              <h3 className="text-xl sm:text-2xl font-black text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans min-h-[56px] flex items-center leading-tight">
                 Caliper Scale Runway
               </h3>
 
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans flex-1">
-                Project up to 6 prehistoric creatures simultaneously on a calibrated Cartesian stage with reference models (Human, Bus, Elephant) and dimensional differentials.
+                Compare up to six prehistoric species at scale alongside familiar architectural references.
               </p>
             </div>
 
-            <div className="mt-5 pt-3.5 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors shrink-0">
-              <span>Launch Lineup Arena</span>
+            <div className="mt-5 pt-3.5 border-t border-white/[0.08] flex items-center justify-between text-xs font-semibold tracking-wide text-slate-300 group-hover:text-amber-400 transition-colors shrink-0">
+              <span>Open scale runway</span>
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1.5 transition-transform duration-200" />
             </div>
           </SpotlightCard>
         </Link>
 
-        {/* Portal 4: Curator Trials & Field Notebook */}
+        {/* Wing IV: Curatorial Fieldwork */}
         <Link to="/challenge" className="block group focus:outline-none">
           <SpotlightCard
             whileHover={{ y: -4 }}
@@ -550,33 +505,32 @@ export default function Home() {
             className="museum-plinth rounded-xl border border-white/[0.08] hover:border-amber-500/40 p-6 sm:p-7 transition-all duration-200 shadow-xl flex flex-col justify-between h-full group-focus-visible:ring-2 group-focus-visible:ring-amber-400"
           >
             <div className="space-y-3 flex-1 flex flex-col">
-              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5 min-h-[32px] gap-2">
-                <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5 shrink-0">
-                  <Trophy className="h-3 w-3" /> FIELD TRIALS
+              <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5 min-h-[32px] gap-2 font-mono text-[11px]">
+                <span className="text-slate-300 flex items-center gap-1.5 shrink-0 font-medium">
+                  <Trophy className="h-3.5 w-3.5 text-amber-400/80" /> Field trials
                 </span>
-                <span className="text-[10px] sm:text-[11px] text-slate-400 font-bold uppercase tracking-wider shrink-0">
-                  CHALLENGES
+                <span className="text-slate-500">
+                  Challenges
                 </span>
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans min-h-[56px] flex items-center leading-tight">
+              <h3 className="text-xl sm:text-2xl font-black text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans min-h-[56px] flex items-center leading-tight">
                 Curator Trials &amp; Notebook
               </h3>
 
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans flex-1">
-                Test your diagnostic intuition with Holotype Detective, Caliper Metric Guesser, and Chronostratigraphic sorting to climb the museum curator ranks.
+                Test diagnostic intuition with Holotype Detective, Caliper Metric Guesser, and geological timeline challenges.
               </p>
             </div>
 
-            <div className="mt-5 pt-3.5 border-t border-white/[0.08] flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-amber-400 transition-colors shrink-0">
-              <span>Enter Curator Trials</span>
+            <div className="mt-5 pt-3.5 border-t border-white/[0.08] flex items-center justify-between text-xs font-semibold tracking-wide text-slate-300 group-hover:text-amber-400 transition-colors shrink-0">
+              <span>Enter curator trials</span>
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1.5 transition-transform duration-200" />
             </div>
           </SpotlightCard>
         </Link>
       </motion.section>
-    </ClickSpark>
-  </div>
+    </div>
   );
 }
 

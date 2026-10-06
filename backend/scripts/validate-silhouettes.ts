@@ -67,6 +67,18 @@ export function validateSilhouetteMetadata(
     errors.push(`Disallowed restrictive license (NC/ND prohibited): "${sil.license}"`);
   }
 
+  // 3. Tyrannosaurus rex Anatomical Integrity & Anti-Stretching Guard
+  // Enforces Richard Rich CC0 silhouette and permanently prevents Conty stretched-out silhouette regression
+  const isTargetTrex = (speciesName.toLowerCase() === 'tyrannosaurus rex' || speciesName.toLowerCase() === 'tyrannosaurus') && !speciesName.toLowerCase().includes('zhuchengtyrannus');
+  if (isTargetTrex) {
+    if (url.includes('f05e56c4-83bc-4809-8c2e-fd30c0b0bba2')) {
+      errors.push('Tyrannosaurus rex MUST NOT use Conty stretched silhouette (f05e56c4). Must use verified Richard Rich CC0 (ccb9b896-20b5-4e0b-8979-001742a884c5).');
+    }
+    if (!url.includes('ccb9b896-20b5-4e0b-8979-001742a884c5')) {
+      errors.push(`Tyrannosaurus rex must use verified Richard Rich CC0 silhouette (ccb9b896-20b5-4e0b-8979-001742a884c5), found: "${sil.url}"`);
+    }
+  }
+
   return {
     valid: errors.length === 0,
     errors

@@ -1,6 +1,7 @@
 import React, { useMemo, useRef, useState, useEffect } from 'react';
 import { Species } from '../services/api.js';
 import { formatFeet } from '../utils/formatDimensions.js';
+import { formatEnumLabel } from '../utils/formatEnumLabel.js';
 
 interface RunwayStageProps {
   speciesList: Species[];
@@ -19,13 +20,28 @@ export default function RunwayStage({
   showCalipers = true,
   highlightedIndex = null,
   onSelectIndex,
-  scale = 55
+  scale = 23
 }: RunwayStageProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [containerWidth, setContainerWidth] = useState<number>(1200);
   const [isDraggingMouse, setIsDraggingMouse] = useState(false);
   const [dragStartX, setDragStartX] = useState(0);
   const [scrollStartLeft, setScrollStartLeft] = useState(0);
   const [silhouetteAspects, setSilhouetteAspects] = useState<Record<string, number>>({});
+
+  // Track container width so the runway floor and grid always span 100% of the stage container
+  useEffect(() => {
+    if (!scrollContainerRef.current) return;
+    const updateWidth = () => {
+      if (scrollContainerRef.current) {
+        setContainerWidth(scrollContainerRef.current.clientWidth || 1200);
+      }
+    };
+    updateWidth();
+    const observer = new ResizeObserver(updateWidth);
+    observer.observe(scrollContainerRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   // Dynamically load image natural aspect ratio so silhouette is scaled accurately without floating or empty padding
   useEffect(() => {
@@ -81,7 +97,7 @@ export default function RunwayStage({
       } else {
         // Length-dominant creatures (theropods, sauropods, marine reptiles)
         renderWidthM = len;
-        renderHeightM = Math.min(h, len / aspect);
+        renderHeightM = len / aspect;
       }
 
       return {
@@ -147,10 +163,16 @@ export default function RunwayStage({
     };
   }, [creaturesMetrics, activeReference, refSpecs]);
 
-  // SVG dimensions: width expands with scale so Zoom In/Out magnifies real screen pixels
-  const viewWidth = Math.max(1100, Math.ceil(runwayLayout.totalLength * scale + 100));
-  const viewHeight = Math.max(380, Math.ceil(runwayLayout.totalHeight * scale + 80));
-  const groundY = viewHeight - 65; // baseline ground line
+  // Stable architectural runway dimensions:
+  // The runway stage height (440px) and ground baseline remain constant so zooming in/out
+  // only scales the size of the species silhouettes without resizing or distorting the stage
+  const STAGE_HEIGHT = 440;
+  const groundY = STAGE_HEIGHT - 65; // Fixed baseline ground line
+
+  // Total track width: expands with scale to accommodate all creatures, but spans at least 100% of the stage container
+  const trackContentWidthPx = Math.ceil(runwayLayout.totalLength * scale + 80);
+  const viewWidth = Math.max(containerWidth, trackContentWidthPx);
+  const maxMeters = Math.max(runwayLayout.totalLength, Math.ceil(viewWidth / scale));
 
   // Interactive mouse drag-to-scroll handlers for desktop users
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -203,11 +225,10 @@ export default function RunwayStage({
         }`}
       >
         <svg
-          viewBox={`0 0 ${viewWidth} ${viewHeight}`}
+          viewBox={`0 0 ${viewWidth} ${STAGE_HEIGHT}`}
           style={{
             width: `${viewWidth}px`,
-            minWidth: '100%',
-            height: `${viewHeight}px`,
+            height: `${STAGE_HEIGHT}px`,
           }}
           className="drop-shadow-md overflow-visible select-none"
         >
@@ -264,8 +285,9 @@ export default function RunwayStage({
               <rect x="0" y="0" width={viewWidth} height={groundY} fill="url(#metricGridMajor)" />
 
               {/* Major 5-meter interval markers along top ceiling */}
-              {Array.from({ length: Math.floor(runwayLayout.totalLength / 5) + 1 }).map((_, i) => {
+              {Array.from({ length: Math.floor(maxMeters / 5) + 1 }).map((_, i) => {
                 const x = i * 5 * scale;
+                if (x > viewWidth + 10) return null;
                 return (
                   <g key={`marker-${i}`} transform={`translate(${x}, 20)`}>
                     <line x1="0" y1="0" x2="0" y2="8" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
@@ -309,7 +331,7 @@ export default function RunwayStage({
             x="0"
             y={groundY}
             width={viewWidth}
-            height={viewHeight - groundY}
+            height={STAGE_HEIGHT - groundY}
             fill="rgba(14, 21, 38, 0.7)"
           />
 
@@ -421,7 +443,9 @@ export default function RunwayStage({
           {runwayLayout.items.map((item, idx) => {
             const isHighlighted = highlightedIndex === idx;
             const pxWidth = item.renderWidthM * scale;
-            const pxHeight = item.renderHeightM * scale;
+            const rawPxHeight = item.renderHeightM * scale;
+            const maxAllowedH = groundY - 45;
+            const pxHeight = Math.min(rawPxHeight, maxAllowedH);
             const midPx = item.midX * scale;
             const startPx = midPx - pxWidth / 2;
             const yTop = groundY - pxHeight;
@@ -450,7 +474,7 @@ export default function RunwayStage({
                     y={yTop}
                     width={pxWidth}
                     height={pxHeight}
-                    preserveAspectRatio="none"
+                    preserveAspectRatio="xMidYMax meet"
                     filter={isHighlighted ? 'url(#runwayAmberHighlight)' : 'url(#runwayChalkTint)'}
                     className="transition-all duration-300"
                     style={{
@@ -602,7 +626,7 @@ export default function RunwayStage({
                     fontFamily="monospace"
                     textAnchor="middle"
                   >
-                    {item.species.clade} &bull; {item.species.timePeriod}
+                    {formatEnumLabel(item.species.clade)} &bull; {item.species.timePeriod}
                   </text>
                 </g>
               </g>
@@ -615,7 +639,7 @@ export default function RunwayStage({
       <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-white/[0.06] text-[10px] text-slate-400 font-mono">
         <div className="flex items-center gap-2">
           <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
-          <span>1:1 Metric Calibrated Runway &bull; Scale: {(scale).toFixed(1)}px / meter</span>
+          <span>1:1 Scale comparison &bull; Scale: {(scale).toFixed(1)}px / meter</span>
         </div>
         <div className="flex items-center gap-3">
           <span>Click any specimen to highlight &bull; Drag track to pan</span>

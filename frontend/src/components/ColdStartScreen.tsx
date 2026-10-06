@@ -9,6 +9,7 @@ import DecryptedText from './reactbits/DecryptedText.js';
 import ShinyText from './reactbits/ShinyText.js';
 import ClickSpark from './reactbits/ClickSpark.js';
 import TiltedPlinth from './reactbits/TiltedPlinth.js';
+import { formatEnumLabel } from '../utils/formatEnumLabel.js';
 
 interface ColdStartScreenProps {
   isWaking: boolean;
@@ -836,7 +837,7 @@ export default function ColdStartScreen({
                           Paleo-Habitat
                         </span>
                         <span className="text-slate-200 font-semibold text-xs sm:text-sm truncate block pt-0.5">
-                          {currentFact.habitat}
+                          {formatEnumLabel(currentFact.habitat)}
                         </span>
                       </div>
                     </div>

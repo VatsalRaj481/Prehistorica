@@ -8,7 +8,6 @@ import ChiefCuratorModal from './ChiefCuratorModal.js';
 import FossilLensModal from './FossilLensModal.js';
 import DinoLogoMark from './DinoLogoMark.js';
 import { getBookmarkIds, NOTEBOOK_UPDATED_EVENT } from '../utils/notebookStorage.js';
-import ShinyText from './reactbits/ShinyText.js';
 import SlingButton from './reactbits/SlingButton.js';
 
 interface NavbarProps {
@@ -138,14 +137,10 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                 </div>
                 <div className="flex flex-col">
                   <div className="flex items-center gap-1.5">
-                    <ShinyText
-                      text="PREHISTORICA"
-                      color="#F1F5F9"
-                      shineColor="#FBBF24"
-                      speed={3}
-                      className="text-sm sm:text-base font-black tracking-wider uppercase font-mono leading-none"
-                    />
-                    <span className="h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0" />
+                    <span className="text-sm sm:text-base font-black tracking-wider uppercase font-mono text-slate-100">
+                      PREHISTORICA
+                    </span>
+                    <span className="h-1.5 w-1.5 rounded-full bg-amber-400 shrink-0" />
                   </div>
                   <span className="text-[8px] sm:text-[9px] font-mono tracking-widest text-slate-400 uppercase">
                     ARCHIVAL PAVILION
@@ -174,7 +169,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                       <motion.span
                         layoutId="activeNavPill"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                        className="absolute inset-0 rounded-lg bg-amber-500/15 border border-amber-500/35 -z-10 shadow-[0_0_14px_rgba(245,158,11,0.2)]"
+                        className="absolute inset-0 rounded-lg bg-amber-500/10 border border-amber-500/30 -z-10"
                       />
                     )}
                     {IconComponent && <IconComponent className="h-3.5 w-3.5 text-amber-400 shrink-0" />}
@@ -204,10 +199,10 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
               <div className="relative pl-1 border-l border-white/[0.08]" ref={toolsDropdownRef}>
                 <button
                   onClick={() => setIsToolsDropdownOpen(!isToolsDropdownOpen)}
-                  className={`h-8 xl:h-9 px-2.5 xl:px-3 rounded-lg border text-xs font-sans font-semibold tracking-wide flex items-center gap-1.5 transition-all cursor-pointer shadow-sm select-none ${
+                  className={`h-8 xl:h-9 px-2.5 xl:px-3 rounded-lg border text-xs font-sans font-medium tracking-wide flex items-center gap-1.5 transition-all cursor-pointer shadow-sm select-none ${
                     isToolsDropdownOpen
-                      ? 'bg-amber-500/20 border-amber-400 text-amber-300 ring-1 ring-amber-400/40 shadow-[0_0_12px_rgba(245,158,11,0.25)]'
-                      : 'bg-slate-900/90 hover:bg-slate-850 border-white/[0.08] hover:border-amber-500/40 text-slate-200 hover:text-white'
+                      ? 'bg-slate-900 border-amber-500/50 text-amber-300'
+                      : 'bg-slate-900/80 hover:bg-slate-850 border-white/[0.08] hover:border-amber-500/40 text-slate-300 hover:text-white'
                   }`}
                   title="Pavilion Lab & Tools"
                   aria-expanded={isToolsDropdownOpen}
@@ -222,7 +217,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                   />
                 </button>
 
-                {/* Dropdown Menu Popover with High-End Glassmorphism */}
+                {/* Dropdown Menu Popover */}
                 <AnimatePresence>
                   {isToolsDropdownOpen && (
                     <motion.div
@@ -233,7 +228,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                       className="absolute right-0 top-full mt-2 w-76 rounded-xl bg-slate-950/98 border border-white/[0.12] shadow-2xl p-2 z-50 divide-y divide-white/[0.06] backdrop-blur-2xl font-sans"
                     >
                       <div className="px-3 py-2 text-[10px] text-slate-400 uppercase tracking-widest font-mono font-bold flex items-center justify-between">
-                        <span>Interactive Pavilion Lab</span>
+                        <span>Curatorial Research Tools</span>
                         <span className="text-amber-400 font-mono">5 Exhibits</span>
                       </div>
 
@@ -246,7 +241,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                           }}
                           className="w-full text-left p-2.5 rounded-lg hover:bg-slate-900/90 transition-colors flex items-start gap-3 group cursor-pointer"
                         >
-                          <div className="h-8 w-8 rounded-lg bg-slate-900 border border-white/[0.1] flex items-center justify-center text-amber-400 shrink-0 group-hover:scale-105 transition-transform shadow-sm">
+                          <div className="h-8 w-8 rounded-lg bg-slate-900 border border-white/[0.08] flex items-center justify-center text-amber-400 shrink-0 group-hover:scale-105 transition-transform shadow-sm">
                             <ArrowRightLeft className="h-4 w-4" />
                           </div>
                           <div className="min-w-0 flex-1">
@@ -254,8 +249,8 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                               <span className="text-xs font-bold text-slate-100 group-hover:text-amber-300 font-sans tracking-wide">
                                 Specimen Compare
                               </span>
-                              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 font-extrabold">
-                                STAGE
+                              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">
+                                Caliper
                               </span>
                             </div>
                             <p className="text-[11px] text-slate-400 font-sans leading-snug line-clamp-1 pt-0.5">
@@ -272,7 +267,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                           }}
                           className="w-full text-left p-2.5 rounded-lg hover:bg-slate-900/90 transition-colors flex items-start gap-3 group cursor-pointer"
                         >
-                          <div className="h-8 w-8 rounded-lg bg-slate-900 border border-white/[0.1] flex items-center justify-center text-amber-400 shrink-0 group-hover:scale-105 transition-transform shadow-sm">
+                          <div className="h-8 w-8 rounded-lg bg-slate-900 border border-white/[0.08] flex items-center justify-center text-amber-400 shrink-0 group-hover:scale-105 transition-transform shadow-sm">
                             <Camera className="h-4 w-4" />
                           </div>
                           <div className="min-w-0 flex-1">
@@ -280,12 +275,12 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                               <span className="text-xs font-bold text-slate-100 group-hover:text-amber-300 font-sans tracking-wide">
                                 Fossil Lens
                               </span>
-                              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 font-extrabold">
-                                VISION AI
+                              <span className="text-[10px] font-mono text-amber-400/80 uppercase tracking-wider">
+                                Vision AI
                               </span>
                             </div>
                             <p className="text-[11px] text-slate-400 font-sans leading-snug line-clamp-1 pt-0.5">
-                              Multimodal bone & fossil identifier
+                              Multimodal bone &amp; fossil identifier
                             </p>
                           </div>
                         </button>
@@ -296,7 +291,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                           onClick={() => setIsToolsDropdownOpen(false)}
                           className="w-full text-left p-2.5 rounded-lg hover:bg-slate-900/90 transition-colors flex items-start gap-3 group cursor-pointer"
                         >
-                          <div className="h-8 w-8 rounded-lg bg-slate-900 border border-white/[0.1] flex items-center justify-center text-amber-400 shrink-0 group-hover:scale-105 transition-transform shadow-sm">
+                          <div className="h-8 w-8 rounded-lg bg-slate-900 border border-white/[0.08] flex items-center justify-center text-amber-400 shrink-0 group-hover:scale-105 transition-transform shadow-sm">
                             <Trophy className="h-4 w-4" />
                           </div>
                           <div className="min-w-0 flex-1">
@@ -304,12 +299,12 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                               <span className="text-xs font-bold text-slate-100 group-hover:text-amber-300 font-sans tracking-wide">
                                 Curator Trials
                               </span>
-                              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 font-extrabold">
-                                QUIZ
+                              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">
+                                Diagnostic
                               </span>
                             </div>
                             <p className="text-[11px] text-slate-400 font-sans leading-snug line-clamp-1 pt-0.5">
-                              Paleobiological accreditation & mastery
+                              Paleobiological accreditation &amp; mastery
                             </p>
                           </div>
                         </Link>
@@ -320,7 +315,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                           onClick={() => setIsToolsDropdownOpen(false)}
                           className="w-full text-left p-2.5 rounded-lg hover:bg-slate-900/90 transition-colors flex items-start gap-3 group cursor-pointer"
                         >
-                          <div className="h-8 w-8 rounded-lg bg-slate-900 border border-rose-500/30 flex items-center justify-center text-rose-400 shrink-0 group-hover:scale-105 transition-transform shadow-sm">
+                          <div className="h-8 w-8 rounded-lg bg-slate-900 border border-rose-500/20 flex items-center justify-center text-rose-400 shrink-0 group-hover:scale-105 transition-transform shadow-sm">
                             <Skull className="h-4 w-4" />
                           </div>
                           <div className="min-w-0 flex-1">
@@ -328,12 +323,12 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                               <span className="text-xs font-bold text-slate-100 group-hover:text-rose-300 font-sans tracking-wide">
                                 Mass Extinctions
                               </span>
-                              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-rose-500/20 text-rose-300 font-extrabold">
-                                CHRONICLE
+                              <span className="text-[10px] font-mono text-rose-400/80 uppercase tracking-wider">
+                                Chronicle
                               </span>
                             </div>
                             <p className="text-[11px] text-slate-400 font-sans leading-snug line-clamp-1 pt-0.5">
-                              The Big Five & paleoclimate curves
+                              The Big Five &amp; paleoclimate curves
                             </p>
                           </div>
                         </Link>
@@ -354,8 +349,8 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                               <span className="text-xs font-bold text-slate-100 group-hover:text-amber-300 font-sans tracking-wide">
                                 Ask Rajy
                               </span>
-                              <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 font-extrabold">
-                                RAG AI
+                              <span className="text-[10px] font-mono text-amber-400 uppercase tracking-wider">
+                                Docent
                               </span>
                             </div>
                             <p className="text-[11px] text-slate-400 font-sans leading-snug line-clamp-1 pt-0.5">
@@ -465,7 +460,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
 
                 {/* Interactive Pavilion Lab Tools */}
                 <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest font-mono px-3 pt-3 pb-1 border-t border-white/[0.06]">
-                  Interactive Pavilion Lab
+                  Curatorial Research Tools
                 </div>
                 <button
                   onClick={() => {
@@ -478,7 +473,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                     <ArrowRightLeft className="h-4 w-4 text-amber-400" />
                     <span>Specimen Comparison Stage</span>
                   </div>
-                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 font-bold">STAGE</span>
+                  <span className="text-[10px] font-mono text-slate-500 uppercase">Caliper</span>
                 </button>
 
                 <button
@@ -492,7 +487,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                     <Camera className="h-4 w-4 text-amber-400" />
                     <span>Fossil Lens (Bone Identifier)</span>
                   </div>
-                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-300 font-bold">VISION AI</span>
+                  <span className="text-[10px] font-mono text-amber-400/80 uppercase">Vision AI</span>
                 </button>
 
                 <Link
@@ -504,7 +499,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                     <Trophy className="h-4 w-4 text-amber-400" />
                     <span>Curator Trials (Challenge)</span>
                   </div>
-                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-slate-800 text-slate-300 font-bold">QUIZ</span>
+                  <span className="text-[10px] font-mono text-slate-500 uppercase">Diagnostic</span>
                 </Link>
 
                 <Link
@@ -516,7 +511,7 @@ export default function Navbar({ isLogoVisible = true }: NavbarProps) {
                     <Skull className="h-4 w-4 text-rose-400" />
                     <span>Mass Extinction Chronicle</span>
                   </div>
-                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-rose-500/20 text-rose-300 font-bold">CHRONICLE</span>
+                  <span className="text-[10px] font-mono text-rose-400/80 uppercase">Chronicle</span>
                 </Link>
 
                 {/* Featured AI Docent Hero Card */}

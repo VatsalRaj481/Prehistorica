@@ -6,6 +6,7 @@ import L from 'leaflet';
 import { fetchSpecies, Species } from '../services/api.js';
 import { Compass, Dna, Info, ArrowRight, MapPin, Loader2, Globe, Network, Clock, Layers } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
+import { formatEnumLabel } from '../utils/formatEnumLabel.js';
 import PaleoDriftViewer from '../components/PaleoDriftViewer.js';
 import ChronoTimelineSlider from '../components/ChronoTimelineSlider.js';
 import FormationEcosystemDiorama from '../components/FormationEcosystemDiorama.js';
@@ -662,7 +663,7 @@ export default function TimeMap() {
                             {names.subheading}
                           </p>
                           <div className="flex items-center gap-2 text-[10px] text-slate-400">
-                            <span className="font-bold text-amber-400">{species.clade}</span>
+                            <span className="font-bold text-amber-400">{formatEnumLabel(species.clade)}</span>
                             <span>&bull;</span>
                             <span className="truncate">{species.fossilFormation || 'Formation Unspecified'}</span>
                           </div>

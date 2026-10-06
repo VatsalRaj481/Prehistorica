@@ -12,6 +12,7 @@ import {
   Layers
 } from 'lucide-react';
 import { fetchFormationFoodWeb, FormationFoodWebResult, TrophicNode } from '../services/api.js';
+import { formatEnumLabel } from '../utils/formatEnumLabel.js';
 
 interface FoodWebModalProps {
   isOpen: boolean;
@@ -258,7 +259,7 @@ export default function FoodWebModal({ isOpen, onClose, formationName, era = 'Me
                               >
                                 <span className="font-bold">{n.name}</span>
                                 {n.diet && (
-                                  <span className="text-[10px] opacity-75 italic">({n.diet})</span>
+                                  <span className="text-[10px] opacity-75 italic">({formatEnumLabel(n.diet)})</span>
                                 )}
                               </div>
                             ))}

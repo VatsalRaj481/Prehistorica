@@ -14,6 +14,7 @@ import {
   Loader2
 } from 'lucide-react';
 import { fetchSpeciesRoster, SpeciesRosterItem } from '../services/api.js';
+import { formatEnumLabel } from '../utils/formatEnumLabel.js';
 import ShinyText from './reactbits/ShinyText.js';
 
 interface FormationPreset {
@@ -376,7 +377,7 @@ export default function FormationEcosystemDiorama({
                         </div>
 
                         <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-1 border-t border-white/[0.04]">
-                          <span className="text-slate-300">{specimen.clade}</span>
+                          <span className="text-slate-300">{formatEnumLabel(specimen.clade)}</span>
                           {specimen.lengthM && (
                             <span className="text-amber-400 font-bold">{specimen.lengthM}m</span>
                           )}

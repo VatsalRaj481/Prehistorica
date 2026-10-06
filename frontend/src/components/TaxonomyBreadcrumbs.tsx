@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion, Variants } from 'framer-motion';
 import { TaxonomyHierarchy } from '../services/api.js';
+import { formatEnumLabel } from '../utils/formatEnumLabel.js';
 
 interface TaxonomyBreadcrumbsProps {
   taxonomy?: TaxonomyHierarchy | null;
@@ -47,7 +48,7 @@ export default function TaxonomyBreadcrumbs({ taxonomy, taxonomicClassification 
       { label: 'Domain', val: taxonomy.domain || 'Eukaryota' },
       { label: 'Kingdom', val: taxonomy.kingdom || 'Animalia' },
       { label: 'Phylum', val: taxonomy.phylum || 'Chordata' },
-      { label: 'Class', val: taxonomy.class || (taxonomy as any).clade || 'Reptilia' },
+      { label: 'Class', val: taxonomy.class || formatEnumLabel((taxonomy as any).clade) || 'Reptilia' },
       { label: 'Order', val: orderVal || 'Saurischia' },
       { label: 'Family', val: famVal || 'Dinosauridae' },
       { label: 'Genus', val: taxonomy.genus || taxonomy.species?.split(' ')[0] || '' },

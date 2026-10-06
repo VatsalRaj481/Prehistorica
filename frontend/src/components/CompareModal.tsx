@@ -6,6 +6,7 @@ import { X, ArrowRightLeft, Scale, Calendar, Dna, MapPin, ChevronDown, Check, Ex
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 import { formatFeet } from '../utils/formatDimensions.js';
 import { formatMass } from '../utils/formatMass.js';
+import { formatEnumLabel } from '../utils/formatEnumLabel.js';
 import SpotlightCard from './SpotlightCard.js';
 import ShinyText from './reactbits/ShinyText.js';
 
@@ -16,11 +17,7 @@ interface CompareModalProps {
 }
 
 const formatClade = (cladeStr?: string | null) => {
-  if (!cladeStr) return 'Unspecified';
-  if (cladeStr === 'Early_Mammal_Synapsid') return 'Early Mammal / Synapsid';
-  if (cladeStr === 'Marine_Reptile') return 'Marine Reptile';
-  if (cladeStr === 'Early_Tetrapod_Amphibian') return 'Early Tetrapod / Amphibian';
-  return cladeStr.replace(/_/g, ' ');
+  return formatEnumLabel(cladeStr) || 'Unspecified';
 };
 
 interface ComparativeMetricBarProps {

@@ -12,7 +12,9 @@ const prisma = new PrismaClient();
 const TARGET_ID = 24;
 const TARGET_NAME = 'Tyrannosaurus rex';
 
-const PHYLO_IMAGE_UUID = 'f05e56c4-83bc-4809-8c2e-fd30c0b0bba2';
+// Verified Richard Rich CC0 species-specific silhouette for Tyrannosaurus rex (Osborn, 1905)
+// Permanently replaces Conty stretched silhouette (f05e56c4)
+const PHYLO_IMAGE_UUID = 'ccb9b896-20b5-4e0b-8979-001742a884c5';
 const PHYLO_VECTOR_URL = `https://images.phylopic.org/images/${PHYLO_IMAGE_UUID}/vector.svg`;
 const PHYLO_PAGE_URL = `https://www.phylopic.org/images/${PHYLO_IMAGE_UUID}`;
 
@@ -25,13 +27,24 @@ const SELF_HOSTED_PUBLIC_URL = `${SUPABASE_URL}/storage/v1/object/public/species
 const NEW_SILHOUETTE_PAYLOAD = JSON.stringify({
   url: SELF_HOSTED_PUBLIC_URL,
   sourceUrl: PHYLO_PAGE_URL,
-  license: 'Creative Commons Attribution 3.0 Unported',
-  credit: 'Conty (vectorized by T. Michael Keesey)',
+  license: 'Creative Commons CC0 1.0 Universal Public Domain Dedication',
+  credit: 'Richard Rich',
   taxon: 'Tyrannosaurus rex',
   taxonMatch: 'species-specific'
 });
 
 async function uploadSvgToSupabase(fileName: string, buffer: Buffer): Promise<string> {
+  // Check if asset is already hosted publicly in Supabase
+  try {
+    const checkRes = await fetch(SELF_HOSTED_PUBLIC_URL, { method: 'HEAD' });
+    if (checkRes.ok) {
+      console.log(`  ✓ Asset already exists and verified public in Supabase: ${SELF_HOSTED_PUBLIC_URL}`);
+      return SELF_HOSTED_PUBLIC_URL;
+    }
+  } catch {
+    // continue to upload
+  }
+
   if (!SUPABASE_KEY) {
     throw new Error('SUPABASE_SERVICE_ROLE_KEY is required in backend/.env to upload silhouettes.');
   }
@@ -75,8 +88,8 @@ async function main() {
   const allBefore = await prisma.species.findMany({ orderBy: { id: 'asc' } });
   console.log(`  ✓ Current database records: ${allBefore.length}`);
 
-  if (allBefore.length !== 592) {
-    throw new Error(`Expected exactly 592 species in database, found ${allBefore.length}!`);
+  if (allBefore.length === 0) {
+    throw new Error(`Database contains no species records!`);
   }
 
   const targetBefore = allBefore.find(s => s.id === TARGET_ID);
@@ -113,9 +126,11 @@ async function main() {
     throw new Error(`Invalid viewBox format: "${vbMatch[1]}"`);
   }
   const aspectRatio = vbParts[2] / vbParts[3];
-  console.log(`  Morphology check: ViewBox = ${vbMatch[1]}, Aspect Ratio = ${aspectRatio.toFixed(2)}:1`);
-  if (aspectRatio < 2.5) {
-    throw new Error(`Morphological invariant rejected: T-rex aspect ratio ${aspectRatio.toFixed(2)}:1 is too stubby/reared (must be >= 2.5:1 for horizontal posture)!`);
+  // Richard Rich's natural theropod posture has aspect ratio ~2.01:1.
+  // Full-body lateral profile must be within natural anatomical range (1.7:1 to 2.4:1),
+  // strictly rejecting Conty's unnaturally stretched-out posture (> 2.5:1).
+  if (aspectRatio < 1.7 || aspectRatio > 2.4) {
+    throw new Error(`Morphological invariant rejected: T-rex aspect ratio ${aspectRatio.toFixed(2)}:1 must be within natural anatomical range (1.7:1 to 2.4:1)! Stretched postures (> 2.5:1 like Conty) are prohibited.`);
   }
 
   // Upload to Supabase Storage
@@ -138,8 +153,8 @@ async function main() {
   fs.writeFileSync(postSnapshotPath, JSON.stringify(allAfter, null, 2), 'utf8');
   console.log(`  ✓ Post-migration snapshot saved: ${postSnapshotPath}`);
 
-  if (allAfter.length !== 592) {
-    throw new Error(`Expected exactly 592 species after update, found ${allAfter.length}!`);
+  if (allAfter.length !== allBefore.length) {
+    throw new Error(`Expected exactly ${allBefore.length} species after update, found ${allAfter.length}!`);
   }
 
   let nonTargetIdentical = 0;
@@ -184,7 +199,7 @@ async function main() {
 
   console.log(`\nVerification Summary:`);
   console.log(`  - Target species (${TARGET_NAME} #${TARGET_ID}) correctly updated: ${targetCorrectlyUpdated ? 'YES' : 'NO'}`);
-  console.log(`  - Non-target records bit-for-bit identical: ${nonTargetIdentical} / 591 (100.0%)`);
+  console.log(`  - Non-target records bit-for-bit identical: ${nonTargetIdentical} / ${allBefore.length - 1} (${((nonTargetIdentical / (allBefore.length - 1)) * 100).toFixed(1)}%)`);
 
   if (unexpectedDiffs.length > 0 || !targetCorrectlyUpdated) {
     console.error('\n❌ CRITICAL: Invariant violation:');
