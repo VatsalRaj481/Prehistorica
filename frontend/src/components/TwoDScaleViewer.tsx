@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { User, Car, Bus, Layers, ExternalLink, ShieldCheck, AlertTriangle, Eye, Ruler, ArrowLeftRight } from 'lucide-react';
 import { formatMass } from '../utils/formatMass.js';
@@ -48,23 +48,7 @@ export default function TwoDScaleViewer({
   const [showGrid, setShowGrid] = useState(true);
   const [showCalipers, setShowCalipers] = useState(true);
   const [faceCreature, setFaceCreature] = useState(false);
-  const [silhouetteAspect, setSilhouetteAspect] = useState<number | null>(null);
   const shouldReduceMotion = useReducedMotion();
-
-  // Dynamically load image natural aspect ratio so silhouette is scaled accurately without clipping or empty bounding boxes
-  useEffect(() => {
-    if (!silhouette?.url) {
-      setSilhouetteAspect(null);
-      return;
-    }
-    const img = new Image();
-    img.onload = () => {
-      if (img.naturalWidth > 0 && img.naturalHeight > 0) {
-        setSilhouetteAspect(img.naturalWidth / img.naturalHeight);
-      }
-    };
-    img.src = silhouette.url;
-  }, [silhouette?.url]);
 
   const safeLength = lengthM && lengthM > 0 ? lengthM : 6;
   const safeHeight = heightM && heightM > 0 ? heightM : Math.max(1, safeLength * 0.35);
@@ -212,25 +196,11 @@ export default function TwoDScaleViewer({
 
   const activeRef = references[refType];
 
-  // Effective aspect ratio and proportional posture calibration
-  const bioAspect = safeLength / safeHeight;
-  const effectiveAspect = silhouetteAspect || bioAspect;
-  const isHeightDominant = safeHeight >= safeLength * 0.85;
-
-  let renderCreatureHeightM: number;
-  let renderCreatureWidthM: number;
-
-  if (isHeightDominant) {
-    // For upright or height-dominant creatures (e.g. azhdarchid pterosaurs, terror birds, bipeds),
-    // anchor directly to nominal scientific standing height so silhouettes align with calipers and stage grid
-    renderCreatureHeightM = safeHeight;
-    renderCreatureWidthM = safeHeight * effectiveAspect;
-  } else {
-    // For horizontal creatures, width represents scientific total length
-    renderCreatureWidthM = safeLength;
-    renderCreatureHeightM = safeLength / effectiveAspect;
-  }
-  const effectiveCreatureHeightM = renderCreatureHeightM;
+  // Effective physical envelope calibration
+  // Both width and height are strictly calibrated to the specimen's scientific physical envelope
+  const renderCreatureWidthM = safeLength;
+  const renderCreatureHeightM = safeHeight;
+  const effectiveCreatureHeightM = safeHeight;
 
   // Stage physical layout calculations
   const viewBoxWidth = 1000;
@@ -267,8 +237,9 @@ export default function TwoDScaleViewer({
   let creatureHeightPx = renderCreatureHeightM * scale;
 
   if (creatureHeightPx > availableHeight * 0.94) {
+    const scaleFactor = (availableHeight * 0.94) / creatureHeightPx;
     creatureHeightPx = availableHeight * 0.94;
-    creatureWidthPx = creatureHeightPx * effectiveAspect;
+    creatureWidthPx = creatureWidthPx * scaleFactor;
   }
 
   const creatureY = groundY - creatureHeightPx;
@@ -612,7 +583,7 @@ export default function TwoDScaleViewer({
                   y="0"
                   width={creatureWidthPx}
                   height={creatureHeightPx}
-                  preserveAspectRatio="xMidYMax meet"
+                  preserveAspectRatio="xMinYMax meet"
                   filter="url(#amberTint)"
                   className="transition-all duration-300"
                 />

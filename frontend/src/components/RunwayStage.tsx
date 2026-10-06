@@ -27,8 +27,6 @@ export default function RunwayStage({
   const [isDraggingMouse, setIsDraggingMouse] = useState(false);
   const [dragStartX, setDragStartX] = useState(0);
   const [scrollStartLeft, setScrollStartLeft] = useState(0);
-  const [silhouetteAspects, setSilhouetteAspects] = useState<Record<string, number>>({});
-
   // Track container width so the runway floor and grid always span 100% of the stage container
   useEffect(() => {
     if (!scrollContainerRef.current) return;
@@ -42,25 +40,6 @@ export default function RunwayStage({
     observer.observe(scrollContainerRef.current);
     return () => observer.disconnect();
   }, []);
-
-  // Dynamically load image natural aspect ratio so silhouette is scaled accurately without floating or empty padding
-  useEffect(() => {
-    speciesList.forEach((sp) => {
-      const url = sp.comparisonSilhouette?.url;
-      if (url && !silhouetteAspects[url]) {
-        const img = new Image();
-        img.onload = () => {
-          if (img.naturalWidth > 0 && img.naturalHeight > 0) {
-            setSilhouetteAspects((prev) => ({
-              ...prev,
-              [url]: img.naturalWidth / img.naturalHeight
-            }));
-          }
-        };
-        img.src = url;
-      }
-    });
-  }, [speciesList]);
 
   // Reference figure configurations (in meters)
   const refSpecs = useMemo(() => {
@@ -77,38 +56,21 @@ export default function RunwayStage({
     }
   }, [activeReference]);
 
-  // Metric sizing for each creature: calibrated directly to scientific length, standing height, and silhouette aspect ratio
+  // Metric sizing for each creature: calibrated directly to scientific length and standing height
   const creaturesMetrics = useMemo(() => {
     return speciesList.map((sp) => {
       const len = sp.lengthM && sp.lengthM > 0 ? sp.lengthM : 5.0;
       const h = sp.heightM && sp.heightM > 0 ? sp.heightM : Math.max(1, len * 0.35);
-      const url = sp.comparisonSilhouette?.url;
-      const aspect = url && silhouetteAspects[url] ? silhouetteAspects[url] : len / h;
-      const isHeightDominant = h >= len * 0.85;
-
-      let renderWidthM: number;
-      let renderHeightM: number;
-
-      if (isHeightDominant) {
-        // Upright or height-dominant creatures (azhdarchid pterosaurs, terror birds, bipeds)
-        // anchor directly to nominal standing height so silhouettes align with ground baseline
-        renderHeightM = h;
-        renderWidthM = h * aspect;
-      } else {
-        // Length-dominant creatures (theropods, sauropods, marine reptiles)
-        renderWidthM = len;
-        renderHeightM = len / aspect;
-      }
 
       return {
         species: sp,
         lengthM: len,
         heightM: h,
-        renderWidthM,
-        renderHeightM
+        renderWidthM: len,
+        renderHeightM: h
       };
     });
-  }, [speciesList, silhouetteAspects]);
+  }, [speciesList]);
 
   // Layout calculations: arrange specimens sequentially on the runway track with 3.0m metric spacing
   const runwayLayout = useMemo(() => {
@@ -474,7 +436,7 @@ export default function RunwayStage({
                     y={yTop}
                     width={pxWidth}
                     height={pxHeight}
-                    preserveAspectRatio="xMidYMax meet"
+                    preserveAspectRatio="xMinYMax meet"
                     filter={isHighlighted ? 'url(#runwayAmberHighlight)' : 'url(#runwayChalkTint)'}
                     className="transition-all duration-300"
                     style={{
