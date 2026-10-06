@@ -6261,13 +6261,13 @@
     "sizeNotes": "Very large. Note: Holotype MUCPv-Ch1 is 12.2–12.5 m (representative 12.5 m), standing hip height 3.9 m, mass 7,000–8,500 kg (representative 7,500 kg). 13.2 m represents the fragmentary max jaw MUCPv-95.",
     "sizeEstimate": "{\"length\":{\"value\":12.5,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"height\":{\"value\":3.9,\"unit\":\"m\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":7500,\"unit\":\"kg\",\"confidence\":\"well-supported\"}}",
     "sizeComparisonToHuman": true,
-    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/cf75413c-6985-400e-9389-81d7007e5d91.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/cf75413c-6985-400e-9389-81d7007e5d91\",\"license\":\"CC0 1.0 Universal Public Domain Dedication\",\"credit\":\"Tasman Dixon\",\"taxon\":\"Giganotosaurus carolinii\",\"taxonMatch\":\"species-specific\"}",
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/cf75413c-6985-400e-9389-81d7007e5d91-calibrated.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/cf75413c-6985-400e-9389-81d7007e5d91\",\"license\":\"CC0 1.0 Universal Public Domain Dedication\",\"credit\":\"Tasman Dixon\",\"taxon\":\"Giganotosaurus carolinii\",\"taxonMatch\":\"species-specific\"}",
     "extinctionEvent": "K-Pg extinction event (66 MYA)",
     "closestLivingRelatives": "{\"status\":\"established\",\"groups\":[\"Modern Birds (Aves / Neornithes - direct surviving avian theropods)\",\"Crocodilians (Crocodilia - closest living non-dinosaurian outgroup)\"],\"rationale\":\"Aves (modern birds) are biologically surviving avian theropod dinosaurs, nested within Coelurosauria / Maniraptora. Crocodilians represent the nearest extant sister outgroup to Dinosauria.\",\"ecologicalAnalogues\":[\"Ratites (Ostriches, Emus, Cassowaries - cursorial bipedal terrestrial ecology)\",\"Birds of Prey (Accipitridae & Falconidae - raptorial hunting)\"],\"sources\":[{\"title\":\"Brusatte, S. L., et al. (2014). Gradual Assembly of Avian Body Plan Culminated in Rapid Diversification of Dinosaur Lineage. Current Biology, 24(20), 2386-2392.\",\"url_or_doi\":\"https://doi.org/10.1016/j.cub.2014.08.034\"},{\"title\":\"Prum, R. O. (2002). Why Ornithologists Should Care About the Theropod Origin of Birds. The Auk, 119(1), 1-17.\",\"url_or_doi\":\"https://doi.org/10.1093/auk/119.1.1\"}],\"verified\":true}",
     "sources": "[{\"citation\":\"Paleobiology Database (PBDB) species record\",\"url\":\"https://paleobiodb.org\"},{\"citation\":\"Giganotosaurus carolinii description in paleontological literature\",\"url\":\"https://en.wikipedia.org/wiki/Giganotosaurus\"}]",
     "placeholder": false,
     "createdAt": "2026-07-23T11:18:04.549Z",
-    "updatedAt": "2026-09-28T14:21:13.639Z"
+    "updatedAt": "2026-10-06T13:58:11.677Z"
   },
   {
     "id": 449,
