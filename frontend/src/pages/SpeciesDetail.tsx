@@ -6,7 +6,7 @@ import TaxonomyBreadcrumbs from '../components/TaxonomyBreadcrumbs.js';
 import TwoDScaleViewer from '../components/TwoDScaleViewer.js';
 import MediaGallery from '../components/MediaGallery.js';
 import { isBookmarked as checkIsBookmarked, toggleBookmark as toggleBookmarkStorage } from '../utils/notebookStorage.js';
-import { Compass, ArrowLeft, Dna, FileText, Scale, BookOpen, AlertCircle, Bookmark, BookmarkCheck, ExternalLink, Globe, Zap } from 'lucide-react';
+import { Compass, ArrowLeft, Dna, FileText, Scale, BookOpen, AlertCircle, Bookmark, BookmarkCheck, ExternalLink, Globe } from 'lucide-react';
 import { getSpeciesDisplayNames } from '../utils/formatSpeciesNames.js';
 import { formatFeetLong } from '../utils/formatDimensions.js';
 import { formatEnumLabel } from '../utils/formatEnumLabel.js';
@@ -164,15 +164,15 @@ export default function SpeciesDetail() {
             className="space-y-3 sm:space-y-4 border-l-2 border-amber-500/40 pl-3 sm:pl-5"
           >
             {/* Stratum & Taxonomic Placement Breadcrumb */}
-            <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs font-mono text-slate-400 tracking-wide">
-              <span className="text-amber-400 font-bold tracking-wider">{formatEnumLabel(species.clade)}</span>
-              <span className="text-slate-600">/</span>
-              <span className="text-slate-200">{species.timePeriod} ({species.myaStart}–{species.myaEnd} MYA)</span>
-              <span className="text-slate-600">/</span>
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-400 tracking-wide">
+              <span className="text-amber-400 font-semibold">{formatEnumLabel(species.clade)}</span>
+              <span className="text-slate-600">&bull;</span>
+              <span className="text-slate-200">{species.timePeriod} ({species.myaStart}–{species.myaEnd} Ma)</span>
+              <span className="text-slate-600">&bull;</span>
               <span className="text-slate-300">{formatEnumLabel(species.dietType || species.diet)}</span>
               {species.taxonomicStatus && (
                 <>
-                  <span className="text-slate-600">/</span>
+                  <span className="text-slate-600">&bull;</span>
                   <span className="text-slate-400">{formatEnumLabel(species.taxonomicStatus)}</span>
                 </>
               )}
@@ -202,7 +202,7 @@ export default function SpeciesDetail() {
                 transition={{ duration: 0.5, delay: 0.18 }}
                 className="text-xs text-slate-400 leading-relaxed border-t border-white/[0.08] pt-2 sm:pt-3 font-sans"
               >
-                <span className="font-mono text-slate-500 uppercase tracking-widest text-[10px]">Etymology &amp; Translation —</span> "{species.nameMeaning}"
+                <span className="text-slate-500 font-medium mr-1.5">Etymology &amp; translation:</span> &ldquo;{species.nameMeaning}&rdquo;
               </motion.p>
             )}
           </motion.div>
@@ -233,32 +233,32 @@ export default function SpeciesDetail() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.08 }}
         transition={{ type: 'spring', stiffness: 320, damping: 28 }}
-        className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08] border-y border-white/[0.08] py-4 font-mono"
+        className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08] border-y border-white/[0.08] py-4"
       >
         <div className="py-2 sm:py-0 sm:px-6 text-center sm:text-left space-y-1">
-          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block">
-            Total Axial Length
+          <span className="text-xs font-medium text-slate-400 block font-sans">
+            Total length
           </span>
-          <p className="text-xl sm:text-2xl font-black text-slate-100 tabular-nums">
+          <p className="text-xl sm:text-2xl font-black text-slate-100 tabular-nums font-mono">
             {formatFeetLong(species.lengthM)}
           </p>
         </div>
 
         <div className="py-2 sm:py-0 sm:px-6 text-center sm:text-left space-y-1">
-          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block">
-            Standing Height
+          <span className="text-xs font-medium text-slate-400 block font-sans">
+            Standing height
           </span>
-          <p className="text-xl sm:text-2xl font-black text-slate-100 tabular-nums">
+          <p className="text-xl sm:text-2xl font-black text-slate-100 tabular-nums font-mono">
             {formatFeetLong(species.heightM)}
           </p>
         </div>
 
         <div className="py-2 sm:py-0 sm:px-6 text-center sm:text-left space-y-1">
-          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block">
-            Estimated Adult Mass
+          <span className="text-xs font-medium text-slate-400 block font-sans">
+            Estimated adult mass
           </span>
-          <p className="text-xl sm:text-2xl font-black text-amber-400 tabular-nums">
-            {species.weightKg ? `${species.weightKg.toLocaleString()} KG` : 'Disputed / Incomplete'}
+          <p className="text-xl sm:text-2xl font-black text-amber-400 tabular-nums font-mono">
+            {species.weightKg ? `${species.weightKg.toLocaleString()} kg` : 'Disputed / Incomplete'}
           </p>
         </div>
       </motion.div>
@@ -289,7 +289,7 @@ export default function SpeciesDetail() {
           {/* Discovery & Geographic Range Panel */}
           <div className="museum-plinth rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-4 shadow-xl">
             <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-2.5">
-              <Compass className="h-4 w-4 text-amber-400" /> Field Discovery &amp; Provenance
+              <Compass className="h-4 w-4 text-amber-400" /> Discovery &amp; Geographic Provenance
             </h3>
 
             <div className="space-y-4 text-xs">
@@ -318,7 +318,7 @@ export default function SpeciesDetail() {
                     <Scale className="h-3.5 w-3.5 text-amber-400" /> Dietary Adaptation &amp; Trophic Niche
                   </span>
                   <p className="text-slate-200 leading-relaxed font-sans text-xs sm:text-sm pl-4 border-l border-amber-500/30">
-                    <span className="text-emerald-400 font-bold font-mono mr-1.5">[{formatEnumLabel(species.dietType || species.diet)}]:</span>
+                    <span className="text-emerald-400 font-semibold mr-1.5">{formatEnumLabel(species.dietType || species.diet)} &mdash;</span>
                     {species.dietDetails}
                   </p>
                 </div>
@@ -332,7 +332,7 @@ export default function SpeciesDetail() {
           {/* Architectural Taxonomic Hierarchy */}
           <div className="museum-plinth rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
             <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-2.5">
-              <Dna className="h-4 w-4 text-amber-400" /> Structural Taxonomic Hierarchy
+              <Dna className="h-4 w-4 text-amber-400" /> Taxonomic Classification
             </h3>
 
             <TaxonomyBreadcrumbs
@@ -343,7 +343,7 @@ export default function SpeciesDetail() {
             {/* Cladistic & Evolutionary Lineage Monograph */}
             <div className="pt-3 border-t border-white/[0.08] space-y-2 font-mono text-xs">
               <span className="text-[10px] uppercase font-bold text-slate-400 tracking-widest flex items-center gap-1.5">
-                <Dna className="h-3.5 w-3.5 text-amber-400" /> Cladistic & Extant Lineage
+                <Dna className="h-3.5 w-3.5 text-amber-400" /> Evolutionary Lineage &amp; Extant Relatives
               </span>
               <div className="space-y-2 text-xs font-sans">
                 {species.clade === 'Theropod' ? (
@@ -446,7 +446,7 @@ export default function SpeciesDetail() {
             <div className="museum-plinth rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
               <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5">
                 <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">
-                  <Zap className="h-4 w-4 text-amber-400" /> Key Scientific Diagnostic Features
+                  <FileText className="h-4 w-4 text-amber-400" /> Diagnostic Traits &amp; Paleobiology
                 </h3>
                 <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">
                   {species.interestingFacts.length} traits
@@ -473,7 +473,7 @@ export default function SpeciesDetail() {
           {species.sources && species.sources.length > 0 && (
             <div className="museum-plinth rounded-xl p-4 sm:p-5 border border-white/[0.08] space-y-3 shadow-xl">
               <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2 border-b border-white/[0.08] pb-2.5">
-                <BookOpen className="h-4 w-4 text-amber-400" /> Verified Academic Citations
+                <BookOpen className="h-4 w-4 text-amber-400" /> References &amp; Academic Literature
               </h3>
 
               <div className="space-y-2 font-mono text-xs">
@@ -512,7 +512,7 @@ export default function SpeciesDetail() {
         >
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.08] pb-3 font-mono">
             <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">
-              <Compass className="h-4 w-4 text-amber-400" /> Lived Alongside / Coexisting Species
+              <Compass className="h-4 w-4 text-amber-400" /> Coexisting Species
             </h3>
             <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">
               Same Formation &bull; Era &amp; Region
@@ -550,7 +550,7 @@ export default function SpeciesDetail() {
                       <h4 className="text-xs font-bold font-sans text-slate-100 group-hover:text-amber-400 transition-colors uppercase truncate">
                         {names.heading}
                       </h4>
-                      <p className="text-[10px] font-mono text-amber-400 truncate">
+                      <p className="text-[11px] font-serif italic text-amber-400/90 truncate">
                         {names.subheading}
                       </p>
                       <div className="flex items-center justify-between text-[9px] font-mono text-slate-400 pt-2 border-t border-white/[0.06]">

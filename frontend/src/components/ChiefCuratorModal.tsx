@@ -147,7 +147,7 @@ const getInitialSessionMessages = (totalCount: number): Message[] => {
     {
       id: 'welcome',
       role: 'assistant',
-      content: `Greetings, explorer! I am **Rajy**, your Prehistorica AI Docent.\n\nAsk me about prehistoric creatures, ancient ecosystems, evolution, biomechanics, or the deep-time history of Earth. Every insight is scientifically grounded directly in our **${totalCount} cataloged specimens**.`,
+      content: `Greetings! I am **Rajy**, your Prehistorica Museum Docent.\n\nAsk me about prehistoric creatures, ancient ecosystems, evolutionary lineages, biomechanics, or deep-time extinction crises. Every insight is scientifically grounded directly in our **${totalCount} cataloged specimens**.`,
       timestamp: 'Just now'
     }
   ];
@@ -199,7 +199,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
           msg.id === 'welcome'
             ? {
                 ...msg,
-                content: `Greetings, explorer! I am **Rajy**, your Prehistorica AI Docent.\n\nAsk me about prehistoric creatures, ancient ecosystems, evolution, biomechanics, or the deep-time history of Earth. Every insight is scientifically grounded directly in our **${liveTotalSpecies} cataloged specimens**.`
+                content: `Greetings! I am **Rajy**, your Prehistorica Museum Docent.\n\nAsk me about prehistoric creatures, ancient ecosystems, evolutionary lineages, biomechanics, or deep-time extinction crises. Every insight is scientifically grounded directly in our **${liveTotalSpecies} cataloged specimens**.`
               }
             : msg
         )

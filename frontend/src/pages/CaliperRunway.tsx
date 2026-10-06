@@ -231,7 +231,7 @@ export default function CaliperRunway() {
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono font-bold uppercase tracking-widest">
               <Scale className="h-3.5 w-3.5" />
-              <ShinyText text="1:1 Cartesian Caliper Stage" speed={3.5} />
+              <ShinyText text="1:1 Metric Scale Comparison" speed={3.5} />
             </div>
             <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-slate-100 font-sans">
               Multi-Specimen Caliper Runway
@@ -365,7 +365,7 @@ export default function CaliperRunway() {
                     title="Simulate Biomechanical & Stratigraphic Interaction"
                   >
                     <Swords className="h-4 w-4" />
-                    <span>Simulate Matchup (AI)</span>
+                    <span>Biomechanical Matchup</span>
                   </button>
                 </ClickSpark>
               </Magnet>

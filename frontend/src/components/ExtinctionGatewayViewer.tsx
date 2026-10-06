@@ -16,8 +16,7 @@ import {
   ExternalLink,
   MessageSquare,
   HeartCrack,
-  Dna,
-  Database
+  Dna
 } from 'lucide-react';
 
 interface ExtinctionGatewayViewerProps {
@@ -33,7 +32,7 @@ export default function ExtinctionGatewayViewer({
   onSelectExtinction,
   onAskRajy,
   events,
-  isDatabaseSource = false,
+  isDatabaseSource: _isDatabaseSource = false,
 }: ExtinctionGatewayViewerProps) {
   const list: MassExtinctionEvent[] =
     events && events.length > 0 ? (events as MassExtinctionEvent[]) : MASS_EXTINCTIONS;
@@ -158,12 +157,6 @@ export default function ExtinctionGatewayViewer({
                 <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">
                   Peak at {currentEvent.peakAgeMa} Ma
                 </span>
-                {isDatabaseSource && (
-                  <span className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5">
-                    <Database className="h-3 w-3 text-emerald-400" />
-                    PostgreSQL Record
-                  </span>
-                )}
               </div>
 
               {/* Consultation with Rajy Button */}

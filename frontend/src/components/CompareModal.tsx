@@ -467,9 +467,9 @@ function SpeciesSearchInput({
                             </span>
                             {isSelected && <Check className="h-3.5 w-3.5 text-amber-400 shrink-0" />}
                           </div>
-                          <div className="text-[11px] text-amber-400/90 italic font-mono truncate">
+                          <div className="text-[11px] text-amber-400/90 italic font-serif truncate">
                             {names.subheading}{' '}
-                            <span className="text-slate-400 not-italic text-[10px]">
+                            <span className="text-slate-400 not-italic text-[10px] font-sans">
                               &bull; {formatClade(s.clade)} &bull; {s.timePeriod}
                             </span>
                           </div>
@@ -664,7 +664,7 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
                           <h3 className="text-base font-black uppercase text-slate-100 font-sans tracking-tight group-hover:text-amber-400 transition-colors">
                             {names1.heading}
                           </h3>
-                          <p className="text-xs italic font-mono text-amber-400">{names1.subheading}</p>
+                          <p className="text-xs italic font-serif text-amber-400/90">{names1.subheading}</p>
                         </div>
                         <ExternalLink className="h-4 w-4 text-slate-500 group-hover:text-amber-400 transition-colors shrink-0 mt-0.5" />
                       </div>
@@ -756,7 +756,7 @@ export default function CompareModal({ initialSpecies, isOpen, onClose }: Compar
                           <h3 className="text-base font-black uppercase text-slate-100 font-sans tracking-tight group-hover:text-amber-400 transition-colors">
                             {names2.heading}
                           </h3>
-                          <p className="text-xs italic font-mono text-amber-400">{names2.subheading}</p>
+                          <p className="text-xs italic font-serif text-sky-400/90">{names2.subheading}</p>
                         </div>
                         <ExternalLink className="h-4 w-4 text-slate-500 group-hover:text-amber-400 transition-colors shrink-0 mt-0.5" />
                       </div>

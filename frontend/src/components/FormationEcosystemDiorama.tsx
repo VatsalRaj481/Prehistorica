@@ -238,7 +238,7 @@ export default function FormationEcosystemDiorama({
             className="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold font-mono text-xs uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shadow-lg shadow-amber-500/10 shrink-0"
           >
             <Network className="h-4 w-4" />
-            <span>Simulate AI Food Web</span>
+            <span>Explore Ecosystem Food Web</span>
           </button>
         )}
       </div>
@@ -348,7 +348,7 @@ export default function FormationEcosystemDiorama({
                               #{specimen.id}
                             </span>
                           </div>
-                          <p className="text-[10px] font-mono text-slate-400 italic truncate">
+                          <p className="text-[11px] font-serif italic text-amber-400/90 truncate">
                             {specimen.scientificName}
                           </p>
                         </div>

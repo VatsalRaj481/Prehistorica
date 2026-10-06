@@ -310,7 +310,7 @@ export default function ChronoTimelineSlider() {
                           {specimen.myaStart}&ndash;{specimen.myaEnd} Ma
                         </span>
                       </div>
-                      <p className="text-[10px] font-mono text-slate-400 italic truncate">
+                      <p className="text-[11px] font-serif italic text-amber-400/90 truncate">
                         {specimen.scientificName}
                       </p>
                     </div>

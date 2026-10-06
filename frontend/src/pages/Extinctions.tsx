@@ -67,7 +67,7 @@ export default function Extinctions() {
           {dbExtinctions.length > 0 && (
             <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 flex items-center gap-1 normal-case tracking-normal">
               <Database className="h-3 w-3 text-emerald-400" />
-              PostgreSQL Database Verified
+              Stratigraphically Calibrated
             </span>
           )}
         </div>
@@ -127,7 +127,7 @@ export default function Extinctions() {
           <div className="space-y-1">
             <h2 className="text-xl sm:text-2xl font-black text-slate-100 font-sans tracking-tight flex items-center gap-2">
               <Layers className="h-5 w-5 text-amber-400" />
-              Phanerozoic Environmental Dashboard
+              Phanerozoic Climate &amp; Environment Chronicle
             </h2>
             <p className="text-xs sm:text-sm text-slate-400 font-sans">
               Hover across the timeline to scrub geological time or click any pulsing red beacon to inspect that extinction crisis below.

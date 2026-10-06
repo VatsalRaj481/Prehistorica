@@ -367,7 +367,7 @@ export default function TimeMap() {
         <div>
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-100 uppercase tracking-tight flex items-center gap-2 font-sans">
             <Compass className="h-6 w-6 text-amber-500" />
-            <ShinyText text="Geologic Excavation Time-Map" speed={3.5} />
+            <ShinyText text="Geological Excavation &amp; Time Map" speed={3.5} />
           </h1>
           <p className="text-xs text-slate-400 mt-1 font-mono">
             Navigate Earth's ancient paleocontinents and unearth location-verified fossil formations.
@@ -594,7 +594,7 @@ export default function TimeMap() {
                     title="Synthesize Deep-Time Food Web & Ecological Stressors"
                   >
                     <Network className="w-3 h-3 text-amber-400" />
-                    <span>Food Web (AI)</span>
+                    <span>Ecosystem Food Web</span>
                   </button>
                   <motion.button
                     whileTap={{ scale: 0.92 }}
@@ -659,7 +659,7 @@ export default function TimeMap() {
                           <h4 className="text-sm font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors truncate tracking-tight font-sans">
                             {names.heading}
                           </h4>
-                          <p className="text-xs italic font-mono text-amber-400 truncate">
+                          <p className="text-xs italic font-serif text-amber-400/90 truncate">
                             {names.subheading}
                           </p>
                           <div className="flex items-center gap-2 text-[10px] text-slate-400">

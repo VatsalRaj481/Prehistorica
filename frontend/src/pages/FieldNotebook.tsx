@@ -369,7 +369,7 @@ export default function FieldNotebook() {
                         <h3 className="text-lg font-bold text-slate-100 group-hover:text-amber-400 transition-colors uppercase font-sans truncate">
                           {names.heading}
                         </h3>
-                        <p className="text-xs italic font-mono text-amber-400 truncate">
+                        <p className="text-xs italic font-serif text-amber-400/90 truncate">
                           {names.subheading}
                         </p>
                       </Link>

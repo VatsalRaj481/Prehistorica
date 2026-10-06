@@ -565,7 +565,7 @@ export default function CladogramViewer() {
         <div>
           <div className="flex items-center gap-2 text-xs text-amber-400 font-bold uppercase tracking-widest mb-1.5">
             <Dna className="h-4 w-4" />
-            <span>Phylogenetic Cladistics &bull; Macro-Evolutionary Systematic Stage</span>
+            <span>Phylogenetic Cladistics &bull; Evolutionary Tree of Life</span>
           </div>
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-100 uppercase tracking-tight flex items-center gap-3 font-sans">
             <ShinyText text="The Tree of Extinct Life" speed={3.5} />
@@ -619,7 +619,7 @@ export default function CladogramViewer() {
       {loading ? (
         <div className="flex flex-col items-center justify-center p-20 space-y-3 font-mono text-slate-400">
           <Loader2 className="h-8 w-8 text-amber-500 animate-spin" />
-          <p className="text-xs uppercase tracking-widest">Resolving Macro-Phylogenetic Lineages...</p>
+          <p className="text-xs uppercase tracking-widest">Loading Phylogenetic Lineages...</p>
         </div>
       ) : (
         <>
@@ -759,7 +759,7 @@ export default function CladogramViewer() {
                           <h5 className="text-sm font-bold text-slate-100 group-hover:text-amber-300 transition-colors truncate">
                             {specimen.name}
                           </h5>
-                          <p className="text-[11px] font-mono text-slate-400 italic truncate">
+                          <p className="text-[12px] font-serif text-amber-400/90 italic truncate">
                             {specimen.scientificName}
                           </p>
                         </div>

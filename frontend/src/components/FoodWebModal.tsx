@@ -32,7 +32,6 @@ export default function FoodWebModal({ isOpen, onClose, formationName, era = 'Me
   const [foodWeb, setFoodWeb] = useState<FormationFoodWebResult | null>(null);
   const [stressor, setStressor] = useState('');
   const [loading, setLoading] = useState(false);
-  const [cached, setCached] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -47,7 +46,6 @@ export default function FoodWebModal({ isOpen, onClose, formationName, era = 'Me
     try {
       const res = await fetchFormationFoodWeb(formationName, era, currentStressor || undefined);
       setFoodWeb(res.foodWeb);
-      setCached(res.cached);
     } catch (err: any) {
       setError(err.message || 'Failed to synthesize formation food web.');
     } finally {
@@ -108,13 +106,8 @@ export default function FoodWebModal({ isOpen, onClose, formationName, era = 'Me
                 <div>
                   <div className="flex items-center gap-2">
                     <h2 className="text-base font-bold tracking-wide font-mono text-slate-100 uppercase">
-                      Paleo-Biome & Food Web Synthesizer
+                      Paleo-Ecosystem &amp; Food Web
                     </h2>
-                    {cached && (
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 uppercase">
-                        Instant DB Cache
-                      </span>
-                    )}
                   </div>
                   <p className="text-xs text-slate-400 font-mono">
                     {formationName} ({era}) • Trophic Energy Transfer & Ecosystem Stressors

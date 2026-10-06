@@ -652,7 +652,7 @@ export default function Browse() {
                     className="px-2.5 py-1 rounded-md bg-amber-500/20 border border-amber-500/40 text-amber-300 flex items-center gap-1.5 font-bold"
                   >
                     <Sparkles className="h-3 w-3 text-amber-400" />
-                    AI Vector Query: "{semantic}"
+                    Semantic: "{semantic}"
                     <button onClick={() => updateParams({ semantic: null })} className="hover:text-white cursor-pointer"><X className="h-3 w-3" /></button>
                   </motion.span>
                 )}
@@ -662,7 +662,7 @@ export default function Browse() {
                     animate={{ scale: 1, opacity: 1 }}
                     className="px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-300 flex items-center gap-1.5 font-bold"
                   >
-                    Query: "{search}"
+                    Search: "{search}"
                     <button onClick={() => updateParams({ search: null })} className="hover:text-white cursor-pointer"><X className="h-3 w-3" /></button>
                   </motion.span>
                 )}
@@ -675,7 +675,7 @@ export default function Browse() {
                       animate={{ scale: 1, opacity: 1 }}
                       className="px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-300 flex items-center gap-1.5 font-bold"
                     >
-                      Clade: {opt ? opt.label : c}
+                      Clade: {opt ? opt.label : formatEnumLabel(c)}
                       <button onClick={() => toggleArrayFilter('clade', c)} className="hover:text-white cursor-pointer"><X className="h-3 w-3" /></button>
                     </motion.span>
                   );
@@ -685,9 +685,9 @@ export default function Browse() {
                     key={d}
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className="px-2.5 py-1 rounded-md bg-slate-900 border border-white/[0.08] text-slate-300 flex items-center gap-1.5 font-bold capitalize"
+                    className="px-2.5 py-1 rounded-md bg-slate-900 border border-white/[0.08] text-slate-300 flex items-center gap-1.5 font-bold"
                   >
-                    Diet: {d}
+                    Diet: {formatEnumLabel(d)}
                     <button onClick={() => toggleArrayFilter('diet', d)} className="hover:text-white cursor-pointer"><X className="h-3 w-3" /></button>
                   </motion.span>
                 ))}
@@ -696,9 +696,9 @@ export default function Browse() {
                     key={h}
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    className="px-2.5 py-1 rounded-md bg-slate-900 border border-white/[0.08] text-slate-300 flex items-center gap-1.5 font-bold capitalize"
+                    className="px-2.5 py-1 rounded-md bg-slate-900 border border-white/[0.08] text-slate-300 flex items-center gap-1.5 font-bold"
                   >
-                    Habitat: {h.replace('_', '-')}
+                    Habitat: {formatEnumLabel(h)}
                     <button onClick={() => toggleArrayFilter('habitat', h)} className="hover:text-white cursor-pointer"><X className="h-3 w-3" /></button>
                   </motion.span>
                 ))}
@@ -832,7 +832,7 @@ export default function Browse() {
                               <h3 className="text-base font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors tracking-tight font-sans line-clamp-1">
                                 {names.heading}
                               </h3>
-                              <p className="text-xs italic text-amber-400 font-mono truncate">
+                              <p className="text-xs italic text-amber-400/90 font-serif truncate">
                                 {names.subheading}
                               </p>
                             </div>
