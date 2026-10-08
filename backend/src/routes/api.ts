@@ -6,7 +6,9 @@ import {
   getCreatureOfTheDay, 
   searchAutocomplete, 
   compareSpecies, 
-  getSpeciesRoster 
+  getSpeciesRoster,
+  getCacheStats,
+  refreshCache
 } from '../controllers/species.js';
 import {
   curatorChat,
@@ -51,6 +53,8 @@ router.get('/health', (req: Request, res: Response) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
+router.get('/species/cache/stats', getCacheStats);
+router.post('/species/cache/refresh', refreshCache);
 router.get('/species', getSpecies);
 router.get('/species/roster', getSpeciesRoster);
 router.get('/species/creature-of-the-day', getCreatureOfTheDay);

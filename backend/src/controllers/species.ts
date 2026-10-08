@@ -1,213 +1,15 @@
 import '../dns-init.js';
 import { Request, Response, NextFunction } from 'express';
-import { PrismaClient } from '@prisma/client';
+import { 
+  speciesCache, 
+  formatSpeciesRecord, 
+  evaluateSearchMatch,
+  CLADE_CANONICAL_MAP 
+} from '../services/speciesCache.js';
 
-const prisma = new PrismaClient();
+export { formatSpeciesRecord, evaluateSearchMatch, CLADE_CANONICAL_MAP };
 
-// Helper to safely parse stored JSON strings or return original object
-function parseJson(val: any, fallback: any) {
-  if (!val) return fallback;
-  if (typeof val !== 'string') return val;
-  const trimmed = val.trim();
-  try {
-    return JSON.parse(trimmed);
-  } catch {
-    // Check if string is Postgres array format e.g. {"item 1", "item 2"}
-    if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
-      try {
-        const items = trimmed
-          .slice(1, -1)
-          .match(/("(?:[^"\\]|\\.)*"|[^,]+)/g);
-        if (items) {
-          return items.map(s => s.replace(/^"|"$/g, '').replace(/\\"/g, '"').trim());
-        }
-      } catch {}
-    }
-    return fallback;
-  }
-}
-
-
-// Helper to format a DB species record into rich structured JSON
-function formatSpeciesRecord(s: any) {
-  if (!s) return null;
-  const mediaArr = parseJson(s.media, []);
-  const taxObj = parseJson(s.taxonomy, {});
-  const geoObj = parseJson(s.geographicRange, {});
-  const sizeObj = parseJson(s.sizeEstimate, {});
-
-  return {
-    ...s,
-    dietType: s.dietType || s.diet,
-    creatureType: s.creatureType || s.clade,
-    locations: parseJson(s.locations, geoObj.region ? [geoObj.region] : []),
-    country: s.country || geoObj.country || null,
-    fossilFormation: s.fossilFormation || geoObj.fossilFormation || null,
-    genus: s.genus || taxObj.genus || null,
-    family: s.family || taxObj.family || null,
-    reconstructionImageUrl: s.reconstructionImageUrl || (mediaArr.find((m: any) => m.type === 'art' || m.type === 'life_reconstruction')?.url || null),
-    fossilImageUrl: s.fossilImageUrl || (mediaArr.find((m: any) => m.type === 'fossil_specimen' || m.type === 'photo')?.url || (mediaArr.length > 1 ? mediaArr[1].url : null)),
-    lengthM: s.lengthM !== undefined && s.lengthM !== null ? s.lengthM : (sizeObj.length?.value || null),
-    heightM: s.heightM !== undefined && s.heightM !== null ? s.heightM : (sizeObj.height?.value || null),
-    weightKg: s.weightKg !== undefined && s.weightKg !== null ? s.weightKg : (sizeObj.weight?.value || null),
-    interestingFacts: parseJson(s.interestingFacts, []),
-    media: mediaArr,
-    taxonomy: taxObj,
-    sizeEstimate: sizeObj,
-    geographicRange: geoObj,
-    closestLivingRelatives: parseJson(s.closestLivingRelatives, []),
-    sources: parseJson(s.sources, []),
-    comparisonSilhouette: parseJson(s.comparisonSilhouette, null)
-  };
-}
-
-// High-precision search evaluation ensuring word-boundary matches and preventing false positives
-function evaluateSearchMatch(s: any, query: string): { matched: boolean; score: number } {
-  if (!query) return { matched: true, score: 0 };
-  const q = query.trim().toLowerCase();
-  if (!q) return { matched: true, score: 0 };
-
-  const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  // Token starts at word boundary
-  const wordPrefixRegex = new RegExp(`(^|[^a-zA-Z0-9])${escaped}`, 'i');
-  // Token matches complete word
-  const exactWordRegex = new RegExp(`(^|[^a-zA-Z0-9])${escaped}([^a-zA-Z0-9]|$)`, 'i');
-
-  const sName = (s.name || '').toLowerCase();
-  const sSci = (s.scientificName || '').toLowerCase();
-  const taxObj = s.taxonomy || {};
-
-  let score = 0;
-  let matched = false;
-
-  // 1. Primary Name & Scientific Name Matches
-  if (sName === q || sSci === q) {
-    matched = true;
-    score += 100;
-  } else if (sName.startsWith(q) || sSci.startsWith(q)) {
-    matched = true;
-    score += 80;
-  } else if (exactWordRegex.test(sName) || exactWordRegex.test(sSci)) {
-    matched = true;
-    score += 70;
-  } else if (wordPrefixRegex.test(sName) || wordPrefixRegex.test(sSci)) {
-    matched = true;
-    score += 50;
-  }
-
-  // 2. Structured Taxonomy Matches (Family, Genus, Order, Class, Clade)
-  const genus = (taxObj.genus || '').toLowerCase();
-  if (genus) {
-    if (genus === q) {
-      matched = true;
-      score += 90;
-    } else if (genus.startsWith(q)) {
-      matched = true;
-      score += 60;
-    }
-  }
-
-  for (const [rank, val] of Object.entries(taxObj)) {
-    if (typeof val === 'string' && val.trim()) {
-      const vLower = val.toLowerCase();
-      if (vLower === q) {
-        matched = true;
-        score += 85;
-      } else if (exactWordRegex.test(val)) {
-        matched = true;
-        score += 65;
-      } else if (wordPrefixRegex.test(val)) {
-        matched = true;
-        score += 40;
-      }
-    }
-  }
-
-  // 3. Geographic Range (Region, Country, Formation)
-  const geoObj = s.geographicRange || {};
-  for (const val of Object.values(geoObj)) {
-    if (typeof val === 'string' && val.trim()) {
-      const vLower = val.toLowerCase();
-      if (vLower === q || exactWordRegex.test(val) || wordPrefixRegex.test(val)) {
-        matched = true;
-        score += 30;
-      }
-    }
-  }
-
-  // 4. Name Meaning
-  if (s.nameMeaning && (exactWordRegex.test(s.nameMeaning) || wordPrefixRegex.test(s.nameMeaning))) {
-    matched = true;
-    score += 20;
-  }
-
-  return { matched, score };
-}
-
-
-// Helper to capitalize words
-function formatLocation(loc: string): string {
-  return loc
-    .split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-    .join(' ');
-}
-
-// Canonical map to normalize client clade queries and aliases to Prisma Clade enum values
-const CLADE_CANONICAL_MAP: Record<string, string> = {
-  // Direct Prisma Clade enum matches
-  'theropod': 'Theropod',
-  'sauropod': 'Sauropod',
-  'ornithischian': 'Ornithischian',
-  'pterosaur': 'Pterosaur',
-  'marine_reptile': 'Marine_Reptile',
-  'marine reptile': 'Marine_Reptile',
-  'early_mammal_synapsid': 'Early_Mammal_Synapsid',
-  'early mammal/synapsid': 'Early_Mammal_Synapsid',
-  'early mammal synapsid': 'Early_Mammal_Synapsid',
-  'early_tetrapod_amphibian': 'Early_Tetrapod_Amphibian',
-  'early tetrapod/amphibian': 'Early_Tetrapod_Amphibian',
-  'early tetrapod amphibian': 'Early_Tetrapod_Amphibian',
-  'invertebrate': 'Invertebrate',
-  'sauropodomorph': 'Sauropodomorph',
-  'aetosaur': 'Aetosaur',
-  'phytosaur': 'Phytosaur',
-  'rauisuchian': 'Rauisuchian',
-  'poposauroid': 'Poposauroid',
-  'crocodylomorph': 'Crocodylomorph',
-  'silesaurid': 'Silesaurid',
-  'archosauriform': 'Archosauriform',
-  'protorosaur': 'Protorosaur',
-  'other': 'Other',
-
-  // Common UI aliases and synonyms
-  'sauropodomorpha': 'Sauropodomorph',
-  'sauropoda': 'Sauropod',
-  'basal_sauropodomorph': 'Sauropodomorph',
-  'basal_sauropodomorpha': 'Sauropodomorph',
-  'marine_reptiles': 'Marine_Reptile',
-  'ichthyosaur': 'Marine_Reptile',
-  'ichthyosaurs': 'Marine_Reptile',
-  'ichthyosauria': 'Marine_Reptile',
-  'plesiosaur': 'Marine_Reptile',
-  'plesiosaurs': 'Marine_Reptile',
-  'plesiosauria': 'Marine_Reptile',
-  'pliosaur': 'Marine_Reptile',
-  'pliosaurs': 'Marine_Reptile',
-  'mosasaur': 'Marine_Reptile',
-  'mosasaurs': 'Marine_Reptile',
-  'mosasauroidea': 'Marine_Reptile',
-  'ankylosaur': 'Ornithischian',
-  'ankylosauria': 'Ornithischian',
-  'ceratopsian': 'Ornithischian',
-  'ceratopsidae': 'Ornithischian',
-  'hadrosaur': 'Ornithischian',
-  'hadrosauridae': 'Ornithischian',
-  'stegosaur': 'Ornithischian',
-  'stegosauria': 'Ornithischian'
-};
-
-// 1. GET /api/species (Filtered Roster, Search, and Pagination)
+// 1. GET /api/species (Filtered Roster, Search, and Pagination via In-Memory Cache)
 export async function getSpecies(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     const {
@@ -228,222 +30,43 @@ export async function getSpecies(req: Request, res: Response, next: NextFunction
       limit
     } = req.query;
 
-    const where: any = {};
-
-    // Multi-select or single filter for clade with normalization & aliasing
-    if (clade) {
-      const cladeList = Array.isArray(clade)
-        ? clade.map(c => String(c))
-        : (clade as string).split(',').map(c => c.trim());
-
-      const normalizedClades: string[] = [];
-      for (const item of cladeList) {
-        const key = item.toLowerCase().replace(/[\s\/-]+/g, '_');
-        const resolved = CLADE_CANONICAL_MAP[key] || CLADE_CANONICAL_MAP[item.toLowerCase()];
-        if (resolved && !normalizedClades.includes(resolved)) {
-          normalizedClades.push(resolved);
-        }
-      }
-
-      if (normalizedClades.length > 0) {
-        where.clade = { in: normalizedClades };
-      }
-    }
-
-    // Multi-select or single filter for diet
-    if (diet) {
-      const dietList = Array.isArray(diet)
-        ? diet.map(d => String(d).toLowerCase())
-        : (diet as string).split(',').map(d => d.trim().toLowerCase());
-      where.diet = { in: dietList };
-    }
-
-    // Multi-select or single filter for habitat
-    if (habitat) {
-      const habitatList = Array.isArray(habitat)
-        ? habitat.map(h => String(h).toLowerCase())
-        : (habitat as string).split(',').map(h => h.trim().toLowerCase());
-      where.habitat = { in: habitatList };
-    }
-
-    if (creature_type) {
-      const key = String(creature_type).toLowerCase().replace(/[\s\/-]+/g, '_');
-      const resolved = CLADE_CANONICAL_MAP[key] || CLADE_CANONICAL_MAP[String(creature_type).toLowerCase()];
-      if (resolved) {
-        where.clade = {
-          equals: resolved as any
-        };
-      }
-    }
-
-    if (fossil_formation || country || location) {
-      where.AND = where.AND || [];
-
-      if (fossil_formation) {
-        const rawFormation = (fossil_formation as string).trim();
-        const cleanFormation = rawFormation.replace(/\s+(Formation|Beds|Limestone|Group|Basin|Shale)$/i, '').trim();
-        const targetFormation = cleanFormation || rawFormation;
-
-        if (targetFormation.toLowerCase() === 'kota') {
-          // Disambiguate Kota Formation (India) from "South Dakota" / "North Dakota" (USA)
-          where.AND.push(
-            { geographicRange: { contains: 'Kota', mode: 'insensitive' } },
-            { NOT: { geographicRange: { contains: 'Dakota', mode: 'insensitive' } } }
-          );
-        } else {
-          where.AND.push({
-            geographicRange: { contains: targetFormation, mode: 'insensitive' }
-          });
-        }
-      }
-
-      if (country) {
-        where.AND.push({
-          geographicRange: { contains: country as string, mode: 'insensitive' }
-        });
-      }
-
-      if (location && !fossil_formation) {
-        where.AND.push({
-          geographicRange: { contains: location as string, mode: 'insensitive' }
-        });
-      }
-    }
-
-    if (time_period) {
-      where.timePeriod = {
-        contains: time_period as string,
-        mode: 'insensitive'
-      };
-    }
-
-    if (mya_start || mya_end) {
-      const startNum = parseFloat(mya_start as string || '1000');
-      const endNum = parseFloat(mya_end as string || '0');
-      // Species lived during selected timeframe if overlaps: myaEnd <= startNum AND myaStart >= endNum
-      where.myaEnd = { lte: startNum };
-      where.myaStart = { gte: endNum };
-    }
-
-    if (search) {
-      const searchStr = (search as string).trim();
-      where.OR = [
-        { name: { contains: searchStr, mode: 'insensitive' } },
-        { scientificName: { contains: searchStr, mode: 'insensitive' } },
-        { nameMeaning: { contains: searchStr, mode: 'insensitive' } },
-        { geographicRange: { contains: searchStr, mode: 'insensitive' } },
-        { taxonomy: { contains: searchStr, mode: 'insensitive' } }
-      ];
-    }
-
     const pageNum = parseInt(page as string, 10) || 1;
-    const limitNum = parseInt(limit as string, 10) || 50;
-    const skip = (pageNum - 1) * limitNum;
+    const limitNum = limit !== undefined ? parseInt(limit as string, 10) : 0;
+    const minL = min_length !== undefined ? parseFloat(min_length as string) : undefined;
+    const maxL = max_length !== undefined ? parseFloat(max_length as string) : undefined;
+    const myaStart = mya_start !== undefined ? parseFloat(mya_start as string) : undefined;
+    const myaEnd = mya_end !== undefined ? parseFloat(mya_end as string) : undefined;
 
-    const hasSearch = Boolean(search && (search as string).trim());
-    const hasLengthFilter = min_length !== undefined || max_length !== undefined;
-    const minL = min_length !== undefined ? parseFloat(min_length as string) : -Infinity;
-    const maxL = max_length !== undefined ? parseFloat(max_length as string) : Infinity;
+    const result = await speciesCache.querySpecies({
+      diet: diet as string,
+      habitat: habitat as string,
+      clade: (clade || creature_type) as string,
+      creature_type: creature_type as string,
+      location: location as string,
+      time_period: time_period as string,
+      fossil_formation: fossil_formation as string,
+      country: country as string,
+      min_length: minL,
+      max_length: maxL,
+      mya_start: myaStart,
+      mya_end: myaEnd,
+      search: search as string,
+      page: pageNum,
+      limit: limitNum
+    });
 
-    let total = 0;
-    let speciesList: any[] = [];
-
-    if (hasSearch || hasLengthFilter) {
-      // Query candidate species matching relational criteria
-      const rawList = await prisma.species.findMany({
-        where,
-        orderBy: { name: 'asc' }
-      });
-
-      let formattedList = rawList.map(formatSpeciesRecord);
-
-      // Apply high-precision word-boundary search filtering and relevance scoring
-      if (hasSearch) {
-        const searchStr = (search as string).trim();
-        const scored: { item: any; score: number }[] = [];
-        for (const s of formattedList) {
-          const evalRes = evaluateSearchMatch(s, searchStr);
-          if (evalRes.matched) {
-            scored.push({ item: s, score: evalRes.score });
-          }
-        }
-        scored.sort((a, b) => b.score - a.score || a.item.name.localeCompare(b.item.name));
-        formattedList = scored.map(s => s.item);
-      }
-
-      if (hasLengthFilter) {
-        formattedList = formattedList.filter(s => {
-          const len = s.lengthM;
-          if (len === null || len === undefined || isNaN(len)) return false;
-          return len >= minL && len <= maxL;
-        });
-      }
-
-      if (fossil_formation) {
-        const cleanQuery = (fossil_formation as string).toLowerCase().replace(/\s+(formation|beds|limestone|group|basin|shale)$/i, '').trim();
-        const directMatches: any[] = [];
-        const fallbackMatches: any[] = [];
-
-        formattedList.forEach(s => {
-          const form = (s.fossilFormation || s.geographicRange?.fossilFormation || '').toLowerCase();
-          const isDirect = form && (form.includes(cleanQuery) || cleanQuery.includes(form));
-          if (isDirect) {
-            directMatches.push({ ...s, isMapFallback: false });
-          } else {
-            fallbackMatches.push({ ...s, isMapFallback: true });
-          }
-        });
-
-        formattedList = [...directMatches, ...fallbackMatches];
-      }
-
-      total = formattedList.length;
-      speciesList = limit ? formattedList.slice(skip, skip + limitNum) : formattedList;
-    } else {
-      const [dbTotal, rawList] = await Promise.all([
-        prisma.species.count({ where }),
-        prisma.species.findMany({
-          where,
-          orderBy: { name: 'asc' },
-          skip: limit ? skip : undefined,
-          take: limit ? limitNum : undefined
-        })
-      ]);
-
-      total = dbTotal;
-      speciesList = rawList.map(formatSpeciesRecord);
-
-      if (fossil_formation) {
-        const cleanQuery = (fossil_formation as string).toLowerCase().replace(/\s+(formation|beds|limestone|group|basin|shale)$/i, '').trim();
-        const directMatches: any[] = [];
-        const fallbackMatches: any[] = [];
-
-        speciesList.forEach(s => {
-          const form = (s.fossilFormation || s.geographicRange?.fossilFormation || '').toLowerCase();
-          const isDirect = form && (form.includes(cleanQuery) || cleanQuery.includes(form));
-          if (isDirect) {
-            directMatches.push({ ...s, isMapFallback: false });
-          } else {
-            fallbackMatches.push({ ...s, isMapFallback: true });
-          }
-        });
-
-        speciesList = [...directMatches, ...fallbackMatches];
-      }
-    }
-
-    if (limit) {
+    if (limit !== undefined) {
       res.json({
-        data: speciesList,
+        data: result.data,
         pagination: {
-          total,
-          page: pageNum,
-          limit: limitNum,
-          totalPages: Math.ceil(total / limitNum)
+          total: result.total,
+          page: result.page,
+          limit: result.limit,
+          totalPages: result.totalPages
         }
       });
     } else {
-      res.json(speciesList);
+      res.json(result.data);
     }
   } catch (error) {
     next(error);
@@ -459,39 +82,8 @@ export async function searchAutocomplete(req: Request, res: Response, next: Next
       return;
     }
 
-    const searchStr = q.trim();
-
-    const matches = await prisma.species.findMany({
-      where: {
-        OR: [
-          { name: { contains: searchStr, mode: 'insensitive' } },
-          { scientificName: { contains: searchStr, mode: 'insensitive' } },
-          { geographicRange: { contains: searchStr, mode: 'insensitive' } }
-        ]
-      },
-      select: {
-        id: true,
-        name: true,
-        scientificName: true,
-        clade: true,
-        geographicRange: true,
-        taxonomy: true,
-        media: true
-      },
-      take: 25,
-      orderBy: { name: 'asc' }
-    });
-
-    const formattedMatches = matches.map(formatSpeciesRecord);
-    const scored: { item: any; score: number }[] = [];
-    for (const s of formattedMatches) {
-      const evalRes = evaluateSearchMatch(s, searchStr);
-      if (evalRes.matched) {
-        scored.push({ item: s, score: evalRes.score });
-      }
-    }
-    scored.sort((a, b) => b.score - a.score || a.item.name.localeCompare(b.item.name));
-    res.json(scored.slice(0, 8).map(s => s.item));
+    const matches = await speciesCache.autocomplete(q, 8);
+    res.json(matches);
   } catch (error) {
     next(error);
   }
@@ -500,93 +92,7 @@ export async function searchAutocomplete(req: Request, res: Response, next: Next
 // 2.5 GET /api/species/roster (Lightweight roster for search, selectors, and dropdowns)
 export async function getSpeciesRoster(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const rawList = await prisma.species.findMany({
-      select: {
-        id: true,
-        name: true,
-        scientificName: true,
-        clade: true,
-        timePeriod: true,
-        myaStart: true,
-        myaEnd: true,
-        taxonomy: true,
-        comparisonSilhouette: true,
-        diet: true,
-        habitat: true,
-        media: true,
-        geographicRange: true,
-        sizeEstimate: true
-      },
-      orderBy: { name: 'asc' }
-    });
-
-    const roster = rawList.map(s => {
-      let reconstructionImageUrl: string | null = null;
-      if (s.media) {
-        try {
-          const parsedMedia = parseJson(s.media, []);
-          if (Array.isArray(parsedMedia) && parsedMedia.length > 0) {
-            const artMedia = parsedMedia.find((m: any) => m.type === 'art' || m.type === 'life_reconstruction');
-            reconstructionImageUrl = artMedia?.url || null;
-          }
-        } catch {}
-      }
-
-      let silhouetteUrl: string | null = null;
-      if (s.comparisonSilhouette) {
-        try {
-          const sil = parseJson(s.comparisonSilhouette, {});
-          silhouetteUrl = sil?.url || null;
-        } catch {}
-      }
-
-      let parsedTaxonomy: any = null;
-      if (s.taxonomy) {
-        try {
-          parsedTaxonomy = parseJson(s.taxonomy, null);
-        } catch {}
-      }
-
-      let fossilFormation: string | null = null;
-      if (s.geographicRange) {
-        try {
-          const geo = parseJson(s.geographicRange, {});
-          fossilFormation = geo?.fossilFormation || null;
-        } catch {}
-      }
-
-      let lengthM: number | null = null;
-      let heightM: number | null = null;
-      let weightKg: number | null = null;
-      if (s.sizeEstimate) {
-        try {
-          const size = parseJson(s.sizeEstimate, {});
-          lengthM = size?.length?.value ?? null;
-          heightM = size?.height?.value ?? null;
-          weightKg = size?.weight?.value ?? null;
-        } catch {}
-      }
-
-      return {
-        id: s.id,
-        name: s.name,
-        scientificName: s.scientificName,
-        clade: s.clade,
-        timePeriod: s.timePeriod,
-        myaStart: s.myaStart,
-        myaEnd: s.myaEnd,
-        taxonomy: parsedTaxonomy,
-        silhouetteUrl,
-        diet: s.diet,
-        habitat: s.habitat,
-        fossilFormation,
-        reconstructionImageUrl,
-        lengthM,
-        heightM,
-        weightKg
-      };
-    });
-
+    const roster = await speciesCache.getRoster();
     res.json(roster);
   } catch (error) {
     next(error);
@@ -602,18 +108,12 @@ export async function compareSpecies(req: Request, res: Response, next: NextFunc
       return;
     }
 
-    const idList = idsParam.split(',').map(id => parseInt(id.trim(), 10)).filter(id => !isNaN(id));
+    const idList = idsParam
+      .split(',')
+      .map(id => parseInt(id.trim(), 10))
+      .filter(id => !isNaN(id));
 
-    const rawMatches = await prisma.species.findMany({
-      where: { id: { in: idList } }
-    });
-
-    const speciesList = rawMatches.map(formatSpeciesRecord);
-
-    // Ensure order matches the requested idList
-    const speciesMap = new Map(speciesList.map(s => [s.id, s]));
-    const orderedList = idList.map(id => speciesMap.get(id)).filter(Boolean);
-
+    const orderedList = await speciesCache.compare(idList);
     res.json(orderedList);
   } catch (error) {
     next(error);
@@ -631,78 +131,17 @@ export async function getSpeciesById(req: Request, res: Response, next: NextFunc
       return;
     }
 
-    const rawSpecies = await prisma.species.findUnique({
-      where: { id: speciesId }
-    });
+    const result = await speciesCache.getById(speciesId);
 
-    if (!rawSpecies) {
+    if (!result) {
       res.status(404).json({ error: 'Species not found' });
       return;
     }
 
-    const species = formatSpeciesRecord(rawSpecies);
-
-    // Query coexisting species prioritizing exact formation match first, then era/country, then clade
-    const targetFormation = species.fossilFormation || species.geographicRange?.fossilFormation || null;
-    const targetCountry = species.country || species.geographicRange?.country || null;
-    const targetPeriod = rawSpecies.timePeriod;
-
-    const coexistingCandidates = await prisma.species.findMany({
-      where: { id: { not: speciesId } },
-      orderBy: { name: 'asc' }
-    });
-
-    const formattedCandidates = coexistingCandidates.map(formatSpeciesRecord);
-
-    const formationMatches: any[] = [];
-    const eraRegionMatches: any[] = [];
-    const cladeMatches: any[] = [];
-    const seenIds = new Set<number>();
-
-    formattedCandidates.forEach(cand => {
-      const candForm = cand.fossilFormation || cand.geographicRange?.fossilFormation || '';
-      const candCountry = cand.country || cand.geographicRange?.country || '';
-
-      // Clean formation matching
-      let isSameFormation = false;
-      if (targetFormation && candForm) {
-        const cleanT = targetFormation.toLowerCase().replace(/\s+(formation|beds|group|shale|limestone)$/i, '').trim();
-        const cleanC = candForm.toLowerCase().replace(/\s+(formation|beds|group|shale|limestone)$/i, '').trim();
-        if (cleanT && cleanC && (cleanT.includes(cleanC) || cleanC.includes(cleanT))) {
-          isSameFormation = true;
-        }
-      }
-
-      if (isSameFormation) {
-        formationMatches.push({ ...cand, coexistSignal: 'formation' });
-        seenIds.add(cand.id);
-      } else if (targetPeriod && cand.timePeriod && cand.timePeriod === targetPeriod && (candCountry && targetCountry && candCountry.toLowerCase() === targetCountry.toLowerCase())) {
-        if (!seenIds.has(cand.id)) {
-          eraRegionMatches.push({ ...cand, coexistSignal: 'era_region' });
-          seenIds.add(cand.id);
-        }
-      } else if (cand.clade === rawSpecies.clade) {
-        if (!seenIds.has(cand.id)) {
-          cladeMatches.push({ ...cand, coexistSignal: 'clade' });
-          seenIds.add(cand.id);
-        }
-      }
-    });
-
-    const relatedList = [...formationMatches, ...eraRegionMatches, ...cladeMatches].slice(0, 6);
-
-    // Compute exact catalog page in default catalog roster (name ascending, limit 12)
-    const precedingCount = await prisma.species.count({
-      where: {
-        name: { lt: rawSpecies.name }
-      }
-    });
-    const catalogPage = Math.floor(precedingCount / 12) + 1;
-
     const responseData = {
-      ...species,
-      catalogPage,
-      relatedSpecies: relatedList,
+      ...result.species,
+      catalogPage: result.catalogPage,
+      relatedSpecies: result.relatedSpecies
     };
 
     res.json(responseData);
@@ -711,48 +150,38 @@ export async function getSpeciesById(req: Request, res: Response, next: NextFunc
   }
 }
 
-let cachedDailyCreature: { dateStr: string; data: any } | null = null;
-
 // 5. GET /api/species/creature-of-the-day
 export async function getCreatureOfTheDay(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const todayStr = new Date().toISOString().split('T')[0];
-    if (cachedDailyCreature && cachedDailyCreature.dateStr === todayStr) {
-      res.json(cachedDailyCreature.data);
-      return;
-    }
+    const daily = await speciesCache.getCreatureOfTheDay();
 
-    const allSpecies = await prisma.species.findMany({
-      select: { id: true },
-      orderBy: { id: 'asc' },
-    });
-
-    if (allSpecies.length === 0) {
+    if (!daily) {
       res.status(404).json({ error: 'No species found in database' });
       return;
     }
 
-    // Determine day index using UTC midnight timestamp
-    const now = new Date();
-    const utcYear = now.getUTCFullYear();
-    const utcMonth = now.getUTCMonth();
-    const utcDate = now.getUTCDate();
-
-    const timestamp = Date.UTC(utcYear, utcMonth, utcDate);
-    const daysSinceEpoch = Math.floor(timestamp / (1000 * 60 * 60 * 24));
-
-    const index = daysSinceEpoch % allSpecies.length;
-    const dailyId = allSpecies[index].id;
-
-    const dailyCreature = await prisma.species.findUnique({
-      where: { id: dailyId },
-    });
-
-    const formatted = formatSpeciesRecord(dailyCreature);
-    cachedDailyCreature = { dateStr: todayStr, data: formatted };
-    res.json(formatted);
+    res.json(daily);
   } catch (error) {
     next(error);
   }
 }
 
+// 6. POST /api/species/cache/refresh (Curatorial invalidation and reload hook)
+export async function refreshCache(req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
+    const count = await speciesCache.refresh();
+    res.json({
+      status: 'ok',
+      message: 'In-memory species cache successfully refreshed',
+      totalCached: count,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
+// 7. GET /api/species/cache/stats (Cache telemetry)
+export async function getCacheStats(req: Request, res: Response): Promise<void> {
+  res.json(speciesCache.getStats());
+}

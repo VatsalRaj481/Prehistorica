@@ -3,6 +3,10 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+let cachedExtinctions: any[] | null = null;
+let cachedClimateCurves: any[] | null = null;
+const slugCache = new Map<string, any>();
+
 function formatExtinctionEvent(ext: any) {
   if (!ext) return ext;
   return {
@@ -18,16 +22,25 @@ function formatExtinctionEvent(ext: any) {
 
 /**
  * GET /api/extinctions
- * Returns all Big Five mass extinction events from PostgreSQL,
- * ordered chronologically from oldest (End-Ordovician) to youngest (K-Pg).
+ * Returns all Big Five mass extinction events from in-memory cache / PostgreSQL.
  */
 export async function getExtinctions(req: Request, res: Response) {
   try {
+    if (cachedExtinctions) {
+      res.json({
+        success: true,
+        count: cachedExtinctions.length,
+        data: cachedExtinctions,
+      });
+      return;
+    }
+
     const extinctions = await prisma.extinctionEvent.findMany({
       orderBy: { peakAgeMa: 'desc' },
     });
 
     const formatted = extinctions.map(formatExtinctionEvent);
+    cachedExtinctions = formatted;
 
     res.json({
       success: true,
@@ -35,7 +48,7 @@ export async function getExtinctions(req: Request, res: Response) {
       data: formatted,
     });
   } catch (error: any) {
-    console.error('Error fetching extinction events from PostgreSQL:', error);
+    console.error('Error fetching extinction events:', error);
     res.status(500).json({
       success: false,
       error: 'Failed to retrieve mass extinction events from database.',
@@ -46,12 +59,19 @@ export async function getExtinctions(req: Request, res: Response) {
 
 /**
  * GET /api/extinctions/:slug
- * Returns a specific extinction event by slug (e.g. 'end-permian', 'k-pg')
- * with matching museum species from that boundary.
+ * Returns a specific extinction event by slug with boundary species.
  */
 export async function getExtinctionBySlug(req: Request, res: Response) {
   try {
     const { slug } = req.params;
+
+    if (slugCache.has(slug)) {
+      res.json({
+        success: true,
+        data: slugCache.get(slug),
+      });
+      return;
+    }
 
     const extinction = await prisma.extinctionEvent.findUnique({
       where: { slug },
@@ -64,7 +84,7 @@ export async function getExtinctionBySlug(req: Request, res: Response) {
       });
     }
 
-    // Query species existing around this crisis boundary (+/- 5 Ma)
+    // Query species existing around this crisis boundary (+/- 6 Ma)
     const boundarySpecies = await prisma.species.findMany({
       where: {
         AND: [
@@ -89,12 +109,15 @@ export async function getExtinctionBySlug(req: Request, res: Response) {
       take: 8,
     });
 
+    const payload = {
+      ...formatExtinctionEvent(extinction),
+      boundarySpecies,
+    };
+    slugCache.set(slug, payload);
+
     res.json({
       success: true,
-      data: {
-        ...formatExtinctionEvent(extinction),
-        boundarySpecies,
-      },
+      data: payload,
     });
   } catch (error: any) {
     console.error(`Error fetching extinction event ${req.params.slug}:`, error);
@@ -108,13 +131,24 @@ export async function getExtinctionBySlug(req: Request, res: Response) {
 
 /**
  * GET /api/climate-curves
- * Returns all Phanerozoic geochemical data points (541 Ma to 0 Ma) from PostgreSQL.
+ * Returns all Phanerozoic geochemical data points (541 Ma to 0 Ma) from in-memory cache / PostgreSQL.
  */
 export async function getPaleoclimateCurves(req: Request, res: Response) {
   try {
+    if (cachedClimateCurves) {
+      res.json({
+        success: true,
+        count: cachedClimateCurves.length,
+        data: cachedClimateCurves,
+      });
+      return;
+    }
+
     const points = await prisma.paleoclimatePoint.findMany({
       orderBy: { ageMa: 'desc' },
     });
+
+    cachedClimateCurves = points;
 
     res.json({
       success: true,
@@ -122,7 +156,7 @@ export async function getPaleoclimateCurves(req: Request, res: Response) {
       data: points,
     });
   } catch (error: any) {
-    console.error('Error fetching paleoclimate curves from PostgreSQL:', error);
+    console.error('Error fetching paleoclimate curves:', error);
     res.status(500).json({
       success: false,
       error: 'Failed to retrieve paleoclimate data from database.',

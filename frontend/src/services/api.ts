@@ -216,37 +216,98 @@ export async function fetchSpecies(filters?: {
   if (filters?.page) params.append('page', filters.page.toString());
   if (filters?.limit) params.append('limit', filters.limit.toString());
 
-  const url = `${API_BASE}/species?${params.toString()}`;
+  const cacheKey = params.toString();
+  if (speciesQueryCache.has(cacheKey)) {
+    return speciesQueryCache.get(cacheKey)!;
+  }
+
+  const url = `${API_BASE}/species?${cacheKey}`;
   const response = await fetchWithRetry(url);
   if (!response.ok) {
     throw new Error('Failed to fetch species');
   }
-  return response.json();
+  const data = await response.json();
+
+  // Populate individual species detail cache from the page items
+  const items = Array.isArray(data) ? data : data?.data;
+  if (Array.isArray(items)) {
+    for (const item of items) {
+      if (item && item.id && !speciesDetailCache.has(item.id)) {
+        speciesDetailCache.set(item.id, item);
+      }
+    }
+  }
+
+  speciesQueryCache.set(cacheKey, data);
+  return data;
 }
 
+// Client-side in-memory cache stores
+const speciesDetailCache = new Map<number, Species>();
+const speciesQueryCache = new Map<string, Species[] | PaginatedSpeciesResponse>();
+const autocompleteCache = new Map<string, AutocompleteItem[]>();
+let creatureOfTheDayCache: { dateStr: string; data: Species } | null = null;
+
 export async function fetchSpeciesById(id: number): Promise<Species> {
+  if (speciesDetailCache.has(id)) {
+    const cached = speciesDetailCache.get(id)!;
+    // If it's a full record with interestingFacts / relatedSpecies, return immediately
+    if (cached.interestingFacts && cached.taxonomy) {
+      return cached;
+    }
+  }
+
   const response = await fetchWithRetry(`${API_BASE}/species/${id}`);
   if (!response.ok) {
     throw new Error(`Failed to fetch species with id ${id}`);
   }
-  return response.json();
+  const data = await response.json();
+  speciesDetailCache.set(id, data);
+  return data;
 }
 
 export async function fetchCreatureOfTheDay(): Promise<Species> {
+  const todayStr = new Date().toISOString().split('T')[0];
+  if (creatureOfTheDayCache && creatureOfTheDayCache.dateStr === todayStr) {
+    return creatureOfTheDayCache.data;
+  }
+
   const response = await fetchWithRetry(`${API_BASE}/species/creature-of-the-day`);
   if (!response.ok) {
     throw new Error('Failed to fetch creature of the day');
   }
-  return response.json();
+  const data = await response.json();
+  creatureOfTheDayCache = { dateStr: todayStr, data };
+  return data;
 }
 
 export async function fetchSpeciesAutocomplete(q: string): Promise<AutocompleteItem[]> {
-  if (!q || q.trim().length < 2) return [];
-  const response = await fetchWithRetry(`${API_BASE}/species/search/autocomplete?q=${encodeURIComponent(q.trim())}`);
+  const clean = (q || '').trim().toLowerCase();
+  if (!clean || clean.length < 2) return [];
+
+  if (autocompleteCache.has(clean)) {
+    return autocompleteCache.get(clean)!;
+  }
+
+  const response = await fetchWithRetry(`${API_BASE}/species/search/autocomplete?q=${encodeURIComponent(clean)}`);
   if (!response.ok) {
     throw new Error('Failed to fetch search autocomplete suggestions');
   }
-  return response.json();
+  const data = await response.json();
+  autocompleteCache.set(clean, data);
+  return data;
+}
+
+export function clearClientCache(): void {
+  speciesDetailCache.clear();
+  speciesQueryCache.clear();
+  autocompleteCache.clear();
+  creatureOfTheDayCache = null;
+  extinctionsCache = null;
+  climateCurvesCache = null;
+  extinctionSlugCache.clear();
+  rosterCache = null;
+  rosterPromise = null;
 }
 
 export interface SpeciesRosterItem {
@@ -641,13 +702,20 @@ function normalizeExtinctionEvent(e: any): any {
   };
 }
 
+let extinctionsCache: any[] | null = null;
+const extinctionSlugCache = new Map<string, any>();
+let climateCurvesCache: any[] | null = null;
+
 export async function fetchExtinctionEvents(): Promise<any[]> {
+  if (extinctionsCache) return extinctionsCache;
   try {
     const res = await fetchWithRetry(`${API_BASE}/extinctions`);
     if (!res.ok) throw new Error('Failed to fetch extinction events from database');
     const json = await res.json();
     const rawList = Array.isArray(json.data) ? json.data : [];
-    return rawList.map(normalizeExtinctionEvent);
+    const formatted = rawList.map(normalizeExtinctionEvent);
+    extinctionsCache = formatted;
+    return formatted;
   } catch (err) {
     console.warn('Live extinction events fetch failed, using curatorial baseline:', err);
     return [];
@@ -655,18 +723,26 @@ export async function fetchExtinctionEvents(): Promise<any[]> {
 }
 
 export async function fetchExtinctionBySlug(slug: string): Promise<any> {
+  if (extinctionSlugCache.has(slug)) {
+    return extinctionSlugCache.get(slug);
+  }
   const res = await fetchWithRetry(`${API_BASE}/extinctions/${encodeURIComponent(slug)}`);
   if (!res.ok) throw new Error(`Failed to fetch extinction event for ${slug}`);
   const json = await res.json();
-  return normalizeExtinctionEvent(json.data);
+  const formatted = normalizeExtinctionEvent(json.data);
+  extinctionSlugCache.set(slug, formatted);
+  return formatted;
 }
 
 export async function fetchPaleoclimateCurves(): Promise<any[]> {
+  if (climateCurvesCache) return climateCurvesCache;
   try {
     const res = await fetchWithRetry(`${API_BASE}/climate-curves`);
     if (!res.ok) throw new Error('Failed to fetch climate curves from database');
     const json = await res.json();
-    return json.data || [];
+    const data = json.data || [];
+    climateCurvesCache = data;
+    return data;
   } catch (err) {
     console.warn('Live paleoclimate curves fetch failed, using curatorial baseline:', err);
     return [];
