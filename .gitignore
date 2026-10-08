@@ -61,5 +61,9 @@ backend/scripts/calc_*.cjs
 backend/scripts/check_*.cjs
 backend/scripts/fix_test.cjs
 
-# Local Project Design Documentation (kept local, do not push)
+# Local Project Design Documentation & Agent Guidelines (kept local, do not push)
 design.md
+AGENTS.md
+
+# Audit & Diagnostic Documentation (strictly kept local)
+docs/audits/
