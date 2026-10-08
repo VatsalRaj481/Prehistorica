@@ -216,7 +216,7 @@ flowchart LR
    - Parallel jobs compile backend TypeScript (`tsc --noEmit`), generate Prisma models, and verify the frontend production build (`vite build`).
 2. **Continuous Deployment (CD)**:
    - **Frontend**: Hosted on **Vercel** with global Edge CDN caching and SPA client-side routing (`frontend/vercel.json`).
-   - **Backend**: Hosted on **Render** as a high-performance Node Web Service configured with zero-downtime rolling deploys via [`render.yaml`](render.yaml).
+   - **Backend**: Hosted on **Render** as a high-performance Node Web Service configured with zero-downtime rolling deploys.
 
 ---
 
@@ -385,7 +385,6 @@ Prehistorica/
 │   ├── package-lock.json
 │   ├── vercel.json                        # Vercel SPA routing rewrites
 │   └── vite.config.ts
-├── render.yaml                            # Render Blueprint backend CD configuration
 ├── README.md                              # Complete architectural documentation
 └── .gitignore
 ```
