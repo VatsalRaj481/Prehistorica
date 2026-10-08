@@ -4,6 +4,19 @@
   <h3>The Modern Museum Pavilion Encyclopedia & AI Research Pavilion</h3>
   <p><strong>A premium, full-stack, architectural digital museum dedicated to cataloging, visualizing, and researching Earth's prehistoric fauna with grounded AI.</strong></p>
   <p><em>Spanning 540 million years of natural history across 801 verified species, 31 global fossil formations, the Big Five mass extinctions, and 10 geologic eras.</em></p>
+
+  <p>
+    <a href="https://github.com/VatsalRaj481/Prehistorica/actions/workflows/ci.yml">
+      <img src="https://github.com/VatsalRaj481/Prehistorica/actions/workflows/ci.yml/badge.svg" alt="CI Verification Status" />
+    </a>
+    <img src="https://img.shields.io/badge/Cataloged%20Species-801-amber.svg" alt="801 Species" />
+    <img src="https://img.shields.io/badge/Mass%20Extinctions-Big%20Five-crimson.svg" alt="Big Five Extinctions" />
+    <img src="https://img.shields.io/badge/Frontend-Vercel-black.svg?logo=vercel" alt="Vercel Deployment" />
+    <img src="https://img.shields.io/badge/Backend-Render-46E3B7.svg?logo=render" alt="Render Deployment" />
+    <a href="https://opensource.org/licenses/MIT">
+      <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT" />
+    </a>
+  </p>
 </div>
 
 ---
@@ -85,19 +98,6 @@ Prehistorica integrates five high-impact AI capabilities specifically designed f
 - **Environmental Stressor Simulation**: Interactive collapse testing under four scenarios: *Baseline Equilibrium*, *Marine Regression & Megadrought*, *Flood Basalt Volcanism*, and *Hyperthermal Spike*.
 - **Cached Architecture**: Caches synthesized food webs in `BiomeFoodWebCache` for instant zero-token repeat loads.
 - **Access**: In **Time-Map** (`/timemap`), select any formation pin and click **"Food Web (AI)"**.
-
----
-
-## ⚡ Free-Tier Engineering & Reliability Architecture
-
-All five AI features are engineered to run comfortably within Google's **Free Gemini API tier**:
-
-1. **pgvector Search Offloading**: The Natural Query Engine uses `gemini-embedding-2` (high RPM limits), entirely bypassing LLM generation quota.
-2. **Persistent Database Caching**: Runway matchups and formation food webs are stored in PostgreSQL on first run; subsequent visitor visits consume **0 tokens**.
-3. **Deterministic Chronology Guard**: Temporal coexistence is evaluated programmatically; anachronistic encounters are flagged before calling the AI.
-4. **Resilient Model Cascade**: If high-demand spikes cause transient 503 errors on the primary model, requests automatically cascade across `['gemini-3.5-flash-lite', 'gemini-3-flash-preview', 'gemini-flash-latest']` with exponential backoff.
-5. **Dual-Stack DNS Optimization**: Configured `dns.setDefaultResultOrder('ipv4first')` to eliminate Windows Node.js dual-stack IPv6 latency.
-6. **Express Rate Limiting**: Enforces 12 RPM per IP on LLM generation and 40 RPM on embeddings to protect against quota exhaustion.
 
 ---
 
@@ -187,6 +187,39 @@ All five AI features are engineered to run comfortably within Google's **Free Ge
 
 ---
 
+## 🌐 SEO, Crawlability & Google Search Console
+
+Prehistorica is fully optimized for organic search indexation across all major search engines:
+
+- **Robots Directives (`frontend/public/robots.txt`)**: Allows search engine crawlers across all public wings while blocking private API paths.
+- **Complete XML Sitemap (`frontend/public/sitemap.xml`)**: Indexes all **809 URLs** (all 8 primary museum pavilions and all 801 individual species exhibit pages with prioritized weights and change frequencies).
+- **Automated Re-Indexing Tool (`backend/scripts/generate-sitemap.cjs`)**: Automatically re-indexes the master JSON dataset and regenerates `sitemap.xml` whenever new species are curated or modified.
+
+---
+
+## 🚀 CI/CD & Production Deployment Architecture
+
+Prehistorica operates on an automated **Continuous Integration & Continuous Deployment** loop:
+
+```mermaid
+flowchart LR
+    GitPush[git push origin main] --> CI[GitHub Actions CI]
+    CI -->|Quality Gate Passed| CD_Vercel[Vercel: Frontend CD]
+    CI -->|Quality Gate Passed| CD_Render[Render: Backend CD]
+    CD_Vercel --> LiveApp[Live Web Application]
+    CD_Render --> LiveApp
+```
+
+1. **Continuous Integration (GitHub Actions)**:
+   - Configured in [`.github/workflows/ci.yml`](.github/workflows/ci.yml).
+   - Automatically runs on every push and pull request to `main`.
+   - Parallel jobs compile backend TypeScript (`tsc --noEmit`), generate Prisma models, and verify the frontend production build (`vite build`).
+2. **Continuous Deployment (CD)**:
+   - **Frontend**: Hosted on **Vercel** with global Edge CDN caching and SPA client-side routing (`frontend/vercel.json`).
+   - **Backend**: Hosted on **Render** as a high-performance Node Web Service configured with zero-downtime rolling deploys via [`render.yaml`](render.yaml).
+
+---
+
 ## 🛠️ Technology Stack
 
 | Layer | Technologies Used |
@@ -200,7 +233,8 @@ All five AI features are engineered to run comfortably within Google's **Free Ge
 | **Vector Database** | PostgreSQL `pgvector` (Cosine distance `<=>`, HNSW index) |
 | **Backend API** | Node.js, Express, TypeScript, Zod Schema Validator, Express Rate Limit |
 | **Database & ORM** | PostgreSQL, Prisma ORM, Supabase Object Storage |
-| **Security & RLS** | PostgreSQL Row-Level Security (RLS), Service Role Bypass |
+| **Hosting & CI/CD** | GitHub Actions (CI), Vercel (Frontend CD), Render (Backend CD) |
+| **SEO & Crawlability** | `robots.txt`, `sitemap.xml` (809 indexed URLs) |
 
 ---
 
@@ -271,6 +305,9 @@ npm run safeguard:check
 # Run end-to-end cache benchmark and revalidation test
 npx tsx scripts/verify-cache-performance.ts
 
+# Regenerate complete SEO sitemap for all 801 species
+node scripts/generate-sitemap.cjs
+
 # Run end-to-end verification of all 5 AI features
 npx tsx scripts/verify-ai-features.ts
 ```
@@ -281,6 +318,9 @@ npx tsx scripts/verify-ai-features.ts
 
 ```text
 Prehistorica/
+├── .github/
+│   └── workflows/
+│       └── ci.yml                         # Automated GitHub Actions CI pipeline
 ├── backend/
 │   ├── prisma/
 │   │   ├── schema.prisma                  # Database schema & RLS definitions
@@ -294,6 +334,7 @@ Prehistorica/
 │   │   ├── add-species.ts                 # Ingestion CLI with duplicate rejection & safeguard checks
 │   │   ├── verify-no-regression.ts        # Anti-regression snapshot & verification engine
 │   │   ├── verify-cache-performance.ts    # Cache benchmark & auto-revalidation suite
+│   │   ├── generate-sitemap.cjs           # XML sitemap generator indexing all 801 specimens
 │   │   ├── init-ai-tables.ts              # pgvector & AI auxiliary table initialization
 │   │   ├── embed-all-species.ts           # Vector projection of all species into pgvector
 │   │   ├── verify-ai-features.ts          # Automated end-to-end AI feature verification
@@ -313,9 +354,14 @@ Prehistorica/
 │   │   │   └── vectorStore.ts             # pgvector cosine similarity search
 │   │   └── routes/                        # API route endpoints
 │   ├── package.json
+│   ├── package-lock.json
 │   └── tsconfig.json
 ├── frontend/
-│   ├── public/                            # High-DPI Logo, Multi-size Favicons & SVGs
+│   ├── public/
+│   │   ├── robots.txt                     # Search engine crawler instructions
+│   │   ├── sitemap.xml                    # 809-URL sitemap indexing all species & pavilions
+│   │   ├── logo.png                       # High-DPI Museum Crest
+│   │   └── favicons & badges              # Multi-size favicons & Rajy expressions
 │   ├── src/
 │   │   ├── components/
 │   │   │   ├── ChiefCuratorModal.tsx      # RAG docent modal with speech synthesis & exhibit links
@@ -336,7 +382,10 @@ Prehistorica/
 │   │   ├── App.tsx
 │   │   └── main.tsx
 │   ├── package.json
+│   ├── package-lock.json
+│   ├── vercel.json                        # Vercel SPA routing rewrites
 │   └── vite.config.ts
+├── render.yaml                            # Render Blueprint backend CD configuration
 ├── README.md                              # Complete architectural documentation
 └── .gitignore
 ```
