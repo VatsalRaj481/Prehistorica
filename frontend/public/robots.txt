@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Disallow internal API routes
+Disallow: /api/
+
+# Host and Sitemap locations
+Sitemap: https://prehistorica.vercel.app/sitemap.xml
