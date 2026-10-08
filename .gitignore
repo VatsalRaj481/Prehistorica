@@ -42,9 +42,10 @@ Thumbs.db
 # Temporary / diagnostic / expansion helper scripts and dumps in backend
 backend/*.js
 backend/*.json
-backend/backups/
+!backend/package-lock.json
 !backend/scripts/species-template.json
 backend/species_names_audit.txt
+backend/backups/
 
 # Audit & Migration Reports & Snapshots (strictly kept local, never committed to remote)
 backend/reports/
