@@ -77,6 +77,23 @@ export default function CaliperRunway() {
   const [stageScale, setStageScale] = useState<number>(23);
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
   const [isMatchupOpen, setIsMatchupOpen] = useState(false);
+  const [activePresetName, setActivePresetName] = useState<string | null>(null);
+
+  // Helper to detect if a species list matches an existing preset
+  const findMatchingPreset = (speciesList: Species[]) => {
+    if (speciesList.length === 0) return null;
+    return (
+      PRESETS.find((p) => {
+        if (p.speciesNames.length !== speciesList.length) return false;
+        return p.speciesNames.every((target) => {
+          const lower = target.toLowerCase();
+          return speciesList.some(
+            (s) => s.name.toLowerCase().includes(lower) || s.scientificName.toLowerCase().includes(lower)
+          );
+        });
+      }) || null
+    );
+  };
 
   // 1. Load full roster for search
   useEffect(() => {
@@ -101,6 +118,8 @@ export default function CaliperRunway() {
         fetchSpeciesCompare(ids)
           .then((data) => {
             setSelectedSpecies(data);
+            const match = findMatchingPreset(data);
+            setActivePresetName(match ? match.name : null);
             setLoading(false);
           })
           .catch((err) => {
@@ -127,6 +146,7 @@ export default function CaliperRunway() {
   };
 
   const loadPreset = async (preset: PresetLineup) => {
+    setActivePresetName(preset.name);
     setLoading(true);
     const matchedIds: number[] = [];
 
@@ -165,6 +185,8 @@ export default function CaliperRunway() {
     setLoading(true);
     setIsSelectorOpen(false);
     setRosterSearch('');
+    // Adding any new species invalidates the active preset
+    setActivePresetName(null);
 
     try {
       const [full] = await fetchSpeciesCompare([rosterItem.id]);
@@ -184,6 +206,8 @@ export default function CaliperRunway() {
     const updated = selectedSpecies.filter((_, i) => i !== index);
     setSelectedSpecies(updated);
     updateUrlIds(updated);
+    // Removing any species invalidates the active preset
+    setActivePresetName(null);
     if (highlightedIndex === index) setHighlightedIndex(null);
   };
 
@@ -380,15 +404,23 @@ export default function CaliperRunway() {
           </span>
           <ClickSpark sparkColor="#F59E0B">
             <div className="flex flex-wrap items-center gap-2">
-              {PRESETS.map((p) => (
-                <button
-                  key={p.name}
-                  onClick={() => loadPreset(p)}
-                  className="px-3 py-1 rounded-md bg-slate-900 hover:bg-slate-850 border border-white/[0.08] hover:border-amber-500/40 text-slate-300 hover:text-white uppercase tracking-wider text-[11px] transition-colors cursor-pointer"
-                >
-                  {p.name}
-                </button>
-              ))}
+              {PRESETS.map((p) => {
+                const isActive = activePresetName === p.name;
+                return (
+                  <button
+                    key={p.name}
+                    onClick={() => loadPreset(p)}
+                    className={`px-3 py-1.5 rounded-md uppercase tracking-wider text-[11px] transition-all cursor-pointer font-bold flex items-center gap-1.5 ${
+                      isActive
+                        ? 'bg-amber-500 text-slate-950 border border-amber-400 shadow-md shadow-amber-500/25 ring-1 ring-amber-400/50 scale-[1.02]'
+                        : 'bg-slate-900 hover:bg-slate-850 border border-white/[0.08] hover:border-amber-500/40 text-slate-300 hover:text-white'
+                    }`}
+                  >
+                    {isActive && <span className="w-1.5 h-1.5 rounded-full bg-slate-950 animate-pulse" />}
+                    {p.name}
+                  </button>
+                );
+              })}
             </div>
           </ClickSpark>
         </div>

@@ -21,18 +21,22 @@ export default function SpeciesDetail() {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
-  // Preserve filter/search state when returning to the catalog index, or navigate to exact catalog page
+  // Preserve filter/search state when returning to the catalog index, or navigate to exact catalog page / Time-Map
   const stateFrom = (location.state as any)?.from;
+  const isFromTimeMap = stateFrom && (stateFrom === '/map' || stateFrom.startsWith('/map'));
   const storedState = typeof window !== 'undefined' ? sessionStorage.getItem('prehistorica_browse_state') : null;
   const hasSpecificCatalogReferrer = stateFrom && stateFrom.startsWith('/browse') && stateFrom !== '/browse' && stateFrom !== '/browse?page=1';
   const exactSpeciesCatalogUrl = species?.catalogPage
     ? `/browse?page=${species.catalogPage}#specimen-${species.id}`
     : '/browse';
-  const catalogReturnUrl = hasSpecificCatalogReferrer
+  const catalogReturnUrl = isFromTimeMap
+    ? '/map'
+    : hasSpecificCatalogReferrer
     ? stateFrom
     : (storedState && storedState !== '/browse' && storedState !== '/browse?page=1')
     ? storedState
     : exactSpeciesCatalogUrl;
+  const returnLabel = isFromTimeMap ? 'Time-Map Pavilion' : 'Catalog Index';
 
   useEffect(() => {
     if (!id) return;
@@ -88,7 +92,7 @@ export default function SpeciesDetail() {
           to={catalogReturnUrl}
           className="mt-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-850 text-amber-400 text-xs font-mono font-bold uppercase tracking-wider rounded-lg border border-white/[0.08] transition-colors flex items-center gap-2"
         >
-          <ArrowLeft className="h-4 w-4" /> Return to Catalog Index
+          <ArrowLeft className="h-4 w-4" /> Return to {returnLabel}
         </Link>
       </div>
     );
@@ -106,12 +110,12 @@ export default function SpeciesDetail() {
         <div className="flex items-center gap-4 text-xs text-slate-400">
           <Link
             to={catalogReturnUrl}
-            title={species.catalogPage ? `Return to Catalog Index (Page ${species.catalogPage})` : 'Return to Catalog Index'}
+            title={isFromTimeMap ? 'Return to Time-Map Pavilion' : (species.catalogPage ? `Return to Catalog Index (Page ${species.catalogPage})` : 'Return to Catalog Index')}
             className="inline-flex items-center gap-2 text-slate-300 hover:text-amber-400 transition-colors font-bold uppercase tracking-wider group"
           >
             <ArrowLeft className="h-4 w-4 text-amber-400 group-hover:-translate-x-0.5 transition-transform" />
-            <span>Catalog Index</span>
-            {species.catalogPage && (
+            <span>{returnLabel}</span>
+            {!isFromTimeMap && species.catalogPage && (
               <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-900 border border-white/10 text-amber-400/90 group-hover:border-amber-400/40 transition-colors">
                 Page {species.catalogPage}
               </span>
@@ -173,7 +177,15 @@ export default function SpeciesDetail() {
               {species.taxonomicStatus && (
                 <>
                   <span className="text-slate-600">&bull;</span>
-                  <span className="text-slate-400">{formatEnumLabel(species.taxonomicStatus)}</span>
+                  <span className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider ${
+                    species.taxonomicStatus === 'disputed'
+                      ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
+                      : species.taxonomicStatus === 'nomen_dubium'
+                      ? 'bg-rose-500/15 text-rose-300 border border-rose-500/30'
+                      : 'text-slate-400'
+                  }`}>
+                    {species.taxonomicStatus === 'nomen_dubium' ? 'Nomen Dubium / Lost Holotype' : formatEnumLabel(species.taxonomicStatus)}
+                  </span>
                 </>
               )}
             </div>
@@ -204,6 +216,34 @@ export default function SpeciesDetail() {
               >
                 <span className="text-slate-500 font-medium mr-1.5">Etymology &amp; translation:</span> &ldquo;{species.nameMeaning}&rdquo;
               </motion.p>
+            )}
+
+            {species.taxonomicStatus === 'disputed' && (
+              <div className="p-3.5 rounded-lg bg-amber-950/20 border border-amber-500/30 text-amber-200/90 text-xs font-sans flex items-start gap-3 mt-3">
+                <AlertCircle className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <strong className="font-mono uppercase text-[11px] tracking-wider text-amber-400 block">
+                    Curatorial Advisory • Contested Taxonomic Validity
+                  </strong>
+                  <p className="leading-relaxed text-slate-300 text-[11px]">
+                    The generic distinction of this specimen is subject to ongoing debate in vertebrate paleontology. While substantial diagnostic fossils exist, several specialists consider the taxon congeneric with closely allied genera or an exceptionally gigantic individual of an existing species.
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {species.taxonomicStatus === 'nomen_dubium' && (
+              <div className="p-3.5 rounded-lg bg-rose-950/20 border border-rose-500/30 text-rose-200/90 text-xs font-sans flex items-start gap-3 mt-3">
+                <AlertCircle className="h-4 w-4 text-rose-400 shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <strong className="font-mono uppercase text-[11px] tracking-wider text-rose-400 block">
+                    Curatorial Advisory • Nomen Dubium / Lost Physical Holotype
+                  </strong>
+                  <p className="leading-relaxed text-slate-300 text-[11px]">
+                    The physical holotype fossil material was tragically lost or decomposed before permanent museum stabilization. Reported anatomical dimensions and extreme mass metrics represent speculative biomechanical extrapolations from archived field records rather than verifiable physical museum specimens.
+                  </p>
+                </div>
+              </div>
             )}
           </motion.div>
         );

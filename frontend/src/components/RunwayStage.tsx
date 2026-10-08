@@ -41,6 +41,71 @@ export default function RunwayStage({
     return () => observer.disconnect();
   }, []);
 
+  // Known silhouette aspect ratios (width / height) for instant zero-jump rendering
+  const KNOWN_ASPECT_RATIOS: Record<string, number> = {
+    // Azhdarchid pterosaurs
+    'c464d4f2-caf6-4f60-b139-0c649dd3cecb.svg': 1.200, // Quetzalcoatlus northropi
+    '6dd3a0b6-8c58-4205-9f10-45b6686c4cd0.svg': 0.7886, // Hatzegopteryx / Azhdarcho
+    'bb407d49-45f6-47f5-95c7-359115bfca64.svg': 0.7310, // Thanatosdrakon amaru
+    // Sauropods
+    '7a99b167-b719-4233-946c-addf3ef1c06c.png': 2.6775, // Argentinosaurus / Patagotitan
+    '769e86a0-ef2a-47ef-b6f9-5df58cf9fa9c.png': 2.6500, // Dreadnoughtus
+    '952dfeab-8c3b-49a5-a43b-96d46b18885f.png': 2.4500, // Isisaurus
+    // Megatheropods
+    'ccb9b896-20b5-4e0b-8979-001742a884c5.svg': 2.8200, // Tyrannosaurus rex
+    'b8db44e0-1c99-4256-8c35-61e914af848b.svg': 3.1000, // Spinosaurus
+    'cf75413c-6985-400e-9389-81d7007e5d91-calibrated.svg': 2.7500, // Giganotosaurus
+    '84bfa110-4a5b-437e-b759-711c76f5eed8.png': 2.8000, // Carcharodontosaurus
+    // Armored & Ceratopsians
+    '8a8a2525-e97d-4505-8085-7958f8d36137.svg': 2.6200, // Ankylosaurus
+    '429d71d8-2940-449b-838b-a5b7f1733eba-calibrated.svg': 2.1800, // Stegosaurus
+    '075de9e2-1b71-49d3-8d22-9eb2a78248e4.svg': 2.6000, // Triceratops
+    '5b062105-b6a2-4405-bd75-3d0399102b9a.svg': 2.5000, // Euoplocephalus
+    // Reference models
+    'reference-human.svg': 0.5280,
+    'reference-african-bush-elephant.svg': 1.4270
+  };
+
+  const [aspectRatios, setAspectRatios] = useState<Record<string, number>>({});
+
+  // Dynamically detect intrinsic aspect ratio of any loaded silhouette image
+  useEffect(() => {
+    speciesList.forEach((sp) => {
+      const url = sp.comparisonSilhouette?.url;
+      if (!url || aspectRatios[url]) return;
+      const filename = url.split('/').pop() || '';
+      if (KNOWN_ASPECT_RATIOS[filename]) {
+        setAspectRatios((prev) => ({ ...prev, [url]: KNOWN_ASPECT_RATIOS[filename] }));
+        return;
+      }
+      const img = new Image();
+      img.onload = () => {
+        if (img.naturalWidth && img.naturalHeight) {
+          setAspectRatios((prev) => ({
+            ...prev,
+            [url]: img.naturalWidth / img.naturalHeight
+          }));
+        }
+      };
+      img.src = url;
+    });
+  }, [speciesList]);
+
+  const getSilhouetteAR = (url?: string | null): number | null => {
+    if (!url) return null;
+    if (aspectRatios[url]) return aspectRatios[url];
+    const filename = url.split('/').pop() || '';
+    if (KNOWN_ASPECT_RATIOS[filename]) return KNOWN_ASPECT_RATIOS[filename];
+    return null;
+  };
+
+  // Stable architectural runway dimensions:
+  // The runway stage height (440px) and ground baseline remain constant so zooming in/out
+  // only scales the size of the species silhouettes without resizing or distorting the stage
+  const STAGE_HEIGHT = 440;
+  const groundY = STAGE_HEIGHT - 65; // Fixed baseline ground line (375px)
+  const maxStageUsableH = groundY - 55; // 320px headroom under ceiling grid
+
   // Reference figure configurations (in meters)
   const refSpecs = useMemo(() => {
     switch (activeReference) {
@@ -57,83 +122,225 @@ export default function RunwayStage({
   }, [activeReference]);
 
   // Metric sizing for each creature: calibrated directly to scientific length and standing height
+  // taking into account the silhouette's true aspect ratio so caliper brackets hug the visual shape
   const creaturesMetrics = useMemo(() => {
     return speciesList.map((sp) => {
-      const len = sp.lengthM && sp.lengthM > 0 ? sp.lengthM : 5.0;
-      const h = sp.heightM && sp.heightM > 0 ? sp.heightM : Math.max(1, len * 0.35);
+      const rawLen = sp.lengthM && sp.lengthM > 0 ? sp.lengthM : 5.0;
+      const rawH = sp.heightM && sp.heightM > 0 ? sp.heightM : Math.max(1, rawLen * 0.35);
+      const silUrl = sp.comparisonSilhouette?.url;
+      const ar = getSilhouetteAR(silUrl);
+
+      let renderWidthM: number;
+      let renderHeightM: number;
+
+      if (ar) {
+        // If species is primarily vertical/tall (standing height > axial length, e.g. Azhdarchid pterosaurs)
+        if (rawH > rawLen) {
+          renderHeightM = rawH;
+          renderWidthM = renderHeightM * ar;
+        } else {
+          // Primarily horizontal creatures (sauropods, theropods, ceratopsians, etc.)
+          renderWidthM = rawLen;
+          renderHeightM = renderWidthM / ar;
+        }
+      } else {
+        renderWidthM = rawLen;
+        renderHeightM = rawH;
+      }
+
+      // Ensure creature height does not clip through stage ceiling at current scale
+      const rawPxHeight = renderHeightM * scale;
+      if (rawPxHeight > maxStageUsableH) {
+        const shrinkRatio = maxStageUsableH / rawPxHeight;
+        renderHeightM = renderHeightM * shrinkRatio;
+        renderWidthM = renderWidthM * shrinkRatio;
+      }
 
       return {
         species: sp,
-        lengthM: len,
-        heightM: h,
-        renderWidthM: len,
-        renderHeightM: h
+        lengthM: rawLen,
+        heightM: rawH,
+        renderWidthM,
+        renderHeightM,
+        actualAR: ar || (renderWidthM / renderHeightM)
       };
     });
-  }, [speciesList]);
+  }, [speciesList, aspectRatios, scale]);
 
-  // Layout calculations: arrange specimens sequentially on the runway track with 3.0m metric spacing
+  // Layout calculations: arrange specimens sequentially on the runway track.
+  // At maximum zoom out (or when content width is less than container), silhouettes are evenly
+  // spaced across the full runway stage to eliminate dead space on the right.
   const runwayLayout = useMemo(() => {
-    let currentX = 2.0; // 2m initial padding
+    const estimateNameplateWidth = (sp: Species) => {
+      const nameLen = (sp.name || '').length;
+      const cladeLen = formatEnumLabel(sp.clade).length;
+      const periodLen = (sp.timePeriod || '').length;
+      const nameW = nameLen * 8.5 + 46;
+      const subW = (cladeLen + periodLen) * 6.2 + 24;
+      return Math.max(140, Math.min(270, Math.max(nameW, subW)));
+    };
+
+    type LayoutElement =
+      | { type: 'ref'; widthPx: number; heightPx: number; cardWPx: number }
+      | { type: 'species'; index: number; widthPx: number; heightPx: number; cardWPx: number };
+
+    const elements: LayoutElement[] = [];
+
+    if (activeReference !== 'none') {
+      elements.push({
+        type: 'ref',
+        widthPx: refSpecs.lengthM * scale,
+        heightPx: refSpecs.heightM * scale,
+        cardWPx: 90
+      });
+    }
+
+    creaturesMetrics.forEach((cm, idx) => {
+      elements.push({
+        type: 'species',
+        index: idx,
+        widthPx: cm.renderWidthM * scale,
+        heightPx: cm.renderHeightM * scale,
+        cardWPx: estimateNameplateWidth(cm.species)
+      });
+    });
+
+    if (elements.length === 0) {
+      return {
+        items: [],
+        refStartX: 2.0,
+        totalTrackWidthPx: containerWidth,
+        totalLength: containerWidth / scale
+      };
+    }
+
+    // Left and right margins:
+    // Reference figure needs ~50px left margin; creature without reference needs 100px for height caliper badge
+    const leftMarginPx =
+      elements[0].type === 'ref'
+        ? Math.max(45, (elements[0].cardWPx - elements[0].widthPx) / 2 + 20)
+        : showCalipers
+        ? 100
+        : 50;
+
+    const lastEl = elements[elements.length - 1];
+    const rightMarginPx = Math.max(60, (lastEl.cardWPx - lastEl.widthPx) / 2 + 30);
+
+    // Calculate minimum required gap between consecutive elements to prevent:
+    // 1. Nameplate overlap
+    // 2. Caliper collision on species (height caliper needs ~96px)
+    const minGapsPx: number[] = [];
+    for (let i = 0; i < elements.length - 1; i++) {
+      const eCur = elements[i];
+      const eNext = elements[i + 1];
+
+      const minCenterDist = (eCur.cardWPx + eNext.cardWPx) / 2 + 20;
+      const halfSpans = eCur.widthPx / 2 + eNext.widthPx / 2;
+      const nameplateGap = Math.max(20, minCenterDist - halfSpans);
+
+      // Next element's height caliper sits 10-90px to its left
+      const caliperGap = (eNext.type === 'species' && showCalipers) ? 96 : 30;
+
+      minGapsPx.push(Math.max(caliperGap, nameplateGap));
+    }
+
+    const totalElementsWidthPx = elements.reduce((acc, el) => acc + el.widthPx, 0);
+    const sumMinGapsPx = minGapsPx.reduce((acc, g) => acc + g, 0);
+    const minTrackWidthPx = leftMarginPx + totalElementsWidthPx + sumMinGapsPx + rightMarginPx;
+
+    // Distribute across containerWidth if available:
+    // At maximum zoom out (or whenever total track is narrower than the viewport),
+    // evenly space out the silhouettes so the entire runway space is covered without empty voids.
+    let stageTrackWidthPx = Math.max(containerWidth, minTrackWidthPx);
+    const extraSpacePx = stageTrackWidthPx - leftMarginPx - rightMarginPx - totalElementsWidthPx;
+    const numGaps = elements.length - 1;
+
+    const elementPositions: number[] = [];
+
+    if (numGaps === 0) {
+      // Single element: center in container
+      elementPositions.push(Math.max(leftMarginPx, (stageTrackWidthPx - elements[0].widthPx) / 2));
+    } else {
+      const evenGapPx = extraSpacePx / numGaps;
+
+      // Check if evenGapPx is large enough for all pairs
+      const allGapsSatisfied = minGapsPx.every((minG) => evenGapPx >= minG);
+
+      if (allGapsSatisfied) {
+        // Perfect even distribution spanning 100% of the stage container
+        let curX = leftMarginPx;
+        elements.forEach((el) => {
+          elementPositions.push(curX);
+          curX += el.widthPx + evenGapPx;
+        });
+      } else {
+        // If some gaps need more than evenGapPx, distribute surplus space proportionally
+        const surplusSpacePx = Math.max(0, extraSpacePx - sumMinGapsPx);
+        const extraPerGap = surplusSpacePx / numGaps;
+
+        let curX = leftMarginPx;
+        elements.forEach((el, i) => {
+          elementPositions.push(curX);
+          const gap = i < minGapsPx.length ? minGapsPx[i] + extraPerGap : 0;
+          curX += el.widthPx + gap;
+        });
+        stageTrackWidthPx = Math.max(stageTrackWidthPx, curX + rightMarginPx);
+      }
+    }
+
+    // Map calculated pixel positions back to reference and creature items
+    let refStartX = 2.0;
     const items: Array<{
       species: Species;
       lengthM: number;
       heightM: number;
       renderWidthM: number;
       renderHeightM: number;
-      startX: number;
-      endX: number;
-      midX: number;
+      startPx: number;
+      endPx: number;
+      midPx: number;
+      pxWidth: number;
+      pxHeight: number;
+      yTop: number;
+      nameplateWidth: number;
     }> = [];
 
-    // Place reference object first if enabled
-    let refStartX = 2.0;
-    if (activeReference !== 'none') {
-      refStartX = 2.0;
-      currentX += refSpecs.lengthM + 2.5; // spacing between reference and first specimen
-    }
-
-    creaturesMetrics.forEach((item) => {
-      const spanM = Math.max(item.lengthM, item.renderWidthM);
-      const start = currentX;
-      const end = currentX + spanM;
-      items.push({
-        species: item.species,
-        lengthM: item.lengthM,
-        heightM: item.heightM,
-        renderWidthM: item.renderWidthM,
-        renderHeightM: item.renderHeightM,
-        startX: start,
-        endX: end,
-        midX: (start + end) / 2
-      });
-      currentX = end + 3.0; // 3m metric separation between consecutive animals
+    elements.forEach((el, i) => {
+      const posPx = elementPositions[i];
+      if (el.type === 'ref') {
+        refStartX = posPx / scale;
+      } else {
+        const cm = creaturesMetrics[el.index];
+        const pxWidth = el.widthPx;
+        const pxHeight = el.heightPx;
+        const yTop = groundY - pxHeight;
+        items.push({
+          species: cm.species,
+          lengthM: cm.lengthM,
+          heightM: cm.heightM,
+          renderWidthM: cm.renderWidthM,
+          renderHeightM: cm.renderHeightM,
+          startPx: posPx,
+          endPx: posPx + pxWidth,
+          midPx: posPx + pxWidth / 2,
+          pxWidth,
+          pxHeight,
+          yTop,
+          nameplateWidth: el.cardWPx
+        });
+      }
     });
-
-    const totalStageLength = Math.max(16.0, currentX + 2.0);
-    const maxCreatureHeight = Math.max(
-      activeReference !== 'none' ? refSpecs.heightM : 1.8,
-      ...creaturesMetrics.map((c) => c.renderHeightM)
-    );
-    const totalStageHeight = Math.max(4.6, maxCreatureHeight * 1.35);
 
     return {
       items,
       refStartX,
-      totalLength: totalStageLength,
-      totalHeight: totalStageHeight
+      totalTrackWidthPx: stageTrackWidthPx,
+      totalLength: stageTrackWidthPx / scale
     };
-  }, [creaturesMetrics, activeReference, refSpecs]);
+  }, [creaturesMetrics, activeReference, refSpecs, scale, showCalipers, containerWidth]);
 
-  // Stable architectural runway dimensions:
-  // The runway stage height (440px) and ground baseline remain constant so zooming in/out
-  // only scales the size of the species silhouettes without resizing or distorting the stage
-  const STAGE_HEIGHT = 440;
-  const groundY = STAGE_HEIGHT - 65; // Fixed baseline ground line
-
-  // Total track width: expands with scale to accommodate all creatures, but spans at least 100% of the stage container
-  const trackContentWidthPx = Math.ceil(runwayLayout.totalLength * scale + 80);
-  const viewWidth = Math.max(containerWidth, trackContentWidthPx);
+  // Total track width: spans at least 100% of container and dynamically expands when content overflows
+  const viewWidth = Math.max(containerWidth, runwayLayout.totalTrackWidthPx);
   const maxMeters = Math.max(runwayLayout.totalLength, Math.ceil(viewWidth / scale));
 
   // Interactive mouse drag-to-scroll handlers for desktop users
@@ -314,16 +521,39 @@ export default function RunwayStage({
                     opacity="0.85"
                   />
                   {/* Reference Human Caliper Label */}
-                  <text
-                    x={(0.95 * scale) / 2}
-                    y={groundY + 16}
-                    fill="#94A3B8"
-                    fontSize="9.5"
-                    fontWeight="bold"
-                    textAnchor="middle"
-                  >
-                    1.8m Human
-                  </text>
+                  <g transform={`translate(${(0.95 * scale) / 2}, ${groundY + 12})`}>
+                    <rect
+                      x="-42"
+                      y="0"
+                      width="84"
+                      height="34"
+                      rx="6"
+                      fill="rgba(11, 17, 33, 0.88)"
+                      stroke="rgba(255, 255, 255, 0.08)"
+                      strokeWidth="1"
+                    />
+                    <text
+                      x="0"
+                      y="13"
+                      fill="#94A3B8"
+                      fontSize="9.5"
+                      fontWeight="bold"
+                      fontFamily="monospace"
+                      textAnchor="middle"
+                    >
+                      1.8m Human
+                    </text>
+                    <text
+                      x="0"
+                      y="25"
+                      fill="#64748B"
+                      fontSize="8"
+                      fontFamily="monospace"
+                      textAnchor="middle"
+                    >
+                      Scale Reference
+                    </text>
+                  </g>
                 </g>
               )}
 
@@ -338,16 +568,39 @@ export default function RunwayStage({
                     fill="#475569"
                     opacity="0.75"
                   />
-                  <text
-                    x={(4.5 * scale) / 2}
-                    y={groundY + 16}
-                    fill="#94A3B8"
-                    fontSize="9.5"
-                    fontWeight="bold"
-                    textAnchor="middle"
-                  >
-                    4.5m Sedan
-                  </text>
+                  <g transform={`translate(${(4.5 * scale) / 2}, ${groundY + 12})`}>
+                    <rect
+                      x="-45"
+                      y="0"
+                      width="90"
+                      height="34"
+                      rx="6"
+                      fill="rgba(11, 17, 33, 0.88)"
+                      stroke="rgba(255, 255, 255, 0.08)"
+                      strokeWidth="1"
+                    />
+                    <text
+                      x="0"
+                      y="13"
+                      fill="#94A3B8"
+                      fontSize="9.5"
+                      fontWeight="bold"
+                      fontFamily="monospace"
+                      textAnchor="middle"
+                    >
+                      4.5m Sedan
+                    </text>
+                    <text
+                      x="0"
+                      y="25"
+                      fill="#64748B"
+                      fontSize="8"
+                      fontFamily="monospace"
+                      textAnchor="middle"
+                    >
+                      Scale Reference
+                    </text>
+                  </g>
                 </g>
               )}
 
@@ -362,16 +615,39 @@ export default function RunwayStage({
                     fill="#334155"
                     opacity="0.8"
                   />
-                  <text
-                    x={(11.5 * scale) / 2}
-                    y={groundY + 16}
-                    fill="#94A3B8"
-                    fontSize="9.5"
-                    fontWeight="bold"
-                    textAnchor="middle"
-                  >
-                    11.5m Transit Bus
-                  </text>
+                  <g transform={`translate(${(11.5 * scale) / 2}, ${groundY + 12})`}>
+                    <rect
+                      x="-52"
+                      y="0"
+                      width="104"
+                      height="34"
+                      rx="6"
+                      fill="rgba(11, 17, 33, 0.88)"
+                      stroke="rgba(255, 255, 255, 0.08)"
+                      strokeWidth="1"
+                    />
+                    <text
+                      x="0"
+                      y="13"
+                      fill="#94A3B8"
+                      fontSize="9.5"
+                      fontWeight="bold"
+                      fontFamily="monospace"
+                      textAnchor="middle"
+                    >
+                      11.5m Transit Bus
+                    </text>
+                    <text
+                      x="0"
+                      y="25"
+                      fill="#64748B"
+                      fontSize="8"
+                      fontFamily="monospace"
+                      textAnchor="middle"
+                    >
+                      Scale Reference
+                    </text>
+                  </g>
                 </g>
               )}
 
@@ -386,16 +662,39 @@ export default function RunwayStage({
                     fill="#475569"
                     opacity="0.75"
                   />
-                  <text
-                    x={(6.5 * scale) / 2}
-                    y={groundY + 16}
-                    fill="#94A3B8"
-                    fontSize="9.5"
-                    fontWeight="bold"
-                    textAnchor="middle"
-                  >
-                    3.3m Bush Elephant
-                  </text>
+                  <g transform={`translate(${(6.5 * scale) / 2}, ${groundY + 12})`}>
+                    <rect
+                      x="-54"
+                      y="0"
+                      width="108"
+                      height="34"
+                      rx="6"
+                      fill="rgba(11, 17, 33, 0.88)"
+                      stroke="rgba(255, 255, 255, 0.08)"
+                      strokeWidth="1"
+                    />
+                    <text
+                      x="0"
+                      y="13"
+                      fill="#94A3B8"
+                      fontSize="9.5"
+                      fontWeight="bold"
+                      fontFamily="monospace"
+                      textAnchor="middle"
+                    >
+                      3.3m Bush Elephant
+                    </text>
+                    <text
+                      x="0"
+                      y="25"
+                      fill="#64748B"
+                      fontSize="8"
+                      fontFamily="monospace"
+                      textAnchor="middle"
+                    >
+                      Scale Reference
+                    </text>
+                  </g>
                 </g>
               )}
             </g>
@@ -404,13 +703,11 @@ export default function RunwayStage({
           {/* Lineup Species Silhouettes & Calipers */}
           {runwayLayout.items.map((item, idx) => {
             const isHighlighted = highlightedIndex === idx;
-            const pxWidth = item.renderWidthM * scale;
-            const rawPxHeight = item.renderHeightM * scale;
-            const maxAllowedH = groundY - 45;
-            const pxHeight = Math.min(rawPxHeight, maxAllowedH);
-            const midPx = item.midX * scale;
-            const startPx = midPx - pxWidth / 2;
-            const yTop = groundY - pxHeight;
+            const pxWidth = item.pxWidth;
+            const pxHeight = item.pxHeight;
+            const midPx = item.midPx;
+            const startPx = item.startPx;
+            const yTop = item.yTop;
             const silhouetteUrl = item.species.comparisonSilhouette?.url;
 
             return (
@@ -519,59 +816,82 @@ export default function RunwayStage({
                         fontFamily="monospace"
                         textAnchor="middle"
                       >
-                        {item.lengthM.toFixed(1)}m ({formatFeet(item.lengthM)})
+                        {item.renderWidthM.toFixed(1)}m ({formatFeet(item.renderWidthM)})
                       </text>
                     </g>
 
                     {/* Vertical Height Line: Ground up to Standing Height */}
                     <line
-                      x1={startPx - 8}
+                      x1={startPx - 10}
                       y1={yTop}
-                      x2={startPx - 8}
+                      x2={startPx - 10}
                       y2={groundY}
-                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.3)'}
-                      strokeWidth="0.8"
-                      strokeDasharray="2 2"
+                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.35)'}
+                      strokeWidth="1"
+                      strokeDasharray="3 2"
                     />
                     {/* Vertical Height Ticks */}
                     <line
-                      x1={startPx - 11}
+                      x1={startPx - 15}
                       y1={yTop}
                       x2={startPx - 5}
                       y2={yTop}
-                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.4)'}
-                      strokeWidth="0.8"
+                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.5)'}
+                      strokeWidth="1"
                     />
                     <line
-                      x1={startPx - 11}
+                      x1={startPx - 15}
                       y1={groundY}
                       x2={startPx - 5}
                       y2={groundY}
-                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.4)'}
-                      strokeWidth="0.8"
+                      stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.5)'}
+                      strokeWidth="1"
                     />
-                    {/* Vertical Height Metric Label */}
-                    <text
-                      x={startPx - 13}
-                      y={yTop + pxHeight / 2}
-                      fill={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.65)'}
-                      fontSize="8.5"
-                      fontFamily="monospace"
-                      textAnchor="end"
-                      dominantBaseline="middle"
-                    >
-                      {item.heightM.toFixed(1)}m ({formatFeet(item.heightM)})
-                    </text>
+
+                    {/* Vertical Height Metric Pill Badge */}
+                    <g transform={`translate(${startPx - 14}, ${yTop + pxHeight / 2})`}>
+                      <rect
+                        x="-76"
+                        y="-8.5"
+                        width="76"
+                        height="17"
+                        rx="3.5"
+                        fill="#080C16"
+                        stroke={isHighlighted ? '#F59E0B' : 'rgba(255,255,255,0.22)'}
+                        strokeWidth="1"
+                      />
+                      <text
+                        x="-38"
+                        y="3.5"
+                        fill={isHighlighted ? '#F59E0B' : '#F3F6FB'}
+                        fontSize="8.5"
+                        fontWeight="bold"
+                        fontFamily="monospace"
+                        textAnchor="middle"
+                      >
+                        {item.renderHeightM.toFixed(1)}m ({formatFeet(item.renderHeightM)})
+                      </text>
+                    </g>
                   </g>
                 )}
 
-                {/* Ground Tag Nameplate */}
-                <g transform={`translate(${midPx}, ${groundY + 16})`}>
+                {/* Ground Tag Nameplate Plinth */}
+                <g transform={`translate(${midPx}, ${groundY + 12})`}>
+                  <rect
+                    x={-item.nameplateWidth / 2}
+                    y="0"
+                    width={item.nameplateWidth}
+                    height="34"
+                    rx="6"
+                    fill={isHighlighted ? 'rgba(245, 158, 11, 0.15)' : 'rgba(11, 17, 33, 0.88)'}
+                    stroke={isHighlighted ? '#F59E0B' : 'rgba(255, 255, 255, 0.08)'}
+                    strokeWidth="1"
+                  />
                   <text
                     x="0"
-                    y="0"
+                    y="13"
                     fill={isHighlighted ? '#F59E0B' : '#F3F6FB'}
-                    fontSize="11"
+                    fontSize={item.species.name.length > 20 ? '9.5' : '10.5'}
                     fontWeight="900"
                     fontFamily="sans-serif"
                     textAnchor="middle"
@@ -581,9 +901,9 @@ export default function RunwayStage({
                   </text>
                   <text
                     x="0"
-                    y="13"
-                    fill="#94A3B8"
-                    fontSize="9"
+                    y="25"
+                    fill={isHighlighted ? '#FCD34D' : '#94A3B8'}
+                    fontSize="8.5"
                     fontStyle="italic"
                     fontFamily="monospace"
                     textAnchor="middle"

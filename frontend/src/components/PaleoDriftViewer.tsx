@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Globe, ArrowRight, MapPin, Sparkles, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { getTimeMapState, saveTimeMapState } from '../utils/timeMapStorage.js';
+import { fetchSpeciesRoster, SpeciesRosterItem } from '../services/api.js';
 
 interface NotableFormation {
   name: string;
@@ -262,8 +264,52 @@ const PALEO_ERAS: PaleoEraConfig[] = [
 ];
 
 export default function PaleoDriftViewer() {
-  const [activeEraIndex, setActiveEraIndex] = useState(2); // Default to Late Cretaceous
-  const [selectedFormation, setSelectedFormation] = useState<any | null>(null);
+  const [roster, setRoster] = useState<SpeciesRosterItem[]>([]);
+
+  useEffect(() => {
+    fetchSpeciesRoster()
+      .then(setRoster)
+      .catch((err) => console.warn('Failed to load roster in PaleoDriftViewer', err));
+  }, []);
+
+  const [activeEraIndex, setActiveEraIndex] = useState<number>(() => {
+    return getTimeMapState().paleoEraIndex;
+  });
+
+  const [selectedFormation, setSelectedFormation] = useState<NotableFormation | null>(() => {
+    const saved = getTimeMapState();
+    const era = PALEO_ERAS[saved.paleoEraIndex] || PALEO_ERAS[2];
+    if (saved.paleoFormationName) {
+      return era.notableFormations.find(f => f.name === saved.paleoFormationName) || null;
+    }
+    return null;
+  });
+
+  useEffect(() => {
+    saveTimeMapState({
+      paleoEraIndex: activeEraIndex,
+      paleoFormationName: selectedFormation ? selectedFormation.name : null,
+    });
+  }, [activeEraIndex, selectedFormation]);
+
+  const findSpeciesMatch = (spName: string) => {
+    if (!roster.length) return null;
+    const clean = spName.trim().toLowerCase();
+    // Exact name or scientific name match
+    const exact = roster.find(r => r.name.toLowerCase() === clean || r.scientificName.toLowerCase() === clean);
+    if (exact) return exact;
+    // Known paleontological synonyms / taxonomic revisions
+    if (clean.includes('canis dirus') || clean.includes('dire wolf') || clean.includes('aenocyon')) {
+      const dirus = roster.find(r => r.scientificName.toLowerCase().includes('dirus') || r.name.toLowerCase().includes('dire wolf'));
+      if (dirus) return dirus;
+    }
+    // Prefix / contains match
+    return roster.find(r => {
+      const rn = r.name.toLowerCase();
+      const rs = r.scientificName.toLowerCase();
+      return rn.startsWith(clean) || rs.startsWith(clean) || rn.includes(clean) || rs.includes(clean) || clean.includes(rn) || clean.includes(rs);
+    }) || null;
+  };
 
   const currentEra = PALEO_ERAS[activeEraIndex];
 
@@ -294,12 +340,12 @@ export default function PaleoDriftViewer() {
               }}
               className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer ${
                 activeEraIndex === i
-                  ? 'bg-amber-500/15 border-amber-500/50 text-amber-300 shadow-md'
+                  ? 'bg-amber-500/15 border-amber-500/60 text-amber-300 shadow-sm ring-1 ring-amber-500/30'
                   : 'bg-slate-900/70 border-white/[0.06] text-slate-400 hover:text-white hover:border-white/[0.15]'
               }`}
             >
-              <p className="text-[10px] text-slate-500 font-bold uppercase">{era.label}</p>
-              <p className="text-xs font-bold text-slate-200 uppercase font-sans mt-0.5 truncate">{era.name}</p>
+              <p className="text-[10px] font-mono text-slate-400 font-bold tracking-wider">{era.label}</p>
+              <p className="text-xs font-semibold text-slate-200 font-sans mt-0.5 truncate">{era.name}</p>
             </button>
           ))}
         </div>
@@ -365,16 +411,16 @@ export default function PaleoDriftViewer() {
                 onClick={() => setSelectedFormation(form)}
               >
                 {/* Radar Ping Pulse */}
-                <span className="absolute -inset-1.5 rounded-full bg-amber-500/40 animate-ping" />
+                <span className="absolute -inset-1 rounded-full bg-amber-500/30 opacity-75" />
                 <div
-                  className={`relative px-2.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-xl transition-all ${
+                  className={`relative px-2.5 py-1 rounded-full text-[10px] font-mono font-medium tracking-wide flex items-center gap-1.5 shadow-lg transition-all ${
                     isSelected
-                      ? 'bg-amber-500 text-slate-950 scale-110 ring-2 ring-amber-300'
-                      : 'bg-slate-950/90 text-amber-400 border border-amber-500/60 hover:scale-105 hover:bg-slate-900'
+                      ? 'bg-amber-500 text-slate-950 scale-105 font-bold ring-2 ring-amber-300'
+                      : 'bg-slate-950/90 text-amber-300 border border-amber-500/50 hover:scale-105 hover:bg-slate-900'
                   }`}
                 >
-                  <MapPin className="h-3 w-3 shrink-0 text-amber-400 group-hover:animate-bounce" />
-                  <span className="hidden sm:inline truncate max-w-[130px]">{form.name}</span>
+                  <MapPin className="h-3 w-3 shrink-0 text-amber-400" />
+                  <span className="hidden sm:inline truncate max-w-[130px] font-sans">{form.name}</span>
                 </div>
               </div>
             );
@@ -439,16 +485,22 @@ export default function PaleoDriftViewer() {
                   Contemporaneous Cataloged Fauna:
                 </span>
                 <div className="flex flex-wrap gap-1.5 pt-1">
-                  {selectedFormation.species.map((sp: string) => (
-                    <Link
-                      key={sp}
-                      to={`/browse?search=${encodeURIComponent(sp)}`}
-                      className="px-2.5 py-1 rounded bg-slate-950 border border-white/[0.08] text-xs font-sans text-amber-300 hover:text-white hover:border-amber-500/50 transition-colors flex items-center gap-1"
-                    >
-                      <span>{sp}</span>
-                      <ArrowRight className="h-2.5 w-2.5" />
-                    </Link>
-                  ))}
+                  {selectedFormation.species.map((sp: string) => {
+                    const matched = findSpeciesMatch(sp);
+                    const targetUrl = matched ? `/species/${matched.id}` : `/browse?search=${encodeURIComponent(sp)}`;
+                    return (
+                      <Link
+                        key={sp}
+                        to={targetUrl}
+                        state={{ from: '/map' }}
+                        title={matched ? `View ${matched.name} Exhibit Card` : `Search Catalog for ${sp}`}
+                        className="px-2.5 py-1 rounded bg-slate-950 border border-white/[0.08] hover:border-amber-400/60 text-xs font-sans text-amber-300 hover:text-white transition-all flex items-center gap-1 shadow-sm"
+                      >
+                        <span>{sp}</span>
+                        <ArrowRight className="h-2.5 w-2.5" />
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </motion.div>

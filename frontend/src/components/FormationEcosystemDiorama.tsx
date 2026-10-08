@@ -101,6 +101,8 @@ const FORMATION_PRESETS: FormationPreset[] = [
   }
 ];
 
+import { getTimeMapState, saveTimeMapState } from '../utils/timeMapStorage.js';
+
 export default function FormationEcosystemDiorama({
   onOpenFoodWeb
 }: {
@@ -109,7 +111,13 @@ export default function FormationEcosystemDiorama({
   const shouldReduceMotion = useReducedMotion();
   const [roster, setRoster] = useState<SpeciesRosterItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedFormationId, setSelectedFormationId] = useState<string>('hell-creek');
+  const [selectedFormationId, setSelectedFormationId] = useState<string>(() => {
+    return getTimeMapState().dioramaFormationId;
+  });
+
+  useEffect(() => {
+    saveTimeMapState({ dioramaFormationId: selectedFormationId });
+  }, [selectedFormationId]);
 
   useEffect(() => {
     fetchSpeciesRoster()
@@ -219,11 +227,11 @@ export default function FormationEcosystemDiorama({
       {/* ── Section Title ── */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/[0.08] pb-6 font-mono">
         <div>
-          <div className="flex items-center gap-2 text-xs text-amber-400 font-bold uppercase tracking-widest mb-1.5">
+          <div className="flex items-center gap-2 text-xs text-amber-400 font-mono font-bold uppercase tracking-widest mb-1.5">
             <Layers className="h-4 w-4" />
             <span>Paleo-Ecosystem Dioramas &bull; Stratigraphic Co-Occurrence</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-100 uppercase tracking-tight flex items-center gap-2 font-sans">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight flex items-center gap-2 font-sans">
             <ShinyText text="Stratigraphic Formation Dioramas" speed={3.5} />
           </h2>
           <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl font-mono">
@@ -235,29 +243,32 @@ export default function FormationEcosystemDiorama({
         {onOpenFoodWeb && (
           <button
             onClick={() => onOpenFoodWeb(activePreset.name)}
-            className="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold font-mono text-xs uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shadow-lg shadow-amber-500/10 shrink-0"
+            className="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold font-mono text-xs uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shadow-md shrink-0"
           >
             <Network className="h-4 w-4" />
-            <span>Explore Ecosystem Food Web</span>
+            <span>Explore Food Web</span>
           </button>
         )}
       </div>
 
       {/* ── Formation Selector Pills ── */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-amber-500/20 scrollbar-track-transparent">
+      <div
+        className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none"
+        style={{ maskImage: 'linear-gradient(to right, black calc(100% - 32px), transparent 100%)' }}
+      >
         {FORMATION_PRESETS.map((preset) => {
           const isSelected = preset.id === selectedFormationId;
           return (
             <button
               key={preset.id}
               onClick={() => setSelectedFormationId(preset.id)}
-              className={`px-3.5 py-2.5 rounded-xl border text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shrink-0 shadow-sm ${
+              className={`px-3.5 py-2 rounded-xl border text-xs font-sans font-semibold tracking-wide flex items-center gap-2 transition-all cursor-pointer shrink-0 shadow-sm ${
                 isSelected
-                  ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-[0_0_16px_rgba(245,158,11,0.25)] scale-[1.02]'
+                  ? 'bg-amber-500 text-slate-950 border-amber-300 font-bold shadow-md'
                   : 'bg-slate-900/80 hover:bg-slate-850 border-white/[0.08] hover:border-amber-500/40 text-slate-300 hover:text-white'
               }`}
             >
-              <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: isSelected ? '#090D1A' : preset.color }} />
+              <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: isSelected ? '#090D1A' : preset.color }} />
               <span>{preset.name}</span>
             </button>
           );
@@ -337,6 +348,7 @@ export default function FormationEcosystemDiorama({
                       <Link
                         key={specimen.id}
                         to={`/species/${specimen.id}`}
+                        state={{ from: '/map' }}
                         className="group relative p-3.5 rounded-xl bg-slate-900/70 hover:bg-slate-850/95 border border-white/[0.08] hover:border-amber-500/50 hover:shadow-[0_4px_16px_rgba(245,158,11,0.12)] transition-all duration-200 flex flex-col justify-between"
                       >
                         <div>

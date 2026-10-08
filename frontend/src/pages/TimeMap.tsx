@@ -188,6 +188,13 @@ function getFormationPlacement(
   }
 }
 
+const INVESTIGATION_MODES = [
+  { id: 'modern', lens: 'WHERE', label: 'Fossil Formations', icon: Globe },
+  { id: 'chrono', lens: 'WHEN', label: 'Chrono-Extinction', icon: Clock },
+  { id: 'diorama', lens: 'WHO', label: 'Ecosystem Dioramas', icon: Layers },
+  { id: 'paleo', lens: 'EARTH', label: 'Continental Drift', icon: Compass }
+] as const;
+
 const createMapMarkerIcon = (
   name: string,
   isSelected: boolean,
@@ -244,17 +251,17 @@ const createMapMarkerIcon = (
       <!-- Coordinate Origin Pinpoint (Exact Geological Site) -->
       <div style="position: absolute; left: 130px; top: 50px; transform: translate(-50%, -50%); pointer-events: auto;" class="formation-pin group cursor-pointer">
         <div class="relative flex items-center justify-center">
-          <div class="w-2.5 h-2.5 rounded-full border border-white/30 shadow-[0_0_8px_var(--era-color)]" style="background-color: ${eraColor};"></div>
-          <div class="absolute -inset-1 rounded-full border border-[var(--era-color)] opacity-40 animate-ping"></div>
+          <div class="w-2.5 h-2.5 rounded-full border border-white/60 shadow-sm" style="background-color: ${eraColor};"></div>
+          <div class="absolute -inset-1 rounded-full border border-[var(--era-color)] opacity-50"></div>
         </div>
       </div>
 
       <!-- Formation Name Badge (Collision-Calibrated Non-Overlapping Offset) -->
       <div style="position: absolute; ${badgePosStyle}; pointer-events: auto;" class="formation-badge cursor-pointer">
-        <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-md border font-mono font-bold text-[11px] transition-all duration-200 uppercase tracking-wider whitespace-nowrap ${
+        <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-md border font-mono font-semibold text-[11px] transition-all duration-200 uppercase tracking-wider whitespace-nowrap ${
           isSelected
-            ? 'bg-slate-950 text-amber-400 border-amber-400 scale-105 shadow-[0_0_20px_var(--era-color)] z-50 ring-1 ring-amber-400/50'
-            : 'bg-slate-950/95 text-slate-300 border-white/15 hover:border-amber-500/60 hover:text-white hover:bg-slate-900 shadow-xl'
+            ? 'bg-slate-950 text-amber-300 border-amber-400 scale-105 shadow-lg z-50 ring-1 ring-amber-400/60'
+            : 'bg-slate-950/95 text-slate-300 border-white/15 hover:border-amber-400/50 hover:text-white hover:bg-slate-900 shadow-md'
         }">
           <span class="w-1.5 h-1.5 rounded-full shrink-0" style="background-color: ${eraColor};"></span>
           <span>${name}</span>
@@ -271,12 +278,25 @@ const createMapMarkerIcon = (
   });
 };
 
+import { getTimeMapState, saveTimeMapState, TimeMapViewMode } from '../utils/timeMapStorage.js';
+
 export default function TimeMap() {
-  const [selectedEraIndex, setSelectedEraIndex] = useState(4);
-  const [selectedLocation, setSelectedLocation] = useState('North America');
-  const [selectedFormation, setSelectedFormation] = useState<string | null>(null);
-  const [viewMode, setViewMode] = useState<'modern' | 'paleo' | 'chrono' | 'diorama'>('modern');
+  const [savedInitialState] = useState(() => getTimeMapState());
+  const [selectedEraIndex, setSelectedEraIndex] = useState<number>(savedInitialState.selectedEraIndex);
+  const [selectedLocation, setSelectedLocation] = useState<string>(savedInitialState.selectedLocation);
+  const [selectedFormation, setSelectedFormation] = useState<string | null>(savedInitialState.selectedFormation);
+  const [viewMode, setViewMode] = useState<TimeMapViewMode>(savedInitialState.viewMode);
   const [isFoodWebOpen, setIsFoodWebOpen] = useState(false);
+
+  // Sync state changes to session storage so they persist across navigation
+  useEffect(() => {
+    saveTimeMapState({
+      viewMode,
+      selectedEraIndex,
+      selectedLocation,
+      selectedFormation,
+    });
+  }, [viewMode, selectedEraIndex, selectedLocation, selectedFormation]);
 
   const [speciesList, setSpeciesList] = useState<Species[]>([]);
   const [loading, setLoading] = useState(false);
@@ -362,68 +382,61 @@ export default function TimeMap() {
         initial={shouldReduceMotion ? false : { opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-        className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/[0.08] pb-5 font-mono"
+        className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-white/[0.08] pb-5"
       >
         <div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-100 uppercase tracking-tight flex items-center gap-2 font-sans">
-            <Compass className="h-6 w-6 text-amber-500" />
-            <ShinyText text="Geological Excavation &amp; Time Map" speed={3.5} />
+          <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-amber-400 mb-1">
+            <Compass className="h-4 w-4" />
+            <span>Digital Paleontology Pavilion &bull; Deep-Time Investigation</span>
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight flex items-center gap-2 font-sans">
+            <ShinyText text="Geological Excavation &amp; Time-Map" speed={3.5} />
           </h1>
-          <p className="text-xs text-slate-400 mt-1 font-mono">
-            Navigate Earth's ancient paleocontinents and unearth location-verified fossil formations.
+          <p className="text-xs sm:text-sm text-slate-400 mt-1 font-mono">
+            Navigate Earth's ancient paleocontinents, fossil horizons, and taphonomic co-occurrence records.
           </p>
         </div>
 
         {/* View Mode Switcher */}
         <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
           <ClickSpark sparkColor="#F59E0B">
-            <div className="p-1 rounded-lg bg-slate-900 border border-white/[0.08] flex flex-wrap items-center gap-1 shadow-sm">
-              <button
-                onClick={() => setViewMode('modern')}
-                className={`px-3 py-1.5 rounded-md uppercase font-bold tracking-wider flex items-center gap-1.5 transition-all cursor-pointer ${
-                  viewMode === 'modern'
-                    ? 'bg-amber-500 text-slate-950 shadow-sm'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                <Globe className="h-3.5 w-3.5" /> Modern Formations
-              </button>
-              <button
-                onClick={() => setViewMode('chrono')}
-                className={`px-3 py-1.5 rounded-md uppercase font-bold tracking-wider flex items-center gap-1.5 transition-all cursor-pointer ${
-                  viewMode === 'chrono'
-                    ? 'bg-amber-500 text-slate-950 shadow-sm'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                <Clock className="h-3.5 w-3.5" /> Chrono-Extinction
-              </button>
-              <button
-                onClick={() => setViewMode('diorama')}
-                className={`px-3 py-1.5 rounded-md uppercase font-bold tracking-wider flex items-center gap-1.5 transition-all cursor-pointer ${
-                  viewMode === 'diorama'
-                    ? 'bg-amber-500 text-slate-950 shadow-sm'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                <Layers className="h-3.5 w-3.5" /> Ecosystem Dioramas
-              </button>
-              <button
-                onClick={() => setViewMode('paleo')}
-                className={`px-3 py-1.5 rounded-md uppercase font-bold tracking-wider flex items-center gap-1.5 transition-all cursor-pointer ${
-                  viewMode === 'paleo'
-                    ? 'bg-amber-500 text-slate-950 shadow-sm'
-                    : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                <Compass className="h-3.5 w-3.5" /> Continental Drift
-              </button>
+            <div className="p-1 rounded-xl bg-slate-900/90 border border-white/[0.08] flex flex-wrap items-center gap-1 shadow-sm">
+              {INVESTIGATION_MODES.map((mode) => {
+                const IconComp = mode.icon;
+                const isSelected = viewMode === mode.id;
+                return (
+                  <button
+                    key={mode.id}
+                    onClick={() => setViewMode(mode.id)}
+                    className={`px-3 py-1.5 rounded-lg font-mono tracking-wide flex items-center gap-1.5 transition-all cursor-pointer ${
+                      isSelected
+                        ? 'bg-amber-500 text-slate-950 font-bold border border-amber-400 shadow-sm'
+                        : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                    }`}
+                    aria-pressed={isSelected}
+                  >
+                    <span
+                      className={`text-[9px] font-mono tracking-widest uppercase px-1 py-0.5 rounded font-bold ${
+                        isSelected
+                          ? 'bg-slate-950/20 text-slate-950'
+                          : 'bg-slate-800 text-amber-400/90 border border-amber-400/20'
+                      }`}
+                    >
+                      {mode.lens}
+                    </span>
+                    <IconComp className="h-3.5 w-3.5 shrink-0" />
+                    <span className="text-xs font-semibold">{mode.label}</span>
+                  </button>
+                );
+              })}
             </div>
           </ClickSpark>
 
           {viewMode === 'modern' && (
-            <span className="px-3 py-1.5 bg-slate-900 border border-white/[0.08] text-slate-300 font-bold uppercase tracking-wider rounded-lg shadow-sm">
-              Era: <strong style={{ color: eraColor }}>{currentEra.name}</strong> ({currentEra.range})
+            <span className="px-3 py-1.5 bg-slate-900/90 border border-white/[0.08] text-slate-300 font-mono text-xs rounded-lg shadow-sm">
+              <span className="text-slate-400 font-bold uppercase text-[10px] tracking-wider mr-1.5">Horizon:</span>
+              <strong style={{ color: eraColor }}>{currentEra.name}</strong>{' '}
+              <span className="text-slate-400 text-[11px]">({currentEra.range})</span>
             </span>
           )}
         </div>
@@ -453,8 +466,10 @@ export default function TimeMap() {
       >
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/[0.08] pb-3">
           <div className="space-y-0.5">
-            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Geologic Era Scrubber</span>
-            <h2 className="text-lg sm:text-xl font-black text-slate-100 uppercase tracking-wide font-sans">
+            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-mono">
+              Geologic Stratigraphic Horizon
+            </span>
+            <h2 className="text-lg sm:text-xl font-bold text-slate-100 tracking-wide font-sans">
               {currentEra.name} Period
             </h2>
           </div>
@@ -474,23 +489,26 @@ export default function TimeMap() {
             max={ERAS.length - 1}
             value={selectedEraIndex}
             onChange={(e) => handleEraChange(parseInt(e.target.value, 10))}
-            className="w-full h-2 bg-slate-900 rounded-lg appearance-none cursor-pointer border border-white/[0.08]"
+            className="w-full h-2 bg-slate-900 rounded-lg appearance-none cursor-pointer border border-white/[0.08] accent-amber-500"
           />
 
           <ClickSpark sparkColor="#F59E0B">
-            <div className="flex gap-2 overflow-x-auto pb-2 pt-1 scrollbar-none">
+            <div
+              className="flex gap-2 overflow-x-auto pb-2 pt-1 scrollbar-none"
+              style={{ maskImage: 'linear-gradient(to right, black calc(100% - 32px), transparent 100%)' }}
+            >
               {ERAS.map((era, idx) => {
                 const isSelected = idx === selectedEraIndex;
                 const badgeColor = getEraColor(era.name);
                 return (
                   <motion.button
                     key={era.name}
-                    whileHover={shouldReduceMotion ? {} : { scale: 1.04 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
+                    whileTap={{ scale: 0.96 }}
                     onClick={() => handleEraChange(idx)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider border transition-all cursor-pointer shrink-0 flex items-center gap-1.5 ${
+                    className={`px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide border transition-all cursor-pointer shrink-0 flex items-center gap-1.5 font-sans ${
                       isSelected
-                        ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-md'
+                        ? 'bg-amber-500 text-slate-950 border-amber-300 shadow-md font-bold'
                         : 'bg-slate-900/90 border-white/[0.08] text-slate-300 hover:bg-slate-850 hover:text-white'
                     }`}
                   >
@@ -508,7 +526,7 @@ export default function TimeMap() {
         {/* Left Interactive Map Section */}
         <div className="lg:col-span-7 space-y-4 font-mono">
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/[0.08] pb-3">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">
               <MapPin className="h-4 w-4 text-amber-400" /> Continent Focus Viewport
             </h3>
 
@@ -517,12 +535,12 @@ export default function TimeMap() {
               {CONTINENTS.map((c) => (
                 <motion.button
                   key={c.name}
-                  whileHover={shouldReduceMotion ? {} : { scale: 1.04 }}
-                  whileTap={{ scale: 0.94 }}
+                  whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => handleLocationChange(c.name)}
-                  className={`px-2.5 py-1 rounded-lg text-[10px] sm:text-[11px] font-bold uppercase tracking-wider border transition-all cursor-pointer ${
+                  className={`px-2.5 py-1 rounded-lg text-[11px] font-sans font-semibold tracking-wide border transition-all cursor-pointer ${
                     selectedLocation === c.name
-                      ? 'bg-amber-500/20 border-amber-500/50 text-amber-300 shadow-sm'
+                      ? 'bg-amber-500/20 border-amber-500/50 text-amber-300 shadow-sm font-bold'
                       : 'bg-slate-900/90 border-white/[0.08] text-slate-400 hover:bg-slate-850 hover:text-white'
                   }`}
                 >
@@ -569,10 +587,11 @@ export default function TimeMap() {
               })}
             </MapContainer>
 
-            <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 bg-slate-950/90 backdrop-blur-md border border-white/[0.08] px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-lg text-[11px] sm:text-xs font-bold text-slate-300 shadow-xl pointer-events-none uppercase tracking-wider">
-              Region: <span className="text-amber-400">{selectedLocation}</span>
+            <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 bg-slate-950/90 backdrop-blur-md border border-white/[0.08] px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-lg text-[11px] sm:text-xs font-mono font-medium text-slate-300 shadow-xl pointer-events-none">
+              <span className="text-slate-400 uppercase tracking-wider text-[10px] mr-1.5 font-bold">Region:</span>
+              <span className="text-amber-300 font-bold">{selectedLocation}</span>
               {selectedFormation && (
-                <span className="ml-1.5 text-emerald-400">&bull; {selectedFormation}</span>
+                <span className="ml-1.5 text-emerald-400 font-semibold">&bull; {selectedFormation}</span>
               )}
             </div>
           </div>
@@ -581,7 +600,7 @@ export default function TimeMap() {
         {/* Right Fossil Discoveries Column */}
         <div className="lg:col-span-5 space-y-4 font-mono">
           <div className="flex items-center justify-between border-b border-white/[0.08] pb-3">
-            <h3 className="text-xs font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 flex items-center gap-2">
               <Dna className="h-4 w-4 text-amber-400" />
               <span>Fossil Discoveries ({speciesList.length})</span>
             </h3>
@@ -594,7 +613,7 @@ export default function TimeMap() {
                     title="Synthesize Deep-Time Food Web & Ecological Stressors"
                   >
                     <Network className="w-3 h-3 text-amber-400" />
-                    <span>Ecosystem Food Web</span>
+                    <span>Food Web</span>
                   </button>
                   <motion.button
                     whileTap={{ scale: 0.92 }}
@@ -641,6 +660,7 @@ export default function TimeMap() {
                   >
                     <Link
                       to={`/species/${species.id}`}
+                      state={{ from: '/map' }}
                       className="group museum-card rounded-xl p-3.5 flex items-center justify-between gap-3 shadow-md overflow-hidden"
                     >
                       <div className="flex items-center gap-3 min-w-0">
@@ -656,16 +676,16 @@ export default function TimeMap() {
                           )}
                         </div>
                         <div className="min-w-0 space-y-0.5">
-                          <h4 className="text-sm font-black uppercase text-slate-100 group-hover:text-amber-400 transition-colors truncate tracking-tight font-sans">
+                          <h4 className="text-sm font-bold text-slate-100 group-hover:text-amber-400 transition-colors truncate tracking-tight font-sans">
                             {names.heading}
                           </h4>
                           <p className="text-xs italic font-serif text-amber-400/90 truncate">
                             {names.subheading}
                           </p>
-                          <div className="flex items-center gap-2 text-[10px] text-slate-400">
-                            <span className="font-bold text-amber-400">{formatEnumLabel(species.clade)}</span>
+                          <div className="flex items-center gap-2 text-[10px] text-slate-400 font-mono">
+                            <span className="font-semibold text-amber-400/90">{formatEnumLabel(species.clade)}</span>
                             <span>&bull;</span>
-                            <span className="truncate">{species.fossilFormation || 'Formation Unspecified'}</span>
+                            <span className="truncate text-slate-400">{species.fossilFormation || 'Formation Unspecified'}</span>
                           </div>
                         </div>
                       </div>

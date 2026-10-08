@@ -83,12 +83,26 @@ const PERIOD_ANCHORS = [
   { name: 'Permian Boundary', mya: 255, color: '#B45309' }
 ];
 
+import { getTimeMapState, saveTimeMapState } from '../utils/timeMapStorage.js';
+
 export default function ChronoTimelineSlider() {
   const shouldReduceMotion = useReducedMotion();
   const [roster, setRoster] = useState<SpeciesRosterItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const [targetMya, setTargetMya] = useState<number>(68); // Default to Hell Creek apex (68 Ma)
-  const [selectedExtinction, setSelectedExtinction] = useState<ExtinctionEvent | null>(EXTINCTION_EVENTS[0]);
+  const [targetMya, setTargetMya] = useState<number>(() => {
+    return getTimeMapState().targetMya;
+  });
+  const [selectedExtinction, setSelectedExtinction] = useState<ExtinctionEvent | null>(() => {
+    const extId = getTimeMapState().selectedExtinctionId;
+    return EXTINCTION_EVENTS.find(e => e.id === extId) || null;
+  });
+
+  useEffect(() => {
+    saveTimeMapState({
+      targetMya,
+      selectedExtinctionId: selectedExtinction ? selectedExtinction.id : null,
+    });
+  }, [targetMya, selectedExtinction]);
 
   useEffect(() => {
     fetchSpeciesRoster()
@@ -125,11 +139,11 @@ export default function ChronoTimelineSlider() {
       {/* ── Section Title & Scientific Context ── */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/[0.08] pb-6 font-mono">
         <div>
-          <div className="flex items-center gap-2 text-xs text-amber-400 font-bold uppercase tracking-widest mb-1.5">
+          <div className="flex items-center gap-2 text-xs text-amber-400 font-mono font-bold uppercase tracking-widest mb-1.5">
             <Clock className="h-4 w-4" />
             <span>Deep-Time Chronostratigraphy &bull; 541–0 Million Years Ago</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-100 uppercase tracking-tight flex items-center gap-2 font-sans">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight flex items-center gap-2 font-sans">
             <ShinyText text="Stratigraphic Temporal Slider" speed={3.5} />
           </h2>
           <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-2xl font-mono">
@@ -138,15 +152,15 @@ export default function ChronoTimelineSlider() {
         </div>
 
         {/* Current Temporal Horizon Badge */}
-        <div className="p-3.5 rounded-xl bg-slate-900 border border-amber-500/30 flex items-center gap-3 shrink-0 shadow-lg">
+        <div className="p-3.5 rounded-xl bg-slate-900/90 border border-amber-500/30 flex items-center gap-3 shrink-0 shadow-lg font-mono">
           <div className="text-right">
-            <span className="text-[10px] text-slate-400 uppercase tracking-wider block">Temporal Horizon</span>
-            <span className="text-lg font-black text-amber-400 font-mono">{targetMya.toFixed(1)} Ma</span>
+            <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-bold">Temporal Horizon</span>
+            <span className="text-lg font-black text-amber-400">{targetMya.toFixed(1)} Ma</span>
           </div>
           <div className="h-8 w-px bg-white/[0.1]" />
           <div>
-            <span className="text-[10px] text-slate-400 uppercase tracking-wider block">Period</span>
-            <span className="text-xs font-bold text-slate-200">{currentPeriodName}</span>
+            <span className="text-[10px] text-slate-400 uppercase tracking-wider block font-bold">Period</span>
+            <span className="text-xs font-bold text-slate-200 font-sans">{currentPeriodName}</span>
           </div>
         </div>
       </div>
@@ -157,7 +171,10 @@ export default function ChronoTimelineSlider() {
           <Skull className="h-3.5 w-3.5 text-red-400" />
           <span>Major Mass Extinction Horizons (Click to Investigate)</span>
         </span>
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-amber-500/20 scrollbar-track-transparent">
+        <div
+          className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none"
+          style={{ maskImage: 'linear-gradient(to right, black calc(100% - 32px), transparent 100%)' }}
+        >
           {EXTINCTION_EVENTS.map((event) => {
             const isSelected = selectedExtinction?.id === event.id;
             return (
@@ -167,9 +184,9 @@ export default function ChronoTimelineSlider() {
                   setSelectedExtinction(event);
                   setTargetMya(event.mya);
                 }}
-                className={`px-3.5 py-2 rounded-xl border text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer shrink-0 shadow-sm ${
+                className={`px-3.5 py-2 rounded-xl border text-xs font-mono font-semibold tracking-wide flex items-center gap-2 transition-all cursor-pointer shrink-0 shadow-sm ${
                   isSelected
-                    ? 'bg-red-500/20 text-red-300 border-red-500 shadow-[0_0_14px_rgba(239,68,68,0.25)] ring-1 ring-red-500/50'
+                    ? 'bg-red-500/20 text-red-300 border-red-500 font-bold shadow-md ring-1 ring-red-500/40'
                     : 'bg-slate-900/80 hover:bg-slate-850 border-white/[0.08] hover:border-red-500/40 text-slate-300 hover:text-white'
                 }`}
               >
@@ -192,7 +209,7 @@ export default function ChronoTimelineSlider() {
             initial={shouldReduceMotion ? false : { opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
-            className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-[#180A0A] via-slate-900 to-[#140808] border border-red-500/30 shadow-xl space-y-3 relative overflow-hidden"
+            className="p-5 sm:p-6 rounded-2xl bg-slate-900/95 border border-red-500/35 shadow-xl space-y-3 relative overflow-hidden"
           >
             <div className="flex flex-wrap items-center justify-between gap-3 font-mono border-b border-white/[0.08] pb-3 text-xs">
               <div className="flex items-center gap-2">
@@ -203,7 +220,7 @@ export default function ChronoTimelineSlider() {
                   {selectedExtinction.name}
                 </span>
               </div>
-              <span className="text-red-400 font-bold">Loss Rate: {selectedExtinction.lossRate}</span>
+              <span className="text-red-400 font-bold font-mono">Loss Rate: {selectedExtinction.lossRate}</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono pt-1">
@@ -253,7 +270,10 @@ export default function ChronoTimelineSlider() {
         </div>
 
         {/* Period Anchor Buttons */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-amber-500/20 scrollbar-track-transparent">
+        <div
+          className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none"
+          style={{ maskImage: 'linear-gradient(to right, black calc(100% - 32px), transparent 100%)' }}
+        >
           {PERIOD_ANCHORS.map((anchor) => (
             <button
               key={anchor.name}
@@ -262,10 +282,10 @@ export default function ChronoTimelineSlider() {
                 const match = EXTINCTION_EVENTS.find((ev) => Math.abs(ev.mya - anchor.mya) < 1.0);
                 setSelectedExtinction(match || null);
               }}
-              className="px-2.5 py-1 rounded-lg bg-slate-950/80 hover:bg-amber-500/10 border border-white/[0.06] hover:border-amber-500/40 text-[10px] font-mono text-slate-300 hover:text-amber-300 shrink-0 transition-all cursor-pointer"
+              className="px-2.5 py-1 rounded-lg bg-slate-950/80 hover:bg-amber-500/10 border border-white/[0.06] hover:border-amber-500/40 text-[11px] font-sans text-slate-300 hover:text-amber-300 shrink-0 transition-all cursor-pointer font-medium"
             >
               <span>{anchor.name}</span>
-              <span className="text-slate-500 ml-1">({anchor.mya} Ma)</span>
+              <span className="text-slate-400 ml-1 font-mono text-[10px]">({anchor.mya} Ma)</span>
             </button>
           ))}
         </div>
@@ -299,11 +319,12 @@ export default function ChronoTimelineSlider() {
                   <Link
                     key={specimen.id}
                     to={`/species/${specimen.id}`}
-                    className="group relative p-3.5 rounded-xl bg-slate-900/70 hover:bg-slate-850/95 border border-white/[0.08] hover:border-amber-500/50 hover:shadow-[0_4px_16px_rgba(245,158,11,0.12)] transition-all duration-200 flex flex-col justify-between"
+                    state={{ from: '/map' }}
+                    className="group relative p-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-850/95 border border-white/[0.08] hover:border-amber-400/50 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
                   >
                     <div>
                       <div className="flex items-start justify-between gap-1">
-                        <h5 className="text-xs sm:text-sm font-bold text-slate-100 group-hover:text-amber-300 transition-colors truncate">
+                        <h5 className="text-xs sm:text-sm font-bold text-slate-100 group-hover:text-amber-300 transition-colors truncate font-sans">
                           {specimen.name}
                         </h5>
                         <span className="text-[10px] font-mono text-amber-400 font-bold shrink-0">
