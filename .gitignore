@@ -68,3 +68,6 @@ AGENTS.md
 
 # Audit & Diagnostic Documentation (strictly kept local)
 docs/audits/
+
+# Archived historical migration & one-off scripts (strictly kept local)
+backend/scripts/archive/
