@@ -10,6 +10,7 @@ import {
   GroundingSpeciesContext
 } from '../services/gemini.js';
 import { searchSimilarSpecies, getEmbeddingCount } from '../services/vectorStore.js';
+import { speciesCache } from '../services/speciesCache.js';
 
 const prisma = new PrismaClient();
 
@@ -32,7 +33,66 @@ export async function curatorChat(req: Request, res: Response, next: NextFunctio
     });
 
     // 2. Retrieve top matching grounded species from pgvector using the contextualized query
-    let matchedSpecies = await searchSimilarSpecies(searchQuery, 6);
+    let matchedSpecies = await searchSimilarSpecies(searchQuery, 8);
+
+    // Thematic candidate injection for boundary/benchmark taxa:
+    const combinedQueryText = `${query} ${searchQuery}`.toLowerCase();
+
+    // 1. Largest dinosaur / heaviest sauropod / supermassive titanosaur inquiries
+    const isLargestSauropodQuery =
+      /(largest|biggest|heaviest|longest|colossal|massive|giant|scale|tonnage|mass\s+limit|size\s+limit|size\s+record).*(dinosaur|sauropod|titanosaur|land\s+animal|terrestrial\s+animal|vertebrate)/i.test(combinedQueryText) ||
+      /(dinosaur|sauropod|titanosaur).*(largest|biggest|heaviest|longest|colossal|massive|giant|weight|tonnage|heaviest)/i.test(combinedQueryText) ||
+      /\b(largest|biggest|heaviest)\s+(ever|creature|animal|dinosaur)\b/i.test(combinedQueryText) ||
+      combinedQueryText.includes('bruhathkayosaurus');
+
+    // 2. Largest Jurassic theropod / apex Morrison predator inquiries
+    const isLargestJurassicTheropodQuery =
+      /(largest|biggest|heaviest|longest|apex|top|supreme).*(jurassic\s+(theropod|predator|carnivore|dinosaur|hunter)|morrison\s+(predator|carnivore|theropod|hunter))/i.test(combinedQueryText) ||
+      /(jurassic).*(largest|biggest|heaviest|longest|apex|top|supreme).*(theropod|predator|carnivore|hunter|dinosaur)/i.test(combinedQueryText) ||
+      /(morrison\s+formation).*(largest|predator|carnivore|theropod|apex)/i.test(combinedQueryText) ||
+      combinedQueryText.includes('saurophaganax');
+
+    // 3. Largest head / skull / cranial gigantism inquiries
+    const isLargestHeadQuery =
+      /(largest|biggest|longest|colossal|massive|giant).*(head|skull|cranium|frill|snout)/i.test(combinedQueryText) ||
+      /(head|skull|cranium|frill|snout).*(largest|biggest|longest|size|scale|record)/i.test(combinedQueryText);
+
+    const thematicIdsToInject: number[] = [];
+    if (isLargestSauropodQuery) {
+      // 5423: Bruhathkayosaurus, 509: Argentinosaurus, 514: Patagotitan
+      for (const tid of [5423, 509, 514]) {
+        if (!matchedSpecies.some(s => s.id === tid) && !thematicIdsToInject.includes(tid)) {
+          thematicIdsToInject.push(tid);
+        }
+      }
+    }
+
+    if (isLargestJurassicTheropodQuery) {
+      // 5422: Saurophaganax, 150: Torvosaurus, 94: Allosaurus fragilis
+      for (const tid of [5422, 150, 94]) {
+        if (!matchedSpecies.some(s => s.id === tid) && !thematicIdsToInject.includes(tid)) {
+          thematicIdsToInject.push(tid);
+        }
+      }
+    }
+
+    if (isLargestHeadQuery) {
+      // 471: Pentaceratops, 5403: Torosaurus, 25: Triceratops horridus, 1: Tyrannosaurus rex, 19: Giganotosaurus, 18: Spinosaurus
+      for (const tid of [471, 5403, 25, 1, 19, 18]) {
+        if (!matchedSpecies.some(s => s.id === tid) && !thematicIdsToInject.includes(tid)) {
+          thematicIdsToInject.push(tid);
+        }
+      }
+    }
+
+    if (thematicIdsToInject.length > 0) {
+      const thematicSpecies = await prisma.species.findMany({
+        where: { id: { in: thematicIdsToInject } }
+      });
+      for (const sp of thematicSpecies) {
+        matchedSpecies.push({ ...sp, similarity: 0.95 });
+      }
+    }
 
     // 3. Extract any species IDs explicitly linked in recent conversation history
     const historySpeciesIds: number[] = [];
@@ -105,8 +165,105 @@ export async function curatorChat(req: Request, res: Response, next: NextFunctio
       };
     });
 
-    const buildGroundedSpecimens = (speciesList: any[], referencedIds: number[] = []) => {
-      const formatted = speciesList.map(s => {
+/**
+ * Verifies all /species/:id links and species mentions against the museum roster.
+ * If a link text references a known species (e.g. "Pentaceratops") but has a wrong or hallucinated ID (e.g. 141),
+ * this rewrites the link to the correct catalog ID (/species/471) and returns all verified referenced species.
+ */
+async function resolveAndRepairReferencedSpecies(
+  responseText: string,
+  initialMatchedSpecies: any[] = []
+): Promise<{
+  repairedText: string;
+  referencedSpecies: any[];
+  referencedIds: number[];
+}> {
+  const roster = await speciesCache.getRoster();
+
+  // Fast lookup maps
+  const nameToItem = new Map<string, any>();
+  const idToItem = new Map<number, any>();
+
+  for (const item of roster) {
+    idToItem.set(item.id, item);
+    nameToItem.set(item.name.toLowerCase(), item);
+    nameToItem.set(item.scientificName.toLowerCase(), item);
+    // Also map genus name (first word of name or scientificName)
+    const genus = item.name.split(' ')[0].toLowerCase();
+    if (!nameToItem.has(genus)) {
+      nameToItem.set(genus, item);
+    }
+  }
+
+  const detectedIds = new Set<number>();
+  let repairedText = responseText;
+
+  // 1. Repair and validate markdown links: [LinkText](.../species/ID)
+  const linkRegex = /\[([^\]]+)\]\((?:https?:\/\/[^\/\s]+)?\/species\/(\d+)\)/g;
+  repairedText = repairedText.replace(linkRegex, (match, linkText, claimedIdStr) => {
+    const claimedId = parseInt(claimedIdStr, 10);
+    const cleanName = linkText.trim().replace(/^[*_~`]+|[*_~`]+$/g, '').toLowerCase();
+    const genus = cleanName.split(' ')[0].toLowerCase();
+
+    const matchedByText = nameToItem.get(cleanName) || nameToItem.get(genus);
+    const matchedById = idToItem.get(claimedId);
+
+    if (matchedByText) {
+      detectedIds.add(matchedByText.id);
+      if (matchedByText.id !== claimedId) {
+        // Hallucinated or mismatched ID repaired to the correct catalog ID
+        return `[${linkText}](/species/${matchedByText.id})`;
+      }
+      return `[${linkText}](/species/${claimedId})`;
+    }
+
+    if (matchedById) {
+      detectedIds.add(matchedById.id);
+      return `[${linkText}](/species/${claimedId})`;
+    }
+
+    return match;
+  });
+
+  // 2. Also check if any initial matchedSpecies was mentioned by name in text
+  for (const s of initialMatchedSpecies) {
+    const nameLower = s.name.toLowerCase();
+    const genusLower = s.name.split(' ')[0].toLowerCase();
+    if (repairedText.toLowerCase().includes(nameLower) || repairedText.toLowerCase().includes(genusLower)) {
+      detectedIds.add(s.id);
+    }
+  }
+
+  // 3. Assemble full species records for all referenced IDs
+  const matchedMap = new Map<number, any>();
+  for (const s of initialMatchedSpecies) {
+    matchedMap.set(s.id, s);
+  }
+
+  const missingIds = Array.from(detectedIds).filter(id => !matchedMap.has(id));
+  if (missingIds.length > 0) {
+    const fetched = await prisma.species.findMany({
+      where: { id: { in: missingIds } }
+    });
+    for (const f of fetched) {
+      matchedMap.set(f.id, { ...f, similarity: 0.95 });
+    }
+  }
+
+  const referencedIds = Array.from(detectedIds);
+  const referencedSpecies = referencedIds
+    .map(id => matchedMap.get(id))
+    .filter(Boolean);
+
+  return {
+    repairedText,
+    referencedSpecies,
+    referencedIds
+  };
+}
+
+    const buildGroundedSpecimens = (speciesList: any[]) => {
+      return speciesList.map(s => {
         let mediaArr: any[] = [];
         let silhouetteObj: any = null;
         try { mediaArr = JSON.parse(s.media || '[]'); } catch {}
@@ -123,20 +280,6 @@ export async function curatorChat(req: Request, res: Response, next: NextFunctio
           silhouetteUrl: silhouetteObj?.url || null
         };
       });
-
-      if (referencedIds.length === 0) {
-        return formatted;
-      }
-
-      // Prioritize referenced species first, and filter out unreferenced low-similarity records (<62%)
-      return formatted
-        .filter(s => referencedIds.includes(s.id) || (s.similarity || 0) >= 62)
-        .sort((a, b) => {
-          const aRef = referencedIds.includes(a.id) ? 1 : 0;
-          const bRef = referencedIds.includes(b.id) ? 1 : 0;
-          if (aRef !== bRef) return bRef - aRef;
-          return (b.similarity || 0) - (a.similarity || 0);
-        });
     };
 
     // If client explicitly asks for non-streaming JSON
@@ -147,12 +290,20 @@ export async function curatorChat(req: Request, res: Response, next: NextFunctio
         contextSpecies
       });
 
-      const groundedSpecimens = buildGroundedSpecimens(matchedSpecies, result.referencedSpecies);
+      const { repairedText, referencedSpecies, referencedIds } = await resolveAndRepairReferencedSpecies(
+        result.response,
+        matchedSpecies
+      );
+
+      // ONLY show species related to / referenced in the response
+      const groundedToReturn = referencedSpecies.length > 0
+        ? referencedSpecies
+        : matchedSpecies.slice(0, 3).filter(s => (s.similarity || 0) >= 0.75);
 
       res.json({
-        answer: result.response,
-        referencedSpeciesIds: result.referencedSpecies,
-        groundedSpecimens
+        answer: repairedText,
+        referencedSpeciesIds: referencedIds,
+        groundedSpecimens: buildGroundedSpecimens(groundedToReturn)
       });
       return;
     }
@@ -174,8 +325,8 @@ export async function curatorChat(req: Request, res: Response, next: NextFunctio
       res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
     };
 
-    // 1. Send initial grounded museum specimens metadata
-    sendSseEvent('grounded', { groundedSpecimens: buildGroundedSpecimens(matchedSpecies) });
+    // 1. Send initial grounded museum specimens metadata (top high-confidence candidates)
+    sendSseEvent('grounded', { groundedSpecimens: buildGroundedSpecimens(matchedSpecies.slice(0, 3).filter(s => (s.similarity || 0) >= 0.75)) });
 
     // 2. Stream tokens via Gemini SDK stream API in real-time
     let fullResponse = '';
@@ -191,19 +342,22 @@ export async function curatorChat(req: Request, res: Response, next: NextFunctio
       sendSseEvent('token', { token, text: fullResponse });
     }
 
-    // 3. Compute referenced species IDs and finalize
-    const referencedSpeciesIds: number[] = [];
-    contextSpecies.forEach(s => {
-      if (fullResponse.includes(`/species/${s.id}`) || fullResponse.toLowerCase().includes(s.name.toLowerCase())) {
-        referencedSpeciesIds.push(s.id);
-      }
-    });
+    // 3. Compute referenced species IDs, repair any hallucinated IDs, and finalize
+    const { repairedText, referencedSpecies, referencedIds } = await resolveAndRepairReferencedSpecies(
+      fullResponse,
+      matchedSpecies
+    );
 
-    const finalizedGrounded = buildGroundedSpecimens(matchedSpecies, referencedSpeciesIds);
+    // ONLY show species related to / referenced in the response
+    const groundedToReturn = referencedSpecies.length > 0
+      ? referencedSpecies
+      : matchedSpecies.slice(0, 3).filter(s => (s.similarity || 0) >= 0.75);
+
+    const finalizedGrounded = buildGroundedSpecimens(groundedToReturn);
 
     sendSseEvent('done', {
-      answer: fullResponse,
-      referencedSpeciesIds,
+      answer: repairedText,
+      referencedSpeciesIds: referencedIds,
       groundedSpecimens: finalizedGrounded
     });
 

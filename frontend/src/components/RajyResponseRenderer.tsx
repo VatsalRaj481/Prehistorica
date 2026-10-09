@@ -418,12 +418,27 @@ function renderLink(
   onLinkClick?: () => void,
   isItalic?: boolean
 ): React.ReactNode {
+  // Normalize internal links if they have a domain prefix (e.g. https://prehistorica.vercel.app/species/471)
+  let normalizedUrl = linkUrl.trim();
+  try {
+    if (normalizedUrl.startsWith('http://') || normalizedUrl.startsWith('https://')) {
+      const parsed = new URL(normalizedUrl);
+      if (
+        parsed.pathname.startsWith('/species/') ||
+        parsed.pathname.startsWith('/runway') ||
+        parsed.pathname.startsWith('/lens')
+      ) {
+        normalizedUrl = parsed.pathname + parsed.search;
+      }
+    }
+  } catch {}
+
   // 1. Interactive Runway comparison action chip: /runway or /runway?ids=...
-  if (linkUrl.startsWith('/runway')) {
+  if (normalizedUrl.startsWith('/runway')) {
     return (
       <Link
         key={key}
-        to={linkUrl}
+        to={normalizedUrl}
         onClick={onLinkClick}
         className="inline-flex items-center gap-2 px-3 py-1.5 my-1 rounded-xl bg-gradient-to-r from-amber-500/25 via-amber-400/20 to-emerald-500/25 hover:from-amber-500/40 hover:to-emerald-500/40 text-amber-300 hover:text-white border border-amber-500/45 hover:border-amber-300 text-xs font-mono font-bold transition-all shadow-md group cursor-pointer"
         title="Launch Scale Runway"
@@ -436,11 +451,11 @@ function renderLink(
   }
 
   // 2. Interactive Fossil Lens action chip: /lens
-  if (linkUrl.startsWith('/lens')) {
+  if (normalizedUrl.startsWith('/lens')) {
     return (
       <Link
         key={key}
-        to={linkUrl}
+        to={normalizedUrl}
         onClick={onLinkClick}
         className="inline-flex items-center gap-2 px-3 py-1.5 my-1 rounded-xl bg-gradient-to-r from-cyan-500/25 to-blue-500/25 hover:from-cyan-500/40 hover:to-blue-500/40 text-cyan-300 hover:text-white border border-cyan-500/45 hover:border-cyan-300 text-xs font-mono font-bold transition-all shadow-md group cursor-pointer"
         title="Launch Fossil Lens"
@@ -452,38 +467,37 @@ function renderLink(
     );
   }
 
-  // 3. Internal specimen link: /species/:id
-  if (linkUrl.startsWith('/species/')) {
+  // 3. Internal specimen link: /species/:id — clean, prominent amber text link (no box / no border)
+  if (normalizedUrl.startsWith('/species/')) {
     return (
       <Link
         key={key}
-        to={linkUrl}
+        to={normalizedUrl}
         onClick={onLinkClick}
-        className={`inline-flex items-center gap-1 px-1.5 py-0.5 mx-0.5 rounded bg-amber-500/15 hover:bg-amber-500/30 text-amber-300 hover:text-amber-200 border border-amber-500/35 hover:border-amber-400 text-xs font-mono font-bold transition-all shadow-xs group ${
-          isItalic ? 'italic' : ''
+        className={`inline text-amber-400 hover:text-amber-300 font-semibold underline underline-offset-2 decoration-amber-500/50 hover:decoration-amber-300 transition-colors cursor-pointer ${
+          isItalic ? 'italic font-serif' : ''
         }`}
         title={`View catalog archive for ${linkText}`}
       >
-        <span>{linkText}</span>
-        <ExternalLink className="w-2.5 h-2.5 opacity-80 group-hover:scale-110 transition-transform" />
+        {linkText}
       </Link>
     );
   }
 
   // 4. External link
-  const isExternal = linkUrl.startsWith('http://') || linkUrl.startsWith('https://');
+  const isExternal = normalizedUrl.startsWith('http://') || normalizedUrl.startsWith('https://');
   return (
     <a
       key={key}
-      href={linkUrl}
+      href={normalizedUrl}
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener noreferrer' : undefined}
-      className={`inline-flex items-center gap-1 text-amber-300 hover:text-amber-200 underline underline-offset-2 transition-colors font-medium ${
+      className={`inline items-center gap-1 text-amber-400 hover:text-amber-300 underline underline-offset-2 decoration-amber-500/50 hover:decoration-amber-300 transition-colors font-medium ${
         isItalic ? 'italic font-serif' : ''
       }`}
     >
       <span>{linkText}</span>
-      {isExternal && <ExternalLink className="w-2.5 h-2.5 inline opacity-80" />}
+      {isExternal && <ExternalLink className="w-2.5 h-2.5 inline ml-1 opacity-75" />}
     </a>
   );
 }
