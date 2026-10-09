@@ -77,7 +77,7 @@ export default function Extinctions() {
             The <span className="text-rose-500">"Big Five"</span> Mass Extinctions & Paleoclimate Chronicle
           </h1>
           <p className="text-sm sm:text-base text-slate-300 font-sans max-w-3xl leading-relaxed">
-            Over the past 541 million years of the Phanerozoic Eon, the thread of terrestrial and marine life was pushed to the absolute edge of total annihilation five distinct times. Explore the synchronized planetary environmental triggers, collapsing trophic webs, and the resilient survivor lineages that inherited our world.
+            Across more than 538 million years of the Phanerozoic Eon, the thread of terrestrial and marine life was pushed to the absolute edge of total annihilation five distinct times. Explore the synchronized planetary environmental triggers, collapsing trophic webs, and the resilient survivor lineages that inherited our world.
           </p>
         </div>
 
@@ -97,7 +97,7 @@ export default function Extinctions() {
               <Activity className="h-3.5 w-3.5 text-amber-400 shrink-0" />
               <span className="truncate">Deep-Time Span</span>
             </div>
-            <div className="text-xl sm:text-2xl lg:text-3xl font-black text-amber-400 mt-1">541 Ma</div>
+            <div className="text-xl sm:text-2xl lg:text-3xl font-black text-amber-400 mt-1">&gt; 538 Ma</div>
             <span className="text-[10px] sm:text-[11px] text-slate-400 truncate block">Phanerozoic Eon</span>
           </div>
 

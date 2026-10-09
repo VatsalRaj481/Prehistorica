@@ -10,7 +10,7 @@ import {
   ArrowUpRight, 
   Loader2
 } from 'lucide-react';
-import { fetchSpeciesRoster, SpeciesRosterItem } from '../services/api.js';
+import { fetchSpeciesRoster, SpeciesRosterItem, getLiveSpecimensTotal } from '../services/api.js';
 import ShinyText from './reactbits/ShinyText.js';
 
 interface CladeNode {
@@ -572,7 +572,7 @@ export default function CladogramViewer() {
           </h1>
           <p className="text-xs sm:text-sm text-slate-400 mt-1 max-w-3xl font-mono leading-relaxed">
             Trace the evolutionary breakthroughs, anatomical synapomorphies, and deep-time lineage splits connecting 
-            <strong> {roster.length || 601} cataloged museum specimens</strong> from early tetrapods to giant dinosaurs.
+            <strong> {loading && roster.length === 0 ? '—' : (roster.length > 0 ? roster.length : (getLiveSpecimensTotal() || '800+'))} cataloged museum specimens</strong> from early tetrapods to giant dinosaurs.
           </p>
         </div>
 

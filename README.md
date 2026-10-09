@@ -3,13 +3,13 @@
   <h1>🏛️ PREHISTORICA</h1>
   <h3>The Modern Museum Pavilion Encyclopedia & AI Research Pavilion</h3>
   <p><strong>A premium, full-stack, architectural digital museum dedicated to cataloging, visualizing, and researching Earth's prehistoric fauna with grounded AI.</strong></p>
-  <p><em>Spanning 540 million years of natural history across 801 verified species, 31 global fossil formations, the Big Five mass extinctions, and 10 geologic eras.</em></p>
+  <p><em>Spanning over half a billion years of natural history across 800+ cataloged species, 31 global fossil formations, the Big Five mass extinctions, and 10 geologic eras.</em></p>
 
   <p>
     <a href="https://github.com/VatsalRaj481/Prehistorica/actions/workflows/ci.yml">
       <img src="https://github.com/VatsalRaj481/Prehistorica/actions/workflows/ci.yml/badge.svg" alt="CI Verification Status" />
     </a>
-    <img src="https://img.shields.io/badge/Cataloged%20Species-801-amber.svg" alt="801 Species" />
+    <img src="https://img.shields.io/badge/Cataloged%20Species-800%2B-amber.svg" alt="800+ Species" />
     <img src="https://img.shields.io/badge/Mass%20Extinctions-Big%20Five-crimson.svg" alt="Big Five Extinctions" />
     <img src="https://img.shields.io/badge/Frontend-Vercel-black.svg?logo=vercel" alt="Vercel Deployment" />
     <img src="https://img.shields.io/badge/Backend-Render-46E3B7.svg?logo=render" alt="Render Deployment" />
@@ -30,7 +30,7 @@ Built around **The Modern Museum Pavilion** visual language. **Prehistorica** ex
 - **Asymmetric Spatial Focus**: Dominant architectural elements per screen with varied scale and broken grid rhythm.
 - **1:1 Metric Caliper Scale Comparison Stage**: Highly calibrated metric projection stage comparing animals directly against reference silhouettes (Human, Car, Bus, Elephant).
 - **Interactive Geologic Time-Map & Diorama**: Fluid paleogeographic exploration of fossil formations across geological eras with native ecosystem dioramas.
-- **The Extinction Gateway**: Deep-time exploration of the Big Five mass extinctions and 541-Ma Phanerozoic paleoclimate curves.
+- **The Extinction Gateway**: Deep-time exploration of the Big Five mass extinctions and Phanerozoic paleoclimate curves spanning more than 538 million years.
 - **High-Performance In-Memory Cache**: $O(1)$ RAM caching architecture with automatic PostgreSQL change detection and sub-10ms response times.
 - **AI Research Pavilion**: Grounded paleontological RAG agent, osteology fossil vision identifier, biomechanical matchup simulator, vector semantic search, and paleo-trophic web synthesizer.
 
@@ -52,9 +52,9 @@ flowchart TD
 ```
 
 1. **Backend $O(1)$ In-Memory Cache Manager** (`backend/src/services/speciesCache.ts`):
-   - Holds all 801 cataloged species pre-parsed in volatile RAM, eliminating repetitive database queries and JSON deserialization overhead.
+   - Holds all 800+ cataloged species pre-parsed in volatile RAM, eliminating repetitive database queries and JSON deserialization overhead.
    - Specimen detail lookups execute in **5–14 ms**; catalog queries and filters respond in **6–12 ms** (down from 350+ ms).
-   - Minimal memory footprint: **~4.2 MB total RAM** for all 801 specimens with precomputed phylogenetic rosters and coexisting species bundles.
+   - Minimal memory footprint: **~4.2 MB total RAM** for all 800+ specimens with precomputed phylogenetic rosters and coexisting species bundles.
 2. **Automatic Database Change Detection (Option 1 Revalidation)**:
    - Uses lightweight PostgreSQL telemetry (`_count` and `_max(updatedAt)`) taking ~2ms.
    - Dual-mode revalidation: a 30-second background heartbeat plus throttled request checks (15s).
@@ -70,7 +70,7 @@ flowchart TD
 Prehistorica integrates five high-impact AI capabilities specifically designed for vertebrate paleontology, powered by Google's Free Gemini API and Supabase PostgreSQL `pgvector`:
 
 ### 1. 🏛️ "The Chief Curator" — Grounded Paleontological RAG Agent
-- **Grounded Retrieval-Augmented Generation (RAG)**: Generates 768-dimensional embeddings of visitor questions, runs vector cosine similarity (`<=>`) over the 801 species records, and injects verified specimen diagnoses as ground truth.
+- **Grounded Retrieval-Augmented Generation (RAG)**: Generates 768-dimensional embeddings of visitor questions, runs vector cosine similarity (`<=>`) over the cataloged species records, and injects verified specimen diagnoses as ground truth.
 - **Curatorial Tone & Inline Hyperlinks**: Speaks as a senior vertebrate paleontologist and embeds direct markdown hyperlinks to Prehistorica exhibits (e.g. `[Spinosaurus](/species/2061)`).
 - **Audio & Accessibility**: Includes Web Speech API voice synthesis narration, curated inquiry prompts, and interactive grounded specimen source cards.
 - **Access**: Click **"Curator"** in the top navigation bar or the floating action button at the bottom right.
@@ -104,7 +104,7 @@ Prehistorica integrates five high-impact AI capabilities specifically designed f
 ## 🦖 Core Museum Features
 
 ### 1. 🔍 Catalog Pavilion & Architectural Search
-- **801 Verified Species**: Comprehensive database covering Theropods, Sauropods, Ornithischians, Pterosaurs, Marine Reptiles, Early Synapsids & Mammals, Amphibians, and Invertebrates (including newly cataloged species and TotalDino priority 1 paleoart additions).
+- **800+ Cataloged Species**: Comprehensive database covering Theropods, Sauropods, Ornithischians, Pterosaurs, Marine Reptiles, Early Synapsids & Mammals, Amphibians, and Invertebrates (including newly cataloged species and TotalDino priority 1 paleoart additions).
 - **Combinable Filters**: Search across taxonomic clade, dietary type, habitat, geologic era, geographic region, and size scale.
 - **Collapsible Mobile Drawer**: Mobile-first filter panel with slide-over drawer navigation for touchscreens.
 - **Enriched Scientific Fact Banks**: 100% of species cataloged with verified, peer-reviewed paleontological and anatomical facts.
@@ -129,7 +129,7 @@ Prehistorica integrates five high-impact AI capabilities specifically designed f
 - **Multi-Specimen Caliper Runway (`/runway`)**:
   - Grand architectural runway projecting **up to 6 prehistoric creatures simultaneously** on a unified calibrated Cartesian SVG stage.
   - Real-time length and height caliper lines with tabular numeric badges (`m` and `ft`).
-  - Interactive Lineup Tray with drag/reorder controls and quick add from the 801-species roster.
+  - Interactive Lineup Tray with drag/reorder controls and quick add from the 800+-species roster.
   - **Curated Matchup Presets**: *Clash of Megatheropods*, *Titans of the South*, *Azhdarchid Aerial Armada*, *Armored Bastions*.
   - **Comparative Differential Matrix**: Proportional comparison table highlighting length, height, and mass differentials.
 
@@ -147,7 +147,7 @@ Prehistorica integrates five high-impact AI capabilities specifically designed f
   - End-Permian "The Great Dying" (252 Ma)
   - End-Triassic (201 Ma)
   - Cretaceous-Paleogene (K-Pg) (66 Ma)
-- **Deep-Time Climate Curves (`DeepTimeClimateGraph.tsx`)**: 541-Ma multi-curve visualization of global mean surface temperature, atmospheric oxygen ($O_2$), and carbon dioxide ($CO_2$) proxies across the entire Phanerozoic Eon.
+- **Deep-Time Climate Curves (`DeepTimeClimateGraph.tsx`)**: Multi-curve visualization of global mean surface temperature, atmospheric oxygen ($O_2$), and carbon dioxide ($CO_2$) proxies across the Phanerozoic Eon spanning more than 538 million years.
 - **Casualty & Survivor Metrics**: Documented marine/terrestrial genera extinction rates, primary geochemical and bolide triggers, and surviving clades that inherited the planet.
 
 ### 6. 📖 Archival Field Notebook Pavilion (`/notebook`)
@@ -164,7 +164,7 @@ Prehistorica integrates five high-impact AI capabilities specifically designed f
 - **Curator Rank Progression**: Climb through 5 museum rank tiers based on score and streak.
 
 ### 8. 🧬 The Tree of Extinct Life (`/cladogram` & `/tree`)
-- **Macro-Evolutionary Systematic Stage**: Traces all 801 cataloged museum specimens across deep-time lineage splits and defining anatomical synapomorphies.
+- **Macro-Evolutionary Systematic Stage**: Traces all 800+ cataloged museum specimens across deep-time lineage splits and defining anatomical synapomorphies.
 - **6 Primary Cladistic Divisions**:
   - **Theropoda**: Basal coelophysoids, ceratosaurians, spinosaurids, allosauroids, tyrannosauroids, and maniraptorans.
   - **Sauropodomorpha**: Basal plateosaurs, whiplash diplodocoids, and massive macronarians/titanosaurs.
@@ -192,7 +192,7 @@ Prehistorica integrates five high-impact AI capabilities specifically designed f
 Prehistorica is fully optimized for organic search indexation across all major search engines:
 
 - **Robots Directives (`frontend/public/robots.txt`)**: Allows search engine crawlers across all public wings while blocking private API paths.
-- **Complete XML Sitemap (`frontend/public/sitemap.xml`)**: Indexes all **809 URLs** (all 8 primary museum pavilions and all 801 individual species exhibit pages with prioritized weights and change frequencies).
+- **Complete XML Sitemap (`frontend/public/sitemap.xml`)**: Indexes all primary museum pavilions and individual species exhibit pages with prioritized weights and change frequencies.
 - **Automated Re-Indexing Tool (`backend/scripts/generate-sitemap.cjs`)**: Automatically re-indexes the master JSON dataset and regenerates `sitemap.xml` whenever new species are curated or modified.
 
 ---
@@ -266,7 +266,7 @@ GEMINI_API_KEY="your-free-gemini-api-key"
 # 4. Generate Prisma Client
 npm run prisma:generate
 
-# 5. Seed the database with the pre-compiled 801-species dataset
+# 5. Seed the database with the pre-compiled species dataset
 npm run prisma:seed
 
 # 6. Initialize AI tables & embed all species in pgvector
@@ -305,7 +305,7 @@ npm run safeguard:check
 # Run end-to-end cache benchmark and revalidation test
 npx tsx scripts/verify-cache-performance.ts
 
-# Regenerate complete SEO sitemap for all 801 species
+# Regenerate complete SEO sitemap for all cataloged species
 node scripts/generate-sitemap.cjs
 
 # Run end-to-end verification of all 5 AI features
@@ -329,12 +329,12 @@ Prehistorica/
 │   │   ├── species_jurassic.json          # Verified Jurassic fauna dataset (includes Saurophaganax)
 │   │   ├── species_cretaceous.json        # Verified Cretaceous fauna dataset (includes Bruhathkayosaurus, Dilong)
 │   │   ├── species_others.json            # Paleozoic & Cenozoic fauna dataset (includes Mammuthus columbi, Saltopus)
-│   │   └── species_full_export.json       # Complete 801-species master export
+│   │   └── species_full_export.json       # Complete master export of all cataloged species
 │   ├── scripts/
 │   │   ├── add-species.ts                 # Ingestion CLI with duplicate rejection & safeguard checks
 │   │   ├── verify-no-regression.ts        # Anti-regression snapshot & verification engine
 │   │   ├── verify-cache-performance.ts    # Cache benchmark & auto-revalidation suite
-│   │   ├── generate-sitemap.cjs           # XML sitemap generator indexing all 801 specimens
+│   │   ├── generate-sitemap.cjs           # XML sitemap generator indexing all cataloged specimens
 │   │   ├── init-ai-tables.ts              # pgvector & AI auxiliary table initialization
 │   │   ├── embed-all-species.ts           # Vector projection of all species into pgvector
 │   │   ├── verify-ai-features.ts          # Automated end-to-end AI feature verification
@@ -359,7 +359,7 @@ Prehistorica/
 ├── frontend/
 │   ├── public/
 │   │   ├── robots.txt                     # Search engine crawler instructions
-│   │   ├── sitemap.xml                    # 809-URL sitemap indexing all species & pavilions
+│   │   ├── sitemap.xml                    # Complete XML sitemap indexing all species & pavilions
 │   │   ├── logo.png                       # High-DPI Museum Crest
 │   │   └── favicons & badges              # Multi-size favicons & Rajy expressions
 │   ├── src/
@@ -368,7 +368,7 @@ Prehistorica/
 │   │   │   ├── FossilLensModal.tsx        # Multimodal osteology fossil identifier
 │   │   │   ├── RunwayMatchupModal.tsx     # Biomechanical matchup simulator modal
 │   │   │   ├── FoodWebModal.tsx           # Paleo-biome food web & stressor simulation modal
-│   │   │   ├── DeepTimeClimateGraph.tsx   # 541-Ma Phanerozoic paleoclimate curve visualization
+│   │   │   ├── DeepTimeClimateGraph.tsx   # Phanerozoic paleoclimate curve visualization
 │   │   │   ├── FormationEcosystemDiorama.tsx # Native ecosystem formation dioramas
 │   │   │   ├── SearchAutocomplete.tsx     # Search bar with AI semantic mode toggle
 │   │   │   ├── RunwayStage.tsx            # Calibrated Cartesian SVG runway stage

@@ -12,14 +12,13 @@ import {
   Sparkles,
   ArrowRight,
   HelpCircle,
-  Dna,
   Square,
   Pause,
   Play,
   Sliders,
   RotateCcw
 } from 'lucide-react';
-import { askChiefCurator, CuratorGroundingSpecimen, fetchSpecies, TOTAL_CATALOGED_SPECIMENS } from '../services/api.js';
+import { askChiefCurator, CuratorGroundingSpecimen, fetchSpecies, getLiveSpecimensTotal, setLiveSpecimensTotal } from '../services/api.js';
 import { formatEnumLabel } from '../utils/formatEnumLabel.js';
 import RajyResponseRenderer from './RajyResponseRenderer.js';
 
@@ -110,7 +109,8 @@ const rajyCharacterVariants: Variants = {
     }
   },
   narrating: {
-    y: [0, -2.8, 0, -1.2, 0],
+    y: [0, -3.2, 0, -1.6, 0],
+    rotate: [0, -0.6, 0, 0.4, 0],
     scale: [1, 1.015, 1],
     transition: {
       repeat: Infinity,
@@ -131,7 +131,7 @@ const rajyCharacterVariants: Variants = {
 
 const SESSION_STORAGE_KEY = 'prehistorica_rajy_chat_session';
 
-const getInitialSessionMessages = (totalCount: number): Message[] => {
+const getInitialSessionMessages = (totalCount?: number | null): Message[] => {
   try {
     const saved = sessionStorage.getItem(SESSION_STORAGE_KEY);
     if (saved) {
@@ -143,11 +143,12 @@ const getInitialSessionMessages = (totalCount: number): Message[] => {
   } catch (e) {
     console.warn('Failed to parse stored Rajy session messages:', e);
   }
+  const countStr = totalCount && totalCount > 0 ? `${totalCount}` : '800+';
   return [
     {
       id: 'welcome',
       role: 'assistant',
-      content: `Greetings! I am **Rajy**, your Prehistorica Museum Docent.\n\nAsk me about prehistoric creatures, ancient ecosystems, evolutionary lineages, biomechanics, or deep-time extinction crises. Every insight is scientifically grounded directly in our **${totalCount} cataloged specimens**.`,
+      content: `Greetings! I am **Rajy**, your Prehistorica AI Docent.\n\nAsk me about prehistoric creatures, ancient ecosystems, evolutionary lineages, biomechanics, or deep-time extinction crises. Every insight is scientifically grounded directly in our **${countStr} cataloged specimens**.`,
       timestamp: 'Just now'
     }
   ];
@@ -161,13 +162,13 @@ interface ChiefCuratorModalProps {
 
 export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: ChiefCuratorModalProps) {
   const shouldReduceMotion = useReducedMotion();
-  const [messages, setMessages] = useState<Message[]>(() => getInitialSessionMessages(TOTAL_CATALOGED_SPECIMENS));
+  const [liveTotalSpecies, setLiveTotalSpecies] = useState<number | null>(() => getLiveSpecimensTotal());
+  const [messages, setMessages] = useState<Message[]>(() => getInitialSessionMessages(getLiveSpecimensTotal()));
   const [input, setInput] = useState(initialQuery || '');
   const [loading, setLoading] = useState(false);
   const [isStreaming, setIsStreaming] = useState(false);
   const abortControllerRef = useRef<AbortController | null>(null);
   const isBusy = loading || isStreaming;
-  const [liveTotalSpecies, setLiveTotalSpecies] = useState<number>(TOTAL_CATALOGED_SPECIMENS);
 
   // Persist conversation to sessionStorage across browser navigations / modal toggles
   useEffect(() => {
@@ -185,7 +186,9 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     fetchSpecies({ limit: 1 })
       .then((res) => {
         if ('pagination' in res && res.pagination?.total > 0) {
-          setLiveTotalSpecies(res.pagination.total);
+          const total = res.pagination.total;
+          setLiveTotalSpecies(total);
+          setLiveSpecimensTotal(total);
         }
       })
       .catch(() => {});
@@ -199,7 +202,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
           msg.id === 'welcome'
             ? {
                 ...msg,
-                content: `Greetings! I am **Rajy**, your Prehistorica Museum Docent.\n\nAsk me about prehistoric creatures, ancient ecosystems, evolutionary lineages, biomechanics, or deep-time extinction crises. Every insight is scientifically grounded directly in our **${liveTotalSpecies} cataloged specimens**.`
+                content: `Greetings! I am **Rajy**, your Prehistorica AI Docent.\n\nAsk me about prehistoric creatures, ancient ecosystems, evolutionary lineages, biomechanics, or deep-time extinction crises. Every insight is scientifically grounded directly in our **${liveTotalSpecies} cataloged specimens**.`
               }
             : msg
         )
@@ -251,8 +254,8 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
   // Primary State Priority: 1. NARRATING, 2. RESEARCHING, 3. KNOWLEDGE_NOT_FOUND, 4. EXCITED, 5. IDLE
   const primaryState = useMemo<RajyPrimaryState>(() => {
-    if (isSpeaking) return 'narrating';
-    if (loading || isStreaming) return 'researching';
+    if (isSpeaking || isStreaming) return 'narrating';
+    if (loading) return 'researching';
     if (isKnowledgeNotFound) return 'knowledgeNotFound';
     if (isExcited) return 'excited';
     return 'idle';
@@ -436,10 +439,11 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     setIsStreaming(false);
     setIsKnowledgeNotFound(false);
     setIsExcited(false);
+    const countStr = liveTotalSpecies && liveTotalSpecies > 0 ? `${liveTotalSpecies}` : '800+';
     const defaultWelcome: Message = {
       id: 'welcome',
       role: 'assistant',
-      content: `Greetings, explorer! I am **Rajy**, your Prehistorica AI Docent.\n\nAsk me about prehistoric creatures, ancient ecosystems, evolution, biomechanics, or the deep-time history of Earth. Every insight is scientifically grounded directly in our **${liveTotalSpecies} cataloged specimens**.`,
+      content: `Greetings, explorer! I am **Rajy**, your Prehistorica AI Docent.\n\nAsk me about prehistoric creatures, ancient ecosystems, evolution, biomechanics, or the deep-time history of Earth. Every insight is scientifically grounded directly in our **${countStr} cataloged specimens**.`,
       timestamp: 'Just now'
     };
     setMessages([defaultWelcome]);
@@ -969,8 +973,8 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
               className="relative px-3.5 sm:px-5 py-2.5 sm:py-3 border-b border-white/[0.08] bg-gradient-to-r from-[#070B16] via-[#0A0F1D] to-[#070B16] flex items-center justify-between shrink-0 z-20 flex-nowrap"
             >
               <div className="flex items-center gap-2.5 sm:gap-3 min-w-0 flex-1 mr-2">
-                {/* Small Rajy Avatar Icon with Online Status Indicator */}
-                <div className="relative shrink-0">
+                {/* Small Rajy Avatar Icon (visible on mobile only; on desktop, the mascot is visible in the aside) */}
+                <div className="relative shrink-0 md:hidden">
                   <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden border border-amber-500/40 bg-slate-900 shadow-inner ring-2 ring-amber-500/15">
                     <img
                       src="/rajy-head.jpg"
@@ -978,25 +982,21 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                       className="w-full h-full object-cover object-top select-none"
                     />
                   </div>
-                  <span
-                    className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-slate-950 shadow-sm"
-                    title="Rajy is active and ready"
-                  />
                 </div>
 
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
                     <h2 className="text-xs sm:text-sm font-black font-mono tracking-widest uppercase text-slate-100 truncate">
-                      PREHISTORICA &bull; CHIEF DOCENT
+                      PREHISTORICA &bull; AI DOCENT
                     </h2>
                     <span className="hidden sm:inline-flex px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20 uppercase tracking-widest">
-                      {liveTotalSpecies} Verified
+                      {liveTotalSpecies ? `${liveTotalSpecies} SPECIMENS` : '— SPECIMENS'}
                     </span>
                   </div>
                   <p className="text-[10px] font-mono text-slate-400 truncate flex items-center gap-1.5">
                     <span className="text-slate-200 font-semibold">Rajy</span>
                     <span className="text-slate-600">&bull;</span>
-                    <span className="text-slate-300">Curatorial Archive Docent</span>
+                    <span className="text-slate-300">Answers from the catalog</span>
                   </p>
                 </div>
               </div>
@@ -1290,7 +1290,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
               {/* ── LEFT PANEL: Integrated Rajy Character Showcase ── */}
               <aside
-                className="hidden md:flex flex-col w-[230px] md:w-[250px] lg:w-[270px] shrink-0 bg-transparent relative overflow-visible select-none"
+                className="hidden md:flex flex-col w-[230px] md:w-[250px] lg:w-[270px] shrink-0 bg-transparent relative overflow-visible select-none justify-center items-center py-6 px-3"
                 aria-label="Rajy Mascot Showcase"
               >
                 {/* Speech Bubble Popup on Interactive Mascot Tap */}
@@ -1314,8 +1314,8 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                   )}
                 </AnimatePresence>
 
-                {/* Rajy Mascot Illustration — Interactive & Animated */}
-                <div className="relative flex-1 min-h-0 w-full flex items-center justify-center px-4 py-1">
+                {/* Unified Character + Shadow + Name Assembly */}
+                <div className="relative w-full flex flex-col items-center justify-center">
                   {/* Floating Strata / Data Particles during Researching Strata state */}
                   {primaryState === 'researching' && !shouldReduceMotion && (
                     <div className="absolute inset-0 pointer-events-none overflow-hidden z-10" aria-hidden="true">
@@ -1334,7 +1334,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                             delay: i * 0.45,
                             ease: 'easeOut'
                           }}
-                          className={`absolute bottom-10 left-1/2 w-1.5 h-1.5 rounded-full ${
+                          className={`absolute bottom-16 left-1/2 w-1.5 h-1.5 rounded-full ${
                             i % 2 === 0
                               ? 'bg-cyan-400/60 shadow-[0_0_6px_rgba(34,211,238,0.8)]'
                               : 'bg-amber-400/50 shadow-[0_0_6px_rgba(251,191,36,0.8)]'
@@ -1344,7 +1344,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                     </div>
                   )}
 
-                  {/* Outer Interaction Container: Tap spring bounce & hover */}
+                  {/* Mascot Interactive Button */}
                   <motion.button
                     type="button"
                     onClick={handleMascotClick}
@@ -1364,14 +1364,14 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                         ? { duration: 0.35, ease: [0.34, 1.56, 0.64, 1] }
                         : { duration: 0.3, ease: 'easeOut' }
                     }
-                    className="relative w-full h-full max-h-[290px] flex items-center justify-center cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-amber-400/50 rounded-2xl group"
+                    className="relative w-full flex flex-col items-center justify-end cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-amber-400/50 rounded-2xl group"
                   >
-                    {/* Inner Character Motion Layer: Primary state posture, breathing & transitions */}
+                    {/* Character Motion Layer */}
                     <motion.div
                       variants={rajyCharacterVariants}
                       animate={shouldReduceMotion ? 'idle' : primaryState}
                       style={{ transformOrigin: 'bottom center' }}
-                      className="relative w-full h-full max-w-[240px] max-h-[280px] flex items-center justify-center"
+                      className="relative w-full max-w-[240px] h-[250px] md:h-[270px] flex items-end justify-center"
                     >
                       {/* Smooth cross-fade between the 5 official state images */}
                       <AnimatePresence mode="popLayout">
@@ -1383,97 +1383,111 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
                           transition={{ duration: 0.28, ease: 'easeInOut' }}
-                          className="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-[0_10px_22px_rgba(0,0,0,0.65)] group-hover:drop-shadow-[0_12px_28px_rgba(245,158,11,0.25)] transition-all select-none"
+                          className={`max-w-full max-h-full w-auto h-auto object-contain transition-all select-none block ${
+                            (isStreaming || isSpeaking) && !shouldReduceMotion
+                              ? 'drop-shadow-[0_0_24px_rgba(245,158,11,0.4)]'
+                              : 'drop-shadow-[0_10px_22px_rgba(0,0,0,0.65)] group-hover:drop-shadow-[0_12px_28px_rgba(245,158,11,0.25)]'
+                          }`}
                           draggable={false}
                         />
                       </AnimatePresence>
+
+                      {/* Thinking Glasses-Glint state before streaming starts */}
+                      {loading && !isStreaming && !shouldReduceMotion && (
+                        <motion.div
+                          aria-hidden="true"
+                          initial={{ opacity: 0, scale: 0.5 }}
+                          animate={{
+                            opacity: [0, 0.85, 1, 0.35, 0],
+                            scale: [0.5, 1.25, 1, 0.75, 0.5],
+                            rotate: [0, 30, 60, 90]
+                          }}
+                          transition={{
+                            repeat: Infinity,
+                            duration: 1.8,
+                            ease: 'easeInOut'
+                          }}
+                          className="absolute top-[32%] left-[45%] pointer-events-none z-20 flex items-center justify-center"
+                        >
+                          <Sparkles className="w-5 h-5 text-amber-300 drop-shadow-[0_0_8px_rgba(251,191,36,0.9)]" />
+                          <div className="absolute w-2.5 h-2.5 rounded-full bg-white/80 blur-[2px]" />
+                        </motion.div>
+                      )}
                     </motion.div>
+
+                    {/* Ground Shadow: Touching Rajy's feet (no gap), dark center fading to transparent with faint amber rim glow */}
+                    <div
+                      aria-hidden="true"
+                      className="w-32 md:w-36 h-3 rounded-[50%] bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0.85)_0%,_rgba(0,0,0,0.5)_45%,_transparent_75%)] shadow-[0_0_12px_rgba(245,158,11,0.1)] pointer-events-none -mt-1.5 shrink-0"
+                    />
                   </motion.button>
-                </div>
 
-                {/* Curatorial Museum Nameplate with Dynamic Mood Status */}
-                <div className="w-full px-3 pt-1 pb-2 shrink-0 z-10 text-center space-y-1 bg-transparent">
-                  {/* Subtle Accent Glow Line above name */}
-                  <div className="w-10 h-px bg-gradient-to-r from-transparent via-amber-400/40 to-transparent mx-auto mb-1.5" />
-
-                  <div className="flex items-center justify-center gap-1.5">
-                    <Sparkles className="w-3 h-3 text-amber-400" />
-                    <span className="text-xs sm:text-sm font-black font-mono text-amber-400 tracking-[0.2em] uppercase drop-shadow-[0_0_8px_rgba(245,158,11,0.25)]">
+                  {/* Character Name and Species line: Tightly grouped beneath shadow */}
+                  <div className="w-full text-center pt-2 space-y-0.5">
+                    <span className="text-xs sm:text-sm font-black font-mono text-amber-400 tracking-[0.2em] uppercase block leading-none">
                       RAJY
                     </span>
-                  </div>
-                  <p className="text-[10px] font-mono text-slate-400 tracking-wider leading-tight italic">
-                    Rajasaurus narmadensis
-                  </p>
-                  <div className="pt-0.5 flex justify-center min-h-[26px]">
-                    <AnimatePresence mode="wait">
-                      {primaryState === 'narrating' ? (
-                        <motion.span
-                          key="narrating"
-                          initial={{ opacity: 0, scale: 0.92 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.92 }}
-                          transition={{ duration: 0.2 }}
-                          className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-[9px] font-mono font-bold tracking-wider text-emerald-300 uppercase shadow-xs"
-                        >
-                          <Volume2 className="w-2.5 h-2.5 text-emerald-400 animate-pulse" />
-                          <span>NARRATING</span>
-                          <span className="flex items-center gap-0.5 ml-0.5">
-                            <span className="w-0.5 h-2 bg-emerald-400 rounded-full animate-bounce [animation-delay:0ms]" />
-                            <span className="w-0.5 h-2.5 bg-emerald-400 rounded-full animate-bounce [animation-delay:150ms]" />
-                            <span className="w-0.5 h-1.5 bg-emerald-400 rounded-full animate-bounce [animation-delay:300ms]" />
-                          </span>
-                        </motion.span>
-                      ) : primaryState === 'researching' ? (
-                        <motion.span
-                          key="researching"
-                          initial={{ opacity: 0, scale: 0.92 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.92 }}
-                          transition={{ duration: 0.2 }}
-                          className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-500/40 text-[9px] font-mono font-bold tracking-wider text-cyan-300 uppercase shadow-xs animate-pulse"
-                        >
-                          <Sparkles className="w-2.5 h-2.5 text-cyan-400 animate-spin" />
-                          <span>RESEARCHING STRATA</span>
-                        </motion.span>
-                      ) : primaryState === 'excited' ? (
-                        <motion.span
-                          key="excited"
-                          initial={{ opacity: 0, scale: 0.92 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.92 }}
-                          transition={{ duration: 0.2 }}
-                          className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/20 border border-amber-400/50 text-[9px] font-mono font-bold tracking-wider text-amber-300 uppercase shadow-xs animate-pulse"
-                        >
-                          <Sparkles className="w-2.5 h-2.5 text-amber-300" />
-                          <span>FOSSIL DISCOVERY</span>
-                        </motion.span>
-                      ) : primaryState === 'knowledgeNotFound' ? (
-                        <motion.span
-                          key="knowledgeNotFound"
-                          initial={{ opacity: 0, scale: 0.92 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.92 }}
-                          transition={{ duration: 0.2 }}
-                          className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/40 text-[9px] font-mono font-bold tracking-wider text-amber-300 uppercase shadow-xs"
-                        >
-                          <HelpCircle className="w-2.5 h-2.5 text-amber-400" />
-                          <span>KNOWLEDGE NOT FOUND</span>
-                        </motion.span>
-                      ) : (
-                        <motion.span
-                          key="idle"
-                          initial={{ opacity: 0, scale: 0.92 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.92 }}
-                          transition={{ duration: 0.2 }}
-                          className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/10 border border-white/[0.08] text-[9px] font-mono font-bold tracking-widest text-amber-400/80 uppercase"
-                        >
-                          <Dna className="w-2.5 h-2.5 text-amber-400/75" />
-                          <span>AI DOCENT</span>
-                        </motion.span>
-                      )}
-                    </AnimatePresence>
+                    <p className="text-[10px] font-mono text-slate-400 tracking-wider leading-tight italic">
+                      Rajasaurus narmadensis
+                    </p>
+                    <div className="pt-1.5 flex justify-center min-h-[24px]">
+                      <AnimatePresence mode="wait">
+                        {primaryState === 'narrating' ? (
+                          <motion.span
+                            key="narrating"
+                            initial={{ opacity: 0, scale: 0.92 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.92 }}
+                            transition={{ duration: 0.2 }}
+                            className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-[9px] font-mono font-bold tracking-wider text-emerald-300 uppercase shadow-xs"
+                          >
+                            <Volume2 className="w-2.5 h-2.5 text-emerald-400 animate-pulse" />
+                            <span>NARRATING</span>
+                            <span className="flex items-center gap-0.5 ml-0.5">
+                              <span className="w-0.5 h-2 bg-emerald-400 rounded-full animate-bounce [animation-delay:0ms]" />
+                              <span className="w-0.5 h-2.5 bg-emerald-400 rounded-full animate-bounce [animation-delay:150ms]" />
+                              <span className="w-0.5 h-1.5 bg-emerald-400 rounded-full animate-bounce [animation-delay:300ms]" />
+                            </span>
+                          </motion.span>
+                        ) : primaryState === 'researching' ? (
+                          <motion.span
+                            key="researching"
+                            initial={{ opacity: 0, scale: 0.92 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.92 }}
+                            transition={{ duration: 0.2 }}
+                            className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-500/40 text-[9px] font-mono font-bold tracking-wider text-cyan-300 uppercase shadow-xs animate-pulse"
+                          >
+                            <Sparkles className="w-2.5 h-2.5 text-cyan-400 animate-spin" />
+                            <span>RESEARCHING STRATA</span>
+                          </motion.span>
+                        ) : primaryState === 'excited' ? (
+                          <motion.span
+                            key="excited"
+                            initial={{ opacity: 0, scale: 0.92 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.92 }}
+                            transition={{ duration: 0.2 }}
+                            className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/20 border border-amber-400/50 text-[9px] font-mono font-bold tracking-wider text-amber-300 uppercase shadow-xs animate-pulse"
+                          >
+                            <Sparkles className="w-2.5 h-2.5 text-amber-300" />
+                            <span>FOSSIL DISCOVERY</span>
+                          </motion.span>
+                        ) : primaryState === 'knowledgeNotFound' ? (
+                          <motion.span
+                            key="knowledgeNotFound"
+                            initial={{ opacity: 0, scale: 0.92 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.92 }}
+                            transition={{ duration: 0.2 }}
+                            className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/40 text-[9px] font-mono font-bold tracking-wider text-amber-300 uppercase shadow-xs"
+                          >
+                            <HelpCircle className="w-2.5 h-2.5 text-amber-400" />
+                            <span>KNOWLEDGE NOT FOUND</span>
+                          </motion.span>
+                        ) : null}
+                      </AnimatePresence>
+                    </div>
                   </div>
                 </div>
               </aside>
@@ -1611,19 +1625,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                                 <HelpCircle className="w-2.5 h-2.5 text-amber-400" />
                                 <span>KNOWLEDGE NOT FOUND</span>
                               </motion.span>
-                            ) : (
-                              <motion.span
-                                key="idle"
-                                initial={{ opacity: 0, scale: 0.92 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.92 }}
-                                transition={{ duration: 0.18 }}
-                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/10 border border-white/[0.08] text-[9px] font-mono font-bold tracking-widest text-amber-400/80 uppercase"
-                              >
-                                <Dna className="w-2.5 h-2.5 text-amber-400/75" />
-                                <span>AI DOCENT</span>
-                              </motion.span>
-                            )}
+                            ) : null}
                           </AnimatePresence>
                         </div>
                       </div>
@@ -1642,95 +1644,81 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                   </div>
                 )}
 
-                {/* Independently Scrollable Message Area */}
-                <div
-                  ref={chatContainerRef}
-                  data-lenis-prevent
-                  tabIndex={0}
-                  className="flex-1 min-h-0 overflow-y-auto p-3.5 sm:p-5 md:p-6 space-y-4 focus:outline-none focus-visible:ring-1 focus-visible:ring-amber-500/20 overscroll-contain scroll-smooth"
-                >
-                  {messages.map((msg) => {
-                    const isAssistant = msg.role === 'assistant';
-                    const isThisLastAssistant = msg.id === lastAssistantMessageId;
-                    const isCurrentlySpeaking = isSpeaking && isThisLastAssistant;
-                    const isCurrentlyPaused = isPaused && isThisLastAssistant;
-                    const assistantIndex = messages.filter((m) => m.role === 'assistant').findIndex((m) => m.id === msg.id);
-                    const isFirstAssistantResponse = assistantIndex <= 1;
-                    const hasTail = isAssistant && isThisLastAssistant;
+                {/* ── Scroll Container with Edge Fades ── */}
+                <div className="relative flex-1 min-h-0 flex flex-col overflow-hidden">
+                  {/* Subtle fade at top and bottom scroll edges */}
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-[#0A0F1D] to-transparent z-15"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute bottom-0 left-0 right-0 h-3 bg-gradient-to-t from-[#0A0F1D]/80 to-transparent z-15"
+                  />
 
-                    return (
-                      <article
-                        key={msg.id}
-                        id={`msg-${msg.id}`}
-                        className={`flex flex-col ${isAssistant ? 'items-start' : 'items-end'}`}
-                      >
-                        {/* Sender Meta Label */}
-                        <div className="flex items-center gap-2 mb-1.5 px-1 text-[11px] font-mono text-slate-400">
-                          {isAssistant ? (
-                            <div className="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider text-[10px]">
-                              <img
-                                src="/rajy-head.jpg"
-                                alt="Rajy the AI Docent"
-                                className="w-4 h-4 rounded-full object-cover object-top md:hidden border border-amber-500/40"
-                              />
-                              <span>Rajy &bull; AI Docent</span>
-                              {isCurrentlySpeaking && (
-                                <span className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-300 text-[9px] font-mono border border-amber-500/40 animate-pulse ml-1">
-                                   <Volume2 className="w-2.5 h-2.5" /> Narrating
-                                </span>
-                              )}
-                              {isCurrentlyPaused && (
-                                <span className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full bg-slate-800 text-amber-300 text-[9px] font-mono border border-amber-500/30 ml-1">
-                                  <Pause className="w-2.5 h-2.5" /> Paused
-                                </span>
-                              )}
-                            </div>
-                          ) : (
-                            <span className="font-bold text-slate-300 uppercase tracking-wider text-[10px]">
-                              Visitor
-                            </span>
-                          )}
-                          <span className="text-slate-600">&bull;</span>
-                          <time className="text-[10px] text-slate-500">{msg.timestamp}</time>
-                        </div>
+                  {/* Independently Scrollable Message Area */}
+                  <div
+                    ref={chatContainerRef}
+                    data-lenis-prevent
+                    tabIndex={0}
+                    className="flex-1 min-h-0 overflow-y-auto px-3.5 sm:px-5 md:px-6 pt-5 sm:pt-6 md:pt-7 pb-8 sm:pb-10 md:pb-12 space-y-4 focus:outline-none focus-visible:ring-1 focus-visible:ring-amber-500/20 overscroll-contain scroll-smooth"
+                  >
+                    {messages.map((msg) => {
+                      const isAssistant = msg.role === 'assistant';
+                      const isThisLastAssistant = msg.id === lastAssistantMessageId;
+                      const isCurrentlySpeaking = isSpeaking && isThisLastAssistant;
+                      const isCurrentlyPaused = isPaused && isThisLastAssistant;
+                      const assistantIndex = messages.filter((m) => m.role === 'assistant').findIndex((m) => m.id === msg.id);
+                      const isFirstAssistantResponse = assistantIndex <= 1;
 
-                        {/* Message Bubble with Left Pointer for Active Rajy Message */}
-                        <div className="relative overflow-visible max-w-[94%] sm:max-w-[88%] lg:max-w-[85%]">
-                          {hasTail && (
-                            <div
-                              className="hidden md:block absolute -left-2.5 top-3.5 w-2.5 h-3.5 z-10 pointer-events-none"
-                              aria-hidden="true"
+                      return (
+                        <article
+                          key={msg.id}
+                          id={`msg-${msg.id}`}
+                          className={`flex flex-col ${isAssistant ? 'items-start' : 'items-end'}`}
+                        >
+                          {/* Sender Meta Label */}
+                          <div className="flex items-center gap-2 mb-1.5 px-1 text-[11px] font-mono text-slate-400">
+                            {isAssistant ? (
+                              <div className="flex items-center gap-1.5 text-amber-400 font-bold uppercase tracking-wider text-[10px]">
+                                <img
+                                  src="/rajy-head.jpg"
+                                  alt="Rajy the AI Docent"
+                                  className="w-4 h-4 rounded-full object-cover object-top md:hidden border border-amber-500/40"
+                                />
+                                <span>Rajy &bull; AI Docent</span>
+                                {isCurrentlySpeaking && (
+                                  <span className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full bg-amber-500/20 text-amber-300 text-[9px] font-mono border border-amber-500/40 animate-pulse ml-1">
+                                     <Volume2 className="w-2.5 h-2.5" /> Narrating
+                                  </span>
+                                )}
+                                {isCurrentlyPaused && (
+                                  <span className="inline-flex items-center gap-1 px-1.5 py-0.2 rounded-full bg-slate-800 text-amber-300 text-[9px] font-mono border border-amber-500/30 ml-1">
+                                    <Pause className="w-2.5 h-2.5" /> Paused
+                                  </span>
+                                )}
+                              </div>
+                            ) : (
+                              <span className="font-bold text-slate-300 uppercase tracking-wider text-[10px]">
+                                Visitor
+                              </span>
+                            )}
+                            <span className="text-slate-600">&bull;</span>
+                            <time className="text-[10px] text-slate-300">{msg.timestamp}</time>
+                          </div>
+
+                          {/* Message Bubble */}
+                          <div className="relative overflow-visible max-w-[94%] sm:max-w-[88%] lg:max-w-[85%]">
+                            <motion.div
+                              initial={isAssistant && isThisLastAssistant && !shouldReduceMotion ? { opacity: 0, y: 6 } : false}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                              className={`rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 shadow-lg ${
+                                isAssistant
+                                  ? 'bg-[#151E34] border border-white/[0.08] text-slate-100 selection:bg-amber-500 selection:text-slate-950'
+                                  : 'bg-amber-500 text-slate-950 font-medium rounded-tr-xs selection:bg-slate-900 selection:text-white'
+                              }`}
                             >
-                              <svg
-                                viewBox="0 0 10 14"
-                                className="w-full h-full overflow-visible"
-                                fill="none"
-                              >
-                                <path
-                                  d="M10 0 L0 7 L10 14"
-                                  stroke="rgba(255, 255, 255, 0.08)"
-                                  strokeWidth="1"
-                                  fill="none"
-                                />
-                                <path
-                                  d="M10 0.5 L1 7 L10 13.5 Z"
-                                  fill="#151E34"
-                                />
-                              </svg>
-                            </div>
-                          )}
-
-                          <motion.div
-                            initial={hasTail && !shouldReduceMotion ? { opacity: 0, scale: 0.94 } : false}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                            style={hasTail ? { transformOrigin: 'top left' } : undefined}
-                            className={`rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 shadow-lg ${
-                              isAssistant
-                                ? `bg-[#151E34] border border-white/[0.08] text-slate-100 ${hasTail ? 'rounded-tl-2xl md:rounded-tl-xs' : ''} selection:bg-amber-500 selection:text-slate-950`
-                                : 'bg-amber-500 text-slate-950 font-medium rounded-tr-xs selection:bg-slate-900 selection:text-white'
-                            }`}
-                          >
                             {isAssistant ? (
                               <>
                                 <RajyResponseRenderer
@@ -1909,14 +1897,8 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                           </span>
                         </div>
                         <p className="text-[10px] font-mono text-slate-400 italic">
-                          Rajasaurus narmadensis &bull; Prehistorica AI Docent
+                          Rajasaurus narmadensis
                         </p>
-                        <div className="pt-1.5 flex justify-center">
-                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-white/[0.08] text-[9px] font-mono font-bold tracking-widest text-amber-400/90 uppercase">
-                            <Dna className="w-2.5 h-2.5 text-amber-400/80" />
-                            AI DOCENT
-                          </span>
-                        </div>
                       </div>
 
                       <div className="flex items-center gap-2 border-b border-white/[0.06] pb-2 font-mono">
@@ -1924,7 +1906,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                         <h3 className="text-xs font-bold tracking-widest uppercase text-amber-400">
                           EXPLORE WITH RAJY
                         </h3>
-                        <span className="text-[10px] text-slate-500 tracking-wider">
+                        <span className="text-[10px] text-slate-300 tracking-wider font-medium">
                           &bull; Curated Inquiries
                         </span>
                       </div>
@@ -1970,8 +1952,9 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                     </div>
                   )}
 
-                  <div ref={messagesEndRef} className="h-2" />
+                  <div ref={messagesEndRef} className="h-4 sm:h-6 shrink-0" />
                 </div>
+              </div>
 
                 {/* ── Refined Context-Aware Suggestion Chips (Visible during ongoing chat) ── */}
                 {!isInitialState && (
@@ -2043,8 +2026,8 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                       )}
                     </button>
                   </form>
-                  <p className="hidden sm:block text-[10px] font-mono text-slate-500 pt-1.5 text-center">
-                    Rajy &bull; Prehistorica AI Docent &bull; Evidence-based retrieval augmented generation (RAG)
+                  <p className="text-[10px] sm:text-[11px] font-mono text-slate-300 pt-2 text-center select-none">
+                    Answers grounded in the Prehistorica catalog
                   </p>
                 </div>
 

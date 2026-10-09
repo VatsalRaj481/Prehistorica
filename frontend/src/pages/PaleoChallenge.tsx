@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { fetchSpecies, fetchSpeciesRoster, Species, SpeciesRosterItem } from '../services/api.js';
+import { fetchAllSpecies, fetchSpeciesRoster, Species, SpeciesRosterItem } from '../services/api.js';
 import HolotypeDetective from '../components/challenges/HolotypeDetective.js';
 import CaliperGuesser from '../components/challenges/CaliperGuesser.js';
 import ChronoSorter from '../components/challenges/ChronoSorter.js';
@@ -51,15 +51,14 @@ export default function PaleoChallenge() {
       setStreak(isNaN(savedStreak) ? 0 : savedStreak);
     } catch {}
 
-    // Load full roster and complete species catalog (all 592 species) for randomized challenges
+    // Load full roster and complete species catalog across all pages for randomized challenges
     Promise.all([
       fetchSpeciesRoster(),
-      fetchSpecies({ limit: 600 })
+      fetchAllSpecies()
     ])
-      .then(([rosterData, speciesData]) => {
+      .then(([rosterData, speciesList]) => {
         setRoster(rosterData);
-        const list = 'data' in speciesData ? speciesData.data : speciesData;
-        setSpeciesPool(list);
+        setSpeciesPool(speciesList);
         setLoading(false);
       })
       .catch((err) => {
@@ -129,7 +128,7 @@ export default function PaleoChallenge() {
               Paleontological Field Trials
             </h1>
             <p className="text-sm text-slate-400 font-mono max-w-xl">
-              Test your anatomical diagnosis, metric caliper scale intuition, and deep-time chronostratigraphy across 540 million years of natural history.
+              Test your anatomical diagnosis, metric caliper scale intuition, and deep-time chronostratigraphy across over half a billion years of natural history.
             </p>
           </div>
 

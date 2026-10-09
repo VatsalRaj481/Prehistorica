@@ -141,7 +141,7 @@ export default function ChronoTimelineSlider() {
         <div>
           <div className="flex items-center gap-2 text-xs text-amber-400 font-mono font-bold uppercase tracking-widest mb-1.5">
             <Clock className="h-4 w-4" />
-            <span>Deep-Time Chronostratigraphy &bull; 541–0 Million Years Ago</span>
+            <span>Deep-Time Chronostratigraphy &bull; More than 538 Million Years of Prehistory</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight flex items-center gap-2 font-sans">
             <ShinyText text="Stratigraphic Temporal Slider" speed={3.5} />

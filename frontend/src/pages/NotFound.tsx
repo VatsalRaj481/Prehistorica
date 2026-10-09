@@ -17,7 +17,7 @@ import Particles from '../components/reactbits/Particles.js';
 import Magnet from '../components/reactbits/Magnet.js';
 import ClickSpark from '../components/reactbits/ClickSpark.js';
 import SpotlightCard from '../components/SpotlightCard.js';
-import { TOTAL_CATALOGED_SPECIMENS } from '../services/api.js';
+import { getLiveSpecimensTotal } from '../services/api.js';
 
 interface CuratedSpecimenLink {
   id: number;
@@ -139,7 +139,7 @@ export default function NotFound() {
               type="text"
               value={quickQuery}
               onChange={(e) => setQuickQuery(e.target.value)}
-              placeholder={`Search ${TOTAL_CATALOGED_SPECIMENS} cataloged species (e.g. T-Rex, Spinosaurus, Dimetrodon)...`}
+              placeholder={`Search ${getLiveSpecimensTotal() ? getLiveSpecimensTotal() : '800+'} cataloged species (e.g. T-Rex, Spinosaurus, Dimetrodon)...`}
               className="w-full bg-transparent px-3 py-2 text-xs sm:text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none font-sans"
             />
             <button
@@ -190,7 +190,7 @@ export default function NotFound() {
                   Specimen Archive
                 </h3>
                 <p className="text-[11px] text-slate-400 font-sans leading-relaxed">
-                  Filter all {TOTAL_CATALOGED_SPECIMENS} cataloged prehistoric species by period, clade, diet, and formation.
+                  Filter all {getLiveSpecimensTotal() ? getLiveSpecimensTotal() : '800+'} cataloged prehistoric species by period, clade, diet, and formation.
                 </p>
               </div>
               <div className="pt-3 flex items-center gap-1 text-[10px] font-mono font-bold text-amber-400/80 uppercase tracking-wider">
@@ -211,7 +211,7 @@ export default function NotFound() {
                   Geological TimeMap
                 </h3>
                 <p className="text-[11px] text-slate-400 font-sans leading-relaxed">
-                  Travel 541 million years through deep time across Earth's major eras and epochs.
+                  Travel over half a billion years through deep time across Earth's major eras and epochs.
                 </p>
               </div>
               <div className="pt-3 flex items-center gap-1 text-[10px] font-mono font-bold text-amber-400/80 uppercase tracking-wider">

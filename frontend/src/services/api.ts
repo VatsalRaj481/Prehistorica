@@ -126,9 +126,46 @@ const cleanApiUrl = rawApiUrl.replace(/\/$/, '');
 const API_BASE = cleanApiUrl.endsWith('/api') ? cleanApiUrl : `${cleanApiUrl}/api`;
 
 /**
- * Canonical Single Source of Truth for verified cataloged specimens count across Prehistorica.
+ * Dynamic single source of truth for cataloged specimens count across Prehistorica.
+ * Synchronized purely from live data metrics and API query telemetry.
  */
-export const TOTAL_CATALOGED_SPECIMENS = 801;
+let liveSpecimensTotal: number | null = null;
+
+export function getLiveSpecimensTotal(): number | null {
+  return liveSpecimensTotal;
+}
+
+export function setLiveSpecimensTotal(count: number): void {
+  if (typeof count === 'number' && count > 0) {
+    liveSpecimensTotal = count;
+  }
+}
+
+/**
+ * Fetches all species records across all pages until completely retrieved.
+ * Continues paginating dynamically so it never truncates as the catalog grows.
+ */
+export async function fetchAllSpecies(pageSize = 100): Promise<Species[]> {
+  const allSpecies: Species[] = [];
+  let currentPage = 1;
+  let totalPages = 1;
+
+  while (currentPage <= totalPages) {
+    const res = await fetchSpecies({ page: currentPage, limit: pageSize });
+    if ('data' in res && Array.isArray(res.data)) {
+      allSpecies.push(...res.data);
+      totalPages = res.pagination?.totalPages || 1;
+    } else if (Array.isArray(res)) {
+      allSpecies.push(...res);
+      break;
+    } else {
+      break;
+    }
+    currentPage++;
+  }
+
+  return allSpecies;
+}
 
 /**
  * Fire-and-forget wake ping to wake up a sleeping backend immediately upon app load.
@@ -227,6 +264,10 @@ export async function fetchSpecies(filters?: {
     throw new Error('Failed to fetch species');
   }
   const data = await response.json();
+
+  if (data && typeof data === 'object' && 'pagination' in data && data.pagination?.total) {
+    setLiveSpecimensTotal(data.pagination.total);
+  }
 
   // Populate individual species detail cache from the page items
   const items = Array.isArray(data) ? data : data?.data;
@@ -343,6 +384,7 @@ export async function fetchSpeciesRoster(): Promise<SpeciesRosterItem[]> {
         const data = await response.json();
         if (Array.isArray(data) && data.length > 0) {
           rosterCache = data;
+          setLiveSpecimensTotal(data.length);
           return data;
         }
       }

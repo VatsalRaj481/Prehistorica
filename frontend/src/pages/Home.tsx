@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion, useScroll, useTransform, Variants } from 'framer-motion';
-import { fetchCreatureOfTheDay, fetchSpecies, fetchSpeciesById, Species, TOTAL_CATALOGED_SPECIMENS } from '../services/api.js';
+import { fetchCreatureOfTheDay, fetchSpecies, fetchSpeciesById, Species } from '../services/api.js';
 import SpotlightCard from '../components/SpotlightCard.js';
 import SpecimenThumbnail from '../components/SpecimenThumbnail.js';
 import { ArrowRight, Compass, ShieldAlert, Layers, Globe, Database, Scale, Trophy, Skull } from 'lucide-react';
@@ -81,7 +81,7 @@ export default function Home() {
     }
   };
 
-  const formattedTotal = totalSpecies ? `${totalSpecies}` : `${TOTAL_CATALOGED_SPECIMENS}`;
+  const formattedTotal = totalSpecies ? `${totalSpecies}` : (loading ? '—' : '800+');
 
   return (
     <div className="space-y-16 relative">
@@ -97,7 +97,7 @@ export default function Home() {
           <div className="lg:col-span-8 space-y-6 text-left">
             <div className="flex items-center gap-2.5 text-xs font-mono text-amber-400 font-bold tracking-widest uppercase">
               <img src="/logo.png" alt="Prehistorica Emblem" className="h-4 w-4 object-contain shrink-0" />
-              <span>Deep Time Archive &bull; 541 &ndash; 0.01 MYA</span>
+              <span>Deep Time Archive &bull; Over 538 &ndash; 0.01 MYA</span>
             </div>
 
             <motion.h1
@@ -115,7 +115,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="text-base sm:text-lg font-sans text-slate-300 leading-relaxed max-w-2xl"
             >
-              An architectural digital repository cataloging <strong className="text-amber-400 font-bold">{formattedTotal}</strong> scientifically verified prehistoric species across Earth's major geological epochs and fossil formations.
+              An architectural digital repository cataloging <strong className="text-amber-400 font-bold">{formattedTotal}</strong> cataloged prehistoric species across Earth's major geological epochs and fossil formations.
             </motion.p>
 
             <div className="flex flex-wrap items-center gap-3 pt-2 font-mono text-xs">
@@ -149,7 +149,7 @@ export default function Home() {
 
             <div className="space-y-5">
               <div className="space-y-1">
-                <div className="text-[10px] text-slate-400 uppercase tracking-widest font-mono">Verified Holotype Specimens</div>
+                <div className="text-[10px] text-slate-400 uppercase tracking-widest font-mono">Cataloged Specimens</div>
                 <div className="text-3xl font-black text-slate-100 tabular-nums font-sans">
                   {formattedTotal}
                 </div>
@@ -158,7 +158,7 @@ export default function Home() {
               <div className="space-y-1">
                 <div className="text-[10px] text-slate-400 uppercase tracking-widest font-mono">Geological span</div>
                 <div className="text-sm font-bold text-slate-200">
-                  10 Geological Eras &bull; <span className="text-amber-400 font-mono">541 MYA to Holocene</span>
+                  10 Geological Eras &bull; <span className="text-amber-400 font-mono">Over 538 MYA to Holocene</span>
                 </div>
               </div>
 

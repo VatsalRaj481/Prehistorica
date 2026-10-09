@@ -3,7 +3,6 @@ import { useSearchParams, Link } from 'react-router-dom';
 import {
   fetchSpeciesCompare,
   fetchSpeciesRoster,
-  TOTAL_CATALOGED_SPECIMENS,
   Species,
   SpeciesRosterItem
 } from '../services/api.js';
@@ -440,7 +439,7 @@ export default function CaliperRunway() {
           <Scale className="h-10 w-10 text-amber-400 mx-auto" />
           <h3 className="text-base text-slate-200 uppercase font-bold">No Specimen On The Runway</h3>
           <p className="text-xs text-slate-400 max-w-sm mx-auto">
-            Select a preset above or add creatures from the {TOTAL_CATALOGED_SPECIMENS}-species roster below.
+            Select a preset above or add creatures from the {roster.length > 0 ? `${roster.length}-species` : '800+-species'} roster below.
           </p>
         </div>
       ) : (
@@ -484,7 +483,7 @@ export default function CaliperRunway() {
                     autoFocus
                     value={rosterSearch}
                     onChange={(e) => setRosterSearch(e.target.value)}
-                    placeholder="Search 592 species..."
+                    placeholder={roster.length > 0 ? `Search ${roster.length} species...` : 'Search species...'}
                     className="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-white/[0.1] text-slate-200 text-xs focus:outline-none focus:border-amber-500/50"
                   />
                   <div className="max-h-60 overflow-y-auto space-y-1 divide-y divide-white/[0.04]">

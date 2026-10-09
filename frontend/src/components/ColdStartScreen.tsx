@@ -432,7 +432,7 @@ export default function ColdStartScreen({
             </span>
             <span className="text-slate-600 hidden sm:inline">&bull;</span>
             <span className="hidden sm:inline text-amber-400/90 font-['Cinzel',serif] text-[11px] tracking-wider font-semibold">
-              541 Million Years of Natural History
+              Over Half a Billion Years of Natural History
             </span>
           </div>
         </motion.header>
@@ -579,7 +579,7 @@ export default function ColdStartScreen({
                 className="absolute inset-0 flex items-center justify-center pointer-events-none z-[5]"
               >
                 <CircularText
-                  text="• PREHISTORICA PAVILION • DEEP-TIME ARCHIVES • 541 MYA • "
+                  text="• PREHISTORICA PAVILION • DEEP-TIME ARCHIVES • OVER 538 MYA • "
                   spinDuration={34}
                   onHover="speedUp"
                   radius={132}
@@ -630,7 +630,7 @@ export default function ColdStartScreen({
                 Museum Archive Pavilion
               </p>
               <p className="text-xs text-slate-400 leading-relaxed pt-1">
-                A permanent digital pavilion cataloging 540 million years of natural history and prehistoric life.
+                A permanent digital pavilion cataloging over half a billion years of natural history and prehistoric life.
               </p>
             </motion.div>
           </motion.div>

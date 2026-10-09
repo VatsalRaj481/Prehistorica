@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, useReducedMotion, Variants } from 'framer-motion';
-import { fetchSpecies, fetchSemanticSearch, Species, TOTAL_CATALOGED_SPECIMENS } from '../services/api.js';
+import { fetchSpecies, fetchSemanticSearch, Species } from '../services/api.js';
 import SpotlightCard from '../components/SpotlightCard.js';
 import SpecimenThumbnail from '../components/SpecimenThumbnail.js';
 import { SlidersHorizontal, ArrowRight, Info, X, ChevronLeft, ChevronRight, Filter, Sparkles } from 'lucide-react';
@@ -35,7 +35,7 @@ export default function Browse() {
   const page = parseInt(searchParams.get('page') || '1', 10);
 
   const [speciesList, setSpeciesList] = useState<Species[]>([]);
-  const [pagination, setPagination] = useState({ total: TOTAL_CATALOGED_SPECIMENS, totalPages: 1, limit: 12 });
+  const [pagination, setPagination] = useState({ total: 0, totalPages: 1, limit: 12 });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -276,21 +276,21 @@ export default function Browse() {
           >
             Archival search across{' '}
             <strong className="text-amber-400 font-bold">
-              {loading && !hasActiveFilters ? (
-                <span>{TOTAL_CATALOGED_SPECIMENS}</span>
+              {loading && !pagination.total ? (
+                <span>&mdash;</span>
               ) : hasActiveFilters ? (
                 <CountUp
                   to={pagination.total}
-                  from={TOTAL_CATALOGED_SPECIMENS}
+                  from={0}
                   duration={0.6}
                   separator=","
                   className="text-amber-400 font-bold"
                 />
               ) : (
-                <span>{TOTAL_CATALOGED_SPECIMENS}</span>
+                <span>{pagination.total > 0 ? pagination.total : (loading ? '—' : '800+')}</span>
               )}
             </strong>{' '}
-            verified prehistoric specimens.
+            cataloged prehistoric specimens.
           </motion.p>
         </div>
 
