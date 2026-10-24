@@ -241,7 +241,7 @@ flowchart LR
 ## 🚀 Getting Started & Local Setup
 
 ### Prerequisites
-- **Node.js**: v18.0.0 or higher
+- **Node.js**: v22.0.0 or higher (Active LTS with Brotli security patches)
 - **PostgreSQL**: Supabase or local instance with `vector` extension enabled
 - **Google Gemini API Key**: Free tier key from [Google AI Studio](https://aistudio.google.com/)
 

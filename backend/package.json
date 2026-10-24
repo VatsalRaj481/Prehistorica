@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Express backend for Prehistoric Fauna Encyclopedia",
   "main": "dist/server.js",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "prisma generate && tsc",
@@ -15,6 +18,7 @@
     "prisma:seed": "tsx prisma/seed.ts",
     "seed": "npm run prisma:seed",
     "add-species": "tsx scripts/add-species.ts",
+    "test:brotli-guard": "tsx scripts/test-brotli-guard.ts",
     "test:silhouettes": "tsx scripts/validate-silhouettes.ts",
     "test:taxonomy": "tsx scripts/validate-taxonomy-and-relatives.ts",
     "test:taxonomy:ci": "tsx scripts/validate-taxonomy-and-relatives.ts --ci"
@@ -34,7 +38,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
-    "@types/node": "^20.11.30",
+    "@types/node": "^22.0.0",
     "prisma": "^5.12.1",
     "tsx": "^4.7.1",
     "typescript": "^5.4.3"

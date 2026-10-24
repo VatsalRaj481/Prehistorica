@@ -27,6 +27,31 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
 
+/**
+ * 🛡️ Defense-in-Depth Guard Middleware (CVE-2026-111497 / Node2Shell)
+ * Rejects incoming requests with Brotli ('br' / 'brotli') content encoding with HTTP 415.
+ * Prevents exploitation of bundled Node.js Brotli decoder vulnerabilities prior to container runtime redeployments.
+ */
+export const rejectBrotliContentEncoding = (req: Request, res: Response, next: NextFunction) => {
+  const contentEncoding = req.headers['content-encoding'];
+  if (contentEncoding) {
+    const encodingHeader = Array.isArray(contentEncoding)
+      ? contentEncoding.join(', ')
+      : contentEncoding;
+
+    if (/\b(br|brotli)\b/i.test(encodingHeader)) {
+      return res.status(415).json({
+        error: 'Unsupported Media Type',
+        code: 'BROTLI_ENCODING_REJECTED',
+        message: 'Brotli-encoded request payloads are temporarily disallowed due to security mitigation (CVE-2026-111497). Please send uncompressed or gzip-encoded request bodies.'
+      });
+    }
+  }
+  next();
+};
+
+app.use(rejectBrotliContentEncoding);
+
 // Body parser
 app.use(express.json());
 
