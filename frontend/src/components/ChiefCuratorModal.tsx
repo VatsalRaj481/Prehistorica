@@ -80,6 +80,7 @@ const RAJY_STATE_IMAGES: Record<RajyPrimaryState, string> = {
 // Character-level animation variants for Rajy mascot (subtle breathing and posture support)
 const rajyCharacterVariants: Variants = {
   idle: {
+    opacity: 1,
     y: [0, -2.5, 0],
     scaleY: [1, 1.01, 1],
     scaleX: [1, 0.995, 1],
@@ -90,6 +91,7 @@ const rajyCharacterVariants: Variants = {
     }
   },
   researching: {
+    opacity: 1,
     y: [0, -2, 0],
     rotate: [-0.6, 0.6, -0.6],
     transition: {
@@ -99,6 +101,7 @@ const rajyCharacterVariants: Variants = {
     }
   },
   excited: {
+    opacity: 1,
     y: [0, -3.5, 0],
     scale: [1, 1.02, 1],
     rotate: [-0.8, 0.8, -0.8],
@@ -109,6 +112,7 @@ const rajyCharacterVariants: Variants = {
     }
   },
   narrating: {
+    opacity: 1,
     y: [0, -3.2, 0, -1.6, 0],
     rotate: [0, -0.6, 0, 0.4, 0],
     scale: [1, 1.015, 1],
@@ -119,6 +123,7 @@ const rajyCharacterVariants: Variants = {
     }
   },
   knowledgeNotFound: {
+    opacity: 1,
     y: [0, -1.5, 0],
     rotate: [0, 0.8, 0],
     transition: {
@@ -744,8 +749,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 timestamp: assistantTimestamp
               }
             ]);
-            setLoading(false);
-            setIsStreaming(true);
+            // Keep loading = true during retrieval so Rajy stays in the researching/thinking pose
           } else {
             setMessages((prev) =>
               prev.map((m) => (m.id === assistantMsgId ? { ...m, groundedSpecimens: grounded } : m))
@@ -1374,7 +1378,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                       className="relative w-full max-w-[240px] h-[250px] md:h-[270px] flex items-end justify-center"
                     >
                       {/* Smooth cross-fade between the 5 official state images */}
-                      <AnimatePresence mode="popLayout">
+                      <AnimatePresence mode="wait">
                         <motion.img
                           key={primaryState}
                           src={RAJY_STATE_IMAGES[primaryState]}
@@ -1382,8 +1386,8 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
-                          transition={{ duration: 0.28, ease: 'easeInOut' }}
-                          className={`max-w-full max-h-full w-auto h-auto object-contain transition-all select-none block ${
+                          transition={{ duration: 0.22, ease: 'easeInOut' }}
+                          className={`max-w-full max-h-full w-auto h-auto object-contain select-none block ${
                             (isStreaming || isSpeaking) && !shouldReduceMotion
                               ? 'drop-shadow-[0_0_24px_rgba(245,158,11,0.4)]'
                               : 'drop-shadow-[0_10px_22px_rgba(0,0,0,0.65)] group-hover:drop-shadow-[0_12px_28px_rgba(245,158,11,0.25)]'
@@ -1542,7 +1546,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                           style={{ transformOrigin: 'bottom center' }}
                           className="relative w-full h-full flex items-center justify-center"
                         >
-                          <AnimatePresence mode="popLayout">
+                          <AnimatePresence mode="wait">
                             <motion.img
                               key={primaryState}
                               src={RAJY_STATE_IMAGES[primaryState]}
@@ -1873,7 +1877,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                             style={{ transformOrigin: 'bottom center' }}
                             className="relative w-full h-full flex items-center justify-center"
                           >
-                            <AnimatePresence mode="popLayout">
+                            <AnimatePresence mode="wait">
                               <motion.img
                                 key={primaryState}
                                 src={RAJY_STATE_IMAGES[primaryState]}

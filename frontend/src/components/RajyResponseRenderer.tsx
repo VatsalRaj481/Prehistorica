@@ -324,18 +324,48 @@ function renderBlock(block: BlockItem, index: number, onLinkClick?: () => void):
  * - Italic text / scientific species names: *text* or _text_
  * - Monospace terms / code: `term`
  */
+/**
+ * Auto-repairs unclosed or malformed scientific markdown delimiters before tokenization:
+ * - "*[Genus](/species/123) (Binomial)*" or "*Genus (Binomial)*" -> "*[Genus](/species/123)* (*Binomial*)"
+ * - "*Dornraptor (Dornraptor normani) —" -> "*Dornraptor* (*Dornraptor normani*) —"
+ */
+function sanitizeInlineMarkdown(raw: string): string {
+  if (!raw) return '';
+  let s = raw;
+
+  // 1. Repair combined genus + parenthetical binomial under a single asterisk pair
+  s = s.replace(
+    /\*(\[[^\]]+\]\([^\)]+\)|[A-Za-z0-9_-]+)\s+\(([^)]+)\)\*/g,
+    (_m, name, paren) => `*${name}* (*${paren}*)`
+  );
+
+  // 2. Repair unclosed opening asterisk before an em-dash/en-dash/hyphen separator
+  s = s.replace(
+    /\*(\[[^\]]+\]\([^\)]+\)|[A-Za-z0-9_-]+)\s*(?:\(([^)]+)\))?\s*([—–-]|\.\.\.)/g,
+    (_m, name, paren, dash) => {
+      const cleanName = name.replace(/^\*+|\*+$/g, '');
+      const parenPart = paren ? ` (*${paren.replace(/^\*+|\*+$/g, '')}*)` : '';
+      return `*${cleanName}*${parenPart} ${dash}`;
+    }
+  );
+
+  return s;
+}
+
 function renderInline(text: string, onLinkClick?: () => void): React.ReactNode {
   if (!text) return null;
+
+  const sanitized = sanitizeInlineMarkdown(text);
 
   // Regex pattern matching:
   // 1. Italicized links: \*\[[^\]]+\]\([^\)]+\)\*
   // 2. Bold+Italics: \*\*\*[^*]+\*\*\*
   // 3. Markdown links: \[[^\]]+\]\([^\)]+\)
   // 4. Bold text: \*\*[^*]+\*\*
-  // 5. Italic text: \*[^*]+\* or _[^_]+_
+  // 5. Italic text (restricted to non-dash spans up to 160 chars): \*[^*\n—–]{1,160}\* or _[^_\n—–]{1,160}_
   // 6. Inline code: `[^`]+`
-  const tokenRegex = /(\*\[[^\]]+\]\([^\)]+\)\*|\*\*\*[^*]+\*\*\*|\[[^\]]+\]\([^\)]+\)|\*\*[^*]+\*\*|\*[^*]+\*|_[^_]+_|`[^`]+`)/g;
-  const parts = text.split(tokenRegex);
+  const tokenRegex = /(\*\[[^\]]+\]\([^\)]+\)\*|\*\*\*[^*]+\*\*\*|\[[^\]]+\]\([^\)]+\)|\*\*[^*]+\*\*|\*[^*\n—–]{1,160}\*|_[^_\n—–]{1,160}_|`[^`]+`)/g;
+  const parts = sanitized.split(tokenRegex);
 
   return parts.map((part, i) => {
     if (!part) return null;

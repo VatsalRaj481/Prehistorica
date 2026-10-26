@@ -5091,13 +5091,13 @@
     "sizeNotes": "Immature holotype indicates subadult growth; adult individuals are estimated to have reached ~12.0–13.0 m in length, ~3.8 m tall at the sail, and ~6,500 kg. Note: Sereno et al. (2026); subadult holotype extrapolated to adult length 12.5 m, sail height 3.8 m, mass 6,500 kg.",
     "sizeEstimate": "{\"length\":{\"value\":12.5,\"unit\":\"m\",\"confidence\":\"estimated\"},\"height\":{\"value\":3.8,\"unit\":\"m\",\"confidence\":\"estimated\"},\"weight\":{\"value\":6500,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
     "sizeComparisonToHuman": true,
-    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/0dd7eaf6-1caf-4579-9f42-340fa9f34c48.png\",\"sourceUrl\":\"https://www.phylopic.org/images/0dd7eaf6-1caf-4579-9f42-340fa9f34c48\",\"license\":\"CC0 1.0 Universal Public Domain Dedication\",\"credit\":\"Tasman Dixon\",\"taxon\":\"Spinosaurus\",\"taxonMatch\":\"genus-level approximation\"}",
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/b8db44e0-1c99-4256-8c35-61e914af848b.svg\",\"sourceUrl\":\"https://www.phylopic.org/images/b8db44e0-1c99-4256-8c35-61e914af848b\",\"license\":\"Attribution-ShareAlike 3.0 Unported\",\"credit\":\"T. Michael Keesey\",\"taxon\":\"Spinosaurus (Representative: Spinosaurus aegyptiacus)\",\"taxonMatch\":\"genus-level approximation\"}",
     "extinctionEvent": null,
     "closestLivingRelatives": "{\"status\":\"established\",\"groups\":[\"Modern Birds (Aves / Neornithes - direct surviving avian theropods)\",\"Crocodilians (Crocodilia - closest living non-dinosaurian outgroup)\"],\"rationale\":\"Aves (modern birds) are biologically surviving avian theropod dinosaurs, nested within Coelurosauria / Maniraptora. Crocodilians represent the nearest extant sister outgroup to Dinosauria.\",\"ecologicalAnalogues\":[\"Ratites (Ostriches, Emus, Cassowaries - cursorial bipedal terrestrial ecology)\",\"Birds of Prey (Accipitridae & Falconidae - raptorial hunting)\"],\"sources\":[{\"title\":\"Brusatte, S. L., et al. (2014). Gradual Assembly of Avian Body Plan Culminated in Rapid Diversification of Dinosaur Lineage. Current Biology, 24(20), 2386-2392.\",\"url_or_doi\":\"https://doi.org/10.1016/j.cub.2014.08.034\"},{\"title\":\"Prum, R. O. (2002). Why Ornithologists Should Care About the Theropod Origin of Birds. The Auk, 119(1), 1-17.\",\"url_or_doi\":\"https://doi.org/10.1093/auk/119.1.1\"}],\"verified\":true}",
     "sources": "[{\"citation\":\"Sereno, P. C., et al. (2026). A new crested species of Spinosaurus from the Cretaceous of Niger. Science.\",\"url\":\"https://doi.org/10.1126/science.spinosaurus2026\"},{\"citation\":\"Spinosaurus mirabilis - Wikipedia\",\"url\":\"https://en.wikipedia.org/wiki/Spinosaurus_mirabilis\"}]",
     "placeholder": false,
     "createdAt": "2026-08-25T14:11:38.508Z",
-    "updatedAt": "2026-09-28T14:21:21.003Z"
+    "updatedAt": "2026-10-26T17:10:44.185Z"
   },
   {
     "id": 2642,
@@ -11338,5 +11338,35 @@
     "placeholder": false,
     "createdAt": "2026-10-08T09:02:18.499Z",
     "updatedAt": "2026-10-08T09:02:18.499Z"
+  },
+  {
+    "id": 5432,
+    "name": "Guidraco",
+    "scientificName": "Guidraco venator",
+    "nameMeaning": "Ghost dragon hunter",
+    "timePeriod": "Early Cretaceous",
+    "epoch": "Early Cretaceous Epoch",
+    "myaStart": 120,
+    "myaEnd": 118,
+    "diet": "piscivore",
+    "dietDetails": "Specialized aerial piscivore that hunted over Early Cretaceous lakes and river systems, using long needle-like interlocking rostral fangs to snare fish.",
+    "habitat": "aerial",
+    "clade": "Pterosaur",
+    "geographicRange": "{\"continent\":\"Asia\",\"region\":\"East Asia\",\"country\":\"China\",\"fossilFormation\":\"Jiufotang Formation (Jehol Biota), Sihedang, Lingyuan, Liaoning Province\"}",
+    "taxonomy": "{\"domain\":\"Eukaryota\",\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Reptilia\",\"clade\":\"Pterosauria\",\"order\":\"Pterosauria\",\"family\":\"Anhangueridae\",\"genus\":\"Guidraco\",\"species\":\"Guidraco venator\",\"source\":\"Wang et al. (2012) / Paleobiology Database\"}",
+    "taxonomicStatus": "valid",
+    "media": "[{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/4/4a/Walking_dragon.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction illustration by Helder da Rocha (CC BY-SA 2.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Walking_dragon.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/7/7a/Guidraco.jpg\",\"type\":\"art\",\"credit\":\"Life reconstruction head study by Helder da Rocha (CC BY-SA 2.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Guidraco.jpg\"},{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/d/d9/Guidraco_venator_Holotype_IVPP.jpg\",\"type\":\"photo\",\"credit\":\"Holotype skull specimen IVPP V17083 photographed by Gary Todd (CC0 1.0)\",\"sourceUrl\":\"https://commons.wikimedia.org/wiki/File:Guidraco_venator_Holotype_IVPP.jpg\"}]",
+    "discoveryHistory": "• Discovered at Sihedang near Lingyuan City in western Liaoning Province, China, within the Early Cretaceous Jiufotang Formation of the Jehol Biota.\n• The holotype specimen (IVPP V17083), curated at the Institute of Vertebrate Paleontology and Paleoanthropology in Beijing, consists of an articulated partial skeleton including a beautifully preserved skull, mandibles, four cervical vertebrae, and associated coprolites containing fish bones.\n• Formally described in 2012 by paleontologists Wang Xiaolin, Alexander W. A. Kellner, Jiang Shunxing, and Cheng Xin in the journal Naturwissenschaften.\n• The generic name Guidraco combines the Chinese 'gui' (鬼, meaning malicious ghost) and Latin 'draco' (dragon), while the species epithet 'venator' means hunter—translating to 'ghost dragon hunter'.\n• The discovery demonstrated remarkable biogeographic and phylogenetic affinities between Early Cretaceous pterosaurs of East Asia and northeastern Brazil (such as Ludodactylus and Anhanguera).",
+    "interestingFacts": "[\"Possessed extraordinarily elongated, needle-like fangs in the anterior rostra that pointed outward and vertically, forming an inescapable interlocking basket for snatching fish from Cretaceous lakes.\",\"Exhibits a striking upward-projecting frontal cranial crest that began above the antorbital fenestra, giving its head a sharp, aerodynamic profile.\",\"Despite being recovered in China, its closest known anatomical relative is Ludodactylus from the Araripe Basin of Brazil, demonstrating an unexpected trans-continental faunal connection across Early Cretaceous Pangaean fragments.\",\"The holotype specimen was fossilized with direct paleobiological evidence of its diet: an associated coprolite cluster containing disintegrated teleost fish scales and bones.\",\"The unfused sutures of the holotype skull and cervical vertebrae reveal that the 4-to-5-meter wingspan specimen was a subadult, indicating mature adults may have reached even larger dimensions.\"]",
+    "sizeNotes": "Estimated wingspan of 4.0 to 5.0 meters (13 to 16.4 ft). In quadrupedal terrestrial posture, head-to-tail body length was approximately 1.4 meters, standing shoulder/crest height was 1.1 meters, and body mass was estimated at ~15–20 kg.",
+    "sizeEstimate": "{\"length\":{\"value\":1.4,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"height\":{\"value\":1.1,\"unit\":\"meters\",\"confidence\":\"well-supported\"},\"weight\":{\"value\":18,\"unit\":\"kg\",\"confidence\":\"estimated\"}}",
+    "sizeComparisonToHuman": true,
+    "comparisonSilhouette": "{\"url\":\"https://bbsmxcoywionsvmfznah.supabase.co/storage/v1/object/public/species-silhouettes/17e2fb59-d715-4ad7-a259-a18df95af7bc.png\",\"sourceUrl\":\"https://www.phylopic.org/images/17e2fb59-d715-4ad7-a259-a18df95af7bc\",\"license\":\"Attribution-ShareAlike 3.0 Unported\",\"credit\":\"thefunkmonk\",\"taxon\":\"Anhangueridae (Representative: Caulkicephalus trimicrodon)\",\"taxonMatch\":\"generic approximation, not species-specific\"}",
+    "extinctionEvent": "K-Pg extinction event (66 MYA)",
+    "closestLivingRelatives": "{\"status\":\"established\",\"groups\":[\"Modern Birds (Aves - closest living archosaur sister lineage)\",\"Crocodilians (Crocodilia - archosaur outgroup)\"],\"rationale\":\"Pterosaurs belong to Avemetatarsalia / Ornithodira within Archosauria. They left no living descendants; modern birds are their closest extant evolutionary cousins (not descendants).\",\"ecologicalAnalogues\":[\"Albatrosses & Petrels (Procellariiformes - dynamic soaring pelagic foraging)\",\"Skimmers & Terns (Rynchopidae / Sternidae - aerial plunge-fishing and water surface dipping)\",\"River Dolphins (Platanistoidea - interlocking needle-like fangs for trapping fast slippery fish)\"],\"sources\":[{\"title\":\"Nesbitt, S. J. (2011). The early evolution of archosaurs: relationships and the origin of major clades. Bulletin of the American Museum of Natural History, 352, 1-292.\",\"url_or_doi\":\"https://doi.org/10.1206/352.1\"},{\"title\":\"Wang, X., Kellner, A. W. A., Jiang, S., & Cheng, X. (2012). New toothed flying reptile from Asia: close similarities between early Cretaceous pterosaur faunas from China and Brazil. Naturwissenschaften, 99(4), 249-257.\",\"url_or_doi\":\"https://doi.org/10.1007/s00114-012-0889-1\"}],\"verified\":true}",
+    "sources": "[{\"citation\":\"Wang, X., Kellner, A. W. A., Jiang, S., & Cheng, X. (2012). New toothed flying reptile from Asia: close similarities between early Cretaceous pterosaur faunas from China and Brazil. Naturwissenschaften, 99(4), 249-257.\",\"url\":\"https://doi.org/10.1007/s00114-012-0889-1\"},{\"citation\":\"Paleobiology Database (PBDB) taxon record 232971: Guidraco venator\",\"url\":\"https://paleobiodb.org/classic/basicTaxonInfo?taxon_no=232971\"}]",
+    "placeholder": false,
+    "createdAt": "2026-10-26T15:56:40.105Z",
+    "updatedAt": "2026-10-26T15:56:40.105Z"
   }
 ]

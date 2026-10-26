@@ -53,7 +53,7 @@ export default function RunwayStage({
     '952dfeab-8c3b-49a5-a43b-96d46b18885f.png': 2.4500, // Isisaurus
     // Megatheropods
     'ccb9b896-20b5-4e0b-8979-001742a884c5.svg': 2.8200, // Tyrannosaurus rex
-    'b8db44e0-1c99-4256-8c35-61e914af848b.svg': 3.1000, // Spinosaurus
+    'b8db44e0-1c99-4256-8c35-61e914af848b.svg': 3.2895, // Spinosaurus (calibrated to 3.8m sail height at 12.5m)
     'cf75413c-6985-400e-9389-81d7007e5d91-calibrated.svg': 2.7500, // Giganotosaurus
     '84bfa110-4a5b-437e-b759-711c76f5eed8.png': 2.8000, // Carcharodontosaurus
     // Armored & Ceratopsians

@@ -42,6 +42,7 @@ const SpeciesInputSchema = z.object({
   scientificName: z.string().min(1, 'scientificName is required'),
   nameMeaning: z.string().min(1, 'nameMeaning is required'),
   timePeriod: z.string().min(1, 'timePeriod is required'),
+  epoch: z.string().optional(),
   myaStart: z.number({ required_error: 'myaStart is required' }),
   myaEnd: z.number({ required_error: 'myaEnd is required' }),
   clade: CladeEnum,
@@ -50,23 +51,39 @@ const SpeciesInputSchema = z.object({
   dietDetails: z.string().min(1, 'dietDetails is required'),
   taxonomicStatus: TaxonomicStatusEnum,
   extinctionEvent: z.string().nullable().optional(),
-  closestLivingRelatives: z.array(z.string()).min(1, 'closestLivingRelatives array is required'),
+  closestLivingRelatives: z.union([
+    z.array(z.string()).min(1, 'closestLivingRelatives array is required'),
+    z.object({
+      status: z.string().optional(),
+      groups: z.array(z.string()).min(1),
+      rationale: z.string().optional(),
+      ecologicalAnalogues: z.array(z.string()).optional(),
+      sources: z.array(z.object({
+        title: z.string(),
+        url_or_doi: z.string().optional()
+      })).optional(),
+      verified: z.boolean().optional()
+    })
+  ]),
   media: z.array(
     z.object({
       url: z.string().url('media url must be valid URL'),
-      type: z.enum(['art', 'photo', 'diagram', 'scale_diagram']),
+      type: z.enum(['art', 'photo', 'diagram', 'scale_diagram', 'fossil_specimen', 'skeletal_reconstruction']),
       credit: z.string().min(1, 'media credit is required'),
       sourceUrl: z.string().url().optional()
     })
   ).min(1, 'media array must contain at least 1 item'),
   taxonomy: z.object({
+    domain: z.string().optional(),
     kingdom: z.string().optional(),
     phylum: z.string().optional(),
+    class: z.string().optional(),
     clade: z.string().optional(),
     order: z.string().optional(),
     family: z.string().optional(),
     genus: z.string().min(1, 'taxonomy.genus is required'),
-    species: z.string().min(1, 'taxonomy.species is required')
+    species: z.string().min(1, 'taxonomy.species is required'),
+    source: z.string().optional()
   }),
   geographicRange: z.object({
     continent: z.string().optional(),
@@ -249,12 +266,18 @@ async function main() {
   // DATABASE WRITE (INSERT ONLY - NEVER UPDATE OR UPSERT)
   // ══════════════════════════════════════════════════════════════════════════════
   try {
+    // Ensure postgres sequence is at least MAX(id) to avoid autoincrement collisions
+    await prisma.$executeRawUnsafe(`
+      SELECT setval(pg_get_serial_sequence('"Species"', 'id'), GREATEST((SELECT MAX(id) FROM "Species"), 1));
+    `);
+
     const createdSpecies = await prisma.species.create({
       data: {
         name: data.name,
         scientificName: data.scientificName,
         nameMeaning: data.nameMeaning,
         timePeriod: data.timePeriod,
+        epoch: data.epoch || null,
         myaStart: data.myaStart,
         myaEnd: data.myaEnd,
         clade: data.clade,
