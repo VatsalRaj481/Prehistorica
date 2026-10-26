@@ -637,7 +637,28 @@ async function initExtinctionTables() {
       CREATE INDEX IF NOT EXISTS "PaleoclimatePoint_ageMa_idx" ON "PaleoclimatePoint"("ageMa");
     `);
 
-    console.log('✅ PostgreSQL tables "ExtinctionEvent" and "PaleoclimatePoint" created or verified.');
+    // Enable Row Level Security (RLS) and public read-only policies
+    await prisma.$queryRawUnsafe(`ALTER TABLE "ExtinctionEvent" ENABLE ROW LEVEL SECURITY;`);
+    await prisma.$queryRawUnsafe(`ALTER TABLE "PaleoclimatePoint" ENABLE ROW LEVEL SECURITY;`);
+
+    await prisma.$queryRawUnsafe(`
+      DO $$
+      BEGIN
+        IF NOT EXISTS (
+          SELECT 1 FROM pg_policies WHERE tablename = 'ExtinctionEvent' AND policyname = 'Allow public read-only access'
+        ) THEN
+          CREATE POLICY "Allow public read-only access" ON "ExtinctionEvent" FOR SELECT TO public USING (true);
+        END IF;
+
+        IF NOT EXISTS (
+          SELECT 1 FROM pg_policies WHERE tablename = 'PaleoclimatePoint' AND policyname = 'Allow public read-only access'
+        ) THEN
+          CREATE POLICY "Allow public read-only access" ON "PaleoclimatePoint" FOR SELECT TO public USING (true);
+        END IF;
+      END $$;
+    `);
+
+    console.log('✅ PostgreSQL tables "ExtinctionEvent" and "PaleoclimatePoint" created or verified with RLS enabled.');
 
     // 3. Upsert Mass Extinction Events
     console.log('Seeding Big Five mass extinction records...');
