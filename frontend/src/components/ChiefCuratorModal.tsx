@@ -8,7 +8,6 @@ import {
   BookOpen,
   Compass,
   Volume2,
-  VolumeX,
   Sparkles,
   ArrowRight,
   HelpCircle,
@@ -275,8 +274,6 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     }
   }, [liveTotalSpecies]);
 
-  // Global Voice Mode setting (ON / OFF)
-  const [ttsEnabled, setTtsEnabled] = useState(false);
 
   // Active playback state: speaking vs. paused
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -731,19 +728,6 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     }
   };
 
-  const toggleTts = () => {
-    if (ttsEnabled) {
-      stopSpeaking();
-      setTtsEnabled(false);
-      setIsVoiceSettingsOpen(false);
-    } else {
-      setTtsEnabled(true);
-      const lastAssistantMsg = [...messages].reverse().find((m) => m.role === 'assistant');
-      if (lastAssistantMsg) {
-        setTimeout(() => speakText(lastAssistantMsg.content, 0, lastAssistantMsg.id), 50);
-      }
-    }
-  };
 
   const handleRateChange = (newRate: number) => {
     setSpeechRate(newRate);
@@ -959,9 +943,6 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
         setIsExcited(isHighRelevanceDiscovery);
       }
 
-      if (ttsEnabled) {
-        speakText(res.answer, 0, assistantMsgId);
-      }
     } catch (err: any) {
       if (err.name === 'AbortError') {
         return;
@@ -1136,43 +1117,9 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 </div>
               </div>
 
-              {/* Header Controls: Global Voice Mode Toggle, Playback, Voice Settings & Close */}
+              {/* Header Controls: Playback, Voice Settings & Close */}
               <div className="flex items-center gap-1 sm:gap-2 shrink-0 flex-nowrap">
-                {/* 1. Global Voice Mode Toggle (ON / OFF) */}
-                <button
-                  type="button"
-                  onClick={toggleTts}
-                  className={`min-h-[36px] sm:min-h-[38px] px-2.5 sm:px-3 py-1.5 rounded-lg border text-xs font-mono font-semibold flex items-center gap-1.5 transition-all cursor-pointer shrink-0 ${
-                    ttsEnabled
-                      ? 'bg-amber-500/15 border-amber-500/50 text-amber-300'
-                      : 'bg-slate-900/80 border-white/[0.08] text-slate-400 hover:text-slate-200 hover:bg-slate-850'
-                  }`}
-                  title={
-                    ttsEnabled
-                      ? 'Voice Mode is ON (click to turn OFF)'
-                      : 'Enable docent vocal narration for Rajy'
-                  }
-                  aria-pressed={ttsEnabled}
-                  aria-label={
-                    ttsEnabled
-                      ? 'Voice Mode Active'
-                      : 'Voice Mode Inactive — Enable vocal narration for Rajy'
-                  }
-                >
-                  {ttsEnabled ? (
-                    <>
-                      <Volume2 className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                      <span className="hidden sm:inline text-[11px] font-bold">Voice: ON</span>
-                    </>
-                  ) : (
-                    <>
-                      <VolumeX className="w-3.5 h-3.5 shrink-0" />
-                      <span className="hidden sm:inline text-[11px]">Voice Mode</span>
-                    </>
-                  )}
-                </button>
-
-                {/* 2. Separate Pause / Resume & Stop Controls (Visible when Voice Mode is ON and audio is active or paused) */}
+                {/* Live Pause / Resume & Stop Controls (Visible when audio is active or paused) */}
                 {(isSpeaking || isPaused) && (
                   <div className="flex items-center gap-1 bg-slate-900/90 border border-amber-500/30 rounded-lg p-0.5 shadow-sm shrink-0">
                     {/* Pause / Resume Button */}
