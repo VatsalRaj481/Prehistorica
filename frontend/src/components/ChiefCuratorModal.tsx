@@ -16,7 +16,9 @@ import {
   Pause,
   Play,
   Sliders,
-  RotateCcw
+  RotateCcw,
+  Copy,
+  Check
 } from 'lucide-react';
 import { askChiefCurator, CuratorGroundingSpecimen, fetchSpecies, getLiveSpecimensTotal, setLiveSpecimensTotal } from '../services/api.js';
 import { formatEnumLabel } from '../utils/formatEnumLabel.js';
@@ -58,6 +60,64 @@ const DEFAULT_COMPACT_QUESTIONS = [
 ];
 
 // Rajy's Default Voice Profile Configuration
+export interface VoicePreset {
+  id: string;
+  name: string;
+  subtitle: string;
+  description: string;
+  rate: number;
+  pitch: number;
+  preferredVoices: string[];
+}
+
+export const RAJY_VOICE_PRESETS: VoicePreset[] = [
+  {
+    id: 'rajy-classic',
+    name: 'Rajy Classic',
+    subtitle: 'Chief Curator',
+    description: 'Warm, scholarly Rajasaurus cadence with infectious deep-time wonder.',
+    rate: 0.92,
+    pitch: 1.08,
+    preferredVoices: ['natural', 'online', 'google us english', 'guy', 'david', 'alex', 'daniel']
+  },
+  {
+    id: 'deep-time-elder',
+    name: 'Deep-Time Elder',
+    subtitle: 'Ancient Abelisaur',
+    description: 'Deep, resonant, measured baritone steeped in 66 million years of wisdom.',
+    rate: 0.85,
+    pitch: 0.78,
+    preferredVoices: ['george', 'david', 'mark', 'richard', 'james', 'male']
+  },
+  {
+    id: 'scholarly-prof',
+    name: 'Scholarly Professor',
+    subtitle: 'Academic Paleontologist',
+    description: 'Crisp, articulate, analytical cadence tailored for rigorous anatomical breakdowns.',
+    rate: 0.98,
+    pitch: 1.00,
+    preferredVoices: ['daniel', 'oliver', 'en-gb', 'british', 'google uk', 'academic']
+  },
+  {
+    id: 'youthful-explorer',
+    name: 'Youthful Explorer',
+    subtitle: 'Field Scout',
+    description: 'Bright, energetic, upbeat cadence full of discovery and enthusiasm.',
+    rate: 1.06,
+    pitch: 1.20,
+    preferredVoices: ['samantha', 'zira', 'karen', 'victoria', 'jenny', 'female']
+  },
+  {
+    id: 'dramatic-storyteller',
+    name: 'Dramatic Storyteller',
+    subtitle: 'Epic Pavilion Narrator',
+    description: 'Cinematic, documentary-style delivery with expressive pauses and gravitas.',
+    rate: 0.88,
+    pitch: 0.90,
+    preferredVoices: ['tom', 'arthur', 'reed', 'google', 'natural', 'expressive']
+  }
+];
+
 const DEFAULT_VOICE_CONFIG = {
   lang: 'en-US',
   rate: 0.92,
@@ -228,6 +288,11 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
   // Available System Voices & User Preferences
   const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [selectedPresetId, setSelectedPresetId] = useState<string>(() => {
+    return localStorage.getItem('prehistorica_voice_preset') || 'rajy-classic';
+  });
+  const [activeSpeakingMessageId, setActiveSpeakingMessageId] = useState<string | null>(null);
+  const [copiedMessageId, setCopiedMessageId] = useState<string | null>(null);
   const [selectedVoiceURI, setSelectedVoiceURI] = useState<string>(() => {
     return localStorage.getItem('prehistorica_voice_uri') || '';
   });
@@ -375,16 +440,26 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       if (userChoice) return userChoice;
     }
 
-    // Default to the OS/browser designated default voice if available
-    const systemDefault = availableVoices.find((v) => v.default);
+    const preset = RAJY_VOICE_PRESETS.find((p) => p.id === selectedPresetId);
+    if (preset && preset.preferredVoices && preset.preferredVoices.length > 0) {
+      for (const keyword of preset.preferredVoices) {
+        const match = availableVoices.find(
+          (v) =>
+            v.lang.startsWith('en') &&
+            (v.name.toLowerCase().includes(keyword) || v.voiceURI.toLowerCase().includes(keyword))
+        );
+        if (match) return match;
+      }
+    }
+
+    const systemDefault = availableVoices.find((v) => v.default && v.lang.startsWith('en'));
     if (systemDefault) return systemDefault;
 
-    // Fallback: match English locale
     const enVoice = availableVoices.find((v) => v.lang.startsWith('en'));
     if (enVoice) return enVoice;
 
     return availableVoices[0] || null;
-  }, [availableVoices, selectedVoiceURI]);
+  }, [availableVoices, selectedVoiceURI, selectedPresetId]);
 
   const stopKeepAlive = useCallback(() => {
     if (keepAliveTimerRef.current !== null) {
@@ -412,10 +487,10 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     activeUtteranceRef.current = null;
     setIsSpeaking(false);
     setIsPaused(false);
+    setActiveSpeakingMessageId(null);
     currentCharIndexRef.current = 0;
   }, [stopKeepAlive]);
 
-  // Focus input on open, silence speech on close
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 150);
@@ -556,8 +631,8 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
    * - Word boundary tracking for exact pause/resume offset
    */
   const speakText = useCallback(
-    (text: string, startIndex: number = 0) => {
-      if (!ttsEnabled || !('speechSynthesis' in window)) return;
+    (text: string, startIndex: number = 0, messageId?: string) => {
+      if (!('speechSynthesis' in window)) return;
 
       stopKeepAlive();
       if ('speechSynthesis' in window) {
@@ -572,7 +647,6 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
       const utterance = new SpeechSynthesisUtterance(textToSpeak);
 
-      // Default Docent Tuning Configuration
       utterance.lang = DEFAULT_VOICE_CONFIG.lang;
       utterance.rate = speechRate;
       utterance.pitch = speechPitch;
@@ -584,7 +658,6 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
         utterance.lang = voice.lang || DEFAULT_VOICE_CONFIG.lang;
       }
 
-      // Track character boundary for precise pause/resume
       utterance.onboundary = (e) => {
         if (e.name === 'word') {
           currentCharIndexRef.current = startIndex + e.charIndex;
@@ -594,6 +667,9 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       utterance.onstart = () => {
         setIsSpeaking(true);
         setIsPaused(false);
+        if (messageId) {
+          setActiveSpeakingMessageId(messageId);
+        }
         startKeepAlive();
       };
 
@@ -601,6 +677,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
         stopKeepAlive();
         setIsSpeaking(false);
         setIsPaused(false);
+        setActiveSpeakingMessageId(null);
         currentCharIndexRef.current = 0;
       };
 
@@ -609,19 +686,16 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
         if (e.error !== 'canceled' && e.error !== 'interrupted') {
           setIsSpeaking(false);
           setIsPaused(false);
+          setActiveSpeakingMessageId(null);
         }
       };
 
       activeUtteranceRef.current = utterance;
       window.speechSynthesis.speak(utterance);
     },
-    [ttsEnabled, speechRate, speechPitch, getActiveVoice, startKeepAlive, stopKeepAlive]
+    [speechRate, speechPitch, getActiveVoice, startKeepAlive, stopKeepAlive]
   );
 
-  /**
-   * Dedicated Pause:
-   * Pauses speech at the current word without canceling or losing position.
-   */
   const pauseSpeaking = () => {
     stopKeepAlive();
     if (!('speechSynthesis' in window)) return;
@@ -646,20 +720,17 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       setIsPaused(false);
       startKeepAlive();
     } else if (currentCleanTextRef.current && currentCharIndexRef.current > 0) {
-      speakText(currentCleanTextRef.current, currentCharIndexRef.current);
+      speakText(currentCleanTextRef.current, currentCharIndexRef.current, activeSpeakingMessageId || undefined);
     } else {
-      const lastAssistantMsg = [...messages].reverse().find((m) => m.role === 'assistant');
-      if (lastAssistantMsg) {
-        speakText(lastAssistantMsg.content, 0);
+      const targetMsg = activeSpeakingMessageId
+        ? messages.find((m) => m.id === activeSpeakingMessageId)
+        : [...messages].reverse().find((m) => m.role === 'assistant');
+      if (targetMsg) {
+        speakText(targetMsg.content, 0, targetMsg.id);
       }
     }
   };
 
-  /**
-   * Global Voice Mode Toggle:
-   * Toggles Voice Mode ON / OFF.
-   * Toggling OFF completely cancels and flushes all audio.
-   */
   const toggleTts = () => {
     if (ttsEnabled) {
       stopSpeaking();
@@ -669,12 +740,11 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
       setTtsEnabled(true);
       const lastAssistantMsg = [...messages].reverse().find((m) => m.role === 'assistant');
       if (lastAssistantMsg) {
-        setTimeout(() => speakText(lastAssistantMsg.content, 0), 50);
+        setTimeout(() => speakText(lastAssistantMsg.content, 0, lastAssistantMsg.id), 50);
       }
     }
   };
 
-  // User Settings Handlers with LocalStorage Persistence
   const handleRateChange = (newRate: number) => {
     setSpeechRate(newRate);
     localStorage.setItem('prehistorica_voice_rate', newRate.toString());
@@ -691,12 +761,67 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
   };
 
   const handleResetDefaults = () => {
+    setSelectedPresetId('rajy-classic');
+    localStorage.removeItem('prehistorica_voice_preset');
     setSpeechRate(DEFAULT_VOICE_CONFIG.rate);
     setSpeechPitch(DEFAULT_VOICE_CONFIG.pitch);
     setSelectedVoiceURI('');
     localStorage.removeItem('prehistorica_voice_rate');
     localStorage.removeItem('prehistorica_voice_pitch');
     localStorage.removeItem('prehistorica_voice_uri');
+  };
+
+  const handleSelectPreset = (presetId: string) => {
+    const preset = RAJY_VOICE_PRESETS.find((p) => p.id === presetId);
+    if (!preset) return;
+
+    setSelectedPresetId(presetId);
+    localStorage.setItem('prehistorica_voice_preset', presetId);
+
+    setSpeechRate(preset.rate);
+    setSpeechPitch(preset.pitch);
+    localStorage.setItem('prehistorica_voice_rate', preset.rate.toString());
+    localStorage.setItem('prehistorica_voice_pitch', preset.pitch.toString());
+
+    setSelectedVoiceURI('');
+    localStorage.removeItem('prehistorica_voice_uri');
+
+    stopSpeaking();
+    setTimeout(() => {
+      speakText(`Greetings, explorer! This is the ${preset.name} voice preset.`, 0);
+    }, 60);
+  };
+
+  const handleToggleReadAloud = useCallback(
+    (messageId: string, content: string) => {
+      if (activeSpeakingMessageId === messageId) {
+        if (isSpeaking) {
+          pauseSpeaking();
+        } else if (isPaused) {
+          resumeSpeaking();
+        } else {
+          speakText(content, 0, messageId);
+        }
+      } else {
+        stopSpeaking();
+        setTimeout(() => {
+          speakText(content, 0, messageId);
+        }, 50);
+      }
+    },
+    [activeSpeakingMessageId, isSpeaking, isPaused, speakText, stopSpeaking]
+  );
+
+  const handleCopyMessage = async (messageId: string, content: string) => {
+    try {
+      await navigator.clipboard.writeText(content);
+      setCopiedMessageId(messageId);
+      setTimeout(() => {
+        setCopiedMessageId((prev) => (prev === messageId ? null : prev));
+      }, 2000);
+    } catch (e) {
+      console.warn('Failed to copy to clipboard:', e);
+    }
   };
 
   const handleTestVoice = () => {
@@ -834,7 +959,9 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
         setIsExcited(isHighRelevanceDiscovery);
       }
 
-      speakText(res.answer, 0);
+      if (ttsEnabled) {
+        speakText(res.answer, 0, assistantMsgId);
+      }
     } catch (err: any) {
       if (err.name === 'AbortError') {
         return;
@@ -944,6 +1071,10 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
     return en.length > 0 ? en : availableVoices;
   }, [availableVoices]);
 
+  const currentPreset = useMemo(() => {
+    return RAJY_VOICE_PRESETS.find((p) => p.id === selectedPresetId) || RAJY_VOICE_PRESETS[0];
+  }, [selectedPresetId]);
+
   const activeVoiceName = useMemo(() => {
     const v = getActiveVoice();
     return v ? v.name : 'System Default';
@@ -1042,7 +1173,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                 </button>
 
                 {/* 2. Separate Pause / Resume & Stop Controls (Visible when Voice Mode is ON and audio is active or paused) */}
-                {ttsEnabled && (isSpeaking || isPaused) && (
+                {(isSpeaking || isPaused) && (
                   <div className="flex items-center gap-1 bg-slate-900/90 border border-amber-500/30 rounded-lg p-0.5 shadow-sm shrink-0">
                     {/* Pause / Resume Button */}
                     {isSpeaking ? (
@@ -1087,23 +1218,24 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                   </div>
                 )}
 
-                {/* 3. Compact Voice Settings Control Button */}
-                {ttsEnabled && (
-                  <button
-                    type="button"
-                    onClick={() => setIsVoiceSettingsOpen(!isVoiceSettingsOpen)}
-                    className={`min-h-[36px] min-w-[36px] sm:min-h-[38px] sm:min-w-[38px] p-2 rounded-lg border text-xs font-mono flex items-center justify-center transition-all cursor-pointer shrink-0 ${
-                      isVoiceSettingsOpen
-                        ? 'bg-amber-500/20 border-amber-500/60 text-amber-300 shadow-sm'
-                        : 'bg-slate-900/80 border-white/[0.08] text-slate-400 hover:text-amber-300 hover:bg-slate-850'
-                    }`}
-                    title="Rajy's Voice Settings & Speed"
-                    aria-label="Voice settings and speed control"
-                    aria-expanded={isVoiceSettingsOpen}
-                  >
-                    <Sliders className="w-3.5 h-3.5" />
-                  </button>
-                )}
+                {/* 3. Voice Presets & Audio Settings Button */}
+                <button
+                  type="button"
+                  onClick={() => setIsVoiceSettingsOpen(!isVoiceSettingsOpen)}
+                  className={`min-h-[36px] sm:min-h-[38px] px-2.5 sm:px-3 py-1.5 rounded-lg border text-xs font-mono flex items-center gap-1.5 transition-all cursor-pointer shrink-0 ${
+                    isVoiceSettingsOpen
+                      ? 'bg-amber-500/20 border-amber-500/60 text-amber-300 shadow-sm'
+                      : 'bg-slate-900/80 border-white/[0.08] text-slate-400 hover:text-amber-300 hover:bg-slate-850'
+                  }`}
+                  title="Select Voice Presets & Settings"
+                  aria-label="Select voice presets and settings"
+                  aria-expanded={isVoiceSettingsOpen}
+                >
+                  <Sliders className="w-3.5 h-3.5 text-amber-400" />
+                  <span className="hidden md:inline text-[11px] font-semibold text-slate-300">
+                    Voice: <span className="text-amber-300">{currentPreset.name}</span>
+                  </span>
+                </button>
 
                 {/* 4. Reset Conversation / New Chat Button (visible when conversation is active) */}
                 {!isInitialState && (
@@ -1133,7 +1265,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
 
               {/* ── Voice Settings Modal with Backdrop Overlay ── */}
               <AnimatePresence>
-                {isVoiceSettingsOpen && ttsEnabled && (
+                {isVoiceSettingsOpen && (
                   <div
                     className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm"
                     onClick={(e) => {
@@ -1155,7 +1287,7 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                       <div className="flex items-center justify-between border-b border-white/[0.08] pb-2.5">
                         <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-amber-400 uppercase tracking-wider" id="voice-settings-title">
                           <Sliders className="w-4 h-4 text-amber-400" />
-                          <span>Rajy Voice Settings</span>
+                          <span>Rajy Voice & Presets</span>
                         </div>
                         <button
                           type="button"
@@ -1166,6 +1298,71 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                           <RotateCcw className="w-2.5 h-2.5" />
                           <span>Reset Defaults</span>
                         </button>
+                      </div>
+
+                      {/* 5 Voice Presets Grid */}
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <label className="text-[10px] sm:text-[11px] text-slate-300 uppercase tracking-wider block font-semibold">
+                            Choose Voice Preset (5 Options)
+                          </label>
+                          <span className="text-[9px] text-amber-400 font-mono font-semibold">
+                            Active: {currentPreset.name}
+                          </span>
+                        </div>
+                        <div className="grid grid-cols-1 gap-2 max-h-52 sm:max-h-60 overflow-y-auto pr-1">
+                          {RAJY_VOICE_PRESETS.map((preset) => {
+                            const isSelected = selectedPresetId === preset.id;
+                            return (
+                              <button
+                                key={preset.id}
+                                type="button"
+                                onClick={() => handleSelectPreset(preset.id)}
+                                className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer flex items-start gap-2.5 ${
+                                  isSelected
+                                    ? 'bg-amber-500/15 border-amber-500/70 text-slate-100 shadow-sm ring-1 ring-amber-500/50'
+                                    : 'bg-slate-900/80 border-white/[0.08] text-slate-300 hover:bg-slate-850 hover:border-white/20'
+                                }`}
+                              >
+                                <div
+                                  className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 mt-0.5 ${
+                                    isSelected ? 'bg-amber-500 text-slate-950 font-bold' : 'bg-slate-800 text-amber-400'
+                                  }`}
+                                >
+                                  {preset.id === 'rajy-classic' && <Sparkles className="w-3.5 h-3.5" />}
+                                  {preset.id === 'deep-time-elder' && <Compass className="w-3.5 h-3.5" />}
+                                  {preset.id === 'scholarly-prof' && <BookOpen className="w-3.5 h-3.5" />}
+                                  {preset.id === 'youthful-explorer' && <Volume2 className="w-3.5 h-3.5" />}
+                                  {preset.id === 'dramatic-storyteller' && <Sliders className="w-3.5 h-3.5" />}
+                                </div>
+                                <div className="min-w-0 flex-1">
+                                  <div className="flex items-center justify-between gap-1">
+                                    <span className="text-xs font-bold text-slate-100 font-mono">
+                                      {preset.name}
+                                    </span>
+                                    {isSelected ? (
+                                      <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-amber-500 text-slate-950">
+                                        Selected
+                                      </span>
+                                    ) : (
+                                      <span className="text-[9px] text-amber-400/80 font-mono">
+                                        {preset.subtitle}
+                                      </span>
+                                    )}
+                                  </div>
+                                  <p className="text-[10px] text-slate-400 leading-snug mt-0.5">
+                                    {preset.description}
+                                  </p>
+                                  <div className="flex items-center gap-2 mt-1 text-[9px] text-slate-500 font-mono">
+                                    <span>Speed: {preset.rate}x</span>
+                                    <span>&bull;</span>
+                                    <span>Pitch: {preset.pitch}x</span>
+                                  </div>
+                                </div>
+                              </button>
+                            );
+                          })}
+                        </div>
                       </div>
 
                       {/* System Voice Selection */}
@@ -1742,9 +1939,116 @@ export default function ChiefCuratorModal({ isOpen, onClose, initialQuery }: Chi
                               <p className="whitespace-pre-wrap leading-relaxed text-xs sm:text-[13px] md:text-sm">
                                 {msg.content}
                               </p>
+                                                          )}
+                            </motion.div>
+
+                            {/* Assistant Response Action Toolbar (Copy, Read Aloud, Voice Preset) */}
+                            {isAssistant && msg.content && (!isThisLastAssistant || !isStreaming) && (
+                              <div className="flex items-center gap-1.5 mt-2 px-1">
+                                {/* 1. Copy Response Button */}
+                                <div className="relative group">
+                                  <button
+                                    type="button"
+                                    onClick={() => handleCopyMessage(msg.id, msg.content)}
+                                    className="min-h-[28px] min-w-[28px] p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/80 transition-colors cursor-pointer flex items-center justify-center border border-white/[0.04] hover:border-white/[0.12]"
+                                    title="Copy response to clipboard"
+                                    aria-label="Copy response"
+                                  >
+                                    {copiedMessageId === msg.id ? (
+                                      <Check className="w-3.5 h-3.5 text-emerald-400" />
+                                    ) : (
+                                      <Copy className="w-3.5 h-3.5" />
+                                    )}
+                                  </button>
+                                  <div className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-0.5 rounded bg-slate-900 border border-white/10 text-[9px] font-mono text-slate-200 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-md z-30">
+                                    {copiedMessageId === msg.id ? 'Copied!' : 'Copy'}
+                                  </div>
+                                </div>
+
+                                {/* 2. Read Aloud Button (Image 2 design with floating tooltip pill) */}
+                                <div className="relative group">
+                                  <button
+                                    type="button"
+                                    onClick={() => handleToggleReadAloud(msg.id, msg.content)}
+                                    className={`min-h-[28px] px-2.5 py-1 rounded-lg text-xs font-mono flex items-center gap-1.5 transition-all cursor-pointer border ${
+                                      activeSpeakingMessageId === msg.id && (isSpeaking || isPaused)
+                                        ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-sm'
+                                        : 'bg-slate-900/60 hover:bg-slate-800 text-slate-400 hover:text-amber-300 border-white/[0.06] hover:border-amber-500/30'
+                                    }`}
+                                    title={
+                                      activeSpeakingMessageId === msg.id && isSpeaking
+                                        ? 'Pause reading'
+                                        : activeSpeakingMessageId === msg.id && isPaused
+                                        ? 'Resume reading'
+                                        : 'Read aloud'
+                                    }
+                                    aria-label="Read aloud"
+                                  >
+                                    {activeSpeakingMessageId === msg.id && isSpeaking ? (
+                                      <>
+                                        <span className="flex items-end gap-0.5 h-3">
+                                          <span className="w-0.5 bg-amber-400 rounded-full animate-[pulse_0.6s_ease-in-out_infinite] h-2" />
+                                          <span className="w-0.5 bg-amber-400 rounded-full animate-[pulse_0.4s_ease-in-out_infinite] h-3" />
+                                          <span className="w-0.5 bg-amber-400 rounded-full animate-[pulse_0.8s_ease-in-out_infinite] h-1.5" />
+                                        </span>
+                                        <Volume2 className="w-3.5 h-3.5 text-amber-400" />
+                                        <span className="text-[10px] font-bold text-amber-300">Reading</span>
+                                      </>
+                                    ) : activeSpeakingMessageId === msg.id && isPaused ? (
+                                      <>
+                                        <Play className="w-3.5 h-3.5 text-amber-300 fill-current" />
+                                        <span className="text-[10px] font-bold text-amber-300">Paused</span>
+                                      </>
+                                    ) : (
+                                      <>
+                                        <Volume2 className="w-3.5 h-3.5" />
+                                        <span className="text-[10px] font-medium hidden sm:inline">Read aloud</span>
+                                      </>
+                                    )}
+                                  </button>
+
+                                  {/* Floating Pill Tooltip (matching Image 2) */}
+                                  <div className="pointer-events-none absolute top-full left-1/2 -translate-x-1/2 mt-1.5 px-2.5 py-1 rounded-full bg-slate-950 border border-white/10 text-[10px] font-mono text-slate-200 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl z-30 flex items-center gap-1">
+                                    <span>
+                                      {activeSpeakingMessageId === msg.id && isSpeaking
+                                        ? 'Pause'
+                                        : activeSpeakingMessageId === msg.id && isPaused
+                                        ? 'Resume'
+                                        : 'Read aloud'}
+                                    </span>
+                                    <span className="text-[9px] text-amber-400/90 font-semibold">
+                                      ({currentPreset.name})
+                                    </span>
+                                  </div>
+                                </div>
+
+                                {/* 3. Stop Button (when this response is actively speaking or paused) */}
+                                {activeSpeakingMessageId === msg.id && (isSpeaking || isPaused) && (
+                                  <button
+                                    type="button"
+                                    onClick={stopSpeaking}
+                                    className="min-h-[28px] min-w-[28px] p-1.5 rounded-lg text-slate-400 hover:text-amber-300 bg-slate-900/60 hover:bg-slate-800 border border-white/[0.06] transition-colors cursor-pointer flex items-center justify-center"
+                                    title="Stop reading"
+                                    aria-label="Stop reading"
+                                  >
+                                    <Square className="w-3 h-3 fill-current" />
+                                  </button>
+                                )}
+
+                                {/* 4. Quick Voice Preset Indicator & Switcher Chip */}
+                                <button
+                                  type="button"
+                                  onClick={() => setIsVoiceSettingsOpen(true)}
+                                  className="min-h-[26px] px-2 py-0.5 rounded-full bg-slate-900/60 hover:bg-slate-850 border border-white/[0.06] hover:border-amber-500/40 text-[10px] font-mono text-slate-400 hover:text-amber-300 transition-all cursor-pointer ml-auto flex items-center gap-1"
+                                  title="Change Rajy's Voice Preset (5 presets available)"
+                                >
+                                  <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+                                  <span className="hidden xs:inline text-slate-500">Voice:</span>
+                                  <span className="font-semibold text-slate-300">{currentPreset.name}</span>
+                                </button>
+                              </div>
                             )}
-                          </motion.div>
-                        </div>
+                          </div>
 
                         {/* Museum Grounding Specimens Ribbon */}
                         {msg.groundedSpecimens && msg.groundedSpecimens.length > 0 && (!isThisLastAssistant || !isStreaming) && (

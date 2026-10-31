@@ -333,13 +333,35 @@ function sanitizeInlineMarkdown(raw: string): string {
   if (!raw) return '';
   let s = raw;
 
-  // 1. Repair combined genus + parenthetical binomial under a single asterisk pair
+  // 1. Repair combined genus link + parenthetical binomial under a single asterisk pair followed by colon or dash
   s = s.replace(
-    /\*(\[[^\]]+\]\([^\)]+\)|[A-Za-z0-9_-]+)\s+\(([^)]+)\)\*/g,
-    (_m, name, paren) => `*${name}* (*${paren}*)`
+    /\*(\[[^\]]+\]\([^\)]+\))\s+\(([^)]+)\)\*(\s*[:—–-])/g,
+    (_m, link, paren, trailing) => `${link} (*${paren.replace(/^\*+|\*+$/g, '')}*)${trailing}`
   );
 
-  // 2. Repair unclosed opening asterisk before an em-dash/en-dash/hyphen separator
+  // 2. Repair combined plain genus + parenthetical binomial under a single asterisk pair followed by colon or dash
+  s = s.replace(
+    /\*([A-Za-z0-9_-]+)\s+\(([^)]+)\)\*(\s*[:—–-])/g,
+    (_m, name, paren, trailing) => `*${name}* (*${paren.replace(/^\*+|\*+$/g, '')}*)${trailing}`
+  );
+
+  // 3. Remove stray asterisks wrapping markdown links: *[Name](/species/123)* or *[Name](/species/123)
+  s = s.replace(/\*(\[[^\]]+\]\([^\)]+\))\*/g, '$1');
+  s = s.replace(/\*(\[[^\]]+\]\([^\)]+\))/g, '$1');
+
+  // 4. Clean trailing parenthetical asterisk before colon: (Binomial)*: -> (*Binomial*):
+  s = s.replace(/\(([^)]+)\)\*:/g, (_m, p) => `(*${p.replace(/^\*+|\*+$/g, '')}*):`);
+
+  // 5. Repair combined genus + parenthetical binomial without colon
+  s = s.replace(
+    /\*(\[[^\]]+\]\([^\)]+\)|[A-Za-z0-9_-]+)\s+\(([^)]+)\)\*/g,
+    (_m, name, paren) => {
+      const cleanParen = paren.replace(/^\*+|\*+$/g, '');
+      return `${name} (*${cleanParen}*)`;
+    }
+  );
+
+  // 6. Repair unclosed opening asterisk before an em-dash/en-dash/hyphen separator
   s = s.replace(
     /\*(\[[^\]]+\]\([^\)]+\)|[A-Za-z0-9_-]+)\s*(?:\(([^)]+)\))?\s*([—–-]|\.\.\.)/g,
     (_m, name, paren, dash) => {
